@@ -31,6 +31,7 @@ public class GUIIntro extends JFrame implements ActionListener {
             aquarium.pack();
             aquarium.setLocationRelativeTo(null);
             aquarium.setVisible(true);
+            //qqqqq
         }
 
     }
