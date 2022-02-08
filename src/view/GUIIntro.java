@@ -8,28 +8,18 @@ import java.awt.event.*;
 
 public class GUIIntro extends JFrame implements ActionListener {
 
-    // appelle des variables de la classe
-
-    
     public JButton btEnter;
-	
-   
-    
-    
 
     public GUIIntro() {
 
         JPanel simplePanel = new JPanel();
 
-
         btEnter = new JButton("enter");
         btEnter.addActionListener(this);
         simplePanel.add(btEnter);
 
+        add(simplePanel);
 
-        add(simplePanel); 
-
-        
     }
 
     @Override
@@ -42,17 +32,9 @@ public class GUIIntro extends JFrame implements ActionListener {
             aquarium.setLocationRelativeTo(null);
             aquarium.setVisible(true);
         }
-        
+
     }
 
-    
-    /** 
-     * @param e
-     */
-    //--------------------------------------------------------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------------------------------------------------------
 
-    
-    
 }
-
-
