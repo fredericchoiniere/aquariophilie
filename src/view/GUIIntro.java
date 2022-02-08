@@ -1,4 +1,4 @@
-//Jérémie Caron A21
+//Jérémie Caron A21 prout
 
 package view;
 
