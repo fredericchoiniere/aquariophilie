@@ -12,7 +12,7 @@ import view.tabs.*;
 
 import java.util.*;
 
-public class GUIAqua extends JFrame implements ActionListener {
+public class GUIMain extends JFrame implements ActionListener {
 
     JPanel panelPrincipal;
     JButton pousser, rapetisser;
@@ -20,7 +20,7 @@ public class GUIAqua extends JFrame implements ActionListener {
     short stade, iteration = 0;
     String nom;
 
-    public GUIAqua() {
+    public GUIMain() {
 
         // ----------------------------------------------------------------------------------------------------------------------------------------------------
         // creation du premier tab
@@ -46,7 +46,6 @@ public class GUIAqua extends JFrame implements ActionListener {
         // creation du 2em tab
 
         PanelShop panelShop = new PanelShop();
-
         tabbedPane.add("Magasin", panelShop);
 
         // --------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -57,13 +56,12 @@ public class GUIAqua extends JFrame implements ActionListener {
         tabbedPane.add("À propos", panelInfo);
 
         // ajout des tabs au frame
-        add(tabbedPane); 
+        add(tabbedPane);
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
 
     }
 
