@@ -1,4 +1,6 @@
-package model;
+package model.outils;
+
+import model.DraggableComponent;
 
 public class Outils extends DraggableComponent{ // extends Draggable components pour les Outils
     
