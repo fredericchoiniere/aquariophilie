@@ -2,7 +2,6 @@ package model.poissons;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class PoissonRouge extends JLabel {
     // Attributs : coordonn�es de la boule
