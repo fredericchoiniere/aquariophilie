@@ -16,7 +16,7 @@ public class PoissonRouge extends JLabel {
     	super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
-        Image aquarium_1 = Toolkit.getDefaultToolkit().getImage("../aquariophilie/res/outils/aquarium_kit/aquarium_kit_open.png");
+        Image aquarium_1 = Toolkit.getDefaultToolkit().getImage("../res/outils/aquarium_kit/aquarium_kit_open.png");
         g2d.drawImage(aquarium_1, x, y, this);
 
         //g2d.fillOval(x, y, 75, 75);
