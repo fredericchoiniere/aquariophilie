@@ -22,7 +22,7 @@ public class GUIIntro extends JFrame implements ActionListener {
 
         add(simplePanel);
 
-        //Crée une nouvelle partie
+        /*//Crée une nouvelle partie
         JPanel nouvellePartie = new JPanel();
 
         btnNouvellePartie = new JButton("Nouvelle partie");
@@ -30,7 +30,7 @@ public class GUIIntro extends JFrame implements ActionListener {
         nouvellePartie.add(btnNouvellePartie);
 
         add(nouvellePartie);
-
+        */
     }
 
     @Override

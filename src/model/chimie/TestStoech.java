@@ -1,9 +1,6 @@
 package model.chimie;
 
 import java.awt.Color;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
 // nitrification, en ppm ou mg/L --> 1ppm = 1mg/L
@@ -13,10 +10,8 @@ import javax.swing.JProgressBar;
 public class TestStoech implements Runnable {
 
     final short MAXNITRATE = 50;
-    int quantAmmoniaque = 50, quantNitrite = 0, quantNitrate = 0; // nitrate max 50mg/L
+    public int quantAmmoniaque = 50, quantNitrite = 0, quantNitrate = 0; // nitrate max 50mg/L
     public JProgressBar barAmmoniaque, barNitrite, barNitrate;
-
-    Thread threadStoech;
 
     public TestStoech() {
 
@@ -25,9 +20,7 @@ public class TestStoech implements Runnable {
         barNitrate = new JProgressBar();
 
         barNitrate.setMaximum(50);
-
-        threadStoech = new Thread();
-        threadStoech.start();
+        
 
     }
 
@@ -58,6 +51,11 @@ public class TestStoech implements Runnable {
             else if (quantNitrate > 2 * (MAXNITRATE / 3))
                 barNitrate.setForeground(Color.RED);
 
+            try {
+                Thread.sleep(200);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
     }
