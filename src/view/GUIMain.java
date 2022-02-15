@@ -10,6 +10,7 @@ import javax.swing.*;
 
 import model.outils.Pipette;
 import model.poissons.*;
+import model.outils.TestEau;
 import view.tabs.*;
 
 import java.util.*;
@@ -19,6 +20,7 @@ public class GUIMain extends JFrame implements ActionListener, Runnable {
     JPanel panelPrincipal;
     JButton pousser, rapetisser;
     JLabel pipette;
+    JLabel testEau;
     short stade, iteration = 0;
     String nom;
     PoissonRouge poisson_rouge ;
@@ -50,6 +52,17 @@ public class GUIMain extends JFrame implements ActionListener, Runnable {
 
         pipette.setVisible(true);
         panelAqua.add(pipette); // ajout de la pipette au frame
+
+        // creation du testeur d'eau pour le drag and drop
+        TestEau testEau = new TestEau();
+        testEau.setIcon(new ImageIcon("aquariophilie/res/outils/testEau.png"));
+
+        Dimension size_testEau = testEau.getPreferredSize(); // prend la dimension de la photo
+        testEau.setBounds(835, 300, size_testEau.width, size_testEau.height); // position d'origine
+
+        panelAqua.add(testEau); // ajout du testeur d'eau au frame
+        testEau.setVisible(true);
+
 
 
         // ajout des éléments d'aquariophilie
