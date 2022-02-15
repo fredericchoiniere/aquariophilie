@@ -4,11 +4,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.event.*;
-
+import javax.swing.*;
 
 import model.chimie.TestStoech;
 
-public class PanelTest extends JPanel implements ActionListener{
+public class PanelTest extends JPanel implements ActionListener, FocusListener{
 
     TestStoech stoech;
     JButton button1, button2;
@@ -17,7 +17,8 @@ public class PanelTest extends JPanel implements ActionListener{
 
     public PanelTest() {
 
-        setSize(300, 300);
+        addFocusListener(this);
+        setSize(700, 500);
         setName("testeau");
         setVisible(true);
 
@@ -50,5 +51,17 @@ public class PanelTest extends JPanel implements ActionListener{
          if(e.getSource() == button2){
             stoech.quantAmmoniaque -= 10;
         }
+    }
+
+    @Override
+    public void focusGained(FocusEvent e) {
+        setVisible(true);
+        
+    }
+
+    @Override
+    public void focusLost(FocusEvent e) {
+        setVisible(false);
+        
     }
 }
