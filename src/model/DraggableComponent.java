@@ -38,6 +38,9 @@ public class DraggableComponent extends JLabel { // Classe Draggable component p
         myX = getX();
         myY = getY();
 
+        x = getX();
+        y = getY();
+
       }
 
       @Override

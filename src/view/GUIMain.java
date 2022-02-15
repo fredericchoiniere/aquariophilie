@@ -8,6 +8,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import model.outils.Pipette;
+import model.outils.TestEau;
 import view.tabs.*;
 
 import java.util.*;
@@ -17,6 +18,7 @@ public class GUIMain extends JFrame implements ActionListener {
     JPanel panelPrincipal;
     JButton pousser, rapetisser;
     JLabel pipette;
+    JLabel testEau;
     short stade, iteration = 0;
     String nom;
 
@@ -39,6 +41,17 @@ public class GUIMain extends JFrame implements ActionListener {
 
         panelAqua.add(pipette); // ajout de la pipette au frame
         pipette.setVisible(true);
+
+        // creation du testeur d'eau pour le drag and drop
+        TestEau testEau = new TestEau();
+        testEau.setIcon(new ImageIcon("res/outils/testEau.png"));
+
+        Dimension size_testEau = testEau.getPreferredSize(); // prend la dimension de la photo
+        testEau.setBounds(835, 300, size_testEau.width, size_testEau.height); // position d'origine
+
+        panelAqua.add(testEau); // ajout du testeur d'eau au frame
+        testEau.setVisible(true);
+
 
         tabbedPane.add("Aquarium", panelAqua);
 

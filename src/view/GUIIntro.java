@@ -1,5 +1,3 @@
-//Jérémie Caron A21 prout
-
 package view;
 
 import javax.swing.*;
@@ -31,7 +29,7 @@ public class GUIIntro extends JFrame implements ActionListener {
             aquarium.pack();
             aquarium.setLocationRelativeTo(null);
             aquarium.setVisible(true);
-            //qqqqq
+            
         }
 
     }
