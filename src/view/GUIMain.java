@@ -94,27 +94,6 @@ public class GUIMain extends JFrame implements ActionListener{
         panelAqua.setVisible(true);
         lpane.add(panelAqua);
 
-        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        //ajout des poissons
-
-       /*  poisson_rouge = new PoissonRouge();
-
-        Dimension size_poisson_rouge = poisson_rouge.getPreferredSize(); // prend la dimension de la photo
-        poisson_rouge.setBounds(200, 200, size_poisson_rouge.width, size_poisson_rouge.height);
-
-        panelAqua.add(poisson_rouge);
-        poisson_rouge.setVisible(true);
-
-        tAnim.start(); */
-
-        // -----------------------------------------------------------------------------------------------------------------------------------------
-        /* TestStoech stoech = new TestStoech();
-        aquarium_kit_ouvert.setBounds(850, 60, size_wallgear_icon1.width, size_wallgear_icon1.height);
-        stoech.barAmmoniaque.setVisible(true);
-        panelAqua.add(stoech.barAmmoniaque); */
-
-
-        
         
         // ajout du layeredpane au tabbedane
         tabbedPane.add("Aquarium", lpane);
