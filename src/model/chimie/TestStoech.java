@@ -14,7 +14,7 @@ public class TestStoech implements Runnable {
 
     final short MAXNITRATE = 50;
     int quantAmmoniaque = 50, quantNitrite = 0, quantNitrate = 0; // nitrate max 50mg/L
-    JProgressBar barAmmoniaque, barNitrite, barNitrate;
+    public JProgressBar barAmmoniaque, barNitrite, barNitrate;
 
     Thread threadStoech;
 

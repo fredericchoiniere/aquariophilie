@@ -7,7 +7,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-
+import model.chimie.TestStoech;
 import model.outils.Pipette;
 import model.poissons.*;
 import model.outils.TestEau;
@@ -110,6 +110,14 @@ public class GUIMain extends JFrame implements ActionListener, Runnable {
         poisson_rouge.setVisible(true);
 
         tAnim.start(); */
+
+        // -----------------------------------------------------------------------------------------------------------------------------------------
+        /* TestStoech stoech = new TestStoech();
+        aquarium_kit_ouvert.setBounds(850, 60, size_wallgear_icon1.width, size_wallgear_icon1.height);
+        stoech.barAmmoniaque.setVisible(true);
+        panelAqua.add(stoech.barAmmoniaque); */
+
+
         
         tabbedPane.add("Aquarium", panelAqua);
 
@@ -167,6 +175,8 @@ public class GUIMain extends JFrame implements ActionListener, Runnable {
 
     @Override
     public void run() {
+
+        
         while (true) {
             
             if (poisson_rouge.x > 500) {
