@@ -9,19 +9,20 @@ import javax.swing.*;
 
 
 import model.outils.Pipette;
-import model.poissons.Poisson_rouge;
+import model.poissons.*;
 import view.tabs.*;
 
 import java.util.*;
 
-public class GUIMain extends JFrame implements ActionListener {
+public class GUIMain extends JFrame implements ActionListener, Runnable {
 
     JPanel panelPrincipal;
     JButton pousser, rapetisser;
     JLabel pipette;
     short stade, iteration = 0;
     String nom;
-    Poisson_rouge poisson_rouge ;
+    AnimPanel poisson_rouge ;
+    Thread tAnim = new Thread(this);
 
     public GUIMain() {
 
@@ -87,16 +88,15 @@ public class GUIMain extends JFrame implements ActionListener {
         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //ajout des poissons
 
-        poisson_rouge = new Poisson_rouge();
-
-       
+        poisson_rouge = new AnimPanel();
 
         Dimension size_poisson_rouge = poisson_rouge.getPreferredSize(); // prend la dimension de la photo
-        poisson_rouge.setBounds(200, 200, size_poisson_rouge.width, size_poisson_rouge.height); // position d'origine
-
-        poisson_rouge.setVisible(true);
+        poisson_rouge.setBounds(200, 200, size_poisson_rouge.width, size_poisson_rouge.height);
 
         panelAqua.add(poisson_rouge);
+        poisson_rouge.setVisible(true);
+
+        tAnim.start();
         
         tabbedPane.add("Aquarium", panelAqua);
 
@@ -148,6 +148,31 @@ public class GUIMain extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
     }
+
+
+    // Gestion des threads pour les poissons
+
+    @Override
+    public void run() {
+        while (true) {
+            
+            if (poisson_rouge.x > 500) {
+                poisson_rouge.setXVelocity(-10);
+            }
+            if (poisson_rouge.x <= 0) {
+                poisson_rouge.setXVelocity(10);
+            }
+            if (poisson_rouge.y > 440) {
+                poisson_rouge.setYVelocity(-10);
+            }
+            if (poisson_rouge.y <= 0) {
+                poisson_rouge.setYVelocity(10);
+            }
+            poisson_rouge.deplacer();
+        }
+    }
+
+    
 
     
 }
