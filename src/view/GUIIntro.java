@@ -6,9 +6,14 @@ import java.awt.event.*;
 public class GUIIntro extends JFrame implements ActionListener {
 
     public JButton btEnter;
+    public JButton btnNouvellePartie;
+    public JButton btnChargerPartie;
+    public JButton btnModeEvaluation;
+    public JButton btnAPropos;
 
     public GUIIntro() { // création du constructeur GUIIntro
 
+        //Entrer dans l'application pour tester
         JPanel simplePanel = new JPanel();
 
         btEnter = new JButton("enter");
@@ -16,6 +21,15 @@ public class GUIIntro extends JFrame implements ActionListener {
         simplePanel.add(btEnter);
 
         add(simplePanel);
+
+        //Crée une nouvelle partie
+        JPanel nouvellePartie = new JPanel();
+
+        btnNouvellePartie = new JButton("Nouvelle partie");
+        btnNouvellePartie.addActionListener(this);
+        nouvellePartie.add(btnNouvellePartie);
+
+        add(nouvellePartie);
 
     }
 
