@@ -7,7 +7,7 @@ public class PanelTest extends JPanel {
 
     public PanelTest() {
 
-        setSize(300, 300);
+        setSize(700, 500);
         setName("testeau");
         setVisible(true);
 

@@ -67,7 +67,7 @@ public class GUIMain extends JFrame implements ActionListener{
 
         // ajout du panel de l'interface du kit
         PanelTest panelTest = new PanelTest();
-        panelTest.setBounds(200, 200, 300, 300);
+        panelTest.setBounds(150, 100, 700, 500);
         panelTest.setVisible(false); // visible false pour qu'il apparaisse avec le bouton
         lpane.add(panelTest);
 
