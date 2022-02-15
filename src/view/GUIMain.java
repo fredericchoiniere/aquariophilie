@@ -52,14 +52,14 @@ public class GUIMain extends JFrame implements ActionListener{
         pipette.setVisible(true);
         panelAqua.add(pipette); // ajout de la pipette au frame
 
-        // creation du testeur d'eau pour le drag and drop
+        /*// creation du testeur d'eau pour le drag and drop
         TestEau testEau = new TestEau();
         testEau.setIcon(new ImageIcon("res/outils/testEau.png"));
         Dimension size_testEau = testEau.getPreferredSize(); // prend la dimension de la photo
         testEau.setBounds(835, 300, size_testEau.width, size_testEau.height); // position d'origine
         panelAqua.add(testEau); // ajout du testeur d'eau au frame
         testEau.setVisible(true);
-
+        */
 
         // ajout des éléments d'aquariophilie
         //--------------------------------------
