@@ -4,7 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.event.*;
-import java.nio.Buffer;
+
 
 import model.chimie.TestStoech;
 
