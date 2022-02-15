@@ -21,7 +21,7 @@ public class GUIMain extends JFrame implements ActionListener, Runnable {
     JLabel pipette;
     short stade, iteration = 0;
     String nom;
-    AnimPanel poisson_rouge ;
+    PoissonRouge poisson_rouge ;
     Thread tAnim = new Thread(this);
 
     public GUIMain() {
@@ -88,7 +88,7 @@ public class GUIMain extends JFrame implements ActionListener, Runnable {
         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //ajout des poissons
 
-        poisson_rouge = new AnimPanel();
+       /*  poisson_rouge = new PoissonRouge();
 
         Dimension size_poisson_rouge = poisson_rouge.getPreferredSize(); // prend la dimension de la photo
         poisson_rouge.setBounds(200, 200, size_poisson_rouge.width, size_poisson_rouge.height);
@@ -96,7 +96,7 @@ public class GUIMain extends JFrame implements ActionListener, Runnable {
         panelAqua.add(poisson_rouge);
         poisson_rouge.setVisible(true);
 
-        tAnim.start();
+        tAnim.start(); */
         
         tabbedPane.add("Aquarium", panelAqua);
 

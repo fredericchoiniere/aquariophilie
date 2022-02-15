@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class AnimPanel extends JPanel {
+public class PoissonRouge extends JLabel {
     // Attributs : coordonn�es de la boule
     public int x = 300;
     public int y = 100;
@@ -16,7 +16,7 @@ public class AnimPanel extends JPanel {
     	super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
-        Image aquarium_1 = Toolkit.getDefaultToolkit().getImage("aquariophilie/res/poissons/poisson_rouge/fish-red-right.png");
+        Image aquarium_1 = Toolkit.getDefaultToolkit().getImage("../aquariophilie/res/outils/aquarium_kit/aquarium_kit_open.png");
         g2d.drawImage(aquarium_1, x, y, this);
 
         //g2d.fillOval(x, y, 75, 75);
@@ -41,6 +41,7 @@ public class AnimPanel extends JPanel {
             e.printStackTrace();
         }
         // L'objet  se redessine (actualiser)
+        System.out.println("déplace");
         repaint();
     }
 }
