@@ -50,7 +50,6 @@ public class GUIMain extends JFrame implements ActionListener {
         pipette.setVisible(true);
         panelAqua.add(pipette); // ajout de la pipette au frame
 
-<<<<<<< HEAD
         // creation du testeur d'eau pour le drag and drop
         TestEau testEau = new TestEau();
         testEau.setIcon(new ImageIcon("res/outils/testEau.png"));
@@ -62,7 +61,6 @@ public class GUIMain extends JFrame implements ActionListener {
         testEau.setVisible(true);
 
 
-=======
 
         // ajout des éléments d'aquariophilie
 
@@ -98,7 +96,6 @@ public class GUIMain extends JFrame implements ActionListener {
 
         
         
->>>>>>> origin/master
         tabbedPane.add("Aquarium", panelAqua);
 
         // ---------------------------------------------------------------------------------------------------------------------------------------------------------
