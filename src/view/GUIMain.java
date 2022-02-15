@@ -115,7 +115,7 @@ public class GUIMain extends JFrame implements ActionListener{
 
 
         
-        tabbedPane.add("Aquarium", panelAqua);
+        
         // ajout du layeredpane au tabbedane
         tabbedPane.add("Aquarium", lpane);
 
