@@ -1,14 +1,13 @@
 package view;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
 public class GUIIntro extends JFrame implements ActionListener {
 
     public JButton btEnter;
 
-    public GUIIntro() {
+    public GUIIntro() { // création du constructeur GUIIntro
 
         JPanel simplePanel = new JPanel();
 
@@ -21,7 +20,7 @@ public class GUIIntro extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) { // initialise GuiMain lorsque l'on clique sur enter
         if (e.getSource() == btEnter) {
             GUIMain aquarium = new GUIMain();
             aquarium.setResizable(false);
@@ -29,7 +28,8 @@ public class GUIIntro extends JFrame implements ActionListener {
             aquarium.pack();
             aquarium.setLocationRelativeTo(null);
             aquarium.setVisible(true);
-            
+            setVisible(false);
+
         }
 
     }
