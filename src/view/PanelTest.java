@@ -14,6 +14,7 @@ public class PanelTest extends JPanel implements MouseListener, ActionListener, 
     JButton button1, button2;
     Thread pet;
     JLabel label;
+    boolean isFocused;
 
     public PanelTest() {
 
@@ -22,6 +23,7 @@ public class PanelTest extends JPanel implements MouseListener, ActionListener, 
         setSize(700, 500);
         setName("testeau");
         setVisible(true);
+        
 
         stoech = new TestStoech();
         pet = new Thread(stoech);
@@ -56,26 +58,23 @@ public class PanelTest extends JPanel implements MouseListener, ActionListener, 
 
     @Override
     public void focusGained(FocusEvent e) {
-        System.out.println("gained");
+        isFocused = false;
         
     }
 
     @Override
     public void focusLost(FocusEvent e) {
-        System.out.println("lost");
-        
+        setVisible(false);
+        isFocused = true;
     }
 
     @Override
     public void mousePressed(MouseEvent me){
-        requestFocus();
-        System.out.println("Mouse Pressed in JPanel");
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
+        requestFocus();
     }
 
     @Override
@@ -95,5 +94,10 @@ public class PanelTest extends JPanel implements MouseListener, ActionListener, 
         // TODO Auto-generated method stub
         
     }
+
+	public boolean isFocused() {
+        boolean fact = isFocused;
+		return fact;
+	}
     
 }
