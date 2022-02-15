@@ -4,7 +4,7 @@ import model.*;
 
 public class Pipette extends Outils {
 
-    public Pipette() { //Création de l'objet pipette
+    public Pipette() { // Création de l'objet pipette
         super();
         adapterNom();
 

@@ -9,17 +9,22 @@ import javax.swing.*;
 
 
 import model.outils.Pipette;
+import model.poissons.*;
+import model.outils.TestEau;
 import view.tabs.*;
 
 import java.util.*;
 
-public class GUIMain extends JFrame implements ActionListener {
+public class GUIMain extends JFrame implements ActionListener, Runnable {
 
     JPanel panelPrincipal;
     JButton pousser, rapetisser;
     JLabel pipette;
+    JLabel testEau;
     short stade, iteration = 0;
     String nom;
+    PoissonRouge poisson_rouge ;
+    Thread tAnim = new Thread(this);
 
     public GUIMain() {
 
@@ -40,7 +45,7 @@ public class GUIMain extends JFrame implements ActionListener {
 
         // creation de la pipette pour le drag and drop
         Pipette pipette = new Pipette();
-        pipette.setIcon(new ImageIcon("aquariophilie/res/outils/pipette.png"));
+        pipette.setIcon(new ImageIcon("res/outils/pipette.png"));
 
         Dimension size_pipette = pipette.getPreferredSize(); // prend la dimension de la photo
         pipette.setBounds(860, 200, size_pipette.width, size_pipette.height); // position d'origine
@@ -48,12 +53,23 @@ public class GUIMain extends JFrame implements ActionListener {
         pipette.setVisible(true);
         panelAqua.add(pipette); // ajout de la pipette au frame
 
+        // creation du testeur d'eau pour le drag and drop
+        TestEau testEau = new TestEau();
+        testEau.setIcon(new ImageIcon("res/outils/testEau.png"));
+
+        Dimension size_testEau = testEau.getPreferredSize(); // prend la dimension de la photo
+        testEau.setBounds(835, 300, size_testEau.width, size_testEau.height); // position d'origine
+
+        panelAqua.add(testEau); // ajout du testeur d'eau au frame
+        testEau.setVisible(true);
+
+
 
         // ajout des éléments d'aquariophilie
 
         //interface
         JLabel aquarium_kit_interface = new JLabel();
-        aquarium_kit_interface.setIcon(new ImageIcon("aquariophilie/res/outils/aquarium_kit/allo.png"));
+        aquarium_kit_interface.setIcon(new ImageIcon("res/outils/aquarium_kit/allo.png"));
 
         Dimension size_wallgear = aquarium_kit_interface.getPreferredSize(); // prend la dimension de la photo
         aquarium_kit_interface.setBounds(300, 100, size_wallgear.width, size_wallgear.height);
@@ -64,7 +80,7 @@ public class GUIMain extends JFrame implements ActionListener {
 
         // icone du kit ouvert et fermer
         JLabel aquarium_kit_ouvert = new JLabel();
-        aquarium_kit_ouvert.setIcon(new ImageIcon("aquariophilie/res/outils/aquarium_kit/aquarium_kit_open.png"));
+        aquarium_kit_ouvert.setIcon(new ImageIcon("res/outils/aquarium_kit/aquarium_kit_open.png"));
 
         Dimension size_wallgear_icon1 = aquarium_kit_ouvert.getPreferredSize(); // prend la dimension de la photo
         aquarium_kit_ouvert.setBounds(850, 60, size_wallgear_icon1.width, size_wallgear_icon1.height);
@@ -73,7 +89,7 @@ public class GUIMain extends JFrame implements ActionListener {
         aquarium_kit_ouvert.setVisible(false);
 
         JLabel aquarium_kit_fermer = new JLabel();
-        aquarium_kit_fermer.setIcon(new ImageIcon("aquariophilie/res/outils/aquarium_kit/aquarium_kit_closed.png"));
+        aquarium_kit_fermer.setIcon(new ImageIcon("res/outils/aquarium_kit/aquarium_kit_closed.png"));
 
         Dimension size_wallgear_icon2 = aquarium_kit_fermer.getPreferredSize(); // prend la dimension de la photo
         aquarium_kit_fermer.setBounds(850, 60, size_wallgear_icon2.width, size_wallgear_icon2.height);
@@ -81,7 +97,19 @@ public class GUIMain extends JFrame implements ActionListener {
         panelAqua.add(aquarium_kit_fermer);
         aquarium_kit_fermer.setVisible(true);
 
-        
+
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //ajout des poissons
+
+       /*  poisson_rouge = new PoissonRouge();
+
+        Dimension size_poisson_rouge = poisson_rouge.getPreferredSize(); // prend la dimension de la photo
+        poisson_rouge.setBounds(200, 200, size_poisson_rouge.width, size_poisson_rouge.height);
+
+        panelAqua.add(poisson_rouge);
+        poisson_rouge.setVisible(true);
+
+        tAnim.start(); */
         
         tabbedPane.add("Aquarium", panelAqua);
 
@@ -134,4 +162,30 @@ public class GUIMain extends JFrame implements ActionListener {
 
     }
 
+
+    // Gestion des threads pour les poissons
+
+    @Override
+    public void run() {
+        while (true) {
+            
+            if (poisson_rouge.x > 500) {
+                poisson_rouge.setXVelocity(-10);
+            }
+            if (poisson_rouge.x <= 0) {
+                poisson_rouge.setXVelocity(10);
+            }
+            if (poisson_rouge.y > 440) {
+                poisson_rouge.setYVelocity(-10);
+            }
+            if (poisson_rouge.y <= 0) {
+                poisson_rouge.setYVelocity(10);
+            }
+            poisson_rouge.deplacer();
+        }
+    }
+
+    
+
+    
 }
