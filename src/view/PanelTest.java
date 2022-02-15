@@ -19,13 +19,13 @@ public class PanelTest extends JPanel  implements FocusListener {
 
     @Override
     public void focusGained(FocusEvent e) {
-        setVisible(true);
+        System.out.println("gained");
         
     }
 
     @Override
     public void focusLost(FocusEvent e) {
-        setVisible(false);
+        System.out.println("lost");
         
     }
 }
