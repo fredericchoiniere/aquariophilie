@@ -1,12 +1,13 @@
 package view;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.event.*;
 
-public class PanelTest extends JPanel {
+public class PanelTest extends JPanel  implements FocusListener {
 
     public PanelTest() {
 
+        addFocusListener(this);
         setSize(700, 500);
         setName("testeau");
         setVisible(true);
@@ -14,5 +15,17 @@ public class PanelTest extends JPanel {
         JLabel label = new JLabel("Hagougaga");
         add(label);
 
+    }
+
+    @Override
+    public void focusGained(FocusEvent e) {
+        setVisible(true);
+        
+    }
+
+    @Override
+    public void focusLost(FocusEvent e) {
+        setVisible(false);
+        
     }
 }
