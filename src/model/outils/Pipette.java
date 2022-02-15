@@ -9,8 +9,8 @@ public class Pipette extends Outils {
         adapterNom();
 
         // position de retour
-        DraggableComponent.x = 835;
-        DraggableComponent.y = 110;
+        DraggableComponent.x = 860;
+        DraggableComponent.y = 200;
     }
 
 }

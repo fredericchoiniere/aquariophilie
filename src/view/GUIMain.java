@@ -7,6 +7,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+
 import model.outils.Pipette;
 import model.outils.TestEau;
 import view.tabs.*;
@@ -28,20 +29,28 @@ public class GUIMain extends JFrame implements ActionListener {
         // creation du premier tab
         JTabbedPane tabbedPane = new JTabbedPane();
 
+
         PanelAqua panelAqua = new PanelAqua(); // appel de la méthode paint de Home
         panelAqua.setLayout(null);
         panelAqua.setVisible(true);
 
+
+
+        //-----------------------------------------------------------------------------------------------------------------------------------
+        //création des icones
+
+
         // creation de la pipette pour le drag and drop
         Pipette pipette = new Pipette();
-        pipette.setIcon(new ImageIcon("res/outils/pipette.png"));
+        pipette.setIcon(new ImageIcon("aquariophilie/res/outils/pipette.png"));
 
         Dimension size_pipette = pipette.getPreferredSize(); // prend la dimension de la photo
-        pipette.setBounds(835, 110, size_pipette.width, size_pipette.height); // position d'origine
+        pipette.setBounds(860, 200, size_pipette.width, size_pipette.height); // position d'origine
 
-        panelAqua.add(pipette); // ajout de la pipette au frame
         pipette.setVisible(true);
+        panelAqua.add(pipette); // ajout de la pipette au frame
 
+<<<<<<< HEAD
         // creation du testeur d'eau pour le drag and drop
         TestEau testEau = new TestEau();
         testEau.setIcon(new ImageIcon("res/outils/testEau.png"));
@@ -53,6 +62,43 @@ public class GUIMain extends JFrame implements ActionListener {
         testEau.setVisible(true);
 
 
+=======
+
+        // ajout des éléments d'aquariophilie
+
+        //interface
+        JLabel aquarium_kit_interface = new JLabel();
+        aquarium_kit_interface.setIcon(new ImageIcon("aquariophilie/res/outils/aquarium_kit/allo.png"));
+
+        Dimension size_wallgear = aquarium_kit_interface.getPreferredSize(); // prend la dimension de la photo
+        aquarium_kit_interface.setBounds(300, 100, size_wallgear.width, size_wallgear.height);
+
+        panelAqua.add(aquarium_kit_interface);
+        aquarium_kit_interface.setVisible(false);
+
+
+        // icone du kit ouvert et fermer
+        JLabel aquarium_kit_ouvert = new JLabel();
+        aquarium_kit_ouvert.setIcon(new ImageIcon("aquariophilie/res/outils/aquarium_kit/aquarium_kit_open.png"));
+
+        Dimension size_wallgear_icon1 = aquarium_kit_ouvert.getPreferredSize(); // prend la dimension de la photo
+        aquarium_kit_ouvert.setBounds(850, 60, size_wallgear_icon1.width, size_wallgear_icon1.height);
+
+        panelAqua.add(aquarium_kit_ouvert);
+        aquarium_kit_ouvert.setVisible(false);
+
+        JLabel aquarium_kit_fermer = new JLabel();
+        aquarium_kit_fermer.setIcon(new ImageIcon("aquariophilie/res/outils/aquarium_kit/aquarium_kit_closed.png"));
+
+        Dimension size_wallgear_icon2 = aquarium_kit_fermer.getPreferredSize(); // prend la dimension de la photo
+        aquarium_kit_fermer.setBounds(850, 60, size_wallgear_icon2.width, size_wallgear_icon2.height);
+
+        panelAqua.add(aquarium_kit_fermer);
+        aquarium_kit_fermer.setVisible(true);
+
+        
+        
+>>>>>>> origin/master
         tabbedPane.add("Aquarium", panelAqua);
 
         // ---------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -70,6 +116,32 @@ public class GUIMain extends JFrame implements ActionListener {
 
         // ajout des tabs au frame
         add(tabbedPane);
+
+
+
+        //-------------------------------------------------------------------------------------------------------------
+        //action listener de GUIMain
+
+        // action listener sur les labels qui font apparaitre les interfaces de coté 
+        aquarium_kit_ouvert.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                aquarium_kit_ouvert.setVisible(false);
+                aquarium_kit_fermer.setVisible(true);
+                aquarium_kit_interface.setVisible(false);
+                pipette.setVisible(true);
+            }
+        });
+
+        aquarium_kit_fermer.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                aquarium_kit_fermer.setVisible(false);
+                aquarium_kit_ouvert.setVisible(true);
+                aquarium_kit_interface.setVisible(true);
+                pipette.setVisible(false);
+            }
+        });
 
     }
 
