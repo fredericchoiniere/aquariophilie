@@ -12,4 +12,8 @@ public class Eau {
     public int bacteries;
     public int chlore;
 
+    public void changerEau(){
+
+        
+    }
 }
