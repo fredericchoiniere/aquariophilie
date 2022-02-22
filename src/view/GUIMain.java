@@ -15,7 +15,7 @@ import model.item.outils.Pipette;
 import model.poissons.*;
 import view.tabs.*;
 
-public class GUIMain extends JFrame implements ActionListener, MouseListener{
+public class GUIMain extends JFrame implements ActionListener, MouseListener, Runnable {
 
     // appel des attributs de la classe GUIMain
 
@@ -25,7 +25,6 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener{
     JLabel testEau;
     short stade, iteration = 0;
     String nom;
-    PoissonRouge poisson_rouge;
     PanelTest panelTest;
     JLabel aquarium_kit_ouvert, aquarium_kit_fermer;
     
@@ -34,7 +33,13 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener{
 
     Eau eau;
     Thread threadEau;
-    
+
+    JLabel empty;
+    Poisson2 poisson2;
+    Thread tAnim = new Thread(this);
+    int vel_x = 2;
+    int vel_y = 2;
+
 
     public GUIMain() { // création du constructeur GuiMain
 
@@ -51,8 +56,8 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener{
         tabbedPane.addMouseListener(this);
 
         // création du layered pane
-        JLayeredPane lpane = new JLayeredPane();
-        lpane.setLayout(null);
+        // JLayeredPane lpane = new JLayeredPane();
+        // lpane.setLayout(null);
 
         // création du panelaqua
         PanelAqua panelAqua = new PanelAqua(); // appel de la méthode paint de Home
@@ -60,9 +65,8 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener{
         panelAqua.setVisible(true);
         panelAqua.addMouseListener(this);
 
-        
         // création des icones
-        //----------------------------------------
+        // ----------------------------------------
 
         // creation de la pipette pour le drag and drop
         Pipette pipette = new Pipette();
@@ -72,23 +76,15 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener{
         pipette.setVisible(true);
         panelAqua.add(pipette); // ajout de la pipette au frame
 
-        /*// creation du testeur d'eau pour le drag and drop
-        TestEau testEau = new TestEau();
-        testEau.setIcon(new ImageIcon("res/outils/testEau.png"));
-        Dimension size_testEau = testEau.getPreferredSize(); // prend la dimension de la photo
-        testEau.setBounds(835, 300, size_testEau.width, size_testEau.height); // position d'origine
-        panelAqua.add(testEau); // ajout du testeur d'eau au frame
-        testEau.setVisible(true);
-        */
 
         // ajout des éléments d'aquariophilie
-        //--------------------------------------
+        // --------------------------------------
 
         // ajout du panel de l'interface du kit
         panelTest = new PanelTest();
         panelTest.setBounds(150, 100, 700, 500);
         panelTest.setVisible(false); // visible false pour qu'il apparaisse avec le bouton
-        lpane.add(panelTest);
+        panelAqua.add(panelTest);
 
         // ajout de l'icone de notre kit ouvert
         aquarium_kit_ouvert = new JLabel();
@@ -107,17 +103,28 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener{
         aquarium_kit_fermer.setVisible(true);
         aquarium_kit_fermer.addMouseListener(this);
         panelAqua.add(aquarium_kit_fermer);
-    
+
+        // labels
+
+        empty = new JLabel("");
+        empty.setBounds(0, 0, 1000, 700);
+        empty.addMouseListener(this);
+        empty.setVisible(false);
+        panelAqua.add(empty);
 
         // ajout de panel Aqua au layered pane
         Dimension size_panel_aqua = panelAqua.getPreferredSize(); // prend la dimension de la photo
         panelAqua.setBounds(0, 0, size_panel_aqua.width, size_panel_aqua.height);
         panelAqua.setVisible(true);
-        lpane.add(panelAqua);
+        // lpane.add(panelAqua);
 
-        
+        poisson2 = new Poisson2();
+        poisson2.setBounds(340, 324, 322, 156);
+        tAnim.start();
+        panelAqua.add(poisson2);
+
         // ajout du layeredpane au tabbedane
-        tabbedPane.add("Aquarium", lpane);
+        tabbedPane.add("Aquarium", panelAqua);
 
         // ---------------------------------------------------------------------------------------------------------------------------------------------------------
         // creation du 2em tab
@@ -137,7 +144,6 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener{
 
         // ajout du panel Info au tabbed pane
         add(tabbedPane);
-      
 
         // ---------------------------------------------------------------------------------------------------------------------------------------------------------
         // action listener de GUIMain
@@ -151,6 +157,8 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener{
                 aquarium_kit_ouvert.setVisible(false);
                 aquarium_kit_fermer.setVisible(true);
                 panelTest.setVisible(false);
+                empty.setVisible(false);
+                pipette.setVisible(true);
             }
         });
 
@@ -161,54 +169,85 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener{
                 // rends les bons label visible ou invisible
                 aquarium_kit_fermer.setVisible(false);
                 aquarium_kit_ouvert.setVisible(true);
+                empty.setVisible(true);
                 panelTest.setVisible(true);
-                panelTest.grabFocus();
+
+                pipette.setVisible(false);
             }
         });
-        
+
+        empty.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+                panelTest.setVisible(false);
+                empty.setVisible(false);
+                pipette.setVisible(true);
+                aquarium_kit_ouvert.setVisible(false);
+                aquarium_kit_fermer.setVisible(true);
+            }
+        });
 
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void run() {
+        while (true) {
+
+            if (poisson2.x > 286) {
+                poisson2.setXVelocity(-poisson2.vel_x);
+
+                poisson2.image = "gauche";
+            }
+            if (poisson2.x < 4) {
+                poisson2.setXVelocity(1);
+
+                poisson2.image = "droite";
+            }
+            if (poisson2.y > 120) {
+                poisson2.setYVelocity(-poisson2.vel_y);
+            }
+            if (poisson2.y < 4) {
+                poisson2.setYVelocity(1); // ne marchait pas avec vel_y, je ne sais pas pourquoi
+            }
+            poisson2.deplacer();
+        }
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        // TODO Auto-generated method stub
 
-        /* if(panelTest.isFocused() == false){
-            aquarium_kit_fermer.setVisible(true);
-            aquarium_kit_ouvert.setVisible(false);
-        } */
-        
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         // TODO Auto-generated method stub
-        
+
     }
 
- 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
 
-    
+    }
 
 }

@@ -10,7 +10,7 @@ import model.chimie.Eau;
 import model.chimie.TestStoech;
 import model.environnement.Temps;
 
-public class PanelTest extends JPanel implements ActionListener{//MouseListener, ActionListener, FocusListener{
+public class PanelTest extends JPanel implements ActionListener {
 
     TestStoech stoech;
     Eau  eau;
@@ -60,10 +60,10 @@ public class PanelTest extends JPanel implements ActionListener{//MouseListener,
 
     @Override
     public void actionPerformed(ActionEvent e) {
-         if(e.getSource() == button1){
-             stoech.quantAmmoniaque += 10;
-         }
-         if(e.getSource() == button2){
+        if (e.getSource() == button1) {
+            stoech.quantAmmoniaque += 10;
+        }
+        if (e.getSource() == button2) {
             stoech.quantAmmoniaque -= 10;
         }
         if (e.getSource() == button3) {
@@ -74,48 +74,4 @@ public class PanelTest extends JPanel implements ActionListener{//MouseListener,
         }
     }
 
-    /* @Override
-    public void focusGained(FocusEvent e) {
-        isFocused = false;
-        
-    }
-
-    @Override
-    public void focusLost(FocusEvent e) {
-        setVisible(false);
-        isFocused = true;
-    }
-
-    @Override
-    public void mousePressed(MouseEvent me){
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        requestFocus();
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
-	public boolean isFocused() {
-        boolean fact = isFocused;
-		return fact;
-	} */
-    
 }
