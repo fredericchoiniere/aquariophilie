@@ -60,7 +60,5 @@ public class TestStoech implements Runnable {
 
     }
 
-    public void comportAmmoniaque(){
-        
-    }
+    
 }

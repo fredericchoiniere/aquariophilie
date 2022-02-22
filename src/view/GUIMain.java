@@ -8,8 +8,10 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.MouseInputListener;
 
+import model.chimie.Eau;
 import model.chimie.TestStoech;
-import model.outils.Pipette;
+import model.environnement.Temps;
+import model.item.outils.Pipette;
 import model.poissons.*;
 import view.tabs.*;
 
@@ -27,13 +29,21 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener{
     PanelTest panelTest;
     JLabel aquarium_kit_ouvert, aquarium_kit_fermer;
     
-    
-    
+    Temps temps;
+    public static float jours = (float) 27;
+
+    Eau eau;
+    Thread threadEau;
     
 
     public GUIMain() { // création du constructeur GuiMain
 
         addMouseListener(this);
+
+        temps = new Temps();
+        
+        eau = new Eau();
+        threadEau = new Thread(eau);
 
         // ----------------------------------------------------------------------------------------------------------------------------------------------------
         // creation du premier tab
