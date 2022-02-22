@@ -1,4 +1,4 @@
-package model.outils;
+package model.item.outils;
 
 import model.*;
 
