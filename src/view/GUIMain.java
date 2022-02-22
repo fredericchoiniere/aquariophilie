@@ -7,6 +7,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import model.chimie.TestStoech;
 import model.outils.Pipette;
 import model.poissons.*;
 import model.outils.TestEau;
@@ -66,7 +67,7 @@ public class GUIMain extends JFrame implements ActionListener{
 
         // ajout du panel de l'interface du kit
         PanelTest panelTest = new PanelTest();
-        panelTest.setBounds(200, 200, 300, 300);
+        panelTest.setBounds(150, 100, 700, 500);
         panelTest.setVisible(false); // visible false pour qu'il apparaisse avec le bouton
         lpane.add(panelTest);
 
@@ -93,6 +94,7 @@ public class GUIMain extends JFrame implements ActionListener{
         panelAqua.setVisible(true);
         lpane.add(panelAqua);
 
+        
         // ajout du layeredpane au tabbedane
         tabbedPane.add("Aquarium", lpane);
 
@@ -150,6 +152,8 @@ public class GUIMain extends JFrame implements ActionListener{
     }
 
     // Gestion des threads pour les poissons
+
+    
 
     
 
