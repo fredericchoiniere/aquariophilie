@@ -185,19 +185,19 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
             
             if (poisson2.x > 286) {
                 poisson2.setXVelocity(-poisson2.vel_x);
-                poisson2.setImage("gauche");
+                
                 poisson2.image = "gauche";
             }
             if (poisson2.x < 4) {
-                poisson2.setXVelocity(2);
-                poisson2.setImage("droite");
+                poisson2.setXVelocity(1);
+               
                 poisson2.image = "droite";
             }
             if (poisson2.y > 120) {
                 poisson2.setYVelocity(-poisson2.vel_y);
             }
             if (poisson2.y < 4) {
-                poisson2.setYVelocity(2); // ne marchait pas avec vel_y, je ne sais pas pourquoi
+                poisson2.setYVelocity(1); // ne marchait pas avec vel_y, je ne sais pas pourquoi
             }
             poisson2.deplacer();
         }

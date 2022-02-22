@@ -8,8 +8,8 @@ public class Poisson2 extends JPanel {
     // Attributs : coordonn�es de la boule
     public int x = 10;
     public int y = 10;
-    public int vel_x = 2;
-    public int vel_y = 2;
+    public int vel_x = 1;
+    public int vel_y = 1;
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_droite.png");
         //g2d.drawImage(poisson_droite, x, y, this);
@@ -51,7 +51,7 @@ public class Poisson2 extends JPanel {
         this.x += vel_x;
         this.y += vel_y;
         try {
-            Thread.sleep(200); //Ici, une pause d'une seconde
+            Thread.sleep(100); //Ici, une pause d'une seconde
         }catch(InterruptedException e) {
             e.printStackTrace();
         }
