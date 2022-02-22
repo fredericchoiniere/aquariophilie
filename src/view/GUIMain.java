@@ -14,7 +14,7 @@ import model.poissons.*;
 import model.outils.TestEau;
 import view.tabs.*;
 
-public class GUIMain extends JFrame implements ActionListener, MouseListener {
+public class GUIMain extends JFrame implements ActionListener, MouseListener, Runnable {
 
     // appel des attributs de la classe GUIMain
 
@@ -27,7 +27,10 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener {
     PanelTest panelTest;
     JLabel aquarium_kit_ouvert, aquarium_kit_fermer;
     JLabel empty;
-    Poisson poisson;
+    Poisson2 poisson2;
+    Thread tAnim = new Thread(this);
+    int vel_x = 2;
+    int vel_y = 2;
 
     public GUIMain() { // création du constructeur GuiMain
 
@@ -100,11 +103,11 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener {
         panelAqua.setVisible(true);
         // lpane.add(panelAqua);
 
-        // ajout du poisson
-        poisson = new Poisson();
-        poisson.setBounds(340, 324, 322, 156);
-        poisson.animate();
-        panelAqua.add(poisson);
+
+        poisson2 = new Poisson2();
+        poisson2.setBounds(340, 324, 322, 156);
+        tAnim.start();
+        panelAqua.add(poisson2);
 
 
 
@@ -175,6 +178,31 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener {
         });
 
     }
+
+    @Override
+    public void run() {
+        while (true) {
+            
+            if (poisson2.x > 286) {
+                poisson2.setXVelocity(-poisson2.vel_x);
+                poisson2.setImage("gauche");
+                poisson2.image = "gauche";
+            }
+            if (poisson2.x < 4) {
+                poisson2.setXVelocity(2);
+                poisson2.setImage("droite");
+                poisson2.image = "droite";
+            }
+            if (poisson2.y > 120) {
+                poisson2.setYVelocity(-poisson2.vel_y);
+            }
+            if (poisson2.y < 4) {
+                poisson2.setYVelocity(2); // ne marchait pas avec vel_y, je ne sais pas pourquoi
+            }
+            poisson2.deplacer();
+        }
+    }
+
 
     @Override
     public void mouseClicked(MouseEvent e) {
