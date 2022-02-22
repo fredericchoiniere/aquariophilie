@@ -12,13 +12,13 @@ public class Poisson2 extends JPanel {
     public int vel_y = 1;
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_droite.png");
-        //g2d.drawImage(poisson_droite, x, y, this);
+    // g2d.drawImage(poisson_droite, x, y, this);
 
     Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_gauche.png");
-        //g2d.drawImage(poisson_gauche, x, y, this);
-    
+    // g2d.drawImage(poisson_gauche, x, y, this);
+
     public String image = "droite";
-    
+
     @Override
 
     public void setOpaque(boolean isOpaque) {
@@ -28,13 +28,12 @@ public class Poisson2 extends JPanel {
 
     // Dessine boule
     public void paintComponent(Graphics g) {
-    	super.paintComponent(g);
+        super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         img = poisson_droite;
         g2d.drawImage(setImage(image), x, y, this);
 
-        
-        //g2d.fillOval(x, y, 75, 75);
+        // g2d.fillOval(x, y, 75, 75);
     }
 
     public void setXVelocity(int vel_x) {
@@ -47,23 +46,23 @@ public class Poisson2 extends JPanel {
 
     // D�placement boule selon les valeurs des param�tres x et y
     public void deplacer() {
-        System.out.println(this.x + ", " + this.y);
+        // System.out.println(this.x + ", " + this.y);
         this.x += vel_x;
         this.y += vel_y;
         try {
-            Thread.sleep(100); //Ici, une pause d'une seconde
-        }catch(InterruptedException e) {
+            Thread.sleep(100); // Ici, une pause d'une seconde
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        // L'objet  se redessine (actualiser)
+        // L'objet se redessine (actualiser)
         repaint();
     }
 
-    public Image setImage(String coter){ //regarde pour le bon coter pour l'image
-        if(coter == "droite"){
+    public Image setImage(String coter) { // regarde pour le bon coter pour l'image
+        if (coter == "droite") {
             img = poisson_droite;
         }
-        if(coter == "gauche"){
+        if (coter == "gauche") {
             img = poisson_gauche;
         } else {
             img = poisson_droite;
@@ -71,5 +70,4 @@ public class Poisson2 extends JPanel {
         return img;
     }
 
-    
 }

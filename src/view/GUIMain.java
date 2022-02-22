@@ -103,13 +103,10 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
         panelAqua.setVisible(true);
         // lpane.add(panelAqua);
 
-
         poisson2 = new Poisson2();
         poisson2.setBounds(340, 324, 322, 156);
         tAnim.start();
         panelAqua.add(poisson2);
-
-
 
         // ajout du layeredpane au tabbedane
         tabbedPane.add("Aquarium", panelAqua);
@@ -168,7 +165,6 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
             @Override
             public void mouseClicked(MouseEvent e) {
 
-                System.out.println("criss");
                 panelTest.setVisible(false);
                 empty.setVisible(false);
                 pipette.setVisible(true);
@@ -182,15 +178,15 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
     @Override
     public void run() {
         while (true) {
-            
+
             if (poisson2.x > 286) {
                 poisson2.setXVelocity(-poisson2.vel_x);
-                
+
                 poisson2.image = "gauche";
             }
             if (poisson2.x < 4) {
                 poisson2.setXVelocity(1);
-               
+
                 poisson2.image = "droite";
             }
             if (poisson2.y > 120) {
@@ -202,7 +198,6 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
             poisson2.deplacer();
         }
     }
-
 
     @Override
     public void mouseClicked(MouseEvent e) {

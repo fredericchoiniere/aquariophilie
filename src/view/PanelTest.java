@@ -8,7 +8,7 @@ import javax.swing.*;
 
 import model.chimie.TestStoech;
 
-public class PanelTest extends JPanel implements MouseListener, ActionListener, FocusListener{
+public class PanelTest extends JPanel implements MouseListener, ActionListener, FocusListener {
 
     TestStoech stoech;
     JButton button1, button2;
@@ -23,7 +23,6 @@ public class PanelTest extends JPanel implements MouseListener, ActionListener, 
         setSize(700, 500);
         setName("testeau");
         setVisible(true);
-        
 
         stoech = new TestStoech();
         pet = new Thread(stoech);
@@ -36,8 +35,6 @@ public class PanelTest extends JPanel implements MouseListener, ActionListener, 
         button2 = new JButton("-");
         button2.addActionListener(this);
 
-        
-
         add(stoech.barAmmoniaque);
         add(button1);
         add(button2);
@@ -48,10 +45,10 @@ public class PanelTest extends JPanel implements MouseListener, ActionListener, 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-         if(e.getSource() == button1){
-             stoech.quantAmmoniaque += 10;
-         }
-         if(e.getSource() == button2){
+        if (e.getSource() == button1) {
+            stoech.quantAmmoniaque += 10;
+        }
+        if (e.getSource() == button2) {
             stoech.quantAmmoniaque -= 10;
         }
     }
@@ -59,7 +56,7 @@ public class PanelTest extends JPanel implements MouseListener, ActionListener, 
     @Override
     public void focusGained(FocusEvent e) {
         isFocused = false;
-        
+
     }
 
     @Override
@@ -69,7 +66,7 @@ public class PanelTest extends JPanel implements MouseListener, ActionListener, 
     }
 
     @Override
-    public void mousePressed(MouseEvent me){
+    public void mousePressed(MouseEvent me) {
     }
 
     @Override
@@ -80,24 +77,24 @@ public class PanelTest extends JPanel implements MouseListener, ActionListener, 
     @Override
     public void mouseReleased(MouseEvent e) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         // TODO Auto-generated method stub
-        
+
     }
 
-	public boolean isFocused() {
+    public boolean isFocused() {
         boolean fact = isFocused;
-		return fact;
-	}
-    
+        return fact;
+    }
+
 }
