@@ -14,7 +14,7 @@ import model.poissons.*;
 import model.outils.TestEau;
 import view.tabs.*;
 
-public class GUIMain extends JFrame implements ActionListener, MouseListener{
+public class GUIMain extends JFrame implements ActionListener, MouseListener {
 
     // appel des attributs de la classe GUIMain
 
@@ -24,15 +24,10 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener{
     JLabel testEau;
     short stade, iteration = 0;
     String nom;
-    PoissonRouge poisson_rouge;
     PanelTest panelTest;
     JLabel aquarium_kit_ouvert, aquarium_kit_fermer;
     JLabel empty;
-
-    
-    
-    
-    
+    Poisson poisson;
 
     public GUIMain() { // création du constructeur GuiMain
 
@@ -44,8 +39,8 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener{
         tabbedPane.addMouseListener(this);
 
         // création du layered pane
-        //JLayeredPane lpane = new JLayeredPane();
-        //lpane.setLayout(null);
+        // JLayeredPane lpane = new JLayeredPane();
+        // lpane.setLayout(null);
 
         // création du panelaqua
         PanelAqua panelAqua = new PanelAqua(); // appel de la méthode paint de Home
@@ -53,9 +48,8 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener{
         panelAqua.setVisible(true);
         panelAqua.addMouseListener(this);
 
-        
         // création des icones
-        //----------------------------------------
+        // ----------------------------------------
 
         // creation de la pipette pour le drag and drop
         Pipette pipette = new Pipette();
@@ -65,10 +59,8 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener{
         pipette.setVisible(true);
         panelAqua.add(pipette); // ajout de la pipette au frame
 
-
-
         // ajout des éléments d'aquariophilie
-        //--------------------------------------
+        // --------------------------------------
 
         // ajout du panel de l'interface du kit
         panelTest = new PanelTest();
@@ -93,7 +85,6 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener{
         aquarium_kit_fermer.setVisible(true);
         aquarium_kit_fermer.addMouseListener(this);
         panelAqua.add(aquarium_kit_fermer);
-    
 
         // labels
 
@@ -103,15 +94,18 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener{
         empty.setVisible(false);
         panelAqua.add(empty);
 
-        
-
         // ajout de panel Aqua au layered pane
         Dimension size_panel_aqua = panelAqua.getPreferredSize(); // prend la dimension de la photo
         panelAqua.setBounds(0, 0, size_panel_aqua.width, size_panel_aqua.height);
         panelAqua.setVisible(true);
-        //lpane.add(panelAqua);
+        // lpane.add(panelAqua);
 
-        
+        // ajout du poisson
+        poisson = new Poisson();
+        poisson.setBounds(340, 324, 322, 156);
+        poisson.animate();
+        panelAqua.add(poisson);
+
 
 
         // ajout du layeredpane au tabbedane
@@ -135,7 +129,6 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener{
 
         // ajout du panel Info au tabbed pane
         add(tabbedPane);
-      
 
         // ---------------------------------------------------------------------------------------------------------------------------------------------------------
         // action listener de GUIMain
@@ -163,11 +156,10 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener{
                 aquarium_kit_ouvert.setVisible(true);
                 empty.setVisible(true);
                 panelTest.setVisible(true);
-                
+
                 pipette.setVisible(false);
             }
         });
-
 
         empty.addMouseListener(new MouseAdapter() {
             @Override
@@ -182,86 +174,42 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener{
             }
         });
 
-       
-        
-
-        
     }
-
-
-
-
-
 
     @Override
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub
-        
+
     }
-
-
-
-
-
 
     @Override
     public void mousePressed(MouseEvent e) {
         // TODO Auto-generated method stub
-        
+
     }
-
-
-
-
-
 
     @Override
     public void mouseReleased(MouseEvent e) {
         // TODO Auto-generated method stub
-        
+
     }
-
-
-
-
-
 
     @Override
     public void mouseEntered(MouseEvent e) {
         // TODO Auto-generated method stub
-        
+
     }
-
-
-
-
-
 
     @Override
     public void mouseExited(MouseEvent e) {
         // TODO Auto-generated method stub
-        
+
     }
-
-
-
-
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-        
+
     }
-
-
-
-
-
-
-  
-   
-
-    
 
 }
