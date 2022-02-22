@@ -167,10 +167,10 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener{
     @Override
     public void mouseClicked(MouseEvent e) {
 
-        if(panelTest.isFocused() == false){
+        /* if(panelTest.isFocused() == false){
             aquarium_kit_fermer.setVisible(true);
             aquarium_kit_ouvert.setVisible(false);
-        }
+        } */
         
     }
 
