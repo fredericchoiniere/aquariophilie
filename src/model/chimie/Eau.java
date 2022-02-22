@@ -1,4 +1,4 @@
-package model;
+package model.chimie;
 
 public class Eau {
     public int scoreEau;

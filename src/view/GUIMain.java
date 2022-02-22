@@ -11,7 +11,6 @@ import javax.swing.event.MouseInputListener;
 import model.chimie.TestStoech;
 import model.outils.Pipette;
 import model.poissons.*;
-import model.outils.TestEau;
 import view.tabs.*;
 
 public class GUIMain extends JFrame implements ActionListener, MouseListener{
