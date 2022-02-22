@@ -8,19 +8,22 @@ import javax.swing.*;
 
 import model.chimie.TestStoech;
 
-public class PanelTest extends JPanel implements ActionListener, FocusListener{
+public class PanelTest extends JPanel implements MouseListener, ActionListener, FocusListener{
 
     TestStoech stoech;
     JButton button1, button2;
     Thread pet;
     JLabel label;
+    boolean isFocused;
 
     public PanelTest() {
 
         addFocusListener(this);
+        addMouseListener(this);
         setSize(700, 500);
         setName("testeau");
         setVisible(true);
+        
 
         stoech = new TestStoech();
         pet = new Thread(stoech);
@@ -55,13 +58,46 @@ public class PanelTest extends JPanel implements ActionListener, FocusListener{
 
     @Override
     public void focusGained(FocusEvent e) {
-        setVisible(true);
+        isFocused = false;
         
     }
 
     @Override
     public void focusLost(FocusEvent e) {
         setVisible(false);
+        isFocused = true;
+    }
+
+    @Override
+    public void mousePressed(MouseEvent me){
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        requestFocus();
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        // TODO Auto-generated method stub
         
     }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+
+	public boolean isFocused() {
+        boolean fact = isFocused;
+		return fact;
+	}
+    
 }
