@@ -84,6 +84,11 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
         panelTest = new PanelTest();
         panelTest.setBounds(150, 100, 700, 500);
         panelTest.setVisible(false); // visible false pour qu'il apparaisse avec le bouton
+
+        /* panelTest.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
+        new ImageIcon("res/icone_souris/pipe_vide.png").getImage(),
+        new Point(0,0),"custom cursor")); */
+
         panelAqua.add(panelTest);
 
         // ajout de l'icone de notre kit ouvert
@@ -110,6 +115,8 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
         empty.setBounds(0, 0, 1000, 700);
         empty.addMouseListener(this);
         empty.setVisible(false);
+        empty.setOpaque(true);
+        empty.setBackground(Color.green);
         panelAqua.add(empty);
 
         // ajout de panel Aqua au layered pane

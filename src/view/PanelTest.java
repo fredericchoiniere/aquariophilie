@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.event.*;
 import javax.swing.*;
+import java.awt.*;
 
 import model.chimie.Eau;
 import model.chimie.TestStoech;
@@ -27,6 +28,12 @@ public class PanelTest extends JPanel implements ActionListener {
         setSize(700, 500);
         setName("testeau");
         setVisible(true);
+
+        
+
+        /* setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
+        new ImageIcon("res/icone_souris/penis.png").getImage(),
+        new Point(0,0),"custom cursor")); */
 
         stoech = new TestStoech();
         pet = new Thread(stoech);

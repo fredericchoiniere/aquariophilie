@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.awt.*;
 
 public class GUIIntro extends JFrame implements ActionListener {
 
@@ -12,6 +13,8 @@ public class GUIIntro extends JFrame implements ActionListener {
     public JButton btnAPropos;
 
     public GUIIntro() { // création du constructeur GUIIntro
+
+        
 
         //Entrer dans l'application pour tester
         JPanel simplePanel = new JPanel();
