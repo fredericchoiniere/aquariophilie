@@ -13,7 +13,7 @@ import model.jeu.Inventaire;
 import model.poissons.*;
 import view.tabs.*;
 
-public class GUIMain extends JFrame implements ActionListener, MouseListener, Runnable {
+public class GUIMain extends JFrame implements Runnable {
 
     // appel des attributs de la classe GUIMain TODO: MÉNAGE DANS CE VOMI LÀ
     JPanel panelPrincipal; // Sert à rien?
@@ -42,7 +42,6 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
         tetra_curseur = new ImageIcon("res/icone_souris/tetra_cursor.png");
 
         // spécificité du constructeur
-        addMouseListener(this);
         setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
                 tetra_curseur.getImage(),
                 new Point(0, 0), "curseur tétra"));
@@ -54,7 +53,6 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
 
         // creation du main tab
         JTabbedPane tabbedPane = new JTabbedPane();
-        tabbedPane.addMouseListener(this);
 
         // creation du premier tab
         // ----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -63,7 +61,6 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
         PanelAqua panelAqua = new PanelAqua();
         panelAqua.setLayout(null);
         panelAqua.setVisible(true);
-        panelAqua.addMouseListener(this);
 
         // ajout du panel de l'interface du kit
         panelTest = new PanelTest();
@@ -83,7 +80,6 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
         Dimension size_pipette = pipette.getPreferredSize(); // prend la dimension de la photo
         pipette.setBounds(850, 200, size_pipette.width, size_pipette.height);
         pipette.setVisible(true);
-        pipette.addMouseListener(this);
         panelAqua.add(pipette);
 
         // ajout de l'icone de notre kit ouvert
@@ -92,7 +88,6 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
         Dimension size_wallgear_icon1 = aquarium_kit_ouvert.getPreferredSize(); // prend la dimension de la photo
         aquarium_kit_ouvert.setBounds(850, 60, size_wallgear_icon1.width, size_wallgear_icon1.height);
         panelAqua.add(aquarium_kit_ouvert);
-        aquarium_kit_ouvert.addMouseListener(this);
         aquarium_kit_ouvert.setVisible(false);
 
         // ajout de l'icone de notre kit fermer
@@ -101,7 +96,6 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
         Dimension size_wallgear_icon2 = aquarium_kit_fermer.getPreferredSize(); // prend la dimension de la photo
         aquarium_kit_fermer.setBounds(850, 60, size_wallgear_icon2.width, size_wallgear_icon2.height);
         aquarium_kit_fermer.setVisible(true);
-        aquarium_kit_fermer.addMouseListener(this);
         panelAqua.add(aquarium_kit_fermer);
 
         // ajout du label pour icones de l'inventaire
@@ -110,14 +104,12 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
         Dimension size_icone_inv = inventaire_ouvert.getPreferredSize(); // prend la dimension de la photo
         inventaire_ouvert.setBounds(50, 60, size_icone_inv.width, size_icone_inv.height);
         inventaire_ouvert.setVisible(false);
-        inventaire_ouvert.addMouseListener(this);
         panelAqua.add(inventaire_ouvert);
 
         inventaire_fermer = new JLabel();
         inventaire_fermer.setIcon(new ImageIcon("res/background/inventaire_fermer.png"));
         inventaire_fermer.setBounds(50, 60, size_icone_inv.width, size_icone_inv.height);
         inventaire_fermer.setVisible(true);
-        inventaire_fermer.addMouseListener(this);
         panelAqua.add(inventaire_fermer);
 
         // ajout de l'inventaire au panel aqua
@@ -126,7 +118,6 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
         Dimension size_inventaire = inventaire_bg.getPreferredSize();
         inventaire_bg.setBounds(5, 140, size_inventaire.width, size_inventaire.height);
         inventaire_bg.setVisible(false);
-        inventaire_bg.addMouseListener(this);
         panelAqua.add(inventaire_bg);
         inventaire = new Inventaire(inventaire_bg);
         inventaire.setVisible(false);
@@ -135,7 +126,6 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
         // ajout du label vide pour les actions listener
         empty = new JLabel("");
         empty.setBounds(0, 0, 1000, 700);
-        empty.addMouseListener(this);
         empty.setVisible(false);
         panelAqua.add(empty);
 
@@ -275,6 +265,8 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
             }
         });
 
+
+
         
     } // fin du constructeur GUIMain
 
@@ -304,44 +296,6 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
     }
 
 
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    // action listener sur les mousclick en général (obligatoire)
     // ------------------------------------------------------------------------------------------------------------------------------------------------------
 
    
