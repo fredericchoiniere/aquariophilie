@@ -4,14 +4,14 @@ import view.GUIMain;
 
 public class Eau implements Runnable {
 
-    public final double volumeEau = 37.85;
+    public final float volumeEau = (float) 37.85;
     public int scoreEau;
 
     public int ph = 7; // 0 à 14 (dépend des poissons à élever)
     public int kh = 8; // Dureté de l'eau 0 à 10? (8+ pour poissons d'eau douce en eau basique?)
     public int gh = 5; // 0 à 30?
     public int nitrites = 0; // Doit etre 0, maximum 5mg par litre
-    public double nitrates = 0; // max 50mg/L
+    public float nitrates = 0; // max 50mg/L
     public int ammoniac = 0;
     public int ammonium = 0;
 
@@ -59,8 +59,8 @@ public class Eau implements Runnable {
         return pet;
     }
 
-    public double comportNitrate() {
-        System.out.println("nitrates"+ nitrates);
+    public float comportNitrate() {
+        //System.out.println("nitrates"+ nitrates);
         this.nitrates = ((jours/7) - 4);
         return this.nitrates;
     }
@@ -68,12 +68,12 @@ public class Eau implements Runnable {
     @Override
     public void run() { // TODO: updater avec changement de jour
         while (true) {
-            System.out.println("while");
+            //System.out.println("while");
             jours = GUIMain.jours;
 
             try {
                 if (jours > 28) {
-                    System.out.println("compote");
+                    //System.out.println("compote");
                     comportNitrate();
                     Thread.sleep(1000); // à enlever
                 } else Thread.sleep(1000);
