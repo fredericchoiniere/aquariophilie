@@ -1,6 +1,8 @@
 package model.jeu;
 
 import javax.swing.JLabel;
+import java.awt.event.*;
+import java.awt.*;
 
 public class Emplacementinv extends JLabel{
     

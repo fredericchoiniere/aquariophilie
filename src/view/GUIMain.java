@@ -9,16 +9,17 @@ import javax.swing.*;
 import model.chimie.Eau;
 import model.environnement.Temps;
 import model.item.outils.Pipette;
+import model.jeu.Inventaire;
 import model.poissons.*;
 import view.tabs.*;
 
 public class GUIMain extends JFrame implements ActionListener, MouseListener, Runnable {
 
-    // appel des attributs de la classe GUIMain
-    JPanel panelPrincipal;
+    // appel des attributs de la classe GUIMain TODO: MÉNAGE DANS CE VOMI LÀ
+    JPanel panelPrincipal; // Sert à rien?
     PanelTest panelTest;   
     JButton pousser, rapetisser;
-    JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, pipette, eau_label, inventaire_ouvert, inventaire_fermer, inventaire;
+    JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, pipette, eau_label, inventaire_ouvert, inventaire_fermer, inventaire_bg;
     String nom;
     Rectangle rectTest, rectEau;
     Temps temps;
@@ -28,6 +29,7 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
     Thread threadEau;    
     Pipette pipette2;
     ImageIcon tetra_curseur;
+    Inventaire inventaire;
 
     short stade, iteration = 0;
     int vel_x = 2;
@@ -36,14 +38,14 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
 
     public GUIMain() { // création du constructeur GuiMain
 
-        // création de l'icone principale
+        // création du curseur custom
         tetra_curseur = new ImageIcon("res/icone_souris/tetra_cursor.png");
 
         // spécificité du constructeur
         addMouseListener(this);
         setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
                 tetra_curseur.getImage(),
-                new Point(0, 0), "custom cursor"));
+                new Point(0, 0), "curseur tétra"));
 
         // attributs du constructeur
         temps = new Temps();
@@ -119,13 +121,15 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
         panelAqua.add(inventaire_fermer);
 
         // ajout de l'inventaire au panel aqua
-        inventaire = new JLabel();
-        inventaire.setIcon(new ImageIcon("res/background/inventaire.png"));
-        Dimension size_inventaire = inventaire.getPreferredSize();
-        inventaire.setBounds(5, 140, size_inventaire.width, size_inventaire.height);
+        inventaire_bg = new JLabel();
+        inventaire_bg.setIcon(new ImageIcon("res/background/inventaire.png"));
+        Dimension size_inventaire = inventaire_bg.getPreferredSize();
+        inventaire_bg.setBounds(5, 140, size_inventaire.width, size_inventaire.height);
+        inventaire_bg.setVisible(false);
+        inventaire_bg.addMouseListener(this);
+        panelAqua.add(inventaire_bg);
+        inventaire = new Inventaire(inventaire_bg);
         inventaire.setVisible(false);
-        inventaire.addMouseListener(this);
-        panelAqua.add(inventaire);
 
 
         // ajout du label vide pour les actions listener
@@ -174,7 +178,7 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
         add(tabbedPane);
 
         // ---------------------------------------------------------------------------------------------------------------------------------------------------------
-        // action listener de GUIMain
+        // action listener de GUIMain   TODO: placer dans les mouselistener en bas
 
         // action listener sur les labels qui font apparaitre les interfaces
         aquarium_kit_ouvert.addMouseListener(new MouseAdapter() {
@@ -201,7 +205,7 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
                 pipette.setVisible(false);
                 inventaire_ouvert.setVisible(false);
                 inventaire_fermer.setVisible(false);
-                inventaire.setVisible(false);
+                inventaire_bg.setVisible(false);
             }
         });
 
@@ -254,6 +258,7 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
             public void mouseClicked(MouseEvent e) {
                 inventaire_ouvert.setVisible(false);
                 inventaire_fermer.setVisible(true);
+                inventaire_bg.setVisible(false);
                 inventaire.setVisible(false);
             }
         });
@@ -264,6 +269,8 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
             public void mouseClicked(MouseEvent e) {
                 inventaire_ouvert.setVisible(true);
                 inventaire_fermer.setVisible(false);
+                inventaire_bg.setVisible(true);
+
                 inventaire.setVisible(true);
             }
         });
@@ -296,32 +303,48 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
         }
     }
 
-    // action listener sur les mousclick en général (obligatoire)
-    // ------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        // TODO Auto-generated method stub
+        
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
+        // TODO Auto-generated method stub
+        
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
+        // TODO Auto-generated method stub
+        
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
+        // TODO Auto-generated method stub
+        
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
+        // TODO Auto-generated method stub
+        
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        
     }
+
+    // action listener sur les mousclick en général (obligatoire)
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------
+
+   
 }
 
 
