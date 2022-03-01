@@ -80,16 +80,30 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
         // ajout des éléments d'aquariophilie
         // --------------------------------------
 
+        
+
+
+
         // ajout du panel de l'interface du kit
         panelTest = new PanelTest();
         panelTest.setBounds(150, 100, 700, 500);
         panelTest.setVisible(false); // visible false pour qu'il apparaisse avec le bouton
+        
+        panelAqua.add(panelTest);
 
+        
+        empty = new JLabel("");
+        empty.setBounds(0, 0, 1000, 700);
+        empty.addMouseListener(this);
+        empty.setVisible(false);
+        empty.setOpaque(true);
+        empty.setBackground(Color.green);
+        panelAqua.add(empty);
         /* panelTest.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
         new ImageIcon("res/icone_souris/pipe_vide.png").getImage(),
         new Point(0,0),"custom cursor")); */
 
-        panelAqua.add(panelTest);
+        
 
         // ajout de l'icone de notre kit ouvert
         aquarium_kit_ouvert = new JLabel();
@@ -111,14 +125,11 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
 
         // labels
 
-        empty = new JLabel("");
-        empty.setBounds(0, 0, 1000, 700);
-        empty.addMouseListener(this);
-        empty.setVisible(false);
-        empty.setOpaque(true);
-        empty.setBackground(Color.green);
-        panelAqua.add(empty);
+       
+        
 
+        
+        
         // ajout de panel Aqua au layered pane
         Dimension size_panel_aqua = panelAqua.getPreferredSize(); // prend la dimension de la photo
         panelAqua.setBounds(0, 0, size_panel_aqua.width, size_panel_aqua.height);
@@ -176,8 +187,10 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
                 // rends les bons label visible ou invisible
                 aquarium_kit_fermer.setVisible(false);
                 aquarium_kit_ouvert.setVisible(true);
-                empty.setVisible(true);
                 panelTest.setVisible(true);
+                empty.setVisible(true);
+                
+               
 
                 pipette.setVisible(false);
             }
