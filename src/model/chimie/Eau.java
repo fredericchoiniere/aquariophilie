@@ -10,9 +10,9 @@ public class Eau implements Runnable {
     public int ph = 7; // 0 à 14 (dépend des poissons à élever)
     public int kh = 8; // Dureté de l'eau 0 à 10? (8+ pour poissons d'eau douce en eau basique?)
     public int gh = 5; // 0 à 30?
-    public int nitrites = 0; // Doit etre 0, maximum 5mg par litre
+    public float nitrites = 0; // Doit etre 0, maximum 5mg par litre
     public float nitrates = 0; // max 50mg/L
-    public int ammoniac = 0;
+    public float ammoniaque = 0;
     public int ammonium = 0;
 
     public int nbAtomeN = 0;
@@ -33,7 +33,7 @@ public class Eau implements Runnable {
         gh = 5; 
         nitrites = 0;
         nitrates = 0;
-        ammoniac = 0;
+        ammoniaque = 0;
         ammonium = 0;
         nbAtomeN = 0;
         nbAtomeO = 0;
@@ -48,8 +48,8 @@ public class Eau implements Runnable {
 
     }
 
-    public void comportAmmoniaque() { // voir fonction, mettre dans intervalle [tant que y > 0 && pente négative]
-
+    public void setAmmoniaque(float ammoniaque) { // ajouter différence, mettre dans intervalle [tant que y > 0 && pente négative]
+        this.ammoniaque = ammoniaque;
         
 
     }

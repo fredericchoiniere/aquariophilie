@@ -9,6 +9,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*;
 
+import model.chimie.CycleAzote;
 import model.chimie.Eau;
 import model.chimie.TestStoech;
 import model.environnement.Temps;
@@ -18,15 +19,16 @@ public class PanelTest extends JPanel implements ActionListener {
     // appel desattributs de la classe
     TestStoech stoech;
     Eau eau;
+    CycleAzote cycle;
     Temps temps;
     JButton button1, button2, button3;
-    Thread pet, prout;
+    Thread pet, prout, cycle1;
     JLabel label, label2;
     boolean isFocused;
 
     public PanelTest() {
 
-        // caractéristique de se panel
+        // caractéristique de ce panel
         setSize(700, 500);
         setName("testeau");
         setVisible(true);
@@ -34,11 +36,13 @@ public class PanelTest extends JPanel implements ActionListener {
                 new ImageIcon("res/icone_souris/pipe_vide.png").getImage(),
                 new Point(0, 0), "custom cursor"));
 
-        // attributs relier à se panel
+        // attributs relier à ce panel
         stoech = new TestStoech();
         pet = new Thread(stoech);
         eau = new Eau();
         prout = new Thread(eau);
+        cycle = new CycleAzote();
+        cycle1 = new Thread(cycle);
 
         // component à ajouter dans la classe
         label = new JLabel("Ammoniaque: ");
@@ -63,6 +67,7 @@ public class PanelTest extends JPanel implements ActionListener {
         // début des threads relier au panel
         pet.start();
         prout.start();
+        cycle1.start();
     }
 
     // méthode relier à la classe
@@ -76,7 +81,7 @@ public class PanelTest extends JPanel implements ActionListener {
         }
         if (e.getSource() == button3) {
 
-            label2.setText("Test Nitrates: " + eau.nitrates);
+            label2.setText("Test Nitrates: " + eau.ammoniaque);
             button3.setText("+ jours: " + (eau.jours));
 
         }
