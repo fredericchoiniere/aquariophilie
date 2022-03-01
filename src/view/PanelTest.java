@@ -34,6 +34,7 @@ public class PanelTest extends JPanel implements ActionListener {
                 new ImageIcon("res/icone_souris/pipe_vide.png").getImage(),
                 new Point(0, 0), "custom cursor"));
 
+
         // attributs relier à se panel
         stoech = new TestStoech();
         pet = new Thread(stoech);
