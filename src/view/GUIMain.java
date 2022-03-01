@@ -27,7 +27,7 @@ public class GUIMain extends JFrame implements Runnable {
     String nom;
     Rectangle rectTest, rectEau, rectEmp1, rectEmp2, rectEmp3;
     Temps temps;
-    Eau eau;
+    public static Eau eau;
     Poisson2 poisson2;
     Thread tAnim = new Thread(this);
     Thread threadEau;
@@ -39,6 +39,8 @@ public class GUIMain extends JFrame implements Runnable {
     short stade, iteration = 0;
     int vel_x = 2;
     int vel_y = 2;
+
+    public static byte cycle = 1;
     public static float jours = (float) 0; // TIMER GLOBAL
 
     public GUIMain() { // création du constructeur GuiMain
@@ -446,6 +448,8 @@ public class GUIMain extends JFrame implements Runnable {
                 poisson2.setYVelocity(1); // ne marchait pas avec vel_y, je ne sais pas pourquoi
             }
             poisson2.deplacer();
+
+            
         }
     }
 
