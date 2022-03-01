@@ -18,7 +18,7 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
     JPanel panelPrincipal;
     PanelTest panelTest;   
     JButton pousser, rapetisser;
-    JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, pipette, eau_label;
+    JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, pipette, eau_label, inventaire_ouvert, inventaire_fermer, inventaire;
     String nom;
     Rectangle rectTest, rectEau;
     Temps temps;
@@ -102,6 +102,32 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
         aquarium_kit_fermer.addMouseListener(this);
         panelAqua.add(aquarium_kit_fermer);
 
+        // ajout du label pour icones de l'inventaire
+        inventaire_ouvert = new JLabel();
+        inventaire_ouvert.setIcon(new ImageIcon("res/background/inventaire_ouvert.png"));
+        Dimension size_icone_inv = inventaire_ouvert.getPreferredSize(); // prend la dimension de la photo
+        inventaire_ouvert.setBounds(50, 60, size_icone_inv.width, size_icone_inv.height);
+        inventaire_ouvert.setVisible(false);
+        inventaire_ouvert.addMouseListener(this);
+        panelAqua.add(inventaire_ouvert);
+
+        inventaire_fermer = new JLabel();
+        inventaire_fermer.setIcon(new ImageIcon("res/background/inventaire_fermer.png"));
+        inventaire_fermer.setBounds(50, 60, size_icone_inv.width, size_icone_inv.height);
+        inventaire_fermer.setVisible(true);
+        inventaire_fermer.addMouseListener(this);
+        panelAqua.add(inventaire_fermer);
+
+        // ajout de l'inventaire au panel aqua
+        inventaire = new JLabel();
+        inventaire.setIcon(new ImageIcon("res/background/inventaire.png"));
+        Dimension size_inventaire = inventaire.getPreferredSize();
+        inventaire.setBounds(5, 140, size_inventaire.width, size_inventaire.height);
+        inventaire.setVisible(false);
+        inventaire.addMouseListener(this);
+        panelAqua.add(inventaire);
+
+
         // ajout du label vide pour les actions listener
         empty = new JLabel("");
         empty.setBounds(0, 0, 1000, 700);
@@ -159,6 +185,7 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
                 panelTest.setVisible(false);
                 empty.setVisible(false);
                 pipette.setVisible(true);
+                inventaire_fermer.setVisible(true);
             }
         });
 
@@ -172,6 +199,9 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
                 empty.setVisible(true);
                 panelTest.setVisible(true);
                 pipette.setVisible(false);
+                inventaire_ouvert.setVisible(false);
+                inventaire_fermer.setVisible(false);
+                inventaire.setVisible(false);
             }
         });
 
@@ -213,9 +243,32 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
                     pipette.setVisible(true);
                     aquarium_kit_ouvert.setVisible(false);
                     aquarium_kit_fermer.setVisible(true);
+                    inventaire_fermer.setVisible(true);
                 }
             }
         });
+
+        // action listener sur le label icone pour faire disparaitre ou apparaitre l'inventaire
+        inventaire_ouvert.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                inventaire_ouvert.setVisible(false);
+                inventaire_fermer.setVisible(true);
+                inventaire.setVisible(false);
+            }
+        });
+
+        // action listener sur le label icone pour faire disparaitre ou apparaitre l'inventaire
+        inventaire_fermer.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                inventaire_ouvert.setVisible(true);
+                inventaire_fermer.setVisible(false);
+                inventaire.setVisible(true);
+            }
+        });
+
+        
     } // fin du constructeur GUIMain
 
     // création des threads pour les poissons dans l'aquarium
