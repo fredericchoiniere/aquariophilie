@@ -25,8 +25,7 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
     JLabel testEau;
     short stade, iteration = 0;
     String nom;
-    PanelTest panelTest;        // TODO: renommer
-    Rectangle rectTest;
+    PanelTest panelTest;
     JLabel aquarium_kit_ouvert, aquarium_kit_fermer;
     
     Temps temps;
@@ -34,6 +33,7 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
 
     Eau eau;
     Thread threadEau;
+
     JLabel empty;
     Poisson2 poisson2;
     Thread tAnim = new Thread(this);
@@ -87,7 +87,6 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
         // ajout du panel de l'interface du kit
         panelTest = new PanelTest();
         panelTest.setBounds(150, 100, 700, 500);
-        rectTest = new Rectangle(panelTest.getBounds());
         panelTest.setVisible(false); // visible false pour qu'il apparaisse avec le bouton
         
         panelAqua.add(panelTest);
@@ -201,16 +200,11 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
             @Override
             public void mouseClicked(MouseEvent e) {
 
-                if (panelAqua.getMousePosition().getX() <= rectTest.getMinX() || panelAqua.getMousePosition().getX() >= rectTest.getMaxX()
-                    || panelAqua.getMousePosition().getY() <= rectTest.getMinY() || panelAqua.getMousePosition().getY() >= rectTest.getMaxY() ){
-                    panelTest.setVisible(false);
-                    empty.setVisible(false);
-                    pipette.setVisible(true);
-                    aquarium_kit_ouvert.setVisible(false);
-                    aquarium_kit_fermer.setVisible(true);
-                }
-                
-                
+                panelTest.setVisible(false);
+                empty.setVisible(false);
+                pipette.setVisible(true);
+                aquarium_kit_ouvert.setVisible(false);
+                aquarium_kit_fermer.setVisible(true);
             }
         });
 
