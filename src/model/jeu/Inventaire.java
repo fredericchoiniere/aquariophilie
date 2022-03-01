@@ -2,12 +2,11 @@ package model.jeu;
 
 import java.util.*;
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
 public class Inventaire{
 
-    Emplacementinv emp1, emp2, emp3, emp4;
+    public Emplacementinv emp1, emp2, emp3, emp4;
     final Dimension size_icone_inv = new Dimension(80, 80);
 
     private ArrayList<Emplacementinv> listEmpPleins = new ArrayList<Emplacementinv>(4);

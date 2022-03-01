@@ -1,5 +1,12 @@
 package model.jeu;
 
-public class Emplacementaq {
+import javax.swing.JLabel;
+
+public class Emplacementaq extends JLabel{
     
+    public Emplacementaq() {
+        
+    }
+
+
 }

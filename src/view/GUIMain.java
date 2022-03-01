@@ -265,7 +265,9 @@ public class GUIMain extends JFrame implements Runnable {
             }
         });
 
-
+        inventaire.emp1.addMouseListener(new MouseAdapter() {
+            
+        });
 
         
     } // fin du constructeur GUIMain
