@@ -386,9 +386,9 @@ public class GUIMain extends JFrame implements Runnable {
 
     // méthode pour set les borders visible
     public void visibleBorders() {
-        aquarium.emp1.setBorder(new LineBorder(Color.BLUE, 3));
-        aquarium.emp2.setBorder(new LineBorder(Color.BLUE, 3));
-        aquarium.emp3.setBorder(new LineBorder(Color.BLUE, 3));
+        aquarium.emp1.setBorder(new LineBorder(Color.yellow, 2));
+        aquarium.emp2.setBorder(new LineBorder(Color.yellow, 2));
+        aquarium.emp3.setBorder(new LineBorder(Color.yellow, 2));
     }
 
     // méthode pour set les borders visible
