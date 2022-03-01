@@ -31,9 +31,9 @@ public class PanelTest extends JPanel implements ActionListener {
 
         
 
-        /* setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
-        new ImageIcon("res/icone_souris/penis.png").getImage(),
-        new Point(0,0),"custom cursor")); */
+        setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
+        new ImageIcon("res/icone_souris/pipe_vide.png").getImage(),
+        new Point(0,0),"custom cursor"));
 
         stoech = new TestStoech();
         pet = new Thread(stoech);

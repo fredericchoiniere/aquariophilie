@@ -60,7 +60,7 @@ public class Eau implements Runnable {
     }
 
     public double comportNitrate() {
-        System.out.println("nitrates"+ nitrates);
+        //System.out.println("nitrates"+ nitrates);
         this.nitrates = ((jours/7) - 4);
         return this.nitrates;
     }
@@ -68,12 +68,12 @@ public class Eau implements Runnable {
     @Override
     public void run() { // TODO: updater avec changement de jour
         while (true) {
-            System.out.println("while");
+            //System.out.println("while");
             jours = GUIMain.jours;
 
             try {
                 if (jours > 28) {
-                    System.out.println("compote");
+                    //System.out.println("compote");
                     comportNitrate();
                     Thread.sleep(1000); // à enlever
                 } else Thread.sleep(1000);
