@@ -221,7 +221,7 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
     // création des threads pour les poissons dans l'aquarium
     // --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    // thread du poisson rouge
+    // thread du poisson rouge TODO: placer dans sa classe
     @Override
     public void run() {
         while (true) {
@@ -270,3 +270,55 @@ public class GUIMain extends JFrame implements ActionListener, MouseListener, Ru
     public void actionPerformed(ActionEvent e) {
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Слава Україні!
