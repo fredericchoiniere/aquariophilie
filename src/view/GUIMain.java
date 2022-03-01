@@ -34,7 +34,7 @@ public class GUIMain extends JFrame implements Runnable {
     short stade, iteration = 0;
     int vel_x = 2;
     int vel_y = 2;
-    public static float jours = (float) 27;
+    public static float jours = (float) 27; // TIMER GLOBAL
 
     public GUIMain() { // création du constructeur GuiMain
 
