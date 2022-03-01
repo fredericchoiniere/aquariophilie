@@ -1,5 +1,7 @@
 package view;
 
+// import associer àl'utilisation de la classe
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,8 +15,9 @@ import model.environnement.Temps;
 
 public class PanelTest extends JPanel implements ActionListener {
 
+    // appel desattributs de la classe
     TestStoech stoech;
-    Eau  eau;
+    Eau eau;
     Temps temps;
     JButton button1, button2, button3;
     Thread pet, prout;
@@ -23,25 +26,21 @@ public class PanelTest extends JPanel implements ActionListener {
 
     public PanelTest() {
 
-        //addFocusListener(this);
-        //addMouseListener(this);
+        // caractéristique de se panel
         setSize(700, 500);
         setName("testeau");
         setVisible(true);
-
-        
-
         setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
-        new ImageIcon("res/icone_souris/pipe_vide.png").getImage(),
-        new Point(0,0),"custom cursor"));
+                new ImageIcon("res/icone_souris/pipe_vide.png").getImage(),
+                new Point(0, 0), "custom cursor"));
 
+        // attributs relier à se panel
         stoech = new TestStoech();
         pet = new Thread(stoech);
-
         eau = new Eau();
         prout = new Thread(eau);
 
-
+        // component à ajouter dans la classe
         label = new JLabel("Ammoniaque: ");
         add(label);
 
@@ -61,10 +60,12 @@ public class PanelTest extends JPanel implements ActionListener {
         add(label2);
         add(button3);
 
+        // début des threads relier au panel
         pet.start();
         prout.start();
     }
 
+    // méthode relier à la classe
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == button1) {
@@ -74,10 +75,10 @@ public class PanelTest extends JPanel implements ActionListener {
             stoech.quantAmmoniaque -= 10;
         }
         if (e.getSource() == button3) {
-            
+
             label2.setText("Test Nitrates: " + eau.nitrates);
             button3.setText("+ jours: " + (eau.jours));
-            
+
         }
     }
 
