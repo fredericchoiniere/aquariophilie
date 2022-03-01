@@ -81,8 +81,7 @@ public class PanelTest extends JPanel implements ActionListener {
         }
         if (e.getSource() == button3) {
 
-            label2.setText("Test Nitrates: " + eau.ammoniaque);
-            button3.setText("+ jours: " + (eau.jours));
+            new Thread(new CycleAzote()).start();
 
         }
     }

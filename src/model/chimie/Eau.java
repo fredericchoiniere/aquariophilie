@@ -1,5 +1,7 @@
 package model.chimie;
 
+import java.util.ArrayList;
+
 import view.GUIMain;
 
 public class Eau implements Runnable {
@@ -12,7 +14,8 @@ public class Eau implements Runnable {
     public int gh = 5; // 0 à 30?
     public float nitrites = 0; // Doit etre 0, maximum 5mg par litre
     public float nitrates = 0; // max 50mg/L
-    public float ammoniaque = 0;
+    public float ammoniaque = 10;
+    private float sommeAmmoniaque, sommeNitrites;
     public int ammonium = 0;
 
     public int nbAtomeN = 0;
@@ -23,8 +26,14 @@ public class Eau implements Runnable {
     public int chlore;
     public int temperature;
     
+    public ArrayList<Float> listeAmmoniaque = new ArrayList<Float>();
 
     public float jours = GUIMain.jours; // TODO: va être remplacé
+
+    public Eau(){
+        listeAmmoniaque.add(0, this.ammoniaque);
+        listeAmmoniaque.add(1, (float) 0);
+    }
 
     public void changerEau() {
 
@@ -48,10 +57,21 @@ public class Eau implements Runnable {
 
     }
 
-    public void setAmmoniaque(float ammoniaque) { // ajouter différence, mettre dans intervalle [tant que y > 0 && pente négative]
-        this.ammoniaque = ammoniaque;
+    public void addAmmoniaque(float ammoniaque, byte cycle) { // ajouter différence, mettre dans intervalle [tant que y > 0 && pente négative]
+        if (!listeAmmoniaque.contains(ammoniaque)) {
+            listeAmmoniaque.remove(cycle);
+            listeAmmoniaque.add(cycle, ammoniaque);
+        }
         
+        sommeAmmoniaque = 0;
+        for (Float valeur : listeAmmoniaque) {
+            sommeAmmoniaque += valeur;
+        }
+        this.ammoniaque = sommeAmmoniaque;
 
+        System.out.println("Jour:" + jours);
+                    System.out.println("Ammoniaque:" + ammoniaque);
+                    System.out.println("List:" + listeAmmoniaque);
     }
 
     public double comportNitrite(){ // voir fonction, mettre dans intervalle [tant que y > 0 && pente négative]
