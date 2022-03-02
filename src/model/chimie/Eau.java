@@ -1,6 +1,6 @@
 package model.chimie;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -29,8 +29,10 @@ public class Eau implements Runnable {
     public int temperature;
     
 
-    public LinkedList<Float> listeAmmoniaqueTemp = new LinkedList<Float>();
+    public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>();
     public List<Float> listeAmmoniaque = new CopyOnWriteArrayList<>(listeAmmoniaqueTemp); // TODO: faire fonctionner concurrentlist
+
+    // ArrayBlockingQueue? comment manipuler la différence de valeurs? jta boutte
 
     public float jours = GUIMain.jours; // TODO: va être remplacé
     public byte cycle = 0;
