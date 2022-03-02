@@ -33,6 +33,7 @@ public class Eau implements Runnable {
     public List<Float> listeAmmoniaque = new CopyOnWriteArrayList<>(listeAmmoniaqueTemp); // TODO: faire fonctionner concurrentlist
 
     // ArrayBlockingQueue? comment manipuler la différence de valeurs? jta boutte
+    // live on check-then-act ce qui est un big no no
 
     public float jours = GUIMain.jours; // TODO: va être remplacé
     public byte cycle = 0;
@@ -70,9 +71,9 @@ public class Eau implements Runnable {
             listeAmmoniaque.addLast((float)0);
         } */
 
-        if (!listeAmmoniaque.contains(ammoniaque)) {
+        if (!listeAmmoniaque.contains(ammoniaque)) { // check
             
-            listeAmmoniaque.remove(bufferAmmoniaque);
+            listeAmmoniaque.remove(bufferAmmoniaque); // then act
             listeAmmoniaque.add(cycle, ammoniaque);
             bufferAmmoniaque = ammoniaque;
         }
