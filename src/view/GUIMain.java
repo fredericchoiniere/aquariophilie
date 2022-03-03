@@ -139,8 +139,9 @@ public class GUIMain extends JFrame implements Runnable {
         // label pour l'argent que l'on a
 
         label_argent = new JLabel();
-        label_argent.setBounds(455, 15, 100, 50);
-        label_argent.setFont(new Font("Verdana", Font.BOLD, 30));
+        label_argent.setBounds(30, 10, 100, 50);
+        label_argent.setFont(new Font("Verdana", Font.BOLD, 20));
+        label_argent.setText("$$");
         label_argent.setVisible(true);
         panelAqua.add(label_argent);
 
