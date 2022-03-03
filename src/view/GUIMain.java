@@ -23,7 +23,8 @@ public class GUIMain extends JFrame implements Runnable {
     PanelTest panelTest;
     JButton pousser, rapetisser;
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, pipette, eau_label, inventaire_ouvert,
-            inventaire_fermer, inventaire_bg, label_argent;
+            inventaire_fermer, inventaire_bg;
+	public JLabel label_argent;
     String nom;
     Rectangle rectTest, rectEau, rectEmp1, rectEmp2, rectEmp3;
     Temps temps;
@@ -39,7 +40,6 @@ public class GUIMain extends JFrame implements Runnable {
     short stade, iteration = 0;
     int vel_x = 2;
     int vel_y = 2;
-
     public static byte cycle = 1;
     public static float jours = (float) 0; // TIMER GLOBAL
     public int argent = 0;
@@ -136,7 +136,6 @@ public class GUIMain extends JFrame implements Runnable {
         empty.setVisible(false);
         panelAqua.add(empty);
 
-
         // label pour l'argent que l'on a
 
         label_argent = new JLabel();
@@ -144,8 +143,6 @@ public class GUIMain extends JFrame implements Runnable {
         label_argent.setFont(new Font("Verdana", Font.BOLD, 30));
         label_argent.setVisible(true);
         panelAqua.add(label_argent);
-
-
 
         // ajout de panel Aqua au layered pane
         Dimension size_panel_aqua = panelAqua.getPreferredSize(); // prend la dimension de la photo
@@ -444,6 +441,9 @@ public class GUIMain extends JFrame implements Runnable {
         }
     }
 
+    
+
+
     // création des threads pour les poissons dans l'aquarium
     // --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -467,7 +467,6 @@ public class GUIMain extends JFrame implements Runnable {
             }
             poisson2.deplacer();
 
-            
         }
     }
 

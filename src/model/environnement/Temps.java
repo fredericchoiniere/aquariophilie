@@ -7,6 +7,7 @@ import view.GUIMain;
 
 public class Temps{
     Timer journee;
+
     
     //public float jours = 0;
 
@@ -17,9 +18,11 @@ public class Temps{
             public void run() {
                 //System.out.println("jours: " + GUIMain.jours);
                 GUIMain.jours++;
+
             }
         }, 0, 5000);
     }
+    
 
 }
 
