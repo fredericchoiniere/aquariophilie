@@ -1,6 +1,8 @@
 package model.chimie;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import view.GUIMain;
 
@@ -15,7 +17,7 @@ public class Eau implements Runnable {
     public float nitrites = 0; // Doit etre 0, maximum 5mg par litre
     public float nitrates = 0; // max 50mg/L
     public float ammoniaque = 10;
-    private float sommeAmmoniaque, sommeNitrites;
+    private float sommeAmmoniaque, bufferAmmoniaque = 0, sommeNitrites;
     public int ammonium = 0;
 
     public int nbAtomeN = 0;
@@ -26,13 +28,20 @@ public class Eau implements Runnable {
     public int chlore;
     public int temperature;
     
-    public ArrayList<Float> listeAmmoniaque = new ArrayList<Float>();
+
+    public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>();
+    public List<Float> listeAmmoniaque = new CopyOnWriteArrayList<>(listeAmmoniaqueTemp); // TODO: faire fonctionner concurrentlist
+
+    // ArrayBlockingQueue? comment manipuler la différence de valeurs? jta boutte
+    // live on check-then-act ce qui est un big no no
 
     public float jours = GUIMain.jours; // TODO: va être remplacé
+    public byte cycle = 0;
 
     public Eau(){
         listeAmmoniaque.add(0, this.ammoniaque);
-        listeAmmoniaque.add(1, (float) 0);
+
+        //listeAmmoniaque.add(1,(float) 0);
     }
 
     public void changerEau() {
@@ -58,20 +67,30 @@ public class Eau implements Runnable {
     }
 
     public void addAmmoniaque(float ammoniaque, byte cycle) { // ajouter différence, mettre dans intervalle [tant que y > 0 && pente négative]
-        if (!listeAmmoniaque.contains(ammoniaque)) {
-            listeAmmoniaque.remove(cycle);
+        /* if(listeAmmoniaque.get(cycle).isNaN()){
+            listeAmmoniaque.addLast((float)0);
+        } */
+
+        if (!listeAmmoniaque.contains(ammoniaque)) { // check
+            
+            listeAmmoniaque.remove(bufferAmmoniaque); // then act
             listeAmmoniaque.add(cycle, ammoniaque);
+            bufferAmmoniaque = ammoniaque;
         }
         
+        
+        /* listeAmmoniaque.remove(0);
+        listeAmmoniaque.add(0, this.ammoniaque); */
+
+    }
+
+    public float sommeAmmoniaque(){
         sommeAmmoniaque = 0;
         for (Float valeur : listeAmmoniaque) {
             sommeAmmoniaque += valeur;
         }
         this.ammoniaque = sommeAmmoniaque;
-
-        System.out.println("Jour:" + jours);
-                    System.out.println("Ammoniaque:" + ammoniaque);
-                    System.out.println("List:" + listeAmmoniaque);
+        return this.ammoniaque;
     }
 
     public double comportNitrite(){ // voir fonction, mettre dans intervalle [tant que y > 0 && pente négative]
@@ -90,6 +109,9 @@ public class Eau implements Runnable {
         while (true) {
             //System.out.println("while");
             jours = GUIMain.jours;
+
+            
+    
 
             try {
                 if (jours > 28) {

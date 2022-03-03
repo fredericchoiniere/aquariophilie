@@ -4,38 +4,42 @@ import model.environnement.*;
 import view.GUIMain;
 //import java.math.*;
 
-public class CycleAzote implements Runnable{
+public class CycleAzote implements Runnable {
 
     public float jourInitial = GUIMain.jours;
     public float jourFinal = jourInitial + 35;
     public float jours = 0;
-    private byte cycle = 0;
-    Eau eau = new Eau();
-    
-    //Temps tempsCycle = new Temps();
+    public Eau eau = GUIMain.eau;
+    public byte cycle = eau.cycle;
 
-    public CycleAzote(){
+    // Temps tempsCycle = new Temps();
+
+    public CycleAzote() {
+
+        eau.cycle++;
         cycle++;
+        //eau.listeAmmoniaque.addLast((float)0);
     }
 
     public void cycleAmmoniaque(Eau eau) {
-        eau.addAmmoniaque((float)(-3.2*((jours/7)-1.25)*((jours/7)-1.25)+5), cycle);
+        eau.addAmmoniaque((float) (-3.2 * ((jours / 7) - 1.25) * ((jours / 7) - 1.25) + 5), cycle);
     }
 
     @Override
     public void run() { // TODO: updater avec changement de jour
         while (true) {
-            
-            if((jours + jourInitial) < GUIMain.jours)
+
+            if ((jours + jourInitial) < GUIMain.jours)
                 jours++;
-                
+
             try {
                 if (jours >= 0 && jours < 18) {
-                    //System.out.println("compote");
+                    // System.out.println("compote");
                     cycleAmmoniaque(eau);
-                    
+
                     Thread.sleep(1000); // à enlever
-                } else Thread.sleep(1000);
+                } else
+                    Thread.sleep(1000);
             } catch (Exception e) {
                 e.printStackTrace();
             }
