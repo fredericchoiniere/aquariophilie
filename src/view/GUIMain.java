@@ -23,7 +23,7 @@ public class GUIMain extends JFrame implements Runnable {
     PanelTest panelTest;
     JButton pousser, rapetisser;
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, pipette, eau_label, inventaire_ouvert,
-            inventaire_fermer, inventaire_bg;
+            inventaire_fermer, inventaire_bg, label_argent;
     String nom;
     Rectangle rectTest, rectEau, rectEmp1, rectEmp2, rectEmp3;
     Temps temps;
@@ -40,6 +40,7 @@ public class GUIMain extends JFrame implements Runnable {
     int vel_x = 2;
     int vel_y = 2;
     public static float jours = (float) 0; // TIMER GLOBAL
+    public int argent = 0;
 
     public GUIMain() { // création du constructeur GuiMain
 
@@ -132,6 +133,17 @@ public class GUIMain extends JFrame implements Runnable {
         empty.setBounds(0, 0, 1000, 700);
         empty.setVisible(false);
         panelAqua.add(empty);
+
+
+        // label pour l'argent que l'on a
+
+        label_argent = new JLabel();
+        label_argent.setBounds(455, 15, 100, 50);
+        label_argent.setFont(new Font("Verdana", Font.BOLD, 30));
+        label_argent.setVisible(true);
+        panelAqua.add(label_argent);
+
+
 
         // ajout de panel Aqua au layered pane
         Dimension size_panel_aqua = panelAqua.getPreferredSize(); // prend la dimension de la photo
@@ -284,6 +296,7 @@ public class GUIMain extends JFrame implements Runnable {
                 setCursor(inventaire.emp1);
                 visibleBorders();
             }
+
             @Override
             public void mouseReleased(MouseEvent e) {
                 basicCursor();
@@ -294,13 +307,14 @@ public class GUIMain extends JFrame implements Runnable {
             }
         });
 
-         // inventaire 2
-         inventaire.emp2.addMouseListener(new MouseAdapter() {
+        // inventaire 2
+        inventaire.emp2.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
                 setCursor(inventaire.emp2);
                 visibleBorders();
             }
+
             @Override
             public void mouseReleased(MouseEvent e) {
                 basicCursor();
@@ -318,6 +332,7 @@ public class GUIMain extends JFrame implements Runnable {
                 setCursor(inventaire.emp3);
                 visibleBorders();
             }
+
             @Override
             public void mouseReleased(MouseEvent e) {
                 basicCursor();
@@ -335,6 +350,7 @@ public class GUIMain extends JFrame implements Runnable {
                 setCursor(inventaire.emp4);
                 visibleBorders();
             }
+
             @Override
             public void mouseReleased(MouseEvent e) {
                 basicCursor();
@@ -352,6 +368,7 @@ public class GUIMain extends JFrame implements Runnable {
                 setCursor(inventaire.emp5);
                 visibleBorders();
             }
+
             @Override
             public void mouseReleased(MouseEvent e) {
                 basicCursor();
@@ -369,6 +386,7 @@ public class GUIMain extends JFrame implements Runnable {
                 setCursor(inventaire.emp6);
                 visibleBorders();
             }
+
             @Override
             public void mouseReleased(MouseEvent e) {
                 basicCursor();
@@ -410,8 +428,8 @@ public class GUIMain extends JFrame implements Runnable {
     public void setCursor(JLabel label) {
         ImageIcon curseur = (ImageIcon) label.getIcon();
         panelAqua.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
-                        curseur.getImage(),
-                        new Point(0, 0), "curseur tétra"));
+                curseur.getImage(),
+                new Point(0, 0), "curseur tétra"));
     }
 
     // regarder si la souris est dans le rectangle lors du lachement de la touche
@@ -420,7 +438,7 @@ public class GUIMain extends JFrame implements Runnable {
                 && panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
                 && panelAqua.getMousePosition().getY() >= rectangle.getMinY()
                 && panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
-                    label.setIcon(icone);
+            label.setIcon(icone);
         }
     }
 
