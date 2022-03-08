@@ -20,7 +20,7 @@ public class Inventaire{
 
         emp2 = new Emplacementinv();
         emp2.setBounds(140, 30, (int) size_icone_inv.getWidth(), (int) size_icone_inv.getHeight());
-        emp2.setIcon(new ImageIcon("res/background/decorations/lol.png"));
+        emp2.setIcon(new ImageIcon("res/background/decorations/poisson_rouge_item.png"));
         label.add(emp2);
 
         emp3 = new Emplacementinv();

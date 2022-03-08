@@ -24,13 +24,15 @@ public class GUIMain extends JFrame implements Runnable {
     JButton pousser, rapetisser;
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, pipette, eau_label, inventaire_ouvert,
             inventaire_fermer, inventaire_bg;
-	public JLabel label_argent;
-    String nom;
+    public JLabel label_argent;
+    String nom, empla1, empla2, empla3, empla4, empla5, empla6;
     Rectangle rectTest, rectEau, rectEmp1, rectEmp2, rectEmp3;
     Temps temps;
     public static Eau eau;
-    Poisson2 poisson2;
-    Thread tAnim = new Thread(this);
+    PoissonRouge poisson_rouge;
+    PoissonBetta poisson_betta;
+    Thread tpoisson_rouge = new Thread(this);
+    Thread tpoisson_betta = new Thread(this);
     Thread threadEau;
     Pipette pipette2;
     ImageIcon tetra_curseur;
@@ -159,10 +161,15 @@ public class GUIMain extends JFrame implements Runnable {
         rectEmp3 = new Rectangle(572, 408, 80, 80);
 
         // ajout du poisson dans l'aquarium
-        poisson2 = new Poisson2();
-        poisson2.setBounds(340, 324, 322, 156);
-        tAnim.start();
-        panelAqua.add(poisson2);
+        poisson_rouge = new PoissonRouge();
+        poisson_rouge.setBounds(340, 324, 322, 156);
+        tpoisson_rouge.start();
+        panelAqua.add(poisson_rouge);
+
+        poisson_betta = new PoissonBetta();
+        poisson_betta.setBounds(340, 324, 322, 156);
+        tpoisson_betta.start();
+        panelAqua.add(poisson_betta);
 
         aquarium = new Aquarium(panelAqua);
 
@@ -217,6 +224,8 @@ public class GUIMain extends JFrame implements Runnable {
                 inventaire_ouvert.setVisible(false);
                 inventaire_fermer.setVisible(false);
                 inventaire_bg.setVisible(false);
+                // test
+                poisson_betta.swim = false;
             }
         });
 
@@ -226,6 +235,8 @@ public class GUIMain extends JFrame implements Runnable {
             @Override
             public void mousePressed(MouseEvent e) {
                 pipette2.changerEtatPanel(panelAqua);
+                // test
+                poisson_betta.swim = true;
             }
 
             @Override
@@ -363,10 +374,16 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 5
         inventaire.emp5.addMouseListener(new MouseAdapter() {
+
             @Override
             public void mousePressed(MouseEvent e) {
-                setCursor(inventaire.emp5);
-                visibleBorders();
+                if (empla5 == "decoration") {
+                    setCursor(inventaire.emp5);
+                    visibleBorders();
+                }
+                if (empla5 == "poisson") {
+                    setCursor(inventaire.emp5);
+                }
             }
 
             @Override
@@ -377,6 +394,7 @@ public class GUIMain extends JFrame implements Runnable {
                 checkRectangles(rectEmp2, aquarium.emp2, inventaire.emp5.getIcon());
                 checkRectangles(rectEmp3, aquarium.emp3, inventaire.emp5.getIcon());
             }
+
         });
 
         // inventaire 6
@@ -442,9 +460,6 @@ public class GUIMain extends JFrame implements Runnable {
         }
     }
 
-    
-
-
     // création des threads pour les poissons dans l'aquarium
     // --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -452,21 +467,23 @@ public class GUIMain extends JFrame implements Runnable {
     @Override
     public void run() {
         while (true) {
-            if (poisson2.x > 286) {
-                poisson2.setXVelocity(-poisson2.vel_x);
-                poisson2.image = "gauche";
+            if (poisson_betta.swim == true) {
+                poisson_betta.image = "droite";
+                poisson_betta.nager();
             }
-            if (poisson2.x < 4) {
-                poisson2.setXVelocity(1);
-                poisson2.image = "droite";
+            if (poisson_betta.swim == false) {
+                poisson_betta.nager();
+                poisson_betta.image = "empty";
             }
-            if (poisson2.y > 120) {
-                poisson2.setYVelocity(-poisson2.vel_y);
+
+            if (poisson_rouge.swim == true) {
+                poisson_rouge.image = "droite";
+                poisson_rouge.nager();
             }
-            if (poisson2.y < 4) {
-                poisson2.setYVelocity(1); // ne marchait pas avec vel_y, je ne sais pas pourquoi
+            if (poisson_rouge.swim == false) {
+                poisson_rouge.nager();
+                poisson_rouge.image = "empty";
             }
-            poisson2.deplacer();
 
         }
     }

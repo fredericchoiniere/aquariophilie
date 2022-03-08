@@ -4,7 +4,10 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Poisson2 extends JPanel { //TODO: implements runnable
+import view.GUIMain;
+import view.tabs.PanelAqua;
+
+public class PoissonRouge extends JPanel{ //TODO: implements runnable
     // Attributs : coordonn�es de la boule
     public int x = 10;
     public int y = 10;
@@ -17,7 +20,11 @@ public class Poisson2 extends JPanel { //TODO: implements runnable
     Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_gauche.png");
     // g2d.drawImage(poisson_gauche, x, y, this);
 
+    Image empty = Toolkit.getDefaultToolkit().getImage("res/poissons/empty.png");
+
     public String image = "droite";
+    PanelAqua panelAqua;
+    public boolean swim = true;
 
     @Override
 
@@ -64,10 +71,35 @@ public class Poisson2 extends JPanel { //TODO: implements runnable
         }
         if (coter == "gauche") {
             img = poisson_gauche;
+        }
+            if (coter == "empty") {
+                img = empty;
         } else {
             img = poisson_droite;
         }
         return img;
+    }
+
+    public void nager(){
+        if (this.x > 286) {
+            this.setXVelocity(-this.vel_x);
+            this.image = "gauche";
+        }
+        if (this.x < 4) {
+            this.setXVelocity(1);
+            this.image = "droite";
+        }
+        if (this.y > 120) {
+            this.setYVelocity(-this.vel_y);
+        }
+        if (this.y < 4) {
+            this.setYVelocity(1); // ne marchait pas avec vel_y, je ne sais pas pourquoi
+        }
+        this.deplacer();
+    }
+
+    public void setImageEmpty(String string){
+        this.image = "empty";
     }
 
 }

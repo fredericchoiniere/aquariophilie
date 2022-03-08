@@ -6,8 +6,9 @@ import javax.swing.*;
 
 public class Aquarium {
 
-    public Emplacementaq emp1, emp2, emp3;
+    public Emplacementaq emp1, emp2, emp3, aqua1, aqua2, aqua3, aqua4, aqua5, aqua6;
     final Dimension size_icone_inv = new Dimension(80, 80);
+    final Dimension size_icone_poi = new Dimension(35, 35);
 
     private ArrayList<Emplacementaq> listEmpPleins = new ArrayList<Emplacementaq>(3);
 
@@ -27,12 +28,49 @@ public class Aquarium {
         emp3.setBounds(567, 408, (int) size_icone_inv.getWidth(), (int) size_icone_inv.getHeight());
         emp3.setIcon(null);
         panel.add(emp3);
+
+        //TODO: faire les bons bounds
+        aqua1 = new Emplacementaq();
+        aqua1.setBounds(567, 408, (int) size_icone_inv.getWidth(), (int) size_icone_inv.getHeight());
+        aqua1.setIcon(null);
+        panel.add(aqua1);
+
+        aqua2 = new Emplacementaq();
+        aqua2.setBounds(567, 408, (int) size_icone_inv.getWidth(), (int) size_icone_inv.getHeight());
+        aqua2.setIcon(null);
+        panel.add(aqua2);
+
+        aqua3 = new Emplacementaq();
+        aqua3.setBounds(567, 408, (int) size_icone_inv.getWidth(), (int) size_icone_inv.getHeight());
+        aqua3.setIcon(null);
+        panel.add(aqua3);
+
+        aqua4 = new Emplacementaq();
+        aqua4.setBounds(567, 408, (int) size_icone_inv.getWidth(), (int) size_icone_inv.getHeight());
+        aqua4.setIcon(null);
+        panel.add(aqua4);
+
+        aqua5 = new Emplacementaq();
+        aqua5.setBounds(567, 408, (int) size_icone_inv.getWidth(), (int) size_icone_inv.getHeight());
+        aqua5.setIcon(null);
+        panel.add(aqua5);
+
+        aqua6 = new Emplacementaq();
+        aqua6.setBounds(567, 408, (int) size_icone_inv.getWidth(), (int) size_icone_inv.getHeight());
+        aqua6.setIcon(null);
+        panel.add(aqua6);
     }
 
     public void setVisible(boolean etat) {
         emp1.setVisible(etat);
         emp2.setVisible(etat);
         emp3.setVisible(etat);
+        aqua1.setVisible(etat);
+        aqua2.setVisible(etat);
+        aqua3.setVisible(etat);
+        aqua4.setVisible(etat);
+        aqua5.setVisible(etat);
+        aqua6.setVisible(etat);
     }
 
 }
