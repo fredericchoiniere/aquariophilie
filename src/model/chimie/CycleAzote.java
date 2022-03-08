@@ -22,7 +22,8 @@ public class CycleAzote implements Runnable {
     }
 
     public void cycleAmmoniaque(Eau eau) {
-        eau.listeAmmoniaque.remove(temp);
+        //if(temp != 0)
+            eau.listeAmmoniaque.remove(temp);
         if (jours != 18) {
             temp = (float) (-3.2 * ((jours / 7) - 1.25) * ((jours / 7) - 1.25) + 5);
         } else {
