@@ -1,7 +1,0 @@
-J'ai ajouter les classes tabs pour charger les panels
-
-J'ai initier les panels dans GUIAqua
-
-J'ai créer Draggable component, Outils et pipette .java pour créer le draggable component
-
-j'ai ajouter les ressources

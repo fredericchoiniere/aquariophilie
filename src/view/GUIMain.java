@@ -26,7 +26,8 @@ public class GUIMain extends JFrame implements Runnable {
             inventaire_fermer, inventaire_bg;
     public JLabel label_argent;
     String nom, empla1, empla2, empla3, empla4, empla5, empla6;
-    Rectangle rectTest, rectEau, rectEmp1, rectEmp2, rectEmp3;
+    Rectangle rectTest, rectEau, rectEmp1, rectEmp2, rectEmp3, rectAqua1, rectAqua2, rectAqua3, rectAqua4, rectAqua5,
+            rectAqua6;
     Temps temps;
     public static Eau eau;
     PoissonRouge poisson_rouge;
@@ -47,6 +48,10 @@ public class GUIMain extends JFrame implements Runnable {
     public int argent = 0;
 
     public GUIMain() { // création du constructeur GuiMain
+
+        // pour les deco
+        empla1 = "decoration";
+        empla2 = "poisson";
 
         // création du curseur custom
         tetra_curseur = new ImageIcon("res/icone_souris/tetra_cursor.png");
@@ -159,6 +164,12 @@ public class GUIMain extends JFrame implements Runnable {
         rectEmp1 = new Rectangle(358, 408, 80, 80);
         rectEmp2 = new Rectangle(464, 408, 80, 80);
         rectEmp3 = new Rectangle(572, 408, 80, 80);
+        rectAqua1 = new Rectangle(365, 321, 70, 70);
+        rectAqua2 = new Rectangle(474, 321, 70, 70);
+        rectAqua3 = new Rectangle(584, 321, 70, 70);
+        rectAqua4 = new Rectangle(365, 417, 70, 70);
+        rectAqua5 = new Rectangle(474, 417, 70, 70);
+        rectAqua6 = new Rectangle(584, 417, 70, 70);
 
         // ajout du poisson dans l'aquarium
         poisson_rouge = new PoissonRouge();
@@ -226,6 +237,7 @@ public class GUIMain extends JFrame implements Runnable {
                 inventaire_bg.setVisible(false);
                 // test
                 poisson_betta.swim = false;
+                empla1 = "decoration";
             }
         });
 
@@ -237,6 +249,7 @@ public class GUIMain extends JFrame implements Runnable {
                 pipette2.changerEtatPanel(panelAqua);
                 // test
                 poisson_betta.swim = true;
+                empla1 = "poisson";
             }
 
             @Override
@@ -302,19 +315,32 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 1
         inventaire.emp1.addMouseListener(new MouseAdapter() {
+
             @Override
             public void mousePressed(MouseEvent e) {
-                setCursor(inventaire.emp1);
-                visibleBorders();
+                if (empla1 == "decoration") {
+                    setCursor(inventaire.emp1);
+                    visibleBordersDeco();
+                }
+                if (empla1 == "poisson") {
+                    setCursor(inventaire.emp1);
+                    visibleBordersPoi();
+                }
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                basicCursor();
-                invisibleBorders();
-                checkRectangles(rectEmp1, aquarium.emp1, inventaire.emp1.getIcon());
-                checkRectangles(rectEmp2, aquarium.emp2, inventaire.emp1.getIcon());
-                checkRectangles(rectEmp3, aquarium.emp3, inventaire.emp1.getIcon());
+                if (empla1 == "decoration") {
+                    basicCursor();
+                    invisibleBordersDeco();
+                    checkRectangles(rectEmp1, aquarium.emp1, inventaire.emp1.getIcon());
+                    checkRectangles(rectEmp2, aquarium.emp2, inventaire.emp1.getIcon());
+                    checkRectangles(rectEmp3, aquarium.emp3, inventaire.emp1.getIcon());
+                }
+                if (empla1 == "poisson") {
+                    basicCursor();
+                    invisibleBordersPoi();
+                }
             }
         });
 
@@ -322,17 +348,29 @@ public class GUIMain extends JFrame implements Runnable {
         inventaire.emp2.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                setCursor(inventaire.emp2);
-                visibleBorders();
+                if (empla2 == "decoration") {
+                    setCursor(inventaire.emp2);
+                    visibleBordersDeco();
+                }
+                if (empla2 == "poisson") {
+                    setCursor(inventaire.emp2);
+                    visibleBordersPoi();
+                }
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                basicCursor();
-                invisibleBorders();
-                checkRectangles(rectEmp1, aquarium.emp1, inventaire.emp2.getIcon());
-                checkRectangles(rectEmp2, aquarium.emp2, inventaire.emp2.getIcon());
-                checkRectangles(rectEmp3, aquarium.emp3, inventaire.emp2.getIcon());
+                if (empla2 == "decoration") {
+                    basicCursor();
+                    invisibleBordersDeco();
+                    checkRectangles(rectEmp1, aquarium.emp1, inventaire.emp2.getIcon());
+                    checkRectangles(rectEmp2, aquarium.emp2, inventaire.emp2.getIcon());
+                    checkRectangles(rectEmp3, aquarium.emp3, inventaire.emp2.getIcon());
+                }
+                if (empla2 == "poisson") {
+                    basicCursor();
+                    invisibleBordersPoi();
+                }
             }
         });
 
@@ -341,13 +379,13 @@ public class GUIMain extends JFrame implements Runnable {
             @Override
             public void mousePressed(MouseEvent e) {
                 setCursor(inventaire.emp3);
-                visibleBorders();
+                visibleBordersDeco();
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
                 basicCursor();
-                invisibleBorders();
+                invisibleBordersDeco();
                 checkRectangles(rectEmp1, aquarium.emp1, inventaire.emp3.getIcon());
                 checkRectangles(rectEmp2, aquarium.emp2, inventaire.emp3.getIcon());
                 checkRectangles(rectEmp3, aquarium.emp3, inventaire.emp3.getIcon());
@@ -359,13 +397,13 @@ public class GUIMain extends JFrame implements Runnable {
             @Override
             public void mousePressed(MouseEvent e) {
                 setCursor(inventaire.emp4);
-                visibleBorders();
+                visibleBordersDeco();
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
                 basicCursor();
-                invisibleBorders();
+                invisibleBordersDeco();
                 checkRectangles(rectEmp1, aquarium.emp1, inventaire.emp4.getIcon());
                 checkRectangles(rectEmp2, aquarium.emp2, inventaire.emp4.getIcon());
                 checkRectangles(rectEmp3, aquarium.emp3, inventaire.emp4.getIcon());
@@ -379,7 +417,7 @@ public class GUIMain extends JFrame implements Runnable {
             public void mousePressed(MouseEvent e) {
                 if (empla5 == "decoration") {
                     setCursor(inventaire.emp5);
-                    visibleBorders();
+                    visibleBordersDeco();
                 }
                 if (empla5 == "poisson") {
                     setCursor(inventaire.emp5);
@@ -389,7 +427,7 @@ public class GUIMain extends JFrame implements Runnable {
             @Override
             public void mouseReleased(MouseEvent e) {
                 basicCursor();
-                invisibleBorders();
+                invisibleBordersDeco();
                 checkRectangles(rectEmp1, aquarium.emp1, inventaire.emp5.getIcon());
                 checkRectangles(rectEmp2, aquarium.emp2, inventaire.emp5.getIcon());
                 checkRectangles(rectEmp3, aquarium.emp3, inventaire.emp5.getIcon());
@@ -402,13 +440,13 @@ public class GUIMain extends JFrame implements Runnable {
             @Override
             public void mousePressed(MouseEvent e) {
                 setCursor(inventaire.emp6);
-                visibleBorders();
+                visibleBordersDeco();
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
                 basicCursor();
-                invisibleBorders();
+                invisibleBordersDeco();
                 checkRectangles(rectEmp1, aquarium.emp1, inventaire.emp6.getIcon());
                 checkRectangles(rectEmp2, aquarium.emp2, inventaire.emp6.getIcon());
                 checkRectangles(rectEmp3, aquarium.emp3, inventaire.emp6.getIcon());
@@ -421,17 +459,35 @@ public class GUIMain extends JFrame implements Runnable {
     // --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     // méthode pour set les borders visible
-    public void visibleBorders() {
+    public void visibleBordersDeco() {
         aquarium.emp1.setBorder(new LineBorder(Color.yellow, 2));
         aquarium.emp2.setBorder(new LineBorder(Color.yellow, 2));
         aquarium.emp3.setBorder(new LineBorder(Color.yellow, 2));
     }
 
+    public void visibleBordersPoi() {
+        aquarium.aqua1.setBorder(new LineBorder(Color.black, 2));
+        aquarium.aqua2.setBorder(new LineBorder(Color.blue, 2));
+        aquarium.aqua3.setBorder(new LineBorder(Color.blue, 2));
+        aquarium.aqua4.setBorder(new LineBorder(Color.blue, 2));
+        aquarium.aqua5.setBorder(new LineBorder(Color.blue, 2));
+        aquarium.aqua6.setBorder(new LineBorder(Color.blue, 2));
+    }
+
     // méthode pour set les borders visible
-    public void invisibleBorders() {
+    public void invisibleBordersDeco() {
         aquarium.emp1.setBorder(null);
         aquarium.emp2.setBorder(null);
         aquarium.emp3.setBorder(null);
+    }
+
+    public void invisibleBordersPoi() {
+        aquarium.aqua1.setBorder(null);
+        aquarium.aqua2.setBorder(null);
+        aquarium.aqua3.setBorder(null);
+        aquarium.aqua4.setBorder(null);
+        aquarium.aqua5.setBorder(null);
+        aquarium.aqua6.setBorder(null);
     }
 
     // méthode pour set curseur de base
