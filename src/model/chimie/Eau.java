@@ -67,16 +67,20 @@ public class Eau implements Runnable {
     }
 
     public void addAmmoniaque(float ammoniaque, byte cycle) { // ajouter différence, mettre dans intervalle [tant que y > 0 && pente négative]
+        
+        
+        listeAmmoniaque.add(cycle, ammoniaque);
+        
         /* if(listeAmmoniaque.get(cycle).isNaN()){
             listeAmmoniaque.addLast((float)0);
         } */
 
-        if (!listeAmmoniaque.contains(ammoniaque)) { // check
+        /* if (!listeAmmoniaque.contains(ammoniaque)) { // check
             
             listeAmmoniaque.remove(bufferAmmoniaque); // then act
             listeAmmoniaque.add(cycle, ammoniaque);
             bufferAmmoniaque = ammoniaque;
-        }
+        } */
         
         
         /* listeAmmoniaque.remove(0);

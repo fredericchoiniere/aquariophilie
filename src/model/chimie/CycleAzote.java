@@ -8,7 +8,7 @@ public class CycleAzote implements Runnable {
 
     public float jourInitial = GUIMain.jours;
     public float jourFinal = jourInitial + 35;
-    public float jours = 0;
+    public float jours = 0, temp = 0;
     public Eau eau = GUIMain.eau;
     public byte cycle = eau.cycle;
 
@@ -22,7 +22,13 @@ public class CycleAzote implements Runnable {
     }
 
     public void cycleAmmoniaque(Eau eau) {
-        eau.addAmmoniaque((float) (-3.2 * ((jours / 7) - 1.25) * ((jours / 7) - 1.25) + 5), cycle);
+        eau.listeAmmoniaque.remove(temp);
+        if (jours != 18) {
+            temp = (float) (-3.2 * ((jours / 7) - 1.25) * ((jours / 7) - 1.25) + 5);
+        } else {
+            temp = 0;
+        }
+        eau.addAmmoniaque(temp, cycle);
     }
 
     @Override
@@ -33,12 +39,12 @@ public class CycleAzote implements Runnable {
                 jours++;
 
             try {
-                if (jours >= 0 && jours < 18) {
+                if (jours >= 0 && jours <= 18) {
                     // System.out.println("compote");
                     cycleAmmoniaque(eau);
 
                     Thread.sleep(1000); // à enlever
-                } else
+                } else 
                     Thread.sleep(1000);
             } catch (Exception e) {
                 e.printStackTrace();
