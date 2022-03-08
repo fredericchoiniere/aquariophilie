@@ -17,7 +17,7 @@ public class Eau implements Runnable {
     public float nitrites = 0; // Doit etre 0, maximum 5mg par litre
     public float nitrates = 0; // max 50mg/L
     public float ammoniaque = 10;
-    private float sommeAmmoniaque, bufferAmmoniaque = 0, sommeNitrites;
+    private float sommeAmmoniaque, sommeNitrites;
     public int ammonium = 0;
 
     public int nbAtomeN = 0;
@@ -32,6 +32,9 @@ public class Eau implements Runnable {
     public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>();
     public List<Float> listeAmmoniaque = new CopyOnWriteArrayList<>(listeAmmoniaqueTemp); // TODO: faire fonctionner concurrentlist
 
+    public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>();
+    public List<Float> listeNitrites = new CopyOnWriteArrayList<>(listeNitritesTemp); 
+
     // ArrayBlockingQueue? comment manipuler la différence de valeurs? jta boutte
     // live on check-then-act ce qui est un big no no
 
@@ -40,6 +43,9 @@ public class Eau implements Runnable {
 
     public Eau(){
         listeAmmoniaque.add(0, this.ammoniaque);
+        listeAmmoniaque.add(1, this.ammoniaque);
+        listeNitrites.add(0, this.nitrites);
+        listeNitrites.add(1, this.nitrites);
 
         //listeAmmoniaque.add(1,(float) 0);
     }
@@ -62,14 +68,14 @@ public class Eau implements Runnable {
 
     public void couleur() {
 
-        //pourcentage de vert dans l'eau
+        //pourcentage de vert ou de gris dans l'eau
 
     }
 
     public void addAmmoniaque(float ammoniaque, byte cycle) { // ajouter différence, mettre dans intervalle [tant que y > 0 && pente négative]
         
-        
         listeAmmoniaque.add(cycle, ammoniaque);
+        //listeNitrites.add(cycle, nitrites);
         
         /* if(listeAmmoniaque.get(cycle).isNaN()){
             listeAmmoniaque.addLast((float)0);
@@ -89,7 +95,7 @@ public class Eau implements Runnable {
     }
 
     public float sommeAmmoniaque(){
-        sommeAmmoniaque = 0;
+        //sommeAmmoniaque = 0;
         for (Float valeur : listeAmmoniaque) {
             sommeAmmoniaque += valeur;
         }
@@ -97,12 +103,27 @@ public class Eau implements Runnable {
         return this.ammoniaque;
     }
 
-    public double comportNitrite(){ // voir fonction, mettre dans intervalle [tant que y > 0 && pente négative]
+    public void addNitrites(float nitrites, byte cycle) { // ajouter différence, mettre dans intervalle
+        
+        listeNitrites.add(cycle, nitrites);
+
+    }
+
+    public float sommeNitrites(){
+        //sommeNitrites = 0;
+        for (Float valeur : listeNitrites) {
+            sommeNitrites += valeur;
+        }
+        this.nitrites = sommeNitrites;
+        return this.nitrites;
+    }
+
+    public double comportNitrites(){ // voir fonction, mettre dans intervalle [tant que y > 0 && pente négative]
         double pet = 0;
         return pet;
     }
 
-    public float comportNitrate() {
+    public float comportNitrates() {
         //System.out.println("nitrates"+ nitrates);
         this.nitrates = ((jours/7) - 4);
         return this.nitrates;
@@ -114,13 +135,10 @@ public class Eau implements Runnable {
             //System.out.println("while");
             jours = GUIMain.jours;
 
-            
-    
-
             try {
                 if (jours > 28) {
                     //System.out.println("compote");
-                    comportNitrate();
+                    comportNitrates();
                     Thread.sleep(1000); // à enlever
                 } else Thread.sleep(1000);
             } catch (Exception e) {

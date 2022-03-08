@@ -74,19 +74,22 @@ public class PanelTest extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == button1) {
-            stoech.quantAmmoniaque += 10;
+            //stoech.quantAmmoniaque += 10;
         }
         if (e.getSource() == button2) {
-            stoech.quantAmmoniaque -= 10;
+            //stoech.quantAmmoniaque -= 10;
             System.out.println("Jour:" + cycle.jours);
             System.out.println("Ammoniaque:" + cycle.eau.sommeAmmoniaque());
-            System.out.println("List:" + cycle.eau.listeAmmoniaque);
+            System.out.println("Liste ammoniaque:" + cycle.eau.listeAmmoniaque);
+            System.out.println("Nitrites:" + cycle.eau.sommeNitrites());
+            System.out.println("Liste nitrites:" + cycle.eau.listeNitrites);
             System.out.println("cycle" + cycle.cycle);
         }
         if (e.getSource() == button3) {
 
             //cycle.eau.listeAmmoniaque.addLast((float)0);
             cycle.eau.listeAmmoniaque.add((float)0);
+            cycle.eau.listeNitrites.add((float)0);
             new Thread(new CycleAzote()).start();
 
         }
