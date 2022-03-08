@@ -1,8 +1,7 @@
 package model.item.outils;
 
-import model.DraggableComponent;
 
-public class Outils extends DraggableComponent{ // extends Draggable components pour les Outils
+public class Outils{ // extends Draggable components pour les Outils
     
     public String nom = "";
 

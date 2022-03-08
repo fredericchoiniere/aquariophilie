@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Poisson2 extends JPanel {
+public class Poisson2 extends JPanel { //TODO: implements runnable
     // Attributs : coordonn�es de la boule
     public int x = 10;
     public int y = 10;
