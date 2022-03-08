@@ -8,7 +8,7 @@ public class CycleAzote implements Runnable {
 
     public float jourInitial = GUIMain.jours;
     public float jourFinal = jourInitial + 35;
-    public float jours = 0, temp = 0;
+    public float jours = 0, tempAmmoniaque = 0, tempNitrites = 0;
     public Eau eau = GUIMain.eau;
     public byte cycle = eau.cycle;
 
@@ -22,13 +22,27 @@ public class CycleAzote implements Runnable {
     }
 
     public void cycleAmmoniaque(Eau eau) {
-        eau.listeAmmoniaque.remove(temp);
+        //if(tempAmmoniaque!=0)
+        eau.listeAmmoniaque.remove(tempAmmoniaque);
         if (jours != 18) {
-            temp = (float) (-3.2 * ((jours / 7) - 1.25) * ((jours / 7) - 1.25) + 5);
+            tempAmmoniaque = (float) (-3.2 * ((jours / 7) - 1.25) * ((jours / 7) - 1.25) + 5);
         } else {
-            temp = 0;
+            tempAmmoniaque = 0;
         }
-        eau.addAmmoniaque(temp, cycle);
+        eau.addAmmoniaque(tempAmmoniaque, cycle);
+    }
+
+    public void cycleNitrites(Eau eau) {
+        //if(tempNitrites!=0)
+        eau.listeNitrites.remove(tempNitrites);
+        if (jours > 14 && jours < 35) {
+            tempNitrites = (float) (-3.56 * ((jours / 7) - 3.5) * ((jours / 7) - 3.5) + 8);
+        } 
+        else{
+            tempNitrites = 0;
+        }
+        eau.addNitrites(tempNitrites, cycle);
+        //eau.listeNitrites.add(tempNitrites);
     }
 
     @Override
@@ -46,6 +60,15 @@ public class CycleAzote implements Runnable {
                     Thread.sleep(1000); // à enlever
                 } else 
                     Thread.sleep(1000);
+
+                if (jours >= 14 && jours <= 35) {
+                    // System.out.println("compote");
+                    cycleNitrites(eau);
+    
+                    Thread.sleep(1000); // à enlever
+                } else 
+                  Thread.sleep(1000);
+                
             } catch (Exception e) {
                 e.printStackTrace();
             }
