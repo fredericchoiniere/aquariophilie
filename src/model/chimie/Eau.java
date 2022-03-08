@@ -95,7 +95,7 @@ public class Eau implements Runnable {
     }
 
     public float sommeAmmoniaque(){
-        //sommeAmmoniaque = 0;
+        sommeAmmoniaque = 0;
         for (Float valeur : listeAmmoniaque) {
             sommeAmmoniaque += valeur;
         }
@@ -110,7 +110,7 @@ public class Eau implements Runnable {
     }
 
     public float sommeNitrites(){
-        //sommeNitrites = 0;
+        sommeNitrites = 0;
         for (Float valeur : listeNitrites) {
             sommeNitrites += valeur;
         }

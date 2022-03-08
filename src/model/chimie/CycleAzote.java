@@ -22,8 +22,8 @@ public class CycleAzote implements Runnable {
     }
 
     public void cycleAmmoniaque(Eau eau) {
-        if(tempAmmoniaque!=0)
-            eau.listeAmmoniaque.remove(tempAmmoniaque);
+        //if(tempAmmoniaque!=0)
+        eau.listeAmmoniaque.remove(tempAmmoniaque);
         if (jours != 18) {
             tempAmmoniaque = (float) (-3.2 * ((jours / 7) - 1.25) * ((jours / 7) - 1.25) + 5);
         } else {
@@ -33,11 +33,12 @@ public class CycleAzote implements Runnable {
     }
 
     public void cycleNitrites(Eau eau) {
-        if(tempNitrites!=0)
-            eau.listeNitrites.remove(tempNitrites);
-        if (jours >= 14 && jours <= 35) {
+        //if(tempNitrites!=0)
+        eau.listeNitrites.remove(tempNitrites);
+        if (jours > 14 && jours < 35) {
             tempNitrites = (float) (-3.56 * ((jours / 7) - 3.5) * ((jours / 7) - 3.5) + 8);
-        } else {
+        } 
+        else{
             tempNitrites = 0;
         }
         eau.addNitrites(tempNitrites, cycle);
