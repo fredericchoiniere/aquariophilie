@@ -81,7 +81,7 @@ public class PanelTest extends JPanel implements ActionListener {
             System.out.println("Jour:" + cycle.jours);
             System.out.println("Ammoniaque:" + cycle.eau.sommeAmmoniaque());
             System.out.println("List:" + cycle.eau.listeAmmoniaque);
-            System.out.println("cycle" + cycle.cycle);
+            
         }
         if (e.getSource() == button3) {
 

@@ -2,7 +2,7 @@ package model.chimie;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.*;
 
 import view.GUIMain;
 
@@ -16,7 +16,7 @@ public class Eau implements Runnable {
     public int gh = 5; // 0 à 30?
     public float nitrites = 0; // Doit etre 0, maximum 5mg par litre
     public float nitrates = 0; // max 50mg/L
-    public float ammoniaque = 10;
+    public float ammoniaque = 0;
     private float sommeAmmoniaque, bufferAmmoniaque = 0, sommeNitrites;
     public int ammonium = 0;
 
@@ -29,8 +29,8 @@ public class Eau implements Runnable {
     public int temperature;
     
 
-    public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>();
-    public List<Float> listeAmmoniaque = new CopyOnWriteArrayList<>(listeAmmoniaqueTemp); // TODO: faire fonctionner concurrentlist
+    public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0);
+    public List<Float> listeAmmoniaque = Collections.synchronizedList(listeAmmoniaqueTemp); // TODO: faire fonctionner concurrentlist
 
     // ArrayBlockingQueue? comment manipuler la différence de valeurs? jta boutte
     // live on check-then-act ce qui est un big no no
@@ -40,8 +40,7 @@ public class Eau implements Runnable {
 
     public Eau(){
         listeAmmoniaque.add(0, this.ammoniaque);
-
-        //listeAmmoniaque.add(1,(float) 0);
+        listeAmmoniaque.add(1,(float) 0);
     }
 
     public void changerEau() {
