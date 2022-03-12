@@ -1,8 +1,8 @@
 package model.chimie;
 
 import model.environnement.*;
+
 import view.GUIMain;
-//import java.math.*;
 
 public class CycleAzote implements Runnable {
 
@@ -12,18 +12,18 @@ public class CycleAzote implements Runnable {
     public Eau eau = GUIMain.eau;
     public byte cycle = eau.cycle;
 
-    // Temps tempsCycle = new Temps();
-
     public CycleAzote() {
-
         eau.cycle++;
         cycle++;
-        //eau.listeAmmoniaque.addLast((float)0);
     }
 
+    
+    /** 
+     * @param eau
+     * Démarre un cycle d'ammoniaque en fonction du temps, suivant une courbe
+     */
     public void cycleAmmoniaque(Eau eau) {
-        //if(temp != 0)
-            eau.listeAmmoniaque.remove(temp);
+        eau.listeAmmoniaque.remove(temp);
         if (jours != 18) {
             temp = (float) (-3.2 * ((jours / 7) - 1.25) * ((jours / 7) - 1.25) + 5);
         } else {
@@ -32,6 +32,11 @@ public class CycleAzote implements Runnable {
         eau.addAmmoniaque(temp, cycle);
     }
 
+    
+    /** 
+     * Méthode run de la classe CycleAzote
+     * Incrémente les jours et calcule le nouveau taux d'ammoniaque et de nitrites
+     */
     @Override
     public void run() { // TODO: updater avec changement de jour
         while (true) {
@@ -41,16 +46,13 @@ public class CycleAzote implements Runnable {
 
             try {
                 if (jours >= 0 && jours <= 18) {
-                    // System.out.println("compote");
                     cycleAmmoniaque(eau);
-
-                    Thread.sleep(1000); // à enlever
+                    Thread.sleep(1000);
                 } else 
                     Thread.sleep(1000);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-
     }
 }

@@ -41,10 +41,12 @@ public class GUIMain extends JFrame implements Runnable {
     int vel_x = 2;
     int vel_y = 2;
     public static byte cycle = 1;
-    public static float jours = (float) 0; // TIMER GLOBAL
     public int argent = 0;
+    
+    
+    public static float jours = (float) 0; // TIMER GLOBAL
 
-    public GUIMain() { // création du constructeur GuiMain
+    public GUIMain() { // création du constructeur GUIMain
 
         // création du curseur custom
         tetra_curseur = new ImageIcon("res/icone_souris/tetra_cursor.png");
