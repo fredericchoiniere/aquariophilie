@@ -1,24 +1,19 @@
 package view;
 
-// import associer àl'utilisation de la classe
+// import associer à l'utilisation de la classe
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*;
 
 import model.chimie.CycleAzote;
-import model.chimie.Eau;
 import model.chimie.TestStoech;
 import model.environnement.Temps;
 
 public class PanelTest extends JPanel implements ActionListener {
 
-    // appel desattributs de la classe
+    // appel des attributs de la classe
     TestStoech stoech;
-    
     CycleAzote cycle;
     Temps temps;
     JButton button1, button2, button3;
@@ -39,8 +34,10 @@ public class PanelTest extends JPanel implements ActionListener {
         // attributs relier à ce panel
         stoech = new TestStoech();
         pet = new Thread(stoech);
-        /* eau = new Eau();
-        prout = new Thread(eau); */
+        /*
+         * eau = new Eau();
+         * prout = new Thread(eau);
+         */
         cycle = new CycleAzote();
         cycle1 = new Thread(cycle);
 
@@ -65,8 +62,10 @@ public class PanelTest extends JPanel implements ActionListener {
         add(button3);
 
         // début des threads relier au panel
-        /* pet.start();
-        prout.start(); */
+        /*
+         * pet.start();
+         * prout.start();
+         */
         cycle1.start();
     }
 
@@ -74,10 +73,10 @@ public class PanelTest extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == button1) {
-            //stoech.quantAmmoniaque += 10;
+            // stoech.quantAmmoniaque += 10;
         }
         if (e.getSource() == button2) {
-            //stoech.quantAmmoniaque -= 10;
+            // stoech.quantAmmoniaque -= 10;
             System.out.println("Jour:" + cycle.jours);
             System.out.println("Ammoniaque:" + cycle.eau.sommeAmmoniaque());
             System.out.println("Liste ammoniaque:" + cycle.eau.listeAmmoniaque);
@@ -87,9 +86,9 @@ public class PanelTest extends JPanel implements ActionListener {
         }
         if (e.getSource() == button3) {
 
-            //cycle.eau.listeAmmoniaque.addLast((float)0);
-            cycle.eau.listeAmmoniaque.add((float)0);
-            cycle.eau.listeNitrites.add((float)0);
+            // cycle.eau.listeAmmoniaque.addLast((float)0);
+            cycle.eau.listeAmmoniaque.add((float) 0);
+            cycle.eau.listeNitrites.add((float) 0);
             new Thread(new CycleAzote()).start();
 
         }

@@ -1,6 +1,5 @@
 package model.poissons;
 
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -8,23 +7,24 @@ import javax.swing.*;
 import view.GUIMain;
 import view.tabs.PanelAqua;
 
-public class PoissonBetta extends JPanel{ //TODO: implements runnable
+public class Poisson2 extends JPanel{ //TODO: implements runnable
     // Attributs : coordonn�es de la boule
-    public int x = 230;
-    public int y = 120;
+    public int x = 10;
+    public int y = 10;
     public int vel_x = 1;
     public int vel_y = 1;
     Image img;
-    Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_betta/poisson_droite.png");
+    Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_droite.png");
     // g2d.drawImage(poisson_droite, x, y, this);
 
-    Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_betta/poisson_gauche.png");
+    Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_gauche.png");
     // g2d.drawImage(poisson_gauche, x, y, this);
+
+    Image empty = Toolkit.getDefaultToolkit().getImage("res/poissons/empty.png");
 
     public String image = "droite";
     PanelAqua panelAqua;
     public boolean swim = true;
-    Image empty = Toolkit.getDefaultToolkit().getImage("res/poissons/empty.png");
 
     @Override
 
@@ -98,5 +98,8 @@ public class PoissonBetta extends JPanel{ //TODO: implements runnable
         this.deplacer();
     }
 
+    public void setImageEmpty(String string){
+        this.image = "empty";
+    }
 
 }
