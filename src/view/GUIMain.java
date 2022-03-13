@@ -426,7 +426,11 @@ public class GUIMain extends JFrame implements Runnable {
                 new Point(0, 0), "custom cursor"));
     }
 
-    // set le bon curseur avec le bon label
+    
+    /** 
+     * @param label
+     * Créé et applique un curseur custom
+     */
     public void setCursor(JLabel label) {
         ImageIcon curseur = (ImageIcon) label.getIcon();
         panelAqua.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
@@ -434,7 +438,13 @@ public class GUIMain extends JFrame implements Runnable {
                 new Point(0, 0), "curseur tétra"));
     }
 
-    // regarder si la souris est dans le rectangle lors du lachement de la touche
+    
+    /** 
+     * @param rectangle
+     * @param label
+     * @param icone
+     * Vérifie la position de la souris en fonction du rectangle fourni
+     */
     public void checkRectangles(Rectangle rectangle, JLabel label, Icon icone) {
         if (panelAqua.getMousePosition().getX() >= rectangle.getMinX()
                 && panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
