@@ -1,8 +1,8 @@
 package model.chimie;
 
 import model.environnement.*;
+
 import view.GUIMain;
-//import java.math.*;
 
 public class CycleAzote implements Runnable {
 
@@ -12,17 +12,17 @@ public class CycleAzote implements Runnable {
     public Eau eau = GUIMain.eau;
     public byte cycle = eau.cycle;
 
-    // Temps tempsCycle = new Temps();
-
     public CycleAzote() {
-
         eau.cycle++;
         cycle++;
-        //eau.listeAmmoniaque.addLast((float)0);
     }
 
+    
+    /** 
+     * @param eau
+     * Démarre un cycle d'ammoniaque en fonction du temps, suivant une courbe
+     */
     public void cycleAmmoniaque(Eau eau) {
-        //if(tempAmmoniaque!=0)
         eau.listeAmmoniaque.remove(tempAmmoniaque);
         if (jours != 18) {
             tempAmmoniaque = (float) (-3.2 * ((jours / 7) - 1.25) * ((jours / 7) - 1.25) + 5);
@@ -32,19 +32,13 @@ public class CycleAzote implements Runnable {
         eau.addAmmoniaque(tempAmmoniaque, cycle);
     }
 
-    public void cycleNitrites(Eau eau) {
-        //if(tempNitrites!=0)
-        eau.listeNitrites.remove(tempNitrites);
-        if (jours > 14 && jours < 35) {
-            tempNitrites = (float) (-3.56 * ((jours / 7) - 3.5) * ((jours / 7) - 3.5) + 8);
-        } 
-        else{
-            tempNitrites = 0;
-        }
-        eau.addNitrites(tempNitrites, cycle);
-        //eau.listeNitrites.add(tempNitrites);
-    }
 
+
+    
+    /** 
+     * Méthode run de la classe CycleAzote
+     * Incrémente les jours et calcule le nouveau taux d'ammoniaque et de nitrites
+     */
     @Override
     public void run() { // TODO: updater avec changement de jour
         while (true) {
@@ -54,16 +48,14 @@ public class CycleAzote implements Runnable {
 
             try {
                 if (jours >= 0 && jours <= 18) {
-                    // System.out.println("compote");
                     cycleAmmoniaque(eau);
-
-                    Thread.sleep(1000); // à enlever
+                    Thread.sleep(1000);
                 } else 
                     Thread.sleep(1000);
 
                 if (jours >= 14 && jours <= 35) {
                     // System.out.println("compote");
-                    cycleNitrites(eau);
+                    //cycleNitrites(eau);
     
                     Thread.sleep(1000); // à enlever
                 } else 
@@ -73,6 +65,5 @@ public class CycleAzote implements Runnable {
                 e.printStackTrace();
             }
         }
-
     }
 }
