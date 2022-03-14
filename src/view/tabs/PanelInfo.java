@@ -21,5 +21,4 @@ public class PanelInfo extends JPanel { // extends JPanel pour créer un Jpanel
         add(scroll); // ajout du panel à la classe
     }
 
-
 }

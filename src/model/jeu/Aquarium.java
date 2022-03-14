@@ -9,11 +9,11 @@ public class Aquarium {
     public Emplacementaq emp1, emp2, emp3, aqua1, aqua2, aqua3, aqua4, aqua5, aqua6;
     final Dimension size_icone_inv = new Dimension(80, 80);
     final Dimension size_icone_poi = new Dimension(70, 70);
-
     private ArrayList<Emplacementaq> listEmpPleins = new ArrayList<Emplacementaq>(3);
 
     public Aquarium(JPanel panel) {
 
+        // rajoute les emplacements à l'aquarium
         emp1 = new Emplacementaq();
         emp1.setBounds(353, 408, (int) size_icone_inv.getWidth(), (int) size_icone_inv.getHeight());
         emp1.setIcon(null);
@@ -29,7 +29,6 @@ public class Aquarium {
         emp3.setIcon(null);
         panel.add(emp3);
 
-        //TODO: faire les bons bounds
         aqua1 = new Emplacementaq();
         aqua1.setBounds(360, 321, (int) size_icone_poi.getWidth(), (int) size_icone_poi.getHeight());
         aqua1.setIcon(null);
@@ -61,6 +60,7 @@ public class Aquarium {
         panel.add(aqua6);
     }
 
+    // permet de set les label visible ou invisible
     public void setVisible(boolean etat) {
         emp1.setVisible(etat);
         emp2.setVisible(etat);

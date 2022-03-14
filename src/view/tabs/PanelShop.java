@@ -15,7 +15,8 @@ public class PanelShop extends JPanel {
         Graphics2D g2D = (Graphics2D) g;
 
         g2D.setColor(Color.yellow);
-        g2D.fillRect(20, 20, 200, 200);;
+        g2D.fillRect(20, 20, 200, 200);
+        ;
 
     }
 }

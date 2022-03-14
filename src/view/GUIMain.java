@@ -33,22 +33,22 @@ public class GUIMain extends JFrame implements Runnable {
     public static Eau eau;
     Poisson1 poisson1;
     Poisson2 poisson2;
-    Thread tpoisson1 = new Thread(this);
-    Thread tpoisson2 = new Thread(this);
-    
-    Thread threadEau;
     Pipette pipette2;
     ImageIcon tetra_curseur;
     Inventaire inventaire;
     Aquarium aquarium;
 
+    // les threads
+    Thread tpoisson1 = new Thread(this);
+    Thread tpoisson2 = new Thread(this);
+    Thread threadEau;
+
+    // les attributs
     short stade, iteration = 0;
     int vel_x = 2;
     int vel_y = 2;
     public static byte cycle = 1;
     public int argent = 0;
-    
-    
     public static float jours = (float) 0; // TIMER GLOBAL
 
     public GUIMain() { // création du constructeur GUIMain
@@ -187,7 +187,7 @@ public class GUIMain extends JFrame implements Runnable {
         rectAqua5 = new Rectangle(474, 417, 70, 70);
         rectAqua6 = new Rectangle(584, 417, 70, 70);
 
-        // ajout du poisson dans l'aquarium
+        // ajout des poissons dans l'aquarium
         poisson2 = new Poisson2();
         poisson2.setBounds(340, 324, 322, 156);
         tpoisson2.start();
@@ -538,10 +538,9 @@ public class GUIMain extends JFrame implements Runnable {
                 new Point(0, 0), "custom cursor"));
     }
 
-    
-    /** 
+    /**
      * @param label
-     * Créé et applique un curseur custom
+     *              Créé et applique un curseur custom
      */
     public void setCursor(JLabel label) {
         ImageIcon curseur = (ImageIcon) label.getIcon();
@@ -550,12 +549,12 @@ public class GUIMain extends JFrame implements Runnable {
                 new Point(0, 0), "curseur tétra"));
     }
 
-    
-    /** 
+    /**
      * @param rectangle
      * @param label
      * @param icone
-     * Vérifie la position de la souris en fonction du rectangle fourni
+     *                  Vérifie la position de la souris en fonction du rectangle
+     *                  fourni
      */
     public void checkRectanglesDeco(Rectangle rectangle, JLabel label, Icon icone) {
         if (panelAqua.getMousePosition().getX() >= rectangle.getMinX()
@@ -600,7 +599,7 @@ public class GUIMain extends JFrame implements Runnable {
     // création des threads pour les poissons dans l'aquarium
     // --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    // thread du poisson rouge TODO: placer dans sa classe
+    // thread du poisson rouge
     @Override
     public void run() {
         while (true) {

@@ -1,0 +1,40 @@
+@startuml Diagram
+scale 1
+
+class Referant {
+    +Referent
+}
+
+class Emetteur {
+    +Emetteur
+}
+
+class Canal {
+    +Canal
+}
+
+class Code {
+    +Code
+}
+
+class Message {
+    +Message
+}
+
+class Recepteur {
+    +Recepteur
+}
+
+
+Referant <|--  Emetteur
+Message <|--  Emetteur
+Canal <|--  Emetteur
+Code <|--  Emetteur
+
+Recepteur <|-- Message
+Recepteur <|-- Canal
+
+
+
+
+@enduml

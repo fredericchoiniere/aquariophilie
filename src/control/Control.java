@@ -11,6 +11,7 @@ public class Control {
 
         GUIIntro guiIntro = new GUIIntro();
 
+        // attributs du Frame intro
         guiIntro.setSize(500, 400);
         guiIntro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         guiIntro.setResizable(false);
