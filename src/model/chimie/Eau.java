@@ -1,29 +1,25 @@
 package model.chimie;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
 import view.GUIMain;
 
 /**
- * <p> description </p>
- * @param 
- * @return 
+ * <p>
+ * description
+ * </p>
+ * 
+ * @param
+ * @return
  * @since Iteration #1
  */
 public class Eau implements Runnable {
 
-    public final float volumeEau = (float) 37.85;
-    public int scoreEau;
-
     public int ph = 7; // 0 à 14 (dépend des poissons à élever)
     public int kh = 8; // Dureté de l'eau 0 à 10? (8+ pour poissons d'eau douce en eau basique?)
     public int gh = 5; // 0 à 30?
-    public float nitrites = 0; // Doit etre 0, maximum 5mg par litre
-    public float nitrates = 0; // max 50mg/L
-    public float ammoniaque = 0;
-    private float sommeAmmoniaque, sommeNitrites;
     public int ammonium = 0;
-
     public int nbAtomeN = 0;
     public int nbAtomeO = 2103;
     public int nbAtomeH = 4206;
@@ -31,12 +27,18 @@ public class Eau implements Runnable {
     public int bacteries;
     public int chlore;
     public int temperature;
-    
+    public int scoreEau;
 
-    public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0);                  // Liste à synchroniser
+    public final float volumeEau = (float) 37.85;
+    public float nitrites = 0; // Doit etre 0, maximum 5mg par litre
+    public float nitrates = 0; // max 50mg/L
+    public float ammoniaque = 0;
+    private float sommeAmmoniaque, sommeNitrites;
+
+    public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeAmmoniaque = Collections.synchronizedList(listeAmmoniaqueTemp); // Liste synchronisée
 
-    public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0);                  // Liste à synchroniser
+    public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
 
     // ArrayBlockingQueue? comment manipuler la différence de valeurs?
@@ -46,30 +48,35 @@ public class Eau implements Runnable {
     public byte cycle = 0;
 
     /**
-     * <p> description </p>
-     * @param 
-     * @return 
+     * <p>
+     * description
+     * </p>
+     * 
+     * @param
+     * @return
      * @since Iteration #1
      */
-    public Eau(){
+    public Eau() {
         listeAmmoniaque.add(0, this.ammoniaque);
         listeAmmoniaque.add(1, this.ammoniaque);
 
-
-        //listeAmmoniaque.add(1,(float) 0);
+        // listeAmmoniaque.add(1,(float) 0);
     }
 
     /**
-     * <p> description </p>
-     * @param 
-     * @return 
+     * <p>
+     * description
+     * </p>
+     * 
+     * @param
+     * @return
      * @since Iteration #1
      */
     public void changerEau() {
 
-        ph = 7; 
-        kh = 8; 
-        gh = 5; 
+        ph = 7;
+        kh = 8;
+        gh = 5;
         nitrites = 0;
         nitrates = 0;
         ammoniaque = 0;
@@ -82,33 +89,36 @@ public class Eau implements Runnable {
     }
 
     /**
-     * <p> description </p>
-     * @param 
-     * @return 
+     * <p>
+     * description
+     * </p>
+     * 
+     * @param
+     * @return
      * @since Iteration #1
      */
     public void couleur() {
 
-        //pourcentage de vert ou de gris dans l'eau
+        // pourcentage de vert ou de gris dans l'eau
 
     }
 
-    
-    /** 
+    /**
      * @param ammoniaque
      * @param cycle
-     * Ajoute une valeur d'ammoniaque fournie dans la listeAmmoniaque à l'index spécifié
+     *                   Ajoute une valeur d'ammoniaque fournie dans la
+     *                   listeAmmoniaque à l'index spécifié
      */
-    public void addAmmoniaque(float ammoniaque, byte cycle) { // ajouter différence, mettre dans intervalle [tant que y > 0 && pente négative]
+    public void addAmmoniaque(float ammoniaque, byte cycle) { // ajouter différence, mettre dans intervalle [tant que y
+                                                              // > 0 && pente négative]
         listeAmmoniaque.add(cycle, ammoniaque);
     }
 
-    
-    /** 
+    /**
      * @return float
-     * Additionne toutes les valeurs dans la listeAmmoniaque
+     *         Additionne toutes les valeurs dans la listeAmmoniaque
      */
-    public float sommeAmmoniaque(){
+    public float sommeAmmoniaque() {
         sommeAmmoniaque = 0;
         for (Float valeur : listeAmmoniaque) {
             sommeAmmoniaque += valeur;
@@ -116,35 +126,34 @@ public class Eau implements Runnable {
         this.ammoniaque = sommeAmmoniaque;
         return this.ammoniaque;
     }
-    
-    /** 
-     * @return double
-     * Dicte le comportement des nitrites, incomplet
-     */
-    public double comportNitrite(){ // voir fonction, mettre dans intervalle [tant que y > 0 && pente négative]
-        double temp = 0;
-        return temp;
-    }
+
+
 
     /**
-     * <p> description </p>
-     * @param 
-     * @return 
+     * <p>
+     * description
+     * </p>
+     * 
+     * @param
+     * @return
      * @since Iteration #1
      */
     public void addNitrites(float nitrites, byte cycle) { // ajouter différence, mettre dans intervalle
-        
+
         listeNitrites.add(cycle, nitrites);
 
     }
 
     /**
-     * <p> description </p>
-     * @param 
-     * @return 
+     * <p>
+     * description
+     * </p>
+     * 
+     * @param
+     * @return
      * @since Iteration #1
      */
-    public float sommeNitrites(){
+    public float sommeNitrites() {
         sommeNitrites = 0;
         for (Float valeur : listeNitrites) {
             sommeNitrites += valeur;
@@ -154,27 +163,29 @@ public class Eau implements Runnable {
     }
 
     /**
-     * <p> description </p>
-     * @param 
-     * @return 
+     * <p>
+     * description
+     * </p>
+     * 
+     * @param
+     * @return
      * @since Iteration #1
      */
-    public double comportNitrites(){ // voir fonction, mettre dans intervalle [tant que y > 0 && pente négative]
+    public double comportNitrites() { // voir fonction, mettre dans intervalle [tant que y > 0 && pente négative]
         double pet = 0;
         return pet;
     }
 
-    /** 
+    /**
      * @return float
-     * Dicte le comportement des nitrates selon une courbe
+     *         Dicte le comportement des nitrates selon une courbe
      */
     public float comportNitrates() {
-        this.nitrates = ((jours/7) - 4);
+        this.nitrates = ((jours / 7) - 4);
         return this.nitrates;
     }
 
-    
-    /** 
+    /**
      * Méthode run de la classe Eau
      * Incomplète pour l'instant
      */
@@ -186,7 +197,8 @@ public class Eau implements Runnable {
                 if (jours > 28) {
                     comportNitrates();
                     Thread.sleep(1000);
-                } else Thread.sleep(1000);
+                } else
+                    Thread.sleep(1000);
             } catch (Exception e) {
                 e.printStackTrace();
             }

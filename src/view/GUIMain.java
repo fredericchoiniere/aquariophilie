@@ -16,9 +16,12 @@ import model.poissons.*;
 import view.tabs.*;
 
 /**
- * <p> description </p>
- * @param 
- * @return 
+ * <p>
+ * description
+ * </p>
+ * 
+ * @param
+ * @return
  * @since Iteration #1
  */
 public class GUIMain extends JFrame implements Runnable {
@@ -266,7 +269,7 @@ public class GUIMain extends JFrame implements Runnable {
         // action listener pour la pipette et les changements d'états du curseur et du
         // label
         pipette.addMouseListener(new MouseAdapter() {
-            
+
             @Override
             public void mousePressed(MouseEvent e) {
                 pipette2.changerEtatPanel(panelAqua);
@@ -312,7 +315,7 @@ public class GUIMain extends JFrame implements Runnable {
         // action listener sur le label icone pour faire disparaitre ou apparaitre
         // l'inventaire
         inventaire_ouvert.addMouseListener(new MouseAdapter() {
-           
+
             @Override
             public void mouseClicked(MouseEvent e) {
                 inventaire_ouvert.setVisible(false);
@@ -325,7 +328,7 @@ public class GUIMain extends JFrame implements Runnable {
         // action listener sur le label icone pour faire disparaitre ou apparaitre
         // l'inventaire
         inventaire_fermer.addMouseListener(new MouseAdapter() {
-            
+
             @Override
             public void mouseClicked(MouseEvent e) {
                 inventaire_ouvert.setVisible(true);
@@ -341,7 +344,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 1
         inventaire.emp1.addMouseListener(new MouseAdapter() {
-            
+
             @Override
             public void mousePressed(MouseEvent e) {
                 if (empla1 == "decoration") {
@@ -381,7 +384,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 2
         inventaire.emp2.addMouseListener(new MouseAdapter() {
-            
+
             @Override
             public void mousePressed(MouseEvent e) {
                 if (empla2 == "decoration") {
@@ -420,7 +423,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 3
         inventaire.emp3.addMouseListener(new MouseAdapter() {
-            
+
             @Override
             public void mousePressed(MouseEvent e) {
                 setCursor(inventaire.emp3);
@@ -439,7 +442,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 4
         inventaire.emp4.addMouseListener(new MouseAdapter() {
-            
+
             @Override
             public void mousePressed(MouseEvent e) {
                 setCursor(inventaire.emp4);
@@ -458,7 +461,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 5
         inventaire.emp5.addMouseListener(new MouseAdapter() {
-            
+
             @Override
             public void mousePressed(MouseEvent e) {
                 if (empla5 == "decoration") {
@@ -490,7 +493,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 6
         inventaire.emp6.addMouseListener(new MouseAdapter() {
-            
+
             @Override
             public void mousePressed(MouseEvent e) {
                 setCursor(inventaire.emp6);
@@ -513,9 +516,12 @@ public class GUIMain extends JFrame implements Runnable {
     // --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     /**
-     * <p> description </p>
-     * @param 
-     * @return 
+     * <p>
+     * description
+     * </p>
+     * 
+     * @param
+     * @return
      * @since Iteration #1
      */
     // méthode pour set les borders visible

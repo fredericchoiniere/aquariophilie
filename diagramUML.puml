@@ -1,19 +1,51 @@
 @startuml Diagram
 scale 1
 
-class Referant {
-    +Referent
+class Control {
+    +main
+    +guiIntro
+    +setVisible(): true
 }
 
+class GUIIntro {
+    +JButton: nouvelle, charger, 
+     close, credit
+    +JLabel: titre
+    +Jpanel
+    +guiMain
+    +GUIIntro(constructeur)
+    +GridBagLayout(panel)
+    +actionPerformed(button)
+    +addKeyListener(enter)
+}
 
+class CycleAzote {
+    +float: jour, jourFinale, jourInitial
+    +byte: cycle
+    +eau
+    +CycleAzote() 
+    +cycleAmmoniaque(eau)
+    +cycleNitrite(eau)
+    +run()
+}
 
-Referant <|--  Emetteur
-Message <|--  Emetteur
-Canal <|--  Emetteur
-Code <|--  Emetteur
+class Eau {
+    +int: ph, kh, gh, ammonium, nbAtomeN,
+     nbAtomeO, nbAtomeH, bacteries,
+     chlore, temperature, scoreEau
+    +float: volumeEau, nitrites, 
+     nitrates, ammoniaque, jours
+    -float: sommeAmmoniaque, sommeNitrites
+    +byte: cycle
+    +listes<float>
+    +Eau(constructeur)
+    +changerEau(), couleur(), addAmmoniaque(),
+     sommeAmmoniaque(), sommeNitrites(),
+     
+    +addNitrites(float, byte)
+    
+}
 
-Recepteur <|-- Message
-Recepteur <|-- Canal
 
 
 
