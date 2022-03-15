@@ -523,7 +523,7 @@ public class GUIMain extends JFrame implements Runnable {
      * méthode pour set les borders visible
      */
     public void visibleBordersPoi() {
-        aquarium.aqua1.setBorder(new LineBorder(Color.black, 2));
+        aquarium.aqua1.setBorder(new LineBorder(Color.blue, 2));
         aquarium.aqua2.setBorder(new LineBorder(Color.blue, 2));
         aquarium.aqua3.setBorder(new LineBorder(Color.blue, 2));
         aquarium.aqua4.setBorder(new LineBorder(Color.blue, 2));
