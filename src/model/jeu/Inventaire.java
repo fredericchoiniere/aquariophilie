@@ -43,7 +43,11 @@ public class Inventaire {
         label.add(emp6);
     }
 
-    // permet de set les label visible ou invisible
+    
+    /** 
+     * @param etat
+     * permet de set les label visible ou invisible
+     */
     public void setVisible(boolean etat) {
         emp1.setVisible(etat);
         emp2.setVisible(etat);

@@ -1,4 +1,5 @@
 package model.poissons;
+
 import java.awt.*;
 import javax.swing.*;
 
@@ -20,13 +21,19 @@ public class Poisson2 extends JPanel {
     Image empty = Toolkit.getDefaultToolkit().getImage("res/poissons/empty.png");
     PanelAqua panelAqua;
 
-    // permet de le rendre opaque
+    /**
+     * @param isOpaque
+     *                 permet de le rendre opaque
+     */
     @Override
     public void setOpaque(boolean isOpaque) {
         super.setOpaque(false);
     }
 
-    // Dessine le poisson
+    /**
+     * @param g
+     *          Dessine le poisson
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
@@ -34,17 +41,25 @@ public class Poisson2 extends JPanel {
         g2d.drawImage(setImage(image), x, y, this);
     }
 
-    // set la velociter du poisson
+    /**
+     * @param vel_x
+     *              set la velociter du poisson
+     */
     public void setXVelocity(int vel_x) {
         this.vel_x = vel_x;
     }
 
-    // set la velociter du poisson
+    /**
+     * @param vel_y
+     *              set la velociter du poisson
+     */
     public void setYVelocity(int vel_y) {
         this.vel_y = vel_y;
     }
 
-    // Deplacement du poisson selon les valeurs des parametres x et y
+    /**
+     * Deplacement du poisson selon les valeurs des parametres x et y
+     */
     public void deplacer() {
         this.x += vel_x;
         this.y += vel_y;
@@ -57,8 +72,12 @@ public class Poisson2 extends JPanel {
         repaint();
     }
 
-    // regarde pour le bon coter pour l'image
-    public Image setImage(String coter) { 
+    /**
+     * @param coter
+     * @return Image
+     *         regarde pour le bon coter pour l'image
+     */
+    public Image setImage(String coter) {
         if (coter == "droite") {
             img = poisson_droite;
         }
@@ -73,7 +92,9 @@ public class Poisson2 extends JPanel {
         return img;
     }
 
-    // permet au poisson de nager correctement dans son espace
+    /**
+     * permet au poisson de nager correctement dans son espace
+     */
     public void nager() {
         if (this.x > 286) {
             this.setXVelocity(-this.vel_x);
@@ -92,6 +113,10 @@ public class Poisson2 extends JPanel {
         this.deplacer();
     }
 
+    /**
+     * @param string
+     *               rend Image vide
+     */
     public void setImageEmpty(String string) {
         this.image = "empty";
     }

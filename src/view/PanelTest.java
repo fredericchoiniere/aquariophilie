@@ -40,7 +40,6 @@ public class PanelTest extends JPanel implements ActionListener {
         button1.addActionListener(this);
         add(button1, c);
 
-
         button2 = new JButton("Ajouter nouveau cycle");
         button2.addActionListener(this);
         c.gridx = 1;
@@ -51,7 +50,8 @@ public class PanelTest extends JPanel implements ActionListener {
         c.gridy = 1;
         add(lbl1, c);
 
-        lbl2 = new JLabel("Somme ammoniaque: " + cycle.eau.sommeAmmoniaque() + "\nListe NH3: "+ cycle.eau.listeAmmoniaque);
+        lbl2 = new JLabel(
+                "Somme ammoniaque: " + cycle.eau.sommeAmmoniaque() + "\nListe NH3: " + cycle.eau.listeAmmoniaque);
         c.gridy = 2;
         c.gridwidth = 2;
         add(lbl2, c);
@@ -60,19 +60,24 @@ public class PanelTest extends JPanel implements ActionListener {
         c.gridy = 3;
         add(lbl3, c);
 
-
         cycle1.start();
     }
 
+    /**
+     * @param e
+     *          Actionlistener
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == button1) {
             lbl1.setText("Jour " + cycle.jours);
-            lbl2.setText("Somme ammoniaque: " + cycle.eau.sommeAmmoniaque() + "     Liste NH3: "+ cycle.eau.listeAmmoniaque);
-            lbl3.setText("Somme nitrites: " + cycle.eau.sommeNitrites() + "     Liste NO2-: " + cycle.eau.listeNitrites);
+            lbl2.setText("Somme ammoniaque: " + cycle.eau.sommeAmmoniaque() + "     Liste NH3: "
+                    + cycle.eau.listeAmmoniaque);
+            lbl3.setText(
+                    "Somme nitrites: " + cycle.eau.sommeNitrites() + "     Liste NO2-: " + cycle.eau.listeNitrites);
         }
         if (e.getSource() == button2) {
-            cycle.eau.listeAmmoniaque.add((float)0);
+            cycle.eau.listeAmmoniaque.add((float) 0);
             new Thread(new CycleAzote()).start();
         }
     }

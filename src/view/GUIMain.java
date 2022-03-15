@@ -40,8 +40,8 @@ public class GUIMain extends JFrame implements Runnable {
     Aquarium aquarium;
 
     // les threads
-    //Thread tpoisson1 = new Thread(); //TODO: à refaire à l'itération 2 
-    //Thread tpoisson2 = new Thread();
+    // Thread tpoisson1 = new Thread(); //TODO: à refaire à l'itération 2
+    // Thread tpoisson2 = new Thread();
     Thread GUIMainThread = new Thread(this);
     Thread threadEau;
 
@@ -54,8 +54,6 @@ public class GUIMain extends JFrame implements Runnable {
     public static float jours = (float) 0; // TIMER GLOBAL
 
     public GUIMain() { // création du constructeur GUIMain
-
-        
 
         // création du curseur custom
         tetra_curseur = new ImageIcon("res/icone_souris/tetra_cursor.png");
@@ -178,12 +176,12 @@ public class GUIMain extends JFrame implements Runnable {
         // ajout des poissons dans l'aquarium
         poisson2 = new Poisson2();
         poisson2.setBounds(340, 324, 322, 156);
-        //tpoisson2.start();
+        // tpoisson2.start();
         panelAqua.add(poisson2);
 
         poisson1 = new Poisson1();
         poisson1.setBounds(340, 324, 322, 156);
-        //tpoisson1.start();
+        // tpoisson1.start();
         panelAqua.add(poisson1);
 
         aquarium = new Aquarium(panelAqua);
@@ -508,13 +506,18 @@ public class GUIMain extends JFrame implements Runnable {
     // méthode de GUIMain
     // --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    // méthode pour set les borders visible
+    /**
+     * méthode pour set les borders visible
+     */
     public void visibleBordersDeco() {
         aquarium.emp1.setBorder(new LineBorder(Color.yellow, 2));
         aquarium.emp2.setBorder(new LineBorder(Color.yellow, 2));
         aquarium.emp3.setBorder(new LineBorder(Color.yellow, 2));
     }
 
+    /**
+     * méthode pour set les borders visible
+     */
     public void visibleBordersPoi() {
         aquarium.aqua1.setBorder(new LineBorder(Color.black, 2));
         aquarium.aqua2.setBorder(new LineBorder(Color.blue, 2));
@@ -524,13 +527,18 @@ public class GUIMain extends JFrame implements Runnable {
         aquarium.aqua6.setBorder(new LineBorder(Color.blue, 2));
     }
 
-    // méthode pour set les borders visible
+    /**
+     * méthode pour set les borders invisible
+     */
     public void invisibleBordersDeco() {
         aquarium.emp1.setBorder(null);
         aquarium.emp2.setBorder(null);
         aquarium.emp3.setBorder(null);
     }
 
+    /**
+     * méthode pour set les borders invisible
+     */
     public void invisibleBordersPoi() {
         aquarium.aqua1.setBorder(null);
         aquarium.aqua2.setBorder(null);
@@ -540,7 +548,9 @@ public class GUIMain extends JFrame implements Runnable {
         aquarium.aqua6.setBorder(null);
     }
 
-    // méthode pour set curseur de base
+    /**
+     * méthode pour set curseur de base
+     */
     public void basicCursor() {
         tetra_curseur = new ImageIcon("res/icone_souris/tetra_cursor.png");
         panelAqua.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
@@ -563,7 +573,8 @@ public class GUIMain extends JFrame implements Runnable {
      * @param rectangle
      * @param label
      * @param icone
-     * Vérifie la position de la souris en fonction du rectangle fourni
+     *                  Vérifie la position de la souris en fonction du rectangle
+     *                  fourni
      */
     public void checkRectanglesDeco(Rectangle rectangle, JLabel label, Icon icone) {
         if (panelAqua.getMousePosition().getX() >= rectangle.getMinX()
@@ -574,14 +585,13 @@ public class GUIMain extends JFrame implements Runnable {
         }
     }
 
-    
-    /** 
+    /**
      * @param rectangle
      * @param label
      * @param icone
+     *                  regarder si la souris est dans le rectangle lors du
+     *                  lachement de la touche
      */
-    // regarder si la souris est dans le rectangle lors du lachement de la touche
-    // pour décoration
     public void checkRectanglesPoi(Rectangle rectangle, JLabel label, Icon icone) {
         if (panelAqua.getMousePosition().getX() >= rectangle.getMinX()
                 && panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
@@ -591,7 +601,9 @@ public class GUIMain extends JFrame implements Runnable {
         }
     }
 
-    // set les labels des poissons visible
+    /**
+     * set les labels des poissons visible
+     */
     public void aquaVisibleTrue() {
         aquarium.aqua1.setVisible(true);
         aquarium.aqua2.setVisible(true);
@@ -601,7 +613,9 @@ public class GUIMain extends JFrame implements Runnable {
         aquarium.aqua6.setVisible(true);
     }
 
-    // set les labels des poissons invisible
+    /**
+     * set les labels des poissons invisible
+     */
     public void aquaVisibleFalse() {
         aquarium.aqua1.setVisible(false);
         aquarium.aqua2.setVisible(false);
@@ -614,7 +628,9 @@ public class GUIMain extends JFrame implements Runnable {
     // création des threads pour les poissons dans l'aquarium
     // --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    // thread du poisson rouge
+    /**
+     * thread du poisson rouge
+     */
     @Override
     public void run() { // TODO: overhaul nécessaire
         while (true) {
@@ -622,8 +638,7 @@ public class GUIMain extends JFrame implements Runnable {
             if (poisson1.swim) {
                 poisson1.image = "droite";
                 poisson1.nager();
-            }
-            else if (!poisson1.swim) {
+            } else if (!poisson1.swim) {
                 poisson1.nager();
                 poisson1.image = "empty";
             }
@@ -631,8 +646,7 @@ public class GUIMain extends JFrame implements Runnable {
             if (poisson2.swim) {
                 poisson2.image = "droite";
                 poisson2.nager();
-            }
-            else if (!poisson2.swim) {
+            } else if (!poisson2.swim) {
                 poisson2.nager();
                 poisson2.image = "empty";
             }

@@ -8,7 +8,11 @@ import java.awt.*;
 
 public class Control {
 
-    // permet d'initialiser le frame Aquarium
+    
+    /** 
+     * @param args
+     * permet d'initialiser le frame Introduction
+     */
     public static void main(String[] args) {
 
         GUIIntro guiIntro = new GUIIntro();

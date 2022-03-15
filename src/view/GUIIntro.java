@@ -1,4 +1,5 @@
 package view;
+
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
@@ -32,9 +33,8 @@ public class GUIIntro extends JFrame implements ActionListener {
         constraints.fill = 0;
         simplePanel.add(titre, constraints);
 
-
         // création des boutons pour les nombreuses action possible sur le Frame intro
-        //-----------------------------------------------------------------------------------------------------------------------------
+        // -----------------------------------------------------------------------------------------------------------------------------
 
         // nouvelle partie
         btnNouvellePartie = new JButton("Nouvelle Partie");
@@ -108,6 +108,9 @@ public class GUIIntro extends JFrame implements ActionListener {
 
     }
 
+    /**
+     * ActionListeners pour la classe GUIIntro
+     */
     @Override
     public void actionPerformed(ActionEvent e) { // initialise GuiMain lorsque l'on clique sur enter
         // bouton pour une nouvelle partie
@@ -133,45 +136,47 @@ public class GUIIntro extends JFrame implements ActionListener {
 
         // bouton pour les credits
         if (e.getSource() == btnCredit) { // TODO: à revoir
-            /* JFrame frame = new JFrame("Credit");
-
-            frame.setSize(500, 400);
-            frame.setResizable(false);
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
-            JPanel panel = new JPanel();
-
-            GridBagLayout g = new GridBagLayout(); // Gestionnaire
-            panel.setLayout(g);
-            GridBagConstraints constraints = new GridBagConstraints();
-
-            JLabel label = new JLabel("Créateur:");
-            constraints.gridx = 0;
-            constraints.gridy = 0;
-            constraints.weightx = 0.5;
-            constraints.weighty = 0.5;
-            constraints.gridwidth = 1;
-            constraints.gridheight = 1;
-            constraints.fill = 0;
-            panel.add(label, constraints);
-
-            JLabel createur1 = new JLabel("Jeremie Caron");
-            constraints.gridx = 1;
-            constraints.gridy = 0;
-            panel.add(createur1, constraints);
-
-            JLabel createur2 = new JLabel("Frederic Choiniere");
-            constraints.gridx = 1;
-            constraints.gridy = 1;
-            panel.add(createur2, constraints);
-
-            JLabel createur3 = new JLabel("Justin Plouffe");
-            constraints.gridx = 1;
-            constraints.gridy = 2;
-            panel.add(createur3, constraints);
-
-            frame.add(panel);
-            add(frame); */
+            /*
+             * JFrame frame = new JFrame("Credit");
+             * 
+             * frame.setSize(500, 400);
+             * frame.setResizable(false);
+             * frame.setLocationRelativeTo(null);
+             * frame.setVisible(true);
+             * JPanel panel = new JPanel();
+             * 
+             * GridBagLayout g = new GridBagLayout(); // Gestionnaire
+             * panel.setLayout(g);
+             * GridBagConstraints constraints = new GridBagConstraints();
+             * 
+             * JLabel label = new JLabel("Créateur:");
+             * constraints.gridx = 0;
+             * constraints.gridy = 0;
+             * constraints.weightx = 0.5;
+             * constraints.weighty = 0.5;
+             * constraints.gridwidth = 1;
+             * constraints.gridheight = 1;
+             * constraints.fill = 0;
+             * panel.add(label, constraints);
+             * 
+             * JLabel createur1 = new JLabel("Jeremie Caron");
+             * constraints.gridx = 1;
+             * constraints.gridy = 0;
+             * panel.add(createur1, constraints);
+             * 
+             * JLabel createur2 = new JLabel("Frederic Choiniere");
+             * constraints.gridx = 1;
+             * constraints.gridy = 1;
+             * panel.add(createur2, constraints);
+             * 
+             * JLabel createur3 = new JLabel("Justin Plouffe");
+             * constraints.gridx = 1;
+             * constraints.gridy = 2;
+             * panel.add(createur3, constraints);
+             * 
+             * frame.add(panel);
+             * add(frame);
+             */
         }
 
         // bouton pour fermer l'application

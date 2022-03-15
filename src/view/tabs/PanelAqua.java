@@ -1,16 +1,17 @@
 package view.tabs;
+
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
 
-public class PanelAqua extends JPanel implements MouseListener, FocusListener { // extends JPanel pour créer un Jpanel
+public class PanelAqua extends JPanel { // extends JPanel pour créer un Jpanel
 
     public PanelAqua() {
         setPreferredSize(new Dimension(1000, 700)); // Taille du panel
-        addFocusListener(this);
-        addMouseListener(this);
     }
 
+    /**
+     * Permet de draw les components de PanelAqua
+     */
     public void paintComponent(Graphics g) { // méthode paint
         super.paintComponent(g);
 
@@ -28,33 +29,4 @@ public class PanelAqua extends JPanel implements MouseListener, FocusListener { 
 
     }
 
-    @Override
-    public void focusGained(FocusEvent e) {
-    }
-
-    @Override
-    public void focusLost(FocusEvent e) {
-    }
-
-    @Override
-    public void mousePressed(MouseEvent me) {
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        requestFocus();
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        
-    }
 }
