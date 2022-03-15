@@ -1,28 +1,32 @@
 package model.environnement;
-
-
 import java.util.*;
-
 import view.GUIMain;
 
+/**
+ * <p> description </p>
+ * @param 
+ * @return 
+ * @since Iteration #1
+ */
 public class Temps{
     Timer journee;
 
-    
-    //public float jours = 0;
+    // Incrémente GUIMain.jours (timer global) au 5 secondes
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public Temps(){
         journee = new Timer();
         journee.scheduleAtFixedRate(new TimerTask(){
             @Override
             public void run() {
-                //System.out.println("jours: " + GUIMain.jours);
                 GUIMain.jours++;
-
             }
         }, 0, 5000);
     }
-    
-
 }
 

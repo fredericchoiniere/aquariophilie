@@ -1,11 +1,15 @@
 package model.chimie;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
-
 import view.GUIMain;
 
+/**
+ * <p> description </p>
+ * @param 
+ * @return 
+ * @since Iteration #1
+ */
 public class Eau implements Runnable {
 
     public final float volumeEau = (float) 37.85;
@@ -17,7 +21,7 @@ public class Eau implements Runnable {
     public float nitrites = 0; // Doit etre 0, maximum 5mg par litre
     public float nitrates = 0; // max 50mg/L
     public float ammoniaque = 0;
-    private float sommeAmmoniaque, bufferAmmoniaque = 0, sommeNitrites;
+    private float sommeAmmoniaque, sommeNitrites;
     public int ammonium = 0;
 
     public int nbAtomeN = 0;
@@ -29,20 +33,38 @@ public class Eau implements Runnable {
     public int temperature;
     
 
-    public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0);
-    public List<Float> listeAmmoniaque = Collections.synchronizedList(listeAmmoniaqueTemp); // TODO: faire fonctionner concurrentlist
+    public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0);                  // Liste à synchroniser
+    public List<Float> listeAmmoniaque = Collections.synchronizedList(listeAmmoniaqueTemp); // Liste synchronisée
 
-    // ArrayBlockingQueue? comment manipuler la différence de valeurs? jta boutte
+    public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0);                  // Liste à synchroniser
+    public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
+
+    // ArrayBlockingQueue? comment manipuler la différence de valeurs?
     // live on check-then-act ce qui est un big no no
 
     public float jours = GUIMain.jours; // TODO: va être remplacé
     public byte cycle = 0;
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public Eau(){
         listeAmmoniaque.add(0, this.ammoniaque);
-        listeAmmoniaque.add(1,(float) 0);
+        listeAmmoniaque.add(1, this.ammoniaque);
+
+
+        //listeAmmoniaque.add(1,(float) 0);
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public void changerEau() {
 
         ph = 7; 
@@ -59,34 +81,33 @@ public class Eau implements Runnable {
 
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public void couleur() {
 
-        //pourcentage de vert dans l'eau
+        //pourcentage de vert ou de gris dans l'eau
 
     }
 
+    
+    /** 
+     * @param ammoniaque
+     * @param cycle
+     * Ajoute une valeur d'ammoniaque fournie dans la listeAmmoniaque à l'index spécifié
+     */
     public void addAmmoniaque(float ammoniaque, byte cycle) { // ajouter différence, mettre dans intervalle [tant que y > 0 && pente négative]
-        
-        
         listeAmmoniaque.add(cycle, ammoniaque);
-        
-        /* if(listeAmmoniaque.get(cycle).isNaN()){
-            listeAmmoniaque.addLast((float)0);
-        } */
-
-        /* if (!listeAmmoniaque.contains(ammoniaque)) { // check
-            
-            listeAmmoniaque.remove(bufferAmmoniaque); // then act
-            listeAmmoniaque.add(cycle, ammoniaque);
-            bufferAmmoniaque = ammoniaque;
-        } */
-        
-        
-        /* listeAmmoniaque.remove(0);
-        listeAmmoniaque.add(0, this.ammoniaque); */
-
     }
 
+    
+    /** 
+     * @return float
+     * Additionne toutes les valeurs dans la listeAmmoniaque
+     */
     public float sommeAmmoniaque(){
         sommeAmmoniaque = 0;
         for (Float valeur : listeAmmoniaque) {
@@ -95,37 +116,80 @@ public class Eau implements Runnable {
         this.ammoniaque = sommeAmmoniaque;
         return this.ammoniaque;
     }
-
+    
+    /** 
+     * @return double
+     * Dicte le comportement des nitrites, incomplet
+     */
     public double comportNitrite(){ // voir fonction, mettre dans intervalle [tant que y > 0 && pente négative]
+        double temp = 0;
+        return temp;
+    }
+
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
+    public void addNitrites(float nitrites, byte cycle) { // ajouter différence, mettre dans intervalle
+        
+        listeNitrites.add(cycle, nitrites);
+
+    }
+
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
+    public float sommeNitrites(){
+        sommeNitrites = 0;
+        for (Float valeur : listeNitrites) {
+            sommeNitrites += valeur;
+        }
+        this.nitrites = sommeNitrites;
+        return this.nitrites;
+    }
+
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
+    public double comportNitrites(){ // voir fonction, mettre dans intervalle [tant que y > 0 && pente négative]
         double pet = 0;
         return pet;
     }
 
-    public float comportNitrate() {
-        //System.out.println("nitrates"+ nitrates);
+    /** 
+     * @return float
+     * Dicte le comportement des nitrates selon une courbe
+     */
+    public float comportNitrates() {
         this.nitrates = ((jours/7) - 4);
         return this.nitrates;
     }
 
-    @Override
-    public void run() { // TODO: updater avec changement de jour
-        while (true) {
-            //System.out.println("while");
-            jours = GUIMain.jours;
-
-            
     
-
+    /** 
+     * Méthode run de la classe Eau
+     * Incomplète pour l'instant
+     */
+    @Override
+    public void run() {
+        while (true) {
+            jours = GUIMain.jours;
             try {
                 if (jours > 28) {
-                    //System.out.println("compote");
-                    comportNitrate();
-                    Thread.sleep(1000); // à enlever
+                    comportNitrates();
+                    Thread.sleep(1000);
                 } else Thread.sleep(1000);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-
     }
 }

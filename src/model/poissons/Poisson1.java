@@ -1,32 +1,34 @@
 package model.poissons;
+
 import java.awt.*;
 import javax.swing.*;
 
 import view.tabs.PanelAqua;
 
-public class Poisson2 extends JPanel {
+public class Poisson1 extends JPanel {
 
-    // attributs de la classe
-    public int x = 10;
-    public int y = 10;
+    // création des attributs de la classe
+    public int x = 230;
+    public int y = 120;
     public int vel_x = 1;
     public int vel_y = 1;
     public String image = "droite";
     public boolean swim = true;
 
     Image img;
-    Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_droite.png");
-    Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_gauche.png");
+    Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_betta/poisson_droite.png");
+    Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_betta/poisson_gauche.png");
     Image empty = Toolkit.getDefaultToolkit().getImage("res/poissons/empty.png");
     PanelAqua panelAqua;
 
-    // permet de le rendre opaque
+    // permet de rendre le poisson opaque
     @Override
     public void setOpaque(boolean isOpaque) {
+        // TODO Auto-generated method stub
         super.setOpaque(false);
     }
 
-    // Dessine le poisson
+    // permet de déssiner le poisson
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
@@ -53,12 +55,11 @@ public class Poisson2 extends JPanel {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        // L'objet se redessine (actualiser)
         repaint();
     }
 
     // regarde pour le bon coter pour l'image
-    public Image setImage(String coter) { 
+    public Image setImage(String coter) {
         if (coter == "droite") {
             img = poisson_droite;
         }
@@ -73,7 +74,7 @@ public class Poisson2 extends JPanel {
         return img;
     }
 
-    // permet au poisson de nager correctement dans son espace
+    // permet au poisson de nager correctement dans son aquarium
     public void nager() {
         if (this.x > 286) {
             this.setXVelocity(-this.vel_x);
@@ -91,9 +92,4 @@ public class Poisson2 extends JPanel {
         }
         this.deplacer();
     }
-
-    public void setImageEmpty(String string) {
-        this.image = "empty";
-    }
-
 }
