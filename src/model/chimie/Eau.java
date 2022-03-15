@@ -1,3 +1,6 @@
+// Frédéric Choinière, Justin Plouffe   itération 1
+// Classe qui contrôle les paramètres d'eau
+
 package model.chimie;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,11 +37,10 @@ public class Eau implements Runnable {
     public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
 
     public float jours = GUIMain.jours;
-    public byte cycle = 0;
 
     public Eau(){
         listeAmmoniaque.add(0, this.ammoniaque);
-        listeAmmoniaque.add(1, this.ammoniaque);
+        listeNitrites.add(0, this.nitrites);
     }
 
     public void changerEau() {
@@ -62,20 +64,18 @@ public class Eau implements Runnable {
     
     /** 
      * @param ammoniaque
-     * @param cycle
-     * Ajoute une valeur d'ammoniaque fournie dans la listeAmmoniaque à l'index spécifié
+     * Ajoute une valeur d'ammoniaque fournie dans la listeAmmoniaque
      */
-    public void addAmmoniaque(float ammoniaque, byte cycle) { // ajouter différence, mettre dans intervalle [tant que y > 0 && pente négative]
-        listeAmmoniaque.add(cycle, ammoniaque);
+    public void addAmmoniaque(float ammoniaque) { // ajouter différence, mettre dans intervalle [tant que y > 0 && pente négative]
+        listeAmmoniaque.add(ammoniaque);
     }
 
     /** 
      * @param nitrites
-     * @param cycle
-     * Ajoute une valeur de nitrites fournie dans la listeNitrites à l'index spécifié
+     * Ajoute une valeur de nitrites fournie dans la listeNitrites
      */
-    public void addNitrites(float nitrites, byte cycle) { // ajouter différence, mettre dans intervalle
-        listeNitrites.add(cycle, nitrites);
+    public void addNitrites(float nitrites) { // ajouter différence, mettre dans intervalle
+        listeNitrites.add(nitrites);
     }
     
     /** 
@@ -127,6 +127,7 @@ public class Eau implements Runnable {
                     Thread.sleep(1000);
                 } else Thread.sleep(1000);
             } catch (Exception e) {
+                System.out.println("Erreur dans le run() d'Eau.java");
                 e.printStackTrace();
             }
         }

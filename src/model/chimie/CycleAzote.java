@@ -1,33 +1,13 @@
 package model.chimie;
 import view.GUIMain;
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
 public class CycleAzote implements Runnable {
 
     public float jourInitial = GUIMain.jours;
     public float jourFinal = jourInitial + 35;
     public float jours = 0, tempAmmoniaque = 0, tempNitrites = 0;
     public Eau eau = GUIMain.eau;
-    public byte cycle = eau.cycle;
 
-    // Temps tempsCycle = new Temps();
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
-    public CycleAzote() {
-        eau.cycle++;
-        cycle++;
-    }
-
-    
     /** 
      * @param eau
      * Démarre un cycle d'ammoniaque en fonction du temps, suivant une courbe
@@ -39,10 +19,11 @@ public class CycleAzote implements Runnable {
         } else {
             tempAmmoniaque = 0;
         }
-        eau.addAmmoniaque(tempAmmoniaque, cycle);
+        eau.addAmmoniaque(tempAmmoniaque);
     }
     
     /** 
+     * @param eau
      * Méthode run de la classe CycleAzote
      * Incrémente les jours et calcule le nouveau taux d'ammoniaque et de nitrites
     */
@@ -54,7 +35,7 @@ public class CycleAzote implements Runnable {
         else{
             tempNitrites = 0;
         }
-        eau.addNitrites(tempNitrites, cycle);
+        eau.addNitrites(tempNitrites);
     }
 
     @Override
@@ -72,12 +53,13 @@ public class CycleAzote implements Runnable {
                     Thread.sleep(1000);
 
                 if (jours >= 14 && jours <= 35) {
-                    //cycleNitrites(eau);
+                    cycleNitrites(eau);
                     Thread.sleep(1000);
                 } else 
                   Thread.sleep(1000);
                 
             } catch (Exception e) {
+                System.out.println("Erreur dans le run() de CycleAzote.java");
                 e.printStackTrace();
             }
         }

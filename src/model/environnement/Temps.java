@@ -2,14 +2,9 @@ package model.environnement;
 import java.util.*;
 import view.GUIMain;
 
-/**
- * <p> description </p>
- * @param 
- * @return 
- * @since Iteration #1
- */
 public class Temps{
     Timer journee;
+    final int DUREE = 1500; // Durée d'une journée en millisecondes
 
     // Incrémente GUIMain.jours (timer global) au 5 secondes
 
@@ -20,7 +15,7 @@ public class Temps{
             public void run() {
                 GUIMain.jours++;
             }
-        }, 0, 5000);
+        }, 0, DUREE);
     }
 }
 
