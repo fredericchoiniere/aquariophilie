@@ -1,5 +1,4 @@
 package model.jeu;
-
 import java.util.*;
 import java.awt.*;
 import javax.swing.*;
@@ -8,7 +7,6 @@ public class Inventaire {
 
     public Emplacementinv emp1, emp2, emp3, emp4, emp5, emp6;
     final Dimension size_icone_inv = new Dimension(80, 80);
-
     private ArrayList<Emplacementinv> listEmpPleins = new ArrayList<Emplacementinv>(6);
 
     public Inventaire(JLabel label) {

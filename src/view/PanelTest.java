@@ -7,9 +7,14 @@ import javax.swing.JPanel;
 import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*;
-
 import model.chimie.CycleAzote;
 
+/**
+ * <p> description </p>
+ * @param 
+ * @return 
+ * @since Iteration #1
+ */
 public class PanelTest extends JPanel implements ActionListener {
 
     CycleAzote cycle;
@@ -17,6 +22,12 @@ public class PanelTest extends JPanel implements ActionListener {
     Thread cycle1;
     boolean isFocused;
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public PanelTest() {
 
         setSize(700, 500);

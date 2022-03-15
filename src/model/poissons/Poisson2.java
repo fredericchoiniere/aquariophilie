@@ -1,5 +1,4 @@
 package model.poissons;
-
 import java.awt.*;
 import javax.swing.*;
 
