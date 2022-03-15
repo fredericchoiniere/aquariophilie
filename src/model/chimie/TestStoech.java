@@ -12,12 +12,6 @@ public class TestStoech implements Runnable { // TODO: CLASSE DE TEST NON IMPORT
     public int quantAmmoniaque = 50, quantNitrite = 0, quantNitrate = 0; // nitrate max 50mg/L
     public JProgressBar barAmmoniaque, barNitrite, barNitrate;
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
     public TestStoech() {
 
         barAmmoniaque = new JProgressBar();
@@ -28,12 +22,6 @@ public class TestStoech implements Runnable { // TODO: CLASSE DE TEST NON IMPORT
         
     }
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
     @Override
     public void run() {
         while (true) {

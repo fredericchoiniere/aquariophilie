@@ -1,11 +1,5 @@
 package model.item.outils;
 
-/**
- * <p> description </p>
- * @param 
- * @return 
- * @since Iteration #1
- */
 public class Outils{ // extends Draggable components pour les Outils
     
     public String nom = "";

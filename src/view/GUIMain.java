@@ -15,15 +15,6 @@ import model.jeu.Inventaire;
 import model.poissons.*;
 import view.tabs.*;
 
-/**
- * <p>
- * description
- * </p>
- * 
- * @param
- * @return
- * @since Iteration #1
- */
 public class GUIMain extends JFrame implements Runnable {
 
     // appel des attributs de la classe GUIMain

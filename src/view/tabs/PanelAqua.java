@@ -5,24 +5,12 @@ import java.awt.event.*;
 
 public class PanelAqua extends JPanel implements MouseListener, FocusListener { // extends JPanel pour créer un Jpanel
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
     public PanelAqua() {
         setPreferredSize(new Dimension(1000, 700)); // Taille du panel
         addFocusListener(this);
         addMouseListener(this);
     }
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
     public void paintComponent(Graphics g) { // méthode paint
         super.paintComponent(g);
 
@@ -67,8 +55,6 @@ public class PanelAqua extends JPanel implements MouseListener, FocusListener { 
 
     @Override
     public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
         
     }
 }
-
