@@ -3,12 +3,6 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
-/**
- * <p> description </p>
- * @param 
- * @return 
- * @since Iteration #1
- */
 public class GUIIntro extends JFrame implements ActionListener {
 
     // créer les attributs de la classe
@@ -16,12 +10,6 @@ public class GUIIntro extends JFrame implements ActionListener {
             btInspiration;
     public JLabel titre;
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
     public GUIIntro() { // création du constructeur GUIIntro
 
         // Entrer dans l'application pour tester
@@ -144,8 +132,8 @@ public class GUIIntro extends JFrame implements ActionListener {
         }
 
         // bouton pour les credits
-        if (e.getSource() == btnCredit) {
-            JFrame frame = new JFrame("Credit");
+        if (e.getSource() == btnCredit) { // TODO: à revoir
+            /* JFrame frame = new JFrame("Credit");
 
             frame.setSize(500, 400);
             frame.setResizable(false);
@@ -183,7 +171,7 @@ public class GUIIntro extends JFrame implements ActionListener {
             panel.add(createur3, constraints);
 
             frame.add(panel);
-            add(frame);
+            add(frame); */
         }
 
         // bouton pour fermer l'application

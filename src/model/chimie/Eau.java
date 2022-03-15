@@ -5,15 +5,6 @@ import java.util.List;
 import java.util.*;
 import view.GUIMain;
 
-/**
- * <p>
- * description
- * </p>
- * 
- * @param
- * @return
- * @since Iteration #1
- */
 public class Eau implements Runnable {
 
     public int ph = 7; // 0 à 14 (dépend des poissons à élever)
@@ -41,42 +32,18 @@ public class Eau implements Runnable {
     public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
 
-    // ArrayBlockingQueue? comment manipuler la différence de valeurs?
-    // live on check-then-act ce qui est un big no no
-
-    public float jours = GUIMain.jours; // TODO: va être remplacé
+    public float jours = GUIMain.jours;
     public byte cycle = 0;
 
-    /**
-     * <p>
-     * description
-     * </p>
-     * 
-     * @param
-     * @return
-     * @since Iteration #1
-     */
-    public Eau() {
+    public Eau(){
         listeAmmoniaque.add(0, this.ammoniaque);
         listeAmmoniaque.add(1, this.ammoniaque);
-
-        // listeAmmoniaque.add(1,(float) 0);
     }
 
-    /**
-     * <p>
-     * description
-     * </p>
-     * 
-     * @param
-     * @return
-     * @since Iteration #1
-     */
     public void changerEau() {
-
-        ph = 7;
-        kh = 8;
-        gh = 5;
+        ph = 7; 
+        kh = 8; 
+        gh = 5; 
         nitrites = 0;
         nitrates = 0;
         ammoniaque = 0;
@@ -88,22 +55,11 @@ public class Eau implements Runnable {
 
     }
 
-    /**
-     * <p>
-     * description
-     * </p>
-     * 
-     * @param
-     * @return
-     * @since Iteration #1
-     */
     public void couleur() {
-
-        // pourcentage de vert ou de gris dans l'eau
-
+        //pourcentage de vert ou de gris dans l'eau
     }
-
-    /**
+    
+    /** 
      * @param ammoniaque
      * @param cycle
      *                   Ajoute une valeur d'ammoniaque fournie dans la
@@ -114,7 +70,16 @@ public class Eau implements Runnable {
         listeAmmoniaque.add(cycle, ammoniaque);
     }
 
-    /**
+    /** 
+     * @param nitrites
+     * @param cycle
+     * Ajoute une valeur de nitrites fournie dans la listeNitrites à l'index spécifié
+     */
+    public void addNitrites(float nitrites, byte cycle) { // ajouter différence, mettre dans intervalle
+        listeNitrites.add(cycle, nitrites);
+    }
+    
+    /** 
      * @return float
      *         Additionne toutes les valeurs dans la listeAmmoniaque
      */
@@ -126,32 +91,10 @@ public class Eau implements Runnable {
         this.ammoniaque = sommeAmmoniaque;
         return this.ammoniaque;
     }
-
-
-
-    /**
-     * <p>
-     * description
-     * </p>
-     * 
-     * @param
-     * @return
-     * @since Iteration #1
-     */
-    public void addNitrites(float nitrites, byte cycle) { // ajouter différence, mettre dans intervalle
-
-        listeNitrites.add(cycle, nitrites);
-
-    }
-
-    /**
-     * <p>
-     * description
-     * </p>
-     * 
-     * @param
-     * @return
-     * @since Iteration #1
+    
+    /** 
+     * @return float
+     * Additionne toutes les valeurs dans la listeNitrites
      */
     public float sommeNitrites() {
         sommeNitrites = 0;
@@ -162,21 +105,7 @@ public class Eau implements Runnable {
         return this.nitrites;
     }
 
-    /**
-     * <p>
-     * description
-     * </p>
-     * 
-     * @param
-     * @return
-     * @since Iteration #1
-     */
-    public double comportNitrites() { // voir fonction, mettre dans intervalle [tant que y > 0 && pente négative]
-        double pet = 0;
-        return pet;
-    }
-
-    /**
+    /** 
      * @return float
      *         Dicte le comportement des nitrates selon une courbe
      */
@@ -184,8 +113,8 @@ public class Eau implements Runnable {
         this.nitrates = ((jours / 7) - 4);
         return this.nitrates;
     }
-
-    /**
+    
+    /** 
      * Méthode run de la classe Eau
      * Incomplète pour l'instant
      */
