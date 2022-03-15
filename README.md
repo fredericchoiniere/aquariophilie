@@ -1,18 +1,50 @@
-## Getting Started
+# Aquariophilie 🐠
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## Présentation
+\
+Aquariophilie est:
 
-## Folder Structure
+- un simulateur de gestion d'aquarium
+- un projet par Frédéric Choinière, Jérémie Caron et Justin Plouffe
+- codé 100% en Java
+- encore en construction
+- un projet réalisé dans le cadre du programme SIM au Collège de Rosemont lors de la session H22
+- un projet méritant une excellente note
 
-The workspace contains two folders by default, where:
+Aquariophilie n'est pas:
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- un mineur de cryptomonnaie
+- terminé
+- aussi impressionnant qu'un cube Rubiks en 3D, mais on fait ce qu'on peut
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+\
+Version actuelle: remise itération 1
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Structure
 
-## Dependency Management
+Le projet contient 3 dossiers principaux:
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+- `src`: contient le code source arrangé selon le modèle MVC
+- `res`: contient les ressources nécessaires au bon affichage du programme
+- `bin`: contient les fichiers compilés
+
+## Instructions
+
+Pour lancer le programme, il suffit d'exécuter `executer.bat` dans le dossier principal.
+Alternativement, il est possible de lancer le code en compilant `Control.java` situé dans:
+> aquariophilie\src\control\Control.java
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+[Слава Україні!](https://twitter.com/Ukraine/status/1502737132858875910)

@@ -11,18 +11,12 @@ public class Control {
 
         GUIIntro guiIntro = new GUIIntro();
 
+        // attributs du Frame intro
         guiIntro.setSize(500, 400);
         guiIntro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         guiIntro.setResizable(false);
         guiIntro.setLocationRelativeTo(null);
         guiIntro.setVisible(true);
-
-
-        /* Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Image image = toolkit.getImage("icons/handwriting.gif");
-        Cursor c = toolkit.createCustomCursor(image , new Point(guiIntro.getX(), 
-           guiIntro.getY()), "res/icone_souris/penis.png");
-        guiIntro.setCursor (c); */
 
     }
 

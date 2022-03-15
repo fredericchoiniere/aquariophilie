@@ -11,6 +11,7 @@ import java.awt.*;
  */
 public class GUIIntro extends JFrame implements ActionListener {
 
+    // créer les attributs de la classe
     public JButton btnNouvellePartie, btnChargerPartie, btnModeEvaluation, btnCredit, btClose, btClassement,
             btInspiration;
     public JLabel titre;
@@ -26,10 +27,12 @@ public class GUIIntro extends JFrame implements ActionListener {
         // Entrer dans l'application pour tester
         JPanel simplePanel = new JPanel();
 
-        GridBagLayout g = new GridBagLayout(); // Gestionnaire
+        // Gestionnaire
+        GridBagLayout g = new GridBagLayout();
         simplePanel.setLayout(g);
         GridBagConstraints constraints = new GridBagConstraints();
 
+        // label pour le titre
         titre = new JLabel("Aquariophilie");
         titre.setFont(new Font("Verdana", Font.BOLD, 30));
         constraints.gridx = 0;
@@ -41,6 +44,11 @@ public class GUIIntro extends JFrame implements ActionListener {
         constraints.fill = 0;
         simplePanel.add(titre, constraints);
 
+
+        // création des boutons pour les nombreuses action possible sur le Frame intro
+        //-----------------------------------------------------------------------------------------------------------------------------
+
+        // nouvelle partie
         btnNouvellePartie = new JButton("Nouvelle Partie");
         btnNouvellePartie.addActionListener(this);
         constraints.gridx = 1;
@@ -50,24 +58,28 @@ public class GUIIntro extends JFrame implements ActionListener {
         constraints.fill = 2;
         simplePanel.add(btnNouvellePartie, constraints);
 
+        // charger partie
         btnChargerPartie = new JButton("Charger Partie");
         btnChargerPartie.addActionListener(this);
         constraints.gridx = 1;
         constraints.gridy = 2;
         simplePanel.add(btnChargerPartie, constraints);
 
+        // mode evaluation
         btnModeEvaluation = new JButton("Mode Evaluation");
         btnModeEvaluation.addActionListener(this);
         constraints.gridx = 1;
         constraints.gridy = 3;
         simplePanel.add(btnModeEvaluation, constraints);
 
+        // credit
         btnCredit = new JButton("Credit");
         btnCredit.addActionListener(this);
         constraints.gridx = 1;
         constraints.gridy = 4;
         simplePanel.add(btnCredit, constraints);
 
+        // fermer l'application
         btClose = new JButton("Fermer");
         btClose.addActionListener(this);
         constraints.gridx = 0;
@@ -75,12 +87,14 @@ public class GUIIntro extends JFrame implements ActionListener {
         constraints.fill = 0;
         simplePanel.add(btClose, constraints);
 
+        // classement
         btClassement = new JButton("Classement");
         btClassement.addActionListener(this);
         constraints.gridx = 1;
         constraints.gridy = 5;
         simplePanel.add(btClassement, constraints);
 
+        // inspirations
         btInspiration = new JButton("Inspiration");
         btInspiration.addActionListener(this);
         constraints.gridx = 2;
@@ -153,18 +167,15 @@ public class GUIIntro extends JFrame implements ActionListener {
             constraints.fill = 0;
             panel.add(label, constraints);
 
-
             JLabel createur1 = new JLabel("Jeremie Caron");
             constraints.gridx = 1;
             constraints.gridy = 0;
             panel.add(createur1, constraints);
 
-
             JLabel createur2 = new JLabel("Frederic Choiniere");
             constraints.gridx = 1;
             constraints.gridy = 1;
             panel.add(createur2, constraints);
-
 
             JLabel createur3 = new JLabel("Justin Plouffe");
             constraints.gridx = 1;
