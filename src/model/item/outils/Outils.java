@@ -1,11 +1,8 @@
+//Jérémie Caron     itération 1
+//Classe mère des différents outils
+
 package model.item.outils;
 
-/**
- * <p> description </p>
- * @param 
- * @return 
- * @since Iteration #1
- */
 public class Outils{ // extends Draggable components pour les Outils
     
     public String nom = "";

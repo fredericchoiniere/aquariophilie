@@ -1,25 +1,17 @@
+//Jérémie Caron     itération 1
+//Classe pour l'affichage des infos, pour itération 3
+
 package view.tabs;
 import java.awt.*;
 import javax.swing.*;
 
-/**
- * <p> description </p>
- * @param 
- * @return 
- * @since Iteration #1
- */
 public class PanelInfo extends JPanel { // extends JPanel pour créer un Jpanel
 
     // appel des attributs de la classe
     JTextArea textArea;
     JScrollPane scroll;
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
+
     public PanelInfo() { // créer un constructeur à la classe PanelInfo
 
         textArea = new JTextArea(20, 20);
