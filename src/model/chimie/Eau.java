@@ -2,6 +2,7 @@
 // Classe qui contrôle les paramètres d'eau
 
 package model.chimie;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
@@ -9,18 +10,10 @@ import view.GUIMain;
 
 public class Eau implements Runnable {
 
-    public final float volumeEau = (float) 37.85;
-    public int scoreEau;
-
     public int ph = 7; // 0 à 14 (dépend des poissons à élever)
     public int kh = 8; // Dureté de l'eau 0 à 10? (8+ pour poissons d'eau douce en eau basique?)
     public int gh = 5; // 0 à 30?
-    public float nitrites = 0; // Doit etre 0, maximum 5mg par litre
-    public float nitrates = 0; // max 50mg/L
-    public float ammoniaque = 0;
-    private float sommeAmmoniaque, sommeNitrites;
     public int ammonium = 0;
-
     public int nbAtomeN = 0;
     public int nbAtomeO = 2103;
     public int nbAtomeH = 4206;
@@ -28,12 +21,18 @@ public class Eau implements Runnable {
     public int bacteries;
     public int chlore;
     public int temperature;
-    
+    public int scoreEau;
 
-    public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0);                  // Liste à synchroniser
+    public final float volumeEau = (float) 37.85;
+    public float nitrites = 0; // Doit etre 0, maximum 5mg par litre
+    public float nitrates = 0; // max 50mg/L
+    public float ammoniaque = 0;
+    private float sommeAmmoniaque, sommeNitrites;
+
+    public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeAmmoniaque = Collections.synchronizedList(listeAmmoniaqueTemp); // Liste synchronisée
 
-    public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0);                  // Liste à synchroniser
+    public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
 
     public float jours = GUIMain.jours;
@@ -80,9 +79,9 @@ public class Eau implements Runnable {
     
     /** 
      * @return float
-     * Additionne toutes les valeurs dans la listeAmmoniaque
+     *         Additionne toutes les valeurs dans la listeAmmoniaque
      */
-    public float sommeAmmoniaque(){
+    public float sommeAmmoniaque() {
         sommeAmmoniaque = 0;
         for (Float valeur : listeAmmoniaque) {
             sommeAmmoniaque += valeur;
@@ -95,7 +94,7 @@ public class Eau implements Runnable {
      * @return float
      * Additionne toutes les valeurs dans la listeNitrites
      */
-    public float sommeNitrites(){
+    public float sommeNitrites() {
         sommeNitrites = 0;
         for (Float valeur : listeNitrites) {
             sommeNitrites += valeur;
@@ -106,10 +105,10 @@ public class Eau implements Runnable {
 
     /** 
      * @return float
-     * Dicte le comportement des nitrates selon une courbe
+     *         Dicte le comportement des nitrates selon une courbe
      */
     public float comportNitrates() {
-        this.nitrates = ((jours/7) - 4);
+        this.nitrates = ((jours / 7) - 4);
         return this.nitrates;
     }
     
@@ -125,7 +124,8 @@ public class Eau implements Runnable {
                 if (jours > 28) {
                     comportNitrates();
                     Thread.sleep(1000);
-                } else Thread.sleep(1000);
+                } else
+                    Thread.sleep(1000);
             } catch (Exception e) {
                 System.out.println("Erreur dans le run() d'Eau.java");
                 e.printStackTrace();

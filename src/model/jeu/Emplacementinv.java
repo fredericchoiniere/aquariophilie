@@ -15,7 +15,11 @@ public class Emplacementinv extends JLabel {
         super();
     }
 
-    // remplie l'emplacement
+    
+    /** 
+     * @return Boolean
+     * remplie l'emplacement
+     */
     public Boolean estPlein() {
         return plein;
     }

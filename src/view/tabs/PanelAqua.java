@@ -2,6 +2,7 @@
 //Classe pour l'affichage de l'aquarium et du background
 
 package view.tabs;
+
 import java.awt.*;
 import javax.swing.*;
 
@@ -11,6 +12,9 @@ public class PanelAqua extends JPanel{ // extends JPanel pour créer un Jpanel
         setPreferredSize(new Dimension(1000, 700)); // Taille du pane
     }
 
+    /**
+     * Permet de draw les components de PanelAqua
+     */
     public void paintComponent(Graphics g) { // méthode paint
         super.paintComponent(g);
 

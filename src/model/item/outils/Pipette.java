@@ -21,7 +21,11 @@ public class Pipette extends Outils {
 
     }
 
-    // Change l'état de la pipette
+    
+    /** 
+     * @param label
+     * Change l'état de la pipette
+     */
     public void changerEtatLabel(JLabel label) {
         if (est_remplie) {
             label.setIcon(icone_plein);
@@ -30,7 +34,11 @@ public class Pipette extends Outils {
         }
     }
 
-    // change l'état du panel
+    
+    /** 
+     * @param panel
+     * change l'état du panel
+     */
     public void changerEtatPanel(JPanel panel) {
         if (est_remplie) {
             panel.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(

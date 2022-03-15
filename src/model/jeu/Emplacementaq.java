@@ -16,7 +16,11 @@ public class Emplacementaq extends JLabel {
         super();
     }
 
-    // rempli l'inventaire
+    
+    /** 
+     * @return Boolean
+     * rempli l'inventaire
+     */
     public Boolean estPlein() {
         return plein;
     }
