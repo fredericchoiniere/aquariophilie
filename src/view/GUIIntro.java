@@ -1,3 +1,6 @@
+//Jérémie Caron     itération 1
+//Classe pour l'affichage du frame d'introduction
+
 package view;
 
 import javax.swing.*;

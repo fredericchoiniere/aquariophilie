@@ -1,3 +1,7 @@
+// Frédéric Choinière   itération 1
+// Classe qui contrôle le temps et le timer global
+
+
 package model.environnement;
 import java.util.*;
 import view.GUIMain;

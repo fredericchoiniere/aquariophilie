@@ -1,3 +1,6 @@
+//Jérémie Caron     itération 1
+//Classe pour l'affichage des infos, pour itération 3
+
 package view.tabs;
 import java.awt.*;
 import javax.swing.*;

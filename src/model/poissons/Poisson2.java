@@ -1,3 +1,6 @@
+//Jérémie Caron     itération 1
+//Classe temporaire qui gère un poisson de type 2
+
 package model.poissons;
 
 import java.awt.*;

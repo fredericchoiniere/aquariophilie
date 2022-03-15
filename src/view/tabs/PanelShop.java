@@ -1,3 +1,6 @@
+//Jérémie Caron     itération 1
+//Classe pour l'affichage du magasin, pour itération 2
+
 package view.tabs;
 import java.awt.*;
 import javax.swing.*;

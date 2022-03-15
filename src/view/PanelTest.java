@@ -1,3 +1,7 @@
+// Frédéric Choinière, Jérémie Caron   itération 1
+// Classe pour afficher temporairement la stoechiométrie
+
+
 package view;
 
 // TODO: CLASSE DE TEST TEMPORAIRE
