@@ -1,3 +1,7 @@
+//Jérémie Caron     itération 1
+//Classe contrôleur qui initialise l'affichage du frame d'introduction
+
+
 package control;
 
 import javax.swing.*;

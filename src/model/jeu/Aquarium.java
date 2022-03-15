@@ -1,3 +1,6 @@
+//Jérémie Caron     itération 1
+//Classe qui gère l'aquarium et ses emplacements
+
 package model.jeu;
 import java.util.*;
 import java.awt.*;

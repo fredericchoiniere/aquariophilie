@@ -1,3 +1,6 @@
+//Jérémie Caron, Frédéric Choinière     itération 1
+//Classe des emplacements de l'aquarium
+
 package model.jeu;
 
 import javax.swing.JLabel;

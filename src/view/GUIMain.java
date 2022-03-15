@@ -1,3 +1,7 @@
+//Jérémie Caron, Frédéric Choinière     itération 1
+//Classe d'affichage principale
+
+
 package view;
 
 // import pour le bon fonctionnement de la classe
@@ -549,7 +553,7 @@ public class GUIMain extends JFrame implements Runnable {
 
     /**
      * @param label
-     *              Créé et applique un curseur custom
+     * Créé et applique un curseur custom
      */
     public void setCursor(JLabel label) {
         ImageIcon curseur = (ImageIcon) label.getIcon();

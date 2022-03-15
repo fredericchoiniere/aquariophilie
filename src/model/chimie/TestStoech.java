@@ -1,3 +1,7 @@
+// Frédéric Choinière   itération 1
+// CLASSE DE TEST NON IMPORTANTE
+
+
 package model.chimie;
 import java.awt.Color;
 import javax.swing.JProgressBar;
@@ -6,7 +10,7 @@ import javax.swing.JProgressBar;
 // 10gal = 37,85L
 // changer couleur prog bar
 
-public class TestStoech implements Runnable { // TODO: CLASSE DE TEST NON IMPORTANTE
+public class TestStoech implements Runnable {
 
     final short MAXNITRATE = 50;
     public int quantAmmoniaque = 50, quantNitrite = 0, quantNitrate = 0; // nitrate max 50mg/L
