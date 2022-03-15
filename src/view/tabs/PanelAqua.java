@@ -3,13 +3,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-/**
- * <p> description </p>
- * @param 
- * @return 
- * @since Iteration #1
- */
-public class PanelAqua extends JPanel implements MouseListener, FocusListener{ // extends JPanel pour créer un Jpanel
+public class PanelAqua extends JPanel implements MouseListener, FocusListener { // extends JPanel pour créer un Jpanel
 
     /**
      * <p> description </p>
@@ -35,7 +29,6 @@ public class PanelAqua extends JPanel implements MouseListener, FocusListener{ /
         Graphics2D g2D = (Graphics2D) g;
 
         // créer le background pour l'onglet Aquarium
-        
         Image background = Toolkit.getDefaultToolkit().getImage("res/background/background.png");
         g2D.drawImage(background, 5, 5, this);
 
@@ -62,7 +55,6 @@ public class PanelAqua extends JPanel implements MouseListener, FocusListener{ /
     @Override
     public void mouseClicked(MouseEvent e) {
         requestFocus();
-        //System.out.println("fuck");
     }
 
     @Override

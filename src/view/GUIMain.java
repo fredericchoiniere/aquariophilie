@@ -57,13 +57,23 @@ public class GUIMain extends JFrame implements Runnable {
     public int argent = 0;
     public static float jours = (float) 0; // TIMER GLOBAL
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
-    public GUIMain() { // création du constructeur GuiMain
+    public GUIMain() { // création du constructeur GUIMain
+
+        // pour les deco
+        empla1 = "decoration";
+        empla2 = "poisson";
+        empla3 = "";
+        empla4 = "";
+        empla5 = "decoration";
+        empla6 = "";
+
+        // pour les poissons
+        poi1 = "rouge";
+        poi2 = "betta";
+        poi3 = "";
+        poi4 = "";
+        poi5 = "";
+        poi6 = "";
 
         // création du curseur custom
         tetra_curseur = new ImageIcon("res/icone_souris/tetra_cursor.png");
@@ -515,12 +525,15 @@ public class GUIMain extends JFrame implements Runnable {
         aquarium.emp3.setBorder(new LineBorder(Color.yellow, 2));
     }
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
+    public void visibleBordersPoi() {
+        aquarium.aqua1.setBorder(new LineBorder(Color.black, 2));
+        aquarium.aqua2.setBorder(new LineBorder(Color.blue, 2));
+        aquarium.aqua3.setBorder(new LineBorder(Color.blue, 2));
+        aquarium.aqua4.setBorder(new LineBorder(Color.blue, 2));
+        aquarium.aqua5.setBorder(new LineBorder(Color.blue, 2));
+        aquarium.aqua6.setBorder(new LineBorder(Color.blue, 2));
+    }
+
     // méthode pour set les borders visible
     public void invisibleBordersDeco() {
         aquarium.emp1.setBorder(null);
@@ -528,12 +541,15 @@ public class GUIMain extends JFrame implements Runnable {
         aquarium.emp3.setBorder(null);
     }
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
+    public void invisibleBordersPoi() {
+        aquarium.aqua1.setBorder(null);
+        aquarium.aqua2.setBorder(null);
+        aquarium.aqua3.setBorder(null);
+        aquarium.aqua4.setBorder(null);
+        aquarium.aqua5.setBorder(null);
+        aquarium.aqua6.setBorder(null);
+    }
+
     // méthode pour set curseur de base
     public void basicCursor() {
         tetra_curseur = new ImageIcon("res/icone_souris/tetra_cursor.png");
@@ -543,12 +559,9 @@ public class GUIMain extends JFrame implements Runnable {
     }
 
     /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
+     * @param label
+     *              Créé et applique un curseur custom
      */
-    // set le bon curseur avec le bon label
     public void setCursor(JLabel label) {
         ImageIcon curseur = (ImageIcon) label.getIcon();
         panelAqua.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
@@ -557,12 +570,12 @@ public class GUIMain extends JFrame implements Runnable {
     }
 
     /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
+     * @param rectangle
+     * @param label
+     * @param icone
+     *                  Vérifie la position de la souris en fonction du rectangle
+     *                  fourni
      */
-    // regarder si la souris est dans le rectangle lors du lachement de la touche
     public void checkRectanglesDeco(Rectangle rectangle, JLabel label, Icon icone) {
         if (panelAqua.getMousePosition().getX() >= rectangle.getMinX()
                 && panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
@@ -606,13 +619,7 @@ public class GUIMain extends JFrame implements Runnable {
     // création des threads pour les poissons dans l'aquarium
     // --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
-    // thread du poisson rouge TODO: placer dans sa classe
+    // thread du poisson rouge
     @Override
     public void run() {
         while (true) {

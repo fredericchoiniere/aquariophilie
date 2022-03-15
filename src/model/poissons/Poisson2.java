@@ -2,14 +2,11 @@ package model.poissons;
 import java.awt.*;
 import javax.swing.*;
 
-/**
- * <p> description </p>
- * @param 
- * @return 
- * @since Iteration #1
- */
-public class Poisson2 extends JPanel { //TODO: implements runnable
-    // Attributs : coordonnees de la boule
+import view.tabs.PanelAqua;
+
+public class Poisson2 extends JPanel {
+
+    // attributs de la classe
     public int x = 10;
     public int y = 10;
     public int vel_x = 1;
@@ -23,24 +20,13 @@ public class Poisson2 extends JPanel { //TODO: implements runnable
     Image empty = Toolkit.getDefaultToolkit().getImage("res/poissons/empty.png");
     PanelAqua panelAqua;
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
+    // permet de le rendre opaque
     @Override
     public void setOpaque(boolean isOpaque) {
         super.setOpaque(false);
     }
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
-    // Dessine boule
+    // Dessine le poisson
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
@@ -48,33 +34,17 @@ public class Poisson2 extends JPanel { //TODO: implements runnable
         g2d.drawImage(setImage(image), x, y, this);
     }
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
+    // set la velociter du poisson
     public void setXVelocity(int vel_x) {
         this.vel_x = vel_x;
     }
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
+    // set la velociter du poisson
     public void setYVelocity(int vel_y) {
         this.vel_y = vel_y;
     }
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
-    // Deplacement boule selon les valeurs des parametres x et y
+    // Deplacement du poisson selon les valeurs des parametres x et y
     public void deplacer() {
         this.x += vel_x;
         this.y += vel_y;
@@ -87,13 +57,8 @@ public class Poisson2 extends JPanel { //TODO: implements runnable
         repaint();
     }
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
-    public Image setImage(String coter) { // regarde pour le bon coter pour l'image
+    // regarde pour le bon coter pour l'image
+    public Image setImage(String coter) { 
         if (coter == "droite") {
             img = poisson_droite;
         }

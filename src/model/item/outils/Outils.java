@@ -10,12 +10,7 @@ public class Outils{ // extends Draggable components pour les Outils
     
     public String nom = "";
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
+    // permet de prendre le nom pipette
     public void adapterNom() { 
         nom = getClass().getName().toLowerCase();
         nom = nom.substring(6);

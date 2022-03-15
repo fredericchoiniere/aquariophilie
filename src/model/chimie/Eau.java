@@ -36,6 +36,9 @@ public class Eau implements Runnable {
     public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0);                  // Liste à synchroniser
     public List<Float> listeAmmoniaque = Collections.synchronizedList(listeAmmoniaqueTemp); // Liste synchronisée
 
+    public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0);                  // Liste à synchroniser
+    public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
+
     // ArrayBlockingQueue? comment manipuler la différence de valeurs?
     // live on check-then-act ce qui est un big no no
 
@@ -90,21 +93,20 @@ public class Eau implements Runnable {
 
     }
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
+    
+    /** 
+     * @param ammoniaque
+     * @param cycle
+     * Ajoute une valeur d'ammoniaque fournie dans la listeAmmoniaque à l'index spécifié
      */
     public void addAmmoniaque(float ammoniaque, byte cycle) { // ajouter différence, mettre dans intervalle [tant que y > 0 && pente négative]
         listeAmmoniaque.add(cycle, ammoniaque);
     }
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
+    
+    /** 
+     * @return float
+     * Additionne toutes les valeurs dans la listeAmmoniaque
      */
     public float sommeAmmoniaque(){
         sommeAmmoniaque = 0;
@@ -113,6 +115,15 @@ public class Eau implements Runnable {
         }
         this.ammoniaque = sommeAmmoniaque;
         return this.ammoniaque;
+    }
+    
+    /** 
+     * @return double
+     * Dicte le comportement des nitrites, incomplet
+     */
+    public double comportNitrite(){ // voir fonction, mettre dans intervalle [tant que y > 0 && pente négative]
+        double temp = 0;
+        return temp;
     }
 
     /**
@@ -153,31 +164,27 @@ public class Eau implements Runnable {
         return pet;
     }
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
+    /** 
+     * @return float
+     * Dicte le comportement des nitrates selon une courbe
      */
     public float comportNitrates() {
-        //System.out.println("nitrates"+ nitrates);
         this.nitrates = ((jours/7) - 4);
         return this.nitrates;
     }
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
+    
+    /** 
+     * Méthode run de la classe Eau
+     * Incomplète pour l'instant
      */
     @Override
-    public void run() { // TODO: updater avec changement de jour
+    public void run() {
         while (true) {
             jours = GUIMain.jours;
             try {
                 if (jours > 28) {
-                    comportNitrate();
+                    comportNitrates();
                     Thread.sleep(1000);
                 } else Thread.sleep(1000);
             } catch (Exception e) {

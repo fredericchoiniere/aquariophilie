@@ -71,12 +71,7 @@ public class Aquarium {
         panel.add(aqua6);
     }
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
+    // permet de set les label visible ou invisible
     public void setVisible(boolean etat) {
         emp1.setVisible(etat);
         emp2.setVisible(etat);

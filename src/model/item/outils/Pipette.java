@@ -1,8 +1,8 @@
 package model.item.outils;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+
+import javax.swing.*;
 import java.awt.*;
+
 
 /**
  * <p> description </p>
@@ -31,28 +31,18 @@ public class Pipette extends Outils {
 
     }
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
-    public void changerEtatLabel(JLabel label){
-        if(est_remplie){
+    // Change l'état de la pipette
+    public void changerEtatLabel(JLabel label) {
+        if (est_remplie) {
             label.setIcon(icone_plein);
         } else {
             label.setIcon(icone_vide);
         }
     }
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
-    public void changerEtatPanel(JPanel panel){
-        if(est_remplie){
+    // change l'état du panel
+    public void changerEtatPanel(JPanel panel) {
+        if (est_remplie) {
             panel.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
                     curseur_plein.getImage(),
                     new Point(0, 0), "curseur plein"));

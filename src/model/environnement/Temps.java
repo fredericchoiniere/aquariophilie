@@ -11,7 +11,7 @@ import view.GUIMain;
 public class Temps{
     Timer journee;
 
-    //public float jours = 0;
+    // Incrémente GUIMain.jours (timer global) au 5 secondes
 
     /**
      * <p> description </p>
