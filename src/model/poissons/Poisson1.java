@@ -24,7 +24,6 @@ public class Poisson1 extends JPanel {
     // permet de rendre le poisson opaque
     @Override
     public void setOpaque(boolean isOpaque) {
-        // TODO Auto-generated method stub
         super.setOpaque(false);
     }
 
@@ -78,11 +77,11 @@ public class Poisson1 extends JPanel {
     public void nager() {
         if (this.x > 286) {
             this.setXVelocity(-this.vel_x);
-            this.image = "gauche";
+            image = "gauche";
         }
         if (this.x < 4) {
             this.setXVelocity(1);
-            this.image = "droite";
+            image = "droite";
         }
         if (this.y > 120) {
             this.setYVelocity(-this.vel_y);
