@@ -1,3 +1,6 @@
+//Jérémie Caron     itération 1
+//Classe qui gère l'inventaire et ses emplacements
+
 package model.jeu;
 import java.util.*;
 import java.awt.*;
@@ -14,7 +17,7 @@ public class Inventaire {
         // créer les emplacements dans l'inventaire
         emp1 = new Emplacementinv();
         emp1.setBounds(30, 30, (int) size_icone_inv.getWidth(), (int) size_icone_inv.getHeight());
-        emp1.setIcon(new ImageIcon("res/background/decorations/plante_bleu.png"));
+        emp1.setIcon(new ImageIcon("res/background/decorations/planteTemp.png"));
         label.add(emp1);
 
         emp2 = new Emplacementinv();
@@ -24,26 +27,30 @@ public class Inventaire {
 
         emp3 = new Emplacementinv();
         emp3.setBounds(30, 196, (int) size_icone_inv.getWidth(), (int) size_icone_inv.getHeight());
-        emp3.setIcon(new ImageIcon("res/background/decorations/lol.png"));
+        emp3.setIcon(new ImageIcon("res/background/decorations/planteTemp.png"));
         label.add(emp3);
 
         emp4 = new Emplacementinv();
         emp4.setBounds(140, 196, (int) size_icone_inv.getWidth(), (int) size_icone_inv.getHeight());
-        emp4.setIcon(new ImageIcon("res/background/decorations/lol.png"));
+        emp4.setIcon(new ImageIcon("res/background/decorations/decoTemp.png"));
         label.add(emp4);
 
         emp5 = new Emplacementinv();
         emp5.setBounds(30, 362, (int) size_icone_inv.getWidth(), (int) size_icone_inv.getHeight());
-        emp5.setIcon(new ImageIcon("res/background/decorations/lol.png"));
+        emp5.setIcon(new ImageIcon("res/background/decorations/decoTemp.png"));
         label.add(emp5);
 
         emp6 = new Emplacementinv();
         emp6.setBounds(140, 362, (int) size_icone_inv.getWidth(), (int) size_icone_inv.getHeight());
-        emp6.setIcon(new ImageIcon("res/background/decorations/lol.png"));
+        emp6.setIcon(new ImageIcon("res/background/decorations/decoTemp.png"));
         label.add(emp6);
     }
 
-    // permet de set les label visible ou invisible
+    
+    /** 
+     * @param etat
+     * permet de set les label visible ou invisible
+     */
     public void setVisible(boolean etat) {
         emp1.setVisible(etat);
         emp2.setVisible(etat);

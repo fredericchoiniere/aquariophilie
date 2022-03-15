@@ -1,14 +1,11 @@
+//Jérémie Caron     itération 1
+//Classe qui gère l'aquarium et ses emplacements
+
 package model.jeu;
 import java.util.*;
 import java.awt.*;
 import javax.swing.*;
 
-/**
- * <p> description </p>
- * @param 
- * @return 
- * @since Iteration #1
- */
 public class Aquarium {
 
     public Emplacementaq emp1, emp2, emp3, aqua1, aqua2, aqua3, aqua4, aqua5, aqua6;
@@ -16,12 +13,6 @@ public class Aquarium {
     final Dimension size_icone_poi = new Dimension(70, 70);
     private ArrayList<Emplacementaq> listEmpPleins = new ArrayList<Emplacementaq>(3);
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
     public Aquarium(JPanel panel) {
 
         // rajoute les emplacements à l'aquarium
@@ -71,7 +62,11 @@ public class Aquarium {
         panel.add(aqua6);
     }
 
-    // permet de set les label visible ou invisible
+    
+    /** 
+     * @param etat
+     * permet de set les label visible ou invisible
+     */
     public void setVisible(boolean etat) {
         emp1.setVisible(etat);
         emp2.setVisible(etat);

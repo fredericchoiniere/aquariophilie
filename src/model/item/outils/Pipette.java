@@ -1,26 +1,16 @@
+//Jérémie Caron     itération 1
+//Classe pour l'outil pipette
+
 package model.item.outils;
 
 import javax.swing.*;
 import java.awt.*;
 
-
-/**
- * <p> description </p>
- * @param 
- * @return 
- * @since Iteration #1
- */
 public class Pipette extends Outils {
 
     ImageIcon curseur_vide, curseur_plein, icone_vide, icone_plein;
     public boolean est_remplie = false;
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
     public Pipette() { // Création de l'objet pipette
         super();
         adapterNom();
@@ -31,7 +21,11 @@ public class Pipette extends Outils {
 
     }
 
-    // Change l'état de la pipette
+    
+    /** 
+     * @param label
+     * Change l'état de la pipette
+     */
     public void changerEtatLabel(JLabel label) {
         if (est_remplie) {
             label.setIcon(icone_plein);
@@ -40,7 +34,11 @@ public class Pipette extends Outils {
         }
     }
 
-    // change l'état du panel
+    
+    /** 
+     * @param panel
+     * change l'état du panel
+     */
     public void changerEtatPanel(JPanel panel) {
         if (est_remplie) {
             panel.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(

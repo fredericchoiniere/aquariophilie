@@ -1,40 +1,226 @@
 @startuml Diagram
 scale 1
 
-class Referant {
-    +Referent
+
+class Control {
+    +main
+    +guiIntro
+    +setVisible(): true
 }
 
-class Emetteur {
-    +Emetteur
+class GUIIntro {
+    +JButton: nouvelle, charger,
+    close, credit
+    +JLabel: titre
+    +Jpanel
+    +guiMain
+    +GUIIntro(constructeur)
+    +GridBagLayout(panel)
+    +actionPerformed(button)
+    +addKeyListener(enter)
 }
 
-class Canal {
-    +Canal
+class CycleAzote {
+    +float: jour, jourFinale, jourInitial
+    +byte: cycle
+    +eau
+    +CycleAzote()
+    +cycleAmmoniaque(eau)
+    +cycleNitrite(eau)
+    +run()
 }
 
-class Code {
-    +Code
+class Eau {
+    +int: ph, kh, gh, ammonium, nbAtomeN,
+    nbAtomeO, nbAtomeH, bacteries,
+    chlore, temperature, scoreEau
+    +float: volumeEau, nitrites,
+    nitrates, ammoniaque, jours
+    -float: sommeAmmoniaque, sommeNitrites
+    +byte: cycle
+    +listes<float>
+    +Eau(constructeur)
+    +changerEau(), couleur(), addAmmoniaque(),
+    sommeAmmoniaque(), sommeNitrites(),
+    comportNitrates()
+    +addNitrites(float, byte)
+    +run()
 }
 
-class Message {
-    +Message
+class Temps {
+    +Timer: journee
+    +Temps(constructeur)
+    +scheduleAtFixedRate()
 }
 
-class Recepteur {
-    +Recepteur
+class Outils {
+    +String: nom
+    +adapterNom()
+}
+
+class Pipette {
+    +ImageIcon: curseur_vide,
+    cruseur_plein, icone_vide,
+    icone_plein
+    +boolean: est_remplie
+    +Pipette(constructeur)
+    +changerEtatLabel(label)
+    +changerEtatPanel(panel)
+}
+
+class Aquarium {
+    +Emplacementaq: emp1, emp2, emp3,
+    aqua1, aqua2, aqua3, aqua4,aqua5,
+    aqua6
+    +Dimension
+    -listes<Emplacementaq>
+    +Aquarium(constructeur, panel)
+    +setVisible(boolean)
+}
+
+class Emplacementaq {
+    +short: position
+    +float: prix
+    +boolean: plein
+    +Emplacementaq(constructeur)
+    +estPlein()
+}
+
+class Emplacementinv {
+    +short: position
+    +float: prix
+    +boolean: plein
+    +Emplacementinv(constructeur)
+    +estPlein()
+}
+
+class Inventaire {
+    +Emplacementinv: emp1, emp2, emp3,
+    emp4, emp5, emp6
+    +Dimension
+    -liste<Emplacementinv>
+    +Inventaire(constructeur, label)
+    +setVisible(boolean)
+}
+
+class Poisson1 {
+    +int: x, y, vel_x, vel_y
+    +String: image
+    +boolean: swim
+    +image: img, poisson_droite,
+    poisson_gauche, empty
+    +panelAqua
+    +setOpaque(boolean)
+    +paintComponent(Graphics)
+    +setXVelocity(int), setYVelocity(int)
+    +deplacer(), nager()
+    +setImage(String)
+}
+
+class Poisson2 {
+    +int: x, y, vel_x, vel_y
+    +String: image
+    +boolean: swim
+    +image: img, poisson_droite,
+    poisson_gauche, empty
+    +panelAqua
+    +setOpaque(boolean)
+    +paintComponent(Graphics)
+    +setXVelocity(int), setYVelocity(int)
+    +deplacer(), nager()
+    +setImage(String)
+}
+
+class PanelAqua {
+    +PanelAqua(constructeur)
+    +paintComponent(Graphics)
+    +mouseListener()
+}
+
+class PanelInfo {
+    +JTextArea: textArea
+    +JScrollPane: scroll
+    +PanelInfo(constructeur)
+}
+
+class PanelShop {
+    +PanelShop(constructeur)
+    +paintComponent(Graphics)
+}
+
+class PanelTest {
+    +CycleAqua: cycle
+    +JButton: button1, button2
+    +Thread: cycle1
+    +boolean: isFocused
+    +PanelTest(constructeur)
+    +actionPerformed()
+}
+
+class GUIMain {
+    +PanelAqua: panelAqua
+    +PanelTest: panelTest
+    +JTabbedPane: tabbedPane
+    +JLabel: testEau, empty, aquarium_kit_ouvert,
+    aquarium_kit_fermer, pipette, eau_label,
+    inventaire_ouvert, inventaire_fermer,
+    inventaire_bg, label_argent
+    +String: nom, empla1, empla2, empla3, empla4,
+    empla5, empla6, poi1, poi2, poi3, poi4,
+    poi5, poi6
+    +Rectangle: rectTest, rectEau, rectEmp1,
+    rectEmp2, rectEmp3, rectEmp4, rectEmp5, rectEmp6,
+    rectAqua1, rectAqua2, rectAqua3, rectAqua4,
+    rectAqua5, rectAqua6
+    +Temps: temps
+    +Eau: eau
+    +Poisson1: poisson1
+    +Poisson2: poisson2
+    +Pipette: pipette
+    +ImageIcon: tetra_curseur
+    +Inventaire: inventaire
+    +Aquarium: aquarium
+    +Thread: GuiMainThread, threadEau
+    +short: stade, iteration
+    +int: vel_x, vel_y, argent
+    +byte: cycle
+    +float: jours
+    +Dimension
+    +GUIMain(constructeur)
+    +addMouseListener(), mouseClicked(),
+    mousePressed(), mouseReleased()
+    +visibleBordersDeco(), visibleBordersPoi(),
+    invisibleBordersDeco(), invisibleBordersPoi(),
+    basicCursor(), setCursor(), aquaVisibleTrue(),
+    aquaVisibleFalse()
+    +checkRectanglesDeco(rectangle, label, icone)
+    +checkRectanglesPoi(rectangle, label, icone)
+    +run()
 }
 
 
-Referant <|--  Emetteur
-Message <|--  Emetteur
-Canal <|--  Emetteur
-Code <|--  Emetteur
+Control <|-- GUIIntro
 
-Recepteur <|-- Message
-Recepteur <|-- Canal
+GUIIntro <|-- GUIMain
+GUIMain <|-- PanelAqua
+GUIMain <|-- PanelShop
+GUIMain <|-- PanelInfo
+PanelAqua <|-- PanelTest
 
+Pipette *-- "Fait partie" Outils
+Aquarium *-- "Fait partie" Emplacementaq
+Inventaire *-- "Fait partie" Emplacementinv
+CycleAzote *-- "Prend eau" GUIMain
+CycleAzote *-- "Prend temps" GUIMain
+Eau *-- "Prend temps" GUIMain
 
+GUIMain "1" o-- "1" Pipette
+GUIMain "1" o-- "1" Inventaire
+GUIMain "1" o-- "1" Aquarium
+GUIMain "1" o-- "1" Eau
+GUIMain "1" o-- "1" Temps
+GUIMain "1..*" o-- "1" Poisson1
+GUIMain "1..*" o-- "1" Poisson2
 
 
 @enduml

@@ -1,3 +1,6 @@
+//Jérémie Caron, Frédéric Choinière     itération 1
+//Classe des emplacements de l'inventaire
+
 package model.jeu;
 import javax.swing.JLabel;
 
@@ -12,7 +15,11 @@ public class Emplacementinv extends JLabel {
         super();
     }
 
-    // remplie l'emplacement
+    
+    /** 
+     * @return Boolean
+     * remplie l'emplacement
+     */
     public Boolean estPlein() {
         return plein;
     }

@@ -1,12 +1,19 @@
+//Jérémie Caron     itération 1
+//Classe contrôleur qui initialise l'affichage du frame d'introduction
+
+
 package control;
 
 import javax.swing.*;
 import view.*;
-import java.awt.*;
 
 public class Control {
 
-    // permet d'initialiser le frame Aquarium
+    
+    /** 
+     * @param args
+     * permet d'initialiser le frame Introduction
+     */
     public static void main(String[] args) {
 
         GUIIntro guiIntro = new GUIIntro();
