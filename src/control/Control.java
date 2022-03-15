@@ -1,7 +1,6 @@
 //Jérémie Caron     itération 1
 //Classe contrôleur qui initialise l'affichage du frame d'introduction
 
-
 package control;
 
 import javax.swing.*;
@@ -9,10 +8,9 @@ import view.*;
 
 public class Control {
 
-    
-    /** 
+    /**
      * @param args
-     * permet d'initialiser le frame Introduction
+     *             permet d'initialiser le frame Introduction
      */
     public static void main(String[] args) {
 
