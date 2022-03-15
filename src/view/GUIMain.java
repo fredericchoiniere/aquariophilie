@@ -29,6 +29,7 @@ public class GUIMain extends JFrame implements Runnable {
     // appel des attributs de la classe GUIMain
     PanelAqua panelAqua;
     PanelTest panelTest;
+    JTabbedPane tabbedPane;
     JButton pousser, rapetisser;
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, pipette, eau_label, inventaire_ouvert,
             inventaire_fermer, inventaire_bg;
@@ -79,7 +80,7 @@ public class GUIMain extends JFrame implements Runnable {
         threadEau = new Thread(eau);
 
         // creation du main tab
-        JTabbedPane tabbedPane = new JTabbedPane();
+        tabbedPane = new JTabbedPane();
 
         // creation du premier tab
         // ----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -582,6 +583,12 @@ public class GUIMain extends JFrame implements Runnable {
         }
     }
 
+    
+    /** 
+     * @param rectangle
+     * @param label
+     * @param icone
+     */
     // regarder si la souris est dans le rectangle lors du lachement de la touche
     // pour décoration
     public void checkRectanglesPoi(Rectangle rectangle, JLabel label, Icon icone) {
