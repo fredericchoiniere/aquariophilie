@@ -6,7 +6,6 @@ package control;
 
 import javax.swing.*;
 import view.*;
-import java.awt.*;
 
 public class Control {
 
