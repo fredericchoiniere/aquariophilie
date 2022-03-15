@@ -6,13 +6,7 @@ import javax.swing.JProgressBar;
 // 10gal = 37,85L
 // changer couleur prog bar
 
-/**
- * <p> description </p>
- * @param 
- * @return 
- * @since Iteration #1
- */
-public class TestStoech implements Runnable {
+public class TestStoech implements Runnable { // TODO: CLASSE DE TEST NON IMPORTANTE
 
     final short MAXNITRATE = 50;
     public int quantAmmoniaque = 50, quantNitrite = 0, quantNitrate = 0; // nitrate max 50mg/L

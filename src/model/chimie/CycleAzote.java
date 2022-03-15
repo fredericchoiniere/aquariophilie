@@ -1,4 +1,7 @@
 package model.chimie;
+
+import model.environnement.*;
+
 import view.GUIMain;
 
     /**
@@ -15,18 +18,9 @@ public class CycleAzote implements Runnable {
     public Eau eau = GUIMain.eau;
     public byte cycle = eau.cycle;
 
-    // Temps tempsCycle = new Temps();
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
     public CycleAzote() {
-
         eau.cycle++;
         cycle++;
-        //eau.listeAmmoniaque.addLast((float)0);
     }
 
     /**
@@ -36,7 +30,6 @@ public class CycleAzote implements Runnable {
      * @since Iteration #1
      */
     public void cycleAmmoniaque(Eau eau) {
-        //if(tempAmmoniaque!=0)
         eau.listeAmmoniaque.remove(tempAmmoniaque);
         if (jours != 18) {
             tempAmmoniaque = (float) (-3.2 * ((jours / 7) - 1.25) * ((jours / 7) - 1.25) + 5);
@@ -80,16 +73,14 @@ public class CycleAzote implements Runnable {
 
             try {
                 if (jours >= 0 && jours <= 18) {
-                    // System.out.println("compote");
                     cycleAmmoniaque(eau);
-
-                    Thread.sleep(1000); // à enlever
+                    Thread.sleep(1000);
                 } else 
                     Thread.sleep(1000);
 
                 if (jours >= 14 && jours <= 35) {
                     // System.out.println("compote");
-                    cycleNitrites(eau);
+                    //cycleNitrites(eau);
     
                     Thread.sleep(1000); // à enlever
                 } else 
@@ -99,6 +90,5 @@ public class CycleAzote implements Runnable {
                 e.printStackTrace();
             }
         }
-
     }
 }
