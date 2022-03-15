@@ -1,17 +1,27 @@
 package model.jeu;
-
 import java.util.*;
 import java.awt.*;
 import javax.swing.*;
 
-public class Inventaire {
+/**
+ * <p> description </p>
+ * @param 
+ * @return 
+ * @since Iteration #1
+ */
+public class Inventaire{
 
     public Emplacementinv emp1, emp2, emp3, emp4, emp5, emp6;
     final Dimension size_icone_inv = new Dimension(80, 80);
-
     private ArrayList<Emplacementinv> listEmpPleins = new ArrayList<Emplacementinv>(6);
 
-    public Inventaire(JLabel label) {
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
+    public Inventaire(JLabel label){
 
         // créer les emplacements dans l'inventaire
         emp1 = new Emplacementinv();
@@ -45,8 +55,13 @@ public class Inventaire {
         label.add(emp6);
     }
 
-    // permet de set les label visible ou invisible
-    public void setVisible(boolean etat) {
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
+    public void setVisible(boolean etat){
         emp1.setVisible(etat);
         emp2.setVisible(etat);
         emp3.setVisible(etat);

@@ -1,22 +1,36 @@
 package view;
 
-// TODO: CLASSE DE TEST TEMPORAIRE
-
+// import associer àl'utilisation de la classe
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*;
-
 import model.chimie.CycleAzote;
+import model.chimie.TestStoech;
+import model.environnement.Temps;
 
+/**
+ * <p> description </p>
+ * @param 
+ * @return 
+ * @since Iteration #1
+ */
 public class PanelTest extends JPanel implements ActionListener {
 
+    // appel desattributs de la classe
+    TestStoech stoech;
     CycleAzote cycle;
     JButton button1, button2;
     Thread cycle1;
     boolean isFocused;
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public PanelTest() {
 
         setSize(700, 500);
@@ -37,9 +51,19 @@ public class PanelTest extends JPanel implements ActionListener {
         add(button1);
         add(button2);
 
+        
+
+        // début des threads relier au panel
         cycle1.start();
     }
 
+    // méthode relier à la classe
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == button1) {

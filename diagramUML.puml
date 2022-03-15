@@ -5,25 +5,6 @@ class Referant {
     +Referent
 }
 
-class Emetteur {
-    +Emetteur
-}
-
-class Canal {
-    +Canal
-}
-
-class Code {
-    +Code
-}
-
-class Message {
-    +Message
-}
-
-class Recepteur {
-    +Recepteur
-}
 
 
 Referant <|--  Emetteur

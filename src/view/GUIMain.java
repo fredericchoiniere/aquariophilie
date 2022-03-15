@@ -15,6 +15,12 @@ import model.jeu.Inventaire;
 import model.poissons.*;
 import view.tabs.*;
 
+/**
+ * <p> description </p>
+ * @param 
+ * @return 
+ * @since Iteration #1
+ */
 public class GUIMain extends JFrame implements Runnable {
 
     // appel des attributs de la classe GUIMain
@@ -51,23 +57,13 @@ public class GUIMain extends JFrame implements Runnable {
     public int argent = 0;
     public static float jours = (float) 0; // TIMER GLOBAL
 
-    public GUIMain() { // création du constructeur GUIMain
-
-        // pour les deco
-        empla1 = "decoration";
-        empla2 = "poisson";
-        empla3 = "";
-        empla4 = "";
-        empla5 = "decoration";
-        empla6 = "";
-
-        // pour les poissons
-        poi1 = "rouge";
-        poi2 = "betta";
-        poi3 = "";
-        poi4 = "";
-        poi5 = "";
-        poi6 = "";
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
+    public GUIMain() { // création du constructeur GuiMain
 
         // création du curseur custom
         tetra_curseur = new ImageIcon("res/icone_souris/tetra_cursor.png");
@@ -260,6 +256,7 @@ public class GUIMain extends JFrame implements Runnable {
         // action listener pour la pipette et les changements d'états du curseur et du
         // label
         pipette.addMouseListener(new MouseAdapter() {
+            
             @Override
             public void mousePressed(MouseEvent e) {
                 pipette2.changerEtatPanel(panelAqua);
@@ -285,6 +282,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // actionlistener du label empty pour fermer le paneltest
         empty.addMouseListener(new MouseAdapter() {
+
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (panelAqua.getMousePosition().getX() <= rectTest.getMinX()
@@ -304,6 +302,7 @@ public class GUIMain extends JFrame implements Runnable {
         // action listener sur le label icone pour faire disparaitre ou apparaitre
         // l'inventaire
         inventaire_ouvert.addMouseListener(new MouseAdapter() {
+           
             @Override
             public void mouseClicked(MouseEvent e) {
                 inventaire_ouvert.setVisible(false);
@@ -316,6 +315,7 @@ public class GUIMain extends JFrame implements Runnable {
         // action listener sur le label icone pour faire disparaitre ou apparaitre
         // l'inventaire
         inventaire_fermer.addMouseListener(new MouseAdapter() {
+            
             @Override
             public void mouseClicked(MouseEvent e) {
                 inventaire_ouvert.setVisible(true);
@@ -331,7 +331,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 1
         inventaire.emp1.addMouseListener(new MouseAdapter() {
-
+            
             @Override
             public void mousePressed(MouseEvent e) {
                 if (empla1 == "decoration") {
@@ -371,6 +371,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 2
         inventaire.emp2.addMouseListener(new MouseAdapter() {
+            
             @Override
             public void mousePressed(MouseEvent e) {
                 if (empla2 == "decoration") {
@@ -409,6 +410,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 3
         inventaire.emp3.addMouseListener(new MouseAdapter() {
+            
             @Override
             public void mousePressed(MouseEvent e) {
                 setCursor(inventaire.emp3);
@@ -427,6 +429,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 4
         inventaire.emp4.addMouseListener(new MouseAdapter() {
+            
             @Override
             public void mousePressed(MouseEvent e) {
                 setCursor(inventaire.emp4);
@@ -445,7 +448,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 5
         inventaire.emp5.addMouseListener(new MouseAdapter() {
-
+            
             @Override
             public void mousePressed(MouseEvent e) {
                 if (empla5 == "decoration") {
@@ -477,6 +480,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 6
         inventaire.emp6.addMouseListener(new MouseAdapter() {
+            
             @Override
             public void mousePressed(MouseEvent e) {
                 setCursor(inventaire.emp6);
@@ -498,6 +502,12 @@ public class GUIMain extends JFrame implements Runnable {
     // méthode de GUIMain
     // --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     // méthode pour set les borders visible
     public void visibleBordersDeco() {
         aquarium.emp1.setBorder(new LineBorder(Color.yellow, 2));
@@ -505,15 +515,12 @@ public class GUIMain extends JFrame implements Runnable {
         aquarium.emp3.setBorder(new LineBorder(Color.yellow, 2));
     }
 
-    public void visibleBordersPoi() {
-        aquarium.aqua1.setBorder(new LineBorder(Color.black, 2));
-        aquarium.aqua2.setBorder(new LineBorder(Color.blue, 2));
-        aquarium.aqua3.setBorder(new LineBorder(Color.blue, 2));
-        aquarium.aqua4.setBorder(new LineBorder(Color.blue, 2));
-        aquarium.aqua5.setBorder(new LineBorder(Color.blue, 2));
-        aquarium.aqua6.setBorder(new LineBorder(Color.blue, 2));
-    }
-
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     // méthode pour set les borders visible
     public void invisibleBordersDeco() {
         aquarium.emp1.setBorder(null);
@@ -521,15 +528,12 @@ public class GUIMain extends JFrame implements Runnable {
         aquarium.emp3.setBorder(null);
     }
 
-    public void invisibleBordersPoi() {
-        aquarium.aqua1.setBorder(null);
-        aquarium.aqua2.setBorder(null);
-        aquarium.aqua3.setBorder(null);
-        aquarium.aqua4.setBorder(null);
-        aquarium.aqua5.setBorder(null);
-        aquarium.aqua6.setBorder(null);
-    }
-
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     // méthode pour set curseur de base
     public void basicCursor() {
         tetra_curseur = new ImageIcon("res/icone_souris/tetra_cursor.png");
@@ -539,9 +543,12 @@ public class GUIMain extends JFrame implements Runnable {
     }
 
     /**
-     * @param label
-     *              Créé et applique un curseur custom
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
      */
+    // set le bon curseur avec le bon label
     public void setCursor(JLabel label) {
         ImageIcon curseur = (ImageIcon) label.getIcon();
         panelAqua.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
@@ -550,12 +557,12 @@ public class GUIMain extends JFrame implements Runnable {
     }
 
     /**
-     * @param rectangle
-     * @param label
-     * @param icone
-     *                  Vérifie la position de la souris en fonction du rectangle
-     *                  fourni
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
      */
+    // regarder si la souris est dans le rectangle lors du lachement de la touche
     public void checkRectanglesDeco(Rectangle rectangle, JLabel label, Icon icone) {
         if (panelAqua.getMousePosition().getX() >= rectangle.getMinX()
                 && panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
@@ -599,7 +606,13 @@ public class GUIMain extends JFrame implements Runnable {
     // création des threads pour les poissons dans l'aquarium
     // --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    // thread du poisson rouge
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
+    // thread du poisson rouge TODO: placer dans sa classe
     @Override
     public void run() {
         while (true) {
