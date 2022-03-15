@@ -1,11 +1,15 @@
 package model.chimie;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
-
 import view.GUIMain;
 
+/**
+ * <p> description </p>
+ * @param 
+ * @return 
+ * @since Iteration #1
+ */
 public class Eau implements Runnable {
 
     public final float volumeEau = (float) 37.85;
@@ -41,6 +45,12 @@ public class Eau implements Runnable {
     public float jours = GUIMain.jours; // TODO: va être remplacé
     public byte cycle = 0;
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public Eau(){
         listeAmmoniaque.add(0, this.ammoniaque);
         listeAmmoniaque.add(1, this.ammoniaque);
@@ -50,6 +60,12 @@ public class Eau implements Runnable {
         //listeAmmoniaque.add(1,(float) 0);
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public void changerEau() {
 
         ph = 7; 
@@ -66,12 +82,24 @@ public class Eau implements Runnable {
 
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public void couleur() {
 
         //pourcentage de vert ou de gris dans l'eau
 
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public void addAmmoniaque(float ammoniaque, byte cycle) { // ajouter différence, mettre dans intervalle [tant que y > 0 && pente négative]
         
         listeAmmoniaque.add(cycle, ammoniaque);
@@ -94,6 +122,12 @@ public class Eau implements Runnable {
 
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public float sommeAmmoniaque(){
         sommeAmmoniaque = 0;
         for (Float valeur : listeAmmoniaque) {
@@ -103,12 +137,24 @@ public class Eau implements Runnable {
         return this.ammoniaque;
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public void addNitrites(float nitrites, byte cycle) { // ajouter différence, mettre dans intervalle
         
         listeNitrites.add(cycle, nitrites);
 
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public float sommeNitrites(){
         sommeNitrites = 0;
         for (Float valeur : listeNitrites) {
@@ -118,17 +164,35 @@ public class Eau implements Runnable {
         return this.nitrites;
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public double comportNitrites(){ // voir fonction, mettre dans intervalle [tant que y > 0 && pente négative]
         double pet = 0;
         return pet;
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public float comportNitrates() {
         //System.out.println("nitrates"+ nitrates);
         this.nitrates = ((jours/7) - 4);
         return this.nitrates;
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     @Override
     public void run() { // TODO: updater avec changement de jour
         while (true) {

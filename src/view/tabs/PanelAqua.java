@@ -1,20 +1,34 @@
 package view.tabs;
-
 import java.awt.*;
 import javax.swing.*;
-
-
-
 import java.awt.event.*;
 
+/**
+ * <p> description </p>
+ * @param 
+ * @return 
+ * @since Iteration #1
+ */
 public class PanelAqua extends JPanel implements MouseListener, FocusListener{ // extends JPanel pour créer un Jpanel
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public PanelAqua() {
         setPreferredSize(new Dimension(1000, 700)); // Taille du panel
         addFocusListener(this);
         addMouseListener(this);
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public void paintComponent(Graphics g) { // méthode paint
         super.paintComponent(g);
 
@@ -22,7 +36,6 @@ public class PanelAqua extends JPanel implements MouseListener, FocusListener{ /
 
         // créer le background pour l'onglet Aquarium
         
-
         Image background = Toolkit.getDefaultToolkit().getImage("res/background/background.png");
         g2D.drawImage(background,5, 5, this);
 
@@ -33,6 +46,7 @@ public class PanelAqua extends JPanel implements MouseListener, FocusListener{ /
         g2D.drawImage(aquarium_1, 320, 305, this);
 
     }
+
     @Override
     public void focusGained(FocusEvent e) {
         //System.out.println("gloup");
@@ -53,11 +67,6 @@ public class PanelAqua extends JPanel implements MouseListener, FocusListener{ /
     public void mouseClicked(MouseEvent e) {
         requestFocus();
         //System.out.println("fuck");
-
-        
-        
-        
-        
     }
 
     @Override
@@ -79,6 +88,12 @@ public class PanelAqua extends JPanel implements MouseListener, FocusListener{ /
     }
 }
 
+/**
+ * <p> description </p>
+ * @param 
+ * @return 
+ * @since Iteration #1
+ */
 class AnimPanel extends JPanel {
     // Attributs : coordonn�es de la boule
     int x = 300;
@@ -86,6 +101,12 @@ class AnimPanel extends JPanel {
     int vel_x = 10;
     int vel_y = 10;
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     // Dessine boule
     public void paintComponent(Graphics g) {
     	super.paintComponent(g);
@@ -97,15 +118,33 @@ class AnimPanel extends JPanel {
         //g2d.fillOval(x, y, 75, 75);
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public void setXVelocity(int vel_x) {
         this.vel_x = vel_x;
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public void setYVelocity(int vel_y) {
         this.vel_y = vel_y;
     }
 
-    // D�placement boule selon les valeurs des param�tres x et y
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
+    // Deplacement boule selon les valeurs des parametres x et y
     public void deplacer() {
         System.out.println(this.x + ", " + this.y);
         this.x += vel_x;

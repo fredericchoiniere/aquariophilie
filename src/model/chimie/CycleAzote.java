@@ -1,9 +1,12 @@
 package model.chimie;
-
-import model.environnement.*;
 import view.GUIMain;
-//import java.math.*;
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
 public class CycleAzote implements Runnable {
 
     public float jourInitial = GUIMain.jours;
@@ -13,7 +16,12 @@ public class CycleAzote implements Runnable {
     public byte cycle = eau.cycle;
 
     // Temps tempsCycle = new Temps();
-
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public CycleAzote() {
 
         eau.cycle++;
@@ -21,6 +29,12 @@ public class CycleAzote implements Runnable {
         //eau.listeAmmoniaque.addLast((float)0);
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public void cycleAmmoniaque(Eau eau) {
         //if(tempAmmoniaque!=0)
         eau.listeAmmoniaque.remove(tempAmmoniaque);
@@ -32,6 +46,12 @@ public class CycleAzote implements Runnable {
         eau.addAmmoniaque(tempAmmoniaque, cycle);
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public void cycleNitrites(Eau eau) {
         //if(tempNitrites!=0)
         eau.listeNitrites.remove(tempNitrites);
@@ -45,6 +65,12 @@ public class CycleAzote implements Runnable {
         //eau.listeNitrites.add(tempNitrites);
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     @Override
     public void run() { // TODO: updater avec changement de jour
         while (true) {

@@ -15,6 +15,12 @@ import model.jeu.Inventaire;
 import model.poissons.*;
 import view.tabs.*;
 
+/**
+ * <p> description </p>
+ * @param 
+ * @return 
+ * @since Iteration #1
+ */
 public class GUIMain extends JFrame implements Runnable {
 
     // appel des attributs de la classe GUIMain TODO: MÉNAGE DANS CE VOMI LÀ
@@ -44,6 +50,12 @@ public class GUIMain extends JFrame implements Runnable {
     public static float jours = (float) 0; // TIMER GLOBAL
     public int argent = 0;
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public GUIMain() { // création du constructeur GuiMain
 
         // création du curseur custom
@@ -223,6 +235,7 @@ public class GUIMain extends JFrame implements Runnable {
         // action listener pour la pipette et les changements d'états du curseur et du
         // label
         pipette.addMouseListener(new MouseAdapter() {
+            
             @Override
             public void mousePressed(MouseEvent e) {
                 pipette2.changerEtatPanel(panelAqua);
@@ -245,6 +258,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // actionlistener du label empty pour fermer le paneltest
         empty.addMouseListener(new MouseAdapter() {
+
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (panelAqua.getMousePosition().getX() <= rectTest.getMinX()
@@ -264,6 +278,7 @@ public class GUIMain extends JFrame implements Runnable {
         // action listener sur le label icone pour faire disparaitre ou apparaitre
         // l'inventaire
         inventaire_ouvert.addMouseListener(new MouseAdapter() {
+           
             @Override
             public void mouseClicked(MouseEvent e) {
                 inventaire_ouvert.setVisible(false);
@@ -276,6 +291,7 @@ public class GUIMain extends JFrame implements Runnable {
         // action listener sur le label icone pour faire disparaitre ou apparaitre
         // l'inventaire
         inventaire_fermer.addMouseListener(new MouseAdapter() {
+            
             @Override
             public void mouseClicked(MouseEvent e) {
                 inventaire_ouvert.setVisible(true);
@@ -291,6 +307,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 1
         inventaire.emp1.addMouseListener(new MouseAdapter() {
+            
             @Override
             public void mousePressed(MouseEvent e) {
                 setCursor(inventaire.emp1);
@@ -309,6 +326,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 2
         inventaire.emp2.addMouseListener(new MouseAdapter() {
+            
             @Override
             public void mousePressed(MouseEvent e) {
                 setCursor(inventaire.emp2);
@@ -327,6 +345,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 3
         inventaire.emp3.addMouseListener(new MouseAdapter() {
+            
             @Override
             public void mousePressed(MouseEvent e) {
                 setCursor(inventaire.emp3);
@@ -345,6 +364,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 4
         inventaire.emp4.addMouseListener(new MouseAdapter() {
+            
             @Override
             public void mousePressed(MouseEvent e) {
                 setCursor(inventaire.emp4);
@@ -363,6 +383,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 5
         inventaire.emp5.addMouseListener(new MouseAdapter() {
+            
             @Override
             public void mousePressed(MouseEvent e) {
                 setCursor(inventaire.emp5);
@@ -381,6 +402,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 6
         inventaire.emp6.addMouseListener(new MouseAdapter() {
+            
             @Override
             public void mousePressed(MouseEvent e) {
                 setCursor(inventaire.emp6);
@@ -402,6 +424,12 @@ public class GUIMain extends JFrame implements Runnable {
     // méthode de GUIMain
     // --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     // méthode pour set les borders visible
     public void visibleBorders() {
         aquarium.emp1.setBorder(new LineBorder(Color.yellow, 2));
@@ -409,6 +437,12 @@ public class GUIMain extends JFrame implements Runnable {
         aquarium.emp3.setBorder(new LineBorder(Color.yellow, 2));
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     // méthode pour set les borders visible
     public void invisibleBorders() {
         aquarium.emp1.setBorder(null);
@@ -416,6 +450,12 @@ public class GUIMain extends JFrame implements Runnable {
         aquarium.emp3.setBorder(null);
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     // méthode pour set curseur de base
     public void basicCursor() {
         tetra_curseur = new ImageIcon("res/icone_souris/tetra_cursor.png");
@@ -424,6 +464,12 @@ public class GUIMain extends JFrame implements Runnable {
                 new Point(0, 0), "custom cursor"));
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     // set le bon curseur avec le bon label
     public void setCursor(JLabel label) {
         ImageIcon curseur = (ImageIcon) label.getIcon();
@@ -432,6 +478,12 @@ public class GUIMain extends JFrame implements Runnable {
                 new Point(0, 0), "curseur tétra"));
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     // regarder si la souris est dans le rectangle lors du lachement de la touche
     public void checkRectangles(Rectangle rectangle, JLabel label, Icon icone) {
         if (panelAqua.getMousePosition().getX() >= rectangle.getMinX()
@@ -448,6 +500,12 @@ public class GUIMain extends JFrame implements Runnable {
     // création des threads pour les poissons dans l'aquarium
     // --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     // thread du poisson rouge TODO: placer dans sa classe
     @Override
     public void run() {

@@ -1,18 +1,27 @@
 package model.item.outils;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import java.awt.*;
-import model.*;
 
+/**
+ * <p> description </p>
+ * @param 
+ * @return 
+ * @since Iteration #1
+ */
 public class Pipette extends Outils {
 
 
     ImageIcon curseur_vide, curseur_plein, icone_vide, icone_plein;
     public boolean est_remplie = false;
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public Pipette() { // Création de l'objet pipette
         super();
         adapterNom();
@@ -24,7 +33,12 @@ public class Pipette extends Outils {
 
     }
 
-    
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public void changerEtatLabel(JLabel label){
         if(est_remplie){
             label.setIcon(icone_plein);
@@ -33,6 +47,12 @@ public class Pipette extends Outils {
         }
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public void changerEtatPanel(JPanel panel){
         if(est_remplie){
             panel.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(

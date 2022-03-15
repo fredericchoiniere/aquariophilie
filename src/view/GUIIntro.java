@@ -1,15 +1,26 @@
 package view;
-
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
+/**
+ * <p> description </p>
+ * @param 
+ * @return 
+ * @since Iteration #1
+ */
 public class GUIIntro extends JFrame implements ActionListener {
 
     public JButton btnNouvellePartie, btnChargerPartie, btnModeEvaluation, btnCredit, btClose, btClassement,
             btInspiration;
     public JLabel titre;
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public GUIIntro() { // création du constructeur GUIIntro
 
         // Entrer dans l'application pour tester

@@ -1,16 +1,26 @@
 package model.jeu;
-
 import java.util.*;
 import java.awt.*;
 import javax.swing.*;
 
+/**
+ * <p> description </p>
+ * @param 
+ * @return 
+ * @since Iteration #1
+ */
 public class Aquarium {
 
     public Emplacementaq emp1, emp2, emp3;
     final Dimension size_icone_inv = new Dimension(80, 80);
-
     private ArrayList<Emplacementaq> listEmpPleins = new ArrayList<Emplacementaq>(3);
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public Aquarium(JPanel panel) {
 
         emp1 = new Emplacementaq();
@@ -29,6 +39,12 @@ public class Aquarium {
         panel.add(emp3);
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public void setVisible(boolean etat) {
         emp1.setVisible(etat);
         emp2.setVisible(etat);

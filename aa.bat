@@ -1,0 +1,1 @@
+start javaw --enable-preview -jar aquariophilie.jar

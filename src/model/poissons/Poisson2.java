@@ -1,11 +1,15 @@
 package model.poissons;
-
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
+/**
+ * <p> description </p>
+ * @param 
+ * @return 
+ * @since Iteration #1
+ */
 public class Poisson2 extends JPanel { //TODO: implements runnable
-    // Attributs : coordonn�es de la boule
+    // Attributs : coordonnees de la boule
     public int x = 10;
     public int y = 10;
     public int vel_x = 1;
@@ -19,13 +23,24 @@ public class Poisson2 extends JPanel { //TODO: implements runnable
 
     public String image = "droite";
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     @Override
-
     public void setOpaque(boolean isOpaque) {
         // TODO Auto-generated method stub
         super.setOpaque(false);
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     // Dessine boule
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -36,15 +51,33 @@ public class Poisson2 extends JPanel { //TODO: implements runnable
         // g2d.fillOval(x, y, 75, 75);
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public void setXVelocity(int vel_x) {
         this.vel_x = vel_x;
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public void setYVelocity(int vel_y) {
         this.vel_y = vel_y;
     }
 
-    // D�placement boule selon les valeurs des param�tres x et y
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
+    // Deplacement boule selon les valeurs des parametres x et y
     public void deplacer() {
         // System.out.println(this.x + ", " + this.y);
         this.x += vel_x;
@@ -58,6 +91,12 @@ public class Poisson2 extends JPanel { //TODO: implements runnable
         repaint();
     }
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public Image setImage(String coter) { // regarde pour le bon coter pour l'image
         if (coter == "droite") {
             img = poisson_droite;

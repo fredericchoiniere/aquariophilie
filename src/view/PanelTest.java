@@ -1,24 +1,26 @@
 package view;
 
 // import associer àl'utilisation de la classe
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*;
-
 import model.chimie.CycleAzote;
-import model.chimie.Eau;
 import model.chimie.TestStoech;
 import model.environnement.Temps;
 
+/**
+ * <p> description </p>
+ * @param 
+ * @return 
+ * @since Iteration #1
+ */
 public class PanelTest extends JPanel implements ActionListener {
 
     // appel desattributs de la classe
     TestStoech stoech;
-    
     CycleAzote cycle;
     Temps temps;
     JButton button1, button2, button3;
@@ -26,6 +28,12 @@ public class PanelTest extends JPanel implements ActionListener {
     JLabel label, label2;
     boolean isFocused;
 
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     public PanelTest() {
 
         // caractéristique de ce panel
@@ -65,12 +73,16 @@ public class PanelTest extends JPanel implements ActionListener {
         add(button3);
 
         // début des threads relier au panel
-        /* pet.start();
-        prout.start(); */
         cycle1.start();
     }
 
     // méthode relier à la classe
+    /**
+     * <p> description </p>
+     * @param 
+     * @return 
+     * @since Iteration #1
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == button1) {
