@@ -1,7 +1,4 @@
 package model.chimie;
-
-import model.environnement.*;
-
 import view.GUIMain;
 
     /**
@@ -18,16 +15,22 @@ public class CycleAzote implements Runnable {
     public Eau eau = GUIMain.eau;
     public byte cycle = eau.cycle;
 
-    public CycleAzote() {
-        eau.cycle++;
-        cycle++;
-    }
-
+    // Temps tempsCycle = new Temps();
     /**
      * <p> description </p>
      * @param 
      * @return 
      * @since Iteration #1
+     */
+    public CycleAzote() {
+        eau.cycle++;
+        cycle++;
+    }
+
+    
+    /** 
+     * @param eau
+     * Démarre un cycle d'ammoniaque en fonction du temps, suivant une courbe
      */
     public void cycleAmmoniaque(Eau eau) {
         eau.listeAmmoniaque.remove(tempAmmoniaque);
@@ -38,13 +41,12 @@ public class CycleAzote implements Runnable {
         }
         eau.addAmmoniaque(tempAmmoniaque, cycle);
     }
-
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
+    
+    /** 
+     * Méthode run de la classe CycleAzote
+     * Incrémente les jours et calcule le nouveau taux d'ammoniaque et de nitrites
+    */
+    
     public void cycleNitrites(Eau eau) {
         //if(tempNitrites!=0)
         eau.listeNitrites.remove(tempNitrites);
@@ -58,12 +60,6 @@ public class CycleAzote implements Runnable {
         //eau.listeNitrites.add(tempNitrites);
     }
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
     @Override
     public void run() { // TODO: updater avec changement de jour
         while (true) {

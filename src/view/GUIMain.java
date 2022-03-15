@@ -341,6 +341,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 1
         inventaire.emp1.addMouseListener(new MouseAdapter() {
+            
             @Override
             public void mousePressed(MouseEvent e) {
                 if (empla1 == "decoration") {
@@ -457,6 +458,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // inventaire 5
         inventaire.emp5.addMouseListener(new MouseAdapter() {
+            
             @Override
             public void mousePressed(MouseEvent e) {
                 if (empla5 == "decoration") {
