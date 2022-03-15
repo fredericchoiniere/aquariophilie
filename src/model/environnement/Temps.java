@@ -13,12 +13,6 @@ public class Temps{
 
     // Incrémente GUIMain.jours (timer global) au 5 secondes
 
-    /**
-     * <p> description </p>
-     * @param 
-     * @return 
-     * @since Iteration #1
-     */
     public Temps(){
         journee = new Timer();
         journee.scheduleAtFixedRate(new TimerTask(){

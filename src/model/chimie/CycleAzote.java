@@ -46,9 +46,7 @@ public class CycleAzote implements Runnable {
      * Méthode run de la classe CycleAzote
      * Incrémente les jours et calcule le nouveau taux d'ammoniaque et de nitrites
     */
-    
     public void cycleNitrites(Eau eau) {
-        //if(tempNitrites!=0)
         eau.listeNitrites.remove(tempNitrites);
         if (jours > 14 && jours < 35) {
             tempNitrites = (float) (-3.56 * ((jours / 7) - 3.5) * ((jours / 7) - 3.5) + 8);
@@ -57,7 +55,6 @@ public class CycleAzote implements Runnable {
             tempNitrites = 0;
         }
         eau.addNitrites(tempNitrites, cycle);
-        //eau.listeNitrites.add(tempNitrites);
     }
 
     @Override
@@ -75,10 +72,8 @@ public class CycleAzote implements Runnable {
                     Thread.sleep(1000);
 
                 if (jours >= 14 && jours <= 35) {
-                    // System.out.println("compote");
                     //cycleNitrites(eau);
-    
-                    Thread.sleep(1000); // à enlever
+                    Thread.sleep(1000);
                 } else 
                   Thread.sleep(1000);
                 
