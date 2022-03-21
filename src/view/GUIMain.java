@@ -36,7 +36,6 @@ public class GUIMain extends JFrame implements Runnable {
     // creation des objets
     Temps temps;
     public static Eau eau;
-    Poisson1 poisson1;
     Poisson2 poisson2;
     Pipette pipette2;
     ImageIcon tetra_curseur;
@@ -183,10 +182,6 @@ public class GUIMain extends JFrame implements Runnable {
         // tpoisson2.start();
         panelAqua.add(poisson2);
 
-        poisson1 = new Poisson1();
-        poisson1.setBounds(340, 324, 322, 156);
-        // tpoisson1.start();
-        panelAqua.add(poisson1);
 
         aquarium = new Aquarium(panelAqua);
 
@@ -636,27 +631,27 @@ public class GUIMain extends JFrame implements Runnable {
      * thread du poisson rouge
      */
     @Override
-    public void run() { // TODO: overhaul nécessaire
+    public void run() {
         while (true) {
-
-            if (poisson1.swim) {
-                poisson1.image = "droite";
-                poisson1.nager();
-            } else if (!poisson1.swim) {
-                poisson1.nager();
-                poisson1.image = "empty";
+            if (poisson2.x > 286) {
+                poisson2.setXVelocity(-poisson2.vel_x);
+                poisson2.image = "gauche";
             }
-
-            if (poisson2.swim) {
+            if (poisson2.x < 4) {
+                poisson2.setXVelocity(1);
                 poisson2.image = "droite";
-                poisson2.nager();
-            } else if (!poisson2.swim) {
-                poisson2.nager();
-                poisson2.image = "empty";
             }
+            if (poisson2.y > 120) {
+                poisson2.setYVelocity(-poisson2.vel_y);
+            }
+            if (poisson2.y < 4) {
+                poisson2.setYVelocity(1); // ne marchait pas avec vel_y, je ne sais pas pourquoi
+            }
+            poisson2.deplacer();
 
         }
     }
+
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------
 
