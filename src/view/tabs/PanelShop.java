@@ -73,6 +73,7 @@ public class PanelShop extends JPanel implements ActionListener {
         if (GUIMain.empla1 == "empty") {
             GUIMain.empla1 = type;
             Inventaire.emp1.setIcon(icon);
+            
         } 
         else if (GUIMain.empla2 == "empty") {
             GUIMain.empla2 = type;
