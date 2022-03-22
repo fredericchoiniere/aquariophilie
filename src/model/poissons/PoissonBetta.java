@@ -1,7 +1,6 @@
 package model.poissons;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
 public class PoissonBetta extends JPanel implements Runnable {
@@ -19,7 +18,6 @@ public class PoissonBetta extends JPanel implements Runnable {
     @Override
 
     public void setOpaque(boolean isOpaque) {
-        // TODO Auto-generated method stub
         super.setOpaque(false);
     }
 
