@@ -1,7 +1,6 @@
 //Jérémie Caron, Frédéric Choinière     itération 1
 //Classe d'affichage principale
 
-
 package view;
 
 // import pour le bon fonctionnement de la classe
@@ -28,7 +27,8 @@ public class GUIMain extends JFrame implements Runnable {
     JButton pousser, rapetisser;
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, pipette, eau_label, inventaire_ouvert,
             inventaire_fermer, inventaire_bg;
-    JLabel label_argent;
+    public static JLabel label_argent_aqua = new JLabel("");
+    public static JLabel label_argent_shop = new JLabel("");
     String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3, poi4, poi5, poi6;
     Rectangle rectTest, rectEau, rectEmp1, rectEmp2, rectEmp3, rectAqua1, rectAqua2, rectAqua3, rectAqua4, rectAqua5,
             rectAqua6;
@@ -36,7 +36,9 @@ public class GUIMain extends JFrame implements Runnable {
     // creation des objets
     Temps temps;
     public static Eau eau;
-    Poisson2 poisson2;
+    PoissonRouge poisson_rouge;
+    PoissonBetta poisson_betta;
+    PoissonTetra poisson_tetra;
     Pipette pipette2;
     ImageIcon tetra_curseur;
     Inventaire inventaire;
@@ -44,7 +46,9 @@ public class GUIMain extends JFrame implements Runnable {
 
     // les threads
     // Thread tpoisson1 = new Thread(); //TODO: à refaire à l'itération 2
-    // Thread tpoisson2 = new Thread();
+    Thread tpoisson_rouge;// = new Thread();
+    Thread tpoisson_betta;
+    Thread tpoisson_tetra;
     Thread GUIMainThread = new Thread(this);
     Thread threadEau;
 
@@ -150,12 +154,11 @@ public class GUIMain extends JFrame implements Runnable {
 
         // label pour l'argent que l'on a
 
-        label_argent = new JLabel();
-        label_argent.setBounds(30, 10, 100, 50);
-        label_argent.setFont(new Font("Verdana", Font.BOLD, 20));
-        label_argent.setText("$$");
-        label_argent.setVisible(true);
-        panelAqua.add(label_argent);
+        label_argent_aqua.setBounds(475, 10, 100, 50);
+        label_argent_aqua.setFont(new Font("Verdana", Font.BOLD, 20));
+        label_argent_aqua.setText("50$");
+        label_argent_aqua.setVisible(true);
+        panelAqua.add(label_argent_aqua);
 
         // ajout de panel Aqua au layered pane
         Dimension size_panel_aqua = panelAqua.getPreferredSize(); // prend la dimension de la photo
@@ -177,12 +180,25 @@ public class GUIMain extends JFrame implements Runnable {
         rectAqua6 = new Rectangle(584, 417, 70, 70);
 
         // ajout des poissons dans l'aquarium
-        poisson2 = new Poisson2();
-        poisson2.setBounds(340, 324, 322, 156);
-        // tpoisson2.start();
-        panelAqua.add(poisson2);
 
+        poisson_rouge = new PoissonRouge();
+        poisson_rouge.setBounds(340, 324, 322, 156);
+        tpoisson_rouge = new Thread(poisson_rouge);
+        tpoisson_rouge.start();
+        panelAqua.add(poisson_rouge);
 
+        poisson_betta = new PoissonBetta();
+        poisson_betta.setBounds(340, 324, 322, 156);
+        tpoisson_betta = new Thread(poisson_betta);
+        tpoisson_betta.start();
+        panelAqua.add(poisson_betta);
+        aquarium = new Aquarium(panelAqua);
+
+        poisson_tetra = new PoissonTetra();
+        poisson_tetra.setBounds(340, 324, 322, 156);
+        tpoisson_tetra = new Thread(poisson_tetra);
+        tpoisson_tetra.start();
+        panelAqua.add(poisson_tetra);
         aquarium = new Aquarium(panelAqua);
 
         // ajout du layeredpane au tabbedane
@@ -194,7 +210,12 @@ public class GUIMain extends JFrame implements Runnable {
         // création du panel Magasin
         PanelShop panelShop = new PanelShop();
 
-        // ajout du panel Magasin au tabbed pane
+        label_argent_shop.setBounds(475, 10, 100, 50);
+        label_argent_shop.setFont(new Font("Verdana", Font.BOLD, 20));
+        label_argent_shop.setText("50$");
+        label_argent_shop.setVisible(true);
+        panelShop.add(label_argent_shop);
+
         tabbedPane.add("Magasin", panelShop);
 
         // --------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -220,7 +241,8 @@ public class GUIMain extends JFrame implements Runnable {
                 empty.setVisible(false);
                 pipette.setVisible(true);
                 inventaire_fermer.setVisible(true);
-                label_argent.setVisible(true);
+                label_argent_aqua.setVisible(true);
+                tpoisson_betta.interrupt();
             }
         });
 
@@ -237,7 +259,8 @@ public class GUIMain extends JFrame implements Runnable {
                 inventaire_ouvert.setVisible(false);
                 inventaire_fermer.setVisible(false);
                 inventaire_bg.setVisible(false);
-                label_argent.setVisible(false);
+                label_argent_aqua.setVisible(false);
+                tpoisson_betta.interrupt();
             }
         });
 
@@ -248,6 +271,7 @@ public class GUIMain extends JFrame implements Runnable {
             @Override
             public void mousePressed(MouseEvent e) {
                 pipette2.changerEtatPanel(panelAqua);
+                
             }
 
             @Override
@@ -261,6 +285,7 @@ public class GUIMain extends JFrame implements Runnable {
                     pipette2.est_remplie = true;
                     pipette2.changerEtatLabel(pipette);
                     pipette2.changerEtatPanel(panelTest);
+                    
                 }
             }
         });
@@ -280,7 +305,7 @@ public class GUIMain extends JFrame implements Runnable {
                     aquarium_kit_ouvert.setVisible(false);
                     aquarium_kit_fermer.setVisible(true);
                     inventaire_fermer.setVisible(true);
-                    label_argent.setVisible(true);
+                    label_argent_aqua.setVisible(true);
                 }
             }
         });
@@ -559,7 +584,7 @@ public class GUIMain extends JFrame implements Runnable {
 
     /**
      * @param label
-     * Créé et applique un curseur custom
+     *              Créé et applique un curseur custom
      */
     public void setCursor(JLabel label) {
         ImageIcon curseur = (ImageIcon) label.getIcon();
@@ -632,26 +657,8 @@ public class GUIMain extends JFrame implements Runnable {
      */
     @Override
     public void run() {
-        while (true) {
-            if (poisson2.x > 286) {
-                poisson2.setXVelocity(-poisson2.vel_x);
-                poisson2.image = "gauche";
-            }
-            if (poisson2.x < 4) {
-                poisson2.setXVelocity(1);
-                poisson2.image = "droite";
-            }
-            if (poisson2.y > 120) {
-                poisson2.setYVelocity(-poisson2.vel_y);
-            }
-            if (poisson2.y < 4) {
-                poisson2.setYVelocity(1); // ne marchait pas avec vel_y, je ne sais pas pourquoi
-            }
-            poisson2.deplacer();
 
-        }
     }
-
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------
 

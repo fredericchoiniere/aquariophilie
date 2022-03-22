@@ -4,6 +4,8 @@
 
 package model.environnement;
 import java.util.*;
+
+import model.jeu.Argent;
 import view.GUIMain;
 
 public class Temps{
@@ -14,10 +16,13 @@ public class Temps{
 
     public Temps(){
         journee = new Timer();
+        
         journee.scheduleAtFixedRate(new TimerTask(){
+            
             @Override
             public void run() {
                 GUIMain.jours++;
+                Argent.paye(GUIMain.label_argent_aqua, GUIMain.label_argent_shop);
             }
         }, 0, DUREE);
     }

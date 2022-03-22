@@ -4,12 +4,13 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Poisson2 extends JPanel {
+public class PoissonRouge extends JPanel implements Runnable {
     // Attributs : coordonn�es de la boule
-    public int x = 10;
-    public int y = 10;
-    public int vel_x = 1;
-    public int vel_y = 1;
+    int x = 10;
+    int y = 10;
+    int vel_x = 1;
+    int vel_y = 1;
+
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_droite.png");
     // g2d.drawImage(poisson_droite, x, y, this);
@@ -50,7 +51,7 @@ public class Poisson2 extends JPanel {
         this.x += vel_x;
         this.y += vel_y;
         try {
-            Thread.sleep(100); // Ici, une pause d'une seconde
+            Thread.sleep(30); // Ici, une pause d'une seconde
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -68,6 +69,27 @@ public class Poisson2 extends JPanel {
             img = poisson_droite;
         }
         return img;
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            if (x > 286) {
+                setXVelocity(-vel_x);
+                image = "gauche";
+            }
+            if (x < 4) {
+                setXVelocity(1);
+                image = "droite"; // ne marchait pas avec vel_y, je ne sais pas pourquoi
+            }
+            if (y > 120) {
+                setYVelocity(-vel_y);
+            }
+            if (y < 4) {
+                setYVelocity(1); // ne marchait pas avec vel_y, je ne sais pas pourquoi
+            }
+            deplacer();
+        }
     }
 
 }
