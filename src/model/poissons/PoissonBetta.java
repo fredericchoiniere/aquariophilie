@@ -41,7 +41,6 @@ public class PoissonBetta extends JPanel implements Runnable {
         this.vel_y = vel_y;
     }
 
-    // D�placement boule selon les valeurs des param�tres x et y
     public void deplacer() {
         // System.out.println(this.x + ", " + this.y);
         this.x += vel_x;

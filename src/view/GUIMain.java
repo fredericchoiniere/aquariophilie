@@ -10,6 +10,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
+import model.chimie.CycleAzote;
 import model.chimie.Eau;
 import model.environnement.Temps;
 import model.item.outils.Pipette;
@@ -43,20 +44,21 @@ public class GUIMain extends JFrame implements Runnable {
     ImageIcon tetra_curseur;
     Inventaire inventaire;
     Aquarium aquarium;
+    static CycleAzote cycleInitial;
 
     // les threads
     // Thread tpoisson1 = new Thread(); //TODO: à refaire à l'itération 2
-    Thread tpoisson_rouge;// = new Thread();
+    Thread tpoisson_rouge;
     Thread tpoisson_betta;
     Thread tpoisson_tetra;
     Thread GUIMainThread = new Thread(this);
     Thread threadEau;
+    Thread tCycleInitial;
 
     // les attributs
     short stade, iteration = 0;
     int vel_x = 2;
     int vel_y = 2;
-    public static byte cycle = 1;
     public int argent = 0;
     public static float jours = (float) 0; // TIMER GLOBAL
 
@@ -74,6 +76,8 @@ public class GUIMain extends JFrame implements Runnable {
         temps = new Temps();
         eau = new Eau();
         threadEau = new Thread(eau);
+        cycleInitial = new CycleAzote();
+        tCycleInitial = new Thread(cycleInitial);
 
         // creation du main tab
         tabbedPane = new JTabbedPane();
@@ -133,6 +137,7 @@ public class GUIMain extends JFrame implements Runnable {
         inventaire_fermer = new JLabel();
         inventaire_fermer.setIcon(new ImageIcon("res/background/inventaire_fermer.png"));
         inventaire_fermer.setBounds(50, 60, size_icone_inv.width, size_icone_inv.height);
+        inventaire_fermer.setToolTipText("Ouvre l'inventaire");
         inventaire_fermer.setVisible(true);
         panelAqua.add(inventaire_fermer);
 
@@ -525,6 +530,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         GUIMainThread.start();
         threadEau.start();
+        tCycleInitial.start();
 
     } // fin du constructeur GUIMain
 

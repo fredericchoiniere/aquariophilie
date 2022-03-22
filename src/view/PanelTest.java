@@ -31,7 +31,7 @@ public class PanelTest extends JPanel implements ActionListener {
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        cycle = new CycleAzote();
+        cycle = GUIMain.cycleInitial;
         cycle1 = new Thread(cycle);
 
         button1 = new JButton("(Ré)Afficher cycles");
@@ -68,7 +68,7 @@ public class PanelTest extends JPanel implements ActionListener {
         c.gridy = 4;
         add(lbl4, c);
 
-        cycle1.start();
+        //cycle1.start();
     }
 
     /**
@@ -79,10 +79,10 @@ public class PanelTest extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == button1) {
             lbl1.setText("Jour " + cycle.jours);
-            lbl2.setText("Somme ammoniaque: " + cycle.eau.sommeAmmoniaque() + "     Liste NH3: "
+            lbl2.setText("Somme ammoniaque: " + cycle.eau.ammoniaque + "     Liste NH3: "
                     + cycle.eau.listeAmmoniaque);
             lbl3.setText(
-                    "Somme nitrites: " + cycle.eau.sommeNitrites() + "     Liste NO2-: " + cycle.eau.listeNitrites);
+                    "Somme nitrites: " + cycle.eau.nitrites + "     Liste NO2-: " + cycle.eau.listeNitrites);
             lbl4.setText("Somme nitrates " + cycle.eau.nitrates);
         }
         if (e.getSource() == button2) {
