@@ -60,9 +60,11 @@ public class PanelShop extends JPanel implements ActionListener {
         }
 
         if (e.getSource() == panel3) {
+            checkCase(Inventaire.img_temp ,"decoration");
         }
 
         if (e.getSource() == panel4) {
+            checkCase(Inventaire.img_java_fern, "decoration");
         }
 
     }
@@ -95,7 +97,7 @@ public class PanelShop extends JPanel implements ActionListener {
             Inventaire.emp6.setIcon(icon);
         }
         else{
-            System.out.println("inbentaire plein");
+            System.out.println("inventaire plein");
         }
     }
 }

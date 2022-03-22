@@ -242,7 +242,7 @@ public class GUIMain extends JFrame implements Runnable {
                 pipette.setVisible(true);
                 inventaire_fermer.setVisible(true);
                 label_argent_aqua.setVisible(true);
-                //tpoisson_betta.interrupt();
+                // tpoisson_betta.interrupt();
             }
         });
 
@@ -260,7 +260,7 @@ public class GUIMain extends JFrame implements Runnable {
                 inventaire_fermer.setVisible(false);
                 inventaire_bg.setVisible(false);
                 label_argent_aqua.setVisible(false);
-                //tpoisson_betta.interrupt();
+                // tpoisson_betta.interrupt();
             }
         });
 
@@ -271,7 +271,7 @@ public class GUIMain extends JFrame implements Runnable {
             @Override
             public void mousePressed(MouseEvent e) {
                 pipette2.changerEtatPanel(panelAqua);
-                
+
             }
 
             @Override
@@ -285,7 +285,7 @@ public class GUIMain extends JFrame implements Runnable {
                     pipette2.est_remplie = true;
                     pipette2.changerEtatLabel(pipette);
                     pipette2.changerEtatPanel(panelTest);
-                    
+
                 }
             }
         });
@@ -368,6 +368,7 @@ public class GUIMain extends JFrame implements Runnable {
                     setCursor(Inventaire.emp1);
                     visibleBordersPoi();
                     aquaVisibleTrue();
+                    empVisibleFalse();
                 }
             }
 
@@ -376,20 +377,21 @@ public class GUIMain extends JFrame implements Runnable {
                 if (empla1 == "decoration") {
                     basicCursor();
                     invisibleBordersDeco();
-                    checkRectanglesDeco(rectEmp1, aquarium.emp1, Inventaire.emp1.getIcon());
-                    checkRectanglesDeco(rectEmp2, aquarium.emp2, Inventaire.emp1.getIcon());
-                    checkRectanglesDeco(rectEmp3, aquarium.emp3, Inventaire.emp1.getIcon());
+                    checkRectanglesDeco(rectEmp1, aquarium.emp1, Inventaire.emp1.getIcon(), Inventaire.emp1, "empla1");
+                    checkRectanglesDeco(rectEmp2, aquarium.emp2, Inventaire.emp1.getIcon(), Inventaire.emp1, "empla1");
+                    checkRectanglesDeco(rectEmp3, aquarium.emp3, Inventaire.emp1.getIcon(), Inventaire.emp1, "empla1");
                 }
                 if (empla1 == "poisson") {
                     basicCursor();
                     invisibleBordersPoi();
                     aquaVisibleFalse();
-                    checkRectanglesPoi(rectAqua1, aquarium.aqua1, Inventaire.emp1.getIcon());
-                    checkRectanglesPoi(rectAqua2, aquarium.aqua2, Inventaire.emp1.getIcon());
-                    checkRectanglesPoi(rectAqua3, aquarium.aqua3, Inventaire.emp1.getIcon());
-                    checkRectanglesPoi(rectAqua4, aquarium.aqua4, Inventaire.emp1.getIcon());
-                    checkRectanglesPoi(rectAqua5, aquarium.aqua5, Inventaire.emp1.getIcon());
-                    checkRectanglesPoi(rectAqua6, aquarium.aqua6, Inventaire.emp1.getIcon());
+                    empVisibleTrue();
+                    checkRectanglesPoi(rectAqua1, aquarium.aqua1, Inventaire.emp1.getIcon(), Inventaire.emp1, "empla1");
+                    checkRectanglesPoi(rectAqua2, aquarium.aqua2, Inventaire.emp1.getIcon(), Inventaire.emp1, "empla1");
+                    checkRectanglesPoi(rectAqua3, aquarium.aqua3, Inventaire.emp1.getIcon(), Inventaire.emp1, "empla1");
+                    checkRectanglesPoi(rectAqua4, aquarium.aqua4, Inventaire.emp1.getIcon(), Inventaire.emp1, "empla1");
+                    checkRectanglesPoi(rectAqua5, aquarium.aqua5, Inventaire.emp1.getIcon(), Inventaire.emp1, "empla1");
+                    checkRectanglesPoi(rectAqua6, aquarium.aqua6, Inventaire.emp1.getIcon(), Inventaire.emp1, "empla1");
 
                 }
             }
@@ -408,6 +410,7 @@ public class GUIMain extends JFrame implements Runnable {
                     setCursor(Inventaire.emp2);
                     visibleBordersPoi();
                     aquaVisibleTrue();
+                    empVisibleFalse();
                 }
             }
 
@@ -416,20 +419,21 @@ public class GUIMain extends JFrame implements Runnable {
                 if (empla2 == "decoration") {
                     basicCursor();
                     invisibleBordersDeco();
-                    checkRectanglesDeco(rectEmp1, aquarium.emp1, Inventaire.emp2.getIcon());
-                    checkRectanglesDeco(rectEmp2, aquarium.emp2, Inventaire.emp2.getIcon());
-                    checkRectanglesDeco(rectEmp3, aquarium.emp3, Inventaire.emp2.getIcon());
+                    checkRectanglesDeco(rectEmp1, aquarium.emp1, Inventaire.emp2.getIcon(), Inventaire.emp2, "empla2");
+                    checkRectanglesDeco(rectEmp2, aquarium.emp2, Inventaire.emp2.getIcon(), Inventaire.emp2, "empla2");
+                    checkRectanglesDeco(rectEmp3, aquarium.emp3, Inventaire.emp2.getIcon(), Inventaire.emp2, "empla2");
                 }
                 if (empla2 == "poisson") {
                     basicCursor();
                     invisibleBordersPoi();
                     aquaVisibleFalse();
-                    checkRectanglesPoi(rectAqua1, aquarium.aqua1, Inventaire.emp2.getIcon());
-                    checkRectanglesPoi(rectAqua2, aquarium.aqua2, Inventaire.emp2.getIcon());
-                    checkRectanglesPoi(rectAqua3, aquarium.aqua3, Inventaire.emp2.getIcon());
-                    checkRectanglesPoi(rectAqua4, aquarium.aqua4, Inventaire.emp2.getIcon());
-                    checkRectanglesPoi(rectAqua5, aquarium.aqua5, Inventaire.emp2.getIcon());
-                    checkRectanglesPoi(rectAqua6, aquarium.aqua6, Inventaire.emp2.getIcon());
+                    empVisibleTrue();
+                    checkRectanglesPoi(rectAqua1, aquarium.aqua1, Inventaire.emp2.getIcon(), Inventaire.emp2, "empla2");
+                    checkRectanglesPoi(rectAqua2, aquarium.aqua2, Inventaire.emp2.getIcon(), Inventaire.emp2, "empla2");
+                    checkRectanglesPoi(rectAqua3, aquarium.aqua3, Inventaire.emp2.getIcon(), Inventaire.emp2, "empla2");
+                    checkRectanglesPoi(rectAqua4, aquarium.aqua4, Inventaire.emp2.getIcon(), Inventaire.emp2, "empla2");
+                    checkRectanglesPoi(rectAqua5, aquarium.aqua5, Inventaire.emp2.getIcon(), Inventaire.emp2, "empla2");
+                    checkRectanglesPoi(rectAqua6, aquarium.aqua6, Inventaire.emp2.getIcon(), Inventaire.emp2, "empla2");
                 }
             }
         });
@@ -447,6 +451,7 @@ public class GUIMain extends JFrame implements Runnable {
                     setCursor(Inventaire.emp3);
                     visibleBordersPoi();
                     aquaVisibleTrue();
+                    empVisibleFalse();
                 }
             }
 
@@ -455,20 +460,21 @@ public class GUIMain extends JFrame implements Runnable {
                 if (empla3 == "decoration") {
                     basicCursor();
                     invisibleBordersDeco();
-                    checkRectanglesDeco(rectEmp1, aquarium.emp1, Inventaire.emp3.getIcon());
-                    checkRectanglesDeco(rectEmp2, aquarium.emp2, Inventaire.emp3.getIcon());
-                    checkRectanglesDeco(rectEmp3, aquarium.emp3, Inventaire.emp3.getIcon());
+                    checkRectanglesDeco(rectEmp1, aquarium.emp1, Inventaire.emp3.getIcon(), Inventaire.emp3, "empla3");
+                    checkRectanglesDeco(rectEmp2, aquarium.emp2, Inventaire.emp3.getIcon(), Inventaire.emp3, "empla3");
+                    checkRectanglesDeco(rectEmp3, aquarium.emp3, Inventaire.emp3.getIcon(), Inventaire.emp3, "empla3");
                 }
                 if (empla3 == "poisson") {
                     basicCursor();
                     invisibleBordersPoi();
                     aquaVisibleFalse();
-                    checkRectanglesPoi(rectAqua1, aquarium.aqua1, Inventaire.emp3.getIcon());
-                    checkRectanglesPoi(rectAqua2, aquarium.aqua2, Inventaire.emp3.getIcon());
-                    checkRectanglesPoi(rectAqua3, aquarium.aqua3, Inventaire.emp3.getIcon());
-                    checkRectanglesPoi(rectAqua4, aquarium.aqua4, Inventaire.emp3.getIcon());
-                    checkRectanglesPoi(rectAqua5, aquarium.aqua5, Inventaire.emp3.getIcon());
-                    checkRectanglesPoi(rectAqua6, aquarium.aqua6, Inventaire.emp3.getIcon());
+                    empVisibleTrue();
+                    checkRectanglesPoi(rectAqua1, aquarium.aqua1, Inventaire.emp3.getIcon(), Inventaire.emp3, "empla3");
+                    checkRectanglesPoi(rectAqua2, aquarium.aqua2, Inventaire.emp3.getIcon(), Inventaire.emp3, "empla3");
+                    checkRectanglesPoi(rectAqua3, aquarium.aqua3, Inventaire.emp3.getIcon(), Inventaire.emp3, "empla3");
+                    checkRectanglesPoi(rectAqua4, aquarium.aqua4, Inventaire.emp3.getIcon(), Inventaire.emp3, "empla3");
+                    checkRectanglesPoi(rectAqua5, aquarium.aqua5, Inventaire.emp3.getIcon(), Inventaire.emp3, "empla3");
+                    checkRectanglesPoi(rectAqua6, aquarium.aqua6, Inventaire.emp3.getIcon(), Inventaire.emp3, "empla3");
                 }
             }
         });
@@ -486,6 +492,7 @@ public class GUIMain extends JFrame implements Runnable {
                     setCursor(Inventaire.emp4);
                     visibleBordersPoi();
                     aquaVisibleTrue();
+                    empVisibleFalse();
                 }
             }
 
@@ -494,20 +501,21 @@ public class GUIMain extends JFrame implements Runnable {
                 if (empla4 == "decoration") {
                     basicCursor();
                     invisibleBordersDeco();
-                    checkRectanglesDeco(rectEmp1, aquarium.emp1, Inventaire.emp4.getIcon());
-                    checkRectanglesDeco(rectEmp2, aquarium.emp2, Inventaire.emp4.getIcon());
-                    checkRectanglesDeco(rectEmp3, aquarium.emp3, Inventaire.emp4.getIcon());
+                    checkRectanglesDeco(rectEmp1, aquarium.emp1, Inventaire.emp4.getIcon(), Inventaire.emp4, "empla4");
+                    checkRectanglesDeco(rectEmp2, aquarium.emp2, Inventaire.emp4.getIcon(), Inventaire.emp4, "empla4");
+                    checkRectanglesDeco(rectEmp3, aquarium.emp3, Inventaire.emp4.getIcon(), Inventaire.emp4, "empla4");
                 }
                 if (empla4 == "poisson") {
                     basicCursor();
                     invisibleBordersPoi();
                     aquaVisibleFalse();
-                    checkRectanglesPoi(rectAqua1, aquarium.aqua1, Inventaire.emp4.getIcon());
-                    checkRectanglesPoi(rectAqua2, aquarium.aqua2, Inventaire.emp4.getIcon());
-                    checkRectanglesPoi(rectAqua3, aquarium.aqua3, Inventaire.emp4.getIcon());
-                    checkRectanglesPoi(rectAqua4, aquarium.aqua4, Inventaire.emp4.getIcon());
-                    checkRectanglesPoi(rectAqua5, aquarium.aqua5, Inventaire.emp4.getIcon());
-                    checkRectanglesPoi(rectAqua6, aquarium.aqua6, Inventaire.emp4.getIcon());
+                    empVisibleTrue();
+                    checkRectanglesPoi(rectAqua1, aquarium.aqua1, Inventaire.emp4.getIcon(), Inventaire.emp4, "empla4");
+                    checkRectanglesPoi(rectAqua2, aquarium.aqua2, Inventaire.emp4.getIcon(), Inventaire.emp4, "empla4");
+                    checkRectanglesPoi(rectAqua3, aquarium.aqua3, Inventaire.emp4.getIcon(), Inventaire.emp4, "empla4");
+                    checkRectanglesPoi(rectAqua4, aquarium.aqua4, Inventaire.emp4.getIcon(), Inventaire.emp4, "empla4");
+                    checkRectanglesPoi(rectAqua5, aquarium.aqua5, Inventaire.emp4.getIcon(), Inventaire.emp4, "empla4");
+                    checkRectanglesPoi(rectAqua6, aquarium.aqua6, Inventaire.emp4.getIcon(), Inventaire.emp4, "empla4");
                 }
             }
         });
@@ -525,6 +533,7 @@ public class GUIMain extends JFrame implements Runnable {
                     setCursor(Inventaire.emp5);
                     visibleBordersPoi();
                     aquaVisibleTrue();
+                    empVisibleFalse();
                 }
             }
 
@@ -533,20 +542,21 @@ public class GUIMain extends JFrame implements Runnable {
                 if (empla5 == "decoration") {
                     basicCursor();
                     invisibleBordersDeco();
-                    checkRectanglesDeco(rectEmp1, aquarium.emp1, Inventaire.emp5.getIcon());
-                    checkRectanglesDeco(rectEmp2, aquarium.emp2, Inventaire.emp5.getIcon());
-                    checkRectanglesDeco(rectEmp3, aquarium.emp3, Inventaire.emp5.getIcon());
+                    checkRectanglesDeco(rectEmp1, aquarium.emp1, Inventaire.emp5.getIcon(), Inventaire.emp5, "empla5");
+                    checkRectanglesDeco(rectEmp2, aquarium.emp2, Inventaire.emp5.getIcon(), Inventaire.emp5, "empla5");
+                    checkRectanglesDeco(rectEmp3, aquarium.emp3, Inventaire.emp5.getIcon(), Inventaire.emp5, "empla5");
                 }
                 if (empla5 == "poisson") {
                     basicCursor();
                     invisibleBordersPoi();
                     aquaVisibleFalse();
-                    checkRectanglesPoi(rectAqua1, aquarium.aqua1, Inventaire.emp5.getIcon());
-                    checkRectanglesPoi(rectAqua2, aquarium.aqua2, Inventaire.emp5.getIcon());
-                    checkRectanglesPoi(rectAqua3, aquarium.aqua3, Inventaire.emp5.getIcon());
-                    checkRectanglesPoi(rectAqua4, aquarium.aqua4, Inventaire.emp5.getIcon());
-                    checkRectanglesPoi(rectAqua5, aquarium.aqua5, Inventaire.emp5.getIcon());
-                    checkRectanglesPoi(rectAqua6, aquarium.aqua6, Inventaire.emp5.getIcon());
+                    empVisibleTrue();
+                    checkRectanglesPoi(rectAqua1, aquarium.aqua1, Inventaire.emp5.getIcon(), Inventaire.emp5, "empla5");
+                    checkRectanglesPoi(rectAqua2, aquarium.aqua2, Inventaire.emp5.getIcon(), Inventaire.emp5, "empla5");
+                    checkRectanglesPoi(rectAqua3, aquarium.aqua3, Inventaire.emp5.getIcon(), Inventaire.emp5, "empla5");
+                    checkRectanglesPoi(rectAqua4, aquarium.aqua4, Inventaire.emp5.getIcon(), Inventaire.emp5, "empla5");
+                    checkRectanglesPoi(rectAqua5, aquarium.aqua5, Inventaire.emp5.getIcon(), Inventaire.emp5, "empla5");
+                    checkRectanglesPoi(rectAqua6, aquarium.aqua6, Inventaire.emp5.getIcon(), Inventaire.emp5, "empla5");
                 }
             }
 
@@ -565,6 +575,7 @@ public class GUIMain extends JFrame implements Runnable {
                     setCursor(Inventaire.emp6);
                     visibleBordersPoi();
                     aquaVisibleTrue();
+                    empVisibleFalse();
                 }
             }
 
@@ -573,20 +584,21 @@ public class GUIMain extends JFrame implements Runnable {
                 if (empla6 == "decoration") {
                     basicCursor();
                     invisibleBordersDeco();
-                    checkRectanglesDeco(rectEmp1, aquarium.emp1, Inventaire.emp6.getIcon());
-                    checkRectanglesDeco(rectEmp2, aquarium.emp2, Inventaire.emp6.getIcon());
-                    checkRectanglesDeco(rectEmp3, aquarium.emp3, Inventaire.emp6.getIcon());
+                    checkRectanglesDeco(rectEmp1, aquarium.emp1, Inventaire.emp6.getIcon(), Inventaire.emp6, "empla6");
+                    checkRectanglesDeco(rectEmp2, aquarium.emp2, Inventaire.emp6.getIcon(), Inventaire.emp6, "empla6");
+                    checkRectanglesDeco(rectEmp3, aquarium.emp3, Inventaire.emp6.getIcon(), Inventaire.emp6, "empla6");
                 }
                 if (empla6 == "poisson") {
                     basicCursor();
                     invisibleBordersPoi();
                     aquaVisibleFalse();
-                    checkRectanglesPoi(rectAqua1, aquarium.aqua1, Inventaire.emp6.getIcon());
-                    checkRectanglesPoi(rectAqua2, aquarium.aqua2, Inventaire.emp6.getIcon());
-                    checkRectanglesPoi(rectAqua3, aquarium.aqua3, Inventaire.emp6.getIcon());
-                    checkRectanglesPoi(rectAqua4, aquarium.aqua4, Inventaire.emp6.getIcon());
-                    checkRectanglesPoi(rectAqua5, aquarium.aqua5, Inventaire.emp6.getIcon());
-                    checkRectanglesPoi(rectAqua6, aquarium.aqua6, Inventaire.emp6.getIcon());
+                    empVisibleTrue();
+                    checkRectanglesPoi(rectAqua1, aquarium.aqua1, Inventaire.emp6.getIcon(), Inventaire.emp6, "empla6");
+                    checkRectanglesPoi(rectAqua2, aquarium.aqua2, Inventaire.emp6.getIcon(), Inventaire.emp6, "empla6");
+                    checkRectanglesPoi(rectAqua3, aquarium.aqua3, Inventaire.emp6.getIcon(), Inventaire.emp6, "empla6");
+                    checkRectanglesPoi(rectAqua4, aquarium.aqua4, Inventaire.emp6.getIcon(), Inventaire.emp6, "empla6");
+                    checkRectanglesPoi(rectAqua5, aquarium.aqua5, Inventaire.emp6.getIcon(), Inventaire.emp6, "empla6");
+                    checkRectanglesPoi(rectAqua6, aquarium.aqua6, Inventaire.emp6.getIcon(), Inventaire.emp6, "empla6");
                 }
             }
         });
@@ -668,12 +680,14 @@ public class GUIMain extends JFrame implements Runnable {
      *                  Vérifie la position de la souris en fonction du rectangle
      *                  fourni
      */
-    public void checkRectanglesDeco(Rectangle rectangle, JLabel label, Icon icone) {
+    public void checkRectanglesDeco(Rectangle rectangle, JLabel label, Icon icone, JLabel label2, String emplacement) {
         if (panelAqua.getMousePosition().getX() >= rectangle.getMinX()
                 && panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
                 && panelAqua.getMousePosition().getY() >= rectangle.getMinY()
                 && panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
             label.setIcon(icone);
+            label2.setIcon(Inventaire.empty_inv);
+            setEmpla(emplacement);
         }
     }
 
@@ -684,13 +698,17 @@ public class GUIMain extends JFrame implements Runnable {
      *                  regarder si la souris est dans le rectangle lors du
      *                  lachement de la touche
      */
-    public void checkRectanglesPoi(Rectangle rectangle, JLabel label, Icon icone) {
+    public void checkRectanglesPoi(Rectangle rectangle, JLabel label1, Icon icone, JLabel label2, String emplacement) {
         if (panelAqua.getMousePosition().getX() >= rectangle.getMinX()
                 && panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
                 && panelAqua.getMousePosition().getY() >= rectangle.getMinY()
                 && panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
-            label.setIcon(icone);
+            label1.setIcon(icone);
+            label2.setIcon(Inventaire.empty_inv);
+            setEmpla(emplacement);
+
         }
+
     }
 
     /**
@@ -716,6 +734,51 @@ public class GUIMain extends JFrame implements Runnable {
         aquarium.aqua5.setVisible(false);
         aquarium.aqua6.setVisible(false);
     }
+
+    public void empVisibleTrue() {
+        aquarium.emp1.setVisible(true);
+        aquarium.emp2.setVisible(true);
+        aquarium.emp3.setVisible(true);
+
+    }
+
+    public void empVisibleFalse() {
+        aquarium.emp1.setVisible(false);
+        aquarium.emp2.setVisible(false);
+        aquarium.emp3.setVisible(false);
+    }
+
+    public void setEmpla(String emplacement) {
+        switch (emplacement) {
+            case "empla1":
+                empla1 = "empty";
+                System.out.println("cul");
+                break;
+            case "empla2":
+                empla2 = "empty";
+                break;
+            case "empla3":
+                empla3 = "empty";
+                break;
+            case "empla4":
+                empla4 = "empty";
+                break;
+            case "empla5":
+                empla5 = "empty";
+                break;
+            case "empla6":
+                empla6 = "empty";
+                break;
+            default:
+                break;
+        }
+    }
+    /*
+     * public void removeItem(JLabel label, String etat){
+     * etat = "empty";
+     * label.setIcon(Inventaire.empty_inv);
+     * }
+     */
 
     // création des threads pour les poissons dans l'aquarium
     // --------------------------------------------------------------------------------------------------------------------------------------------------------------
