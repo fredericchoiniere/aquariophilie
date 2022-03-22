@@ -53,6 +53,7 @@ public class PanelShop extends JPanel implements ActionListener {
 
         if (e.getSource() == panel1) {
             checkCase(Inventaire.img_inv_poi_rouge, "poisson");
+
         }
 
         if (e.getSource() == panel2) {
@@ -73,6 +74,7 @@ public class PanelShop extends JPanel implements ActionListener {
         if (GUIMain.empla1 == "empty") {
             GUIMain.empla1 = type;
             Inventaire.emp1.setIcon(icon);
+            
         } 
         else if (GUIMain.empla2 == "empty") {
             GUIMain.empla2 = type;
