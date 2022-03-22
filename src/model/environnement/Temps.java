@@ -10,7 +10,7 @@ import view.GUIMain;
 
 public class Temps{
     Timer journee;
-    final int DUREE = 1500; // Durée d'une journée en millisecondes
+    public final static int DUREE = 1500; // Durée d'une journée en millisecondes
 
     // Incrémente GUIMain.jours (timer global) au 5 secondes
 

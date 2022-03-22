@@ -5,6 +5,7 @@ package model.chimie;
 
 import java.util.ArrayList;
 import java.util.List;
+import model.environnement.Temps;
 import java.util.*;
 import view.GUIMain;
 
@@ -39,8 +40,8 @@ public class Eau implements Runnable {
     public float penteNitrites = 0;
 
     public Eau(){
-        listeAmmoniaque.add(0, this.ammoniaque);
-        listeNitrites.add(0, this.nitrites);
+        listeAmmoniaque.add(0, ammoniaque);
+        listeNitrites.add(0, nitrites);
     }
 
     public void changerEau() {
@@ -87,8 +88,8 @@ public class Eau implements Runnable {
         for (Float valeur : listeAmmoniaque) {
             sommeAmmoniaque += valeur;
         }
-        this.ammoniaque = sommeAmmoniaque;
-        return this.ammoniaque;
+        ammoniaque = sommeAmmoniaque;
+        return ammoniaque;
     }
     
     /** 
@@ -100,8 +101,8 @@ public class Eau implements Runnable {
         for (Float valeur : listeNitrites) {
             sommeNitrites += valeur;
         }
-        this.nitrites = sommeNitrites;
-        return this.nitrites;
+        nitrites = sommeNitrites;
+        return nitrites;
     }
 
     /** 
@@ -109,8 +110,8 @@ public class Eau implements Runnable {
      *         Dicte le comportement des nitrates selon une courbe
      */
     public float comportNitrates() {
-        this.nitrates = ((jours / 7) - 4);
-        return this.nitrates;
+        nitrates = ((jours / 7));
+        return nitrates;
     }
     
     /* /**
@@ -135,17 +136,23 @@ public class Eau implements Runnable {
      */
     @Override
     public void run() {
-        penteNitrites = sommeNitrites;
+        penteNitrites = nitrites;
         while (true) {
             jours = GUIMain.jours;
-            
+            sommeAmmoniaque();
+            sommeNitrites();
+            System.out.println("pente: " + penteNitrites + " total: " + nitrites + " jour: " + jours);
             try {
-                if (penteNitrites < sommeNitrites) {
-                    comportNitrates();
-                    Thread.sleep(1000);
-                } else
-                    Thread.sleep(1000);
-                penteNitrites = sommeNitrites;
+                if (penteNitrites > nitrites) {
+                    comportNitrates();  // vérifier calculs
+                    System.out.println("nitrates " + nitrates);
+                    Thread.sleep(Temps.DUREE);
+                    if(nitrites != 0.0)
+                        penteNitrites = nitrites;
+                } else {
+                    Thread.sleep(Temps.DUREE);
+                    penteNitrites = nitrites;
+                }
             } catch (Exception e) {
                 System.out.println("Erreur dans le run() d'Eau.java");
                 e.printStackTrace();

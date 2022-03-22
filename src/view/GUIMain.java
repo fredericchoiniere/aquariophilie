@@ -156,7 +156,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         label_argent_aqua.setBounds(475, 10, 100, 50);
         label_argent_aqua.setFont(new Font("Verdana", Font.BOLD, 20));
-        label_argent_aqua.setText("50 runes");
+        label_argent_aqua.setText("50$");
         label_argent_aqua.setVisible(true);
         panelAqua.add(label_argent_aqua);
 
@@ -524,6 +524,7 @@ public class GUIMain extends JFrame implements Runnable {
         });
 
         GUIMainThread.start();
+        threadEau.start();
 
     } // fin du constructeur GUIMain
 
