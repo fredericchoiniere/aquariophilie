@@ -15,7 +15,7 @@ public class PanelTest extends JPanel implements ActionListener {
 
     CycleAzote cycle;
     JButton button1, button2;
-    JLabel lbl1, lbl2, lbl3;
+    JLabel lbl1, lbl2, lbl3, lbl4;
     Thread cycle1;
     boolean isFocused;
 
@@ -63,6 +63,10 @@ public class PanelTest extends JPanel implements ActionListener {
         lbl3 = new JLabel("Somme nitrites: " + cycle.eau.sommeNitrites() + "\nListe NO2-: " + cycle.eau.listeNitrites);
         c.gridy = 3;
         add(lbl3, c);
+
+        lbl4 = new JLabel("Somme nitrates: " + cycle.eau.nitrates);
+        c.gridy = 4;
+        add(lbl4, c);
 
         cycle1.start();
     }

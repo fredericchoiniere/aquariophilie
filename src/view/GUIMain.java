@@ -156,7 +156,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         label_argent_aqua.setBounds(475, 10, 100, 50);
         label_argent_aqua.setFont(new Font("Verdana", Font.BOLD, 20));
-        label_argent_aqua.setText("50$");
+        label_argent_aqua.setText("50 runes");
         label_argent_aqua.setVisible(true);
         panelAqua.add(label_argent_aqua);
 
@@ -242,7 +242,7 @@ public class GUIMain extends JFrame implements Runnable {
                 pipette.setVisible(true);
                 inventaire_fermer.setVisible(true);
                 label_argent_aqua.setVisible(true);
-                tpoisson_betta.interrupt();
+                //tpoisson_betta.interrupt();
             }
         });
 
@@ -260,7 +260,7 @@ public class GUIMain extends JFrame implements Runnable {
                 inventaire_fermer.setVisible(false);
                 inventaire_bg.setVisible(false);
                 label_argent_aqua.setVisible(false);
-                tpoisson_betta.interrupt();
+                //tpoisson_betta.interrupt();
             }
         });
 

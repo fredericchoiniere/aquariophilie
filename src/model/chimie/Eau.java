@@ -24,6 +24,7 @@ public class Eau implements Runnable {
     public int scoreEau;
 
     public final float volumeEau = (float) 37.85;
+    public float jours = GUIMain.jours;
     public float nitrites = 0; // Doit etre 0, maximum 5mg par litre
     public float nitrates = 0; // max 50mg/L
     public float ammoniaque = 0;
@@ -35,7 +36,7 @@ public class Eau implements Runnable {
     public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
 
-    public float jours = GUIMain.jours;
+    public float penteNitrites = 0;
 
     public Eau(){
         listeAmmoniaque.add(0, this.ammoniaque);
@@ -112,20 +113,39 @@ public class Eau implements Runnable {
         return this.nitrates;
     }
     
+    /* /**
+     * @return boolean
+     * Retourne true si la pente des Nitrites est négative et false si non
+     
+    public boolean verifPenteNitrites() {
+
+        if () {
+            
+        } else {
+            
+        }
+
+
+        return penteNitrites;
+    }*/
+ 
     /** 
      * Méthode run de la classe Eau
      * Incomplète pour l'instant
      */
     @Override
     public void run() {
+        penteNitrites = sommeNitrites;
         while (true) {
             jours = GUIMain.jours;
+            
             try {
-                if (jours > 28) {
+                if (penteNitrites < sommeNitrites) {
                     comportNitrates();
                     Thread.sleep(1000);
                 } else
                     Thread.sleep(1000);
+                penteNitrites = sommeNitrites;
             } catch (Exception e) {
                 System.out.println("Erreur dans le run() d'Eau.java");
                 e.printStackTrace();
