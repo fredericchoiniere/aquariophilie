@@ -16,7 +16,7 @@ public class Argent {
     static int poi5 = 0;
     static int poi6 = 0;
 
-    static String montant = "50$";
+    static String montant = "50 ₴";
 
     public static void paye(JLabel label, JLabel label2) {
 
@@ -24,8 +24,8 @@ public class Argent {
 
         montant = Integer.toString(argent);
         
-        label.setText(montant + "$");
-        label2.setText(montant + "$");
+        label.setText(montant + " ₴");
+        label2.setText(montant + " ₴");
     }
 
 }
