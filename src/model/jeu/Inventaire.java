@@ -25,6 +25,9 @@ public class Inventaire {
     ImageIcon img_aqua_betta = new ImageIcon("res/poissons/poisson_betta/poisson_droite.png");
     public static ImageIcon img_inv_betta = new ImageIcon(new ImageIcon("res/poissons/poisson_betta/poisson_droite.png").getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
 
+    ImageIcon img_aqua_tetra = new ImageIcon("res/poissons/poisson_tetra/poisson_gauche.png");
+    public static ImageIcon img_inv_tetra = new ImageIcon(new ImageIcon("res/poissons/poisson_tetra/poisson_gauche.png").getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
+
     public static ImageIcon img_java_fern = new ImageIcon("res/background/decorations/decoTemp.png");
 
     public static ImageIcon img_temp = new ImageIcon("res/background/decorations/planteTemp.png");
