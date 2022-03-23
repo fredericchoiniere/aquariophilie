@@ -141,7 +141,7 @@ public class Eau implements Runnable {
             jours = GUIMain.jours;
             sommeAmmoniaque();
             sommeNitrites();
-            System.out.println("pente: " + penteNitrites + " total: " + nitrites + " jour: " + jours);
+            //System.out.println("pente: " + penteNitrites + " total: " + nitrites + " jour: " + jours);
             try {
                 if (penteNitrites > nitrites) {
                     comportNitrates();
@@ -154,7 +154,7 @@ public class Eau implements Runnable {
                     penteNitrites = nitrites;
                 }
             } catch (Exception e) {
-                System.out.println("Erreur dans le run() d'Eau.java");
+                //System.out.println("Erreur dans le run() d'Eau.java");
                 e.printStackTrace();
             }
         }

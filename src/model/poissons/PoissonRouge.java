@@ -33,9 +33,9 @@ public class PoissonRouge extends Poisson implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("run");
+        //System.out.println("run");
         while (true) {
-            System.out.println(this.x + ", " + this.y);
+            //System.out.println(this.x + ", " + this.y);
             if (x > 286) {
                 setXVelocity(-vel_x);
                 image = "gauche";
