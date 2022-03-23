@@ -1,7 +1,6 @@
 package model.poissons;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
 public class PoissonBetta extends JPanel implements Runnable {
@@ -11,6 +10,9 @@ public class PoissonBetta extends JPanel implements Runnable {
     public int vel_x = 1;
     public int vel_y = 1;
 
+    public String empInv;
+    public String empAqua;
+
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_betta/poisson_droite.png");
     Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_betta/poisson_gauche.png");
@@ -19,7 +21,6 @@ public class PoissonBetta extends JPanel implements Runnable {
     @Override
 
     public void setOpaque(boolean isOpaque) {
-        // TODO Auto-generated method stub
         super.setOpaque(false);
     }
 
@@ -41,7 +42,6 @@ public class PoissonBetta extends JPanel implements Runnable {
         this.vel_y = vel_y;
     }
 
-    // D�placement boule selon les valeurs des param�tres x et y
     public void deplacer() {
         // System.out.println(this.x + ", " + this.y);
         this.x += vel_x;

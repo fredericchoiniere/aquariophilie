@@ -79,6 +79,7 @@ public class PanelShop extends JPanel implements ActionListener {
             PoissonRouge poissonRouge = new PoissonRouge();
                         
 
+            
         } 
         else if (GUIMain.empla2 == "empty") {
             GUIMain.empla2 = type;

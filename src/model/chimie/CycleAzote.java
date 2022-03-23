@@ -3,6 +3,7 @@
 
 
 package model.chimie;
+import model.environnement.Temps;
 import view.GUIMain;
 
 public class CycleAzote implements Runnable {
@@ -50,17 +51,13 @@ public class CycleAzote implements Runnable {
                 jours++;
 
             try {
-                if (jours >= 0 && jours <= 18) {
+                if (jours >= 0 && jours <= 18) {    // TODO: À REVOIR
                     cycleAmmoniaque(eau);
-                    Thread.sleep(1000);
-                } else 
-                    Thread.sleep(1000);
-
+                }   
                 if (jours >= 14 && jours <= 35) {
                     cycleNitrites(eau);
-                    Thread.sleep(1000);
-                } else 
-                  Thread.sleep(1000);
+                }
+                Thread.sleep(Temps.DUREE);
                 
             } catch (Exception e) {
                 System.out.println("Erreur dans le run() de CycleAzote.java");
