@@ -18,6 +18,19 @@ public class PoissonBetta extends Poisson implements Runnable {
     Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_betta/poisson_gauche.png");
     public String image = "droite";
 
+    public void deplacer() {
+        // System.out.println(this.x + ", " + this.y);
+        x += vel_x;
+        y += vel_y;
+        try {
+            Thread.sleep(30); // Ici, une pause d'une seconde
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        // L'objet se redessine (actualiser)
+        repaint();
+    }
+
     @Override
     public void run() {
         while (true) {

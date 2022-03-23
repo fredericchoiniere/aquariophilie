@@ -7,8 +7,8 @@ public class Poisson extends JPanel{
 
     int x;
     int y;
-    int vel_x;
-    int vel_y;
+    int vel_x = 1;
+    int vel_y = 1;
 
     public String empInv, empAqua, nom, image;
 
@@ -19,7 +19,6 @@ public class Poisson extends JPanel{
         super.setOpaque(false);
     }
 
-    
 
     public void setXVelocity(int vel_x) {
         this.vel_x = vel_x;
@@ -29,20 +28,15 @@ public class Poisson extends JPanel{
         this.vel_y = vel_y;
     }
 
-    public void deplacer() {
-        // System.out.println(this.x + ", " + this.y);
-        x += vel_x;
-        y += vel_y;
-        try {
-            Thread.sleep(30); // Ici, une pause d'une seconde
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        // L'objet se redessine (actualiser)
-        repaint();
+    public int getXVelocity(){
+        return vel_x;
     }
 
-    public Image setImage(String coter) { // regarde pour le bon coter pour l'image
+    public int getYVelocity(){
+        return vel_y;
+    }
+
+    public Image getImage(String coter) { // regarde pour le bon coter pour l'image
         if (coter == "droite") {
             img = poisson_droite;
         }
