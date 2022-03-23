@@ -7,6 +7,8 @@ import java.awt.*;
 import javax.swing.*;
 
 import model.jeu.Inventaire;
+import model.poissons.PoissonBetta;
+import model.poissons.PoissonRouge;
 import view.GUIMain;
 
 import java.awt.event.*;
@@ -74,7 +76,9 @@ public class PanelShop extends JPanel implements ActionListener {
         if (GUIMain.empla1 == "empty") {
             GUIMain.empla1 = type;
             Inventaire.emp1.setIcon(icon);
-            
+            PoissonRouge poissonRouge = new PoissonRouge();
+                        
+
         } 
         else if (GUIMain.empla2 == "empty") {
             GUIMain.empla2 = type;
