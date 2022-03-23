@@ -718,6 +718,17 @@ public class GUIMain extends JFrame implements Runnable {
 
     }
 
+    /** create a method that creates a new PoissonTetra and make it appear on the frame on panelAqua */
+    
+    public void createPoissonTetra() {
+        poisson_tetra = new PoissonTetra();
+        poisson_tetra.setBounds(340, 324, 322, 156);
+        tpoisson_tetra = new Thread(poisson_tetra);
+        tpoisson_tetra.start();
+        panelAqua.add(poisson_tetra);
+        aquarium = new Aquarium(panelAqua);
+    }
+
     /**
      * set les labels des poissons visible
      */

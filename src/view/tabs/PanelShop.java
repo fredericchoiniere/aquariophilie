@@ -16,6 +16,8 @@ import java.awt.event.*;
 public class PanelShop extends JPanel implements ActionListener {
 
     JButton panel1, panel2, panel3, panel4;
+    
+
 
     public PanelShop() { // Panel pour créer le magasin
 
@@ -76,10 +78,8 @@ public class PanelShop extends JPanel implements ActionListener {
         if (GUIMain.empla1 == "empty") {
             GUIMain.empla1 = type;
             Inventaire.emp1.setIcon(icon);
-            PoissonRouge poissonRouge = new PoissonRouge();
-                        
 
-            
+
         } 
         else if (GUIMain.empla2 == "empty") {
             GUIMain.empla2 = type;
@@ -107,4 +107,11 @@ public class PanelShop extends JPanel implements ActionListener {
             System.out.println("inventaire plein");
         }
     }
+
+    
+
+    
+    
+    
+    
 }
