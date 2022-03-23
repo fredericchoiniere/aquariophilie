@@ -713,13 +713,12 @@ public class GUIMain extends JFrame implements Runnable {
             label1.setIcon(icone);
             label2.setIcon(Inventaire.empty_inv);
             setEmpla(emplacement);
-
+            createPoissonTetra();
         }
 
     }
 
-    /** create a method that creates a new PoissonTetra and make it appear on the frame on panelAqua */
-    
+
     public void createPoissonTetra() {
         poisson_tetra = new PoissonTetra();
         poisson_tetra.setBounds(340, 324, 322, 156);

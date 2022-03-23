@@ -15,7 +15,7 @@ import java.awt.event.*;
 
 public class PanelShop extends JPanel implements ActionListener {
 
-    JButton panel1, panel2, panel3, panel4;
+    JButton boutonRouge, boutonBetta, boutonTetra, boutonMario, boutonCul;
     
 
 
@@ -23,63 +23,72 @@ public class PanelShop extends JPanel implements ActionListener {
 
         setLayout(null);
 
-        panel1 = new JButton();
-        panel1.setSize(100, 100);
-        panel1.setText("poissonrouge");
-        panel1.setBounds(50, 50, 100, 100);
-        panel1.addActionListener(this);
-        add(panel1);
+        boutonRouge = new JButton();
+        boutonRouge.setSize(100, 100);
+        boutonRouge.setText("poissonrouge");
+        boutonRouge.setBounds(50, 50, 100, 100);
+        boutonRouge.addActionListener(this);
+        add(boutonRouge);
 
-        panel2 = new JButton();
-        panel2.setSize(100, 100);
-        panel2.setText("poissonbetta");
-        panel2.setBounds(200, 50, 100, 100);
-        panel2.addActionListener(this);
-        add(panel2);
+        boutonBetta = new JButton();
+        boutonBetta.setSize(100, 100);
+        boutonBetta.setText("poissonbetta");
+        boutonBetta.setBounds(200, 50, 100, 100);
+        boutonBetta.addActionListener(this);
+        add(boutonBetta);
 
-        panel3 = new JButton();
-        panel3.setSize(100, 100);
-        panel3.setText("marioplanty");
-        panel3.setBounds(350, 50, 100, 100);
-        panel3.addActionListener(this);
-        add(panel3);
+        boutonTetra = new JButton();
+        boutonTetra.setSize(100, 100);
+        boutonTetra.setText("poissonbetta");
+        boutonTetra.setBounds(200, 220, 100, 100);
+        boutonTetra.addActionListener(this);
+        add(boutonTetra);
 
-        panel4 = new JButton();
-        panel4.setSize(100, 100);
-        panel4.setText("calicul");
-        panel4.setBounds(500, 50, 100, 100);
-        panel4.addActionListener(this);
-        add(panel4);
+        boutonMario = new JButton();
+        boutonMario.setSize(100, 100);
+        boutonMario.setText("marioplanty");
+        boutonMario.setBounds(350, 50, 100, 100);
+        boutonMario.addActionListener(this);
+        add(boutonMario);
+
+        boutonCul = new JButton();
+        boutonCul.setSize(100, 100);
+        boutonCul.setText("calicul");
+        boutonCul.setBounds(500, 50, 100, 100);
+        boutonCul.addActionListener(this);
+        add(boutonCul);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == panel1) {
+        if (e.getSource() == boutonRouge) {
             checkCase(Inventaire.img_inv_poi_rouge, "poisson");
 
         }
 
-        if (e.getSource() == panel2) {
+        if (e.getSource() == boutonBetta) {
             checkCase(Inventaire.img_inv_betta, "poisson");
         }
 
-        if (e.getSource() == panel3) {
+        if (e.getSource() == boutonTetra) {
+            checkCase(Inventaire.img_inv_tetra, "poisson");
+        }
+
+        if (e.getSource() == boutonMario) {
             checkCase(Inventaire.img_temp ,"decoration");
         }
 
-        if (e.getSource() == panel4) {
+        if (e.getSource() == boutonCul) {
             checkCase(Inventaire.img_java_fern, "decoration");
         }
 
     }
 
-    public void checkCase(ImageIcon icon, String type) {
+    public void checkCase(ImageIcon icon, String type) { 
         if (GUIMain.empla1 == "empty") {
             GUIMain.empla1 = type;
-            Inventaire.emp1.setIcon(icon);
-
-
+            Inventaire.emp1.setIcon(icon); 
         } 
         else if (GUIMain.empla2 == "empty") {
             GUIMain.empla2 = type;
