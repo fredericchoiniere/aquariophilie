@@ -23,7 +23,7 @@ public class Argent {
         argent += emp1 + emp2 + emp3 + poi1 + poi2 + poi3 + poi4 + poi5 + poi6;
 
         montant = Integer.toString(argent);
-        
+
         label.setText(montant + " ₴");
         label2.setText(montant + " ₴");
     }

@@ -2,6 +2,7 @@
 //Classe qui gère l'aquarium et ses emplacements
 
 package model.jeu;
+
 import java.util.*;
 import java.awt.*;
 import javax.swing.*;
@@ -62,10 +63,9 @@ public class Aquarium {
         panel.add(aqua6);
     }
 
-    
-    /** 
+    /**
      * @param etat
-     * permet de set les label visible ou invisible
+     *             permet de set les label visible ou invisible
      */
     public void setVisible(boolean etat) {
         emp1.setVisible(etat);

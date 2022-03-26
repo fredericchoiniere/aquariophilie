@@ -2,6 +2,7 @@
 //Classe des emplacements de l'inventaire
 
 package model.jeu;
+
 import javax.swing.JLabel;
 
 public class Emplacementinv extends JLabel {
@@ -15,10 +16,9 @@ public class Emplacementinv extends JLabel {
         super();
     }
 
-    
-    /** 
+    /**
      * @return Boolean
-     * remplie l'emplacement
+     *         remplie l'emplacement
      */
     public Boolean estPlein() {
         return plein;

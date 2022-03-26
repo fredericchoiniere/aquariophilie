@@ -1,8 +1,8 @@
 // Frédéric Choinière   itération 1
 // CLASSE DE TEST NON IMPORTANTE
 
-
 package model.chimie;
+
 import java.awt.Color;
 import javax.swing.JProgressBar;
 
@@ -23,7 +23,7 @@ public class TestStoech implements Runnable {
         barNitrate = new JProgressBar();
 
         barNitrate.setMaximum(50);
-        
+
     }
 
     @Override
@@ -62,5 +62,4 @@ public class TestStoech implements Runnable {
 
     }
 
-    
 }

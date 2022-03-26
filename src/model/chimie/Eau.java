@@ -39,15 +39,15 @@ public class Eau implements Runnable {
 
     public float penteNitrites = 0;
 
-    public Eau(){
+    public Eau() {
         listeAmmoniaque.add(0, ammoniaque);
         listeNitrites.add(0, nitrites);
     }
 
     public void changerEau() {
-        ph = 7; 
-        kh = 8; 
-        gh = 5; 
+        ph = 7;
+        kh = 8;
+        gh = 5;
         nitrites = 0;
         nitrates = 0;
         ammoniaque = 0;
@@ -60,26 +60,28 @@ public class Eau implements Runnable {
     }
 
     public void couleur() {
-        //pourcentage de vert ou de gris dans l'eau
+        // pourcentage de vert ou de gris dans l'eau
     }
-    
-    /** 
+
+    /**
      * @param ammoniaque
-     * Ajoute une valeur d'ammoniaque fournie dans la listeAmmoniaque
+     *                   Ajoute une valeur d'ammoniaque fournie dans la
+     *                   listeAmmoniaque
      */
-    public void addAmmoniaque(float ammoniaque) { // ajouter différence, mettre dans intervalle [tant que y > 0 && pente négative]
+    public void addAmmoniaque(float ammoniaque) { // ajouter différence, mettre dans intervalle [tant que y > 0 && pente
+                                                  // négative]
         listeAmmoniaque.add(ammoniaque);
     }
 
-    /** 
+    /**
      * @param nitrites
-     * Ajoute une valeur de nitrites fournie dans la listeNitrites
+     *                 Ajoute une valeur de nitrites fournie dans la listeNitrites
      */
     public void addNitrites(float nitrites) { // ajouter différence, mettre dans intervalle
         listeNitrites.add(nitrites);
     }
-    
-    /** 
+
+    /**
      * @return float
      *         Additionne toutes les valeurs dans la listeAmmoniaque
      */
@@ -91,10 +93,10 @@ public class Eau implements Runnable {
         ammoniaque = sommeAmmoniaque;
         return ammoniaque;
     }
-    
-    /** 
+
+    /**
      * @return float
-     * Additionne toutes les valeurs dans la listeNitrites
+     *         Additionne toutes les valeurs dans la listeNitrites
      */
     public float sommeNitrites() {
         sommeNitrites = 0;
@@ -105,7 +107,7 @@ public class Eau implements Runnable {
         return nitrites;
     }
 
-    /** 
+    /**
      * @return float
      *         Dicte le comportement des nitrates selon une courbe
      */
@@ -113,24 +115,27 @@ public class Eau implements Runnable {
         nitrates = ((jours / 7));
         return nitrates;
     }
-    
-    /* /**
+
+    /*
+     * /**
+     * 
      * @return boolean
      * Retourne true si la pente des Nitrites est négative et false si non
-     
-    public boolean verifPenteNitrites() {
+     * 
+     * public boolean verifPenteNitrites() {
+     * 
+     * if () {
+     * 
+     * } else {
+     * 
+     * }
+     * 
+     * 
+     * return penteNitrites;
+     * }
+     */
 
-        if () {
-            
-        } else {
-            
-        }
-
-
-        return penteNitrites;
-    }*/
- 
-    /** 
+    /**
      * Méthode run de la classe Eau
      * Incomplète pour l'instant
      */
@@ -141,20 +146,21 @@ public class Eau implements Runnable {
             jours = GUIMain.jours;
             sommeAmmoniaque();
             sommeNitrites();
-            //System.out.println("pente: " + penteNitrites + " total: " + nitrites + " jour: " + jours);
+            // System.out.println("pente: " + penteNitrites + " total: " + nitrites + "
+            // jour: " + jours);
             try {
                 if (penteNitrites > nitrites) {
                     comportNitrates();
                     System.out.println("nitrates " + nitrates);
                     Thread.sleep(Temps.DUREE);
-                    if(nitrites != 0.0)
+                    if (nitrites != 0.0)
                         penteNitrites = nitrites;
                 } else {
                     Thread.sleep(Temps.DUREE);
                     penteNitrites = nitrites;
                 }
             } catch (Exception e) {
-                //System.out.println("Erreur dans le run() d'Eau.java");
+                // System.out.println("Erreur dans le run() d'Eau.java");
                 e.printStackTrace();
             }
         }
