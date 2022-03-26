@@ -199,14 +199,14 @@ public class GUIMain extends JFrame implements Runnable {
         tpoisson_betta = new Thread(poisson_betta);
         tpoisson_betta.start();
         panelAqua.add(poisson_betta);
-        //aquarium = new Aquarium(panelAqua); // TODO: créé plusieurs aquariums??
 
         poisson_tetra = new PoissonTetra();
         poisson_tetra.setBounds(340, 324, 322, 156);
         tpoisson_tetra = new Thread(poisson_tetra);
         tpoisson_tetra.start();
         panelAqua.add(poisson_tetra);
-        aquarium = new Aquarium(panelAqua);
+
+        aquarium = new Aquarium(panelAqua); // TODO: décrire
 
         // ajout du layeredpane au tabbedane
         tabbedPane.add("Aquarium", panelAqua);
@@ -249,7 +249,6 @@ public class GUIMain extends JFrame implements Runnable {
                 pipette.setVisible(true);
                 inventaire_fermer.setVisible(true);
                 label_argent_aqua.setVisible(true);
-                // tpoisson_betta.interrupt();
             }
         });
 
