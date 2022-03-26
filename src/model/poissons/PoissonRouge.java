@@ -36,7 +36,6 @@ public class PoissonRouge extends Poisson implements Runnable {
     public void run() {
         System.out.println("run");
         while (true) {
-            System.out.println(this.x + ", " + this.y);
             if (this.x > 286) {
                 setXVelocity(-vel_x);
                 direction = "gauche";
