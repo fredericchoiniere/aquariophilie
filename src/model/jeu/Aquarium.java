@@ -14,6 +14,8 @@ public class Aquarium {
     final Dimension size_icone_poi = new Dimension(70, 70);
     private ArrayList<Emplacementaq> listEmpPleins = new ArrayList<Emplacementaq>(3);
 
+    
+
     public Aquarium(JPanel panel) {
 
         // rajoute les emplacements à l'aquarium

@@ -5,14 +5,10 @@ import java.awt.*;
 
 public class Poisson extends JPanel {
 
-    int x;
-    int y;
-    int vel_x;
-    int vel_y;
-
-    public String empInv, empAqua, nom, image;
-
-    Image img, poisson_droite, poisson_gauche;
+    int vel_x = 1;
+    int vel_y = 1;
+    
+    public String empInv, empAqua, nom;
 
     @Override
     public void setOpaque(boolean isOpaque) {
@@ -27,20 +23,39 @@ public class Poisson extends JPanel {
         this.vel_y = vel_y;
     }
 
-    public void deplacer() {
-        // System.out.println(this.x + ", " + this.y);
-        x += vel_x;
-        y += vel_y;
-        try {
-            Thread.sleep(30); // Ici, une pause d'une seconde
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        // L'objet se redessine (actualiser)
-        repaint();
+    public void setEmpInv(String empInv){
+        this.empInv = empInv;
     }
 
-    public Image setImage(String coter) { // regarde pour le bon coter pour l'image
+    public void setEmpAqua(String empAqua){
+        this.empAqua = empAqua;
+    }
+
+    public void setNom(String nom){
+        this.nom = nom;
+    }
+
+    public int getXVelocity(){
+        return vel_x;
+    }
+
+    public int getYVelocity(){
+        return vel_y;
+    }
+
+    public String getEmpInv(){
+        return empInv;
+    }
+
+    public String getEmpAqua(){
+        return empAqua;
+    }
+
+    public String getNom(){
+        return nom;
+    }
+
+    public Image getImage(String coter, Image img, Image poisson_droite, Image poisson_gauche) { // regarde pour le bon coter pour l'image
         if (coter == "droite") {
             img = poisson_droite;
         }
@@ -51,4 +66,5 @@ public class Poisson extends JPanel {
         }
         return img;
     }
+
 }
