@@ -16,6 +16,7 @@ import model.chimie.Eau;
 import model.environnement.Temps;
 import model.item.outils.Filet;
 import model.item.outils.Pipette;
+import model.item.outils.Shop;
 import model.jeu.Aquarium;
 import model.jeu.Inventaire;
 import model.poissons.*;
@@ -29,7 +30,7 @@ public class GUIMain extends JFrame implements Runnable {
     JTabbedPane tabbedPane;
     JButton pousser, rapetisser;
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, pipette, eau_label, inventaire_ouvert,
-            inventaire_fermer, inventaire_bg, filet_label;
+            inventaire_fermer, inventaire_bg, filet_label, shop_label;
     public static JLabel label_argent_aqua = new JLabel("");
     public static JLabel label_argent_shop = new JLabel("");
     public static String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3, poi4, poi5, poi6;
@@ -44,6 +45,7 @@ public class GUIMain extends JFrame implements Runnable {
     PoissonTetra poisson_tetra;
     Pipette pipette2;
     Filet filet;
+    Shop shop;
     ImageIcon tetra_curseur;
     ImageIcon rajoutIcon = new ImageIcon();
     Inventaire inventaire;
@@ -123,6 +125,16 @@ public class GUIMain extends JFrame implements Runnable {
         filet_label.setBounds(850, 350, size_filet.width, size_filet.height);
         filet_label.setVisible(true);
         panelAqua.add(filet_label);
+
+        shop = new Shop();
+        // ajout du label pour le shop
+        shop_label = new JLabel();
+        shop.setIcon(shop_label);
+        Dimension size_shop = new Dimension(300, 200); // prend la dimension de la photo
+        shop_label.setBounds(700, 505, size_shop.width, size_shop.height);
+        shop_label.setVisible(false);
+        panelAqua.add(shop_label);
+
 
         // ajout de l'icone de notre kit ouvert
         aquarium_kit_ouvert = new JLabel();
@@ -853,6 +865,7 @@ public class GUIMain extends JFrame implements Runnable {
         aquarium.aqua4.setVisible(true);
         aquarium.aqua5.setVisible(true);
         aquarium.aqua6.setVisible(true);
+        shop_label.setVisible(true);
     }
 
     /**
@@ -865,6 +878,7 @@ public class GUIMain extends JFrame implements Runnable {
         aquarium.aqua4.setVisible(false);
         aquarium.aqua5.setVisible(false);
         aquarium.aqua6.setVisible(false);
+        shop_label.setVisible(false);
     }
 
     public void empVisibleTrue() {
