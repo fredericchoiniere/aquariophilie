@@ -6,7 +6,7 @@ package view.tabs;
 import java.awt.*;
 import javax.swing.*;
 
-public class PanelAqua extends JPanel{ // extends JPanel pour créer un Jpanel
+public class PanelAqua extends JPanel { // extends JPanel pour créer un Jpanel
 
     public PanelAqua() {
         setPreferredSize(new Dimension(1000, 700)); // Taille du pane

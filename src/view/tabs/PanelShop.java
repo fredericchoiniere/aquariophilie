@@ -16,8 +16,6 @@ import java.awt.event.*;
 public class PanelShop extends JPanel implements ActionListener {
 
     JButton boutonRouge, boutonBetta, boutonTetra, boutonMario, boutonCul;
-    
-
 
     public PanelShop() { // Panel pour créer le magasin
 
@@ -76,7 +74,7 @@ public class PanelShop extends JPanel implements ActionListener {
         }
 
         if (e.getSource() == boutonMario) {
-            checkCase(Inventaire.img_temp ,"decoration");
+            checkCase(Inventaire.img_temp, "decoration");
         }
 
         if (e.getSource() == boutonCul) {
@@ -85,42 +83,30 @@ public class PanelShop extends JPanel implements ActionListener {
 
     }
 
-    public void checkCase(ImageIcon icon, String type) { 
+    public void checkCase(ImageIcon icon, String type) {
         if (GUIMain.empla1 == "empty") {
             GUIMain.empla1 = type;
-            Inventaire.emp1.setIcon(icon); 
-        } 
-        else if (GUIMain.empla2 == "empty") {
+            Inventaire.emp1.setIcon(icon);
+        } else if (GUIMain.empla2 == "empty") {
             GUIMain.empla2 = type;
             Inventaire.emp2.setIcon(icon);
-        }
-        else if (GUIMain.empla3 == "empty") {
+        } else if (GUIMain.empla3 == "empty") {
             GUIMain.empla3 = type;
             Inventaire.emp3.setIcon(icon);
-            
-        }
-        else if (GUIMain.empla4 == "empty") {
+
+        } else if (GUIMain.empla4 == "empty") {
             GUIMain.empla4 = type;
             Inventaire.emp4.setIcon(icon);
-            
-        }
-        else if (GUIMain.empla5 == "empty") {
+
+        } else if (GUIMain.empla5 == "empty") {
             GUIMain.empla5 = type;
             Inventaire.emp5.setIcon(icon);
-        }
-        else if (GUIMain.empla6 == "empty") {
+        } else if (GUIMain.empla6 == "empty") {
             GUIMain.empla6 = type;
             Inventaire.emp6.setIcon(icon);
-        }
-        else{
+        } else {
             System.out.println("inventaire plein");
         }
     }
 
-    
-
-    
-    
-    
-    
 }

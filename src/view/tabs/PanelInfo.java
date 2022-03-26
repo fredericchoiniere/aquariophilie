@@ -2,6 +2,7 @@
 //Classe pour l'affichage des infos, pour itération 3
 
 package view.tabs;
+
 import java.awt.*;
 import javax.swing.*;
 
@@ -10,7 +11,6 @@ public class PanelInfo extends JPanel { // extends JPanel pour créer un Jpanel
     // appel des attributs de la classe
     JTextArea textArea;
     JScrollPane scroll;
-
 
     public PanelInfo() { // créer un constructeur à la classe PanelInfo
 

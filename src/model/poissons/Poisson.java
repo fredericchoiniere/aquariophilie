@@ -3,7 +3,7 @@ package model.poissons;
 import javax.swing.JPanel;
 import java.awt.*;
 
-public class Poisson extends JPanel{
+public class Poisson extends JPanel {
 
     int x;
     int y;
@@ -13,13 +13,11 @@ public class Poisson extends JPanel{
     public String empInv, empAqua, nom, image;
 
     Image img, poisson_droite, poisson_gauche;
-    
+
     @Override
     public void setOpaque(boolean isOpaque) {
         super.setOpaque(false);
     }
-
-    
 
     public void setXVelocity(int vel_x) {
         this.vel_x = vel_x;

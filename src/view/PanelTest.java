@@ -1,7 +1,6 @@
 // Frédéric Choinière, Jérémie Caron   itération 1
 // Classe pour afficher temporairement la stoechiométrie
 
-
 package view;
 
 // TODO: CLASSE DE TEST TEMPORAIRE
@@ -68,7 +67,7 @@ public class PanelTest extends JPanel implements ActionListener {
         c.gridy = 4;
         add(lbl4, c);
 
-        //cycle1.start();
+        // cycle1.start();
     }
 
     /**
