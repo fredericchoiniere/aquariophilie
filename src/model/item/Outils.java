@@ -1,7 +1,7 @@
 //Jérémie Caron     itération 1
 //Classe mère des différents outils
 
-package model.item.outils;
+package model.item;
 
 public class Outils { // extends Draggable components pour les Outils
 

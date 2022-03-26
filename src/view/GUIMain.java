@@ -14,6 +14,7 @@ import javax.swing.border.LineBorder;
 import model.chimie.CycleAzote;
 import model.chimie.Eau;
 import model.environnement.Temps;
+import model.item.outils.Filet;
 import model.item.outils.Pipette;
 import model.jeu.Aquarium;
 import model.jeu.Inventaire;
@@ -28,7 +29,7 @@ public class GUIMain extends JFrame implements Runnable {
     JTabbedPane tabbedPane;
     JButton pousser, rapetisser;
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, pipette, eau_label, inventaire_ouvert,
-            inventaire_fermer, inventaire_bg;
+            inventaire_fermer, inventaire_bg, filet_label;
     public static JLabel label_argent_aqua = new JLabel("");
     public static JLabel label_argent_shop = new JLabel("");
     public static String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3, poi4, poi5, poi6;
@@ -42,7 +43,9 @@ public class GUIMain extends JFrame implements Runnable {
     PoissonBetta poisson_betta;
     PoissonTetra poisson_tetra;
     Pipette pipette2;
+    Filet filet;
     ImageIcon tetra_curseur;
+    ImageIcon rajoutIcon = new ImageIcon();
     Inventaire inventaire;
     Aquarium aquarium;
     static CycleAzote cycleInitial;
@@ -111,6 +114,15 @@ public class GUIMain extends JFrame implements Runnable {
         pipette.setBounds(850, 200, size_pipette.width, size_pipette.height);
         pipette.setVisible(true);
         panelAqua.add(pipette);
+
+        filet = new Filet();
+        // ajout du label pour le filet
+        filet_label = new JLabel();
+        filet.setIcon(filet_label);
+        Dimension size_filet = filet_label.getPreferredSize(); // prend la dimension de la photo
+        filet_label.setBounds(850, 350, size_filet.width, size_filet.height);
+        filet_label.setVisible(true);
+        panelAqua.add(filet_label);
 
         // ajout de l'icone de notre kit ouvert
         aquarium_kit_ouvert = new JLabel();
@@ -199,7 +211,7 @@ public class GUIMain extends JFrame implements Runnable {
         tpoisson_betta = new Thread(poisson_betta);
         tpoisson_betta.start();
         panelAqua.add(poisson_betta);
-        //aquarium = new Aquarium(panelAqua); // TODO: créé plusieurs aquariums??
+        // aquarium = new Aquarium(panelAqua); // TODO: créé plusieurs aquariums??
 
         poisson_tetra = new PoissonTetra();
         poisson_tetra.setBounds(340, 324, 322, 156);
@@ -294,6 +306,33 @@ public class GUIMain extends JFrame implements Runnable {
                     pipette2.changerEtatPanel(panelTest);
 
                 }
+            }
+        });
+
+        filet_label.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                filet.changerCurseurPanel(panelAqua);
+                visibleBordersPoi();
+                aquaVisibleTrue();
+                empVisibleFalse();
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                basicCursor();
+                invisibleBordersPoi();
+                aquaVisibleFalse();
+                empVisibleTrue();
+
+                checkRectanglesPoiFilet(rectAqua1, aquarium.aqua1, Inventaire.empty_inv, hasFish1, "hasFish1");
+                checkRectanglesPoiFilet(rectAqua2, aquarium.aqua2, Inventaire.empty_inv, hasFish2, "hasFish2");
+                checkRectanglesPoiFilet(rectAqua3, aquarium.aqua3, Inventaire.empty_inv, hasFish3, "hasFish3");
+                checkRectanglesPoiFilet(rectAqua4, aquarium.aqua4, Inventaire.empty_inv, hasFish4, "hasFish4");
+                checkRectanglesPoiFilet(rectAqua5, aquarium.aqua5, Inventaire.empty_inv, hasFish5, "hasFish5");
+                checkRectanglesPoiFilet(rectAqua6, aquarium.aqua6, Inventaire.empty_inv, hasFish6, "hasFish6");
             }
         });
 
@@ -761,14 +800,31 @@ public class GUIMain extends JFrame implements Runnable {
                 && panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
 
             if (hasFish == true) {
-                System.out.println("calicul = " + hasFish);
+                // System.out.println("calicul = " + hasFish);
+
             } else {
                 setHasFish(hasFishString);
                 label1.setIcon(icone);
                 label2.setIcon(Inventaire.empty_inv);
                 setEmpla(emplacement);
                 createPoissonTetra();
-                System.out.println("hasFish = " + hasFish);
+                // System.out.println("hasFish = " + hasFish);
+            }
+        }
+    }
+
+    public void checkRectanglesPoiFilet(Rectangle rectangle, JLabel label1, Icon icone,
+            boolean hasFish, String hasFishString) {
+        if (panelAqua.getMousePosition().getX() >= rectangle.getMinX()
+                && panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
+                && panelAqua.getMousePosition().getY() >= rectangle.getMinY()
+                && panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
+
+            if (hasFish == true) {
+                setHasFishFalse(hasFishString);
+                label1.setIcon(icone);
+                PanelShop.checkCase(Inventaire.img_inv_poi_rouge, "poisson");
+            } else {
             }
         }
     }
@@ -869,6 +925,31 @@ public class GUIMain extends JFrame implements Runnable {
                 break;
             case "hasFish6":
                 hasFish6 = true;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void setHasFishFalse(String hasFish) {
+        switch (hasFish) {
+            case "hasFish1":
+                hasFish1 = false;
+                break;
+            case "hasFish2":
+                hasFish2 = false;
+                break;
+            case "hasFish3":
+                hasFish3 = false;
+                break;
+            case "hasFish4":
+                hasFish4 = false;
+                break;
+            case "hasFish5":
+                hasFish5 = false;
+                break;
+            case "hasFish6":
+                hasFish6 = false;
                 break;
             default:
                 break;

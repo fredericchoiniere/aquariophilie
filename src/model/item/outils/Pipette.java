@@ -4,6 +4,9 @@
 package model.item.outils;
 
 import javax.swing.*;
+
+import model.item.Outils;
+
 import java.awt.*;
 
 public class Pipette extends Outils {
