@@ -84,7 +84,8 @@ public class PanelTest extends JPanel implements ActionListener {
                     "Somme nitrites: " + cycle.eau.nitrites + "     Liste NO2-: " + cycle.eau.listeNitrites);
             lbl4.setText("Somme nitrates " + cycle.eau.nitrates);
 
-            System.out.println("INV: " + GUIMain.listePoissonsInv);
+            System.out.println("size inv: " + GUIMain.listePoissonsInv.size());
+            System.out.println("size aqua: " + GUIMain.listePoissonsAqua.size());
         }
         if (e.getSource() == button2) {
             cycle.eau.listeAmmoniaque.add((float) 0);

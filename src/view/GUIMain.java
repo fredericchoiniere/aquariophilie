@@ -42,6 +42,7 @@ public class GUIMain extends JFrame implements Runnable {
     // creation des objets
     Temps temps;
     public static Eau eau;
+    Poisson poisson_default = new Poisson();
     PoissonRouge poisson_rouge;
     PoissonBetta poisson_betta;
     PoissonTetra poisson_tetra;
@@ -54,7 +55,7 @@ public class GUIMain extends JFrame implements Runnable {
     Aquarium aquarium;
     static CycleAzote cycleInitial;
 
-    ArrayList<Poisson> listePoissonsAqua = new ArrayList<Poisson>(6);
+    static ArrayList<Poisson> listePoissonsAqua = new ArrayList<Poisson>(6);
     public static ArrayList<Poisson> listePoissonsInv = new ArrayList<Poisson>(6);
 
 
@@ -848,7 +849,7 @@ public class GUIMain extends JFrame implements Runnable {
             if (hasFish == true) {
                 setHasFishFalse(hasFishString);
                 label1.setIcon(icone);
-                PanelShop.checkCase(Inventaire.img_inv_poi_rouge, "poisson", "");
+                PanelShop.checkCase(Inventaire.img_inv_poi_rouge, "poisson", "rouge");
             } else {
             }
         }
@@ -890,7 +891,7 @@ public class GUIMain extends JFrame implements Runnable {
     public void createPoissonRouge(String emplacement) { // passer de l'inventaire à l'aquarium
 
         listePoissonsAqua.add(listePoissonsInv.get(getEmplaToInt(emplacement)));
-        listePoissonsInv.remove(getEmplaToInt(emplacement));
+        listePoissonsInv.set(getEmplaToInt(emplacement), poisson_default); // TODO: À revoir (y aller avec des tags de position)
         poisson_rouge = (PoissonRouge) listePoissonsAqua.get(iteration);
         iteration++;
         
