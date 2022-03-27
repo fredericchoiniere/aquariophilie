@@ -212,7 +212,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         // ajout des poissons dans l'aquarium
 
-        poisson_rouge = new PoissonRouge();
+        /* poisson_rouge = new PoissonRouge();
         poisson_rouge.setBounds(340, 324, 322, 156);
         tpoisson_rouge = new Thread(poisson_rouge);
         tpoisson_rouge.start();
@@ -230,7 +230,8 @@ public class GUIMain extends JFrame implements Runnable {
         tpoisson_tetra = new Thread(poisson_tetra);
         tpoisson_tetra.start();
         panelAqua.add(poisson_tetra);
-        aquarium = new Aquarium(panelAqua);
+        panelAqua.add(poisson_tetra);*/
+        aquarium = new Aquarium(panelAqua); 
 
         // ajout du layeredpane au tabbedane
         tabbedPane.add("Aquarium", panelAqua);
@@ -847,6 +848,24 @@ public class GUIMain extends JFrame implements Runnable {
      */
 
     public void createPoissonTetra() {
+        poisson_tetra = new PoissonTetra();
+        poisson_tetra.setBounds(340, 324, 322, 156);
+        tpoisson_tetra = new Thread(poisson_tetra);
+        tpoisson_tetra.start();
+        panelAqua.add(poisson_tetra);
+        // aquarium = new Aquarium(panelAqua);
+    }
+
+    public void createPoissonBetta() {
+        poisson_tetra = new PoissonTetra();
+        poisson_tetra.setBounds(340, 324, 322, 156);
+        tpoisson_tetra = new Thread(poisson_tetra);
+        tpoisson_tetra.start();
+        panelAqua.add(poisson_tetra);
+        // aquarium = new Aquarium(panelAqua);
+    }
+
+    public void createPoissonRouge() {
         poisson_tetra = new PoissonTetra();
         poisson_tetra.setBounds(340, 324, 322, 156);
         tpoisson_tetra = new Thread(poisson_tetra);
