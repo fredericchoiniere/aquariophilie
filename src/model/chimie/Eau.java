@@ -151,7 +151,7 @@ public class Eau implements Runnable {
             try {
                 if (penteNitrites > nitrites) {
                     comportNitrates();
-                    System.out.println("nitrates " + nitrates);
+                    //System.out.println("nitrates " + nitrates);
                     Thread.sleep(Temps.DUREE);
                     if (nitrites != 0.0)
                         penteNitrites = nitrites;

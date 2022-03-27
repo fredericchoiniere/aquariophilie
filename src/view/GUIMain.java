@@ -32,7 +32,7 @@ public class GUIMain extends JFrame implements Runnable {
     JTabbedPane tabbedPane;
     JButton pousser, rapetisser;
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, pipette, eau_label, inventaire_ouvert,
-            inventaire_fermer, inventaire_bg, filet_label, shop_label;
+            inventaire_fermer, inventaire_bg, filet_label, shop_label, hamis;
     public static JLabel label_argent_aqua = new JLabel("");
     public static JLabel label_argent_shop = new JLabel("");
     public static String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3, poi4, poi5, poi6;
@@ -183,6 +183,13 @@ public class GUIMain extends JFrame implements Runnable {
         inventaire = new Inventaire(inventaire_bg);
         inventaire.setVisible(false);
 
+        // hamis love label
+        hamis = new JLabel();
+        hamis.setIcon(new ImageIcon("res/background/hamis_love.png"));// prend la dimension de la photo
+        hamis.setBounds(137, 247, 25, 25);
+        hamis.setVisible(false);
+        panelAqua.add(hamis);
+
         // ajout du label vide pour les actions listener
         empty = new JLabel("");
         empty.setBounds(0, 0, 1000, 700);
@@ -283,6 +290,7 @@ public class GUIMain extends JFrame implements Runnable {
                 pipette.setVisible(true);
                 inventaire_fermer.setVisible(true);
                 label_argent_aqua.setVisible(true);
+                
             }
         });
 
@@ -329,6 +337,15 @@ public class GUIMain extends JFrame implements Runnable {
                 }
             }
         });
+
+        label_argent_aqua.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                hamis.setVisible(true);
+            }
+        });
+
+
 
         filet_label.addMouseListener(new MouseAdapter() {
 
@@ -401,6 +418,7 @@ public class GUIMain extends JFrame implements Runnable {
                 inventaire_fermer.setVisible(false);
                 inventaire_bg.setVisible(true);
                 inventaire.setVisible(true);
+                hamis.setVisible(false);
             }
         });
 
