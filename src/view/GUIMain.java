@@ -857,20 +857,20 @@ public class GUIMain extends JFrame implements Runnable {
     }
 
     public void createPoissonBetta() {
-        poisson_tetra = new PoissonTetra();
-        poisson_tetra.setBounds(340, 324, 322, 156);
-        tpoisson_tetra = new Thread(poisson_tetra);
-        tpoisson_tetra.start();
-        panelAqua.add(poisson_tetra);
+        poisson_betta = new PoissonBetta();
+        poisson_betta.setBounds(340, 324, 322, 156);
+        tpoisson_betta = new Thread(poisson_betta);
+        tpoisson_betta.start();
+        panelAqua.add(poisson_betta);
         // aquarium = new Aquarium(panelAqua);
     }
 
     public void createPoissonRouge() {
-        poisson_tetra = new PoissonTetra();
-        poisson_tetra.setBounds(340, 324, 322, 156);
-        tpoisson_tetra = new Thread(poisson_tetra);
-        tpoisson_tetra.start();
-        panelAqua.add(poisson_tetra);
+        poisson_rouge = new PoissonRouge();
+        poisson_rouge.setBounds(340, 324, 322, 156);
+        tpoisson_rouge = new Thread(poisson_rouge);
+        tpoisson_rouge.start();
+        panelAqua.add(poisson_rouge);
         // aquarium = new Aquarium(panelAqua);
     }
 
