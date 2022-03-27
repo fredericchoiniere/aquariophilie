@@ -22,7 +22,7 @@ public class PanelAqua extends JPanel { // extends JPanel pour créer un Jpanel
 
         // créer le background pour l'onglet Aquarium
         Image background = Toolkit.getDefaultToolkit().getImage("res/background/background.png");
-        g2D.drawImage(background, 5, 5, this);
+        g2D.drawImage(background, 5, 0, this);
 
         Image eau_1 = Toolkit.getDefaultToolkit().getImage("res/eau/eau_bleu.png");
         g2D.drawImage(eau_1, 327, 305, this);

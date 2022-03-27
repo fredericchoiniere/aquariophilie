@@ -19,8 +19,10 @@ public class PanelInfo extends JPanel { // extends JPanel pour créer un Jpanel
         textArea.setText("Peux être modifier dans PanelInfo.java");
         scroll = new JScrollPane(textArea);
         scroll.setPreferredSize(new Dimension(1000, 700));
+        
 
         add(scroll); // ajout du panel à la classe
     }
 
+    
 }
