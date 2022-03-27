@@ -83,7 +83,7 @@ public class PanelShop extends JPanel implements ActionListener {
 
     }
 
-    public void checkCase(ImageIcon icon, String type) {
+    public static void checkCase(ImageIcon icon, String type) {
         if (GUIMain.empla1 == "empty") {
             GUIMain.empla1 = type;
             Inventaire.emp1.setIcon(icon);
