@@ -8,11 +8,18 @@ public class PoissonRouge extends Poisson implements Runnable {
     int vel_x = 1;
     int vel_y = 1;
 
+    int index;
+
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_droite.png");
     Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_gauche.png");
 
     public String direction = "droite";
+
+    
+
+
+
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

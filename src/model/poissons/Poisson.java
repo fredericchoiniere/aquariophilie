@@ -7,6 +7,7 @@ public class Poisson extends JPanel {
 
     int vel_x = 1;
     int vel_y = 1;
+    int index;
     
     public String empInv, empAqua, nom;
 
@@ -33,6 +34,10 @@ public class Poisson extends JPanel {
 
     public void setNom(String nom){
         this.nom = nom;
+    }
+
+    public void setIndex(int index){
+        this.index = index;
     }
 
     public int getXVelocity(){
