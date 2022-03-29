@@ -5,6 +5,7 @@ package model.chimie;
 
 import java.util.ArrayList;
 import java.util.List;
+import model.environnement.Temps;
 import java.util.*;
 import view.GUIMain;
 
@@ -23,6 +24,7 @@ public class Eau implements Runnable {
     public int scoreEau;
 
     public final float volumeEau = (float) 37.85;
+    public float jours = GUIMain.jours;
     public float nitrites = 0; // Doit etre 0, maximum 5mg par litre
     public float nitrates = 0; // max 50mg/L
     public float ammoniaque = 0;
@@ -35,11 +37,11 @@ public class Eau implements Runnable {
     public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
 
-    public float jours = GUIMain.jours;
+    public float penteNitrites = 0;
 
-    public Eau(){
-        listeAmmoniaque.add(0, this.ammoniaque);
-        listeNitrites.add(0, this.nitrites);
+    public Eau() {
+        listeAmmoniaque.add(0, ammoniaque);
+        listeNitrites.add(0, nitrites);
     }
 
     // Getter pour le ph
@@ -103,9 +105,9 @@ public class Eau implements Runnable {
     }*/
 
     public void changerEau() {
-        ph = 7; 
-        kh = 8; 
-        gh = 5; 
+        ph = 7;
+        kh = 8;
+        gh = 5;
         nitrites = 0;
         nitrates = 0;
         ammoniaque = 0;
@@ -118,26 +120,28 @@ public class Eau implements Runnable {
     }
 
     public void couleur() {
-        //pourcentage de vert ou de gris dans l'eau
+        // pourcentage de vert ou de gris dans l'eau
     }
-    
-    /** 
+
+    /**
      * @param ammoniaque
-     * Ajoute une valeur d'ammoniaque fournie dans la listeAmmoniaque
+     *                   Ajoute une valeur d'ammoniaque fournie dans la
+     *                   listeAmmoniaque
      */
-    public void addAmmoniaque(float ammoniaque) { // ajouter différence, mettre dans intervalle [tant que y > 0 && pente négative]
+    public void addAmmoniaque(float ammoniaque) { // ajouter différence, mettre dans intervalle [tant que y > 0 && pente
+                                                  // négative]
         listeAmmoniaque.add(ammoniaque);
     }
 
-    /** 
+    /**
      * @param nitrites
-     * Ajoute une valeur de nitrites fournie dans la listeNitrites
+     *                 Ajoute une valeur de nitrites fournie dans la listeNitrites
      */
     public void addNitrites(float nitrites) { // ajouter différence, mettre dans intervalle
         listeNitrites.add(nitrites);
     }
-    
-    /** 
+
+    /**
      * @return float
      *         Additionne toutes les valeurs dans la listeAmmoniaque
      */
@@ -146,48 +150,77 @@ public class Eau implements Runnable {
         for (Float valeur : listeAmmoniaque) {
             sommeAmmoniaque += valeur;
         }
-        this.ammoniaque = sommeAmmoniaque;
-        return this.ammoniaque;
+        ammoniaque = sommeAmmoniaque;
+        return ammoniaque;
     }
-    
-    /** 
+
+    /**
      * @return float
-     * Additionne toutes les valeurs dans la listeNitrites
+     *         Additionne toutes les valeurs dans la listeNitrites
      */
-    public float sommeNitrites() {
+    public float sommeNitrites() { // TODO: régler exception
         sommeNitrites = 0;
         for (Float valeur : listeNitrites) {
             sommeNitrites += valeur;
         }
-        this.nitrites = sommeNitrites;
-        return this.nitrites;
+        nitrites = sommeNitrites;
+        return nitrites;
     }
 
-    /** 
+    /**
      * @return float
      *         Dicte le comportement des nitrates selon une courbe
      */
     public float comportNitrates() {
-        this.nitrates = ((jours / 7) - 4);
-        return this.nitrates;
+        nitrates = ((jours / 7));
+        return nitrates;
     }
-    
-    /** 
+
+    /*
+     * /**
+     * 
+     * @return boolean
+     * Retourne true si la pente des Nitrites est négative et false si non
+     * 
+     * public boolean verifPenteNitrites() {
+     * 
+     * if () {
+     * 
+     * } else {
+     * 
+     * }
+     * 
+     * 
+     * return penteNitrites;
+     * }
+     */
+
+    /**
      * Méthode run de la classe Eau
      * Incomplète pour l'instant
      */
     @Override
     public void run() {
+        penteNitrites = nitrites;
         while (true) {
             jours = GUIMain.jours;
+            sommeAmmoniaque();
+            sommeNitrites();
+            // System.out.println("pente: " + penteNitrites + " total: " + nitrites + "
+            // jour: " + jours);
             try {
-                if (jours > 28) {
+                if (penteNitrites > nitrites) {
                     comportNitrates();
-                    Thread.sleep(1000);
-                } else
-                    Thread.sleep(1000);
+                    //System.out.println("nitrates " + nitrates);
+                    Thread.sleep(Temps.DUREE);
+                    if (nitrites != 0.0)
+                        penteNitrites = nitrites;
+                } else {
+                    Thread.sleep(Temps.DUREE);
+                    penteNitrites = nitrites;
+                }
             } catch (Exception e) {
-                System.out.println("Erreur dans le run() d'Eau.java");
+                // System.out.println("Erreur dans le run() d'Eau.java");
                 e.printStackTrace();
             }
         }

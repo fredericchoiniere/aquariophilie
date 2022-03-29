@@ -2,7 +2,6 @@
 // Classe pour afficher temporairement la stoechiométrie
 //Justin Plouffe itération 2
 
-
 package view;
 
 // TODO: CLASSE DE TEST TEMPORAIRE
@@ -11,12 +10,13 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 import model.chimie.CycleAzote;
+//import model.chimie.Eau;
 
 public class PanelTest extends JPanel implements ActionListener {
 
     CycleAzote cycle;
     JButton btnActu, btnCycle;
-    JLabel lblJour, lblAmmo, lblNitrites;
+    JLabel lblJour, lblAmmo, lblNitrites,lblNitrates, lblPH, lblGH, lblKH, lblOKAmmo, lblOKNitrites, lblOKNitrates, lblOKPH, lblOKGH, lblOKKH;
     Thread cycle1;
     boolean isFocused;
 
@@ -42,6 +42,13 @@ public class PanelTest extends JPanel implements ActionListener {
         JLabel lblSoluAmmoniaque = new JLabel();
         JLabel lblSoluNitrites = new JLabel();
         JLabel lblSoluNitrates = new JLabel();
+        
+        JLabel lblOKPH = new JLabel();
+        JLabel lblOKGH = new JLabel();
+        JLabel lblOKKH = new JLabel();
+        JLabel lblOKAmmo = new JLabel();
+        JLabel lblOKNitrites = new JLabel();
+        JLabel lblOKNitrates = new JLabel();
 
 
         layersPT.setBounds(0, 0, 700, 500);
@@ -84,6 +91,36 @@ public class PanelTest extends JPanel implements ActionListener {
         Dimension size_icon_lblSoluNitrates = lblSoluNitrates.getPreferredSize(); // prend la dimension de l'image
         lblSoluNitrates.setBounds(591, 181, size_icon_lblSoluNitrates.width, size_icon_lblSoluNitrates.height);
 
+        //Label pour l'image de l'état de tolérance pour le PH
+        lblOKPH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
+        Dimension size_icon_lblOKPH = lblOKPH.getPreferredSize(); // prend la dimension de l'image
+        lblOKPH.setBounds(66, 450, size_icon_lblOKPH.width, size_icon_lblOKPH.height);
+
+        //Label pour l'image de l'état de tolérance pour le GH
+        lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
+        Dimension size_icon_lblOKGH = lblOKGH.getPreferredSize(); // prend la dimension de l'image
+        lblOKGH.setBounds(171, 450, size_icon_lblOKGH.width, size_icon_lblOKGH.height);
+
+        //Label pour l'image de l'état de tolérance pour le KH
+        lblOKKH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
+        Dimension size_icon_lblOKKH = lblOKKH.getPreferredSize(); // prend la dimension de l'image
+        lblOKKH.setBounds(276, 450, size_icon_lblOKKH.width, size_icon_lblOKKH.height);
+
+        //Label pour l'image de l'état de tolérance pour l'ammoniaque
+        lblOKAmmo.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
+        Dimension size_icon_lblOKAmmo = lblOKAmmo.getPreferredSize(); // prend la dimension de l'image
+        lblOKAmmo.setBounds(381, 450, size_icon_lblOKAmmo.width, size_icon_lblOKAmmo.height);
+
+        //Label pour l'image de l'état de tolérance pour les nitrites
+        lblOKNitrites.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
+        Dimension size_icon_lblOKNitrites = lblOKNitrites.getPreferredSize(); // prend la dimension de l'image
+        lblOKNitrites.setBounds(486, 450, size_icon_lblOKNitrites.width, size_icon_lblOKNitrites.height);
+
+        //Label pour l'image de l'état de tolérance pour lest nitrates
+        lblOKNitrates.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
+        Dimension size_icon_lblOKNitrates = lblOKNitrates.getPreferredSize(); // prend la dimension de l'image
+        lblOKNitrates.setBounds(591, 450, size_icon_lblOKNitrates.width, size_icon_lblOKNitrates.height);
+
         //Établissement des priorités de layers
         layersPT.setLayer(lblPT_BG, 0);
         layersPT.setLayer(lblSoluPH, 1);
@@ -92,6 +129,9 @@ public class PanelTest extends JPanel implements ActionListener {
         layersPT.setLayer(lblSoluAmmoniaque, 1);
         layersPT.setLayer(lblSoluNitrites, 1);
         layersPT.setLayer(lblSoluNitrates, 1);
+        layersPT.setLayer(lblOKPH, 1);
+        layersPT.setLayer(lblOKGH, 1);
+        layersPT.setLayer(lblOKKH, 1);
 
         //Ajouts des éléments au JLayeredPane
         layersPT.add(lblPT_BG);
@@ -101,6 +141,9 @@ public class PanelTest extends JPanel implements ActionListener {
         layersPT.add(lblSoluAmmoniaque);
         layersPT.add(lblSoluNitrites);
         layersPT.add(lblSoluNitrates);
+        layersPT.add(lblOKPH);
+        layersPT.add(lblOKGH);
+        layersPT.add(lblOKKH);
 
         
 //{} -----------------------------------------------------------------------------------------------------------------------
@@ -108,41 +151,56 @@ public class PanelTest extends JPanel implements ActionListener {
         lblSoluPH.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-               // System.out.println("ph");
+
                if (GUIMain.pipette.getEstRemplie()){
 
                     GUIMain.pipette.enleverUneGoutte();;
 
                     switch(GUIMain.eau.getPH()){
-                        case 0:lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/0.png"));
+                        case 0:{lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/0.png"));
+                                lblOKPH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));}
                         break;
-                        case 1:lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/1.png"));
+                        case 1:{lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/1.png"));
+                                lblOKPH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));}
                         break;
-                        case 2:lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/2.png"));
+                        case 2:{lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/2.png"));
+                                lblOKPH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));}
                         break;
-                        case 3:lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/3.png"));
+                        case 3:{lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/3.png"));
+                                lblOKPH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));}
                         break;
-                        case 4:lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/4.png"));
+                        case 4:{lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/4.png"));
+                                lblOKPH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));}
                         break;
-                        case 5:lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/5.png"));
+                        case 5:{lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/5.png"));
+                                lblOKPH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));}
                         break;
-                        case 6:lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/6.png"));
+                        case 6:{lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/6.png"));
+                                lblOKPH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));}
                         break;
-                        case 7:lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/7.png"));
+                        case 7:{lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/7.png"));
+                                lblOKPH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));}
                         break;
-                        case 8:lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/8.png"));
+                        case 8:{lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/8.png"));
+                                lblOKPH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));}
                         break;
-                        case 9:lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/9.png"));
+                        case 9:{lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/9.png"));
+                                lblOKPH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));}
                         break;
-                        case 10:lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/10.png"));
+                        case 10:{lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/10.png"));
+                                lblOKPH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));}
                         break;
-                        case 11:lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/11.png"));
+                        case 11:{lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/11.png"));
+                                lblOKPH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));}
                         break;
-                        case 12:lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/12.png"));
+                        case 12:{lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/12.png"));
+                                lblOKPH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));}
                         break;
-                        case 13:lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/13.png"));
+                        case 13:{lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/13.png"));
+                                lblOKPH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));}
                         break;
-                        case 14:lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/14.png"));
+                        case 14:{lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/14.png"));
+                                lblOKPH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));}
                         break;
                     }
                 }
@@ -153,25 +211,33 @@ public class PanelTest extends JPanel implements ActionListener {
         lblSoluGH.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                //System.out.println("gh");
+
                 if (GUIMain.pipette.getEstRemplie()){
 
                     GUIMain.pipette.enleverUneGoutte();;
 
-                    if(GUIMain.eau.getGH() >= 0 && GUIMain.eau.getGH() < 5)
+                    if(GUIMain.eau.getGH() >= 0 && GUIMain.eau.getGH() < 5){
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/0.png"));
+                        lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
+                    }
                     
-                    else if(GUIMain.eau.getGH() >= 5 && GUIMain.eau.getGH() < 10)
+                    else if(GUIMain.eau.getGH() >= 5 && GUIMain.eau.getGH() < 10){
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/1.png"));
+                        lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
+                    }
                     
-                    else if(GUIMain.eau.getGH() >= 10 && GUIMain.eau.getGH() < 15)
+                    else if(GUIMain.eau.getGH() >= 10 && GUIMain.eau.getGH() < 15){
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/2.png"));
-                    
-                    else if(GUIMain.eau.getGH() >= 15 && GUIMain.eau.getGH() < 25)
+                        lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getGH() >= 15 && GUIMain.eau.getGH() < 25){
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/3.png"));
-                    
-                    else if(GUIMain.eau.getGH() >= 25)
+                        lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getGH() >= 25){
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/4.png"));
+                        lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
+                    }
                     
                 }
             }
@@ -180,29 +246,35 @@ public class PanelTest extends JPanel implements ActionListener {
         lblSoluKH.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                //System.out.println("kh");
+
                 if (GUIMain.pipette.getEstRemplie()){
 
                     GUIMain.pipette.enleverUneGoutte();;
 
-                    if(GUIMain.eau.getKH() >= 0 && GUIMain.eau.getKH() < 2)
+                    if(GUIMain.eau.getKH() >= 0 && GUIMain.eau.getKH() < 2){
                         lblSoluKH.setIcon(new ImageIcon("res/outils/gradation_solutions/kh/0.png"));
-                    
-                    else if(GUIMain.eau.getKH() >= 2 && GUIMain.eau.getKH() < 4)
+                        lblOKKH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getKH() >= 2 && GUIMain.eau.getKH() < 4){
                         lblSoluKH.setIcon(new ImageIcon("res/outils/gradation_solutions/kh/1.png"));
-                    
-                    else if(GUIMain.eau.getKH() >= 4 && GUIMain.eau.getKH() < 6)
+                        lblOKKH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getKH() >= 4 && GUIMain.eau.getKH() < 6){
                         lblSoluKH.setIcon(new ImageIcon("res/outils/gradation_solutions/kh/2.png"));
-                    
-                    else if(GUIMain.eau.getKH() >= 6 && GUIMain.eau.getKH() < 8)
+                        lblOKKH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getKH() >= 6 && GUIMain.eau.getKH() < 8){
                         lblSoluKH.setIcon(new ImageIcon("res/outils/gradation_solutions/kh/3.png"));
-                    
-                    else if(GUIMain.eau.getKH() >= 8 && GUIMain.eau.getKH() < 10)
+                        lblOKKH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getKH() >= 8 && GUIMain.eau.getKH() < 10){
                         lblSoluKH.setIcon(new ImageIcon("res/outils/gradation_solutions/kh/4.png"));
-
-                    else if(GUIMain.eau.getKH() >= 10)
+                        lblOKKH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getKH() >= 10){
                         lblSoluKH.setIcon(new ImageIcon("res/outils/gradation_solutions/kh/5.png"));
-                    
+                        lblOKKH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
+                    }
                 }
             }
         });
@@ -303,30 +375,35 @@ public class PanelTest extends JPanel implements ActionListener {
             }
         });
 
-        cycle = new CycleAzote();
+        cycle = GUIMain.cycleInitial;
         cycle1 = new Thread(cycle);
 
-        // affichege pour tester le fonctionnement
+        // affichage pour tester le fonctionnement
         btnActu = new JButton("Actualiser");
         btnActu.setBounds(50, 440, 100, 25);
         btnActu.addActionListener(this);
         layersPT.setLayer(btnActu, 2);
         layersPT.add(btnActu);
 
-        lblJour = new JLabel("Jour " + cycle.jours);
+        lblJour = new JLabel("Jour " + GUIMain.jours);
         lblJour.setBounds(50, 460, 100, 25);
         layersPT.setLayer(lblJour, 2);
         layersPT.add(lblJour);
 
-        lblAmmo = new JLabel("Somme ammoniaque: " + cycle.eau.sommeAmmoniaque());   //+ "\nListe NH3: " + cycle.eau.listeAmmoniaque);
+        lblAmmo = new JLabel("Somme ammoniaque: " + GUIMain.eau.sommeAmmoniaque());   //+ "\nListe NH3: " + cycle.eau.listeAmmoniaque);
         lblAmmo.setBounds(50, 480, 200, 25);
         layersPT.setLayer(lblAmmo, 2);
         layersPT.add(lblAmmo);
 
-        lblNitrites = new JLabel("Somme nitrites: " + cycle.eau.sommeNitrites()); //+ "\nListe NO2-: " + cycle.eau.listeNitrites);
+        lblNitrites = new JLabel("Somme nitrites: " + GUIMain.eau.sommeNitrites()); //+ "\nListe NO2-: " + cycle.eau.listeNitrites);
         lblNitrites.setBounds(300, 480, 200, 25);
         layersPT.setLayer(lblNitrites, 2);
         layersPT.add(lblNitrites);
+
+        lblNitrates = new JLabel("Somme nitrates: " + GUIMain.eau.nitrates);
+        lblNitrites.setBounds(550, 480, 200, 25);
+        layersPT.setLayer(lblNitrites, 2);
+        layersPT.add(lblNitrates);
 
 
         /*button1 = new JButton("(Ré)Afficher cycles");
@@ -359,7 +436,7 @@ public class PanelTest extends JPanel implements ActionListener {
         c.gridy = 3;
         add(lbl3, c);*/
 
-        cycle1.start();
+        // cycle1.start();
     }
 
     /**
@@ -369,13 +446,16 @@ public class PanelTest extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.btnActu) {
-            lblJour.setText("Jour " + cycle.jours);
-            lblAmmo.setText("Somme ammoniaque: " + cycle.eau.sommeAmmoniaque());    //+ "     Liste NH3: " + cycle.eau.listeAmmoniaque);
-            lblNitrites.setText("Somme nitrites: " + cycle.eau.sommeNitrites());    // + "     Liste NO2-: " + cycle.eau.listeNitrites);
+            lblJour.setText("Jour " + GUIMain.jours);
+            lblAmmo.setText("Ammoniaque: " + GUIMain.eau.sommeAmmoniaque());    //+ "     Liste NH3: " + cycle.eau.listeAmmoniaque);
+            lblNitrites.setText("Nitrites: " + GUIMain.eau.sommeNitrites());    // + "     Liste NO2-: " + cycle.eau.listeNitrites);
+            lblNitrates.setText("Nitrites: " + GUIMain.eau.nitrates);
         }
         if (e.getSource() == btnCycle) {
             cycle.eau.listeAmmoniaque.add((float) 0);
             new Thread(new CycleAzote()).start();
         }
     }
+
+
 }

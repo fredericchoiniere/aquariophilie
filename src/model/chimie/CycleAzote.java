@@ -1,8 +1,9 @@
 // Frédéric Choinière, Justin Plouffe   itération 1
 // Classe qui contrôle les cycles de l'azote
 
-
 package model.chimie;
+
+import model.environnement.Temps;
 import view.GUIMain;
 
 public class CycleAzote implements Runnable {
@@ -12,9 +13,10 @@ public class CycleAzote implements Runnable {
     public float jours = 0, tempAmmoniaque = 0, tempNitrites = 0;
     public Eau eau = GUIMain.eau;
 
-    /** 
+    /**
      * @param eau
-     * Démarre un cycle d'ammoniaque en fonction du temps, suivant une courbe
+     *            Démarre un cycle d'ammoniaque en fonction du temps, suivant une
+     *            courbe
      */
     public void cycleAmmoniaque(Eau eau) {
         eau.listeAmmoniaque.remove(tempAmmoniaque);
@@ -25,18 +27,18 @@ public class CycleAzote implements Runnable {
         }
         eau.addAmmoniaque(tempAmmoniaque);
     }
-    
-    /** 
+
+    /**
      * @param eau
-     * Méthode run de la classe CycleAzote
-     * Incrémente les jours et calcule le nouveau taux d'ammoniaque et de nitrites
-    */
+     *            Méthode run de la classe CycleAzote
+     *            Incrémente les jours et calcule le nouveau taux d'ammoniaque et de
+     *            nitrites
+     */
     public void cycleNitrites(Eau eau) {
         eau.listeNitrites.remove(tempNitrites);
         if (jours > 14 && jours < 35) {
             tempNitrites = (float) (-3.56 * ((jours / 7) - 3.5) * ((jours / 7) - 3.5) + 8);
-        } 
-        else{
+        } else {
             tempNitrites = 0;
         }
         eau.addNitrites(tempNitrites);
@@ -50,18 +52,14 @@ public class CycleAzote implements Runnable {
                 jours++;
 
             try {
-                if (jours >= 0 && jours <= 18) {
+                if (jours >= 0 && jours <= 18) { // TODO: À REVOIR
                     cycleAmmoniaque(eau);
-                    Thread.sleep(1000);
-                } else 
-                    Thread.sleep(1000);
-
+                }
                 if (jours >= 14 && jours <= 35) {
                     cycleNitrites(eau);
-                    Thread.sleep(1000);
-                } else 
-                  Thread.sleep(1000);
-                
+                }
+                Thread.sleep(Temps.DUREE);
+
             } catch (Exception e) {
                 System.out.println("Erreur dans le run() de CycleAzote.java");
                 e.printStackTrace();

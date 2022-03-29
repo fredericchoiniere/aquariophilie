@@ -4,6 +4,9 @@
 package model.item.outils;
 
 import javax.swing.*;
+
+import model.item.Outils;
+
 import java.awt.*;
 
 public class Pipette extends Outils {
@@ -54,7 +57,7 @@ public class Pipette extends Outils {
 
     /** 
      * @param label
-     * Change l'état de la pipette
+     *              Change l'état de la pipette
      */
     public void changerEtatLabel(JLabel label) {
         if (est_remplie) {
@@ -64,10 +67,9 @@ public class Pipette extends Outils {
         }
     }
 
-    
-    /** 
+    /**
      * @param panel
-     * change l'état du panel
+     *              change l'état du panel
      */
     public void changerEtatPanel(JPanel panel) {
         if (est_remplie) {
