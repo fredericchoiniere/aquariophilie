@@ -20,6 +20,7 @@ import model.item.outils.Filet;
 import model.item.outils.Pipette;
 import model.item.outils.Shop;
 import model.jeu.Aquarium;
+import model.jeu.Argent;
 import model.jeu.Inventaire;
 import model.poissons.*;
 import view.tabs.*;
@@ -34,7 +35,8 @@ public class GUIMain extends JFrame implements Runnable {
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, lblPipette, eau_label, inventaire_ouvert,
             inventaire_fermer, inventaire_bg, filet_label, shop_label, hamis;
     JLabel label_argent;
-    //String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3, poi4, poi5, poi6;
+    // String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3,
+    // poi4, poi5, poi6;
     public static JLabel label_argent_aqua = new JLabel("");
     public static JLabel label_argent_shop = new JLabel("");
     public static String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3, poi4, poi5, poi6;
@@ -202,7 +204,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         label_argent_aqua.setBounds(475, 10, 100, 50);
         label_argent_aqua.setFont(new Font("Verdana", Font.BOLD, 16));
-        label_argent_aqua.setText("50 ₴");
+        label_argent_aqua.setText("0 ₴");
         label_argent_aqua.setVisible(true);
         panelAqua.add(label_argent_aqua);
 
@@ -262,7 +264,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         label_argent_shop.setBounds(475, 10, 100, 50);
         label_argent_shop.setFont(new Font("Verdana", Font.BOLD, 16));
-        label_argent_shop.setText("50 ₴");
+        label_argent_shop.setText("0 ₴");
         label_argent_shop.setVisible(true);
         panelShop.add(label_argent_shop);
 
@@ -330,11 +332,11 @@ public class GUIMain extends JFrame implements Runnable {
                         && panelAqua.getMousePosition().getX() <= rectEau.getMaxX()
                         && panelAqua.getMousePosition().getY() >= rectEau.getMinY()
                         && panelAqua.getMousePosition().getY() <= rectEau.getMaxY()) {
-                        lblPipette.setIcon(new ImageIcon("res/outils/pipette_pleine.png"));
-                        pipette.setEstRemplie(true);
-                        pipette.setNbGouttes(6);
-                        pipette.changerEtatLabel(lblPipette);
-                        pipette.changerEtatPanel(panelTest);
+                    lblPipette.setIcon(new ImageIcon("res/outils/pipette_pleine.png"));
+                    pipette.setEstRemplie(true);
+                    pipette.setNbGouttes(6);
+                    pipette.changerEtatLabel(lblPipette);
+                    pipette.changerEtatPanel(panelTest);
                 }
             }
         });
@@ -869,8 +871,7 @@ public class GUIMain extends JFrame implements Runnable {
 
                     listePoissonsAqua.get(index).direction = "empty";
                     listePoissonsAqua.get(index).var = false;
-
-                        listePoissonsInv.remove(index);
+                    listePoissonsInv.remove(index);
                 }
             } else {
             }
@@ -916,7 +917,7 @@ public class GUIMain extends JFrame implements Runnable {
         listePoissonsAqua.add(listePoissonsInv.get(getEmplaToInt(emplacement)));
         listePoissonsInv.set(getEmplaToInt(emplacement), poisson_default); // TODO: À revoir (y aller avec des tags de
                                                                            // position)
-        poisson_rouge = (PoissonRouge) listePoissonsAqua.get(iteration);
+        poisson_rouge =  (PoissonRouge) listePoissonsAqua.get(iteration);
         iteration++;
 
         poisson_rouge.setBounds(340, 324, 322, 156);
@@ -1095,6 +1096,32 @@ public class GUIMain extends JFrame implements Runnable {
         }
         return index;
     }
+
+    public void moneyFish(String empla, int money){
+        switch (empla) {
+            case "empla1":
+                Argent.poi1 = money;
+                break;
+            case "empla2":
+                Argent.poi2 = money;
+                break;
+            case "empla3":
+                Argent.poi3 = money;
+                break;
+            case "empla4":
+                Argent.poi4 = money;
+                break;
+            case "empla5":
+                Argent.poi5 = money;
+                break;
+            case "empla6":
+                Argent.poi6 = money;
+                break;
+            default:
+                break;
+        }
+    }
+    
     /*
      * public void removeItem(JLabel label, String etat){
      * etat = "empty";
