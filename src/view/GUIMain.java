@@ -851,7 +851,7 @@ public class GUIMain extends JFrame implements Runnable {
         }
     }
 
-    public void checkRectanglesPoiFilet(Rectangle rectangle, JLabel label1, Icon icone,
+    public void checkRectanglesPoiFilet(Rectangle rectangle, JLabel label1, Icon icone, // TODO changer pour un bouton
             boolean hasFish, String hasFishString, int index) {
         if (panelAqua.getMousePosition().getX() >= rectangle.getMinX()
                 && panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
@@ -862,14 +862,14 @@ public class GUIMain extends JFrame implements Runnable {
                 setHasFishFalse(hasFishString);
                 label1.setIcon(icone);
                 PanelShop.checkCase(Inventaire.img_inv_poi_rouge, "poisson", "rouge");
-                listePoissonsAqua.get(index).direction = "empty";
-                /* if (listePoissonsAqua.get(index).index == index){
-                    ///listePoissonsAqua.get(index);
+
+                if (listePoissonsAqua.get(index).index == index) {
+
                     listePoissonsAqua.get(index).direction = "empty";
-                    listePoissonsAqua.get(index).stop();
-                    listePoissonsAqua.get(index).index = -1;
-                    listePoissonsAqua.remove(index); 
-                } */
+                    listePoissonsAqua.get(index).var = false;
+
+                        listePoissonsInv.remove(index);
+                }
             } else {
             }
         }
@@ -908,9 +908,9 @@ public class GUIMain extends JFrame implements Runnable {
         // aquarium = new Aquarium(panelAqua);
     }
 
-    public void createPoissonRouge(String emplacement, JLabel label1, int index) { // passer de l'inventaire à l'aquarium
+    public void createPoissonRouge(String emplacement, JLabel label1, int index) { // passer de l'inventaire à
+                                                                                   // l'aquarium
 
-        
         listePoissonsAqua.add(listePoissonsInv.get(getEmplaToInt(emplacement)));
         listePoissonsInv.set(getEmplaToInt(emplacement), poisson_default); // TODO: À revoir (y aller avec des tags de
                                                                            // position)
@@ -1068,7 +1068,7 @@ public class GUIMain extends JFrame implements Runnable {
     }
 
     public int setIndexPoi(int index1) { // set le poisson dans l'inventaire
-    int index = 69;
+        int index = 69;
         switch (index1) { // dans l'inventaire
             case 0:
                 index = 0;
