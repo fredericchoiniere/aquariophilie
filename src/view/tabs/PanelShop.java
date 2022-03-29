@@ -51,7 +51,13 @@ public class PanelShop extends JPanel implements ActionListener {
         planteCul.setBounds(850, 700, shop_dimension.width, shop_dimension.height);
         add(planteCul);
 
+        boutonRouge = new JButton("callis");
+        boutonRouge.setBounds(0, 0, 100, 100);
+        boutonRouge.addActionListener(this);
+        add(boutonRouge);
+
     }
+
 
     public void paintComponent(Graphics g) { // méthode paint
         super.paintComponent(g);
@@ -183,8 +189,9 @@ public class PanelShop extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-
+        if (e.getSource() == boutonRouge) {
+            checkCase(Inventaire.img_inv_poi_rouge, "poisson", "rouge");
+        }
     }
 
 }
