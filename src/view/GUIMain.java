@@ -26,7 +26,7 @@ public class GUIMain extends JFrame implements Runnable {
     PanelTest panelTest;
     JTabbedPane tabbedPane;
     JButton pousser, rapetisser;
-    JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, pipette, eau_label, inventaire_ouvert,
+    JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, lblPipette, eau_label, inventaire_ouvert,
             inventaire_fermer, inventaire_bg;
     JLabel label_argent;
     String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3, poi4, poi5, poi6;
@@ -38,7 +38,7 @@ public class GUIMain extends JFrame implements Runnable {
     public static Eau eau;
     Poisson1 poisson1;
     Poisson2 poisson2;
-    Pipette pipette2;
+    public static Pipette pipette;
     ImageIcon tetra_curseur;
     Inventaire inventaire;
     Aquarium aquarium;
@@ -93,15 +93,15 @@ public class GUIMain extends JFrame implements Runnable {
         // -----------------------------------
 
         // ajout de l'objet de la classe pipette
-        pipette2 = new Pipette();
+        pipette = new Pipette();
 
         // ajout du label pour la pipette
-        pipette = new JLabel();
-        pipette2.changerEtatLabel(pipette);
-        Dimension size_pipette = pipette.getPreferredSize(); // prend la dimension de la photo
-        pipette.setBounds(850, 200, size_pipette.width, size_pipette.height);
-        pipette.setVisible(true);
-        panelAqua.add(pipette);
+        lblPipette = new JLabel();
+        pipette.changerEtatLabel(lblPipette);
+        Dimension size_pipette = lblPipette.getPreferredSize(); // prend la dimension de la photo
+        lblPipette.setBounds(850, 200, size_pipette.width, size_pipette.height);
+        lblPipette.setVisible(true);
+        panelAqua.add(lblPipette);
 
         // ajout de l'icone de notre kit ouvert
         aquarium_kit_ouvert = new JLabel();
@@ -223,7 +223,7 @@ public class GUIMain extends JFrame implements Runnable {
                 aquarium_kit_fermer.setVisible(true);
                 panelTest.setVisible(false);
                 empty.setVisible(false);
-                pipette.setVisible(true);
+                lblPipette.setVisible(true);
                 inventaire_fermer.setVisible(true);
                 label_argent.setVisible(true);
             }
@@ -238,7 +238,7 @@ public class GUIMain extends JFrame implements Runnable {
                 aquarium_kit_ouvert.setVisible(true);
                 empty.setVisible(true);
                 panelTest.setVisible(true);
-                pipette.setVisible(false);
+                lblPipette.setVisible(false);
                 inventaire_ouvert.setVisible(false);
                 inventaire_fermer.setVisible(false);
                 inventaire_bg.setVisible(false);
@@ -248,11 +248,11 @@ public class GUIMain extends JFrame implements Runnable {
 
         // action listener pour la pipette et les changements d'états du curseur et du
         // label
-        pipette.addMouseListener(new MouseAdapter() {
+        lblPipette.addMouseListener(new MouseAdapter() {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                pipette2.changerEtatPanel(panelAqua);
+                pipette.changerEtatPanel(panelAqua);
             }
 
             @Override
@@ -262,10 +262,11 @@ public class GUIMain extends JFrame implements Runnable {
                         && panelAqua.getMousePosition().getX() <= rectEau.getMaxX()
                         && panelAqua.getMousePosition().getY() >= rectEau.getMinY()
                         && panelAqua.getMousePosition().getY() <= rectEau.getMaxY()) {
-                    pipette.setIcon(new ImageIcon("res/outils/pipette_pleine.png"));
-                    pipette2.est_remplie = true;
-                    pipette2.changerEtatLabel(pipette);
-                    pipette2.changerEtatPanel(panelTest);
+                        lblPipette.setIcon(new ImageIcon("res/outils/pipette_pleine.png"));
+                        pipette.setEstRemplie(true);
+                        pipette.setNbGouttes(6);
+                        pipette.changerEtatLabel(lblPipette);
+                        pipette.changerEtatPanel(panelTest);
                 }
             }
         });
@@ -281,7 +282,7 @@ public class GUIMain extends JFrame implements Runnable {
                         || panelAqua.getMousePosition().getY() >= rectTest.getMaxY()) {
                     panelTest.setVisible(false);
                     empty.setVisible(false);
-                    pipette.setVisible(true);
+                    lblPipette.setVisible(true);
                     aquarium_kit_ouvert.setVisible(false);
                     aquarium_kit_fermer.setVisible(true);
                     inventaire_fermer.setVisible(true);
