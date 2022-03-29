@@ -85,7 +85,7 @@ public class Eau implements Runnable {
      * @return float
      *         Additionne toutes les valeurs dans la listeAmmoniaque
      */
-    public float sommeAmmoniaque() {
+    public float sommeAmmoniaque() {    // TODO: régler exception
         sommeAmmoniaque = 0;
         for (Float valeur : listeAmmoniaque) {
             sommeAmmoniaque += valeur;

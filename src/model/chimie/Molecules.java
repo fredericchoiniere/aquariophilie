@@ -3,12 +3,8 @@
 
 package model.chimie;
 
-public class Molecules implements Runnable {
+public class Molecules{
 
-    @Override
-    public void run() {
-        // TODO Auto-generated method stub
-
-    }
+    
 
 }
