@@ -107,9 +107,8 @@ public class PanelShop extends JPanel implements ActionListener {
 
     }
 
-    public static void checkCase(ImageIcon icon, String type, String poisson) { // méthode pour vérifier si
-                                                                                // l'utilisateur a assez d'argent pour
-                                                                                // acheter un objet
+    public static void checkCase(ImageIcon icon, String type, String poisson) { 
+        
         if (GUIMain.empla1 == "empty") {
             GUIMain.empla1 = type;
             Inventaire.emp1.setIcon(icon);

@@ -116,25 +116,6 @@ public class Eau implements Runnable {
         return nitrates;
     }
 
-    /*
-     * /**
-     * 
-     * @return boolean
-     * Retourne true si la pente des Nitrites est négative et false si non
-     * 
-     * public boolean verifPenteNitrites() {
-     * 
-     * if () {
-     * 
-     * } else {
-     * 
-     * }
-     * 
-     * 
-     * return penteNitrites;
-     * }
-     */
-
     /**
      * Méthode run de la classe Eau
      * Incomplète pour l'instant
@@ -160,7 +141,7 @@ public class Eau implements Runnable {
                     penteNitrites = nitrites;
                 }
             } catch (Exception e) {
-                // System.out.println("Erreur dans le run() d'Eau.java");
+                System.out.println("Erreur dans le run() d'Eau.java");
                 e.printStackTrace();
             }
         }

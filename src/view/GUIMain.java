@@ -851,7 +851,7 @@ public class GUIMain extends JFrame implements Runnable {
                 label1.setIcon(icone);
                 label2.setIcon(Inventaire.empty_inv);
                 setEmpla(emplacement);
-                createPoissonRouge(emplacement);
+                createPoissonRouge(emplacement, label1);
                 // System.out.println("hasFish = " + hasFish);
             }
         }
@@ -906,7 +906,7 @@ public class GUIMain extends JFrame implements Runnable {
         // aquarium = new Aquarium(panelAqua);
     }
 
-    public void createPoissonRouge(String emplacement) { // passer de l'inventaire à l'aquarium
+    public void createPoissonRouge(String emplacement, JLabel empAqua) { // passer de l'inventaire à l'aquarium
 
         listePoissonsAqua.add(listePoissonsInv.get(getEmplaToInt(emplacement)));
         listePoissonsInv.set(getEmplaToInt(emplacement), poisson_default); // TODO: À revoir (y aller avec des tags de position)
