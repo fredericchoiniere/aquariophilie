@@ -13,6 +13,8 @@ public class Aquarium {
     final Dimension size_icone_inv = new Dimension(80, 80);
     final Dimension size_icone_poi = new Dimension(70, 70);
     private ArrayList<Emplacementaq> listEmpPleins = new ArrayList<Emplacementaq>(3);
+    /* create an empty image*/
+    public static ImageIcon empty_poi = new ImageIcon("res/poissons/empty.png");
 
     
 

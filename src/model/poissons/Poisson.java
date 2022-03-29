@@ -7,7 +7,10 @@ public class Poisson extends JPanel {
 
     int vel_x = 1;
     int vel_y = 1;
-    int index;
+    public int index;
+    public String direction ;
+    boolean var;
+    
     
     public String empInv, empAqua, nom;
 
@@ -36,9 +39,7 @@ public class Poisson extends JPanel {
         this.nom = nom;
     }
 
-    public void setIndex(int index){
-        this.index = index;
-    }
+
 
     public int getXVelocity(){
         return vel_x;
@@ -60,16 +61,22 @@ public class Poisson extends JPanel {
         return nom;
     }
 
-    public Image getImage(String coter, Image img, Image poisson_droite, Image poisson_gauche) { // regarde pour le bon coter pour l'image
+    public Image getImage(String coter, Image img, Image poisson_droite, Image poisson_gauche, Image empty) { // regarde pour le bon coter pour l'image
         if (coter == "droite") {
             img = poisson_droite;
         }
-        if (coter == "gauche") {
+        else if (coter == "gauche") {
             img = poisson_gauche;
+        }else if (coter == "empty") {
+            img = empty;
         } else {
             img = poisson_droite;
         }
         return img;
+    }
+
+    public void stop(){
+        this.var = false;
     }
 
 }

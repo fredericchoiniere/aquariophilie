@@ -21,7 +21,7 @@ public class PoissonTetra extends Poisson implements Runnable {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         img = poisson_droite;
-        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche), x, y, this);
+        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, PoissonRouge.empty), x, y, this);
     }
 
     public void deplacer() {
