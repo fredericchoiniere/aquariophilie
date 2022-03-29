@@ -25,21 +25,20 @@ public class PanelShop extends JPanel implements ActionListener {
 
         setLayout(null);
 
-       
         poisson_rouge = new JLabel();
-        poisson_rouge.setIcon(new ImageIcon("res/outils/aquarium_kit/poisson_rouge.png"));
-        poisson_rouge.setBounds(850, 60, shop_dimension.width, shop_dimension.height);
+        poisson_rouge.setIcon(new ImageIcon("res/poissons/poisson_rouge/in_bag.png"));
+        poisson_rouge.setBounds(85, 230, shop_dimension.width, shop_dimension.height);
+        poisson_rouge.setVisible(true);
         add(poisson_rouge);
-        poisson_rouge.setVisible(false);
 
         poisson_betta = new JLabel();
-        poisson_betta.setIcon(new ImageIcon("res/outils/aquarium_kit/poisson_betta.png"));
-        poisson_betta.setBounds(850, 220, shop_dimension.width, shop_dimension.height);
+        poisson_betta.setIcon(new ImageIcon("res/poissons/poisson_betta/in_bag.png"));
+        poisson_betta.setBounds(185, 230, shop_dimension.width, shop_dimension.height);
         add(poisson_betta);
 
         poisson_tetra = new JLabel();
-        poisson_tetra.setIcon(new ImageIcon("res/outils/aquarium_kit/poisson_tetra.png"));
-        poisson_tetra.setBounds(850, 380, shop_dimension.width, shop_dimension.height);
+        poisson_tetra.setIcon(new ImageIcon("res/poissons/poisson_tetra/in_bag.png"));
+        poisson_tetra.setBounds(285, 230 , shop_dimension.width, shop_dimension.height);
         add(poisson_tetra);
 
         planteMario = new JLabel();
@@ -108,13 +107,16 @@ public class PanelShop extends JPanel implements ActionListener {
 
     }
 
-    public static void checkCase(ImageIcon icon, String type, String poisson) { // méthode pour vérifier si l'utilisateur a assez d'argent pour acheter un objet
+    public static void checkCase(ImageIcon icon, String type, String poisson) { // méthode pour vérifier si
+                                                                                // l'utilisateur a assez d'argent pour
+                                                                                // acheter un objet
         if (GUIMain.empla1 == "empty") {
             GUIMain.empla1 = type;
             Inventaire.emp1.setIcon(icon);
             if (type == "poisson") {
                 checkFish(poisson, 0);
             }
+           
         } else if (GUIMain.empla2 == "empty") {
             GUIMain.empla2 = type;
             Inventaire.emp2.setIcon(icon);
@@ -152,7 +154,8 @@ public class PanelShop extends JPanel implements ActionListener {
         }
     }
 
-    public static void checkFish(String typePoisson, int index) { // méthode pour vérifier si l'utilisateur a assez d'argent pour acheter un objet
+    public static void checkFish(String typePoisson, int index) { // méthode pour vérifier si l'utilisateur a assez
+                                                                  // d'argent pour acheter un objet
         switch (typePoisson) {
             case "rouge":
                 GUIMain.listePoissonsInv.add(index, new PoissonRouge());
@@ -182,7 +185,7 @@ public class PanelShop extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-        
+
     }
 
 }

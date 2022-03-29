@@ -26,7 +26,7 @@ public class Inventaire {
 
         ImageIcon img_aqua_poi_rouge = new ImageIcon("res/poissons/poisson_rouge/poisson_droite.png");
         public static ImageIcon img_inv_poi_rouge = new ImageIcon(
-                        new ImageIcon("res/poissons/poisson_rouge/poisson_droite.png").getImage().getScaledInstance(80,
+                        new ImageIcon("res/poissons/poisson_rouge/in_bag.png").getImage().getScaledInstance(80,
                                         80,
                                         Image.SCALE_DEFAULT));
 
