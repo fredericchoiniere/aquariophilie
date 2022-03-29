@@ -8,7 +8,7 @@ public class Poisson extends JPanel {
     int vel_x = 1;
     int vel_y = 1;
     public int index;
-    public String direction ;
+    public String direction = "droite";
     boolean var;
     
     
