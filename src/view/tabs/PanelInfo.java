@@ -9,7 +9,7 @@ import javax.swing.*;
 import model.chimie.Molecules;
 import model.environnement.Temps;
 
-public class PanelInfo extends JPanel implements Runnable{ // TODO: formatter les nombres, ajouter PH/GH/KH, implémenter action en cours en "temps réel"
+public class PanelInfo extends JPanel implements Runnable{ // TODO: formatter les nombres, ajouter PH/GH/KH, implémenter action en cours en "temps réel", focus pour pause thread (si possible)
 
     // appel des attributs de la classe
     JLabel lblAction, lblN, lblH, lblO, lblAmmo, lblNit, lblNat, lblPH, lblGH, lblKH;
