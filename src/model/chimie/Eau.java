@@ -11,10 +11,9 @@ import view.GUIMain;
 
 public class Eau implements Runnable {
 
-    public int ph = 7; // 0 à 14 (dépend des poissons à élever)
+    public int ph = 7; // 0 à 14
+    public int gh = 5; // Dureté de l'eau 0 à 30?
     public int kh = 8; // Dureté de l'eau 0 à 10? (8+ pour poissons d'eau douce en eau basique?)
-    public int gh = 5; // 0 à 30?
-    public int ammonium = 0;
     public int nbAtomeN = 0;
     public int nbAtomeO = 2103;
     public int nbAtomeH = 4206;
@@ -29,6 +28,7 @@ public class Eau implements Runnable {
     public float nitrites = 0; // Doit etre 0, maximum 5mg par litre
     public float nitrates = 0; // max 50mg/L
     public float ammoniaque = 0;
+    public float ammonium = 0;
     private float sommeAmmoniaque, sommeNitrites;
 
     public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0); // Liste à synchroniser
@@ -43,6 +43,66 @@ public class Eau implements Runnable {
         listeAmmoniaque.add(0, ammoniaque);
         listeNitrites.add(0, nitrites);
     }
+
+    // Getter pour le ph
+    public int getPH() {
+        return ph;
+    }
+
+    // Setter pour le ph
+    public void setPH(int nouveauPH) {
+        this.ph = nouveauPH;
+    }
+
+    // Getter pour le gh
+    public int getGH() {
+        return gh;
+    }
+
+    // Setter pour le gh
+    public void setGH(int nouveauGH) {
+        this.gh = nouveauGH;
+    }
+
+    // Getter pour le kh
+    public int getKH() {
+        return kh;
+    }
+
+    // Setter pour le kh
+    public void setKH(int nouveauKH) {
+        this.kh = nouveauKH;
+    }
+
+    // Getter pour le taux d'ammoniaque
+    public float getAmmoniaque() {
+        return sommeAmmoniaque;
+    }
+
+    /*// Setter pour le taux d'ammoniaque
+    public void setAmmoniaque(float nouveauAmmoniaque) {
+        this.sommeAmmoniaque = nouveauAmmoniaque;
+    }*/
+
+    // Getter pour le taux de nitrites
+    public float getNitrites() {
+        return sommeNitrites;
+    }
+
+    /*// Setter pour le taux de nitrites
+    public void setNitrites(float nouveauNitrites) {
+        this.sommeNitrites = nouveauNitrites;
+    }*/
+
+    // Getter pour le taux de nitrates
+    public float getNitrates() {
+        return nitrates;
+    }
+
+    /*// Setter pour le taux de nitrates
+    public void setNitrates(float nouveauNitrates) {
+        this.nitrates = nouveauNitrates;
+    }*/
 
     public void changerEau() {
         ph = 7;
@@ -85,7 +145,7 @@ public class Eau implements Runnable {
      * @return float
      *         Additionne toutes les valeurs dans la listeAmmoniaque
      */
-    public float sommeAmmoniaque() {
+    public float sommeAmmoniaque() {    // TODO: régler exception
         sommeAmmoniaque = 0;
         for (Float valeur : listeAmmoniaque) {
             sommeAmmoniaque += valeur;
@@ -116,25 +176,6 @@ public class Eau implements Runnable {
         return nitrates;
     }
 
-    /*
-     * /**
-     * 
-     * @return boolean
-     * Retourne true si la pente des Nitrites est négative et false si non
-     * 
-     * public boolean verifPenteNitrites() {
-     * 
-     * if () {
-     * 
-     * } else {
-     * 
-     * }
-     * 
-     * 
-     * return penteNitrites;
-     * }
-     */
-
     /**
      * Méthode run de la classe Eau
      * Incomplète pour l'instant
@@ -160,7 +201,7 @@ public class Eau implements Runnable {
                     penteNitrites = nitrites;
                 }
             } catch (Exception e) {
-                // System.out.println("Erreur dans le run() d'Eau.java");
+                System.out.println("Erreur dans le run() d'Eau.java");
                 e.printStackTrace();
             }
         }
