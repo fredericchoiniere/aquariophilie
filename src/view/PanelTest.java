@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 import model.chimie.CycleAzote;
+import model.chimie.Molecules;
 
 public class PanelTest extends JPanel implements ActionListener {
 
@@ -17,6 +18,7 @@ public class PanelTest extends JPanel implements ActionListener {
     JLabel lbl1, lbl2, lbl3, lbl4;
     Thread cycle1;
     boolean isFocused;
+    Molecules mol = new Molecules();
 
     public PanelTest() {
 
@@ -84,12 +86,19 @@ public class PanelTest extends JPanel implements ActionListener {
                     "Somme nitrites: " + cycle.eau.nitrites + "     Liste NO2-: " + cycle.eau.listeNitrites);
             lbl4.setText("Somme nitrates " + cycle.eau.nitrates);
 
-            System.out.println("size inv: " + GUIMain.listePoissonsInv.size());
-            System.out.println("size aqua: " + GUIMain.listePoissonsAqua.size());
+            // TESTS CLASSE MOLÉCULE
+
+            mol.ammoniaqueAtomesMol(); 
+            mol.nitritesAtomesMol();
+            mol.nitratesAtomesMol();
+
+            System.out.println("N: " + mol.sommeMolN());
+            System.out.println("ammo: " + mol.ammoniaqueMgLtoMol());
+            System.out.println("O: " + mol.sommeMolO());
         }
         if (e.getSource() == button2) {
             cycle.eau.listeAmmoniaque.add((float) 0);
             new Thread(new CycleAzote()).start();
         }
     }
-}
+}   

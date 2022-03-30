@@ -59,13 +59,13 @@ public class GUIMain extends JFrame implements Runnable {
     public static ArrayList<Poisson> listePoissonsInv = new ArrayList<Poisson>(6);
 
     // les threads
-    // Thread tpoisson1 = new Thread(); //TODO: à refaire à l'itération 2
     Thread tpoisson_rouge;
     Thread tpoisson_betta;
     Thread tpoisson_tetra;
     Thread GUIMainThread = new Thread(this);
     Thread threadEau;
     Thread tCycleInitial;
+    Thread tPanelInfo;
 
     // les attributs
     short stade, iteration = 0;
@@ -76,6 +76,8 @@ public class GUIMain extends JFrame implements Runnable {
     boolean hasFish1, hasFish2, hasFish3, hasFish4, hasFish5, hasFish6;
 
     public GUIMain() { // création du constructeur GUIMain
+
+        setTitle("Aquariophilie 🐠");
 
         // création du curseur custom
         tetra_curseur = new ImageIcon("res/icone_souris/tetra_cursor.png");
@@ -270,13 +272,15 @@ public class GUIMain extends JFrame implements Runnable {
 
         // création du panel Magasin
         PanelInfo panelInfo = new PanelInfo();
+        tPanelInfo = new Thread(panelInfo);
+        tPanelInfo.start();
         tabbedPane.add("À propos", panelInfo);
 
         // ajout du panel Info au tabbed pane
         add(tabbedPane);
 
         // ---------------------------------------------------------------------------------------------------------------------------------------------------------
-        // action listener de GUIMain TODO: placer dans les mouselistener en bas
+        // action listener de GUIMain
 
         // action listener sur les labels qui font apparaitre les interfaces
         aquarium_kit_ouvert.addMouseListener(new MouseAdapter() {
