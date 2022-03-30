@@ -10,11 +10,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 import model.chimie.CycleAzote;
-<<<<<<< HEAD
 import model.chimie.Molecules;
-=======
-//import model.chimie.Eau;
->>>>>>> 3973dc7cbdcbdcdc65a19a6dc1e3e4cbb6d1281c
 
 public class PanelTest extends JPanel implements ActionListener {
 
@@ -450,41 +446,15 @@ public class PanelTest extends JPanel implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-        if (e.getSource() == button1) {
-            lbl1.setText("Jour " + cycle.jours);
-            lbl2.setText("Somme ammoniaque: " + cycle.eau.ammoniaque + "     Liste NH3: "
-                    + cycle.eau.listeAmmoniaque);
-            lbl3.setText(
-                    "Somme nitrites: " + cycle.eau.nitrites + "     Liste NO2-: " + cycle.eau.listeNitrites);
-            lbl4.setText("Somme nitrates " + cycle.eau.nitrates);
-
-            // TESTS CLASSE MOLÉCULE
-
-            mol.ammoniaqueAtomesMol(); 
-            mol.nitritesAtomesMol();
-            mol.nitratesAtomesMol();
-
-            System.out.println("N: " + mol.sommeMolN());
-            System.out.println("ammo: " + mol.ammoniaqueMgLtoMol());
-            System.out.println("O: " + mol.sommeMolO());
-=======
         if (e.getSource() == this.btnActu) {
             lblJour.setText("Jour " + GUIMain.jours);
             lblAmmo.setText("Ammoniaque: " + GUIMain.eau.sommeAmmoniaque());    //+ "     Liste NH3: " + cycle.eau.listeAmmoniaque);
             lblNitrites.setText("Nitrites: " + GUIMain.eau.sommeNitrites());    // + "     Liste NO2-: " + cycle.eau.listeNitrites);
             lblNitrates.setText("Nitrites: " + GUIMain.eau.nitrates);
->>>>>>> 3973dc7cbdcbdcdc65a19a6dc1e3e4cbb6d1281c
         }
         if (e.getSource() == btnCycle) {
             cycle.eau.listeAmmoniaque.add((float) 0);
             new Thread(new CycleAzote()).start();
         }
     }
-<<<<<<< HEAD
 }   
-=======
-
-
-}
->>>>>>> 3973dc7cbdcbdcdc65a19a6dc1e3e4cbb6d1281c
