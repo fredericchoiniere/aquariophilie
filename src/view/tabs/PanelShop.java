@@ -16,48 +16,51 @@ import java.awt.event.*;
 
 public class PanelShop extends JPanel implements ActionListener {
 
-    JButton boutonRouge, boutonBetta, boutonTetra, boutonMario, boutonCul;
     static int i = 1;
-    JLabel poisson_rouge, poisson_betta, poisson_tetra, planteMario, planteCul;
+    JButton poisson_rouge, poisson_betta, poisson_tetra, planteMario, planteCul;
     Dimension shop_dimension = new Dimension(80, 80);
 
     public PanelShop() { // Panel pour créer le magasin
-
+        // TODO changer les labels pour des boutons
         setLayout(null);
 
-        poisson_rouge = new JLabel();
+        poisson_rouge = new JButton();
         poisson_rouge.setIcon(new ImageIcon("res/poissons/poisson_rouge/in_bag.png"));
         poisson_rouge.setBounds(85, 230, shop_dimension.width, shop_dimension.height);
-        poisson_rouge.setVisible(true);
+        poisson_rouge.setOpaque(true);
+        
+        poisson_rouge.addActionListener(this);
+        
         add(poisson_rouge);
 
-        poisson_betta = new JLabel();
+        poisson_betta = new JButton();
         poisson_betta.setIcon(new ImageIcon("res/poissons/poisson_betta/in_bag.png"));
         poisson_betta.setBounds(185, 230, shop_dimension.width, shop_dimension.height);
+        poisson_betta.setVisible(true);
+        poisson_betta.addActionListener(this);
         add(poisson_betta);
 
-        poisson_tetra = new JLabel();
+        poisson_tetra = new JButton();
         poisson_tetra.setIcon(new ImageIcon("res/poissons/poisson_tetra/in_bag.png"));
-        poisson_tetra.setBounds(285, 230 , shop_dimension.width, shop_dimension.height);
+        poisson_tetra.setBounds(285, 230, shop_dimension.width, shop_dimension.height);
+        poisson_tetra.setVisible(true);
+        poisson_tetra.addActionListener(this);
         add(poisson_tetra);
 
-        planteMario = new JLabel();
+        planteMario = new JButton();
         planteMario.setIcon(new ImageIcon("res/outils/aquarium_kit/plante_mario.png"));
         planteMario.setBounds(850, 540, shop_dimension.width, shop_dimension.height);
+        planteMario.setVisible(true);
+
         add(planteMario);
 
-        planteCul = new JLabel();
+        planteCul = new JButton();
         planteCul.setIcon(new ImageIcon("res/outils/aquarium_kit/plante_cul.png"));
         planteCul.setBounds(850, 700, shop_dimension.width, shop_dimension.height);
+        planteCul.setVisible(true);
         add(planteCul);
 
-        boutonRouge = new JButton("callis");
-        boutonRouge.setBounds(0, 0, 100, 100);
-        boutonRouge.addActionListener(this);
-        add(boutonRouge);
-
     }
-
 
     public void paintComponent(Graphics g) { // méthode paint
         super.paintComponent(g);
@@ -67,70 +70,37 @@ public class PanelShop extends JPanel implements ActionListener {
         // créer le background pour l'onglet Aquarium
         Image background = Toolkit.getDefaultToolkit().getImage("res/background/background_shop.png");
         g2D.drawImage(background, 5, 5, this);
-
-        // action listener des labels pour acheter
-        // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-        poisson_rouge.addMouseListener(new MouseAdapter() { // pour le poisson rouge
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                checkCase(Inventaire.img_inv_poi_rouge, "poisson", "rouge");
-            }
-        });
-
-        poisson_betta.addMouseListener(new MouseAdapter() { // pour le poisson betta
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                checkCase(Inventaire.img_inv_betta, "poisson", "betta");
-            }
-        });
-
-        poisson_tetra.addMouseListener(new MouseAdapter() { // pour le poisson tetra
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                checkCase(Inventaire.img_inv_tetra, "poisson", "tetra");
-            }
-        });
-
-        planteMario.addMouseListener(new MouseAdapter() { // pour la plante mario
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                checkCase(Inventaire.img_temp, "decoration", "");
-            }
-        });
-
-        planteCul.addMouseListener(new MouseAdapter() { // pour la plante cul
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                checkCase(Inventaire.img_java_fern, "decoration", "");
-            }
-        });
-
     }
 
-    public static void checkCase(ImageIcon icon, String type, String poisson) { 
-        
+    // action listener des labels pour acheter
+    // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    public static void checkCase(ImageIcon icon, String type, String poisson) {
+
         if (GUIMain.empla1 == "empty") {
             GUIMain.empla1 = type;
             Inventaire.emp1.setIcon(icon);
+
+            // destruction();
+
             if (type == "poisson") {
                 checkFish(poisson, 0);
             }
-           
+
         } else if (GUIMain.empla2 == "empty") {
             GUIMain.empla2 = type;
             Inventaire.emp2.setIcon(icon);
+
+            // destruction();
+
             if (type == "poisson") {
                 checkFish(poisson, 1);
             }
         } else if (GUIMain.empla3 == "empty") {
             GUIMain.empla3 = type;
             Inventaire.emp3.setIcon(icon);
+
+            // destruction();
             if (type == "poisson") {
                 checkFish(poisson, 2);
             }
@@ -138,6 +108,8 @@ public class PanelShop extends JPanel implements ActionListener {
         } else if (GUIMain.empla4 == "empty") {
             GUIMain.empla4 = type;
             Inventaire.emp4.setIcon(icon);
+
+            // destruction();
             if (type == "poisson") {
                 checkFish(poisson, 3);
             }
@@ -145,12 +117,16 @@ public class PanelShop extends JPanel implements ActionListener {
         } else if (GUIMain.empla5 == "empty") {
             GUIMain.empla5 = type;
             Inventaire.emp5.setIcon(icon);
+
+            // destruction();
             if (type == "poisson") {
                 checkFish(poisson, 4);
             }
         } else if (GUIMain.empla6 == "empty") {
             GUIMain.empla6 = type;
             Inventaire.emp6.setIcon(icon);
+
+            // destruction();
             if (type == "poisson") {
                 checkFish(poisson, 5);
             }
@@ -189,8 +165,24 @@ public class PanelShop extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == boutonRouge) {
+        if (e.getSource() == poisson_rouge) {
             checkCase(Inventaire.img_inv_poi_rouge, "poisson", "rouge");
+        }
+
+        if (e.getSource() == poisson_betta) {
+            checkCase(Inventaire.img_inv_betta, "poisson", "betta");
+        }
+
+        if (e.getSource() == poisson_tetra) {
+            checkCase(Inventaire.img_inv_tetra, "poisson", "tetra");
+        }
+
+        if (e.getSource() == planteMario) {
+            checkCase(Inventaire.img_temp, "decoration", "");
+        }
+
+        if (e.getSource() == planteCul) {
+            checkCase(Inventaire.img_java_fern, "decoration", "");
         }
     }
 

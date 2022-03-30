@@ -10,9 +10,9 @@ public class PoissonRouge extends Poisson implements Runnable {
     int vel_x = 1;
     int vel_y = 1;
 
-    public int index;
 
-    boolean var = true;
+
+    
 
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_droite.png");
@@ -41,8 +41,9 @@ public class PoissonRouge extends Poisson implements Runnable {
 
     @Override
     public void run() {
-        // System.out.println("run");
+        
         while (var) {
+            System.out.println("run");
             if (this.x > 286) {
                 setXVelocity(-vel_x);
                 direction = "gauche";

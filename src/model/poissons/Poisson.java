@@ -9,7 +9,7 @@ public class Poisson extends JPanel {
     int vel_y = 1;
     public int index;
     public String direction = "droite";
-    boolean var;
+    public boolean var = true;
     
     
     public String empInv, empAqua, nom;
@@ -75,8 +75,7 @@ public class Poisson extends JPanel {
         return img;
     }
 
-    public void stop(){
-        this.var = false;
-    }
+
+
 
 }

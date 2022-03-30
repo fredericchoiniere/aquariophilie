@@ -20,6 +20,7 @@ import model.item.outils.Filet;
 import model.item.outils.Pipette;
 import model.item.outils.Shop;
 import model.jeu.Aquarium;
+import model.jeu.Argent;
 import model.jeu.Inventaire;
 import model.poissons.*;
 import view.tabs.*;
@@ -31,8 +32,11 @@ public class GUIMain extends JFrame implements Runnable {
     PanelTest panelTest;
     JTabbedPane tabbedPane;
     JButton pousser, rapetisser;
-    JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, pipette, eau_label, inventaire_ouvert,
+    JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, lblPipette, eau_label, inventaire_ouvert,
             inventaire_fermer, inventaire_bg, filet_label, shop_label, hamis;
+    JLabel label_argent;
+    // String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3,
+    // poi4, poi5, poi6;
     public static JLabel label_argent_aqua = new JLabel("");
     public static JLabel label_argent_shop = new JLabel("");
     public static String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3, poi4, poi5, poi6;
@@ -42,6 +46,7 @@ public class GUIMain extends JFrame implements Runnable {
     // creation des objets
     Temps temps;
     public static Eau eau;
+    public static Pipette pipette;
     Poisson poisson_default = new Poisson();
     PoissonRouge poisson_rouge;
     PoissonBetta poisson_betta;
@@ -115,15 +120,15 @@ public class GUIMain extends JFrame implements Runnable {
         // -----------------------------------
 
         // ajout de l'objet de la classe pipette
-        pipette2 = new Pipette();
+        pipette = new Pipette();
 
         // ajout du label pour la pipette
-        pipette = new JLabel();
-        pipette2.changerEtatLabel(pipette);
-        Dimension size_pipette = pipette.getPreferredSize(); // prend la dimension de la photo
-        pipette.setBounds(850, 200, size_pipette.width, size_pipette.height);
-        pipette.setVisible(true);
-        panelAqua.add(pipette);
+        lblPipette = new JLabel();
+        pipette.changerEtatLabel(lblPipette);
+        Dimension size_pipette = lblPipette.getPreferredSize(); // prend la dimension de la photo
+        lblPipette.setBounds(850, 200, size_pipette.width, size_pipette.height);
+        lblPipette.setVisible(true);
+        panelAqua.add(lblPipette);
 
         filet = new Filet();
         // ajout du label pour le filet
@@ -201,7 +206,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         label_argent_aqua.setBounds(475, 10, 100, 50);
         label_argent_aqua.setFont(new Font("Verdana", Font.BOLD, 16));
-        label_argent_aqua.setText("50 ₴");
+        label_argent_aqua.setText("0 ₴");
         label_argent_aqua.setVisible(true);
         panelAqua.add(label_argent_aqua);
 
@@ -261,7 +266,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         label_argent_shop.setBounds(475, 10, 100, 50);
         label_argent_shop.setFont(new Font("Verdana", Font.BOLD, 16));
-        label_argent_shop.setText("50 ₴");
+        label_argent_shop.setText("0 ₴");
         label_argent_shop.setVisible(true);
         panelShop.add(label_argent_shop);
 
@@ -290,7 +295,7 @@ public class GUIMain extends JFrame implements Runnable {
                 aquarium_kit_fermer.setVisible(true);
                 panelTest.setVisible(false);
                 empty.setVisible(false);
-                pipette.setVisible(true);
+                lblPipette.setVisible(true);
                 inventaire_fermer.setVisible(true);
                 label_argent_aqua.setVisible(true);
 
@@ -306,7 +311,7 @@ public class GUIMain extends JFrame implements Runnable {
                 aquarium_kit_ouvert.setVisible(true);
                 empty.setVisible(true);
                 panelTest.setVisible(true);
-                pipette.setVisible(false);
+                lblPipette.setVisible(false);
                 inventaire_ouvert.setVisible(false);
                 inventaire_fermer.setVisible(false);
                 inventaire_bg.setVisible(false);
@@ -317,12 +322,11 @@ public class GUIMain extends JFrame implements Runnable {
 
         // action listener pour la pipette et les changements d'états du curseur et du
         // label
-        pipette.addMouseListener(new MouseAdapter() {
+        lblPipette.addMouseListener(new MouseAdapter() {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                pipette2.changerEtatPanel(panelAqua);
-
+                pipette.changerEtatPanel(panelAqua);
             }
 
             @Override
@@ -332,11 +336,11 @@ public class GUIMain extends JFrame implements Runnable {
                         && panelAqua.getMousePosition().getX() <= rectEau.getMaxX()
                         && panelAqua.getMousePosition().getY() >= rectEau.getMinY()
                         && panelAqua.getMousePosition().getY() <= rectEau.getMaxY()) {
-                    pipette.setIcon(new ImageIcon("res/outils/pipette_pleine.png"));
-                    pipette2.est_remplie = true;
-                    pipette2.changerEtatLabel(pipette);
-                    pipette2.changerEtatPanel(panelTest);
-
+                    lblPipette.setIcon(new ImageIcon("res/outils/pipette_pleine.png"));
+                    pipette.setEstRemplie(true);
+                    pipette.setNbGouttes(6);
+                    pipette.changerEtatLabel(lblPipette);
+                    pipette.changerEtatPanel(panelTest);
                 }
             }
         });
@@ -386,7 +390,7 @@ public class GUIMain extends JFrame implements Runnable {
                         || panelAqua.getMousePosition().getY() >= rectTest.getMaxY()) {
                     panelTest.setVisible(false);
                     empty.setVisible(false);
-                    pipette.setVisible(true);
+                    lblPipette.setVisible(true);
                     aquarium_kit_ouvert.setVisible(false);
                     aquarium_kit_fermer.setVisible(true);
                     inventaire_fermer.setVisible(true);
@@ -855,7 +859,7 @@ public class GUIMain extends JFrame implements Runnable {
         }
     }
 
-    public void checkRectanglesPoiFilet(Rectangle rectangle, JLabel label1, Icon icone,
+    public void checkRectanglesPoiFilet(Rectangle rectangle, JLabel label1, Icon icone, // TODO changer pour un bouton
             boolean hasFish, String hasFishString, int index) {
         if (panelAqua.getMousePosition().getX() >= rectangle.getMinX()
                 && panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
@@ -866,14 +870,13 @@ public class GUIMain extends JFrame implements Runnable {
                 setHasFishFalse(hasFishString);
                 label1.setIcon(icone);
                 PanelShop.checkCase(Inventaire.img_inv_poi_rouge, "poisson", "rouge");
-                listePoissonsAqua.get(index).direction = "empty";
-                /* if (listePoissonsAqua.get(index).index == index){
-                    ///listePoissonsAqua.get(index);
+
+                if (listePoissonsAqua.get(index).index == index) {
+
                     listePoissonsAqua.get(index).direction = "empty";
-                    listePoissonsAqua.get(index).stop();
-                    listePoissonsAqua.get(index).index = -1;
-                    listePoissonsAqua.remove(index); 
-                } */
+                    listePoissonsAqua.get(index).var = false;
+                    listePoissonsInv.remove(index);
+                }
             } else {
             }
         }
@@ -912,13 +915,13 @@ public class GUIMain extends JFrame implements Runnable {
         // aquarium = new Aquarium(panelAqua);
     }
 
-    public void createPoissonRouge(String emplacement, JLabel label1, int index) { // passer de l'inventaire à l'aquarium
+    public void createPoissonRouge(String emplacement, JLabel label1, int index) { // passer de l'inventaire à
+                                                                                   // l'aquarium
 
-        
         listePoissonsAqua.add(listePoissonsInv.get(getEmplaToInt(emplacement)));
         listePoissonsInv.set(getEmplaToInt(emplacement), poisson_default); // TODO: À revoir (y aller avec des tags de
                                                                            // position)
-        poisson_rouge = (PoissonRouge) listePoissonsAqua.get(iteration);
+        poisson_rouge =  (PoissonRouge) listePoissonsAqua.get(iteration);
         iteration++;
 
         poisson_rouge.setBounds(340, 324, 322, 156);
@@ -1072,7 +1075,7 @@ public class GUIMain extends JFrame implements Runnable {
     }
 
     public int setIndexPoi(int index1) { // set le poisson dans l'inventaire
-    int index = 69;
+        int index = 69;
         switch (index1) { // dans l'inventaire
             case 0:
                 index = 0;
@@ -1097,6 +1100,32 @@ public class GUIMain extends JFrame implements Runnable {
         }
         return index;
     }
+
+    public void moneyFish(String empla, int money){
+        switch (empla) {
+            case "empla1":
+                Argent.poi1 = money;
+                break;
+            case "empla2":
+                Argent.poi2 = money;
+                break;
+            case "empla3":
+                Argent.poi3 = money;
+                break;
+            case "empla4":
+                Argent.poi4 = money;
+                break;
+            case "empla5":
+                Argent.poi5 = money;
+                break;
+            case "empla6":
+                Argent.poi6 = money;
+                break;
+            default:
+                break;
+        }
+    }
+    
     /*
      * public void removeItem(JLabel label, String etat){
      * etat = "empty";

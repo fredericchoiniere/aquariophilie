@@ -15,9 +15,9 @@ public class Eau implements Runnable {
     public int kh = 8; // Dureté de l'eau 0 à 10? (8+ pour poissons d'eau douce en eau basique?)
     public int gh = 5; // 0 à 30?
     public int ammonium = 0;
-
-    /* public float molAtomeO = 2103;
-    public float molAtomeH = 4206; */
+    public int nbAtomeN = 0;
+    public int nbAtomeO = 2103;
+    public int nbAtomeH = 4206;
 
     public int bacteries;
     public int chlore;
@@ -44,7 +44,7 @@ public class Eau implements Runnable {
         listeNitrites.add(0, nitrites);
     }
 
-    /* public void changerEau() {
+    public void changerEau() {
         ph = 7;
         kh = 8;
         gh = 5;
@@ -57,7 +57,7 @@ public class Eau implements Runnable {
         nbAtomeH = 0;
         temperature = 15;
 
-    } */
+    }
 
     public void couleur() {
         // pourcentage de vert ou de gris dans l'eau
@@ -85,7 +85,7 @@ public class Eau implements Runnable {
      * @return float
      *         Additionne toutes les valeurs dans la listeAmmoniaque
      */
-    public float sommeAmmoniaque() {    // TODO: régler exception
+    public float sommeAmmoniaque() {
         sommeAmmoniaque = 0;
         for (Float valeur : listeAmmoniaque) {
             sommeAmmoniaque += valeur;
@@ -116,6 +116,25 @@ public class Eau implements Runnable {
         return nitrates;
     }
 
+    /*
+     * /**
+     * 
+     * @return boolean
+     * Retourne true si la pente des Nitrites est négative et false si non
+     * 
+     * public boolean verifPenteNitrites() {
+     * 
+     * if () {
+     * 
+     * } else {
+     * 
+     * }
+     * 
+     * 
+     * return penteNitrites;
+     * }
+     */
+
     /**
      * Méthode run de la classe Eau
      * Incomplète pour l'instant
@@ -141,7 +160,7 @@ public class Eau implements Runnable {
                     penteNitrites = nitrites;
                 }
             } catch (Exception e) {
-                System.out.println("Erreur dans le run() d'Eau.java");
+                // System.out.println("Erreur dans le run() d'Eau.java");
                 e.printStackTrace();
             }
         }
