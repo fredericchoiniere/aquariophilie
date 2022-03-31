@@ -2,9 +2,11 @@ package model.jeu;
 
 import javax.swing.JLabel;
 
+import view.GUIMain;
+
 public class Argent {
 
-    static int argent = 50;
+    static int argent = 0;
 
     static int emp1 = 0;
     static int emp2 = 0;
@@ -12,15 +14,13 @@ public class Argent {
     public static int poi1 = 0;
     public static int poi2 = 0;
     public static int poi3 = 0;
-    public static int poi4 = 0;
-    public static int poi5 = 0;
-    public static int poi6 = 0;
+
 
     static String montant = "0 ₴";
 
     public static void paye(JLabel label, JLabel label2) {
 
-        argent += emp1 + emp2 + emp3 + poi1 + poi2 + poi3 + poi4 + poi5 + poi6;
+        argent += emp1 + emp2 + emp3 + poi1 + poi2 + poi3;
 
         montant = Integer.toString(argent);
 
@@ -28,4 +28,6 @@ public class Argent {
         label2.setText(montant + " ₴");
     }
 
+
+    
 }
