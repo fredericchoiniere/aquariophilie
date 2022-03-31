@@ -185,11 +185,11 @@ public class Eau implements Runnable {
         penteNitrites = nitrites;
         while (true) {
             jours = GUIMain.jours;
-            sommeAmmoniaque();
-            sommeNitrites();
             // System.out.println("pente: " + penteNitrites + " total: " + nitrites + "
             // jour: " + jours);
-            try {
+            try {                   
+                sommeAmmoniaque();          // à faire planter
+                sommeNitrites();
                 if (penteNitrites > nitrites) {
                     comportNitrates();
                     //System.out.println("nitrates " + nitrates);
