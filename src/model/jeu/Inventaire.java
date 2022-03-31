@@ -57,10 +57,10 @@ public class Inventaire {
                /*  PoissonRouge poisson_rouge = new PoissonRouge();
                 GUIMain.listePoissonsInv.add(poisson_rouge); */
 
-                GUIMain.listePoissonsInv.add(0, new PoissonRouge());
-                GUIMain.listePoissonsInv.get(0).setName("rouge" + 0);
+               /*  GUIMain.listePoissonsInv.add(0, new PoissonRouge());
+                GUIMain.listePoissonsInv.get(0).setName("rouge" + 0); */
 
-                emp1.setIcon(img_inv_poi_rouge);
+                emp1.setIcon(empty_inv);
                 label.add(emp1);
 
                 emp2 = new Emplacementinv();

@@ -80,11 +80,13 @@ public class PanelShop extends JPanel implements ActionListener {
         if (GUIMain.empla1 == "empty") {
             GUIMain.empla1 = type;
             Inventaire.emp1.setIcon(icon);
+            
 
             // destruction();
 
             if (type == "poisson") {
                 checkFish(poisson, 0);
+                GUIMain.poi1 = poisson;
             }
 
         } else if (GUIMain.empla2 == "empty") {
@@ -95,6 +97,7 @@ public class PanelShop extends JPanel implements ActionListener {
 
             if (type == "poisson") {
                 checkFish(poisson, 1);
+                GUIMain.poi2 = poisson;
             }
         } else if (GUIMain.empla3 == "empty") {
             GUIMain.empla3 = type;
@@ -103,6 +106,7 @@ public class PanelShop extends JPanel implements ActionListener {
             // destruction();
             if (type == "poisson") {
                 checkFish(poisson, 2);
+                GUIMain.poi3 = poisson;
             }
 
         } else if (GUIMain.empla4 == "empty") {
@@ -112,6 +116,7 @@ public class PanelShop extends JPanel implements ActionListener {
             // destruction();
             if (type == "poisson") {
                 checkFish(poisson, 3);
+                GUIMain.poi4 = poisson;
             }
 
         } else if (GUIMain.empla5 == "empty") {
@@ -121,6 +126,7 @@ public class PanelShop extends JPanel implements ActionListener {
             // destruction();
             if (type == "poisson") {
                 checkFish(poisson, 4);
+                GUIMain.poi5 = poisson;
             }
         } else if (GUIMain.empla6 == "empty") {
             GUIMain.empla6 = type;
@@ -129,6 +135,7 @@ public class PanelShop extends JPanel implements ActionListener {
             // destruction();
             if (type == "poisson") {
                 checkFish(poisson, 5);
+                GUIMain.poi6 = poisson;
             }
         } else {
             System.out.println("inventaire plein");

@@ -430,7 +430,7 @@ public class GUIMain extends JFrame implements Runnable {
         // ---------------------------------------------------------------------------------------------------------------------------------------------------
 
         // pour les deco
-        empla1 = "poisson";
+        empla1 = "empty";
         empla2 = "empty";
         empla3 = "empty";
         empla4 = "empty";
@@ -444,6 +444,14 @@ public class GUIMain extends JFrame implements Runnable {
         hasFish4 = false;
         hasFish5 = false;
         hasFish6 = false;
+
+        // pour les poissons
+        poi1 = "";
+        poi2 = "";
+        poi3 = "";
+        poi4 = "";
+        poi5 = "";
+        poi6 = "";
 
         // inventaire 1
         Inventaire.emp1.addMouseListener(new MouseAdapter() {
@@ -853,9 +861,16 @@ public class GUIMain extends JFrame implements Runnable {
                 label1.setIcon(icone);
                 label2.setIcon(Inventaire.empty_inv);
                 setEmpla(emplacement);
-                createPoissonRouge(emplacement, label1, index);
+                setEmplaToFish(emplacement, poi1, label1, index);
+                setEmplaToFish(emplacement, poi2, label1, index);
+                setEmplaToFish(emplacement, poi3, label1, index);
+                setEmplaToFish(emplacement, poi4, label1, index);
+                setEmplaToFish(emplacement, poi5, label1, index);
+                setEmplaToFish(emplacement, poi6, label1, index);
+
                 // System.out.println("hasFish = " + hasFish);
             }
+
         }
     }
 
@@ -869,7 +884,7 @@ public class GUIMain extends JFrame implements Runnable {
             if (hasFish == true) {
                 setHasFishFalse(hasFishString);
                 label1.setIcon(icone);
-                PanelShop.checkCase(Inventaire.img_inv_poi_rouge, "poisson", "rouge");
+                //PanelShop.checkCase(Inventaire.img_inv_poi_rouge, "poisson", "rouge");
 
                 if (listePoissonsAqua.get(index).index == index) {
 
@@ -897,36 +912,67 @@ public class GUIMain extends JFrame implements Runnable {
      * frame on panelAqua
      */
 
-    public void createPoissonTetra() {
-        poisson_tetra = new PoissonTetra();
+    public void createPoissonTetra(String emplacement, JLabel label1, int index) {
+        //listePoissonsAqua.add(listePoissonsInv.get(getEmplaToInt(emplacement)));
+
+        poisson_tetra = (PoissonTetra) listePoissonsAqua.get(iteration);
+        iteration++;
+
         poisson_tetra.setBounds(340, 324, 322, 156);
+        poisson_tetra.index = setIndexPoi(index);
         tpoisson_tetra = new Thread(poisson_tetra);
+        Argent.poi3 += 3;
         tpoisson_tetra.start();
         panelAqua.add(poisson_tetra);
-        // aquarium = new Aquarium(panelAqua);
+
+        /*
+         * poisson_tetra = new PoissonTetra();
+         * poisson_tetra.setBounds(340, 324, 322, 156);
+         * tpoisson_tetra = new Thread(poisson_tetra);
+         * tpoisson_tetra.start();
+         * panelAqua.add(poisson_tetra);
+         * // aquarium = new Aquarium(panelAqua);
+         */
     }
 
-    public void createPoissonBetta() {
-        poisson_betta = new PoissonBetta();
+    public void createPoissonBetta(String emplacement, JLabel label, int index) {
+        //listePoissonsAqua.add(listePoissonsInv.get(getEmplaToInt(emplacement)));
+
+        poisson_betta = (PoissonBetta) listePoissonsAqua.get(iteration);
+        iteration++;
+
         poisson_betta.setBounds(340, 324, 322, 156);
+        poisson_betta.index = setIndexPoi(index);
         tpoisson_betta = new Thread(poisson_betta);
+        Argent.poi2 += 2;
         tpoisson_betta.start();
         panelAqua.add(poisson_betta);
-        // aquarium = new Aquarium(panelAqua);
+
+        /*
+         * poisson_betta = new PoissonBetta();
+         * poisson_betta.setBounds(340, 324, 322, 156);
+         * tpoisson_betta = new Thread(poisson_betta);
+         * tpoisson_betta.start();
+         * panelAqua.add(poisson_betta);
+         * // aquarium = new Aquarium(panelAqua);
+         */
     }
 
     public void createPoissonRouge(String emplacement, JLabel label1, int index) { // passer de l'inventaire à
                                                                                    // l'aquarium
-
         listePoissonsAqua.add(listePoissonsInv.get(getEmplaToInt(emplacement)));
-        listePoissonsInv.set(getEmplaToInt(emplacement), poisson_default); // TODO: À revoir (y aller avec des tags de
-                                                                           // position)
-        poisson_rouge =  (PoissonRouge) listePoissonsAqua.get(iteration);
+        //listePoissonsInv.set(getEmplaToInt(emplacement), poisson_default); // TODO: À revoir (y aller avec des tags de
+
+
+        // TODO: À revoir (y aller avec des tags de
+        // position)
+        poisson_rouge = (PoissonRouge) listePoissonsAqua.get(iteration);
         iteration++;
 
         poisson_rouge.setBounds(340, 324, 322, 156);
         poisson_rouge.index = setIndexPoi(index);
         tpoisson_rouge = new Thread(poisson_rouge);
+        Argent.poi1 += 1;
         tpoisson_rouge.start();
         panelAqua.add(poisson_rouge);
         // aquarium = new Aquarium(panelAqua);
@@ -1101,31 +1147,91 @@ public class GUIMain extends JFrame implements Runnable {
         return index;
     }
 
-    public void moneyFish(String empla, int money){
-        switch (empla) {
+    public void setEmplaToFish(String emplacement, String poi, JLabel label1, int index) { // TODO: à revoir
+        switch (emplacement) {
             case "empla1":
-                Argent.poi1 = money;
+                switch (poi) {
+                    case "rouge":
+                        createPoissonRouge(emplacement, label1, index);
+                        break;
+                    case "betta":
+                        createPoissonBetta(emplacement, label1, index);
+                        break;
+                    case "tetra":
+                        createPoissonTetra(emplacement, label1, index);
+                        break;
+                }
                 break;
             case "empla2":
-                Argent.poi2 = money;
+                switch (poi) {
+                    case "rouge":
+                        createPoissonRouge(emplacement, label1, index);
+                        break;
+                    case "betta":
+                        createPoissonBetta(emplacement, label1, index);
+                        break;
+                    case "tetra":
+                        createPoissonTetra(emplacement, label1, index);
+                        break;
+                }
                 break;
             case "empla3":
-                Argent.poi3 = money;
+                switch (poi) {
+                    case "rouge":
+                        createPoissonRouge(emplacement, label1, index);
+                        break;
+                    case "betta":
+                        createPoissonBetta(emplacement, label1, index);
+                        break;
+                    case "tetra":
+                        createPoissonTetra(emplacement, label1, index);
+                        break;
+                }
                 break;
             case "empla4":
-                Argent.poi4 = money;
+                switch (poi) {
+                    case "rouge":
+                        createPoissonRouge(emplacement, label1, index);
+                        break;
+                    case "betta":
+                        createPoissonBetta(emplacement, label1, index);
+                        break;
+                    case "tetra":
+                        createPoissonTetra(emplacement, label1, index);
+                        break;
+                }
                 break;
             case "empla5":
-                Argent.poi5 = money;
+                switch (poi) {
+                    case "rouge":
+                        createPoissonRouge(emplacement, label1, index);
+                        break;
+                    case "betta":
+                        createPoissonBetta(emplacement, label1, index);
+                        break;
+                    case "tetra":
+                        createPoissonTetra(emplacement, label1, index);
+                        break;
+                }
                 break;
             case "empla6":
-                Argent.poi6 = money;
+                switch (poi) {
+                    case "rouge":
+                        createPoissonRouge(emplacement, label1, index);
+                        break;
+                    case "betta":
+                        createPoissonBetta(emplacement, label1, index);
+                        break;
+                    case "tetra":
+                        createPoissonTetra(emplacement, label1, index);
+                        break;
+                }
                 break;
             default:
                 break;
         }
     }
-    
+
     /*
      * public void removeItem(JLabel label, String etat){
      * etat = "empty";
