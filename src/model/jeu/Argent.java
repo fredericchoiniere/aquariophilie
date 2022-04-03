@@ -6,17 +6,17 @@ import view.GUIMain;
 
 public class Argent {
 
-    static int argent = 0;
+    public static int argent = 50;
 
     static int emp1 = 0;
     static int emp2 = 0;
     static int emp3 = 0;
-    public static int poi1 = 0;
-    public static int poi2 = 0;
-    public static int poi3 = 0;
+    public static int poi1 = 0; //rouge
+    public static int poi2 = 0; ///betta
+    public static int poi3 = 0; //tetra
 
 
-    static String montant = "0 ₴";
+    static String montant = "50 ₴";
 
     public static void paye(JLabel label, JLabel label2) {
 

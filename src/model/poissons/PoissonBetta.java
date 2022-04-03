@@ -7,6 +7,7 @@ public class PoissonBetta extends Poisson implements Runnable {
     public int y = 120;
     public int vel_x = 1;
     public int vel_y = 1;
+    public int prix = 500;
 
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_betta/poisson_droite.png");

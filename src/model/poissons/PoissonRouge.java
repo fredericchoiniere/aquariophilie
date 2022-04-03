@@ -9,6 +9,7 @@ public class PoissonRouge extends Poisson implements Runnable {
     int y = 10;
     int vel_x = 1;
     int vel_y = 1;
+    public static int prix = 50;
 
 
 

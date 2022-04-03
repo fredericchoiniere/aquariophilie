@@ -7,6 +7,7 @@ import java.awt.*;
 import javax.swing.*;
 
 import model.jeu.Inventaire;
+import model.jeu.Magasin;
 import model.poissons.PoissonBetta;
 import model.poissons.PoissonRouge;
 import model.poissons.PoissonTetra;
@@ -28,9 +29,9 @@ public class PanelShop extends JPanel implements ActionListener {
         poisson_rouge.setIcon(new ImageIcon("res/poissons/poisson_rouge/in_bag.png"));
         poisson_rouge.setBounds(85, 230, shop_dimension.width, shop_dimension.height);
         poisson_rouge.setOpaque(true);
-        
+
         poisson_rouge.addActionListener(this);
-        
+
         add(poisson_rouge);
 
         poisson_betta = new JButton();
@@ -80,13 +81,13 @@ public class PanelShop extends JPanel implements ActionListener {
         if (GUIMain.empla1 == "empty") {
             GUIMain.empla1 = type;
             Inventaire.emp1.setIcon(icon);
-            
 
             // destruction();
 
             if (type == "poisson") {
                 checkFish(poisson, 0);
                 GUIMain.poi1 = poisson;
+                Magasin.checkPoissonPrix(poisson);
             }
 
         } else if (GUIMain.empla2 == "empty") {
@@ -98,6 +99,7 @@ public class PanelShop extends JPanel implements ActionListener {
             if (type == "poisson") {
                 checkFish(poisson, 1);
                 GUIMain.poi2 = poisson;
+                Magasin.checkPoissonPrix(poisson);
             }
         } else if (GUIMain.empla3 == "empty") {
             GUIMain.empla3 = type;
@@ -107,6 +109,7 @@ public class PanelShop extends JPanel implements ActionListener {
             if (type == "poisson") {
                 checkFish(poisson, 2);
                 GUIMain.poi3 = poisson;
+                Magasin.checkPoissonPrix(poisson);
             }
 
         } else if (GUIMain.empla4 == "empty") {
@@ -117,6 +120,7 @@ public class PanelShop extends JPanel implements ActionListener {
             if (type == "poisson") {
                 checkFish(poisson, 3);
                 GUIMain.poi4 = poisson;
+                Magasin.checkPoissonPrix(poisson);
             }
 
         } else if (GUIMain.empla5 == "empty") {
@@ -127,6 +131,7 @@ public class PanelShop extends JPanel implements ActionListener {
             if (type == "poisson") {
                 checkFish(poisson, 4);
                 GUIMain.poi5 = poisson;
+                Magasin.checkPoissonPrix(poisson);
             }
         } else if (GUIMain.empla6 == "empty") {
             GUIMain.empla6 = type;
@@ -136,6 +141,7 @@ public class PanelShop extends JPanel implements ActionListener {
             if (type == "poisson") {
                 checkFish(poisson, 5);
                 GUIMain.poi6 = poisson;
+                Magasin.checkPoissonPrix(poisson);
             }
         } else {
             System.out.println("inventaire plein");
@@ -147,9 +153,7 @@ public class PanelShop extends JPanel implements ActionListener {
         switch (typePoisson) {
             case "rouge":
                 GUIMain.listePoissonsInv.add(index, new PoissonRouge());
-
                 GUIMain.listePoissonsInv.get(index).setName("rouge" + i);
-
                 i++;
                 break;
 
@@ -164,7 +168,6 @@ public class PanelShop extends JPanel implements ActionListener {
                 GUIMain.listePoissonsInv.get(index).setName("tetra" + i);
                 i++;
                 break;
-
             default:
                 break;
         }
@@ -173,15 +176,29 @@ public class PanelShop extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == poisson_rouge) {
-            checkCase(Inventaire.img_inv_poi_rouge, "poisson", "rouge");
+            if (Magasin.gotMoney("rouge")) {
+                checkCase(Inventaire.img_inv_poi_rouge, "poisson", "rouge");
+            } else {
+                System.out.println("Pas assez d'argent");
+            }
         }
 
         if (e.getSource() == poisson_betta) {
-            checkCase(Inventaire.img_inv_betta, "poisson", "betta");
+            if (Magasin.gotMoney("betta")) {
+                checkCase(Inventaire.img_inv_betta, "poisson", "betta");
+            } else {
+                System.out.println("pas assez d'argent");
+            }
+
         }
 
         if (e.getSource() == poisson_tetra) {
-            checkCase(Inventaire.img_inv_tetra, "poisson", "tetra");
+            if (Magasin.gotMoney("tetra")) {
+                checkCase(Inventaire.img_inv_tetra, "poisson", "tetra");
+            } else {
+                System.out.println("pas assez d'argent");
+            }
+
         }
 
         if (e.getSource() == planteMario) {

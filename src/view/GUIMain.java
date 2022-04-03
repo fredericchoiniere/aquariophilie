@@ -206,7 +206,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         label_argent_aqua.setBounds(475, 10, 100, 50);
         label_argent_aqua.setFont(new Font("Verdana", Font.BOLD, 16));
-        label_argent_aqua.setText("0 ₴");
+        label_argent_aqua.setText("50 ₴");
         label_argent_aqua.setVisible(true);
         panelAqua.add(label_argent_aqua);
 
@@ -266,7 +266,7 @@ public class GUIMain extends JFrame implements Runnable {
 
         label_argent_shop.setBounds(475, 10, 100, 50);
         label_argent_shop.setFont(new Font("Verdana", Font.BOLD, 16));
-        label_argent_shop.setText("0 ₴");
+        label_argent_shop.setText("50 ₴");
         label_argent_shop.setVisible(true);
         panelShop.add(label_argent_shop);
 
