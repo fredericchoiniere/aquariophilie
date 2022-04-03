@@ -1,2 +1,49 @@
 package model.jeu;
-// pour l'itération 2
+
+/* create a class that can access Argent class*/
+import model.jeu.Argent;
+
+public class Magasin {
+
+    public static void ajustement_argent(int prix) {
+        Argent.argent -= prix;
+    }
+
+    public static void checkPoissonPrix(String type){
+        switch (type) {
+            case "rouge":
+                ajustement_argent(50);
+                break;
+
+            case "betta":
+                ajustement_argent(200);
+                break;
+
+            case "tetra":
+                ajustement_argent(500);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public static boolean gotMoney(String type){
+        switch (type) {
+            case "rouge":
+                if(Argent.argent >= 50){
+                    return true;
+                }
+                
+            case "betta":
+                if(Argent.argent >= 200){
+                    return true;
+                }
+            case "tetra":
+                if(Argent.argent >= 500){
+                    return true;
+                }
+            default:
+                return false;
+        }
+    }
+}
