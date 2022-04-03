@@ -1147,7 +1147,7 @@ public class GUIMain extends JFrame implements Runnable {
         return index;
     }
 
-    public void setEmplaToFish(String emplacement, String poi, JLabel label1, int index) { // TODO: à revoir
+    public void setEmplaToFish(String emplacement, String poi, JLabel label1, int index) { // TODO: à revoir impérativement
         switch (emplacement) {
             case "empla1":
                 switch (poi) {
