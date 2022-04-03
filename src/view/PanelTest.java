@@ -1,10 +1,7 @@
 // Frédéric Choinière, Jérémie Caron   itération 1
-// Classe pour afficher temporairement la stoechiométrie
 //Justin Plouffe itération 2
 
 package view;
-
-// TODO: CLASSE DE TEST TEMPORAIRE
 
 import javax.swing.*;
 import java.awt.event.*;
