@@ -913,7 +913,7 @@ public class GUIMain extends JFrame implements Runnable {
      */
 
     public void createPoissonTetra(String emplacement, JLabel label1, int index) {
-        //listePoissonsAqua.add(listePoissonsInv.get(getEmplaToInt(emplacement)));
+        listePoissonsAqua.add(listePoissonsInv.get(getEmplaToInt(emplacement)));
 
         poisson_tetra = (PoissonTetra) listePoissonsAqua.get(iteration);
         iteration++;
@@ -936,7 +936,7 @@ public class GUIMain extends JFrame implements Runnable {
     }
 
     public void createPoissonBetta(String emplacement, JLabel label, int index) {
-        //listePoissonsAqua.add(listePoissonsInv.get(getEmplaToInt(emplacement)));
+        listePoissonsAqua.add(listePoissonsInv.get(getEmplaToInt(emplacement)));
 
         poisson_betta = (PoissonBetta) listePoissonsAqua.get(iteration);
         iteration++;

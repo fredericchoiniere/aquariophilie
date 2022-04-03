@@ -6,7 +6,7 @@ import view.GUIMain;
 
 public class Argent {
 
-    public static int argent = 50;
+    public static int argent = 5000;
 
     static int emp1 = 0;
     static int emp2 = 0;
