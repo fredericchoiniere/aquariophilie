@@ -39,7 +39,7 @@ public class GUIMain extends JFrame implements Runnable {
     // poi4, poi5, poi6;
     public static JLabel label_argent_aqua = new JLabel("");
     public static JLabel label_argent_shop = new JLabel("");
-    public static String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3, poi4, poi5, poi6;
+    public static String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3, poi4, poi5, poi6, actionEnCours;
     Rectangle rectTest, rectEau, rectEmp1, rectEmp2, rectEmp3, rectAqua1, rectAqua2, rectAqua3, rectAqua4, rectAqua5,
             rectAqua6, rectShop;
 
@@ -58,7 +58,7 @@ public class GUIMain extends JFrame implements Runnable {
     ImageIcon rajoutIcon = new ImageIcon();
     Inventaire inventaire;
     Aquarium aquarium;
-    static CycleAzote cycleInitial;
+    public static CycleAzote cycleInitial;
 
     static ArrayList<Poisson> listePoissonsAqua = new ArrayList<Poisson>(6);
     public static ArrayList<Poisson> listePoissonsInv = new ArrayList<Poisson>(6);
@@ -96,8 +96,12 @@ public class GUIMain extends JFrame implements Runnable {
         temps = new Temps();
         eau = new Eau();
         threadEau = new Thread(eau);
+        threadEau.setName("ThreadEau");
         cycleInitial = new CycleAzote();
         tCycleInitial = new Thread(cycleInitial);
+        tCycleInitial.setName("ThreadCycleInitial");
+
+        actionEnCours = cycleInitial.actionEnCours;
 
         // creation du main tab
         tabbedPane = new JTabbedPane();
