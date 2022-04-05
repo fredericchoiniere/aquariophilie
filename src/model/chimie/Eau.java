@@ -31,8 +31,9 @@ public class Eau implements Runnable {
     public float ammonium = 0;
     private float sommeAmmoniaque, sommeNitrites;
 
-    public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0); // Liste à synchroniser
+    public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0); // Liste à synchroniser TODO: vérifier si valeurs ok si utilise cette liste pour exception
     public List<Float> listeAmmoniaque = Collections.synchronizedList(listeAmmoniaqueTemp); // Liste synchronisée
+    public ArrayList<Float> listeAmmoniaqueTest = new ArrayList<Float>(); // Liste test pour remédier à exception
 
     public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
@@ -147,7 +148,8 @@ public class Eau implements Runnable {
      */
     public float sommeAmmoniaque() {    // TODO: régler exception
         sommeAmmoniaque = 0;
-        for (Float valeur : listeAmmoniaque) {
+        listeAmmoniaqueTest.addAll(listeAmmoniaque);
+        for (Float valeur : listeAmmoniaqueTest) {
             sommeAmmoniaque += valeur;
         }
         ammoniaque = sommeAmmoniaque;
@@ -201,7 +203,7 @@ public class Eau implements Runnable {
                     penteNitrites = nitrites;
                 }
             } catch (Exception e) {
-                System.out.println("Erreur dans le run() d'Eau.java");
+                System.out.println("Erreur dans le thread: " + Thread.currentThread().getName());
                 e.printStackTrace();
             }
         }

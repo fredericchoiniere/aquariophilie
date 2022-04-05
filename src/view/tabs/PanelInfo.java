@@ -8,12 +8,15 @@ import java.awt.*;
 import javax.swing.*;
 import model.chimie.Molecules;
 import model.environnement.Temps;
+import view.GUIMain;
 
 public class PanelInfo extends JPanel implements Runnable{ // TODO: formatter les nombres, ajouter PH/GH/KH, implémenter action en cours en "temps réel", focus pour pause thread (si possible)
 
     // appel des attributs de la classe
     JLabel lblAction, lblN, lblH, lblO, lblAmmo, lblNit, lblNat, lblPH, lblGH, lblKH;
     JProgressBar progressBar;
+
+    String actionEnCours = GUIMain.actionEnCours; // TODO: faire fonctionner
 
     public boolean focus = true; // temp
 
@@ -84,6 +87,11 @@ public class PanelInfo extends JPanel implements Runnable{ // TODO: formatter le
 
     }
 
+    public void setActionEnCours(){
+        lblAction.setText("Action en cours: " + actionEnCours );
+    }
+
+
     @Override
     public void run() {
         while(focus){
@@ -92,6 +100,8 @@ public class PanelInfo extends JPanel implements Runnable{ // TODO: formatter le
                 mol.ammoniaqueAtomesMol();
                 mol.nitritesAtomesMol();
                 mol.nitratesAtomesMol();
+
+                setActionEnCours();
 
                 lblN.setText("N: " + mol.sommeMolN() + " mols d'azote");
                 lblH.setText("H: " + mol.molAtomeH + " mols d'hydrogène");
