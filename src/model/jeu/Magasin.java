@@ -27,6 +27,24 @@ public class Magasin {
         }
     }
 
+    public static void checkPlantePrix(String type){
+        switch (type) {
+            case "java":
+                ajustement_argent(450);
+                break;
+
+            case "blue":
+                ajustement_argent(200);
+                break;
+
+            case "scarlet":
+                ajustement_argent(1000);
+                break;
+            default:
+                break;
+        }
+    }
+
     public static boolean gotMoney(String type){
         switch (type) {
             case "rouge":
@@ -40,6 +58,18 @@ public class Magasin {
                 }
             case "tetra":
                 if(Argent.argent >= 500){
+                    return true;
+                }
+            case "java":
+                if(Argent.argent >= 450){
+                    return true;
+                }
+            case "blue":
+                if(Argent.argent >= 200){
+                    return true;
+                }
+            case "scarlet":
+                if(Argent.argent >= 1000){
                     return true;
                 }
             default:
