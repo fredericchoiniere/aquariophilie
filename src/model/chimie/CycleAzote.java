@@ -13,7 +13,7 @@ public class CycleAzote implements Runnable {
     public float jours = 0, tempAmmoniaque = 0, tempNitrites = 0;
     public Eau eau = GUIMain.eau;
 
-    public String actionEnCours = "test";
+    public String actionEnCours = "Aucune action initiale";
 
     /**
      * @param eau
@@ -47,14 +47,14 @@ public class CycleAzote implements Runnable {
     }
 
     @Override
-    public void run() { // TODO: système de cycle en cours prioritaire
+    public void run() {
         while (true) {
 
             if ((jours + jourInitial) < GUIMain.jours)
                 jours++;
 
             try {
-                if (jours >= 0 && jours <= 18) { // TODO: À REVOIR
+                if (jours >= 0 && jours <= 18) {
                     cycleAmmoniaque(eau);
                     actionEnCours = "Cycle ammoniaque";
                     //System.out.println("Action en cours: " + actionEnCours + " dans thread " + Thread.currentThread().getName());
@@ -64,6 +64,7 @@ public class CycleAzote implements Runnable {
                     actionEnCours = "Cycle nitrites";
                     //System.out.println("Action en cours: " + actionEnCours + " dans thread " + Thread.currentThread().getName());
                 }
+                GUIMain.actionEnCours = actionEnCours;
                 Thread.sleep(Temps.DUREE);
 
             } catch (Exception e) {

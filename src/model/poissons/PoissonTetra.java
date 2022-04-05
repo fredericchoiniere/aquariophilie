@@ -27,7 +27,7 @@ public class PoissonTetra extends Poisson implements Runnable {
         this.x += getXVelocity();
         this.y += getYVelocity();
         try {
-            Thread.sleep(30);
+            Thread.sleep(20);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -49,7 +49,7 @@ public class PoissonTetra extends Poisson implements Runnable {
             if (this.y > 120) {
                 setYVelocity(-vel_y);
             }
-            if (this.y < 4) {
+            if (this.y < 90) {
                 setYVelocity(1); // ne marchait pas avec vel_y, je ne sais pas pourquoi
             }
             deplacer();

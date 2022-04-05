@@ -2,8 +2,6 @@ package model.jeu;
 
 import javax.swing.JLabel;
 
-import view.GUIMain;
-
 public class Argent {
 
     public static int argent = 50000;

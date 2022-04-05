@@ -5,44 +5,51 @@ package model.chimie;
 
 import java.util.ArrayList;
 import java.util.List;
-import model.environnement.Temps;
 import java.util.*;
 import view.GUIMain;
+import model.environnement.Temps;
 
 public class Eau implements Runnable {
 
     public int ph = 7; // 0 à 14
-    public int gh = 5; // Dureté de l'eau 0 à 30?
-    public int kh = 8; // Dureté de l'eau 0 à 10? (8+ pour poissons d'eau douce en eau basique?)
+    public int gh = 10; // Dureté de l'eau de 0 à 25+ (tolérée entre 5 et 15)
+    public int kh = 6; // Dureté de l'eau de 0 à 12+ (tolérée entre 4 et 8)
     public int nbAtomeN = 0;
     public int nbAtomeO = 2103;
     public int nbAtomeH = 4206;
 
-    public int bacteries;
-    public int chlore;
-    public int temperature;
+    //public int temperature;
     public int scoreEau;
+    private float scorePH;
+    private float scoreGH;
+    private float scoreKH;
+    private float scoreAmmo;
+    private float scoreNitrites;
+    private float scoreNitrates;
+    private float penteNitrites = 0;
+
 
     public final float volumeEau = (float) 37.85;
-    public float jours = GUIMain.jours;
     public float nitrites = 0; // Doit etre 0, maximum 5mg par litre
     public float nitrates = 0; // max 50mg/L
     public float ammoniaque = 0;
-    public float ammonium = 0;
     private float sommeAmmoniaque, sommeNitrites;
 
-    public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0); // Liste à synchroniser TODO: vérifier si valeurs ok si utilise cette liste pour exception
+    public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeAmmoniaque = Collections.synchronizedList(listeAmmoniaqueTemp); // Liste synchronisée
-    public ArrayList<Float> listeAmmoniaqueTest = new ArrayList<Float>(); // Liste test pour remédier à exception
+    public ArrayList<Float> listeAmmoniaqueIteration = new ArrayList<Float>(); // Liste pour itérer dans boucle
+    public HashSet<Float> setAmmoniaque = new HashSet<Float>(listeAmmoniaqueTemp); // Liste pour additionner le montant total d'ammoniaque
 
     public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
+    public ArrayList<Float> listeNitritesIteration = new ArrayList<Float>(); // Liste pour itérer dans boucle
+    public HashSet<Float> setNitrites = new HashSet<Float>(listeNitritesTemp); // Liste pour additionner le montant total de nitrites
 
-    public float penteNitrites = 0;
+    public float jours = GUIMain.jours;
 
-    public Eau() {
-        listeAmmoniaque.add(0, ammoniaque);
-        listeNitrites.add(0, nitrites);
+    public Eau(){
+        listeAmmoniaque.add(0, this.ammoniaque);
+        listeNitrites.add(0, this.nitrites);
     }
 
     // Getter pour le ph
@@ -106,79 +113,241 @@ public class Eau implements Runnable {
     }*/
 
     public void changerEau() {
-        ph = 7;
-        kh = 8;
-        gh = 5;
+        ph = 7; 
+        kh = 8; 
+        gh = 5; 
         nitrites = 0;
         nitrates = 0;
         ammoniaque = 0;
-        ammonium = 0;
+
         nbAtomeN = 0;
         nbAtomeO = 0;
         nbAtomeH = 0;
-        temperature = 15;
-
     }
 
     public void couleur() {
-        // pourcentage de vert ou de gris dans l'eau
+        //pourcentage de vert ou de gris dans l'eau
     }
-
-    /**
+    
+    /** 
      * @param ammoniaque
-     *                   Ajoute une valeur d'ammoniaque fournie dans la
-     *                   listeAmmoniaque
+     * Ajoute une valeur d'ammoniaque fournie dans la listeAmmoniaque
      */
-    public void addAmmoniaque(float ammoniaque) { // ajouter différence, mettre dans intervalle [tant que y > 0 && pente
-                                                  // négative]
+    public void addAmmoniaque(float ammoniaque) { // ajouter différence, mettre dans intervalle [tant que y > 0 && pente négative]
         listeAmmoniaque.add(ammoniaque);
     }
 
-    /**
+    /** 
      * @param nitrites
-     *                 Ajoute une valeur de nitrites fournie dans la listeNitrites
+     * Ajoute une valeur de nitrites fournie dans la listeNitrites
      */
     public void addNitrites(float nitrites) { // ajouter différence, mettre dans intervalle
         listeNitrites.add(nitrites);
     }
-
-    /**
+    
+    /** 
      * @return float
      *         Additionne toutes les valeurs dans la listeAmmoniaque
      */
-    public float sommeAmmoniaque() {    // TODO: régler exception
+    public float sommeAmmoniaque() {
         sommeAmmoniaque = 0;
-        listeAmmoniaqueTest.addAll(listeAmmoniaque);
-        for (Float valeur : listeAmmoniaqueTest) {
-            sommeAmmoniaque += valeur;
+        listeAmmoniaqueIteration.addAll(listeAmmoniaque);
+        for (Float valeur : listeAmmoniaqueIteration) {
+            if(!setAmmoniaque.contains(valeur)){
+                setAmmoniaque.add(valeur);
+                sommeAmmoniaque += valeur;
+            }
         }
-        ammoniaque = sommeAmmoniaque;
-        return ammoniaque;
+        this.ammoniaque = sommeAmmoniaque;
+        return this.ammoniaque;
     }
-
-    /**
+    
+    /** 
      * @return float
-     *         Additionne toutes les valeurs dans la listeNitrites
+     * Additionne toutes les valeurs dans la listeNitrites
      */
-    public float sommeNitrites() { // TODO: régler exception
+    public float sommeNitrites() {
         sommeNitrites = 0;
-        for (Float valeur : listeNitrites) {
-            sommeNitrites += valeur;
+        listeNitritesIteration.addAll(listeNitrites);
+        for (Float valeur : listeNitritesIteration) {
+            if (!setNitrites.contains(valeur)) {
+                setNitrites.add(valeur);
+                sommeNitrites += valeur;
+            }
         }
-        nitrites = sommeNitrites;
-        return nitrites;
+        this.nitrites = sommeNitrites;
+        return this.nitrites;
     }
 
-    /**
+    /** 
      * @return float
      *         Dicte le comportement des nitrates selon une courbe
      */
     public float comportNitrates() {
-        nitrates = ((jours / 7));
-        return nitrates;
+        this.nitrates = ((jours / 7) - 4);
+        return this.nitrates;
+    }
+    
+    /** 
+     * @return flo
+     *         Dicte le comportement des nitrates selon une courbe
+     *//*
+    public int actualiserScoreEau() {
+        this.scoreEau = ();
+        return scoreEau;
     }
 
-    /**
+    //TODO: 
+    public int evaporationEau() {
+        //set gh selon volume d'eau
+    }
+
+    scorePh
+    scoreGh
+    scoreKh
+    scoreAmmo
+    scoreNitrites
+    scoreNitrates
+{}
+    scoreEau*/
+
+    /** 
+     * @return float
+     *         Retourne la valeur du score pour le PH qui cotribue pour (14/100) du score de l'eau
+     */
+    public float setScorePH() {
+
+        float variationPH;
+
+        if(ph >= 6 && ph <= 8){
+            variationPH = 0;
+            scorePH= 14;
+        }
+        else if(ph < 6){
+            variationPH = 4 - ph;
+            scorePH = (100-(20*variationPH))*(14/100);
+        }
+        else if(ph > 8){
+            variationPH = ph - 8;
+            scorePH = (100-(20*variationPH))*(14/100);
+        }
+        return scorePH;
+    }
+
+    /** 
+     * @return float
+     *         Retourne la valeur du score pour le GH qui cotribue pour (14/100) du score de l'eau
+     */
+    public float setScoreGH() {
+
+        float variationGH;
+
+        if(gh >= 5 && gh <= 15){
+            variationGH = 0;
+            scoreGH= 14;
+        }
+        else if(gh < 5){
+            variationGH = 4 - gh;
+            scoreGH = (100-(4*variationGH))*(14/100);
+        }
+        else if(gh > 8){
+            variationGH = gh - 8;
+            scoreGH = (100-(4*variationGH))*(14/100);
+        }
+        return scoreGH;
+    }
+
+    /** 
+     * @return float
+     *         Retourne la valeur du score pour le KH qui contribue pour (14/100) du score de l'eau
+     */
+    public float setScoreKH() {
+
+        float variationKH;
+
+        if(kh >= 4  && kh <= 8){
+            variationKH = 0;
+            scoreKH= 14;
+        }
+        else if(kh < 4){
+            variationKH = 4 - kh;
+            scoreKH = (float)(100-(12.5*variationKH))*(14/100);
+        }
+        else if(kh > 8){
+            variationKH = kh - 8;
+            scoreKH = (float)(100-(12.5*variationKH))*(14/100);
+        }
+        return scoreKH;
+    }
+
+    /** 
+     * @return float
+     *         Retourne la valeur du score pour l'ammoniaque qui cotribue pour (18/100) du score de l'eau
+     */
+    public float setScoreAmmo() {
+
+        float variationAmmo;
+
+        if(ammoniaque <= 0 && ammoniaque >= 0.5){
+            variationAmmo = 0;
+            scoreAmmo= 18;
+        }
+        else if(ammoniaque > 0.5){
+            variationAmmo = (float)(ammoniaque - 0.5);
+            scoreAmmo = (100-((200/19)*variationAmmo))*(18/100);
+        }
+        return scoreAmmo;
+    }
+
+
+/** 
+     * @return float
+     *         Retourne la valeur du score pour le PH qui cotribue pour (24/100) du score de l'eau
+     */
+    public float setScoreNitrites() {
+
+        float variationNitrites;
+
+        if(nitrites <= 4 && nitrites>= 8){
+            variationNitrites = 0;
+            scoreNitrites= 14;
+        }
+        else if(nitrites < 4){
+            variationNitrites = 4 - nitrites;
+            scoreNitrites = 100-(20*variationNitrites)*(14/100);
+        }
+        else if(nitrites > 8){
+            variationNitrites= ph - 8;
+            scoreNitrites= (100-(20*variationNitrites))*(14/100);
+        }
+        return scoreNitrites;
+    }
+
+    /** 
+     * @return float
+     *         Retourne la valeur du score pour le PH qui cotribue pour (16/100) du score de l'eau
+     */
+    public float setScoreNitrates() {
+
+        float variationNitrates;
+
+        if(nitrates <= 4 && nitrates >= 8){
+            variationNitrates = 0;
+            scoreNitrates = 14;
+        }
+        else if(nitrates < 4){
+            variationNitrates = 4 - nitrates;
+            scoreNitrates = (100-(20*variationNitrates))*(14/100);
+        }
+        else if(nitrates> 8){
+            variationNitrates = nitrates- 8;
+            scoreNitrates = (100-(20*variationNitrates))*(14/100);
+        }
+        return scoreNitrates;
+    }
+
+    
+    /** 
      * Méthode run de la classe Eau
      * Incomplète pour l'instant
      */
@@ -194,14 +363,16 @@ public class Eau implements Runnable {
                 sommeNitrites();
                 if (penteNitrites > nitrites) {
                     comportNitrates();
+                    GUIMain.actionEnCours = "Cycle nitrates";
                     //System.out.println("nitrates " + nitrates);
-                    Thread.sleep(Temps.DUREE);
+                    //Thread.sleep(Temps.DUREE);
                     if (nitrites != 0.0)
                         penteNitrites = nitrites;
                 } else {
-                    Thread.sleep(Temps.DUREE);
+                    
                     penteNitrites = nitrites;
                 }
+                Thread.sleep(Temps.DUREE);
             } catch (Exception e) {
                 System.out.println("Erreur dans le thread: " + Thread.currentThread().getName());
                 e.printStackTrace();

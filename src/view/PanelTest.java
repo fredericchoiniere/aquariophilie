@@ -27,9 +27,6 @@ public class PanelTest extends JPanel implements ActionListener {
                 new ImageIcon("res/icone_souris/pipe_vide.png").getImage(),
                 new Point(0, 0), "custom cursor"));
         
-        //setLayout(new GridBagLayout());
-        //GridBagConstraints c = new GridBagConstraints();
-        
         JLayeredPane layersPT = new JLayeredPane(); //layers panel test
 
         JLabel lblPT_BG = new JLabel(); //label panel test back ground
@@ -130,6 +127,9 @@ public class PanelTest extends JPanel implements ActionListener {
         layersPT.setLayer(lblOKPH, 1);
         layersPT.setLayer(lblOKGH, 1);
         layersPT.setLayer(lblOKKH, 1);
+        layersPT.setLayer(lblOKAmmo, 1);
+        layersPT.setLayer(lblOKNitrites, 1);
+        layersPT.setLayer(lblOKNitrates, 1);
 
         //Ajouts des éléments au JLayeredPane
         layersPT.add(lblPT_BG);
@@ -142,6 +142,9 @@ public class PanelTest extends JPanel implements ActionListener {
         layersPT.add(lblOKPH);
         layersPT.add(lblOKGH);
         layersPT.add(lblOKKH);
+        layersPT.add(lblOKAmmo);
+        layersPT.add(lblOKNitrites);
+        layersPT.add(lblOKNitrates);
 
         
 //{} -----------------------------------------------------------------------------------------------------------------------
@@ -285,27 +288,34 @@ public class PanelTest extends JPanel implements ActionListener {
 
                     GUIMain.pipette.enleverUneGoutte();;
 
-                    if(GUIMain.eau.getAmmoniaque() >= 0 && GUIMain.eau.getAmmoniaque() < 0.25)
+                    if(GUIMain.eau.getAmmoniaque() >= 0 && GUIMain.eau.getAmmoniaque() < 0.25){
                         lblSoluAmmoniaque.setIcon(new ImageIcon("res/outils/gradation_solutions/ammoniaque/0.png"));
-                    
-                    else if(GUIMain.eau.getAmmoniaque() >= 0.25 && GUIMain.eau.getAmmoniaque() < 0.5)
+                        lblOKAmmo.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getAmmoniaque() >= 0.25 && GUIMain.eau.getAmmoniaque() < 0.5){
                         lblSoluAmmoniaque.setIcon(new ImageIcon("res/outils/gradation_solutions/ammoniaque/1.png"));
-                    
-                    else if(GUIMain.eau.getAmmoniaque() >= 0.5 && GUIMain.eau.getAmmoniaque() < 1)
+                        lblOKAmmo.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getAmmoniaque() >= 0.5 && GUIMain.eau.getAmmoniaque() < 1){
                         lblSoluAmmoniaque.setIcon(new ImageIcon("res/outils/gradation_solutions/ammoniaque/2.png"));
-                    
-                    else if(GUIMain.eau.getAmmoniaque() >= 1 && GUIMain.eau.getAmmoniaque() < 2)
+                        lblOKAmmo.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getAmmoniaque() >= 1 && GUIMain.eau.getAmmoniaque() < 2){
                         lblSoluAmmoniaque.setIcon(new ImageIcon("res/outils/gradation_solutions/ammoniaque/3.png"));
-                    
-                    else if(GUIMain.eau.getAmmoniaque() >= 2 && GUIMain.eau.getAmmoniaque() < 4)
+                        lblOKAmmo.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getAmmoniaque() >= 2 && GUIMain.eau.getAmmoniaque() < 4){
                         lblSoluAmmoniaque.setIcon(new ImageIcon("res/outils/gradation_solutions/ammoniaque/4.png"));
-                    
-                    else if(GUIMain.eau.getAmmoniaque() >= 4 && GUIMain.eau.getAmmoniaque() < 8)
+                        lblOKAmmo.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getAmmoniaque() >= 4 && GUIMain.eau.getAmmoniaque() < 8){
                         lblSoluAmmoniaque.setIcon(new ImageIcon("res/outils/gradation_solutions/ammoniaque/5.png"));
-
-                    else if(GUIMain.eau.getAmmoniaque() >= 8)
+                        lblOKAmmo.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getAmmoniaque() >= 8){
                         lblSoluAmmoniaque.setIcon(new ImageIcon("res/outils/gradation_solutions/ammoniaque/6.png"));
-                    
+                        lblOKAmmo.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
+                    }
                 }
             }
         });
@@ -318,24 +328,30 @@ public class PanelTest extends JPanel implements ActionListener {
 
                     GUIMain.pipette.enleverUneGoutte();;
 
-                    if(GUIMain.eau.getNitrites() >= 0 && GUIMain.eau.getNitrites() < 0.25)
+                    if(GUIMain.eau.getNitrites() >= 0 && GUIMain.eau.getNitrites() < 0.25){
                         lblSoluNitrites.setIcon(new ImageIcon("res/outils/gradation_solutions/nitrites/0.png"));
-                    
-                    else if(GUIMain.eau.getNitrites() >= 0.25 && GUIMain.eau.getNitrites() < 0.5)
+                        lblOKNitrites.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getNitrites() >= 0.25 && GUIMain.eau.getNitrites() < 0.5){
                         lblSoluNitrites.setIcon(new ImageIcon("res/outils/gradation_solutions/nitrites/1.png"));
-                    
-                    else if(GUIMain.eau.getNitrites() >= 0.5 && GUIMain.eau.getNitrites() < 1)
+                        lblOKNitrites.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getNitrites() >= 0.5 && GUIMain.eau.getNitrites() < 1){
                         lblSoluNitrites.setIcon(new ImageIcon("res/outils/gradation_solutions/nitrites/2.png"));
-                    
-                    else if(GUIMain.eau.getNitrites() >= 1 && GUIMain.eau.getNitrites() < 2)
+                        lblOKNitrites.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getNitrites() >= 1 && GUIMain.eau.getNitrites() < 2){
                         lblSoluNitrites.setIcon(new ImageIcon("res/outils/gradation_solutions/nitrites/3.png"));
-                    
-                    else if(GUIMain.eau.getNitrites() >= 2 && GUIMain.eau.getNitrites() < 5)
+                        lblOKNitrites.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getNitrites() >= 2 && GUIMain.eau.getNitrites() < 5){
                         lblSoluNitrites.setIcon(new ImageIcon("res/outils/gradation_solutions/nitrites/4.png"));
-                    
-                    else if(GUIMain.eau.getNitrites() >= 5)
+                        lblOKNitrites.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getNitrites() >= 5){
                         lblSoluNitrites.setIcon(new ImageIcon("res/outils/gradation_solutions/nitrites/5.png"));
-                    
+                        lblOKNitrites.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
+                    }
                 }
             }
         });
@@ -348,27 +364,34 @@ public class PanelTest extends JPanel implements ActionListener {
 
                     GUIMain.pipette.enleverUneGoutte();;
 
-                    if(GUIMain.eau.getNitrates() >= 0 && GUIMain.eau.getNitrates() < 5)
+                    if(GUIMain.eau.getNitrates() >= 0 && GUIMain.eau.getNitrates() < 5){
                         lblSoluNitrates.setIcon(new ImageIcon("res/outils/gradation_solutions/nitrates/0.png"));
-                    
-                    else if(GUIMain.eau.getNitrates() >= 5 && GUIMain.eau.getNitrates() < 10)
+                        lblOKNitrates.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getNitrates() >= 5 && GUIMain.eau.getNitrates() < 10){
                         lblSoluNitrates.setIcon(new ImageIcon("res/outils/gradation_solutions/nitrates/1.png"));
-                    
-                    else if(GUIMain.eau.getNitrates() >= 10 && GUIMain.eau.getNitrates() < 20)
+                        lblOKNitrates.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getNitrates() >= 10 && GUIMain.eau.getNitrates() < 20){
                         lblSoluNitrates.setIcon(new ImageIcon("res/outils/gradation_solutions/nitrates/2.png"));
-                    
-                    else if(GUIMain.eau.getNitrates() >= 20 && GUIMain.eau.getNitrates() < 40)
+                        lblOKNitrates.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getNitrates() >= 20 && GUIMain.eau.getNitrates() < 40){
                         lblSoluNitrates.setIcon(new ImageIcon("res/outils/gradation_solutions/nitrates/3.png"));
-                    
-                    else if(GUIMain.eau.getNitrates() >= 40 && GUIMain.eau.getNitrates() < 80)
+                        lblOKNitrates.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getNitrates() >= 40 && GUIMain.eau.getNitrates() < 80){
                         lblSoluNitrates.setIcon(new ImageIcon("res/outils/gradation_solutions/nitrates/4.png"));
-                    
-                    else if(GUIMain.eau.getNitrates() >= 80 && GUIMain.eau.getNitrates() < 160)
+                        lblOKNitrates.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getNitrates() >= 80 && GUIMain.eau.getNitrates() < 160){
                         lblSoluNitrates.setIcon(new ImageIcon("res/outils/gradation_solutions/nitrates/5.png"));
-                        
-                    else if(GUIMain.eau.getNitrates() >= 160)
+                        lblOKNitrates.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
+                    }
+                    else if(GUIMain.eau.getNitrates() >= 160){
                         lblSoluNitrates.setIcon(new ImageIcon("res/outils/gradation_solutions/nitrates/6.png"));
-                    
+                        lblOKNitrates.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
+                    }
                 }
             }
         });
@@ -403,38 +426,6 @@ public class PanelTest extends JPanel implements ActionListener {
         layersPT.setLayer(lblNitrites, 2);
         layersPT.add(lblNitrates);
 
-
-        /*button1 = new JButton("(Ré)Afficher cycles");
-        c.gridx = 0;
-        c.gridy = 0;
-        c.gridheight = 1;
-        c.gridwidth = 1;
-        c.weightx = 0.5;
-        c.weighty = 0.5;
-        button1.addActionListener(this);
-        add(button1, c);
-
-        button2 = new JButton("Ajouter nouveau cycle");
-        button2.addActionListener(this);
-        c.gridx = 1;
-        add(button2, c);
-
-        lbl1 = new JLabel("Jour " + cycle.jours);
-        c.gridx = 0;
-        c.gridy = 1;
-        add(lbl1, c);
-
-        lbl2 = new JLabel(
-                "Somme ammoniaque: " + cycle.eau.sommeAmmoniaque() + "\nListe NH3: " + cycle.eau.listeAmmoniaque);
-        c.gridy = 2;
-        c.gridwidth = 2;
-        add(lbl2, c);
-
-        lbl3 = new JLabel("Somme nitrites: " + cycle.eau.sommeNitrites() + "\nListe NO2-: " + cycle.eau.listeNitrites);
-        c.gridy = 3;
-        add(lbl3, c);*/
-
-        // cycle1.start();
     }
 
     /**

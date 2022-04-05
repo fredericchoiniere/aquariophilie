@@ -29,15 +29,15 @@ import view.tabs.*;
 public class GUIMain extends JFrame implements Runnable {
 
     // appel des attributs de la classe GUIMain
-    PanelAqua panelAqua;
-    PanelTest panelTest;
+    public static PanelAqua panelAqua;
+    public static PanelTest panelTest;
     JTabbedPane tabbedPane;
     JButton pousser, rapetisser;
-    JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, lblPipette, eau_label, inventaire_ouvert,
+    JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, eau_label, inventaire_ouvert,
             inventaire_fermer, inventaire_bg, filet_label, shop_label, hamis;
     JLabel label_argent;
-    // String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3,
-    // poi4, poi5, poi6;
+    public static JLabel lblPipette = new JLabel();
+    //String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3, poi4, poi5, poi6;
     public static JLabel label_argent_aqua = new JLabel("");
     public static JLabel label_argent_shop = new JLabel("");
     public static String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3, poi4, poi5, poi6,
@@ -59,6 +59,7 @@ public class GUIMain extends JFrame implements Runnable {
     Shop shop;
     ImageIcon tetra_curseur;
     ImageIcon rajoutIcon = new ImageIcon();
+    ImageIcon iconeAppli = new ImageIcon("res/background/icone_aquariophilie.png");
     Inventaire inventaire;
     Aquarium aquarium;
     public static CycleAzote cycleInitial;
@@ -87,7 +88,9 @@ public class GUIMain extends JFrame implements Runnable {
 
     public GUIMain() { // création du constructeur GUIMain
 
-        setTitle("Aquariophilie 🐠");
+        setTitle("Aquariophilie");
+        
+        setIconImage(iconeAppli.getImage());
 
         // création du curseur custom
         tetra_curseur = new ImageIcon("res/icone_souris/tetra_cursor.png");
@@ -307,7 +310,6 @@ public class GUIMain extends JFrame implements Runnable {
                 lblPipette.setVisible(true);
                 inventaire_fermer.setVisible(true);
                 label_argent_aqua.setVisible(true);
-
             }
         });
 

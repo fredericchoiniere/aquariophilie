@@ -7,7 +7,7 @@ import view.GUIMain;
 
 public class Molecules{
 
-    Eau eau = GUIMain.eau;
+    public Eau eau = GUIMain.eau;
 
     double molAtomeNAmmo = 0, molAtomeNNi = 0, molAtomeNNa = 0;
     double molAtomeONi = 0, molAtomeONa = 0;
@@ -15,7 +15,7 @@ public class Molecules{
     double sommeMolN, sommeMolO;
 
     double molAmmoniaque = 0;
-    double molNitrites = 0;
+    public double molNitrites = 0;
     double molNitrates = 0;
 
     float masseMolaireAmmoniaque = (float) 17.03; // g/mol

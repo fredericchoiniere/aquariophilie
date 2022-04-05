@@ -12,13 +12,11 @@ public class Temps {
     Timer journee;
     public final static int DUREE = 1500; // Durée d'une journée en millisecondes
 
-    // Incrémente GUIMain.jours (timer global) au 5 secondes
+    // Incrémente GUIMain.jours (timer global) au DUREE secondes
 
     public Temps() {
         journee = new Timer();
-
         journee.scheduleAtFixedRate(new TimerTask() {
-
             @Override
             public void run() {
                 GUIMain.jours++;
