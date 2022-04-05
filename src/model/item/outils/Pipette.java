@@ -6,6 +6,8 @@ package model.item.outils;
 import javax.swing.*;
 
 import model.item.Outils;
+import view.GUIMain;
+import view.PanelTest;
 
 import java.awt.*;
 
@@ -51,7 +53,9 @@ public class Pipette extends Outils {
         this.nbGouttes--;
         if(nbGouttes == 0){
             est_remplie=false;
-            //changerEtatPanel(panelTest);
+            changerEtatLabel(GUIMain.lblPipette);
+            changerEtatPanel(GUIMain.panelTest);
+            changerEtatPanel(GUIMain.panelAqua);
         }
     }
 
