@@ -58,6 +58,7 @@ public class GUIMain extends JFrame implements Runnable {
     Shop shop;
     ImageIcon tetra_curseur;
     ImageIcon rajoutIcon = new ImageIcon();
+    ImageIcon iconeAppli = new ImageIcon("res/background/icone_aquariophilie.png");
     Inventaire inventaire;
     Aquarium aquarium;
     public static CycleAzote cycleInitial;
@@ -85,7 +86,9 @@ public class GUIMain extends JFrame implements Runnable {
 
     public GUIMain() { // création du constructeur GUIMain
 
-        setTitle("Aquariophilie 🐠");
+        setTitle("Aquariophilie");
+        
+        setIconImage(iconeAppli.getImage());
 
         // création du curseur custom
         tetra_curseur = new ImageIcon("res/icone_souris/tetra_cursor.png");
