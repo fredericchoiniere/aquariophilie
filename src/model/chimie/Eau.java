@@ -175,7 +175,7 @@ public class Eau implements Runnable {
     }
     
     /** 
-     * @return flo
+     * @return float
      *         Dicte le comportement des nitrates selon une courbe
      *//*
     public int actualiserScoreEau() {
@@ -188,20 +188,13 @@ public class Eau implements Runnable {
         //set gh selon volume d'eau
     }
 
-    scorePh
-    scoreGh
-    scoreKh
-    scoreAmmo
-    scoreNitrites
-    scoreNitrates
-{}
-    scoreEau*/
+   
 
     /** 
      * @return float
      *         Retourne la valeur du score pour le PH qui cotribue pour (14/100) du score de l'eau
      */
-    public float setScorePH() {
+    public float getScorePH() {
 
         float variationPH;
 
@@ -224,7 +217,7 @@ public class Eau implements Runnable {
      * @return float
      *         Retourne la valeur du score pour le GH qui cotribue pour (14/100) du score de l'eau
      */
-    public float setScoreGH() {
+    public float getScoreGH() {
 
         float variationGH;
 
@@ -247,7 +240,7 @@ public class Eau implements Runnable {
      * @return float
      *         Retourne la valeur du score pour le KH qui contribue pour (14/100) du score de l'eau
      */
-    public float setScoreKH() {
+    public float getScoreKH() {
 
         float variationKH;
 
@@ -270,7 +263,7 @@ public class Eau implements Runnable {
      * @return float
      *         Retourne la valeur du score pour l'ammoniaque qui cotribue pour (18/100) du score de l'eau
      */
-    public float setScoreAmmo() {
+    public float getScoreAmmo() {
 
         float variationAmmo;
 
@@ -285,54 +278,54 @@ public class Eau implements Runnable {
         return scoreAmmo;
     }
 
-
-/** 
+    /** 
      * @return float
-     *         Retourne la valeur du score pour le PH qui cotribue pour (24/100) du score de l'eau
+     *         Retourne la valeur du score pour les nitrites qui cotribue pour (24/100) du score de l'eau
      */
-    public float setScoreNitrites() {
+    public float getScoreNitrites() {
 
         float variationNitrites;
 
-        if(nitrites <= 4 && nitrites>= 8){
+        if(nitrites <= 0 && nitrites>= 1){
             variationNitrites = 0;
-            scoreNitrites= 14;
+            scoreNitrites= 24;
         }
-        else if(nitrites < 4){
-            variationNitrites = 4 - nitrites;
-            scoreNitrites = 100-(20*variationNitrites)*(14/100);
-        }
-        else if(nitrites > 8){
-            variationNitrites= ph - 8;
-            scoreNitrites= (100-(20*variationNitrites))*(14/100);
+        else if(nitrites > 1){
+            variationNitrites= nitrites - 1;
+            scoreNitrites= (100-((50/17)*variationNitrites))*(24/100);
         }
         return scoreNitrites;
     }
 
     /** 
      * @return float
-     *         Retourne la valeur du score pour le PH qui cotribue pour (16/100) du score de l'eau
+     *         Retourne la valeur du score pour les nitrates qui cotribue pour (16/100) du score de l'eau
      */
-    public float setScoreNitrates() {
+    public float getScoreNitrates() {
 
         float variationNitrates;
 
-        if(nitrates <= 4 && nitrates >= 8){
+        if(nitrates >= 0 && nitrates <= 40){
             variationNitrates = 0;
-            scoreNitrates = 14;
+            scoreNitrates = 16;
         }
-        else if(nitrates < 4){
-            variationNitrates = 4 - nitrates;
-            scoreNitrates = (100-(20*variationNitrates))*(14/100);
-        }
-        else if(nitrates> 8){
-            variationNitrates = nitrates- 8;
-            scoreNitrates = (100-(20*variationNitrates))*(14/100);
+        else if(nitrates > 40){
+            variationNitrates = nitrates- 40;
+            scoreNitrates = (100-((5/7)*variationNitrates))*(16/100);
         }
         return scoreNitrates;
     }
 
-    
+    /** 
+     * @return float
+     *         Retourne un entier représentant la valeur du score de l'eau sur 100 
+     */
+    public int getScoreEau() {
+
+        scoreEau = (int)(scorePH + scoreGH + scoreKH + scoreAmmo + scoreNitrites + scoreNitrates);
+        return scoreEau;
+    }
+
     /** 
      * Méthode run de la classe Eau
      * Incomplète pour l'instant
