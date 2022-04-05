@@ -894,7 +894,7 @@ public class GUIMain extends JFrame implements Runnable {
                     listePoissonsInv.remove(index);
                 }
             } else {
-                System.out.println("a deja pas de poisson");
+                System.out.println("à deja pas de poisson");
             }
         }
     }
