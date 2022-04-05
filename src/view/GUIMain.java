@@ -861,6 +861,7 @@ public class GUIMain extends JFrame implements Runnable {
                 label1.setIcon(icone);
                 label2.setIcon(Inventaire.empty_inv);
                 setEmpla(emplacement);
+                
                 setEmplaToFish(emplacement, poi1, label1, index);
                 setEmplaToFish(emplacement, poi2, label1, index);
                 setEmplaToFish(emplacement, poi3, label1, index);
@@ -884,7 +885,7 @@ public class GUIMain extends JFrame implements Runnable {
             if (hasFish == true) {
                 setHasFishFalse(hasFishString);
                 label1.setIcon(icone);
-                //PanelShop.checkCase(Inventaire.img_inv_poi_rouge, "poisson", "rouge");
+                // PanelShop.checkCase(Inventaire.img_inv_poi_rouge, "poisson", "rouge");
 
                 if (listePoissonsAqua.get(index).index == index) {
 
@@ -961,8 +962,8 @@ public class GUIMain extends JFrame implements Runnable {
     public void createPoissonRouge(String emplacement, JLabel label1, int index) { // passer de l'inventaire à
                                                                                    // l'aquarium
         listePoissonsAqua.add(listePoissonsInv.get(getEmplaToInt(emplacement)));
-        //listePoissonsInv.set(getEmplaToInt(emplacement), poisson_default); // TODO: À revoir (y aller avec des tags de
-
+        // listePoissonsInv.set(getEmplaToInt(emplacement), poisson_default); // TODO: À
+        // revoir (y aller avec des tags de
 
         // TODO: À revoir (y aller avec des tags de
         // position)
@@ -1147,90 +1148,26 @@ public class GUIMain extends JFrame implements Runnable {
         return index;
     }
 
-    public void setEmplaToFish(String emplacement, String poi, JLabel label1, int index) { // TODO: à revoir impérativement
-        switch (emplacement) {
-            case "empla1":
-                switch (poi) {
-                    case "rouge":
-                        createPoissonRouge(emplacement, label1, index);
-                        break;
-                    case "betta":
-                        createPoissonBetta(emplacement, label1, index);
-                        break;
-                    case "tetra":
-                        createPoissonTetra(emplacement, label1, index);
-                        break;
-                }
+    public void setEmplaToFish(String emplacement, String poi, JLabel label1, int index) { // TODO: à revoir
+                                                                                           // impérativement
+
+        switch (poi) {
+            case "rouge":
+                createPoissonRouge(emplacement, label1, index);
                 break;
-            case "empla2":
-                switch (poi) {
-                    case "rouge":
-                        createPoissonRouge(emplacement, label1, index);
-                        break;
-                    case "betta":
-                        createPoissonBetta(emplacement, label1, index);
-                        break;
-                    case "tetra":
-                        createPoissonTetra(emplacement, label1, index);
-                        break;
-                }
+            case "betta":
+                createPoissonBetta(emplacement, label1, index);
                 break;
-            case "empla3":
-                switch (poi) {
-                    case "rouge":
-                        createPoissonRouge(emplacement, label1, index);
-                        break;
-                    case "betta":
-                        createPoissonBetta(emplacement, label1, index);
-                        break;
-                    case "tetra":
-                        createPoissonTetra(emplacement, label1, index);
-                        break;
-                }
+            case "tetra":
+                createPoissonTetra(emplacement, label1, index);
                 break;
-            case "empla4":
-                switch (poi) {
-                    case "rouge":
-                        createPoissonRouge(emplacement, label1, index);
-                        break;
-                    case "betta":
-                        createPoissonBetta(emplacement, label1, index);
-                        break;
-                    case "tetra":
-                        createPoissonTetra(emplacement, label1, index);
-                        break;
-                }
-                break;
-            case "empla5":
-                switch (poi) {
-                    case "rouge":
-                        createPoissonRouge(emplacement, label1, index);
-                        break;
-                    case "betta":
-                        createPoissonBetta(emplacement, label1, index);
-                        break;
-                    case "tetra":
-                        createPoissonTetra(emplacement, label1, index);
-                        break;
-                }
-                break;
-            case "empla6":
-                switch (poi) {
-                    case "rouge":
-                        createPoissonRouge(emplacement, label1, index);
-                        break;
-                    case "betta":
-                        createPoissonBetta(emplacement, label1, index);
-                        break;
-                    case "tetra":
-                        createPoissonTetra(emplacement, label1, index);
-                        break;
-                }
-                break;
+
             default:
                 break;
         }
     }
+
+    
 
     /*
      * public void removeItem(JLabel label, String etat){
