@@ -12,8 +12,7 @@ import model.chimie.Molecules;
 import model.environnement.Temps;
 import view.GUIMain;
 
-public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/GH/KH, implémenter action en cours en
-                                                            // "temps réel"
+public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/GH/KH
 
     // appel des attributs de la classe
     JLabel lblAction, lblN, lblH, lblO, lblAmmo, lblNit, lblNat, lblPH, lblGH, lblKH;
