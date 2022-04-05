@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
 import view.GUIMain;
+import model.environnement.Temps;
 
 public class Eau implements Runnable {
 
@@ -352,6 +353,7 @@ public class Eau implements Runnable {
      */
     @Override
     public void run() {
+        penteNitrites = nitrites;
         while (true) {
             jours = GUIMain.jours;
             // System.out.println("pente: " + penteNitrites + " total: " + nitrites + "
