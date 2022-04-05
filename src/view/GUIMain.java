@@ -37,7 +37,8 @@ public class GUIMain extends JFrame implements Runnable {
             inventaire_fermer, inventaire_bg, filet_label, shop_label, hamis;
     JLabel label_argent;
     public static JLabel lblPipette = new JLabel();
-    //String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3, poi4, poi5, poi6;
+    // String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3,
+    // poi4, poi5, poi6;
     public static JLabel label_argent_aqua = new JLabel("");
     public static JLabel label_argent_shop = new JLabel("");
     public static String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3, poi4, poi5, poi6,
@@ -89,7 +90,7 @@ public class GUIMain extends JFrame implements Runnable {
     public GUIMain() { // création du constructeur GUIMain
 
         setTitle("Aquariophilie");
-        
+
         setIconImage(iconeAppli.getImage());
 
         // création du curseur custom
@@ -421,8 +422,8 @@ public class GUIMain extends JFrame implements Runnable {
             @Override
             public void mouseClicked(MouseEvent e) {
                 setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
-                tetra_curseur.getImage(),
-                new Point(0, 0), "curseur tétra"));
+                        tetra_curseur.getImage(),
+                        new Point(0, 0), "curseur tétra"));
                 inventaire_ouvert.setVisible(false);
                 inventaire_fermer.setVisible(true);
                 inventaire_bg.setVisible(false);
@@ -1228,16 +1229,19 @@ public class GUIMain extends JFrame implements Runnable {
 
         switch (poi) {
             case "blue":
-                // listePlantesAqua.set(index,
-                // listePoissonsInv.get(getEmplaToInt(emplacement)));
+                listePlantesAqua.set(indexAqua, listePlantesInv.get(indexInv));
                 System.out.println("blue");
+                Argent.emp += 2;
                 break;
             case "java":
+                listePlantesAqua.set(indexAqua, listePlantesInv.get(indexInv));
                 System.out.println("java");
+                Argent.emp += 5;
                 break;
             case "scarlet":
+                listePlantesAqua.set(indexAqua, listePlantesInv.get(indexInv));
                 System.out.println("scarlet");
-
+                Argent.emp += 10;
                 break;
             default:
                 break;
