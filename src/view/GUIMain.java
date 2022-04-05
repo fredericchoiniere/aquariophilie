@@ -397,6 +397,9 @@ public class GUIMain extends JFrame implements Runnable {
                         || panelAqua.getMousePosition().getX() >= rectTest.getMaxX()
                         || panelAqua.getMousePosition().getY() <= rectTest.getMinY()
                         || panelAqua.getMousePosition().getY() >= rectTest.getMaxY()) {
+                    setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
+                            tetra_curseur.getImage(),
+                            new Point(0, 0), "curseur tétra"));
                     panelTest.setVisible(false);
                     empty.setVisible(false);
                     lblPipette.setVisible(true);
@@ -404,6 +407,7 @@ public class GUIMain extends JFrame implements Runnable {
                     aquarium_kit_fermer.setVisible(true);
                     inventaire_fermer.setVisible(true);
                     label_argent_aqua.setVisible(true);
+
                 }
             }
         });
