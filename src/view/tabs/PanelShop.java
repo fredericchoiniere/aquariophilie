@@ -8,6 +8,9 @@ import javax.swing.*;
 
 import model.jeu.Inventaire;
 import model.jeu.Magasin;
+import model.plantes.BlueBlue;
+import model.plantes.JavaFern;
+import model.plantes.ScarletRot;
 import model.poissons.PoissonBetta;
 import model.poissons.PoissonRouge;
 import model.poissons.PoissonTetra;
@@ -49,26 +52,25 @@ public class PanelShop extends JPanel implements ActionListener {
         add(poisson_tetra);
 
         planteBlue = new JButton();
-        planteBlue.setIcon(new ImageIcon("res/background/decorations/blue_blue.png"));
+        planteBlue.setIcon(BlueBlue.icon);
         planteBlue.setBounds(85, 390, shop_dimension.width, shop_dimension.height);
         planteBlue.setVisible(true);
         planteBlue.addActionListener(this);
         add(planteBlue);
 
         planteFern = new JButton();
-        planteFern.setIcon(new ImageIcon("res/background/decorations/java_fern.png"));
+        planteFern.setIcon(JavaFern.icon);
         planteFern.setBounds(185, 390, shop_dimension.width, shop_dimension.height);
         planteFern.setVisible(true);
         planteFern.addActionListener(this);
         add(planteFern);
 
         planteScarlet = new JButton();
-        planteScarlet.setIcon(new ImageIcon("res/background/decorations/scarlet_rot.png"));
+        planteScarlet.setIcon(ScarletRot.icon);
         planteScarlet.setBounds(285, 390, shop_dimension.width, shop_dimension.height);
         planteScarlet.setVisible(true);
         planteScarlet.addActionListener(this);
         add(planteScarlet);
-
 
     }
 
@@ -99,8 +101,9 @@ public class PanelShop extends JPanel implements ActionListener {
                 Magasin.checkPoissonPrix(poisson);
             }
 
-            if(type == "decoration") {
-
+            if (type == "decoration") {
+                checkPlant(plante, 0);
+                Magasin.checkPlantePrix(plante);
             }
 
         } else if (GUIMain.empla2 == "empty") {
@@ -114,6 +117,10 @@ public class PanelShop extends JPanel implements ActionListener {
                 GUIMain.poi2 = poisson;
                 Magasin.checkPoissonPrix(poisson);
             }
+            if (type == "decoration") {
+                checkPlant(plante, 1);
+                Magasin.checkPlantePrix(plante);
+            }
         } else if (GUIMain.empla3 == "empty") {
             GUIMain.empla3 = type;
             Inventaire.emp3.setIcon(icon);
@@ -123,6 +130,10 @@ public class PanelShop extends JPanel implements ActionListener {
                 checkFish(poisson, 2);
                 GUIMain.poi3 = poisson;
                 Magasin.checkPoissonPrix(poisson);
+            }
+            if (type == "decoration") {
+                checkPlant(plante, 2);
+                Magasin.checkPlantePrix(plante);
             }
 
         } else if (GUIMain.empla4 == "empty") {
@@ -135,6 +146,10 @@ public class PanelShop extends JPanel implements ActionListener {
                 GUIMain.poi4 = poisson;
                 Magasin.checkPoissonPrix(poisson);
             }
+            if (type == "decoration") {
+                checkPlant(plante, 3);
+                Magasin.checkPlantePrix(plante);
+            }
 
         } else if (GUIMain.empla5 == "empty") {
             GUIMain.empla5 = type;
@@ -146,6 +161,10 @@ public class PanelShop extends JPanel implements ActionListener {
                 GUIMain.poi5 = poisson;
                 Magasin.checkPoissonPrix(poisson);
             }
+            if (type == "decoration") {
+                checkPlant(plante, 4);
+                Magasin.checkPlantePrix(plante);
+            }
         } else if (GUIMain.empla6 == "empty") {
             GUIMain.empla6 = type;
             Inventaire.emp6.setIcon(icon);
@@ -155,6 +174,10 @@ public class PanelShop extends JPanel implements ActionListener {
                 checkFish(poisson, 5);
                 GUIMain.poi6 = poisson;
                 Magasin.checkPoissonPrix(poisson);
+            }
+            if (type == "decoration") {
+                checkPlant(plante, 5);
+                Magasin.checkPlantePrix(plante);
             }
         } else {
             System.out.println("inventaire plein");
@@ -186,24 +209,59 @@ public class PanelShop extends JPanel implements ActionListener {
         }
     }
 
-    public static void checkPlant(String typePlante, int index){
+    public static void checkPlant(String typePlante, int index) {
         switch (typePlante) {
             case "java":
-                GUIMain.listePoissonsInv.set(index, new PoissonRouge());
-                GUIMain.listePoissonsInv.get(index).setName("rouge" + i);
+                GUIMain.listePlantesInv.set(index, new JavaFern());
+                GUIMain.listePlantesInv.get(index).setName("java" + i);
+                setLabel(index, JavaFern.icon, typePlante);
                 i++;
                 break;
 
             case "blue":
-                GUIMain.listePoissonsInv.set(index, new PoissonBetta());
-                GUIMain.listePoissonsInv.get(index).setName("betta" + i);
+                GUIMain.listePlantesInv.set(index, new BlueBlue());
+                GUIMain.listePlantesInv.get(index).setName("blue" + i);
+                setLabel(index, BlueBlue.icon, typePlante);
                 i++;
                 break;
 
             case "scarlet":
-                GUIMain.listePoissonsInv.set(index, new PoissonTetra());
-                GUIMain.listePoissonsInv.get(index).setName("tetra" + i);
+                GUIMain.listePlantesInv.set(index, new ScarletRot());
+                GUIMain.listePlantesInv.get(index).setName("scarlet" + i);
+                setLabel(index, ScarletRot.icon, typePlante);
                 i++;
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    public static void setLabel(int index, ImageIcon icon, String typePlante) {
+        switch (index) {
+            case 0:
+                Inventaire.emp1.setIcon(icon);
+                GUIMain.pla1 = typePlante;
+                break;
+            case 1:
+                Inventaire.emp2.setIcon(icon);
+                GUIMain.pla2 = typePlante;
+                break;
+            case 2:
+                Inventaire.emp3.setIcon(icon);
+                GUIMain.pla3 = typePlante;
+                break;
+            case 3:
+                Inventaire.emp4.setIcon(icon);
+                GUIMain.pla4 = typePlante;
+                break;
+            case 4:
+                Inventaire.emp5.setIcon(icon);
+                GUIMain.pla5 = typePlante;
+                break;
+            case 5:
+                Inventaire.emp6.setIcon(icon);
+                GUIMain.pla6 = typePlante;
                 break;
             default:
                 break;
@@ -238,7 +296,35 @@ public class PanelShop extends JPanel implements ActionListener {
 
         }
 
-    
+        if (e.getSource() == planteBlue) {
+            if (Magasin.gotMoney("blue")) {
+                checkCase(Inventaire.img_inv_tetra, "decoration", "", "blue");
+            } else {
+                System.out.println("pas assez d'argent");
+            }
+
+        }
+
+        if (e.getSource() == planteFern) {
+            if (Magasin.gotMoney("java")) {
+                checkCase(Inventaire.img_inv_tetra, "decoration", "", "java");
+            } else {
+                System.out.println("pas assez d'argent");
+            }
+
+        }
+
+        if (e.getSource() == planteScarlet) {
+            if (Magasin.gotMoney("scarlet")) {
+                checkCase(Inventaire.img_inv_tetra, "decoration", "", "scarlet");
+            } else {
+                System.out.println("pas assez d'argent");
+            }
+
+        }
+
+
+
     }
 
 }
