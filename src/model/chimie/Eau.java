@@ -33,10 +33,13 @@ public class Eau implements Runnable {
 
     public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0); // Liste à synchroniser TODO: vérifier si valeurs ok si utilise cette liste pour exception
     public List<Float> listeAmmoniaque = Collections.synchronizedList(listeAmmoniaqueTemp); // Liste synchronisée
-    public ArrayList<Float> listeAmmoniaqueTest = new ArrayList<Float>(); // Liste test pour remédier à exception
+    public ArrayList<Float> listeAmmoniaqueIteration = new ArrayList<Float>(); // Liste pour itérer dans boucle
+    public HashSet<Float> setAmmoniaque = new HashSet<Float>(listeAmmoniaqueTemp); // Liste pour additionner le montant total d'ammoniaque
 
     public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
+    public ArrayList<Float> listeNitritesIteration = new ArrayList<Float>(); // Liste pour itérer dans boucle
+    public HashSet<Float> setNitrites = new HashSet<Float>(listeNitritesTemp); // Liste pour additionner le montant total de nitrites
 
     public float penteNitrites = 0;
 
@@ -146,11 +149,14 @@ public class Eau implements Runnable {
      * @return float
      *         Additionne toutes les valeurs dans la listeAmmoniaque
      */
-    public float sommeAmmoniaque() {    // TODO: régler exception
+    public float sommeAmmoniaque() {
         sommeAmmoniaque = 0;
-        listeAmmoniaqueTest.addAll(listeAmmoniaque);
-        for (Float valeur : listeAmmoniaqueTest) {
-            sommeAmmoniaque += valeur;
+        listeAmmoniaqueIteration.addAll(listeAmmoniaque);
+        for (Float valeur : listeAmmoniaqueIteration) {
+            if(!setAmmoniaque.contains(valeur)){
+                setAmmoniaque.add(valeur);
+                sommeAmmoniaque += valeur;
+            }
         }
         ammoniaque = sommeAmmoniaque;
         return ammoniaque;
@@ -160,10 +166,14 @@ public class Eau implements Runnable {
      * @return float
      *         Additionne toutes les valeurs dans la listeNitrites
      */
-    public float sommeNitrites() { // TODO: régler exception
+    public float sommeNitrites() {
         sommeNitrites = 0;
-        for (Float valeur : listeNitrites) {
-            sommeNitrites += valeur;
+        listeNitritesIteration.addAll(listeNitrites);
+        for (Float valeur : listeNitritesIteration) {
+            if (!setNitrites.contains(valeur)) {
+                setNitrites.add(valeur);
+                sommeNitrites += valeur;
+            }
         }
         nitrites = sommeNitrites;
         return nitrites;
@@ -194,14 +204,16 @@ public class Eau implements Runnable {
                 sommeNitrites();
                 if (penteNitrites > nitrites) {
                     comportNitrates();
+                    GUIMain.actionEnCours = "Cycle nitrates";
                     //System.out.println("nitrates " + nitrates);
-                    Thread.sleep(Temps.DUREE);
+                    //Thread.sleep(Temps.DUREE);
                     if (nitrites != 0.0)
                         penteNitrites = nitrites;
                 } else {
-                    Thread.sleep(Temps.DUREE);
+                    
                     penteNitrites = nitrites;
                 }
+                Thread.sleep(Temps.DUREE);
             } catch (Exception e) {
                 System.out.println("Erreur dans le thread: " + Thread.currentThread().getName());
                 e.printStackTrace();

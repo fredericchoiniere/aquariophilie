@@ -205,7 +205,7 @@ public class PanelShop extends JPanel implements ActionListener {
             checkCase(Inventaire.img_temp, "decoration", "");
         }
 
-        if (e.getSource() == planteCul) {
+        if (e.getSource() == planteCul) { // TODO: à enlever
             checkCase(Inventaire.img_java_fern, "decoration", "");
         }
     }
