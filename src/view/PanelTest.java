@@ -45,7 +45,7 @@ public class PanelTest extends JPanel implements ActionListener {
         JLabel lblOKNitrites = new JLabel();
         JLabel lblOKNitrates = new JLabel();
 
-
+//ss
         layersPT.setBounds(0, 0, 700, 500);
         add(layersPT);
         
