@@ -420,6 +420,9 @@ public class GUIMain extends JFrame implements Runnable {
 
             @Override
             public void mouseClicked(MouseEvent e) {
+                setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
+                tetra_curseur.getImage(),
+                new Point(0, 0), "curseur tétra"));
                 inventaire_ouvert.setVisible(false);
                 inventaire_fermer.setVisible(true);
                 inventaire_bg.setVisible(false);
