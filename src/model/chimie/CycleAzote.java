@@ -57,12 +57,12 @@ public class CycleAzote implements Runnable {
                 if (jours >= 0 && jours <= 18) {
                     cycleAmmoniaque(eau);
                     actionEnCours = "Cycle ammoniaque";
-                    System.out.println("Action en cours: " + actionEnCours + " dans thread " + Thread.currentThread().getName());
+                    //System.out.println("Action en cours: " + actionEnCours + " dans thread " + Thread.currentThread().getName());
                 }
                 if (jours >= 14 && jours <= 35) {
                     cycleNitrites(eau);
                     actionEnCours = "Cycle nitrites";
-                    System.out.println("Action en cours: " + actionEnCours + " dans thread " + Thread.currentThread().getName());
+                    //System.out.println("Action en cours: " + actionEnCours + " dans thread " + Thread.currentThread().getName());
                 }
                 GUIMain.actionEnCours = actionEnCours;
                 Thread.sleep(Temps.DUREE);

@@ -16,8 +16,6 @@ public class PoissonTetra extends Poisson implements Runnable {
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_tetra/poisson_droite.png");
     Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_tetra/poisson_gauche.png");
 
-    public String direction = "droite";
-
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
@@ -39,7 +37,7 @@ public class PoissonTetra extends Poisson implements Runnable {
     @Override
     public void run() {
         // System.out.println("run");
-        while (true) {
+        while (var) {
             if (this.x > 286) {
                 setXVelocity(-vel_x);
                 direction = "gauche";

@@ -7,6 +7,7 @@ import java.util.*;
 import java.awt.*;
 import javax.swing.*;
 
+import model.poissons.Poisson;
 import model.poissons.PoissonRouge;
 import view.GUIMain;
 
@@ -22,6 +23,10 @@ public class Inventaire {
         public static Emplacementinv emp6;
         final Dimension size_icone_inv = new Dimension(80, 80);
         private ArrayList<Emplacementinv> listEmpPleins = new ArrayList<Emplacementinv>(69);
+
+        Poisson poisson_default = new Poisson();
+
+        
 
 
         ImageIcon img_aqua_poi_rouge = new ImageIcon("res/poissons/poisson_rouge/poisson_droite.png");
@@ -40,7 +45,9 @@ public class Inventaire {
                         new ImageIcon("res/poissons/poisson_tetra/poisson_gauche.png")
                                         .getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
 
-        public static ImageIcon img_java_fern = new ImageIcon("res/background/decorations/decoTemp.png");
+        public static ImageIcon java_fern = new ImageIcon("res/background/decorations/java_fern.png");
+        public static ImageIcon blue_blue = new ImageIcon("res/background/decorations/blue_blue.png");
+        public static ImageIcon scarlet_rot = new ImageIcon("res/background/decorations/scarlet_rot.png");
 
         public static ImageIcon img_temp = new ImageIcon("res/background/decorations/planteTemp.png");
 
