@@ -22,6 +22,7 @@ import model.item.outils.Shop;
 import model.jeu.Aquarium;
 import model.jeu.Argent;
 import model.jeu.Inventaire;
+import model.plantes.Plante;
 import model.poissons.*;
 import view.tabs.*;
 
@@ -63,6 +64,7 @@ public class GUIMain extends JFrame implements Runnable {
 
     static ArrayList<Poisson> listePoissonsAqua = new ArrayList<Poisson>(6);
     public static ArrayList<Poisson> listePoissonsInv = new ArrayList<Poisson>(6);
+    public static ArrayList<Plante> listePlantesAqua = new ArrayList<Plante>(3);
 
     // les threads
     Thread tpoisson_rouge;
@@ -457,6 +459,20 @@ public class GUIMain extends JFrame implements Runnable {
         poi4 = "";
         poi5 = "";
         poi6 = "";
+
+        listePoissonsInv.add(0, poisson_default);
+        listePoissonsInv.add(1, poisson_default);
+        listePoissonsInv.add(2, poisson_default);
+        listePoissonsInv.add(3, poisson_default);
+        listePoissonsInv.add(4, poisson_default);
+        listePoissonsInv.add(5, poisson_default);
+
+        listePoissonsAqua.add(0, poisson_default);
+        listePoissonsAqua.add(1, poisson_default);
+        listePoissonsAqua.add(2, poisson_default);
+        listePoissonsAqua.add(3, poisson_default);
+        listePoissonsAqua.add(4, poisson_default);
+        listePoissonsAqua.add(5, poisson_default);
 
         // inventaire 1
         Inventaire.emp1.addMouseListener(new MouseAdapter() {
@@ -891,7 +907,7 @@ public class GUIMain extends JFrame implements Runnable {
                 if (listePoissonsAqua.get(index).index == index) {
                     listePoissonsAqua.get(index).direction = "empty";
                     listePoissonsAqua.get(index).var = false;
-                    listePoissonsInv.remove(index);
+                    listePoissonsInv.set(index, poisson_default);
                 }
             } else {
                 System.out.println("à deja pas de poisson");
@@ -915,34 +931,19 @@ public class GUIMain extends JFrame implements Runnable {
      */
 
     public void createPoissonTetra(String emplacement, JLabel label1, int index) {
-        listePoissonsAqua.add(listePoissonsInv.get(getEmplaToInt(emplacement)));
-
-        poisson_tetra = (PoissonTetra) listePoissonsAqua.get(iteration);
-        iteration++;
-
+        listePoissonsAqua.set(index, listePoissonsInv.get(getEmplaToInt(emplacement)));
+        poisson_tetra = (PoissonTetra) listePoissonsAqua.get(index);
         poisson_tetra.setBounds(340, 324, 322, 156);
         poisson_tetra.index = setIndexPoi(index);
         tpoisson_tetra = new Thread(poisson_tetra);
         Argent.poi3 += 3;
         tpoisson_tetra.start();
         panelAqua.add(poisson_tetra);
-
-        /*
-         * poisson_tetra = new PoissonTetra();
-         * poisson_tetra.setBounds(340, 324, 322, 156);
-         * tpoisson_tetra = new Thread(poisson_tetra);
-         * tpoisson_tetra.start();
-         * panelAqua.add(poisson_tetra);
-         * // aquarium = new Aquarium(panelAqua);
-         */
     }
 
     public void createPoissonBetta(String emplacement, JLabel label, int index) {
-        listePoissonsAqua.add(listePoissonsInv.get(getEmplaToInt(emplacement)));
-
-        poisson_betta = (PoissonBetta) listePoissonsAqua.get(iteration);
-        iteration++;
-
+        listePoissonsAqua.set(index, listePoissonsInv.get(getEmplaToInt(emplacement)));
+        poisson_betta = (PoissonBetta) listePoissonsAqua.get(index);
         poisson_betta.setBounds(340, 324, 322, 156);
         poisson_betta.index = setIndexPoi(index);
         tpoisson_betta = new Thread(poisson_betta);
@@ -950,27 +951,12 @@ public class GUIMain extends JFrame implements Runnable {
         tpoisson_betta.start();
         panelAqua.add(poisson_betta);
 
-        /*
-         * poisson_betta = new PoissonBetta();
-         * poisson_betta.setBounds(340, 324, 322, 156);
-         * tpoisson_betta = new Thread(poisson_betta);
-         * tpoisson_betta.start();
-         * panelAqua.add(poisson_betta);
-         * // aquarium = new Aquarium(panelAqua);
-         */
     }
 
     public void createPoissonRouge(String emplacement, JLabel label1, int index) { // passer de l'inventaire à
                                                                                    // l'aquarium
-        listePoissonsAqua.add(listePoissonsInv.get(getEmplaToInt(emplacement)));
-        // listePoissonsInv.set(getEmplaToInt(emplacement), poisson_default); // TODO: À
-        // revoir (y aller avec des tags de
-
-        // TODO: À revoir (y aller avec des tags de
-        // position)
-        poisson_rouge = (PoissonRouge) listePoissonsAqua.get(iteration);
-        iteration++;
-
+        listePoissonsAqua.set(index, listePoissonsInv.get(getEmplaToInt(emplacement)));
+        poisson_rouge = (PoissonRouge) listePoissonsAqua.get(index);
         poisson_rouge.setBounds(340, 324, 322, 156);
         poisson_rouge.index = setIndexPoi(index);
         tpoisson_rouge = new Thread(poisson_rouge);

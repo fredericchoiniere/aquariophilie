@@ -12,8 +12,6 @@ public class PoissonBetta extends Poisson implements Runnable {
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_betta/poisson_droite.png");
     Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_betta/poisson_gauche.png");
-    
-    public String direction = "droite";
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -33,10 +31,9 @@ public class PoissonBetta extends Poisson implements Runnable {
         repaint();
     }
 
-
     @Override
     public void run() {
-        while (true) {
+        while (var) {
             if (x > 286) {
                 setXVelocity(-vel_x);
                 direction = "gauche";
