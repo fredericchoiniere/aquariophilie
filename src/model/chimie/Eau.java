@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.*;
 import view.GUIMain;
 import model.environnement.Temps;
+import model.plantes.Plante;
 
 public class Eau implements Runnable {
 
@@ -17,7 +18,7 @@ public class Eau implements Runnable {
     public int nbAtomeN = 0;
     public int nbAtomeO = 2103;
     public int nbAtomeH = 4206;
-
+    
     //public int temperature;
     public int scoreEau;
     private float scorePH;
@@ -27,7 +28,7 @@ public class Eau implements Runnable {
     private float scoreNitrites;
     private float scoreNitrates;
     private float penteNitrites = 0;
-
+    public int sommeAbsorption = 0;
 
     public final float volumeEau = (float) 37.85;
     public float nitrites = 0; // Doit etre 0, maximum 5mg par litre
@@ -44,6 +45,8 @@ public class Eau implements Runnable {
     public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
     public ArrayList<Float> listeNitritesIteration = new ArrayList<Float>(); // Liste pour itérer dans boucle
     public HashSet<Float> setNitrites = new HashSet<Float>(listeNitritesTemp); // Liste pour additionner le montant total de nitrites
+
+    public ArrayList<Integer> listeAbsorption = new ArrayList<Integer>();
 
     public float jours = GUIMain.jours;
 
@@ -177,6 +180,17 @@ public class Eau implements Runnable {
         }
         this.nitrites = sommeNitrites;
         return this.nitrites;
+    }
+
+    public int sommeAbsorption(){ // TODO: à tester 
+        sommeAbsorption = 0;
+
+        for (Plante plante : GUIMain.listePlantesAqua){
+            sommeAbsorption += plante.absorption;
+        }
+
+
+        return sommeAbsorption;
     }
 
     /** 
@@ -345,6 +359,8 @@ public class Eau implements Runnable {
         }
         return scoreNitrates;
     }
+
+    
 
     
     /** 
