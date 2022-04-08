@@ -21,6 +21,7 @@ public class Temps {
             public void run() {
                 GUIMain.jours++;
                 Argent.paye(GUIMain.label_argent_aqua, GUIMain.label_argent_shop);
+                //System.out.println(GUIMain.poi1);
             }
         }, 0, DUREE);
     }
