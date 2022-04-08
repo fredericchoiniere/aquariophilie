@@ -1,5 +1,6 @@
 package model.poissons;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.*;
 
@@ -7,6 +8,7 @@ public class Poisson extends JPanel {
 
     int vel_x = 1;
     int vel_y = 1;
+    static int sante = 100;
     public int index;
     public String direction = "droite";
     public boolean var = true;
@@ -75,7 +77,28 @@ public class Poisson extends JPanel {
         return img;
     }
 
+    public static void updateToolTip(JLabel label, String type){
+        switch (type) {
+            case "rouge":
+                label.setToolTipText("Type: Poisson rouge" + "\nSanté: " + sante);
+                break;
+
+            case "betta":
+                label.setToolTipText("Type: Betta" + "\nSanté: " + sante);
+                break;
+
+            case "tetra":
+                label.setToolTipText("Type: Tetra" + "\nSanté: " + sante);
+                break;
+        
+            default:
+                label.setToolTipText("");
+                break;
+        }
 
 
+
+        System.out.println(type);
+    }
 
 }

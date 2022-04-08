@@ -11,6 +11,7 @@ import model.jeu.Magasin;
 import model.plantes.BlueBlue;
 import model.plantes.JavaFern;
 import model.plantes.ScarletRot;
+import model.poissons.Poisson;
 import model.poissons.PoissonBetta;
 import model.poissons.PoissonRouge;
 import model.poissons.PoissonTetra;
@@ -98,6 +99,7 @@ public class PanelShop extends JPanel implements ActionListener {
             if (type == "poisson") {
                 checkFish(poisson, 0);
                 GUIMain.poi1 = poisson;
+                Poisson.updateToolTip(Inventaire.emp1, poisson);
                 Magasin.checkPoissonPrix(poisson);
             }
 
@@ -115,6 +117,7 @@ public class PanelShop extends JPanel implements ActionListener {
             if (type == "poisson") {
                 checkFish(poisson, 1);
                 GUIMain.poi2 = poisson;
+                Poisson.updateToolTip(Inventaire.emp2, poisson);
                 Magasin.checkPoissonPrix(poisson);
             }
             if (type == "decoration") {
@@ -129,6 +132,7 @@ public class PanelShop extends JPanel implements ActionListener {
             if (type == "poisson") {
                 checkFish(poisson, 2);
                 GUIMain.poi3 = poisson;
+                Poisson.updateToolTip(Inventaire.emp3, poisson);
                 Magasin.checkPoissonPrix(poisson);
             }
             if (type == "decoration") {
@@ -144,6 +148,7 @@ public class PanelShop extends JPanel implements ActionListener {
             if (type == "poisson") {
                 checkFish(poisson, 3);
                 GUIMain.poi4 = poisson;
+                Poisson.updateToolTip(Inventaire.emp4, poisson);
                 Magasin.checkPoissonPrix(poisson);
             }
             if (type == "decoration") {
@@ -159,6 +164,7 @@ public class PanelShop extends JPanel implements ActionListener {
             if (type == "poisson") {
                 checkFish(poisson, 4);
                 GUIMain.poi5 = poisson;
+                Poisson.updateToolTip(Inventaire.emp5, poisson);
                 Magasin.checkPoissonPrix(poisson);
             }
             if (type == "decoration") {
@@ -173,6 +179,7 @@ public class PanelShop extends JPanel implements ActionListener {
             if (type == "poisson") {
                 checkFish(poisson, 5);
                 GUIMain.poi6 = poisson;
+                Poisson.updateToolTip(Inventaire.emp6, poisson);
                 Magasin.checkPoissonPrix(poisson);
             }
             if (type == "decoration") {
