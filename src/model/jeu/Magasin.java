@@ -15,7 +15,7 @@ public class Magasin {
         Argent.argent -= prix;
     }
 
-    public static void checkPoissonPrix(String type){
+    public static void checkPoissonPrix(String type) {
         switch (type) {
             case "rouge":
                 ajustement_argent(PoissonRouge.prix);
@@ -33,7 +33,7 @@ public class Magasin {
         }
     }
 
-    public static void checkPlantePrix(String type){
+    public static void checkPlantePrix(String type) {
         switch (type) {
             case "java":
                 ajustement_argent(JavaFern.prix);
@@ -51,31 +51,31 @@ public class Magasin {
         }
     }
 
-    public static boolean gotMoney(String type){
+    public static boolean gotMoney(String type) {
         switch (type) {
             case "rouge":
-                if(Argent.argent >= PoissonRouge.prix) {
+                if (Argent.argent >= PoissonRouge.prix) {
                     return true;
                 }
-                
+
             case "betta":
-                if(Argent.argent >= PoissonBetta.prix){
+                if (Argent.argent >= PoissonBetta.prix) {
                     return true;
                 }
             case "tetra":
-                if(Argent.argent >= PoissonTetra.prix){
+                if (Argent.argent >= PoissonTetra.prix) {
                     return true;
                 }
             case "java":
-                if(Argent.argent >= PoissonBetta.prix){
+                if (Argent.argent >= PoissonBetta.prix) {
                     return true;
                 }
             case "blue":
-                if(Argent.argent >= PoissonBetta.prix){
+                if (Argent.argent >= PoissonBetta.prix) {
                     return true;
                 }
             case "scarlet":
-                if(Argent.argent >= PoissonBetta.prix){
+                if (Argent.argent >= PoissonBetta.prix) {
                     return true;
                 }
             default:

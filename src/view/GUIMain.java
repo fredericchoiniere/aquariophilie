@@ -565,8 +565,6 @@ public class GUIMain extends JFrame implements Runnable {
         aqua5 = "";
         aqua6 = "";
 
-        
-
         // ---------------------------------------------------------------------------------------------------------------------------------------------------
 
         listePoissonsInv.add(0, poisson_default);
