@@ -189,7 +189,7 @@ public class Eau implements Runnable {
             sommeAbsorption += plante.absorption;
         }
 
-
+        
 
         return sommeAbsorption;
     }
@@ -212,7 +212,6 @@ public class Eau implements Runnable {
         return scoreEau;
     }
 
-    //TODO: 
     public int evaporationEau() {
         //set gh selon volume d'eau
     }
@@ -380,13 +379,12 @@ public class Eau implements Runnable {
                 sommeNitrites();
                 if (penteNitrites > nitrites) {
                     comportNitrates();
+                    nitrates -= sommeAbsorption();
+                    System.out.println("nitrates: " + nitrates + " absorption: " + sommeAbsorption());
                     GUIMain.actionEnCours = "Cycle nitrates";
-                    //System.out.println("nitrates " + nitrates);
-                    //Thread.sleep(Temps.DUREE);
                     if (nitrites != 0.0)
                         penteNitrites = nitrites;
                 } else {
-                    
                     penteNitrites = nitrites;
                 }
                 Thread.sleep(Temps.DUREE);
