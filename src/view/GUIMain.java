@@ -36,9 +36,9 @@ public class GUIMain extends JFrame {
     public static PanelAqua panelAqua;
     public static PanelTest panelTest;
     JTabbedPane tabbedPane;
-    JButton pousser, rapetisser;
+    JButton passer_journée;
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, eau_label, inventaire_ouvert,
-            inventaire_fermer, inventaire_bg, filet_label;
+            inventaire_fermer, inventaire_bg, filet_label, pause_label, forward_label, backward_label;
     public static JLabel shop_label;
     JLabel hamis;
     JLabel ciseau_label;
@@ -217,6 +217,28 @@ public class GUIMain extends JFrame {
         inventaire_fermer.setToolTipText("Ouvre l'inventaire");
         inventaire_fermer.setVisible(true);
         panelAqua.add(inventaire_fermer);
+
+        // ajout du label pour icones de l'inventaire
+        pause_label = new JLabel();
+        pause_label.setIcon(new ImageIcon("res/background/pause.png"));
+        pause_label.setBounds(865, 5, 30, 30);
+        pause_label.setToolTipText("Ouvre l'inventaire");
+        pause_label.setVisible(true);
+        panelAqua.add(pause_label);
+
+        forward_label = new JLabel();
+        forward_label.setIcon(new ImageIcon("res/background/forward.png"));
+        forward_label.setBounds(965, 5, 30, 30);
+        forward_label.setToolTipText("Ouvre l'inventaire");
+        forward_label.setVisible(true);
+        panelAqua.add(forward_label);
+
+        backward_label = new JLabel();
+        backward_label.setIcon(new ImageIcon("res/background/backward.png"));
+        backward_label.setBounds(915, 5, 30, 30);
+        backward_label.setToolTipText("Ouvre l'inventaire");
+        backward_label.setVisible(true);
+        panelAqua.add(backward_label);
 
         // ajout de l'inventaire au panel aqua
         inventaire_bg = new JLabel();
@@ -457,9 +479,7 @@ public class GUIMain extends JFrame {
                     empty.setVisible(false);
                     lblPipette.setVisible(true);
                     aquarium_kit_ouvert.setVisible(false);
-                    aquarium_kit_fermer.setVisible(true);
-                    inventaire_fermer.setVisible(true);
-                    label_argent_aqua.setVisible(true);
+                    setOutilsVisible();
 
                 }
             }
@@ -492,6 +512,28 @@ public class GUIMain extends JFrame {
                 inventaire_bg.setVisible(true);
                 inventaire.setVisible(true);
                 hamis.setVisible(false);
+            }
+        });
+
+        // actionlistener pour le temps
+        pause_label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Temps.DUREE = 999999999;
+            }
+        });
+
+        forward_label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Temps.DUREE = 3000;
+            }
+        });
+
+        backward_label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Temps.DUREE = 1500;
             }
         });
 
@@ -1021,10 +1063,14 @@ public class GUIMain extends JFrame {
 
     public void setOutilsVisible() {
         lblPipette.setVisible(true);
+        aquarium_kit_fermer.setVisible(true);
         inventaire_fermer.setVisible(true);
         label_argent_aqua.setVisible(true);
         ciseau_label.setVisible(true);
         filet_label.setVisible(true);
+        pause_label.setVisible(true);
+        forward_label.setVisible(true);
+        backward_label.setVisible(true);
     }
 
     public void setOutilsInvisible() {
@@ -1035,6 +1081,9 @@ public class GUIMain extends JFrame {
         label_argent_aqua.setVisible(false);
         ciseau_label.setVisible(false);
         filet_label.setVisible(false);
+        pause_label.setVisible(false);
+        forward_label.setVisible(false);
+        backward_label.setVisible(false);
     }
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------
