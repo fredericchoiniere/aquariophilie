@@ -185,9 +185,10 @@ public class Eau implements Runnable {
     public int sommeAbsorption(){ // TODO: à tester 
         sommeAbsorption = 0;
 
-        for (Plante plante : GUIMain.listePlantesAqua){
+        for (Plante plante : GUIMain.listePlantesAqua){ // TODO: à planifier sur papier
             sommeAbsorption += plante.absorption;
         }
+
 
 
         return sommeAbsorption;

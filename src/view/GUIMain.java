@@ -31,7 +31,7 @@ import model.plantes.ScarletRot;
 import model.poissons.*;
 import view.tabs.*;
 
-public class GUIMain extends JFrame implements Runnable {
+public class GUIMain extends JFrame{
 
     // appel des attributs de la classe GUIMain
     public static PanelAqua panelAqua;
@@ -84,7 +84,7 @@ public class GUIMain extends JFrame implements Runnable {
     public static Thread tpoisson_rouge;
     public static Thread tpoisson_betta;
     public static Thread tpoisson_tetra;
-    Thread GUIMainThread = new Thread(this);
+    //Thread GUIMainThread = new Thread(this);
     Thread threadEau;
     Thread tCycleInitial;
     Thread tPanelInfo;
@@ -270,29 +270,6 @@ public class GUIMain extends JFrame implements Runnable {
         rectAqua6 = new Rectangle(584, 417, 70, 70);
         rectShop = new Rectangle(705, 505, 300, 200);
 
-        // ajout des poissons dans l'aquarium
-
-        /*
-         * poisson_rouge = new PoissonRouge();
-         * poisson_rouge.setBounds(340, 324, 322, 156);
-         * tpoisson_rouge = new Thread(poisson_rouge);
-         * tpoisson_rouge.start();
-         * panelAqua.add(poisson_rouge);
-         * 
-         * poisson_betta = new PoissonBetta();
-         * poisson_betta.setBounds(340, 324, 322, 156);
-         * tpoisson_betta = new Thread(poisson_betta);
-         * tpoisson_betta.start();
-         * panelAqua.add(poisson_betta);
-         * // aquarium = new Aquarium(panelAqua); // TODO: créé plusieurs aquariums??
-         * 
-         * poisson_tetra = new PoissonTetra();
-         * poisson_tetra.setBounds(340, 324, 322, 156);
-         * tpoisson_tetra = new Thread(poisson_tetra);
-         * tpoisson_tetra.start();
-         * panelAqua.add(poisson_tetra);
-         * panelAqua.add(poisson_tetra);
-         */
         aquarium = new Aquarium(panelAqua);
 
         // ajout du layeredpane au tabbedane
@@ -954,7 +931,7 @@ public class GUIMain extends JFrame implements Runnable {
             }
         });
 
-        GUIMainThread.start();
+        //GUIMainThread.start();
         threadEau.start();
         tCycleInitial.start();
 
@@ -1049,16 +1026,6 @@ public class GUIMain extends JFrame implements Runnable {
         aquarium.emp3.setVisible(false);
     }
 
-    // création des threads pour les poissons dans l'aquarium
-    // --------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-    /**
-     * thread du poisson rouge
-     */
-    @Override
-    public void run() {
-
-    }
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------
 
