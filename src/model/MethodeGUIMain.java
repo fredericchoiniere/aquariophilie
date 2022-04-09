@@ -426,44 +426,6 @@ public class MethodeGUIMain {
         }
     }
 
-    /*
-     * public String indexToString(int index) {
-     * 
-     * switch (index) {
-     * case 0:
-     * // System.out.println(aqua1);
-     * GUIMain.emplacement = GUIMain.aqua1;
-     * // System.out.println(emplacement);
-     * GUIMain.aqua1 = "";
-     * // System.out.println(aqua1);
-     * break;
-     * case 1:
-     * GUIMain.emplacement = GUIMain.aqua2;
-     * GUIMain.aqua2 = "";
-     * break;
-     * case 2:
-     * GUIMain.emplacement = GUIMain.aqua3;
-     * GUIMain.aqua3 = "";
-     * break;
-     * case 3:
-     * GUIMain.emplacement = GUIMain.aqua4;
-     * GUIMain.aqua4 = "";
-     * break;
-     * case 4:
-     * GUIMain.emplacement = GUIMain.aqua5;
-     * GUIMain.aqua5 = "";
-     * break;
-     * case 5:
-     * GUIMain.emplacement = GUIMain.aqua6;
-     * GUIMain.aqua6 = "";
-     * break;
-     * default:
-     * break;
-     * }
-     * return GUIMain.emplacement;
-     * }
-     */
-
     public static void checkFishType(String aqua) {
         switch (aqua) {
             case "rouge":
