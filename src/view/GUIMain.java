@@ -954,7 +954,7 @@ public class GUIMain extends JFrame implements Runnable {
                 label2.setIcon(Inventaire.empty_inv);
                 setEmpla(emplacement);
                 setEmplaToFish(emplacement, poi, label1, index);
-                //setAquaName(poi, aqua);
+                // setAquaName(poi, aqua);
 
                 // createPoissonRouge(emplacement, label1, index);
                 // createPoissonBetta(emplacement, label1, index);
