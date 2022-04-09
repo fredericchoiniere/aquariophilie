@@ -9,6 +9,8 @@ public class PoissonBetta extends Poisson implements Runnable {
     public int vel_y = 1;
     public static int prix = 500;
 
+    public static int dechets = 4;
+
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_betta/poisson_droite.png");
     Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_betta/poisson_gauche.png");

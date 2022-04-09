@@ -7,6 +7,6 @@ public class JavaFern extends Plante {
 
     public static ImageIcon icon = new ImageIcon("res/background/decorations/java_fern.png");
 
-    int absorption = 5; // pet cul
-
+    public static int absorptionNitrates = 5; // pet cul
+    public static int absorptionDechets = 5;
 }

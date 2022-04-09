@@ -1,8 +1,6 @@
 package model.poissons;
 
 import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
 
 public class PoissonTetra extends Poisson implements Runnable {
     // Attributs : coordonn�es de la boule
@@ -11,6 +9,8 @@ public class PoissonTetra extends Poisson implements Runnable {
     int vel_x = 1;
     int vel_y = 1;
     public static int prix = 200;
+
+    public static int dechets = 2;
 
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_tetra/poisson_droite.png");

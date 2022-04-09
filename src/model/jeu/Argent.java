@@ -4,7 +4,7 @@ import javax.swing.JLabel;
 
 public class Argent {
 
-    public static int argent = 1000;
+    public static int argent = 10000;
 
     public static int emp1 = 0;
     public static int emp2 = 0;
