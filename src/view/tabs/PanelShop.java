@@ -222,6 +222,7 @@ public class PanelShop extends JPanel implements ActionListener {
                 GUIMain.listePlantesInv.set(index, new JavaFern());
                 GUIMain.listePlantesInv.get(index).setName("java" + i);
                 setLabel(index, JavaFern.icon, typePlante);
+                setName(index, typePlante);
                 i++;
                 break;
 
@@ -229,6 +230,7 @@ public class PanelShop extends JPanel implements ActionListener {
                 GUIMain.listePlantesInv.set(index, new BlueBlue());
                 GUIMain.listePlantesInv.get(index).setName("blue" + i);
                 setLabel(index, BlueBlue.icon, typePlante);
+                setName(index, typePlante);
                 i++;
                 break;
 
@@ -236,6 +238,7 @@ public class PanelShop extends JPanel implements ActionListener {
                 GUIMain.listePlantesInv.set(index, new ScarletRot());
                 GUIMain.listePlantesInv.get(index).setName("scarlet" + i);
                 setLabel(index, ScarletRot.icon, typePlante);
+                setName(index, typePlante);
                 i++;
                 break;
             default:
@@ -268,6 +271,31 @@ public class PanelShop extends JPanel implements ActionListener {
                 break;
             case 5:
                 Inventaire.emp6.setIcon(icon);
+                GUIMain.pla6 = typePlante;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public static void setName(int index, String typePlante) {
+        switch (index) {
+            case 0:
+                GUIMain.pla1 = typePlante;
+                break;
+            case 1:
+                GUIMain.pla2 = typePlante;
+                break;
+            case 2:
+                GUIMain.pla3 = typePlante;
+                break;
+            case 3:
+                GUIMain.pla4 = typePlante;
+                break;
+            case 4:
+                GUIMain.pla5 = typePlante;
+                break;
+            case 5:
                 GUIMain.pla6 = typePlante;
                 break;
             default:

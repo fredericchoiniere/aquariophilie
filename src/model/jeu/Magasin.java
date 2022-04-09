@@ -2,6 +2,9 @@ package model.jeu;
 
 /* create a class that can access Argent class*/
 import model.jeu.Argent;
+import model.plantes.BlueBlue;
+import model.plantes.JavaFern;
+import model.plantes.ScarletRot;
 import model.poissons.PoissonBetta;
 import model.poissons.PoissonRouge;
 import model.poissons.PoissonTetra;
@@ -33,15 +36,15 @@ public class Magasin {
     public static void checkPlantePrix(String type){
         switch (type) {
             case "java":
-                ajustement_argent(450);
+                ajustement_argent(JavaFern.prix);
                 break;
 
             case "blue":
-                ajustement_argent(200);
+                ajustement_argent(BlueBlue.prix);
                 break;
 
             case "scarlet":
-                ajustement_argent(1000);
+                ajustement_argent(ScarletRot.prix);
                 break;
             default:
                 break;
