@@ -1,7 +1,7 @@
 package model.jeu;
 
 /* create a class that can access Argent class*/
-import model.jeu.Argent;
+
 import model.plantes.BlueBlue;
 import model.plantes.JavaFern;
 import model.plantes.ScarletRot;
@@ -27,6 +27,7 @@ public class Magasin {
 
             case "tetra":
                 ajustement_argent(PoissonTetra.prix);
+                // System.out.println(Argent.argent);
                 break;
             default:
                 break;
@@ -63,19 +64,20 @@ public class Magasin {
                     return true;
                 }
             case "tetra":
+                // System.out.println(Argent.argent);
                 if (Argent.argent >= PoissonTetra.prix) {
                     return true;
                 }
             case "java":
-                if (Argent.argent >= PoissonBetta.prix) {
+                if (Argent.argent >= JavaFern.prix) {
                     return true;
                 }
             case "blue":
-                if (Argent.argent >= PoissonBetta.prix) {
+                if (Argent.argent >= BlueBlue.prix) {
                     return true;
                 }
             case "scarlet":
-                if (Argent.argent >= PoissonBetta.prix) {
+                if (Argent.argent >= ScarletRot.prix) {
                     return true;
                 }
             default:

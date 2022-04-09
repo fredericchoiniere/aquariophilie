@@ -13,11 +13,10 @@ import model.poissons.PoissonRouge;
 import model.poissons.PoissonTetra;
 import view.GUIMain;
 import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
+
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
+
 
 public class MethodeGUIMain {
 
