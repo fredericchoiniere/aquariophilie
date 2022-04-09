@@ -4,7 +4,7 @@ import javax.swing.JLabel;
 
 public class Argent {
 
-    public static int argent = 1000;
+    public static int argent = 10000;
 
     public static int emp = 0;
 
@@ -13,7 +13,7 @@ public class Argent {
     public static int poi3 = 0; //tetra
 
 
-    static String montant = "50 ₴";
+    static String montant = argent + " ₴";
 
     public static void paye(JLabel label, JLabel label2) {
 
