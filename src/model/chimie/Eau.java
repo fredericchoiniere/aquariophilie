@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
 import view.GUIMain;
+import model.MethodeGUIMain;
 import model.environnement.Temps;
 
 public class Eau implements Runnable {
@@ -187,8 +188,12 @@ public class Eau implements Runnable {
         sommeDechets -= sommeAbsorptionDechets;
         nitrates -= sommeAbsorptionNitrates; // TODO: faire évoluer absorption proportionnelement à évolution nitrates (+0.14 à chq jour)
         if (sommeAbsorptionNitrates != 0) {     // TODO: à paufiner et éviter les négatifs
-            sommeAbsorptionNitrates += 0.142;
+            sommeAbsorptionNitrates += 0.14;
+            if(!MethodeGUIMain.hasPlants()){
+                sommeAbsorptionNitrates = 0;
+            }
         }
+
     }
 
     public void accumulerDechets(){

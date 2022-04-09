@@ -20,6 +20,7 @@ public class MethodeGUIMain {
 
     Aquarium aquarium;
     Inventaire inventaire;
+    static Boolean hasPlants = false;
 
     public static void checkRectanglesDeco(Rectangle rectangle, JLabel label, Icon icone, JLabel label2,
             String emplacement,
@@ -520,5 +521,15 @@ public class MethodeGUIMain {
             default:
                 break;
         }
+    }
+
+    public static Boolean hasPlants(){
+        if(!GUIMain.hasPlant1 && !GUIMain.hasPlant2 && !GUIMain.hasPlant3){
+            hasPlants = false;
+        }
+        else
+            hasPlants = true;
+        System.out.println("hasplants: " + hasPlants);
+        return hasPlants;
     }
 }
