@@ -16,6 +16,8 @@ public class GUIIntro extends JFrame implements ActionListener {
 
     public GUIIntro() { // création du constructeur GUIIntro
 
+        setTitle("Aquariophilie");
+
         // Entrer dans l'application pour tester
         JPanel simplePanel = new JPanel();
 
