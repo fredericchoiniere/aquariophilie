@@ -22,16 +22,15 @@ import model.item.outils.Filet;
 import model.item.outils.Pipette;
 import model.item.outils.Shop;
 import model.jeu.Aquarium;
-import model.jeu.Argent;
+
 import model.jeu.Inventaire;
-import model.plantes.BlueBlue;
-import model.plantes.JavaFern;
+
 import model.plantes.Plante;
-import model.plantes.ScarletRot;
+
 import model.poissons.*;
 import view.tabs.*;
 
-public class GUIMain extends JFrame{
+public class GUIMain extends JFrame {
 
     // appel des attributs de la classe GUIMain
     public static PanelAqua panelAqua;
@@ -84,7 +83,7 @@ public class GUIMain extends JFrame{
     public static Thread tpoisson_rouge;
     public static Thread tpoisson_betta;
     public static Thread tpoisson_tetra;
-    //Thread GUIMainThread = new Thread(this);
+    // Thread GUIMainThread = new Thread(this);
     Thread threadEau;
     Thread tCycleInitial;
     Thread tPanelInfo;
@@ -325,9 +324,7 @@ public class GUIMain extends JFrame{
                 aquarium_kit_fermer.setVisible(true);
                 panelTest.setVisible(false);
                 empty.setVisible(false);
-                lblPipette.setVisible(true);
-                inventaire_fermer.setVisible(true);
-                label_argent_aqua.setVisible(true);
+                setOutilsVisible();
             }
         });
 
@@ -340,11 +337,7 @@ public class GUIMain extends JFrame{
                 aquarium_kit_ouvert.setVisible(true);
                 empty.setVisible(true);
                 panelTest.setVisible(true);
-                lblPipette.setVisible(false);
-                inventaire_ouvert.setVisible(false);
-                inventaire_fermer.setVisible(false);
-                inventaire_bg.setVisible(false);
-                label_argent_aqua.setVisible(false);
+                setOutilsInvisible();
                 // tpoisson_betta.interrupt();
             }
         });
@@ -541,8 +534,6 @@ public class GUIMain extends JFrame{
         aqua4 = "";
         aqua5 = "";
         aqua6 = "";
-
-        
 
         // ---------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -933,7 +924,7 @@ public class GUIMain extends JFrame{
             }
         });
 
-        //GUIMainThread.start();
+        // GUIMainThread.start();
         threadEau.start();
         tCycleInitial.start();
 
@@ -1028,6 +1019,23 @@ public class GUIMain extends JFrame{
         aquarium.emp3.setVisible(false);
     }
 
+    public void setOutilsVisible() {
+        lblPipette.setVisible(true);
+        inventaire_fermer.setVisible(true);
+        label_argent_aqua.setVisible(true);
+        ciseau_label.setVisible(true);
+        filet_label.setVisible(true);
+    }
+
+    public void setOutilsInvisible() {
+        lblPipette.setVisible(false);
+        inventaire_ouvert.setVisible(false);
+        inventaire_fermer.setVisible(false);
+        inventaire_bg.setVisible(false);
+        label_argent_aqua.setVisible(false);
+        ciseau_label.setVisible(false);
+        filet_label.setVisible(false);
+    }
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------
 

@@ -1,7 +1,7 @@
 package model.jeu;
 
 /* create a class that can access Argent class*/
-import model.jeu.Argent;
+
 import model.plantes.BlueBlue;
 import model.plantes.JavaFern;
 import model.plantes.ScarletRot;
@@ -15,7 +15,7 @@ public class Magasin {
         Argent.argent -= prix;
     }
 
-    public static void checkPoissonPrix(String type){
+    public static void checkPoissonPrix(String type) {
         switch (type) {
             case "rouge":
                 ajustement_argent(PoissonRouge.prix);
@@ -27,13 +27,14 @@ public class Magasin {
 
             case "tetra":
                 ajustement_argent(PoissonTetra.prix);
+                // System.out.println(Argent.argent);
                 break;
             default:
                 break;
         }
     }
 
-    public static void checkPlantePrix(String type){
+    public static void checkPlantePrix(String type) {
         switch (type) {
             case "java":
                 ajustement_argent(JavaFern.prix);
@@ -51,31 +52,32 @@ public class Magasin {
         }
     }
 
-    public static boolean gotMoney(String type){
+    public static boolean gotMoney(String type) {
         switch (type) {
             case "rouge":
-                if(Argent.argent >= PoissonRouge.prix) {
+                if (Argent.argent >= PoissonRouge.prix) {
                     return true;
                 }
-                
+
             case "betta":
-                if(Argent.argent >= PoissonBetta.prix){
+                if (Argent.argent >= PoissonBetta.prix) {
                     return true;
                 }
             case "tetra":
-                if(Argent.argent >= PoissonTetra.prix){
+                // System.out.println(Argent.argent);
+                if (Argent.argent >= PoissonTetra.prix) {
                     return true;
                 }
             case "java":
-                if(Argent.argent >= PoissonBetta.prix){
+                if (Argent.argent >= JavaFern.prix) {
                     return true;
                 }
             case "blue":
-                if(Argent.argent >= PoissonBetta.prix){
+                if (Argent.argent >= BlueBlue.prix) {
                     return true;
                 }
             case "scarlet":
-                if(Argent.argent >= PoissonBetta.prix){
+                if (Argent.argent >= ScarletRot.prix) {
                     return true;
                 }
             default:
