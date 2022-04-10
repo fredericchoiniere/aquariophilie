@@ -39,7 +39,8 @@ public class GUIMain extends JFrame {
     JTabbedPane tabbedPane;
     JButton passer_journée;
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, eau_label, inventaire_ouvert,
-            inventaire_fermer, inventaire_bg, filet_label, pause_label, reprendre_label;
+            inventaire_fermer, inventaire_bg, filet_label, pause_label, reprendre_label, label_tutoriel,
+            label_information;
     public static JLabel shop_label;
     JLabel hamis;
     JLabel ciseau_label;
@@ -49,6 +50,7 @@ public class GUIMain extends JFrame {
     // poi4, poi5, poi6;
     public static JLabel label_argent_aqua = new JLabel("");
     public static JLabel label_argent_shop = new JLabel("");
+    public static JLabel label_jours = new JLabel("");
     public static String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3, poi4, poi5, poi6,
             actionEnCours, pla1, pla2, pla3, pla4, pla5, pla6, aqua1, aqua2, aqua3, aqua4, aqua5, aqua6, emplacement,
             aquaPla1, aquaPla2, aquaPla3, aquaPla4, aquaPla5, aquaPla6;
@@ -222,14 +224,14 @@ public class GUIMain extends JFrame {
         // ajout du label pour icones de l'inventaire
         pause_label = new JLabel();
         pause_label.setIcon(new ImageIcon("res/background/pause.png"));
-        pause_label.setBounds(865, 5, 30, 30);
+        pause_label.setBounds(875, 5, 30, 30);
         pause_label.setToolTipText("Pause la progression du temps");
         pause_label.setVisible(true);
         panelAqua.add(pause_label);
 
         reprendre_label = new JLabel();
         reprendre_label.setIcon(new ImageIcon("res/background/backward.png"));
-        reprendre_label.setBounds(915, 5, 30, 30);
+        reprendre_label.setBounds(875, 5, 30, 30);
         reprendre_label.setToolTipText("Reprend la progression du temps");
         reprendre_label.setVisible(true);
         panelAqua.add(reprendre_label);
@@ -264,6 +266,27 @@ public class GUIMain extends JFrame {
         label_argent_aqua.setText(Argent.montant + "₴");
         label_argent_aqua.setVisible(true);
         panelAqua.add(label_argent_aqua);
+
+        label_jours.setBounds(15, 0, 100, 50);
+        label_jours.setFont(new Font("Verdana", Font.BOLD, 16));
+        label_jours.setText("J: " + 1);
+        label_jours.setVisible(true);
+        panelAqua.add(label_jours);
+
+        // label pour le turoriel
+        label_tutoriel = new JLabel();
+        label_tutoriel.setBounds(0, 0, 1000, 700);
+        label_tutoriel.setIcon(new ImageIcon("res/background/tutoriel.png"));
+        label_tutoriel.setVisible(true);
+        panelAqua.add(label_tutoriel);
+
+        // label pour information
+
+        label_information = new JLabel();
+        label_information.setBounds(965, 5, 30, 30);
+        label_information.setIcon(new ImageIcon("res/background/informations.png"));
+        label_information.setVisible(true);
+        panelAqua.add(label_information);
 
         // ajout de panel Aqua au layered pane
         Dimension size_panel_aqua = panelAqua.getPreferredSize(); // prend la dimension de la photo
@@ -515,6 +538,8 @@ public class GUIMain extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 Temps.pause();
                 System.out.println("jour " + jours);
+                pause_label.setVisible(false);
+                reprendre_label.setVisible(true);
             }
         });
 
@@ -523,6 +548,22 @@ public class GUIMain extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 Temps.reprendre();
                 System.out.println("jour " + jours);
+                pause_label.setVisible(true);
+                reprendre_label.setVisible(false);
+            }
+        });
+
+        label_tutoriel.addMouseListener(new MouseAdapter() { // TODO: à revoir
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                label_tutoriel.setVisible(false);
+            }
+        });
+
+        label_information.addMouseListener(new MouseAdapter() { // TODO: à revoir
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                label_tutoriel.setVisible(true);
             }
         });
 
@@ -1059,6 +1100,7 @@ public class GUIMain extends JFrame {
         filet_label.setVisible(true);
         pause_label.setVisible(true);
         reprendre_label.setVisible(true);
+        label_information.setVisible(true);
     }
 
     public void setOutilsInvisible() {
@@ -1071,6 +1113,7 @@ public class GUIMain extends JFrame {
         filet_label.setVisible(false);
         pause_label.setVisible(false);
         reprendre_label.setVisible(false);
+        label_information.setVisible(false);
     }
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------

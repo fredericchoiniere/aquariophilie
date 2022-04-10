@@ -23,12 +23,17 @@ public class Temps {
         journee.cancel();
     }
 
+    public static void jourAJour(int jour){
+        GUIMain.label_jours.setText("J: " + Integer.toString(jour));
+    }
+
     public static void reprendre(){
         journee = new Timer();
         journee.scheduleAtFixedRate(new TimerTask() {
             @Override
                 public void run() {
                     GUIMain.jours++;
+                    jourAJour((int) GUIMain.jours);
                     Argent.paye(GUIMain.label_argent_aqua, GUIMain.label_argent_shop);
                     //System.out.println(GUIMain.aqua1+" "+GUIMain.aqua2+" "+GUIMain.aqua3+" "+GUIMain.aqua4+" "+GUIMain.aqua5+" "+GUIMain.aqua6);
                 }
