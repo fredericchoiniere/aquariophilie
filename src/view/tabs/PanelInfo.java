@@ -12,7 +12,8 @@ import model.chimie.Molecules;
 import model.environnement.Temps;
 import view.GUIMain;
 
-public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/GH/KH
+public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/GH/KH, ajouter compatibilité plusieurs cycles,
+                                                            // ajouter infos déchets et absorption
 
     // appel des attributs de la classe
     JLabel lblAction, lblN, lblH, lblO, lblAmmo, lblNit, lblNat, lblPH, lblGH, lblKH;
@@ -135,14 +136,35 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
                 setActionEnCours();
                 changerEtatBarre();
 
-                lblN.setText("N: " + df.format(mol.sommeMolN()) + " mols d'azote");
-                lblH.setText("H: " + df.format(mol.molAtomeH) + " mols d'hydrogène");
-                lblO.setText("O: " + df.format(mol.sommeMolO()) + " mols d'oxygène");
-                lblAmmo.setText("NH3: " + df.format(mol.ammoniaqueMgLtoMol()) + " mols");
-                // lblAmmo.setText("NH3: " + mol.eau.ammoniaque + " au jour " + (mol.eau.jours -
-                // 1));
-                lblNit.setText("NO2: " + df.format(mol.nitritesMgLtoMol()) + " mols");
-                lblNat.setText("NO3: " + df.format(mol.nitratesMgLtoMol()) + " mols");
+                if(mol.sommeMolN() != 0)
+                    lblN.setText("N: " + df.format(mol.sommeMolN()) + " mols d'azote");
+                else
+                    lblN.setText("N: " + mol.sommeMolN() + " mols d'azote");
+
+                if(mol.molAtomeH != 0)
+                    lblH.setText("H: " + df.format(mol.molAtomeH) + " mols d'hydrogène");
+                else 
+                    lblH.setText("H: " + mol.molAtomeH + " mols d'hydrogène");
+
+                if(mol.sommeMolO() != 0)
+                    lblO.setText("O: " + df.format(mol.sommeMolO()) + " mols d'oxygène");
+                else
+                    lblO.setText("O: " + mol.sommeMolO() + " mols d'oxygène");
+
+                if(mol.ammoniaqueMgLtoMol() != 0)
+                    lblAmmo.setText("NH3: " + df.format(mol.ammoniaqueMgLtoMol()) + " mols");
+                else
+                    lblAmmo.setText("NH3: " + mol.ammoniaqueMgLtoMol() + " mols");
+
+                if(mol.nitritesMgLtoMol() != 0)
+                    lblNit.setText("NO2: " + df.format(mol.nitritesMgLtoMol()) + " mols");
+                else
+                    lblNit.setText("NO2: " + mol.nitritesMgLtoMol() + " mols");
+
+                if (mol.nitratesMgLtoMol() != 0)
+                    lblNat.setText("NO3: " + df.format(mol.nitratesMgLtoMol()) + " mols");
+                else
+                    lblNat.setText("NO3: " + mol.nitratesMgLtoMol() + " mols");
 
                 Thread.sleep(Temps.DUREE);
             } catch (InterruptedException e) {
