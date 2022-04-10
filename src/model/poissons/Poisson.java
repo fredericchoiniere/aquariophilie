@@ -1,3 +1,5 @@
+// Frédéric Choinière, Jérémie Caron    itération 2
+
 package model.poissons;
 
 import javax.swing.JLabel;

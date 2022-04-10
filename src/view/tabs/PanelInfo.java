@@ -168,7 +168,7 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
 
                 Thread.sleep(Temps.DUREE);
             } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
+                // TODO: message à générer
                 e.printStackTrace();
             }
         }

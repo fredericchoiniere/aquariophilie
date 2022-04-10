@@ -1,3 +1,5 @@
+//Jérémie Caron,                    Frédéric Choinière    itération 2
+
 package model;
 
 import javax.swing.JLabel;
@@ -434,7 +436,7 @@ public class MethodeGUIMain {
         }
     }
 
-    public static void checkFishType(String aqua) { // TODO:
+    public static void checkFishType(String aqua) {
         switch (aqua) {
             case "rouge":
                 Argent.poi1 -= 1;

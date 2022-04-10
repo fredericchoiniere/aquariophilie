@@ -1,4 +1,5 @@
 // Frédéric Choinière, Justin Plouffe   itération 1
+// Frédéric Choinière   itération 2
 // Classe qui contrôle les cycles de l'azote
 
 package model.chimie;

@@ -1,4 +1,5 @@
-//Jérémie Caron     itération 1
+// Jérémie Caron     itération 1
+// Frédéric Choinière   itération 2
 //Classe contrôleur qui initialise l'affichage du frame d'introduction
 
 package control;

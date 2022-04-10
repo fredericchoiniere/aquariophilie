@@ -1,4 +1,5 @@
 // Frédéric Choinière, Justin Plouffe   itération 1
+// Frédéric Choinière   itération 2
 // Classe qui contrôle les paramètres d'eau
 
 package model.chimie;
@@ -200,18 +201,6 @@ public class Eau implements Runnable {
         sommeDechets += potentielDechets;
     }
 
-    /* public int sommeAbsorption(){ // TODO: à tester 
-        sommeAbsorption = 0;
-
-        for (Plante plante : GUIMain.listePlantesAqua){
-            sommeAbsorption += plante.absorption;
-            //System.out.println(plante.absorption);
-        }
-
-        
-
-        return sommeAbsorption;
-    } */
 
     /** 
      * @return float
@@ -378,9 +367,6 @@ public class Eau implements Runnable {
         }
         return scoreNitrates;
     }
-
-    
-
     
     /** 
      * Méthode run de la classe Eau

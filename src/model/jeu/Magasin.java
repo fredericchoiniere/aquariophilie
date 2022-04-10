@@ -1,3 +1,5 @@
+//Jérémie Caron     itération 2
+
 package model.jeu;
 
 /* create a class that can access Argent class*/

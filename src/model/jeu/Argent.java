@@ -1,3 +1,5 @@
+//Jérémie Caron     itération 2
+
 package model.jeu;
 
 import javax.swing.JLabel;

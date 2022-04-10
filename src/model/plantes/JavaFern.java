@@ -1,3 +1,5 @@
+//Jérémie Caron, Frédéric Choinière     itération 2
+
 package model.plantes;
 
 import javax.swing.ImageIcon;
