@@ -38,7 +38,7 @@ public class GUIMain extends JFrame {
     JTabbedPane tabbedPane;
     JButton passer_journée;
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, eau_label, inventaire_ouvert,
-            inventaire_fermer, inventaire_bg, filet_label, pause_label, forward_label, backward_label;
+            inventaire_fermer, inventaire_bg, filet_label, pause_label, reprendre_label;
     public static JLabel shop_label;
     JLabel hamis;
     JLabel ciseau_label;
@@ -226,19 +226,12 @@ public class GUIMain extends JFrame {
         pause_label.setVisible(true);
         panelAqua.add(pause_label);
 
-        forward_label = new JLabel();
-        forward_label.setIcon(new ImageIcon("res/background/forward.png"));
-        forward_label.setBounds(965, 5, 30, 30);
-        forward_label.setToolTipText("Ouvre l'inventaire");
-        forward_label.setVisible(true);
-        panelAqua.add(forward_label);
-
-        backward_label = new JLabel();
-        backward_label.setIcon(new ImageIcon("res/background/backward.png"));
-        backward_label.setBounds(915, 5, 30, 30);
-        backward_label.setToolTipText("Ouvre l'inventaire");
-        backward_label.setVisible(true);
-        panelAqua.add(backward_label);
+        reprendre_label = new JLabel();
+        reprendre_label.setIcon(new ImageIcon("res/background/backward.png"));
+        reprendre_label.setBounds(915, 5, 30, 30);
+        reprendre_label.setToolTipText("Ouvre l'inventaire");
+        reprendre_label.setVisible(true);
+        panelAqua.add(reprendre_label);
 
         // ajout de l'inventaire au panel aqua
         inventaire_bg = new JLabel();
@@ -519,21 +512,16 @@ public class GUIMain extends JFrame {
         pause_label.addMouseListener(new MouseAdapter() { // TODO: à revoir
             @Override
             public void mouseClicked(MouseEvent e) {
-                Temps.DUREE = 999999999;
+                Temps.pause();
+                System.out.println("jour " + jours);
             }
         });
 
-        forward_label.addMouseListener(new MouseAdapter() { // TODO: à revoir
+        reprendre_label.addMouseListener(new MouseAdapter() { // TODO: à revoir
             @Override
             public void mouseClicked(MouseEvent e) {
-                Temps.DUREE = 300;
-            }
-        });
-
-        backward_label.addMouseListener(new MouseAdapter() { // TODO: à revoir
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                Temps.DUREE = 1500;
+                Temps.reprendre();
+                System.out.println("jour " + jours);
             }
         });
 
@@ -1069,8 +1057,7 @@ public class GUIMain extends JFrame {
         ciseau_label.setVisible(true);
         filet_label.setVisible(true);
         pause_label.setVisible(true);
-        forward_label.setVisible(true);
-        backward_label.setVisible(true);
+        reprendre_label.setVisible(true);
     }
 
     public void setOutilsInvisible() {
@@ -1082,8 +1069,7 @@ public class GUIMain extends JFrame {
         ciseau_label.setVisible(false);
         filet_label.setVisible(false);
         pause_label.setVisible(false);
-        forward_label.setVisible(false);
-        backward_label.setVisible(false);
+        reprendre_label.setVisible(false);
     }
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------
