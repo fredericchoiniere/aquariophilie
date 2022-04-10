@@ -226,7 +226,7 @@ public class GUIMain extends JFrame {
         pause_label.setIcon(new ImageIcon("res/background/pause.png"));
         pause_label.setBounds(875, 5, 30, 30);
         pause_label.setToolTipText("Pause la progression du temps");
-        pause_label.setVisible(true);
+        pause_label.setVisible(false);
         panelAqua.add(pause_label);
 
         reprendre_label = new JLabel();

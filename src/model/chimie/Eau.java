@@ -322,7 +322,7 @@ public class Eau implements Runnable {
     }
 
 
-/** 
+    /** 
      * @return float
      *         Retourne la valeur du score pour le PH qui cotribue pour (24/100) du score de l'eau
      */
