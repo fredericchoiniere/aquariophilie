@@ -537,6 +537,7 @@ public class GUIMain extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Temps.pause();
+                
                 System.out.println("jour " + jours);
                 pause_label.setVisible(false);
                 reprendre_label.setVisible(true);
