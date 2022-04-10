@@ -1,3 +1,5 @@
+// Frédéric Choinière, Jérémie Caron    itération 2
+
 package model.poissons;
 
 import javax.swing.JLabel;
@@ -77,7 +79,7 @@ public class Poisson extends JPanel {
         return img;
     }
 
-    public static void updateToolTip(JLabel label, String type){
+    public static void updateToolTip(JLabel label, String type){ // TODO: ajouter déchets
         switch (type) {
             case "rouge":
                 label.setToolTipText("Type: Poisson rouge" + "\nSanté: " + sante);

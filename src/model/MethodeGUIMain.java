@@ -1,3 +1,5 @@
+//Jérémie Caron,                    Frédéric Choinière    itération 2
+
 package model;
 
 import javax.swing.JLabel;
@@ -13,16 +15,14 @@ import model.poissons.PoissonRouge;
 import model.poissons.PoissonTetra;
 import view.GUIMain;
 import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 
 public class MethodeGUIMain {
 
     Aquarium aquarium;
     Inventaire inventaire;
+    static Boolean hasPlants = false;
 
     public static void checkRectanglesDeco(Rectangle rectangle, JLabel label, Icon icone, JLabel label2,
             String emplacement,
@@ -80,8 +80,7 @@ public class MethodeGUIMain {
         }
     }
 
-    public static void checkRectanglesPoiFilet(Rectangle rectangle, JLabel label1, Icon icone, // TODO changer pour un
-                                                                                               // bouton
+    public static void checkRectanglesPoiFilet(Rectangle rectangle, JLabel label1, Icon icone, 
             boolean hasFish, String hasFishString, int index, String aqua) {
         if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
                 && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
@@ -105,8 +104,7 @@ public class MethodeGUIMain {
         }
     }
 
-    public static void checkRectanglesDecoCis(Rectangle rectangle, JLabel label1, Icon icone, // TODO changer pour un
-                                                                                              // bouton
+    public static void checkRectanglesDecoCis(Rectangle rectangle, JLabel label1, Icon icone, 
             boolean hasPlant, String hasPlantString, int index, String plant) {
         if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
                 && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
@@ -125,7 +123,7 @@ public class MethodeGUIMain {
                 checkPlantType(plant);
                 // }
             } else {
-                System.out.println("à deja pas de poisson");
+                // System.out.println("à deja pas de poisson");
             }
         }
     }
@@ -152,6 +150,7 @@ public class MethodeGUIMain {
         GUIMain.poisson_tetra.index = setIndexPoi(index);
         GUIMain.tpoisson_tetra = new Thread(GUIMain.poisson_tetra);
         Argent.poi3 += 2;
+        GUIMain.eau.potentielDechets += PoissonTetra.dechets;
         GUIMain.tpoisson_tetra.start();
         GUIMain.panelAqua.add(GUIMain.poisson_tetra);
         setAquaName(index, "tetra");
@@ -164,6 +163,7 @@ public class MethodeGUIMain {
         GUIMain.poisson_betta.index = setIndexPoi(index);
         GUIMain.tpoisson_betta = new Thread(GUIMain.poisson_betta);
         Argent.poi2 += 3;
+        GUIMain.eau.potentielDechets += PoissonBetta.dechets;
         GUIMain.tpoisson_betta.start();
         GUIMain.panelAqua.add(GUIMain.poisson_betta);
         setAquaName(index, "betta");
@@ -178,6 +178,7 @@ public class MethodeGUIMain {
         GUIMain.poisson_rouge.index = setIndexPoi(index);
         GUIMain.tpoisson_rouge = new Thread(GUIMain.poisson_rouge);
         Argent.poi1 += 1;
+        GUIMain.eau.potentielDechets += PoissonRouge.dechets;
         GUIMain.tpoisson_rouge.start();
         GUIMain.panelAqua.add(GUIMain.poisson_rouge);
         setAquaName(index, "rouge");
@@ -384,7 +385,7 @@ public class MethodeGUIMain {
         return index;
     }
 
-    public static void setEmplaToFish(String emplacement, String poi, JLabel label1, int index) { // TODO: à revoir
+    public static void setEmplaToFish(String emplacement, String poi, JLabel label1, int index) {
         // impérativement
 
         switch (poi) {
@@ -402,7 +403,7 @@ public class MethodeGUIMain {
         }
     }
 
-    public static void setEmplaToPlant(String emplacement, String poi, int indexInv, int indexAqua) { // TODO: à revoir
+    public static void setEmplaToPlant(String emplacement, String poi, int indexInv, int indexAqua) {
         // impérativement
 
         switch (poi) {
@@ -410,16 +411,25 @@ public class MethodeGUIMain {
                 GUIMain.listePlantesAqua.set(indexAqua, GUIMain.listePlantesInv.get(indexInv));
                 // System.out.println("blue");
                 Argent.emp1 += 2;
+                GUIMain.eau.sommeAbsorptionNitrates += BlueBlue.absorptionNitrates;
+                GUIMain.eau.sommeAbsorptionDechets += BlueBlue.absorptionDechets;
+
                 break;
             case "java":
                 GUIMain.listePlantesAqua.set(indexAqua, GUIMain.listePlantesInv.get(indexInv));
                 // System.out.println("java");
                 Argent.emp2 += 5;
+                GUIMain.eau.sommeAbsorptionNitrates += JavaFern.absorptionNitrates;
+                GUIMain.eau.sommeAbsorptionDechets += JavaFern.absorptionDechets;
+
                 break;
             case "scarlet":
                 GUIMain.listePlantesAqua.set(indexAqua, GUIMain.listePlantesInv.get(indexInv));
                 // System.out.println("scarlet");
                 Argent.emp3 += 10;
+                GUIMain.eau.sommeAbsorptionNitrates += ScarletRot.absorptionNitrates;
+                GUIMain.eau.sommeAbsorptionDechets += ScarletRot.absorptionDechets;
+
                 break;
             default:
                 break;
@@ -431,14 +441,17 @@ public class MethodeGUIMain {
             case "rouge":
                 Argent.poi1 -= 1;
                 Argent.argent += PoissonRouge.prix / 2;
+                GUIMain.eau.potentielDechets -= PoissonRouge.dechets;
                 break;
             case "betta":
                 Argent.poi2 -= 3;
                 Argent.argent += PoissonBetta.prix / 2;
+                GUIMain.eau.potentielDechets -= PoissonBetta.dechets;
                 break;
             case "tetra":
                 Argent.poi3 -= 2;
                 Argent.argent += PoissonTetra.prix / 2;
+                GUIMain.eau.potentielDechets -= PoissonTetra.dechets;
                 break;
             default:
                 break;
@@ -450,15 +463,20 @@ public class MethodeGUIMain {
             case "blue":
                 Argent.emp1 -= 2;
                 Argent.argent += BlueBlue.prix / 2;
+                GUIMain.eau.sommeAbsorptionNitrates -= BlueBlue.absorptionNitrates;
+                GUIMain.eau.sommeAbsorptionDechets -= BlueBlue.absorptionDechets;
                 break;
             case "java":
                 Argent.emp2 -= 5;
                 Argent.argent += JavaFern.prix / 2;
+                GUIMain.eau.sommeAbsorptionNitrates -= JavaFern.absorptionNitrates;
+                GUIMain.eau.sommeAbsorptionDechets -= JavaFern.absorptionDechets;
                 break;
-
             case "scarlet":
                 Argent.emp3 -= 10;
                 Argent.argent += ScarletRot.prix / 2;
+                GUIMain.eau.sommeAbsorptionNitrates -= ScarletRot.absorptionNitrates;
+                GUIMain.eau.sommeAbsorptionDechets -= ScarletRot.absorptionDechets;
                 break;
             default:
                 break;
@@ -505,5 +523,15 @@ public class MethodeGUIMain {
             default:
                 break;
         }
+    }
+
+    public static Boolean hasPlants(){
+        if(!GUIMain.hasPlant1 && !GUIMain.hasPlant2 && !GUIMain.hasPlant3){
+            hasPlants = false;
+        }
+        else
+            hasPlants = true;
+        System.out.println("hasplants: " + hasPlants);
+        return hasPlants;
     }
 }

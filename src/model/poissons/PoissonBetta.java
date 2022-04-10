@@ -1,3 +1,5 @@
+//Jérémie Caron, Frédéric Choinière     itération 2
+
 package model.poissons;
 
 import java.awt.*;
@@ -8,6 +10,8 @@ public class PoissonBetta extends Poisson implements Runnable {
     public int vel_x = 1;
     public int vel_y = 1;
     public static int prix = 500;
+
+    public static int dechets = 4;
 
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_betta/poisson_droite.png");

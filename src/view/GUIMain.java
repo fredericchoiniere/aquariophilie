@@ -1,5 +1,6 @@
 
 //Jérémie Caron, Frédéric Choinière     itération 1
+//Jérémie Caron, Frédéric Choinière     itération 2
 //Classe d'affichage principale
 
 package view;
@@ -24,22 +25,21 @@ import model.item.outils.Shop;
 import model.jeu.Aquarium;
 import model.jeu.Argent;
 import model.jeu.Inventaire;
-import model.plantes.BlueBlue;
-import model.plantes.JavaFern;
+
 import model.plantes.Plante;
-import model.plantes.ScarletRot;
+
 import model.poissons.*;
 import view.tabs.*;
 
-public class GUIMain extends JFrame{
+public class GUIMain extends JFrame {
 
     // appel des attributs de la classe GUIMain
     public static PanelAqua panelAqua;
     public static PanelTest panelTest;
     JTabbedPane tabbedPane;
-    JButton pousser, rapetisser;
+    JButton passer_journée;
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, eau_label, inventaire_ouvert,
-            inventaire_fermer, inventaire_bg, filet_label;
+            inventaire_fermer, inventaire_bg, filet_label, pause_label, reprendre_label;
     public static JLabel shop_label;
     JLabel hamis;
     JLabel ciseau_label;
@@ -84,7 +84,7 @@ public class GUIMain extends JFrame{
     public static Thread tpoisson_rouge;
     public static Thread tpoisson_betta;
     public static Thread tpoisson_tetra;
-    //Thread GUIMainThread = new Thread(this);
+    // Thread GUIMainThread = new Thread(this);
     Thread threadEau;
     Thread tCycleInitial;
     Thread tPanelInfo;
@@ -186,7 +186,7 @@ public class GUIMain extends JFrame{
         Dimension size_shop = new Dimension(300, 200); // prend la dimension de la photo
         shop_label.setBounds(700, 505, size_shop.width, size_shop.height);
         shop_label.setVisible(false);
-        panelAqua.add(shop_label);
+        // panelAqua.add(shop_label);
 
         // ajout de l'icone de notre kit ouvert
         aquarium_kit_ouvert = new JLabel();
@@ -219,6 +219,21 @@ public class GUIMain extends JFrame{
         inventaire_fermer.setVisible(true);
         panelAqua.add(inventaire_fermer);
 
+        // ajout du label pour icones de l'inventaire
+        pause_label = new JLabel();
+        pause_label.setIcon(new ImageIcon("res/background/pause.png"));
+        pause_label.setBounds(865, 5, 30, 30);
+        pause_label.setToolTipText("Ouvre l'inventaire");
+        pause_label.setVisible(true);
+        panelAqua.add(pause_label);
+
+        reprendre_label = new JLabel();
+        reprendre_label.setIcon(new ImageIcon("res/background/backward.png"));
+        reprendre_label.setBounds(915, 5, 30, 30);
+        reprendre_label.setToolTipText("Ouvre l'inventaire");
+        reprendre_label.setVisible(true);
+        panelAqua.add(reprendre_label);
+
         // ajout de l'inventaire au panel aqua
         inventaire_bg = new JLabel();
         inventaire_bg.setIcon(new ImageIcon("res/background/inventaire.png"));
@@ -246,7 +261,7 @@ public class GUIMain extends JFrame{
 
         label_argent_aqua.setBounds(475, 10, 100, 50);
         label_argent_aqua.setFont(new Font("Verdana", Font.BOLD, 16));
-        label_argent_aqua.setText("50 ₴");
+        label_argent_aqua.setText(Argent.montant + "₴");
         label_argent_aqua.setVisible(true);
         panelAqua.add(label_argent_aqua);
 
@@ -325,9 +340,7 @@ public class GUIMain extends JFrame{
                 aquarium_kit_fermer.setVisible(true);
                 panelTest.setVisible(false);
                 empty.setVisible(false);
-                lblPipette.setVisible(true);
-                inventaire_fermer.setVisible(true);
-                label_argent_aqua.setVisible(true);
+                setOutilsVisible();
             }
         });
 
@@ -340,11 +353,7 @@ public class GUIMain extends JFrame{
                 aquarium_kit_ouvert.setVisible(true);
                 empty.setVisible(true);
                 panelTest.setVisible(true);
-                lblPipette.setVisible(false);
-                inventaire_ouvert.setVisible(false);
-                inventaire_fermer.setVisible(false);
-                inventaire_bg.setVisible(false);
-                label_argent_aqua.setVisible(false);
+                setOutilsInvisible();
                 // tpoisson_betta.interrupt();
             }
         });
@@ -464,9 +473,7 @@ public class GUIMain extends JFrame{
                     empty.setVisible(false);
                     lblPipette.setVisible(true);
                     aquarium_kit_ouvert.setVisible(false);
-                    aquarium_kit_fermer.setVisible(true);
-                    inventaire_fermer.setVisible(true);
-                    label_argent_aqua.setVisible(true);
+                    setOutilsVisible();
 
                 }
             }
@@ -499,6 +506,23 @@ public class GUIMain extends JFrame{
                 inventaire_bg.setVisible(true);
                 inventaire.setVisible(true);
                 hamis.setVisible(false);
+            }
+        });
+
+        // actionlistener pour le temps
+        pause_label.addMouseListener(new MouseAdapter() { // TODO: à revoir
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Temps.pause();
+                System.out.println("jour " + jours);
+            }
+        });
+
+        reprendre_label.addMouseListener(new MouseAdapter() { // TODO: à revoir
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Temps.reprendre();
+                System.out.println("jour " + jours);
             }
         });
 
@@ -541,8 +565,6 @@ public class GUIMain extends JFrame{
         aqua4 = "";
         aqua5 = "";
         aqua6 = "";
-
-        
 
         // ---------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -933,7 +955,7 @@ public class GUIMain extends JFrame{
             }
         });
 
-        //GUIMainThread.start();
+        // GUIMainThread.start();
         threadEau.start();
         tCycleInitial.start();
 
@@ -1028,6 +1050,28 @@ public class GUIMain extends JFrame{
         aquarium.emp3.setVisible(false);
     }
 
+    public void setOutilsVisible() {
+        lblPipette.setVisible(true);
+        aquarium_kit_fermer.setVisible(true);
+        inventaire_fermer.setVisible(true);
+        label_argent_aqua.setVisible(true);
+        ciseau_label.setVisible(true);
+        filet_label.setVisible(true);
+        pause_label.setVisible(true);
+        reprendre_label.setVisible(true);
+    }
+
+    public void setOutilsInvisible() {
+        lblPipette.setVisible(false);
+        inventaire_ouvert.setVisible(false);
+        inventaire_fermer.setVisible(false);
+        inventaire_bg.setVisible(false);
+        label_argent_aqua.setVisible(false);
+        ciseau_label.setVisible(false);
+        filet_label.setVisible(false);
+        pause_label.setVisible(false);
+        reprendre_label.setVisible(false);
+    }
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------
 

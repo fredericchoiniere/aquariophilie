@@ -1,4 +1,5 @@
 // Frédéric Choinière, Justin Plouffe   itération 1
+// Frédéric Choinière   itération 2
 // Classe qui contrôle les paramètres d'eau
 
 package model.chimie;
@@ -7,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
 import view.GUIMain;
+import model.MethodeGUIMain;
 import model.environnement.Temps;
-import model.plantes.Plante;
 
 public class Eau implements Runnable {
 
@@ -28,7 +29,9 @@ public class Eau implements Runnable {
     private float scoreNitrites;
     private float scoreNitrates;
     private float penteNitrites = 0;
-    public int sommeAbsorption = 0;
+    public float sommeAbsorptionNitrates = 0; // score global des plantes
+    public int sommeAbsorptionDechets = 0; 
+    public int potentielDechets = 0, sommeDechets = 0; 
 
     public final float volumeEau = (float) 37.85;
     public float nitrites = 0; // Doit etre 0, maximum 5mg par litre
@@ -182,17 +185,22 @@ public class Eau implements Runnable {
         return this.nitrites;
     }
 
-    public int sommeAbsorption(){ // TODO: à tester 
-        sommeAbsorption = 0;
-
-        for (Plante plante : GUIMain.listePlantesAqua){ // TODO: à planifier sur papier
-            sommeAbsorption += plante.absorption;
+    public void absorption(){ // absorber nitrates
+        sommeDechets -= sommeAbsorptionDechets;
+        nitrates -= sommeAbsorptionNitrates; 
+        if (sommeAbsorptionNitrates != 0) {     // TODO: à paufiner et éviter les négatifs
+            sommeAbsorptionNitrates += 0.14;
+            if(!MethodeGUIMain.hasPlants()){
+                sommeAbsorptionNitrates = 0;
+            }
         }
 
-        
-
-        return sommeAbsorption;
     }
+
+    public void accumulerDechets(){
+        sommeDechets += potentielDechets;
+    }
+
 
     /** 
      * @return float
@@ -359,16 +367,13 @@ public class Eau implements Runnable {
         }
         return scoreNitrates;
     }
-
-    
-
     
     /** 
      * Méthode run de la classe Eau
      * Incomplète pour l'instant
      */
     @Override
-    public void run() {
+    public void run() { // TODO: faire shush quand pause
         penteNitrites = nitrites;
         while (true) {
             jours = GUIMain.jours;
@@ -379,8 +384,10 @@ public class Eau implements Runnable {
                 sommeNitrites();
                 if (penteNitrites > nitrites) {
                     comportNitrates();
-                    nitrates -= sommeAbsorption();
-                    System.out.println("nitrates: " + nitrates + " absorption: " + sommeAbsorption());
+                    accumulerDechets();
+                    absorption();
+                    System.out.println("nitrates: " + nitrates + " absorption nit: " + sommeAbsorptionNitrates +
+                     " abs déchets: " + sommeAbsorptionDechets + " somme déchets: " + sommeDechets);
                     GUIMain.actionEnCours = "Cycle nitrates";
                     if (nitrites != 0.0)
                         penteNitrites = nitrites;

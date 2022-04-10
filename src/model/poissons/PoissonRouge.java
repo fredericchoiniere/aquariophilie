@@ -1,8 +1,8 @@
+//Jérémie Caron, Frédéric Choinière     itération 2
+
 package model.poissons;
 
 import java.awt.*;
-
-import model.jeu.Aquarium;
 
 public class PoissonRouge extends Poisson implements Runnable {
     int x = 10;
@@ -15,6 +15,8 @@ public class PoissonRouge extends Poisson implements Runnable {
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_droite.png");
     Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_gauche.png");
     static Image empty = Toolkit.getDefaultToolkit().getImage("res/poissons/empty.png");
+
+    public static int dechets = 5;
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

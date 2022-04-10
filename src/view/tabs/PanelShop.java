@@ -1,4 +1,5 @@
 //Jérémie Caron     itération 1
+//Jérémie Caron, Frédéric Choinière     itération 2
 //Classe pour l'affichage du magasin, pour itération 2
 
 package view.tabs;
@@ -26,14 +27,13 @@ public class PanelShop extends JPanel implements ActionListener {
     Dimension shop_dimension = new Dimension(80, 80);
 
     public PanelShop() { // Panel pour créer le magasin
-        // TODO changer les labels pour des boutons
         setLayout(null);
 
         poisson_rouge = new JButton();
         poisson_rouge.setIcon(new ImageIcon("res/poissons/poisson_rouge/in_bag.png"));
         poisson_rouge.setBounds(85, 230, shop_dimension.width, shop_dimension.height);
-        poisson_rouge.setOpaque(true);
-
+        //poisson_rouge.setOpaque(true);
+        poisson_rouge.setToolTipText("Prix: " + PoissonRouge.prix + "₴");
         poisson_rouge.addActionListener(this);
 
         add(poisson_rouge);
@@ -41,35 +41,35 @@ public class PanelShop extends JPanel implements ActionListener {
         poisson_betta = new JButton();
         poisson_betta.setIcon(new ImageIcon("res/poissons/poisson_betta/in_bag.png"));
         poisson_betta.setBounds(185, 230, shop_dimension.width, shop_dimension.height);
-        poisson_betta.setVisible(true);
+        poisson_betta.setToolTipText("Prix: " + PoissonBetta.prix + "₴");
         poisson_betta.addActionListener(this);
         add(poisson_betta);
 
         poisson_tetra = new JButton();
         poisson_tetra.setIcon(new ImageIcon("res/poissons/poisson_tetra/in_bag.png"));
         poisson_tetra.setBounds(285, 230, shop_dimension.width, shop_dimension.height);
-        poisson_tetra.setVisible(true);
+        poisson_tetra.setToolTipText("Prix: " + PoissonTetra.prix + "₴");
         poisson_tetra.addActionListener(this);
         add(poisson_tetra);
 
         planteBlue = new JButton();
         planteBlue.setIcon(BlueBlue.icon);
         planteBlue.setBounds(85, 390, shop_dimension.width, shop_dimension.height);
-        planteBlue.setVisible(true);
+        planteBlue.setToolTipText("Prix: " + BlueBlue.prix + "₴");
         planteBlue.addActionListener(this);
         add(planteBlue);
 
         planteFern = new JButton();
         planteFern.setIcon(JavaFern.icon);
         planteFern.setBounds(185, 390, shop_dimension.width, shop_dimension.height);
-        planteFern.setVisible(true);
+        planteFern.setToolTipText("Prix: " + JavaFern.prix + "₴");
         planteFern.addActionListener(this);
         add(planteFern);
 
         planteScarlet = new JButton();
         planteScarlet.setIcon(ScarletRot.icon);
         planteScarlet.setBounds(285, 390, shop_dimension.width, shop_dimension.height);
-        planteScarlet.setVisible(true);
+        planteScarlet.setToolTipText("Prix: " + ScarletRot.prix + "₴");
         planteScarlet.addActionListener(this);
         add(planteScarlet);
 
