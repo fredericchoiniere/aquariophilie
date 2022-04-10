@@ -186,7 +186,7 @@ public class Eau implements Runnable {
 
     public void absorption(){ // absorber nitrates
         sommeDechets -= sommeAbsorptionDechets;
-        nitrates -= sommeAbsorptionNitrates; // TODO: faire évoluer absorption proportionnelement à évolution nitrates (+0.14 à chq jour)
+        nitrates -= sommeAbsorptionNitrates; 
         if (sommeAbsorptionNitrates != 0) {     // TODO: à paufiner et éviter les négatifs
             sommeAbsorptionNitrates += 0.14;
             if(!MethodeGUIMain.hasPlants()){
@@ -387,7 +387,7 @@ public class Eau implements Runnable {
      * Incomplète pour l'instant
      */
     @Override
-    public void run() {
+    public void run() { // TODO: faire shush quand pause
         penteNitrites = nitrites;
         while (true) {
             jours = GUIMain.jours;
