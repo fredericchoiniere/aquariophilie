@@ -185,7 +185,7 @@ public class GUIMain extends JFrame {
         Dimension size_shop = new Dimension(300, 200); // prend la dimension de la photo
         shop_label.setBounds(700, 505, size_shop.width, size_shop.height);
         shop_label.setVisible(false);
-        //panelAqua.add(shop_label);
+        // panelAqua.add(shop_label);
 
         // ajout de l'icone de notre kit ouvert
         aquarium_kit_ouvert = new JLabel();
@@ -519,8 +519,10 @@ public class GUIMain extends JFrame {
         pause_label.addMouseListener(new MouseAdapter() { // TODO: à revoir
             @Override
             public void mouseClicked(MouseEvent e) {
-                Temps.DUREE = 999999999;
-            }
+
+                 
+                } 
+            
         });
 
         forward_label.addMouseListener(new MouseAdapter() { // TODO: à revoir
