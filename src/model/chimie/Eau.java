@@ -14,6 +14,7 @@ import model.environnement.Temps;
 public class Eau implements Runnable {
 
     public static float ph = 7; // 0 à 14
+    public static int phInt = 7;
     public static float gh = 10; // Dureté de l'eau de 0 à 25+ (tolérée entre 5 et 15)
     public static float kh = 6; // Dureté de l'eau de 0 à 12+ (tolérée entre 4 et 8)
     public int nbAtomeN = 0;
@@ -65,6 +66,11 @@ public class Eau implements Runnable {
         return ph;
     }
 
+    public int getPHint(){
+        phInt = (int) ph;
+        return phInt;
+    }
+
     // Setter pour le ph
     public void setPH(float nouveauPH) {
         ph = nouveauPH;
@@ -95,30 +101,15 @@ public class Eau implements Runnable {
         return sommeAmmoniaque;
     }
 
-    /*// Setter pour le taux d'ammoniaque
-    public void setAmmoniaque(float nouveauAmmoniaque) {
-        sommeAmmoniaque = nouveauAmmoniaque;
-    }*/
-
     // Getter pour le taux de nitrites
     public float getNitrites() {
         return sommeNitrites;
     }
 
-    /*// Setter pour le taux de nitrites
-    public void setNitrites(float nouveauNitrites) {
-        sommeNitrites = nouveauNitrites;
-    }*/
-
     // Getter pour le taux de nitrates
     public float getNitrates() {
         return nitrates;
     }
-
-    /*// Setter pour le taux de nitrates
-    public void setNitrates(float nouveauNitrates) {
-        nitrates = nouveauNitrates;
-    }*/
 
     public void changerEau() {
         ph = 7; 
@@ -198,21 +189,22 @@ public class Eau implements Runnable {
         }
     }
 
-    public void variationPH(){
-        //phPreKH -= 0.15;  // Baisse du pH quotidienne
-        //phPreKH += sommeContributionPH;
+    public void variationPH(){ // TODO: à balancer
         if (kh < 4) {
             setPH(getPH()-(float)0.3);
-            setPH(getPH()+(float)(sommeContributionPH*0.3));
+            setPH(getPH()+(float)(sommeContributionPH*0.7));
         }
         if (kh >= 4 && kh <= 8) {
             setPH(getPH()-(float)0.15);
-            setPH(getPH()+(float)(sommeContributionPH*0.7));
+            setPH(getPH()+(float)(sommeContributionPH*0.5));
         }
-        if(kh > 8){
-            
+        if(kh > 8){ // ph varie moins, mais score non optimal car kh trop élevé
+            setPH(getPH()-(float)0.1);
+            setPH(getPH()+(float)(sommeContributionPH*0.3));
         }
     }
+
+
 
     public void accumulerDechets(){
         sommeDechets += potentielDechets;

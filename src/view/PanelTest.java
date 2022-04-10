@@ -159,7 +159,7 @@ public class PanelTest extends JPanel implements ActionListener {
                     GUIMain.pipette.enleverUneGoutte();
                     
 
-                    switch (GUIMain.eau.getPH()) {
+                    switch (GUIMain.eau.getPHint()) {
                         case 0: {
                             lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/0.png"));
                             lblOKPH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
@@ -236,6 +236,7 @@ public class PanelTest extends JPanel implements ActionListener {
                         }
                             break;
                         default:
+                            // TODO: message d'erreur
                             break;
                     }
                 }
