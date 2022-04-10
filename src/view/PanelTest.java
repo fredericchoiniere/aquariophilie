@@ -1,5 +1,5 @@
 // Frédéric Choinière, Jérémie Caron   itération 1
-//Justin Plouffe itération 2
+// Justin Plouffe itération 2
 
 package view;
 
