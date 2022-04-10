@@ -246,9 +246,7 @@ public class PanelTest extends JPanel implements ActionListener {
         lblSoluGH.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
                 if (GUIMain.pipette.getEstRemplie()) {
-
                     GUIMain.pipette.enleverUneGoutte();
                     
 
@@ -256,12 +254,10 @@ public class PanelTest extends JPanel implements ActionListener {
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/0.png"));
                         lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
                     }
-
                     else if (GUIMain.eau.getGH() >= 5 && GUIMain.eau.getGH() < 10) {
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/1.png"));
                         lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
                     }
-
                     else if (GUIMain.eau.getGH() >= 10 && GUIMain.eau.getGH() < 15) {
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/2.png"));
                         lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
@@ -272,7 +268,6 @@ public class PanelTest extends JPanel implements ActionListener {
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/4.png"));
                         lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
                     }
-
                 }
             }
         });
@@ -282,7 +277,6 @@ public class PanelTest extends JPanel implements ActionListener {
             public void mouseClicked(MouseEvent e) {
 
                 if (GUIMain.pipette.getEstRemplie()) {
-
                     GUIMain.pipette.enleverUneGoutte();
                     
 
@@ -347,9 +341,7 @@ public class PanelTest extends JPanel implements ActionListener {
         lblSoluNitrites.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
                 if (GUIMain.pipette.getEstRemplie()) {
-
                     GUIMain.pipette.enleverUneGoutte();
                     
 
@@ -379,9 +371,7 @@ public class PanelTest extends JPanel implements ActionListener {
         lblSoluNitrates.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
                 if (GUIMain.pipette.getEstRemplie()) {
-
                     GUIMain.pipette.enleverUneGoutte();
                     
 
