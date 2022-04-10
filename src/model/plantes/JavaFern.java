@@ -11,4 +11,5 @@ public class JavaFern extends Plante {
 
     public static int absorptionNitrates = 5; // pet cul
     public static int absorptionDechets = 5;
+    public static float contributionPH = (float) 0.1;
 }

@@ -10,6 +10,8 @@ public class ScarletRot extends Plante {
     public static int prix=1000;
     public static int absorptionNitrates = 8;
     public static int absorptionDechets = 8;
+    public static float contributionPH = (float) 0.3;
+
 
 
 }

@@ -77,6 +77,7 @@ public class MethodeGUIMain {
 
                 } catch (Exception e) {
                     System.out.println("erreur");
+                    e.printStackTrace();
                 }
             }
 
@@ -97,7 +98,7 @@ public class MethodeGUIMain {
 
                 GUIMain.listePoissonsAqua.get(index).direction = "empty";
                 GUIMain.listePoissonsAqua.get(index).var = false;
-                GUIMain.listePoissonsInv.set(index, GUIMain.poisson_default);
+                GUIMain.listePoissonsAqua.set(index, GUIMain.poisson_default);
                 checkFishType(aqua);
 
             } else {
@@ -175,8 +176,6 @@ public class MethodeGUIMain {
     public static void createPoissonRouge(String emplacement, JLabel label1, int index) { // passer de l'inventaire à
         // l'aquarium
         GUIMain.listePoissonsAqua.set(index, GUIMain.listePoissonsInv.get(getEmplaToInt(emplacement)));
-        System.out.println(emplacement + " " + index);
-        //System.out.println(GUIMain.listePoissonsAqua);
         GUIMain.poisson_rouge = (PoissonRouge) GUIMain.listePoissonsAqua.get(index);
         GUIMain.poisson_rouge.setBounds(340, 324, 322, 156);
         GUIMain.poisson_rouge.index = setIndexPoi(index);

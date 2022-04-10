@@ -10,6 +10,7 @@ public class BlueBlue extends Plante {
     public static int prix = 200;
     public static int absorptionNitrates = 3;
     public static int absorptionDechets = 3;
+    public static float contributionPH = (float) 0.05;
 
 
 }
