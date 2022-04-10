@@ -22,7 +22,7 @@ import model.item.outils.Filet;
 import model.item.outils.Pipette;
 import model.item.outils.Shop;
 import model.jeu.Aquarium;
-
+import model.jeu.Argent;
 import model.jeu.Inventaire;
 
 import model.plantes.Plante;
@@ -185,7 +185,7 @@ public class GUIMain extends JFrame {
         Dimension size_shop = new Dimension(300, 200); // prend la dimension de la photo
         shop_label.setBounds(700, 505, size_shop.width, size_shop.height);
         shop_label.setVisible(false);
-        panelAqua.add(shop_label);
+        //panelAqua.add(shop_label);
 
         // ajout de l'icone de notre kit ouvert
         aquarium_kit_ouvert = new JLabel();
@@ -267,7 +267,7 @@ public class GUIMain extends JFrame {
 
         label_argent_aqua.setBounds(475, 10, 100, 50);
         label_argent_aqua.setFont(new Font("Verdana", Font.BOLD, 16));
-        label_argent_aqua.setText("50 ₴");
+        label_argent_aqua.setText(Argent.montant + "₴");
         label_argent_aqua.setVisible(true);
         panelAqua.add(label_argent_aqua);
 
@@ -516,21 +516,21 @@ public class GUIMain extends JFrame {
         });
 
         // actionlistener pour le temps
-        pause_label.addMouseListener(new MouseAdapter() {
+        pause_label.addMouseListener(new MouseAdapter() { // TODO: à revoir
             @Override
             public void mouseClicked(MouseEvent e) {
                 Temps.DUREE = 999999999;
             }
         });
 
-        forward_label.addMouseListener(new MouseAdapter() {
+        forward_label.addMouseListener(new MouseAdapter() { // TODO: à revoir
             @Override
             public void mouseClicked(MouseEvent e) {
-                Temps.DUREE = 3000;
+                Temps.DUREE = 300;
             }
         });
 
-        backward_label.addMouseListener(new MouseAdapter() {
+        backward_label.addMouseListener(new MouseAdapter() { // TODO: à revoir
             @Override
             public void mouseClicked(MouseEvent e) {
                 Temps.DUREE = 1500;
