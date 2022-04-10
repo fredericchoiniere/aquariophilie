@@ -226,7 +226,7 @@ public class GUIMain extends JFrame {
         pause_label.setIcon(new ImageIcon("res/background/pause.png"));
         pause_label.setBounds(875, 5, 30, 30);
         pause_label.setToolTipText("Pause la progression du temps");
-        pause_label.setVisible(true);
+        pause_label.setVisible(false);
         panelAqua.add(pause_label);
 
         reprendre_label = new JLabel();
@@ -269,7 +269,7 @@ public class GUIMain extends JFrame {
 
         label_jours.setBounds(15, 0, 100, 50);
         label_jours.setFont(new Font("Verdana", Font.BOLD, 16));
-        label_jours.setText("J: " + 1);
+        label_jours.setText("J" + 1);
         label_jours.setVisible(true);
         panelAqua.add(label_jours);
 
@@ -364,6 +364,7 @@ public class GUIMain extends JFrame {
                 panelTest.setVisible(false);
                 empty.setVisible(false);
                 setOutilsVisible();
+                label_tutoriel.setVisible(false);
             }
         });
 
@@ -377,6 +378,7 @@ public class GUIMain extends JFrame {
                 empty.setVisible(true);
                 panelTest.setVisible(true);
                 setOutilsInvisible();
+                label_tutoriel.setVisible(false);
                 // tpoisson_betta.interrupt();
             }
         });
@@ -388,6 +390,7 @@ public class GUIMain extends JFrame {
             @Override
             public void mousePressed(MouseEvent e) {
                 pipette.changerEtatPanel(panelAqua);
+                label_tutoriel.setVisible(false);
             }
 
             @Override
@@ -410,6 +413,7 @@ public class GUIMain extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 hamis.setVisible(true);
+                label_tutoriel.setVisible(false);
             }
         });
 
@@ -421,6 +425,7 @@ public class GUIMain extends JFrame {
                 visibleBordersPoi();
                 aquaVisibleTrue();
                 empVisibleFalse();
+                label_tutoriel.setVisible(false);
 
             }
 
@@ -458,6 +463,7 @@ public class GUIMain extends JFrame {
             public void mousePressed(MouseEvent e) {
                 ciseau.changerCurseurPanel(panelAqua);
                 visibleBordersDeco();
+                label_tutoriel.setVisible(false);
                 // empVisibleFalse();
 
             }
@@ -497,6 +503,7 @@ public class GUIMain extends JFrame {
                     lblPipette.setVisible(true);
                     aquarium_kit_ouvert.setVisible(false);
                     setOutilsVisible();
+                    label_tutoriel.setVisible(false);
 
                 }
             }
@@ -515,6 +522,7 @@ public class GUIMain extends JFrame {
                 inventaire_fermer.setVisible(true);
                 inventaire_bg.setVisible(false);
                 inventaire.setVisible(false);
+                label_tutoriel.setVisible(false);
             }
         });
 
@@ -529,6 +537,7 @@ public class GUIMain extends JFrame {
                 inventaire_bg.setVisible(true);
                 inventaire.setVisible(true);
                 hamis.setVisible(false);
+                label_tutoriel.setVisible(false);
             }
         });
 
@@ -537,7 +546,7 @@ public class GUIMain extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Temps.pause();
-                
+
                 System.out.println("jour " + jours);
                 pause_label.setVisible(false);
                 reprendre_label.setVisible(true);
@@ -565,6 +574,14 @@ public class GUIMain extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 label_tutoriel.setVisible(true);
+                setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
+                        tetra_curseur.getImage(),
+                        new Point(0, 0), "curseur tétra"));
+                inventaire_ouvert.setVisible(false);
+                inventaire_fermer.setVisible(true);
+                inventaire_bg.setVisible(false);
+                inventaire.setVisible(false);
+                
             }
         });
 
@@ -1099,8 +1116,6 @@ public class GUIMain extends JFrame {
         label_argent_aqua.setVisible(true);
         ciseau_label.setVisible(true);
         filet_label.setVisible(true);
-        pause_label.setVisible(true);
-        reprendre_label.setVisible(true);
         label_information.setVisible(true);
     }
 
@@ -1112,8 +1127,6 @@ public class GUIMain extends JFrame {
         label_argent_aqua.setVisible(false);
         ciseau_label.setVisible(false);
         filet_label.setVisible(false);
-        pause_label.setVisible(false);
-        reprendre_label.setVisible(false);
         label_information.setVisible(false);
     }
 

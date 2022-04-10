@@ -53,6 +53,7 @@ public class MethodeGUIMain {
      *                  regarder si la souris est dans le rectangle lors du
      *                  lachement de la touche
      */
+
     public static void checkRectanglesPoi(Rectangle rectangle, JLabel label1, Icon icone, JLabel label2,
             String emplacement,
             boolean hasFish, String hasFishString, int index, String poi, String aqua) {
@@ -62,25 +63,27 @@ public class MethodeGUIMain {
                 && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
 
             if (hasFish == true) {
-                // System.out.println("emplacement déjà occupé");
+                 System.out.println("emplacement déjà occupé");
 
             } else {
-                setHasFish(hasFishString);
-                label1.setIcon(icone);
-                label2.setIcon(Inventaire.empty_inv);
-                setEmpla(emplacement);
-                setEmplaToFish(emplacement, poi, label1, index);
-                // setAquaName(poi, aqua);
+                try {
+                    setHasFish(hasFishString);
+                    label1.setIcon(icone);
+                    label2.setIcon(Inventaire.empty_inv);
+                    setEmpla(emplacement);
+                    //System.out.println(5);
+                    setEmplaToFish(emplacement, poi, label1, index);
+                    //System.out.println(6);
 
-                // createPoissonRouge(emplacement, label1, index);
-                // createPoissonBetta(emplacement, label1, index);
-                // System.out.println("hasFish = " + hasFish);
+                } catch (Exception e) {
+                    System.out.println("erreur");
+                }
             }
 
         }
     }
 
-    public static void checkRectanglesPoiFilet(Rectangle rectangle, JLabel label1, Icon icone, 
+    public static void checkRectanglesPoiFilet(Rectangle rectangle, JLabel label1, Icon icone,
             boolean hasFish, String hasFishString, int index, String aqua) {
         if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
                 && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
@@ -92,19 +95,18 @@ public class MethodeGUIMain {
                 label1.setIcon(icone);
                 // PanelShop.checkCase(Inventaire.img_inv_poi_rouge, "poisson", "rouge");
 
-                if (GUIMain.listePoissonsAqua.get(index).index == index) {
-                    GUIMain.listePoissonsAqua.get(index).direction = "empty";
-                    GUIMain.listePoissonsAqua.get(index).var = false;
-                    GUIMain.listePoissonsInv.set(index, GUIMain.poisson_default);
-                    checkFishType(aqua);
-                }
+                GUIMain.listePoissonsAqua.get(index).direction = "empty";
+                GUIMain.listePoissonsAqua.get(index).var = false;
+                GUIMain.listePoissonsInv.set(index, GUIMain.poisson_default);
+                checkFishType(aqua);
+
             } else {
                 System.out.println("à deja pas de poisson");
             }
         }
     }
 
-    public static void checkRectanglesDecoCis(Rectangle rectangle, JLabel label1, Icon icone, 
+    public static void checkRectanglesDecoCis(Rectangle rectangle, JLabel label1, Icon icone,
             boolean hasPlant, String hasPlantString, int index, String plant) {
         if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
                 && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
@@ -173,6 +175,8 @@ public class MethodeGUIMain {
     public static void createPoissonRouge(String emplacement, JLabel label1, int index) { // passer de l'inventaire à
         // l'aquarium
         GUIMain.listePoissonsAqua.set(index, GUIMain.listePoissonsInv.get(getEmplaToInt(emplacement)));
+        System.out.println(emplacement + " " + index);
+        //System.out.println(GUIMain.listePoissonsAqua);
         GUIMain.poisson_rouge = (PoissonRouge) GUIMain.listePoissonsAqua.get(index);
         GUIMain.poisson_rouge.setBounds(340, 324, 322, 156);
         GUIMain.poisson_rouge.index = setIndexPoi(index);
@@ -390,7 +394,9 @@ public class MethodeGUIMain {
 
         switch (poi) {
             case "rouge":
+           // System.out.println(1);
                 createPoissonRouge(emplacement, label1, index);
+                //System.out.println(1);
                 break;
             case "betta":
                 createPoissonBetta(emplacement, label1, index);
@@ -525,11 +531,10 @@ public class MethodeGUIMain {
         }
     }
 
-    public static Boolean hasPlants(){
-        if(!GUIMain.hasPlant1 && !GUIMain.hasPlant2 && !GUIMain.hasPlant3){
+    public static Boolean hasPlants() {
+        if (!GUIMain.hasPlant1 && !GUIMain.hasPlant2 && !GUIMain.hasPlant3) {
             hasPlants = false;
-        }
-        else
+        } else
             hasPlants = true;
         System.out.println("hasplants: " + hasPlants);
         return hasPlants;
