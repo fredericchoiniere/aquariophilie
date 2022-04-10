@@ -418,6 +418,7 @@ public class MethodeGUIMain {
                 Argent.emp1 += 2;
                 GUIMain.eau.sommeAbsorptionNitrates += BlueBlue.absorptionNitrates;
                 GUIMain.eau.sommeAbsorptionDechets += BlueBlue.absorptionDechets;
+                GUIMain.eau.sommeContributionPH += BlueBlue.contributionPH;
 
                 break;
             case "java":
@@ -426,6 +427,7 @@ public class MethodeGUIMain {
                 Argent.emp2 += 5;
                 GUIMain.eau.sommeAbsorptionNitrates += JavaFern.absorptionNitrates;
                 GUIMain.eau.sommeAbsorptionDechets += JavaFern.absorptionDechets;
+                GUIMain.eau.sommeContributionPH += JavaFern.contributionPH;
 
                 break;
             case "scarlet":
@@ -434,6 +436,7 @@ public class MethodeGUIMain {
                 Argent.emp3 += 10;
                 GUIMain.eau.sommeAbsorptionNitrates += ScarletRot.absorptionNitrates;
                 GUIMain.eau.sommeAbsorptionDechets += ScarletRot.absorptionDechets;
+                GUIMain.eau.sommeContributionPH += ScarletRot.contributionPH;
 
                 break;
             default:

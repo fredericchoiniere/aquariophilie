@@ -13,9 +13,9 @@ import model.environnement.Temps;
 
 public class Eau implements Runnable {
 
-    public static int ph = 7; // 0 à 14
-    public static int gh = 10; // Dureté de l'eau de 0 à 25+ (tolérée entre 5 et 15)
-    public static int kh = 6; // Dureté de l'eau de 0 à 12+ (tolérée entre 4 et 8)
+    public static float ph = 7; // 0 à 14
+    public static float gh = 10; // Dureté de l'eau de 0 à 25+ (tolérée entre 5 et 15)
+    public static float kh = 6; // Dureté de l'eau de 0 à 12+ (tolérée entre 4 et 8)
     public int nbAtomeN = 0;
     public int nbAtomeO = 2103;
     public int nbAtomeH = 4206;
@@ -32,6 +32,7 @@ public class Eau implements Runnable {
     public float sommeAbsorptionNitrates = 0; // score global des plantes
     public int sommeAbsorptionDechets = 0; 
     public int potentielDechets = 0, sommeDechets = 0; 
+    public float sommeContributionPH = 0;
 
     public final float volumeEau = (float) 37.85;
     public static float nitrites = 0; // Doit etre 0, maximum 5mg par litre
@@ -52,6 +53,7 @@ public class Eau implements Runnable {
     public ArrayList<Integer> listeAbsorption = new ArrayList<Integer>();
 
     public float jours = GUIMain.jours;
+    
 
     public Eau(){
         listeAmmoniaque.add(0, ammoniaque);
@@ -59,32 +61,32 @@ public class Eau implements Runnable {
     }
 
     // Getter pour le ph
-    public int getPH() {
+    public float getPH() {
         return ph;
     }
 
     // Setter pour le ph
-    public void setPH(int nouveauPH) {
+    public void setPH(float nouveauPH) {
         ph = nouveauPH;
     }
 
     // Getter pour le gh
-    public int getGH() {
+    public float getGH() {
         return gh;
     }
 
     // Setter pour le gh
-    public void setGH(int nouveauGH) {
+    public void setGH(float nouveauGH) {
         gh = nouveauGH;
     }
 
     // Getter pour le kh
-    public int getKH() {
+    public float getKH() {
         return kh;
     }
 
     // Setter pour le kh
-    public void setKH(int nouveauKH) {
+    public void setKH(float nouveauKH) {
         kh = nouveauKH;
     }
 
@@ -194,7 +196,22 @@ public class Eau implements Runnable {
                 sommeAbsorptionNitrates = 0;
             }
         }
+    }
 
+    public void variationPH(){
+        //phPreKH -= 0.15;  // Baisse du pH quotidienne
+        //phPreKH += sommeContributionPH;
+        if (kh < 4) {
+            setPH(getPH()-(float)0.3);
+            setPH(getPH()+(float)(sommeContributionPH*0.3));
+        }
+        if (kh >= 4 && kh <= 8) {
+            setPH(getPH()-(float)0.15);
+            setPH(getPH()+(float)(sommeContributionPH*0.7));
+        }
+        if(kh > 8){
+            
+        }
     }
 
     public void accumulerDechets(){
@@ -211,27 +228,6 @@ public class Eau implements Runnable {
         return nitrates;
     }
     
-    /** 
-     * @return flo
-     *         Dicte le comportement des nitrates selon une courbe
-     *//*
-    public int actualiserScoreEau() {
-        scoreEau = ();
-        return scoreEau;
-    }
-
-    public int evaporationEau() {
-        //set gh selon volume d'eau
-    }
-
-    scorePh
-    scoreGh
-    scoreKh
-    scoreAmmo
-    scoreNitrites
-    scoreNitrates
-{}
-    scoreEau*/
 
     public static void setScoreEau() {
         scoreEau = (int) (setScoreAmmo() + setScoreGH() + setScoreKH() + setScoreNitrates() + setScoreNitrites() + setScorePH());
@@ -325,7 +321,6 @@ public class Eau implements Runnable {
         }
         return scoreAmmo;
     }
-
 
     /** 
      * @return float

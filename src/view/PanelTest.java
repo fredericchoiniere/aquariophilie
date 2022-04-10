@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 import model.chimie.CycleAzote;
+import model.chimie.Eau;
 import model.chimie.Molecules;
 
 public class PanelTest extends JPanel implements ActionListener {
@@ -156,7 +157,7 @@ public class PanelTest extends JPanel implements ActionListener {
                 if (GUIMain.pipette.getEstRemplie()) {
 
                     GUIMain.pipette.enleverUneGoutte();
-                    ;
+                    
 
                     switch (GUIMain.eau.getPH()) {
                         case 0: {
@@ -234,6 +235,8 @@ public class PanelTest extends JPanel implements ActionListener {
                             lblOKPH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
                         }
                             break;
+                        default:
+                            break;
                     }
                 }
             }
@@ -247,7 +250,7 @@ public class PanelTest extends JPanel implements ActionListener {
                 if (GUIMain.pipette.getEstRemplie()) {
 
                     GUIMain.pipette.enleverUneGoutte();
-                    ;
+                    
 
                     if (GUIMain.eau.getGH() >= 0 && GUIMain.eau.getGH() < 5) {
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/0.png"));
@@ -281,7 +284,7 @@ public class PanelTest extends JPanel implements ActionListener {
                 if (GUIMain.pipette.getEstRemplie()) {
 
                     GUIMain.pipette.enleverUneGoutte();
-                    ;
+                    
 
                     if (GUIMain.eau.getKH() >= 0 && GUIMain.eau.getKH() < 2) {
                         lblSoluKH.setIcon(new ImageIcon("res/outils/gradation_solutions/kh/0.png"));
@@ -313,7 +316,7 @@ public class PanelTest extends JPanel implements ActionListener {
                 if (GUIMain.pipette.getEstRemplie()) {
 
                     GUIMain.pipette.enleverUneGoutte();
-                    ;
+                    
 
                     if (GUIMain.eau.getAmmoniaque() >= 0 && GUIMain.eau.getAmmoniaque() < 0.25) {
                         lblSoluAmmoniaque.setIcon(new ImageIcon("res/outils/gradation_solutions/ammoniaque/0.png"));
@@ -348,7 +351,7 @@ public class PanelTest extends JPanel implements ActionListener {
                 if (GUIMain.pipette.getEstRemplie()) {
 
                     GUIMain.pipette.enleverUneGoutte();
-                    ;
+                    
 
                     if (GUIMain.eau.getNitrites() >= 0 && GUIMain.eau.getNitrites() < 0.25) {
                         lblSoluNitrites.setIcon(new ImageIcon("res/outils/gradation_solutions/nitrites/0.png"));
@@ -380,7 +383,7 @@ public class PanelTest extends JPanel implements ActionListener {
                 if (GUIMain.pipette.getEstRemplie()) {
 
                     GUIMain.pipette.enleverUneGoutte();
-                    ;
+                    
 
                     if (GUIMain.eau.getNitrates() >= 0 && GUIMain.eau.getNitrates() < 5) {
                         lblSoluNitrates.setIcon(new ImageIcon("res/outils/gradation_solutions/nitrates/0.png"));
@@ -435,7 +438,7 @@ public class PanelTest extends JPanel implements ActionListener {
         layersPT.setLayer(lblNitrites, 2);
         layersPT.add(lblNitrites);
 
-        lblNitrates = new JLabel("Somme nitrates: " + GUIMain.eau.nitrates);
+        lblNitrates = new JLabel("Somme nitrates: " + Eau.nitrates);
         lblNitrites.setBounds(550, 480, 200, 25);
         layersPT.setLayer(lblNitrites, 2);
         layersPT.add(lblNitrates);
@@ -454,7 +457,7 @@ public class PanelTest extends JPanel implements ActionListener {
                                                                              // cycle.eau.listeAmmoniaque);
             lblNitrites.setText("Nitrites: " + GUIMain.eau.sommeNitrites()); // + " Liste NO2-: " +
                                                                              // cycle.eau.listeNitrites);
-            lblNitrates.setText("Nitrites: " + GUIMain.eau.nitrates);
+            lblNitrates.setText("Nitrites: " + Eau.nitrates);
         }
         if (e.getSource() == btnCycle) {
             cycle.eau.listeAmmoniaque.add((float) 0);
