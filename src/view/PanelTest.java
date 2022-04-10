@@ -243,22 +243,17 @@ public class PanelTest extends JPanel implements ActionListener {
         lblSoluGH.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
                 if (GUIMain.pipette.getEstRemplie()) {
-
                     GUIMain.pipette.enleverUneGoutte();
                     ;
-
                     if (GUIMain.eau.getGH() >= 0 && GUIMain.eau.getGH() < 5) {
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/0.png"));
                         lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
                     }
-
                     else if (GUIMain.eau.getGH() >= 5 && GUIMain.eau.getGH() < 10) {
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/1.png"));
                         lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
                     }
-
                     else if (GUIMain.eau.getGH() >= 10 && GUIMain.eau.getGH() < 15) {
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/2.png"));
                         lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
@@ -269,7 +264,6 @@ public class PanelTest extends JPanel implements ActionListener {
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/4.png"));
                         lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
                     }
-
                 }
             }
         });
@@ -279,10 +273,8 @@ public class PanelTest extends JPanel implements ActionListener {
             public void mouseClicked(MouseEvent e) {
 
                 if (GUIMain.pipette.getEstRemplie()) {
-
                     GUIMain.pipette.enleverUneGoutte();
                     ;
-
                     if (GUIMain.eau.getKH() >= 0 && GUIMain.eau.getKH() < 2) {
                         lblSoluKH.setIcon(new ImageIcon("res/outils/gradation_solutions/kh/0.png"));
                         lblOKKH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
@@ -314,7 +306,6 @@ public class PanelTest extends JPanel implements ActionListener {
 
                     GUIMain.pipette.enleverUneGoutte();
                     ;
-
                     if (GUIMain.eau.getAmmoniaque() >= 0 && GUIMain.eau.getAmmoniaque() < 0.25) {
                         lblSoluAmmoniaque.setIcon(new ImageIcon("res/outils/gradation_solutions/ammoniaque/0.png"));
                         lblOKAmmo.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
@@ -344,12 +335,9 @@ public class PanelTest extends JPanel implements ActionListener {
         lblSoluNitrites.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
                 if (GUIMain.pipette.getEstRemplie()) {
-
                     GUIMain.pipette.enleverUneGoutte();
                     ;
-
                     if (GUIMain.eau.getNitrites() >= 0 && GUIMain.eau.getNitrites() < 0.25) {
                         lblSoluNitrites.setIcon(new ImageIcon("res/outils/gradation_solutions/nitrites/0.png"));
                         lblOKNitrites.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
@@ -376,12 +364,9 @@ public class PanelTest extends JPanel implements ActionListener {
         lblSoluNitrates.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
                 if (GUIMain.pipette.getEstRemplie()) {
-
                     GUIMain.pipette.enleverUneGoutte();
                     ;
-
                     if (GUIMain.eau.getNitrates() >= 0 && GUIMain.eau.getNitrates() < 5) {
                         lblSoluNitrates.setIcon(new ImageIcon("res/outils/gradation_solutions/nitrates/0.png"));
                         lblOKNitrates.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
