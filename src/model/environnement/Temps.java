@@ -15,9 +15,9 @@ public class Temps {
 
     // Incrémente GUIMain.jours (timer global) au DUREE secondes 
 
-    public Temps() {
-        reprendre();
-    }
+    /* public Temps() {
+        //reprendre();
+    } */
 
     public static void pause(){
         journee.cancel();

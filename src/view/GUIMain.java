@@ -223,14 +223,14 @@ public class GUIMain extends JFrame {
         pause_label = new JLabel();
         pause_label.setIcon(new ImageIcon("res/background/pause.png"));
         pause_label.setBounds(865, 5, 30, 30);
-        pause_label.setToolTipText("Ouvre l'inventaire");
+        pause_label.setToolTipText("Pause la progression du temps");
         pause_label.setVisible(true);
         panelAqua.add(pause_label);
 
         reprendre_label = new JLabel();
         reprendre_label.setIcon(new ImageIcon("res/background/backward.png"));
         reprendre_label.setBounds(915, 5, 30, 30);
-        reprendre_label.setToolTipText("Ouvre l'inventaire");
+        reprendre_label.setToolTipText("Reprend la progression du temps");
         reprendre_label.setVisible(true);
         panelAqua.add(reprendre_label);
 
