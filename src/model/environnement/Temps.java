@@ -6,6 +6,7 @@ package model.environnement;
 
 import java.util.*;
 
+import model.chimie.Eau;
 import model.jeu.Argent;
 import view.GUIMain;
 
@@ -24,7 +25,7 @@ public class Temps {
     }
 
     public static void jourAJour(int jour){
-        GUIMain.label_jours.setText("J: " + Integer.toString(jour));
+        GUIMain.label_jours.setText("J" + Integer.toString(jour));
     }
 
     public static void reprendre(){
@@ -35,6 +36,7 @@ public class Temps {
                     GUIMain.jours++;
                     jourAJour((int) GUIMain.jours);
                     Argent.paye(GUIMain.label_argent_aqua, GUIMain.label_argent_shop);
+                    Eau.setScoreEau();
                     //System.out.println(GUIMain.aqua1+" "+GUIMain.aqua2+" "+GUIMain.aqua3+" "+GUIMain.aqua4+" "+GUIMain.aqua5+" "+GUIMain.aqua6);
                 }
         }, 0, DUREE);
