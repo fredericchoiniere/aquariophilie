@@ -11,7 +11,7 @@ public class CycleAzote implements Runnable {
 
     public float jourInitial = GUIMain.jours;
     public float jourFinal = jourInitial + 35;
-    public float jours = 0, tempAmmoniaque = 0, tempNitrites = 0;
+    public float jours = GUIMain.jours, tempAmmoniaque = 0, tempNitrites = 0;
     public Eau eau = GUIMain.eau;
 
     public String actionEnCours = "Aucune action initiale";
@@ -39,7 +39,7 @@ public class CycleAzote implements Runnable {
      */
     public void cycleNitrites(Eau eau) {
         eau.listeNitrites.remove(tempNitrites);
-        if (jours > 14 && jours < 35) {
+        if (jours >= 14 && jours <= 35) {
             tempNitrites = (float) (-3.56 * ((jours / 7) - 3.5) * ((jours / 7) - 3.5) + 8);
         } else {
             tempNitrites = 0;
@@ -51,8 +51,10 @@ public class CycleAzote implements Runnable {
     public void run() {
         while (true) {
 
-            if ((jours + jourInitial) < GUIMain.jours)
-                jours++;
+            /* if ((jours + jourInitial) < GUIMain.jours)
+                jours++; */
+
+            jours = GUIMain.jours;
 
             try {
                 if (jours >= 0 && jours <= 18) {

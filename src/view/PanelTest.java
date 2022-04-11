@@ -442,13 +442,13 @@ public class PanelTest extends JPanel implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == this.btnActu) {
+        if (e.getSource() == btnActu) {
             lblJour.setText("Jour " + GUIMain.jours);
-            lblAmmo.setText("Ammoniaque: " + GUIMain.eau.sommeAmmoniaque()); // + " Liste NH3: " +
+            lblAmmo.setText("Ammoniaque: " + GUIMain.eau.getAmmoniaque()); // + " Liste NH3: " +
                                                                              // cycle.eau.listeAmmoniaque);
-            lblNitrites.setText("Nitrites: " + GUIMain.eau.sommeNitrites()); // + " Liste NO2-: " +
+            lblNitrites.setText("Nitrites: " + GUIMain.eau.getNitrites()); // + " Liste NO2-: " +
                                                                              // cycle.eau.listeNitrites);
-            lblNitrates.setText("Nitrites: " + Eau.nitrates);
+            lblNitrates.setText("Nitrates: " + Eau.nitrates);
         }
         if (e.getSource() == btnCycle) {
             cycle.eau.listeAmmoniaque.add((float) 0);
