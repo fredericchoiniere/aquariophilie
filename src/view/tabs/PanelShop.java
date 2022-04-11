@@ -19,8 +19,9 @@ public class PanelShop extends JPanel implements ActionListener {
     static int i = 1;
     JButton poisson_rouge, poisson_betta, poisson_tetra, planteBlue, planteFern, planteScarlet;
     Dimension shop_dimension = new Dimension(80, 80);
+    JLabel label_tutoriel, label_information;
 
-    public PanelShop() { // Panel pour créer le magasin
+    public PanelShop() {
         setLayout(null);
 
         // ajout du bouton poisson rouge
@@ -83,13 +84,42 @@ public class PanelShop extends JPanel implements ActionListener {
         planteScarlet.addActionListener(this);
         add(planteScarlet);
 
+        // ajout du label pour le turoriel
+        label_tutoriel = new JLabel();
+        label_tutoriel.setBounds(0, 0, 1000, 700);
+        label_tutoriel.setIcon(new ImageIcon("res/background/tutoriel_shop.png"));
+        label_tutoriel.setVisible(true);
+        add(label_tutoriel);
+
+        // ajout du label pour information
+        label_information = new JLabel();
+        label_information.setBounds(965, 5, 30, 30);
+        label_information.setIcon(new ImageIcon("res/background/informations.png"));
+        label_information.setVisible(true);
+        add(label_information);
+
+        // actionlistener pour fermer le tutoriel
+        label_tutoriel.addMouseListener(new MouseAdapter() { 
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                label_tutoriel.setVisible(false);
+            }
+        });
+
+        // actionlistener pour ouvrir le tutoriel
+        label_information.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                label_tutoriel.setVisible(true);
+            }
+        });
     }
 
     /**
      * @param Graphics
      *                 méthode pour painturer le background du panel
      */
-    public void paintComponent(Graphics g) { 
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
         Image background = Toolkit.getDefaultToolkit().getImage("res/background/background_shop.png");
@@ -104,6 +134,7 @@ public class PanelShop extends JPanel implements ActionListener {
      * @param type
      * @param poisson
      * @param plante
+     * méthode pour voir dans quel emplacement de l'inventaire l'item sera placer
      */
     public static void checkCase(ImageIcon icon, String type, String poisson, String plante) {
         if (GUIMain.empla1 == "empty") {
@@ -192,17 +223,15 @@ public class PanelShop extends JPanel implements ActionListener {
     /**
      * @param typePoisson
      * @param index
-     * méthode voir voir quel poisson ajouter à l'inventaire
+     *                    méthode voir voir quel poisson ajouter à l'inventaire
      */
-    public static void checkFish(String typePoisson, int index) { // méthode pour vérifier si l'utilisateur a assez
-                                                                  // d'argent pour acheter un objet
+    public static void checkFish(String typePoisson, int index) { 
         switch (typePoisson) {
             case "rouge":
                 GUIMain.listePoissonsInv.set(index, new PoissonRouge());
                 GUIMain.listePoissonsInv.get(index).setName("rouge" + i);
                 i++;
                 break;
-
             case "betta":
                 GUIMain.listePoissonsInv.set(index, new PoissonBetta());
                 GUIMain.listePoissonsInv.get(index).setName("betta" + i);
@@ -221,6 +250,7 @@ public class PanelShop extends JPanel implements ActionListener {
     /**
      * @param typePlante
      * @param index
+     *                   méthode voir voir quel poisson ajouter à l'inventaire
      */
     public static void checkPlant(String typePlante, int index) {
         switch (typePlante) {
@@ -231,7 +261,6 @@ public class PanelShop extends JPanel implements ActionListener {
                 setName(index, typePlante);
                 i++;
                 break;
-
             case "blue":
                 GUIMain.listePlantesInv.set(index, new BlueBlue());
                 GUIMain.listePlantesInv.get(index).setName("blue" + i);
@@ -239,7 +268,6 @@ public class PanelShop extends JPanel implements ActionListener {
                 setName(index, typePlante);
                 i++;
                 break;
-
             case "scarlet":
                 GUIMain.listePlantesInv.set(index, new ScarletRot());
                 GUIMain.listePlantesInv.get(index).setName("scarlet" + i);
@@ -257,6 +285,7 @@ public class PanelShop extends JPanel implements ActionListener {
      * @param index
      * @param icon
      * @param typePlante
+     *                   méthode pour mettre l'icone dans l'inventaire selon l'index
      */
     public static void setLabel(int index, ImageIcon icon, String typePlante) {
         switch (index) {
@@ -292,6 +321,7 @@ public class PanelShop extends JPanel implements ActionListener {
     /**
      * @param index
      * @param typePlante
+     *                   méthode pour donner le bon nom à la bonne variable
      */
     public static void setName(int index, String typePlante) {
         switch (index) {
@@ -320,62 +350,57 @@ public class PanelShop extends JPanel implements ActionListener {
 
     /**
      * @param e
+     *          Action listener
      */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == poisson_rouge) {
+            label_tutoriel.setVisible(false);
             if (Magasin.gotMoney("rouge")) {
                 checkCase(Inventaire.img_inv_poi_rouge, "poisson", "rouge", "");
             } else {
                 System.out.println("Pas assez d'argent");
             }
         }
-
         if (e.getSource() == poisson_betta) {
+            label_tutoriel.setVisible(false);
             if (Magasin.gotMoney("betta")) {
                 checkCase(Inventaire.img_inv_betta, "poisson", "betta", "");
             } else {
                 System.out.println("pas assez d'argent");
             }
-
         }
-
         if (e.getSource() == poisson_tetra) {
+            label_tutoriel.setVisible(false);
             if (Magasin.gotMoney("tetra")) {
                 checkCase(Inventaire.img_inv_tetra, "poisson", "tetra", "");
             } else {
                 System.out.println("pas assez d'argent");
             }
-
         }
-
         if (e.getSource() == planteBlue) {
+            label_tutoriel.setVisible(false);
             if (Magasin.gotMoney("blue")) {
                 checkCase(Inventaire.img_inv_tetra, "decoration", "", "blue");
             } else {
                 System.out.println("pas assez d'argent");
             }
-
         }
-
         if (e.getSource() == planteFern) {
+            label_tutoriel.setVisible(false);
             if (Magasin.gotMoney("java")) {
                 checkCase(Inventaire.img_inv_tetra, "decoration", "", "java");
             } else {
                 System.out.println("pas assez d'argent");
             }
-
         }
-
         if (e.getSource() == planteScarlet) {
+            label_tutoriel.setVisible(false);
             if (Magasin.gotMoney("scarlet")) {
                 checkCase(Inventaire.img_inv_tetra, "decoration", "", "scarlet");
             } else {
                 System.out.println("pas assez d'argent");
             }
-
         }
-
     }
-
 }
