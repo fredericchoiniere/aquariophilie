@@ -169,7 +169,7 @@ public class Eau implements Runnable {
         sommeNitrites = 0;
         listeNitritesIteration.addAll(listeNitrites);
         for (Float valeur : listeNitritesIteration) {
-            if (!setNitrites.contains(valeur)) {
+            if (!setNitrites.contains(valeur)) { // TODO: fix problème de valeurs qui reviennent dans courbe, J25 à 30 + 34 sont à 0
                 setNitrites.add(valeur);
                 sommeNitrites += valeur;
             }
@@ -372,6 +372,12 @@ public class Eau implements Runnable {
             try {                   
                 sommeAmmoniaque();
                 sommeNitrites();
+
+                GUIMain.panelTest.lblJour.setText("Jour " + GUIMain.jours);
+                GUIMain.panelTest.lblAmmo.setText("Ammoniaque: " + GUIMain.eau.getAmmoniaque());
+                GUIMain.panelTest.lblNitrites.setText("Nitrites: " + GUIMain.eau.getNitrites());
+                GUIMain.panelTest.lblNitrates.setText("Nitrates: " + GUIMain.eau.getNitrates());
+
                 if (penteNitrites > nitrites) {
                     comportNitrates();
                     accumulerDechets();

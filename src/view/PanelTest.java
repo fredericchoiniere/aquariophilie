@@ -14,8 +14,19 @@ public class PanelTest extends JPanel implements ActionListener {
 
     CycleAzote cycle;
     JButton btnActu, btnCycle;
-    JLabel lblJour, lblAmmo, lblNitrites, lblNitrates, lblPH, lblGH, lblKH, lblOKAmmo, lblOKNitrites, lblOKNitrates,
-            lblOKPH, lblOKGH, lblOKKH;
+    public JLabel lblJour;
+    public JLabel lblAmmo;
+    public JLabel lblNitrites;
+    public JLabel lblNitrates;
+    JLabel lblPH;
+    JLabel lblGH;
+    JLabel lblKH;
+    JLabel lblOKAmmo;
+    JLabel lblOKNitrites;
+    JLabel lblOKNitrates;
+    JLabel lblOKPH;
+    JLabel lblOKGH;
+    JLabel lblOKKH;
     Thread cycle1;
     boolean isFocused;
     Molecules mol = new Molecules();
