@@ -9,10 +9,6 @@ import java.awt.*;
 import javax.swing.*;
 
 import model.poissons.Poisson;
-import model.poissons.PoissonRouge;
-import view.GUIMain;
-
-import java.awt.image.BufferedImage;
 
 public class Inventaire {
 

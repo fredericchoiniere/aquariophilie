@@ -169,7 +169,7 @@ public class Eau implements Runnable {
         sommeNitrites = 0;
         listeNitritesIteration.addAll(listeNitrites);
         for (Float valeur : listeNitritesIteration) {
-            if (!setNitrites.contains(valeur)) { // TODO: fix problème de valeurs qui reviennent dans courbe, J25 à 30 + 34 sont à 0
+            if (!setNitrites.contains(valeur)) { // TODO: fix problème de valeurs qui reviennent dans courbe, J25 à 30 + 34,35 sont à 0
                 setNitrites.add(valeur);
                 sommeNitrites += valeur;
             }

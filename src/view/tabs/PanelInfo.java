@@ -62,7 +62,7 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
         add(lblN, c);
 
         // lblAmmo = new JLabel("NH3: " + mol.ammoniaqueMgLtoMol() + " mols");
-        lblAmmo = new JLabel("NH3: " + mol.eau.ammoniaque + " au jour " + mol.eau.jours);
+        lblAmmo = new JLabel("NH3: " + mol.eau.getAmmoniaque() + " au jour " + mol.eau.jours);
         c.gridx = 2;
         // c.anchor = GridBagConstraints.NORTHWEST;
         add(lblAmmo, c);
