@@ -16,6 +16,7 @@ import java.awt.image.BufferedImage;
 
 public class Inventaire {
 
+        // attributs de la classe
         public static Emplacementinv emp1;
         public static Emplacementinv emp2;
         public static Emplacementinv emp3;
@@ -27,9 +28,7 @@ public class Inventaire {
 
         Poisson poisson_default = new Poisson();
 
-        
-
-
+        // création des images des poissons et des plantes
         ImageIcon img_aqua_poi_rouge = new ImageIcon("res/poissons/poisson_rouge/poisson_droite.png");
         public static ImageIcon img_inv_poi_rouge = new ImageIcon(
                         new ImageIcon("res/poissons/poisson_rouge/in_bag.png").getImage().getScaledInstance(80,
@@ -59,38 +58,37 @@ public class Inventaire {
 
         public Inventaire(JLabel label) {
 
-                // créer les emplacements dans l'inventaire
+                // ajout de l'emplacement 1
                 emp1 = new Emplacementinv();
                 emp1.setBounds(30, 30, (int) size_icone_inv.getWidth(), (int) size_icone_inv.getHeight());
-               /*  PoissonRouge poisson_rouge = new PoissonRouge();
-                GUIMain.listePoissonsInv.add(poisson_rouge); */
-
-               /*  GUIMain.listePoissonsInv.add(0, new PoissonRouge());
-                GUIMain.listePoissonsInv.get(0).setName("rouge" + 0); */
-
                 emp1.setIcon(empty_inv);
                 label.add(emp1);
 
+                // ajout de l'emplacement 2
                 emp2 = new Emplacementinv();
                 emp2.setBounds(140, 30, (int) size_icone_inv.getWidth(), (int) size_icone_inv.getHeight());
                 emp2.setIcon(empty_inv);
                 label.add(emp2);
 
+                // ajout de l'emplacement 3
                 emp3 = new Emplacementinv();
                 emp3.setBounds(30, 196, (int) size_icone_inv.getWidth(), (int) size_icone_inv.getHeight());
                 emp3.setIcon(empty_inv);
                 label.add(emp3);
 
+                // ajout de l'emplacement 4
                 emp4 = new Emplacementinv();
                 emp4.setBounds(140, 196, (int) size_icone_inv.getWidth(), (int) size_icone_inv.getHeight());
                 emp4.setIcon(empty_inv);
                 label.add(emp4);
 
+                // ajout de l'emplacement 5
                 emp5 = new Emplacementinv();
                 emp5.setBounds(30, 362, (int) size_icone_inv.getWidth(), (int) size_icone_inv.getHeight());
                 emp5.setIcon(empty_inv);
                 label.add(emp5);
 
+                // ajout de l'emplacement 6
                 emp6 = new Emplacementinv();
                 emp6.setBounds(140, 362, (int) size_icone_inv.getWidth(), (int) size_icone_inv.getHeight());
                 emp6.setIcon(empty_inv);

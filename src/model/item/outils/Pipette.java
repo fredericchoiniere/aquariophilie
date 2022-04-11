@@ -4,19 +4,18 @@
 package model.item.outils;
 
 import javax.swing.*;
+import java.awt.*;
 
 import view.GUIMain;
-import view.PanelTest;
-
-import java.awt.*;
 
 public class Pipette extends Outils {
 
+    // attributs de la classe
     ImageIcon curseur_vide, curseur_plein, icone_vide, icone_plein;
     public boolean est_remplie = false;
     public int nbGouttes = 0;
 
-    public Pipette() { // Création de l'objet pipette
+    public Pipette() {
         super();
         adapterNom();
         curseur_vide = new ImageIcon("res/icone_souris/pipe_vide.png");
@@ -25,42 +24,57 @@ public class Pipette extends Outils {
         icone_plein = new ImageIcon("res/outils/pipette_pleine.png");
     }
 
-    // Getter pour le statut de est_remplis
+    /**
+     * @return boolean
+     *         méthode qui permet de savoir si la pipette est remplie ou non
+     */
     public boolean getEstRemplie() {
         return est_remplie;
     }
 
-    // Setter pour le statut de est_remplis
+    /**
+     * @param proposition
+     *                    méthode qui permet de rendre le pipette remplie ou non
+     */
     public void setEstRemplie(boolean proposition) {
         this.est_remplie = proposition;
     }
 
-    // Getter pour le nombre de gouttes
+    /**
+     * @return int
+     *         méthode qui permet de savoir le nombre de gouttes dans la pipette
+     */
     public int getNbGouttes() {
         return nbGouttes;
     }
 
-    // Setter pour le nombre de gouttes
+    /**
+     * @param nouveauNbGouttes
+     *                         méthode qui permet de changer le nombre de gouttes
+     *                         dans la pipette
+     */
     public void setNbGouttes(int nouveauNbGouttes) {
         this.nbGouttes = nouveauNbGouttes;
-        if(nouveauNbGouttes == 0)
-            est_remplie=false;
+        if (nouveauNbGouttes == 0)
+            est_remplie = false;
     }
 
-    // Setter pour le nombre de gouttes
+    /**
+     * méthode pour enlever une goutte de la pipette
+     */
     public void enleverUneGoutte() {
         this.nbGouttes--;
-        if(nbGouttes == 0){
-            est_remplie=false;
+        if (nbGouttes == 0) {
+            est_remplie = false;
             changerEtatLabel(GUIMain.lblPipette);
             changerEtatPanel(GUIMain.panelTest);
             changerEtatPanel(GUIMain.panelAqua);
         }
     }
 
-    /** 
+    /**
      * @param label
-     *              Change l'état de la pipette
+     *              méthode pour changer l'état de la pipette
      */
     public void changerEtatLabel(JLabel label) {
         if (est_remplie) {
@@ -72,7 +86,7 @@ public class Pipette extends Outils {
 
     /**
      * @param panel
-     *              change l'état du panel
+     *              méthode pour changer l'état du panel
      */
     public void changerEtatPanel(JPanel panel) {
         if (est_remplie) {
@@ -85,5 +99,4 @@ public class Pipette extends Outils {
                     new Point(0, 0), "curseur vide"));
         }
     }
-
 }

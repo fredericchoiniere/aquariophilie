@@ -5,6 +5,8 @@ package model.poissons;
 import java.awt.*;
 
 public class PoissonRouge extends Poisson implements Runnable {
+
+    // attributs de la classe
     int x = 10;
     int y = 10;
     int vel_x = 1;
@@ -18,6 +20,10 @@ public class PoissonRouge extends Poisson implements Runnable {
 
     public static int dechets = 5;
 
+    /**
+     * @param g
+     *          méthode pour dessiner le poisson
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
@@ -26,6 +32,9 @@ public class PoissonRouge extends Poisson implements Runnable {
 
     }
 
+    /**
+     * méthode pour faire bouger le poisson
+     */
     public void deplacer() {
         this.x += getXVelocity();
         this.y += getYVelocity();
@@ -39,22 +48,20 @@ public class PoissonRouge extends Poisson implements Runnable {
 
     @Override
     public void run() {
-
         while (var) {
-            // System.out.println("run");
             if (this.x > 286) {
                 setXVelocity(-vel_x);
                 direction = "gauche";
             }
             if (this.x < 4) {
                 setXVelocity(1);
-                direction = "droite"; // ne marchait pas avec vel_y, je ne sais pas pourquoi
+                direction = "droite";
             }
             if (this.y > 120) {
                 setYVelocity(-vel_y);
             }
             if (this.y < 4) {
-                setYVelocity(1); // ne marchait pas avec vel_y, je ne sais pas pourquoi
+                setYVelocity(1);
             }
             deplacer();
         }

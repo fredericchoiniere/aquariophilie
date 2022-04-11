@@ -5,24 +5,25 @@ package model.poissons;
 import java.awt.*;
 
 public class PoissonTetra extends Poisson implements Runnable {
-    // Attributs : coordonn�es de la boule
+    // attributs de la classe
     int x = 160;
     int y = 60;
     int vel_x = 1;
     int vel_y = 1;
     public static int prix = 200;
-
     public static int dechets = 2;
 
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_tetra/poisson_droite.png");
     Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_tetra/poisson_gauche.png");
 
-    public PoissonTetra(){
+    public PoissonTetra() {
     }
 
-
-
+    /**
+     * @param g
+     *          méthode pour dessiner le poisson
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
@@ -30,6 +31,9 @@ public class PoissonTetra extends Poisson implements Runnable {
         g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, PoissonRouge.empty), x, y, this);
     }
 
+    /**
+     * méthode pour faire bouger le poisson
+     */
     public void deplacer() {
         this.x += getXVelocity();
         this.y += getYVelocity();
@@ -43,7 +47,6 @@ public class PoissonTetra extends Poisson implements Runnable {
 
     @Override
     public void run() {
-        // System.out.println("run");
         while (var) {
             if (this.x > 286) {
                 setXVelocity(-vel_x);
@@ -51,13 +54,13 @@ public class PoissonTetra extends Poisson implements Runnable {
             }
             if (this.x < 4) {
                 setXVelocity(1);
-                direction = "droite"; // ne marchait pas avec vel_y, je ne sais pas pourquoi
+                direction = "droite";
             }
             if (this.y > 120) {
                 setYVelocity(-vel_y);
             }
             if (this.y < 90) {
-                setYVelocity(1); // ne marchait pas avec vel_y, je ne sais pas pourquoi
+                setYVelocity(1);
             }
             deplacer();
         }

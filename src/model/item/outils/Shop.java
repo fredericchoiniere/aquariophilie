@@ -5,23 +5,22 @@ package model.item.outils;
 
 import javax.swing.*;
 
-import java.awt.*;
-
 public class Shop extends Outils {
 
-    ImageIcon icone_shop; // icone du shop
+    // attributs de la classe
+    ImageIcon icone_shop; 
 
-    public Shop() { // Création de l'objet filet
+    public Shop() { 
         super();
         adapterNom();
-
-        icone_shop = new ImageIcon("res/outils/shop.png"); // icone du filet
+        icone_shop = new ImageIcon("res/outils/shop.png"); 
     }
 
+    /** 
+     * @param label
+     *            méthode qui permet d'afficher l'image de l'outil 
+     */
     public void setIcon(JLabel label) {
         label.setIcon(icone_shop);
-    }
-
-
-       
+    }     
 }
