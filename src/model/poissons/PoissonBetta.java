@@ -58,7 +58,7 @@ public class PoissonBetta extends Poisson implements Runnable {
             if (y > 120) { // 120
                 setYVelocity(-vel_y);
             }
-            if (y < 4) {
+            if (y < getHauteur()) {
                 setYVelocity(1);
             }
             deplacer();

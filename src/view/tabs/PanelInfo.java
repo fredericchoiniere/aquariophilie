@@ -175,13 +175,3 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
 
 }
 
-/*
- * textArea = new JTextArea(20, 20);
- * textArea.setEditable(false);
- * textArea.setText("Peux être modifier dans PanelInfo.java");
- * scroll = new JScrollPane(textArea);
- * scroll.setPreferredSize(new Dimension(1000, 700));
- * 
- * 
- * add(scroll); // ajout du panel à la classe
- */

@@ -272,7 +272,7 @@ public class GUIMain extends JFrame {
         panelAqua.setVisible(true);
 
         // ajout des zones pour les action listener
-        rectEau = new Rectangle(330, 310, 344, 192);
+        rectEau = new Rectangle(330, 305, 344, 192);
         rectTest = new Rectangle(panelTest.getBounds());
         rectEmp1 = new Rectangle(358, 408, 80, 80);
         rectEmp2 = new Rectangle(464, 408, 80, 80);

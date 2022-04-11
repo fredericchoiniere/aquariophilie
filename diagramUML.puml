@@ -227,23 +227,62 @@ class PoissonTetra {
 
 class MethodeGUIMain {
     +Aquarium: aquarium
+    +Inventaire: inventaire
+    +boolean: hasPlant
+    +checkRectanglesDeco(rectangle, label, icone, labels2,
+    emplacement, hasPlant, hasPlantString, indexInv,
+    indexAqua, pla)
+    +checkRectanglesPoi(rectangle, label1, icone, label2,
+    emplacement, hasFish, hasFishString, index, poi,
+    aqua)
+    +checkRectanglesPoiFilet(rectangle, label1, icone, hasFish,
+    hasFishString, index, aqua)
+    +checkRectanglesDecoCiseau(rectangle, label1, icone, hasPlant,
+    hasPlantString, index, pla)
+    +createPoissonTetra(emplacement, label1, index), 
+    createPoissonRouge(emplacement, label1, index),
+    createPoissonBetta(emplacement, label1, index),
+    +aquaVisibleTrue(), aquaVisibleFalse(),
+    empVisibTrue(), empVisibFalse(),
+    +setEmpla(emplacement), getEmplaToInnt(emplacement)
+    +setHasFish(hasFish), setHasPlant(hasPlant), 
+    setHasFishFalse(hashFish), setHasPlantFalse(hasPlant)
+    +setIndexPoi(index1)
+    +setEmplaToFish(emplacement, poi, label1, index), 
+    setEmplaToPlant(emplacement, pla, label1, index)
+    +checkFishType(aqua), checkPlantType(plante)
+    +setAquaName(index, aqua), setPlantName(index, plant)
+    +hasPlant(), getEauDimensions(), setEauDimensions(dimension)
 }
 
 class PanelAqua {
     +PanelAqua(constructeur)
-    +paintComponent(Graphics)
-    +mouseListener()
+    +paintComponent()
 }
 
 class PanelInfo {
-    +JTextArea: textArea
-    +JScrollPane: scroll
+    +JLabel: lblAction, lblN, lblH, lblO,
+    lblAmmo, lblNit, lblNat, lblPH, lblGH,
+    lblKH
+    +DecimalFormat: df
+    Molecules: mol
+    +String: actionEnCours
     +PanelInfo(constructeur)
+    +setActionEnCours(), changerEtatBarre()
+    +run()
 }
 
 class PanelShop {
+    +int: i
+    +JButton: poisson_rouge, poisson_betta,
+    poisson_tetra, java_fern, blue_blue, scarlet_rot
+    + Dimension: shop_dimension
     +PanelShop(constructeur)
-    +paintComponent(Graphics)
+    +paintComponent()
+    +checkcase(icon, type, poisson, plante)
+    +checkFish(typePoisson, index), checkPlant(typePlante, index),
+    +setLabel(index, icon, typePlante)
+    +setName(index, typePlante)
 }
 
 class PanelTest {

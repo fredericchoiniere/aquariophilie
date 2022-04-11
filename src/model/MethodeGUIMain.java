@@ -33,8 +33,7 @@ public class MethodeGUIMain {
      *                       plante dans l'aquarium
      */
     public static void checkRectanglesDeco(Rectangle rectangle, JLabel label, Icon icone, JLabel label2,
-            String emplacement,
-            boolean hasPlant, String hasPlantString, int indexInv, int indexAqua, String pla) {
+            String emplacement, boolean hasPlant, String hasPlantString, int indexInv, int indexAqua, String pla) {
         try {
             if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
                     && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
@@ -64,8 +63,7 @@ public class MethodeGUIMain {
      *                  poisson dans l'aquarium
      */
     public static void checkRectanglesPoi(Rectangle rectangle, JLabel label1, Icon icone, JLabel label2,
-            String emplacement,
-            boolean hasFish, String hasFishString, int index, String poi, String aqua) {
+            String emplacement, boolean hasFish, String hasFishString, int index, String poi, String aqua) {
         try {
             if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
                     && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
@@ -151,22 +149,6 @@ public class MethodeGUIMain {
             }
         } catch (Exception e) {
             // do nothing
-        }
-    }
-
-    /**
-     * @param rectangle
-     * @param label1
-     * @param emplacement
-     *                    méthode pour remettre le label du shop en empty
-     */
-    public void checkRectanglesShop(Rectangle rectangle, JLabel label1, String emplacement) {
-        if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
-                && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
-                && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
-                && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
-            label1.setIcon(Inventaire.empty_inv);
-            setEmpla(emplacement);
         }
     }
 
@@ -639,7 +621,7 @@ public class MethodeGUIMain {
         return hasPlants;
     }
 
-    public Rectangle getEauDimensions(){
+    public static Rectangle getEauDimensions(){
         return GUIMain.rectEau;
     }
 

@@ -19,6 +19,7 @@ public class Poisson extends JPanel {
     public String direction = "droite";
     public boolean var = true;
     public String empInv, empAqua, nom;
+    int hauteur = Eau.hauteurEnPixels, compensationPosition = Eau.hauteurEnPixels-(4+(192-Eau.hauteurEnPixels));
 
     /**
      * @param isOpaque
@@ -109,8 +110,9 @@ public class Poisson extends JPanel {
         return nom;
     }
 
-    public int getHauteur(){
-        return Eau.hauteurEnPixels;
+    public int getHauteur(){ 
+        hauteur = 196 - Eau.hauteurEnPixels; // Traduit la hauteur en pixels de l'eau en coordonnées pour les poissons
+        return hauteur;
     }
 
     /**
