@@ -358,6 +358,23 @@ public class Eau implements Runnable {
         return scoreNitrates;
     }
     
+     /** 
+     * @return string
+     *         Transforme un float en string (format 2 décimales #,##)
+     */
+    public String toString(float flt) {
+
+        String str = "0.00";
+
+        if(String.valueOf(flt).length() >= 4){
+           str = String.valueOf(flt).substring(0,4);
+        }
+        else{
+            str = String.valueOf(flt);
+        }
+        return str;
+    }
+
     /** 
      * Méthode run de la classe Eau
      * Incomplète pour l'instant
@@ -373,10 +390,10 @@ public class Eau implements Runnable {
                 sommeAmmoniaque();
                 sommeNitrites();
 
-                GUIMain.panelTest.lblJour.setText("Jour " + GUIMain.jours);
-                GUIMain.panelTest.lblAmmo.setText("Ammoniaque: " + GUIMain.eau.getAmmoniaque());
-                GUIMain.panelTest.lblNitrites.setText("Nitrites: " + GUIMain.eau.getNitrites());
-                GUIMain.panelTest.lblNitrates.setText("Nitrates: " + GUIMain.eau.getNitrates());
+                //GUIMain.panelTest.lblJour.setText("Jour " + GUIMain.jours);
+                GUIMain.panelTest.lblAmmo.setText(toString(GUIMain.eau.getAmmoniaque()));
+                GUIMain.panelTest.lblNitrites.setText(toString(GUIMain.eau.getNitrites()));
+                GUIMain.panelTest.lblNitrates.setText(toString(GUIMain.eau.getNitrates()));
 
                 if (penteNitrites > nitrites) {
                     comportNitrates();
