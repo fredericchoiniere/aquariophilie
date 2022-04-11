@@ -5,6 +5,8 @@ package model.poissons;
 import java.awt.*;
 
 public class PoissonBetta extends Poisson implements Runnable {
+
+    // attributs de la classe
     public int x = 230;
     public int y = 120;
     public int vel_x = 1;
@@ -17,6 +19,10 @@ public class PoissonBetta extends Poisson implements Runnable {
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_betta/poisson_droite.png");
     Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_betta/poisson_gauche.png");
 
+    /**
+     * @param g
+     *          méthode pour dessiner le poisson
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
@@ -24,6 +30,9 @@ public class PoissonBetta extends Poisson implements Runnable {
         g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, PoissonRouge.empty), x, y, this);
     }
 
+    /**
+     * méthode pour faire bouger le poisson
+     */
     public void deplacer() {
         this.x += getXVelocity();
         this.y += getYVelocity();
@@ -44,13 +53,13 @@ public class PoissonBetta extends Poisson implements Runnable {
             }
             if (x < 4) {
                 setXVelocity(1);
-                direction = "droite"; // ne marchait pas avec vel_y, je ne sais pas pourquoi
+                direction = "droite";
             }
             if (y > 120) {
                 setYVelocity(-vel_y);
             }
             if (y < 4) {
-                setYVelocity(1); // ne marchait pas avec vel_y, je ne sais pas pourquoi
+                setYVelocity(1);
             }
             deplacer();
         }

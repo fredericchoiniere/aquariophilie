@@ -375,19 +375,22 @@ public class GUIMain extends JFrame {
                 pipette.changerEtatPanel(panelAqua);
                 label_tutoriel.setVisible(false);
             }
-
             @Override
             public void mouseReleased(MouseEvent e) {
-                basicCursor();
-                if (panelAqua.getMousePosition().getX() >= rectEau.getMinX()
-                        && panelAqua.getMousePosition().getX() <= rectEau.getMaxX()
-                        && panelAqua.getMousePosition().getY() >= rectEau.getMinY()
-                        && panelAqua.getMousePosition().getY() <= rectEau.getMaxY()) {
-                    lblPipette.setIcon(new ImageIcon("res/outils/pipette_pleine.png"));
-                    pipette.setEstRemplie(true);
-                    pipette.setNbGouttes(6);
-                    pipette.changerEtatLabel(lblPipette);
-                    pipette.changerEtatPanel(panelTest);
+                try {
+                    basicCursor();
+                    if (panelAqua.getMousePosition().getX() >= rectEau.getMinX()
+                            && panelAqua.getMousePosition().getX() <= rectEau.getMaxX()
+                            && panelAqua.getMousePosition().getY() >= rectEau.getMinY()
+                            && panelAqua.getMousePosition().getY() <= rectEau.getMaxY()) {
+                        lblPipette.setIcon(new ImageIcon("res/outils/pipette_pleine.png"));
+                        pipette.setEstRemplie(true);
+                        pipette.setNbGouttes(6);
+                        pipette.changerEtatLabel(lblPipette);
+                        pipette.changerEtatPanel(panelTest);
+                    }
+                } catch (NullPointerException e1) {
+                    // do nothing
                 }
             }
         });

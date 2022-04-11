@@ -34,20 +34,24 @@ public class MethodeGUIMain {
     public static void checkRectanglesDeco(Rectangle rectangle, JLabel label, Icon icone, JLabel label2,
             String emplacement,
             boolean hasPlant, String hasPlantString, int indexInv, int indexAqua, String pla) {
-        if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
-                && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
-                && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
-                && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
-            if (hasPlant) {
-                // do nothing
-            } else {
-                setHasPlant(hasPlantString);
-                setPlantName(indexAqua, pla);
-                label.setIcon(icone);
-                label2.setIcon(Inventaire.empty_inv);
-                setEmpla(emplacement);
-                setEmplaToPlant(emplacement, pla, indexInv, indexAqua);
+        try {
+            if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
+                    && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
+                    && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
+                    && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
+                if (hasPlant) {
+                    // do nothing
+                } else {
+                    setHasPlant(hasPlantString);
+                    setPlantName(indexAqua, pla);
+                    label.setIcon(icone);
+                    label2.setIcon(Inventaire.empty_inv);
+                    setEmpla(emplacement);
+                    setEmplaToPlant(emplacement, pla, indexInv, indexAqua);
+                }
             }
+        } catch (Exception e) {
+            // do nothing
         }
     }
 
@@ -61,23 +65,27 @@ public class MethodeGUIMain {
     public static void checkRectanglesPoi(Rectangle rectangle, JLabel label1, Icon icone, JLabel label2,
             String emplacement,
             boolean hasFish, String hasFishString, int index, String poi, String aqua) {
-        if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
-                && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
-                && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
-                && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
-            if (hasFish == true) {
-            } else {
-                try {
-                    setHasFish(hasFishString);
-                    label1.setIcon(icone);
-                    label2.setIcon(Inventaire.empty_inv);
-                    setEmpla(emplacement);
-                    setEmplaToFish(emplacement, poi, label1, index);
-                } catch (Exception e) {
-                    System.out.println("erreur");
-                    e.printStackTrace();
+        try {
+            if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
+                    && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
+                    && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
+                    && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
+                if (hasFish == true) {
+                } else {
+                    try {
+                        setHasFish(hasFishString);
+                        label1.setIcon(icone);
+                        label2.setIcon(Inventaire.empty_inv);
+                        setEmpla(emplacement);
+                        setEmplaToFish(emplacement, poi, label1, index);
+                    } catch (Exception e) {
+                        System.out.println("erreur");
+                        e.printStackTrace();
+                    }
                 }
             }
+        } catch (Exception e) {
+            // do nothing
         }
     }
 
@@ -94,19 +102,23 @@ public class MethodeGUIMain {
      */
     public static void checkRectanglesPoiFilet(Rectangle rectangle, JLabel label1, Icon icone,
             boolean hasFish, String hasFishString, int index, String aqua) {
-        if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
-                && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
-                && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
-                && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
-            if (hasFish == true) {
-                setHasFishFalse(hasFishString);
-                label1.setIcon(icone);
-                GUIMain.listePoissonsAqua.get(index).direction = "empty";
-                GUIMain.listePoissonsAqua.get(index).var = false;
-                GUIMain.listePoissonsAqua.set(index, GUIMain.poisson_default);
-                checkFishType(aqua);
-            } else {
+        try {
+            if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
+                    && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
+                    && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
+                    && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
+                if (hasFish == true) {
+                    setHasFishFalse(hasFishString);
+                    label1.setIcon(icone);
+                    GUIMain.listePoissonsAqua.get(index).direction = "empty";
+                    GUIMain.listePoissonsAqua.get(index).var = false;
+                    GUIMain.listePoissonsAqua.set(index, GUIMain.poisson_default);
+                    checkFishType(aqua);
+                } else {
+                }
             }
+        } catch (Exception e) {
+            // do nothing
         }
     }
 
@@ -123,17 +135,21 @@ public class MethodeGUIMain {
      */
     public static void checkRectanglesDecoCis(Rectangle rectangle, JLabel label1, Icon icone,
             boolean hasPlant, String hasPlantString, int index, String plant) {
-        if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
-                && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
-                && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
-                && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
-            if (hasPlant == true) {
-                setHasPlantFalse(hasPlantString);
-                label1.setIcon(icone);
-                GUIMain.listePlantesAqua.set(index, GUIMain.plante_default);
-                checkPlantType(plant);
-            } else {
+        try {
+            if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
+                    && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
+                    && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
+                    && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
+                if (hasPlant == true) {
+                    setHasPlantFalse(hasPlantString);
+                    label1.setIcon(icone);
+                    GUIMain.listePlantesAqua.set(index, GUIMain.plante_default);
+                    checkPlantType(plant);
+                } else {
+                }
             }
+        } catch (Exception e) {
+            // do nothing
         }
     }
 
