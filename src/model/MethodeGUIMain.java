@@ -6,6 +6,7 @@ import model.jeu.*;
 import model.plantes.*;
 import model.poissons.*;
 import view.GUIMain;
+import view.tabs.PanelAqua;
 
 import java.awt.*;
 import javax.swing.*;
@@ -236,7 +237,6 @@ public class MethodeGUIMain {
         aquarium.aqua4.setVisible(true);
         aquarium.aqua5.setVisible(true);
         aquarium.aqua6.setVisible(true);
-        GUIMain.shop_label.setVisible(true);
     }
 
     /**
@@ -249,7 +249,6 @@ public class MethodeGUIMain {
         aquarium.aqua4.setVisible(false);
         aquarium.aqua5.setVisible(false);
         aquarium.aqua6.setVisible(false);
-        GUIMain.shop_label.setVisible(false);
     }
 
     /**
@@ -638,5 +637,13 @@ public class MethodeGUIMain {
         } else
             hasPlants = true;
         return hasPlants;
+    }
+
+    public Rectangle getEauDimensions(){
+        return GUIMain.rectEau;
+    }
+
+    public static void setEauDimensions(int height){
+        GUIMain.rectEau.setBounds((int)GUIMain.rectEau.getX(), (int)GUIMain.rectEau.getY(), (int)GUIMain.rectEau.getWidth(), height);
     }
 }

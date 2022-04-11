@@ -4,6 +4,9 @@ package model.poissons;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import model.chimie.Eau;
+
 import java.awt.*;
 
 public class Poisson extends JPanel {
@@ -104,6 +107,10 @@ public class Poisson extends JPanel {
      */
     public String getNom() {
         return nom;
+    }
+
+    public int getHauteur(){
+        return Eau.hauteurEnPixels;
     }
 
     /**

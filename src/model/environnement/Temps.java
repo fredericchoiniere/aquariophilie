@@ -13,12 +13,13 @@ import view.GUIMain;
 public class Temps {
     static Timer journee;
     public static int DUREE = 1500; // Durée d'une journée en millisecondes
-    public static boolean isPaused = false;
+    public static boolean isPaused = true;
 
     // Incrémente GUIMain.jours (timer global) au DUREE secondes 
 
     public static void pause(){
         journee.cancel();
+        isPaused = true;
     }
 
     public static void jourAJour(int jour){
@@ -27,6 +28,7 @@ public class Temps {
 
     public static void reprendre(){
         journee = new Timer();
+        isPaused = false;
         journee.scheduleAtFixedRate(new TimerTask() {
             @Override
                 public void run() {

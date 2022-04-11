@@ -55,7 +55,7 @@ public class PoissonBetta extends Poisson implements Runnable {
                 setXVelocity(1);
                 direction = "droite";
             }
-            if (y > 120) {
+            if (y > 120) { // 120
                 setYVelocity(-vel_y);
             }
             if (y < 4) {

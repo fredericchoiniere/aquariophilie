@@ -45,12 +45,11 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
         c.anchor = GridBagConstraints.SOUTH;
         add(lblAction, c);
 
-        progressBar = new JProgressBar(); // diviser 100 par x pour obtenir step en fonction des jours
+        progressBar = new JProgressBar();
         progressBar.setString("Aucune action en cours");
         progressBar.setStringPainted(true);
         progressBar.setForeground(new Color(46, 232, 158));
         progressBar.setValue(50);
-        // progressBar.setSize(700, 50);
         c.gridy = 1;
         c.anchor = GridBagConstraints.NORTH;
         add(progressBar, c);

@@ -9,8 +9,6 @@ import view.GUIMain;
 
 public class CycleAzote implements Runnable {
 
-    public float jourInitial = GUIMain.jours;
-    public float jourFinal = jourInitial + 35;
     public float jours = GUIMain.jours, tempAmmoniaque = 0, tempNitrites = 0;
     public Eau eau = GUIMain.eau;
 
@@ -50,9 +48,6 @@ public class CycleAzote implements Runnable {
     @Override
     public void run() {
         while (true) {
-
-            /* if ((jours + jourInitial) < GUIMain.jours)
-                jours++; */
 
             jours = GUIMain.jours;
 
