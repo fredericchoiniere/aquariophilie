@@ -140,7 +140,7 @@ public class Poisson extends JPanel {
     /**
      * @param label
      * @param type
-     *              méthode pour afficher les tooltip
+     *              méthode pour afficher les tooltips
      */
     public static void updateToolTip(JLabel label, String type) {
         switch (type) {

@@ -298,7 +298,7 @@ public class GUIMain extends JFrame {
         // ajout du label pour l'argent
         label_argent_shop.setBounds(475, 10, 100, 50);
         label_argent_shop.setFont(new Font("Verdana", Font.BOLD, 16));
-        label_argent_shop.setText("50 ₴");
+        label_argent_shop.setText("50 ₴"); // TODO: vraie valeur
         label_argent_shop.setVisible(true);
         panelShop.add(label_argent_shop);
 
@@ -311,7 +311,7 @@ public class GUIMain extends JFrame {
         PanelInfo panelInfo = new PanelInfo();
         tPanelInfo = new Thread(panelInfo);
         tPanelInfo.start();
-        tabbedPane.add("À propos", panelInfo);
+        tabbedPane.add("Détails", panelInfo);
 
         // ajout du panel Info au tabbed pane
         add(tabbedPane);
