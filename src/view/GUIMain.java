@@ -290,7 +290,7 @@ public class GUIMain extends JFrame {
         tabbedPane.add("Aquarium", panelAqua);
 
         // ---------------------------------------------------------------------------------------------------------------------------------------------------------
-        // creation du 2em tab
+        // création du 2ème tab
 
         // création du panel Magasin
         PanelShop panelShop = new PanelShop();
@@ -298,14 +298,14 @@ public class GUIMain extends JFrame {
         // ajout du label pour l'argent
         label_argent_shop.setBounds(475, 10, 100, 50);
         label_argent_shop.setFont(new Font("Verdana", Font.BOLD, 16));
-        label_argent_shop.setText("50 ₴"); // TODO: vraie valeur
+        label_argent_shop.setText("10000 ₴"); // Afficher vraie valeur
         label_argent_shop.setVisible(true);
         panelShop.add(label_argent_shop);
 
         tabbedPane.add("Magasin", panelShop);
 
         // --------------------------------------------------------------------------------------------------------------------------------------------------------
-        // creation du 3em tab
+        // création du 3ème tab
 
         // création du panel Magasin
         PanelInfo panelInfo = new PanelInfo();
