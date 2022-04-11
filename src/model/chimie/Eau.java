@@ -1,4 +1,5 @@
 // Frédéric Choinière, Justin Plouffe   itération 1
+// Frédéric Choinière   itération 2
 // Classe qui contrôle les paramètres d'eau
 
 package model.chimie;
@@ -7,73 +8,92 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
 import view.GUIMain;
+import model.MethodeGUIMain;
+import model.environnement.Temps;
 
 public class Eau implements Runnable {
 
-    public int ph = 7; // 0 à 14
-    public int gh = 10; // Dureté de l'eau de 0 à 25+ (tolérée entre 5 et 15)
-    public int kh = 6; // Dureté de l'eau de 0 à 12+ (tolérée entre 4 et 8)
+    public static float ph = 7; // 0 à 14
+    public static int phInt = 7;
+    public static float gh = 10; // Dureté de l'eau de 0 à 25+ (tolérée entre 5 et 15)
+    public static float kh = 6; // Dureté de l'eau de 0 à 12+ (tolérée entre 4 et 8)
     public int nbAtomeN = 0;
     public int nbAtomeO = 2103;
     public int nbAtomeH = 4206;
-
+    
     //public int temperature;
-    public int scoreEau;
-    private float scorePH;
-    private float scoreGH;
-    private float scoreKH;
-    private float scoreAmmo;
-    private float scoreNitrites;
-    private float scoreNitrates;
-
+    public static int scoreEau;
+    private static float scorePH;
+    private static float scoreGH;
+    private static float scoreKH;
+    private static float scoreAmmo;
+    private static float scoreNitrites;
+    private static float scoreNitrates;
+    private float penteNitrites = 0;
+    public float sommeAbsorptionNitrates = 0; // score global des plantes
+    public int sommeAbsorptionDechets = 0; 
+    public int potentielDechets = 0, sommeDechets = 0; 
+    public float sommeContributionPH = 0;
 
     public final float volumeEau = (float) 37.85;
-    public float nitrites = 0; // Doit etre 0, maximum 5mg par litre
-    public float nitrates = 0; // max 50mg/L
-    public float ammoniaque = 0;
+    public static float nitrites = 0; // Doit etre 0, maximum 5mg par litre
+    public static float nitrates = 0; // max 50mg/L
+    public static float ammoniaque = 0;
     private float sommeAmmoniaque, sommeNitrites;
 
     public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeAmmoniaque = Collections.synchronizedList(listeAmmoniaqueTemp); // Liste synchronisée
+    public ArrayList<Float> listeAmmoniaqueIteration = new ArrayList<Float>(); // Liste pour itérer dans boucle
+    public HashSet<Float> setAmmoniaque = new HashSet<Float>(listeAmmoniaqueTemp); // Liste pour additionner le montant total d'ammoniaque
 
     public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
+    public ArrayList<Float> listeNitritesIteration = new ArrayList<Float>(); // Liste pour itérer dans boucle
+    public HashSet<Float> setNitrites = new HashSet<Float>(listeNitritesTemp); // Liste pour additionner le montant total de nitrites
+
+    public ArrayList<Integer> listeAbsorption = new ArrayList<Integer>();
 
     public float jours = GUIMain.jours;
+    
 
     public Eau(){
-        listeAmmoniaque.add(0, this.ammoniaque);
-        listeNitrites.add(0, this.nitrites);
+        listeAmmoniaque.add(0, ammoniaque);
+        listeNitrites.add(0, nitrites);
     }
 
     // Getter pour le ph
-    public int getPH() {
+    public float getPH() {
         return ph;
     }
 
+    public int getPHint(){
+        phInt = (int) ph;
+        return phInt;
+    }
+
     // Setter pour le ph
-    public void setPH(int nouveauPH) {
-        this.ph = nouveauPH;
+    public void setPH(float nouveauPH) {
+        ph = nouveauPH;
     }
 
     // Getter pour le gh
-    public int getGH() {
+    public float getGH() {
         return gh;
     }
 
     // Setter pour le gh
-    public void setGH(int nouveauGH) {
-        this.gh = nouveauGH;
+    public void setGH(float nouveauGH) {
+        gh = nouveauGH;
     }
 
     // Getter pour le kh
-    public int getKH() {
+    public float getKH() {
         return kh;
     }
 
     // Setter pour le kh
-    public void setKH(int nouveauKH) {
-        this.kh = nouveauKH;
+    public void setKH(float nouveauKH) {
+        kh = nouveauKH;
     }
 
     // Getter pour le taux d'ammoniaque
@@ -81,30 +101,15 @@ public class Eau implements Runnable {
         return sommeAmmoniaque;
     }
 
-    /*// Setter pour le taux d'ammoniaque
-    public void setAmmoniaque(float nouveauAmmoniaque) {
-        this.sommeAmmoniaque = nouveauAmmoniaque;
-    }*/
-
     // Getter pour le taux de nitrites
     public float getNitrites() {
         return sommeNitrites;
     }
 
-    /*// Setter pour le taux de nitrites
-    public void setNitrites(float nouveauNitrites) {
-        this.sommeNitrites = nouveauNitrites;
-    }*/
-
     // Getter pour le taux de nitrates
     public float getNitrates() {
         return nitrates;
     }
-
-    /*// Setter pour le taux de nitrates
-    public void setNitrates(float nouveauNitrates) {
-        this.nitrates = nouveauNitrates;
-    }*/
 
     public void changerEau() {
         ph = 7; 
@@ -145,11 +150,15 @@ public class Eau implements Runnable {
      */
     public float sommeAmmoniaque() {
         sommeAmmoniaque = 0;
-        for (Float valeur : listeAmmoniaque) {
-            sommeAmmoniaque += valeur;
+        listeAmmoniaqueIteration.addAll(listeAmmoniaque);
+        for (Float valeur : listeAmmoniaqueIteration) {
+            if(!setAmmoniaque.contains(valeur)){
+                setAmmoniaque.add(valeur);
+                sommeAmmoniaque += valeur;
+            }
         }
-        this.ammoniaque = sommeAmmoniaque;
-        return this.ammoniaque;
+        ammoniaque = sommeAmmoniaque;
+        return ammoniaque;
     }
     
     /** 
@@ -158,43 +167,72 @@ public class Eau implements Runnable {
      */
     public float sommeNitrites() {
         sommeNitrites = 0;
-        for (Float valeur : listeNitrites) {
-            sommeNitrites += valeur;
+        listeNitritesIteration.addAll(listeNitrites);
+        for (Float valeur : listeNitritesIteration) {
+            if (!setNitrites.contains(valeur)) {
+                setNitrites.add(valeur);
+                sommeNitrites += valeur;
+            }
         }
-        this.nitrites = sommeNitrites;
-        return this.nitrites;
+        nitrites = sommeNitrites;
+        return nitrites;
     }
+
+    public void absorption(){ // absorber nitrates
+        sommeDechets -= sommeAbsorptionDechets;
+        nitrates -= sommeAbsorptionNitrates; 
+        if (sommeAbsorptionNitrates != 0) {     // TODO: à paufiner et éviter les négatifs
+            sommeAbsorptionNitrates += 0.14;
+            if(!MethodeGUIMain.hasPlants()){
+                sommeAbsorptionNitrates = 0;
+            }
+        }
+    }
+
+    public void variationPH(){ // TODO: à balancer
+        if (kh < 4) {
+            setPH(getPH()-(float)0.3);
+            setPH(getPH()+(float)(sommeContributionPH*0.7));
+        }
+        if (kh >= 4 && kh <= 8) {
+            setPH(getPH()-(float)0.15);
+            setPH(getPH()+(float)(sommeContributionPH*0.5));
+        }
+        if(kh > 8){ // ph varie moins, mais score non optimal car kh trop élevé
+            setPH(getPH()-(float)0.1);
+            setPH(getPH()+(float)(sommeContributionPH*0.3));
+        }
+    }
+
+    public void variationGH(){
+        
+    }
+
+    public void accumulerDechets(){
+        sommeDechets += potentielDechets;
+    }
+
 
     /** 
      * @return float
      *         Dicte le comportement des nitrates selon une courbe
      */
     public float comportNitrates() {
-        this.nitrates = ((jours / 7) - 4);
-        return this.nitrates;
+        nitrates = ((jours / 7) - 4);
+        return nitrates;
     }
     
-    /** 
-     * @return float
-     *         Dicte le comportement des nitrates selon une courbe
-     *//*
-    public int actualiserScoreEau() {
-        this.scoreEau = ();
-        return scoreEau;
-    }
 
-    //TODO: 
-    public int evaporationEau() {
-        //set gh selon volume d'eau
+    public static void setScoreEau() {
+        scoreEau = (int) (setScoreAmmo() + setScoreGH() + setScoreKH() + setScoreNitrates() + setScoreNitrites() + setScorePH());
+        //System.out.println("Score eau 1 : " + scoreEau);
     }
-
-   
 
     /** 
      * @return float
      *         Retourne la valeur du score pour le PH qui cotribue pour (14/100) du score de l'eau
      */
-    public float getScorePH() {
+    public static float setScorePH() {
 
         float variationPH;
 
@@ -217,7 +255,7 @@ public class Eau implements Runnable {
      * @return float
      *         Retourne la valeur du score pour le GH qui cotribue pour (14/100) du score de l'eau
      */
-    public float getScoreGH() {
+    public static float setScoreGH() {
 
         float variationGH;
 
@@ -240,7 +278,7 @@ public class Eau implements Runnable {
      * @return float
      *         Retourne la valeur du score pour le KH qui contribue pour (14/100) du score de l'eau
      */
-    public float getScoreKH() {
+    public static float setScoreKH() {
 
         float variationKH;
 
@@ -263,9 +301,9 @@ public class Eau implements Runnable {
      * @return float
      *         Retourne la valeur du score pour l'ammoniaque qui cotribue pour (18/100) du score de l'eau
      */
-    public float getScoreAmmo() {
+    public static float setScoreAmmo() {
 
-        float variationAmmo;
+        float variationAmmo = 0;
 
         if(ammoniaque <= 0 && ammoniaque >= 0.5){
             variationAmmo = 0;
@@ -282,7 +320,7 @@ public class Eau implements Runnable {
      * @return float
      *         Retourne la valeur du score pour les nitrites qui cotribue pour (24/100) du score de l'eau
      */
-    public float getScoreNitrites() {
+    public static float setScoreNitrites() {
 
         float variationNitrites;
 
@@ -301,11 +339,11 @@ public class Eau implements Runnable {
      * @return float
      *         Retourne la valeur du score pour les nitrates qui cotribue pour (16/100) du score de l'eau
      */
-    public float getScoreNitrates() {
+    public static float setScoreNitrates() {
 
         float variationNitrates;
 
-        if(nitrates >= 0 && nitrates <= 40){
+        if(nitrates <= 4 || nitrates >= 8){
             variationNitrates = 0;
             scoreNitrates = 16;
         }
@@ -315,33 +353,36 @@ public class Eau implements Runnable {
         }
         return scoreNitrates;
     }
-
-    /** 
-     * @return float
-     *         Retourne un entier représentant la valeur du score de l'eau sur 100 
-     */
-    public int getScoreEau() {
-
-        scoreEau = (int)(scorePH + scoreGH + scoreKH + scoreAmmo + scoreNitrites + scoreNitrates);
-        return scoreEau;
-    }
-
+    
     /** 
      * Méthode run de la classe Eau
      * Incomplète pour l'instant
      */
     @Override
-    public void run() {
+    public void run() { // TODO: faire shush quand pause
+        penteNitrites = nitrites;
         while (true) {
             jours = GUIMain.jours;
-            try {
-                if (jours > 28) {
+            // System.out.println("pente: " + penteNitrites + " total: " + nitrites + "
+            // jour: " + jours);
+            try {                   
+                sommeAmmoniaque();          // à faire planter
+                sommeNitrites();
+                if (penteNitrites > nitrites) {
                     comportNitrates();
-                    Thread.sleep(1000);
-                } else
-                    Thread.sleep(1000);
+                    accumulerDechets();
+                    absorption();
+                    //System.out.println("nitrates: " + nitrates + " absorption nit: " + sommeAbsorptionNitrates +
+                     //" abs déchets: " + sommeAbsorptionDechets + " somme déchets: " + sommeDechets);
+                    GUIMain.actionEnCours = "Cycle nitrates";
+                    if (nitrites != 0.0)
+                        penteNitrites = nitrites;
+                } else {
+                    penteNitrites = nitrites;
+                }
+                Thread.sleep(Temps.DUREE);
             } catch (Exception e) {
-                System.out.println("Erreur dans le run() d'Eau.java");
+                //System.out.println("Erreur dans le thread: " + Thread.currentThread().getName());
                 e.printStackTrace();
             }
         }

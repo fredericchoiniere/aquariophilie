@@ -1,5 +1,8 @@
+// Frédéric Choinière, Jérémie Caron    itération 2
+
 package model.poissons;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.*;
 
@@ -7,7 +10,11 @@ public class Poisson extends JPanel {
 
     int vel_x = 1;
     int vel_y = 1;
-    int index;
+    static int sante = 100;
+    public int index;
+    public String direction = "droite";
+    public boolean var = true;
+    
     
     public String empInv, empAqua, nom;
 
@@ -36,9 +43,7 @@ public class Poisson extends JPanel {
         this.nom = nom;
     }
 
-    public void setIndex(int index){
-        this.index = index;
-    }
+
 
     public int getXVelocity(){
         return vel_x;
@@ -60,16 +65,42 @@ public class Poisson extends JPanel {
         return nom;
     }
 
-    public Image getImage(String coter, Image img, Image poisson_droite, Image poisson_gauche) { // regarde pour le bon coter pour l'image
+    public Image getImage(String coter, Image img, Image poisson_droite, Image poisson_gauche, Image empty) { // regarde pour le bon coter pour l'image
         if (coter == "droite") {
             img = poisson_droite;
         }
-        if (coter == "gauche") {
+        else if (coter == "gauche") {
             img = poisson_gauche;
+        }else if (coter == "empty") {
+            img = empty;
         } else {
             img = poisson_droite;
         }
         return img;
+    }
+
+    public static void updateToolTip(JLabel label, String type){ // TODO: ajouter déchets
+        switch (type) {
+            case "rouge":
+                label.setToolTipText("Type: Poisson rouge" + "\nSanté: " + sante);
+                break;
+
+            case "betta":
+                label.setToolTipText("Type: Betta" + "\nSanté: " + sante);
+                break;
+
+            case "tetra":
+                label.setToolTipText("Type: Tetra" + "\nSanté: " + sante);
+                break;
+        
+            default:
+                label.setToolTipText("");
+                break;
+        }
+
+
+
+        System.out.println(type);
     }
 
 }

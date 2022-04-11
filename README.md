@@ -18,7 +18,7 @@ Aquariophilie n'est pas:
 - aussi impressionnant qu'un cube Rubiks en 3D, mais on fait ce qu'on peut
 
 \
-Version actuelle: remise itération 1
+Version actuelle: remise itération 2
 
 ## Structure
 

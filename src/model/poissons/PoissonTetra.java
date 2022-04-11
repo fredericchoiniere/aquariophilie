@@ -1,8 +1,8 @@
+//Jérémie Caron, Frédéric Choinière     itération 2
+
 package model.poissons;
 
 import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
 
 public class PoissonTetra extends Poisson implements Runnable {
     // Attributs : coordonn�es de la boule
@@ -10,25 +10,31 @@ public class PoissonTetra extends Poisson implements Runnable {
     int y = 60;
     int vel_x = 1;
     int vel_y = 1;
+    public static int prix = 200;
+
+    public static int dechets = 2;
 
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_tetra/poisson_droite.png");
     Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_tetra/poisson_gauche.png");
 
-    public String direction = "droite";
+    public PoissonTetra(){
+    }
+
+
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         img = poisson_droite;
-        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche), x, y, this);
+        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, PoissonRouge.empty), x, y, this);
     }
 
     public void deplacer() {
         this.x += getXVelocity();
         this.y += getYVelocity();
         try {
-            Thread.sleep(30);
+            Thread.sleep(20);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -38,7 +44,7 @@ public class PoissonTetra extends Poisson implements Runnable {
     @Override
     public void run() {
         // System.out.println("run");
-        while (true) {
+        while (var) {
             if (this.x > 286) {
                 setXVelocity(-vel_x);
                 direction = "gauche";
@@ -50,7 +56,7 @@ public class PoissonTetra extends Poisson implements Runnable {
             if (this.y > 120) {
                 setYVelocity(-vel_y);
             }
-            if (this.y < 4) {
+            if (this.y < 90) {
                 setYVelocity(1); // ne marchait pas avec vel_y, je ne sais pas pourquoi
             }
             deplacer();

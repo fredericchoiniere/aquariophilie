@@ -1,3 +1,5 @@
+//Jérémie Caron, Frédéric Choinière     itération 2
+
 package model.poissons;
 
 import java.awt.*;
@@ -7,18 +9,19 @@ public class PoissonBetta extends Poisson implements Runnable {
     public int y = 120;
     public int vel_x = 1;
     public int vel_y = 1;
+    public static int prix = 500;
+
+    public static int dechets = 4;
 
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_betta/poisson_droite.png");
     Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_betta/poisson_gauche.png");
-    
-    public String direction = "droite";
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         img = poisson_droite;
-        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche), x, y, this);
+        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, PoissonRouge.empty), x, y, this);
     }
 
     public void deplacer() {
@@ -32,10 +35,9 @@ public class PoissonBetta extends Poisson implements Runnable {
         repaint();
     }
 
-
     @Override
     public void run() {
-        while (true) {
+        while (var) {
             if (x > 286) {
                 setXVelocity(-vel_x);
                 direction = "gauche";

@@ -1,4 +1,5 @@
 //Jérémie Caron     itération 1
+//Jérémie Caron     itération 2
 //Classe qui gère l'inventaire et ses emplacements
 
 package model.jeu;
@@ -7,6 +8,7 @@ import java.util.*;
 import java.awt.*;
 import javax.swing.*;
 
+import model.poissons.Poisson;
 import model.poissons.PoissonRouge;
 import view.GUIMain;
 
@@ -23,6 +25,10 @@ public class Inventaire {
         final Dimension size_icone_inv = new Dimension(80, 80);
         private ArrayList<Emplacementinv> listEmpPleins = new ArrayList<Emplacementinv>(69);
 
+        Poisson poisson_default = new Poisson();
+
+        
+
 
         ImageIcon img_aqua_poi_rouge = new ImageIcon("res/poissons/poisson_rouge/poisson_droite.png");
         public static ImageIcon img_inv_poi_rouge = new ImageIcon(
@@ -32,15 +38,17 @@ public class Inventaire {
 
         ImageIcon img_aqua_betta = new ImageIcon("res/poissons/poisson_betta/poisson_droite.png");
         public static ImageIcon img_inv_betta = new ImageIcon(
-                        new ImageIcon("res/poissons/poisson_betta/poisson_droite.png")
+                        new ImageIcon("res/poissons/poisson_betta/in_bag.png")
                                         .getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
 
         ImageIcon img_aqua_tetra = new ImageIcon("res/poissons/poisson_tetra/poisson_gauche.png");
         public static ImageIcon img_inv_tetra = new ImageIcon(
-                        new ImageIcon("res/poissons/poisson_tetra/poisson_gauche.png")
+                        new ImageIcon("res/poissons/poisson_tetra/in_bag.png")
                                         .getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
 
-        public static ImageIcon img_java_fern = new ImageIcon("res/background/decorations/decoTemp.png");
+        public static ImageIcon java_fern = new ImageIcon("res/background/decorations/java_fern.png");
+        public static ImageIcon blue_blue = new ImageIcon("res/background/decorations/blue_blue.png");
+        public static ImageIcon scarlet_rot = new ImageIcon("res/background/decorations/scarlet_rot.png");
 
         public static ImageIcon img_temp = new ImageIcon("res/background/decorations/planteTemp.png");
 
@@ -57,10 +65,10 @@ public class Inventaire {
                /*  PoissonRouge poisson_rouge = new PoissonRouge();
                 GUIMain.listePoissonsInv.add(poisson_rouge); */
 
-                GUIMain.listePoissonsInv.add(0, new PoissonRouge());
-                GUIMain.listePoissonsInv.get(0).setName("rouge" + 0);
+               /*  GUIMain.listePoissonsInv.add(0, new PoissonRouge());
+                GUIMain.listePoissonsInv.get(0).setName("rouge" + 0); */
 
-                emp1.setIcon(img_inv_poi_rouge);
+                emp1.setIcon(empty_inv);
                 label.add(emp1);
 
                 emp2 = new Emplacementinv();
