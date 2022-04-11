@@ -45,6 +45,9 @@ public class CycleAzote implements Runnable {
         eau.addNitrites(tempNitrites);
     }
 
+    /** 
+     * Méthode run de la classe CycleAzote
+     */
     @Override
     public void run() {
         while (true) {

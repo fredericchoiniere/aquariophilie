@@ -381,7 +381,6 @@ public class GUIMain extends JFrame {
                         pipette.changerEtatPanel(panelTest);
                     }
                 } catch (NullPointerException e1) {
-                    // do nothing
                 }
             }
         });

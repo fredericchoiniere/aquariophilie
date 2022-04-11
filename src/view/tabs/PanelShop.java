@@ -117,7 +117,7 @@ public class PanelShop extends JPanel implements ActionListener {
 
     /**
      * @param Graphics
-     *                 méthode pour painturer le background du panel
+     *                 méthode pour paint le background du panel
      */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -134,7 +134,7 @@ public class PanelShop extends JPanel implements ActionListener {
      * @param type
      * @param poisson
      * @param plante
-     * méthode pour voir dans quel emplacement de l'inventaire l'item sera placer
+     * méthode pour voir dans quel emplacement de l'inventaire l'item sera placé
      */
     public static void checkCase(ImageIcon icon, String type, String poisson, String plante) {
         if (GUIMain.empla1 == "empty") {

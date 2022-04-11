@@ -614,10 +614,20 @@ public class MethodeGUIMain {
         return hasPlants;
     }
 
+    /** 
+     * @return Rectangle
+     *      Retourne les dimensions du rectangle Eau
+     */
     public static Rectangle getEauDimensions(){
         return GUIMain.rectEau;
     }
 
+    /** 
+     * @param y
+     * @param height
+     *          Redéfinit les dimensions du rectangle Eau en fonction des paramètres spécifiés 
+     *          Rafraîchit l'affichage de l'eau
+     */
     public static void setEauDimensions(int y, int height){
         GUIMain.rectEau.setBounds((int)GUIMain.rectEau.getX(), y, (int)GUIMain.rectEau.getWidth(), height);
         GUIMain.panelAqua.repaint();
