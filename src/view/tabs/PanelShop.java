@@ -31,44 +31,54 @@ public class PanelShop extends JPanel implements ActionListener {
 
         poisson_rouge = new JButton();
         poisson_rouge.setIcon(new ImageIcon("res/poissons/poisson_rouge/in_bag.png"));
-        poisson_rouge.setBounds(85, 230, shop_dimension.width, shop_dimension.height);
-        //poisson_rouge.setOpaque(true);
+        poisson_rouge.setBackground(new Color(53, 109, 127));
+        poisson_rouge.setBorderPainted(false);
+        poisson_rouge.setBounds(35, 214, shop_dimension.width, shop_dimension.height);
         poisson_rouge.setToolTipText("Prix: " + PoissonRouge.prix + "₴");
         poisson_rouge.addActionListener(this);
-
         add(poisson_rouge);
 
         poisson_betta = new JButton();
         poisson_betta.setIcon(new ImageIcon("res/poissons/poisson_betta/in_bag.png"));
-        poisson_betta.setBounds(185, 230, shop_dimension.width, shop_dimension.height);
+        poisson_betta.setBackground(new Color(53, 109, 127));
+        poisson_betta.setBorderPainted(false);
+        poisson_betta.setBounds(135, 214, shop_dimension.width, shop_dimension.height);
         poisson_betta.setToolTipText("Prix: " + PoissonBetta.prix + "₴");
         poisson_betta.addActionListener(this);
         add(poisson_betta);
 
         poisson_tetra = new JButton();
         poisson_tetra.setIcon(new ImageIcon("res/poissons/poisson_tetra/in_bag.png"));
-        poisson_tetra.setBounds(285, 230, shop_dimension.width, shop_dimension.height);
+        poisson_tetra.setBackground(new Color(53, 109, 127));
+        poisson_tetra.setBorderPainted(false);
+        poisson_tetra.setBounds(235, 214, shop_dimension.width, shop_dimension.height);
         poisson_tetra.setToolTipText("Prix: " + PoissonTetra.prix + "₴");
         poisson_tetra.addActionListener(this);
         add(poisson_tetra);
 
         planteBlue = new JButton();
         planteBlue.setIcon(BlueBlue.icon);
-        planteBlue.setBounds(85, 390, shop_dimension.width, shop_dimension.height);
+        planteBlue.setBackground(new Color(53, 109, 127));
+        planteBlue.setBorderPainted(false);
+        planteBlue.setBounds(35, 384, shop_dimension.width, shop_dimension.height);
         planteBlue.setToolTipText("Prix: " + BlueBlue.prix + "₴");
         planteBlue.addActionListener(this);
         add(planteBlue);
 
         planteFern = new JButton();
         planteFern.setIcon(JavaFern.icon);
-        planteFern.setBounds(185, 390, shop_dimension.width, shop_dimension.height);
+        planteFern.setBackground(new Color(53, 109, 127));
+        planteFern.setBorderPainted(false);
+        planteFern.setBounds(135, 384, shop_dimension.width, shop_dimension.height);
         planteFern.setToolTipText("Prix: " + JavaFern.prix + "₴");
         planteFern.addActionListener(this);
         add(planteFern);
 
         planteScarlet = new JButton();
         planteScarlet.setIcon(ScarletRot.icon);
-        planteScarlet.setBounds(285, 390, shop_dimension.width, shop_dimension.height);
+        planteScarlet.setBackground(new Color(53, 109, 127));
+        planteScarlet.setBorderPainted(false);
+        planteScarlet.setBounds(235, 384, shop_dimension.width, shop_dimension.height);
         planteScarlet.setToolTipText("Prix: " + ScarletRot.prix + "₴");
         planteScarlet.addActionListener(this);
         add(planteScarlet);

@@ -66,7 +66,6 @@ public class MethodeGUIMain {
                 && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
                 && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
             if (hasFish == true) {
-                System.out.println("emplacement déjà occupé");
             } else {
                 try {
                     setHasFish(hasFishString);
@@ -107,7 +106,6 @@ public class MethodeGUIMain {
                 GUIMain.listePoissonsAqua.set(index, GUIMain.poisson_default);
                 checkFishType(aqua);
             } else {
-                System.out.println("à deja pas de poisson");
             }
         }
     }
@@ -264,7 +262,6 @@ public class MethodeGUIMain {
         switch (emplacement) { // dans l'inventaire
             case "empla1":
                 GUIMain.empla1 = "empty";
-                // System.out.println("cul");
                 break;
             case "empla2":
                 GUIMain.empla2 = "empty";
@@ -624,7 +621,6 @@ public class MethodeGUIMain {
             hasPlants = false;
         } else
             hasPlants = true;
-        System.out.println("hasplants: " + hasPlants);
         return hasPlants;
     }
 }
