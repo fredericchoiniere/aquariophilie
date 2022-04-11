@@ -187,6 +187,10 @@ public class Eau implements Runnable {
                 sommeAbsorptionNitrates = 0;
             }
         }
+        if(sommeDechets <=0)
+            sommeDechets = 0;
+        if (nitrates <=0)
+            nitrates = 0;
     }
 
     public void variationPH(){ // TODO: à balancer
@@ -205,7 +209,7 @@ public class Eau implements Runnable {
     }
 
     public void variationGH(){
-        
+
     }
 
     public void accumulerDechets(){
@@ -374,7 +378,7 @@ public class Eau implements Runnable {
             // System.out.println("pente: " + penteNitrites + " total: " + nitrites + "
             // jour: " + jours);
             try {                   
-                sommeAmmoniaque();          // à faire planter
+                sommeAmmoniaque();
                 sommeNitrites();
                 if (penteNitrites > nitrites) {
                     comportNitrates();
