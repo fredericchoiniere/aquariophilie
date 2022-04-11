@@ -250,7 +250,6 @@ public class PanelTest extends JPanel implements ActionListener {
                 if (GUIMain.pipette.getEstRemplie()) {
                     GUIMain.pipette.enleverUneGoutte();
                     
-
                     if (GUIMain.eau.getGH() >= 0 && GUIMain.eau.getGH() < 5) {
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/0.png"));
                         lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
