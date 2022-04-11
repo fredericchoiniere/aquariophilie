@@ -4,7 +4,6 @@
 
 package model.jeu;
 
-import java.util.*;
 import java.awt.*;
 import javax.swing.*;
 
@@ -20,7 +19,6 @@ public class Inventaire {
         public static Emplacementinv emp5;
         public static Emplacementinv emp6;
         final Dimension size_icone_inv = new Dimension(80, 80);
-        private ArrayList<Emplacementinv> listEmpPleins = new ArrayList<Emplacementinv>(69);
 
         Poisson poisson_default = new Poisson();
 

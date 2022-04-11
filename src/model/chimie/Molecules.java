@@ -23,7 +23,7 @@ public class Molecules{
     float masseMolaireNitrates = (float) 62.01;
 
     public double ammoniaqueMgLtoMol(){
-        molAmmoniaque = (eau.ammoniaque/1000)/masseMolaireAmmoniaque;
+        molAmmoniaque = (eau.getAmmoniaque()/1000)/masseMolaireAmmoniaque;
         return molAmmoniaque;
     }
 
@@ -33,7 +33,7 @@ public class Molecules{
     }
 
     public double nitritesMgLtoMol(){
-        molNitrites = (eau.nitrites/1000)/masseMolaireNitrites;
+        molNitrites = (eau.getNitrites()/1000)/masseMolaireNitrites;
         return molNitrites;
     }
 
@@ -43,7 +43,7 @@ public class Molecules{
     }
 
     public double nitratesMgLtoMol(){
-        molNitrates = (eau.nitrates/1000)/masseMolaireNitrates;
+        molNitrates = (eau.getNitrates()/1000)/masseMolaireNitrates;
         return molNitrates;
     }
 
