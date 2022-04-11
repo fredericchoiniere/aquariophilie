@@ -59,7 +59,6 @@ public class GUIMain extends JFrame {
     public static PoissonRouge poisson_rouge;
     public static PoissonBetta poisson_betta;
     public static PoissonTetra poisson_tetra;
-    Pipette pipette2;
     Filet filet;
     Ciseau ciseau;
     ImageIcon tetra_curseur;
@@ -343,6 +342,7 @@ public class GUIMain extends JFrame {
                 empty.setVisible(false);
                 setOutilsVisible();
                 label_tutoriel.setVisible(false);
+                basicCursor();
             }
         });
 
@@ -475,6 +475,7 @@ public class GUIMain extends JFrame {
                     aquarium_kit_ouvert.setVisible(false);
                     setOutilsVisible();
                     label_tutoriel.setVisible(false);
+                    basicCursor();
                 }
             }
         });

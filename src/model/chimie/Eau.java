@@ -28,6 +28,7 @@ public class Eau implements Runnable {
     public float jours = GUIMain.jours;
     public float hauteur = 35, largeur = 20, longueur = (float) 54.07; // Dimensions de l'aquarium de 10 gallons/37.85L
     public static int hauteurEnPixels = 192; // Hauteur en pixels de l'eau de l'aquarium rempli
+    public static int positionEnPixels = 305;
 
     // public int temperature;
 
@@ -214,7 +215,7 @@ public class Eau implements Runnable {
     }
 
     public void variationGH() {
-
+        // avec volume d'eau
     }
 
     /**
@@ -228,8 +229,9 @@ public class Eau implements Runnable {
         hauteur -= 0.182;
 
         hauteurEnPixels -= 1;
+        positionEnPixels++;
 
-        MethodeGUIMain.setEauDimensions(hauteurEnPixels);
+        MethodeGUIMain.setEauDimensions(positionEnPixels, hauteurEnPixels);
 
         volumeEau = (float) ((hauteur * largeur * longueur) * 0.001);
 
@@ -410,19 +412,15 @@ public class Eau implements Runnable {
                     sommeNitrites();
                     accumulerDechets();
                     absorption();
-                    variationPH();
-                    variationNiveauEau();
+                    //variationPH();
+                    //variationNiveauEau();
 
                     GUIMain.panelTest.lblAmmo.setText(toString(GUIMain.eau.getAmmoniaque()));
                     GUIMain.panelTest.lblNitrites.setText(toString(GUIMain.eau.getNitrites()));
                     GUIMain.panelTest.lblNitrates.setText(toString(GUIMain.eau.getNitrates()));
 
-                    // System.out.println("penteNitrite: " + penteNitrites + " nitrites: " +
-                    // nitrites);
-
                     if (penteNitrites > nitrites) {
                         comportNitrates();
-
                         /*
                          * System.out.println("nitrates: " + nitrates + " absorption nit: " +
                          * sommeAbsorptionNitrates +
@@ -438,8 +436,6 @@ public class Eau implements Runnable {
                     }
                     Thread.sleep(Temps.DUREE);
                 } catch (Exception e) {
-                    // System.out.println("Erreur dans le thread: " +
-                    // Thread.currentThread().getName());
                     e.printStackTrace();
 
                 }

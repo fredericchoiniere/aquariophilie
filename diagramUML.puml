@@ -287,11 +287,13 @@ class PanelShop {
 
 class PanelTest {
     +CycleAqua: cycle
-    +JButton: button1, button2
+    +JLabel: lblAmmo, lblNitrites, lblNitrates,
+    lblPH, lblGH, lblKH, lblOKAmmo, lblOKNitrites,
+    lblOKNitrates, lblOKPH, lblOKGH, lblOKKH
     +Thread: cycle1
     +boolean: isFocused
+    +Molecules: mol
     +PanelTest(constructeur)
-    +actionPerformed()
 }
 
 class GUIMain {
@@ -299,40 +301,53 @@ class GUIMain {
     +PanelTest: panelTest
     +JTabbedPane: tabbedPane
     +JLabel: testEau, empty, aquarium_kit_ouvert,
-    aquarium_kit_fermer, pipette, eau_label,
-    inventaire_ouvert, inventaire_fermer,
-    inventaire_bg, label_argent
+    aquarium_kit_fermer, eau_label, eau_label,
+    inventaire_ouvert, inventaire_fermer, 
+    inventaire_bg, filet_label, pause_label, 
+    reprendre_label, label_tutoriel, label_information 
+    hamis, ciseau_label, label_argent
+    +JLabel lblPipette, label_argent_aqua,
+    label_argent_shop, label_jours
     +String: nom, empla1, empla2, empla3, empla4,
     empla5, empla6, poi1, poi2, poi3, poi4,
-    poi5, poi6
+    poi5, poi6, actionEnCours, pla1, pla2, pla3,
+    pla4, pla5, pla6, aqua1, aqua2, aqua3, aqua4,
+    aqua5, aqua6, aquaPla1, aquaPla2, aquaPla3,
+    aquaPla4, aquaPla5, aquaPla6
     +Rectangle: rectTest, rectEau, rectEmp1,
     rectEmp2, rectEmp3, rectEmp4, rectEmp5, rectEmp6,
     rectAqua1, rectAqua2, rectAqua3, rectAqua4,
-    rectAqua5, rectAqua6
+    rectAqua5, rectAqua6, rectShop, rectEau
     +Temps: temps
     +Eau: eau
-    +Poisson1: poisson1
-    +Poisson2: poisson2
     +Pipette: pipette
-    +ImageIcon: tetra_curseur
+    +Poisson: poisson_default
+    +Plante: plante_default
+    +PoissonRouge: poisson_rouge
+    +PoissonBetta: poisson_betta
+    +PoissonTetra: poisson_tetra
+    +Filet: filet
+    +Ciseau: ciseau
+    +ImageIcon: tetra_curseur, rajoutIcon,
+    iconeAppli
     +Inventaire: inventaire
     +Aquarium: aquarium
-    +Thread: GuiMainThread, threadEau
+    +CycleAzote: cycleInitial
+    +Arraylists<Poisson>, Arraylists<Plante>
+    +Thread: tpoisson_rouge, tpoisson_betta,
+    tpoisson_tetra, threadEau, tCycleInitial,
+    tPanelInfo
     +short: stade, iteration
-    +int: vel_x, vel_y, argent
-    +byte: cycle
+    +int: vel_x, vel_y
     +float: jours
-    +Dimension
-    +GUIMain(constructeur)
-    +addMouseListener(), mouseClicked(),
-    mousePressed(), mouseReleased()
+    +boolean: hasFish1, hasFish2, hasFish3, hasFish4,
+    hasFish5, hasFish6, hasPlant1, hasPlant2, hasPlant3
     +visibleBordersDeco(), visibleBordersPoi(),
     invisibleBordersDeco(), invisibleBordersPoi(),
-    basicCursor(), setCursor(), aquaVisibleTrue(),
-    aquaVisibleFalse()
-    +checkRectanglesDeco(rectangle, label, icone)
-    +checkRectanglesPoi(rectangle, label, icone)
-    +run()
+    basicCursor(), aquaVisibleTrue(), aquaVisibleFalse(),
+    empVisibTrue(), empVisibFalse(), setOutilsVisible(),
+    setOutilsInvisible()
+    +setCursor(label)
 }
 
 
@@ -343,21 +358,41 @@ GUIMain <|-- PanelAqua
 GUIMain <|-- PanelShop
 GUIMain <|-- PanelInfo
 PanelAqua <|-- PanelTest
+PanelInfo <|-- Molecules
 
-Pipette *-- "Fait partie" Outils
+Pipette *-- "hérite" Outils
+Ciseau *-- "hérite" Outils
+Filet *-- "hérite" Outils
+
 Aquarium *-- "Fait partie" Emplacementaq
 Inventaire *-- "Fait partie" Emplacementinv
 CycleAzote *-- "Prend eau" GUIMain
 CycleAzote *-- "Prend temps" GUIMain
-Eau *-- "Prend temps" GUIMain
+Temps *-- "Prend temps" GUIMain
+GUIMain *-- "methode" MethodeGUIMain
+PanelShop *-- "methode" Magasin
+PanelShop *-- "prend l'argent" Argent
+
+PoissonRouge *-- "hérite" Poisson
+PoissonBetta *-- "hérite" Poisson
+PoissonTetra *-- "hérite" Poisson
+JavaFern *-- "hérite" Plante
+BlueBlue *-- "hérite" Plante
+ScarletRot *-- "hérite" Plante
 
 GUIMain "1" o-- "1" Pipette
+GUIMain "1" o-- "1" Ciseau
+GUIMain "1" o-- "1" Filet
 GUIMain "1" o-- "1" Inventaire
 GUIMain "1" o-- "1" Aquarium
 GUIMain "1" o-- "1" Eau
 GUIMain "1" o-- "1" Temps
-GUIMain "1..*" o-- "1" Poisson1
-GUIMain "1..*" o-- "1" Poisson2
 
+PanelShop "1..*" o-- "1" PoissonRouge
+PanelShop "1..*" o-- "1" PoissonBetta
+PanelShop "1..*" o-- "1" PoissonTetra
+PanelShop "1..*" o-- "1" JavaFern
+PanelShop "1..*" o-- "1" BlueBlue
+PanelShop "1..*" o-- "1" ScarletRot
 
 @enduml
