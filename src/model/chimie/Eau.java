@@ -204,7 +204,9 @@ public class Eau implements Runnable {
         }
     }
 
-
+    public void variationGH(){
+        
+    }
 
     public void accumulerDechets(){
         sommeDechets += potentielDechets;
