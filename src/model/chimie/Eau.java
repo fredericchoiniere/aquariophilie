@@ -342,30 +342,26 @@ public class Eau implements Runnable {
 
     /**
      * @return float
-     *         Retourne la valeur du score pour le PH qui cotribue pour (24/100) du
-     *         score de l'eau
+     *         Retourne la valeur du score pour les nitrites qui cotribue pour (24/100) du score de l'eau
      */
     public static float setScoreNitrites() {
 
         float variationNitrites;
 
-        if (nitrites <= 4 && nitrites >= 8) {
+        if(nitrites <= 0 && nitrites>= 1){
             variationNitrites = 0;
-            scoreNitrites = 14;
-        } else if (nitrites < 4) {
-            variationNitrites = 4 - nitrites;
-            scoreNitrites = 100 - (20 * variationNitrites) * (14 / 100);
-        } else if (nitrites > 8) {
-            variationNitrites = ph - 8;
-            scoreNitrites = (100 - (20 * variationNitrites)) * (14 / 100);
+            scoreNitrites= 24;
+        }
+        else if(nitrites > 1){
+            variationNitrites= nitrites - 1;
+            scoreNitrites= (100-((50/17)*variationNitrites))*(24/100);
         }
         return scoreNitrites;
     }
 
     /**
      * @return float
-     *         Retourne la valeur du score pour le PH qui cotribue pour (16/100) du
-     *         score de l'eau
+     *         Retourne la valeur du score pour les nitrates qui cotribue pour (16/100) du score de l'eau
      */
     public static float setScoreNitrates() {
 
@@ -373,18 +369,33 @@ public class Eau implements Runnable {
 
         if (nitrates <= 4 || nitrates >= 8) {
             variationNitrates = 0;
-            scoreNitrates = 14;
-        } else if (nitrates < 4) {
-            variationNitrates = 4 - nitrates;
-            scoreNitrates = (100 - (20 * variationNitrates)) * (14 / 100);
-        } else if (nitrates > 8) {
-            variationNitrates = nitrates - 8;
-            scoreNitrates = (100 - (20 * variationNitrates)) * (14 / 100);
+            scoreNitrates = 16;
+        }
+        else if(nitrates > 40){
+            variationNitrates = nitrates- 40;
+            scoreNitrates = (100-((5/7)*variationNitrates))*(16/100);
         }
         return scoreNitrates;
     }
+    
+     /** 
+     * @return string
+     *         Transforme un float en string (format 2 décimales #,##)
+     */
+    public String toString(float flt) {
 
-    /**
+        String str = "0.00";
+
+        if(String.valueOf(flt).length() >= 4){
+           str = String.valueOf(flt).substring(0,4);
+        }
+        else{
+            str = String.valueOf(flt);
+        }
+        return str;
+    }
+
+    /** 
      * Méthode run de la classe Eau
      * Incomplète pour l'instant
      */
@@ -402,10 +413,9 @@ public class Eau implements Runnable {
                     variationPH();
                     variationNiveauEau();
 
-                    GUIMain.panelTest.lblJour.setText("Jour " + GUIMain.jours);
-                    GUIMain.panelTest.lblAmmo.setText("Ammoniaque: " + GUIMain.eau.getAmmoniaque());
-                    GUIMain.panelTest.lblNitrites.setText("Nitrites: " + GUIMain.eau.getNitrites());
-                    GUIMain.panelTest.lblNitrates.setText("Nitrates: " + GUIMain.eau.getNitrates());
+                    GUIMain.panelTest.lblAmmo.setText(toString(GUIMain.eau.getAmmoniaque()));
+                    GUIMain.panelTest.lblNitrites.setText(toString(GUIMain.eau.getNitrites()));
+                    GUIMain.panelTest.lblNitrates.setText(toString(GUIMain.eau.getNitrates()));
 
                     // System.out.println("penteNitrite: " + penteNitrites + " nitrites: " +
                     // nitrites);

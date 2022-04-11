@@ -7,20 +7,20 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 import model.chimie.CycleAzote;
-import model.chimie.Eau;
 import model.chimie.Molecules;
 
 public class PanelTest extends JPanel implements ActionListener {
 
     CycleAzote cycle;
-    JButton btnActu, btnCycle;
-    public JLabel lblJour;
+    //JButton btnActu, btnCycle;
+    //public JLabel lblJour;
     public JLabel lblAmmo;
     public JLabel lblNitrites;
     public JLabel lblNitrates;
-    JLabel lblPH;
-    JLabel lblGH;
-    JLabel lblKH;
+    public JLabel lblPH;
+    public JLabel lblGH;
+    public JLabel lblKH;
+
     JLabel lblOKAmmo;
     JLabel lblOKNitrites;
     JLabel lblOKNitrates;
@@ -34,6 +34,7 @@ public class PanelTest extends JPanel implements ActionListener {
     public PanelTest() {
 
         setSize(700, 500);
+        setOpaque(false);
         setName("testeau");
         setVisible(true);
         setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
@@ -43,6 +44,13 @@ public class PanelTest extends JPanel implements ActionListener {
         JLayeredPane layersPT = new JLayeredPane(); // layers panel test
 
         JLabel lblPT_BG = new JLabel(); // label panel test back ground
+
+        lblPH = new JLabel("0.00");
+        lblGH = new JLabel("0.00");
+        lblKH = new JLabel("0.00");
+        lblAmmo = new JLabel("0.00");
+        lblNitrites = new JLabel("0.00");
+        lblNitrates = new JLabel("0.00");
 
         JLabel lblSoluPH = new JLabel(); // label solution ph
         JLabel lblSoluGH = new JLabel();
@@ -101,32 +109,32 @@ public class PanelTest extends JPanel implements ActionListener {
         // Label pour l'image de l'état de tolérance pour le PH
         lblOKPH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
         Dimension size_icon_lblOKPH = lblOKPH.getPreferredSize(); // prend la dimension de l'image
-        lblOKPH.setBounds(66, 450, size_icon_lblOKPH.width, size_icon_lblOKPH.height);
+        lblOKPH.setBounds(66, 25, size_icon_lblOKPH.width, size_icon_lblOKPH.height);
 
         // Label pour l'image de l'état de tolérance pour le GH
         lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
         Dimension size_icon_lblOKGH = lblOKGH.getPreferredSize(); // prend la dimension de l'image
-        lblOKGH.setBounds(171, 450, size_icon_lblOKGH.width, size_icon_lblOKGH.height);
+        lblOKGH.setBounds(171, 25, size_icon_lblOKGH.width, size_icon_lblOKGH.height);
 
         // Label pour l'image de l'état de tolérance pour le KH
         lblOKKH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
         Dimension size_icon_lblOKKH = lblOKKH.getPreferredSize(); // prend la dimension de l'image
-        lblOKKH.setBounds(276, 450, size_icon_lblOKKH.width, size_icon_lblOKKH.height);
+        lblOKKH.setBounds(276, 25, size_icon_lblOKKH.width, size_icon_lblOKKH.height);
 
         // Label pour l'image de l'état de tolérance pour l'ammoniaque
         lblOKAmmo.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
         Dimension size_icon_lblOKAmmo = lblOKAmmo.getPreferredSize(); // prend la dimension de l'image
-        lblOKAmmo.setBounds(381, 450, size_icon_lblOKAmmo.width, size_icon_lblOKAmmo.height);
+        lblOKAmmo.setBounds(381, 25, size_icon_lblOKAmmo.width, size_icon_lblOKAmmo.height);
 
         // Label pour l'image de l'état de tolérance pour les nitrites
         lblOKNitrites.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
         Dimension size_icon_lblOKNitrites = lblOKNitrites.getPreferredSize(); // prend la dimension de l'image
-        lblOKNitrites.setBounds(486, 450, size_icon_lblOKNitrites.width, size_icon_lblOKNitrites.height);
+        lblOKNitrites.setBounds(486, 25, size_icon_lblOKNitrites.width, size_icon_lblOKNitrites.height);
 
         // Label pour l'image de l'état de tolérance pour lest nitrates
         lblOKNitrates.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
         Dimension size_icon_lblOKNitrates = lblOKNitrates.getPreferredSize(); // prend la dimension de l'image
-        lblOKNitrates.setBounds(591, 450, size_icon_lblOKNitrates.width, size_icon_lblOKNitrates.height);
+        lblOKNitrates.setBounds(591, 25, size_icon_lblOKNitrates.width, size_icon_lblOKNitrates.height);
 
         // Établissement des priorités de layers
         layersPT.setLayer(lblPT_BG, 0);
@@ -261,7 +269,6 @@ public class PanelTest extends JPanel implements ActionListener {
                 if (GUIMain.pipette.getEstRemplie()) {
                     GUIMain.pipette.enleverUneGoutte();
                     
-
                     if (GUIMain.eau.getGH() >= 0 && GUIMain.eau.getGH() < 5) {
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/0.png"));
                         lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
@@ -416,33 +423,46 @@ public class PanelTest extends JPanel implements ActionListener {
         cycle = GUIMain.cycleInitial;
         cycle1 = new Thread(cycle);
 
-        // affichage pour tester le fonctionnement
-        btnActu = new JButton("Actualiser");
-        btnActu.setBounds(50, 440, 100, 25);
-        btnActu.addActionListener(this);
-        layersPT.setLayer(btnActu, 2);
-        layersPT.add(btnActu);
+        //Label qui affiche la valeur du ph
+        //lblPH = new JLabel(); 
+        lblPH.setText(GUIMain.eau.toString(GUIMain.eau.getPH()));
+        lblPH.setBounds(76, 80, 25, 20);
+        layersPT.setLayer(lblPH, 2);
+        layersPT.add(lblPH);
 
-        lblJour = new JLabel("Jour " + GUIMain.jours);
-        lblJour.setBounds(50, 460, 100, 25);
-        layersPT.setLayer(lblJour, 2);
-        layersPT.add(lblJour);
+        //Label qui affiche la valeur du gh
+        //lblGH = new JLabel(); 
+        lblGH.setText(GUIMain.eau.toString(GUIMain.eau.getGH()));
+        lblGH.setBounds(181, 80, 25, 20);
+        layersPT.setLayer(lblGH, 2);
+        layersPT.add(lblGH);
 
-        lblAmmo = new JLabel("Somme ammoniaque: " + GUIMain.eau.sommeAmmoniaque()); // + "\nListe NH3: " +
-                                                                                    // cycle.eau.listeAmmoniaque);
-        lblAmmo.setBounds(50, 480, 200, 25);
+        //Label qui affiche la valeur du kh
+        //lblKH = new JLabel(); 
+        lblKH.setText(GUIMain.eau.toString(GUIMain.eau.getKH()));
+        lblKH.setBounds(286, 80, 25, 20);
+        layersPT.setLayer(lblKH, 2);
+        layersPT.add(lblKH);
+
+        //Label qui affiche la valeur de l'ammoniaque
+        //lblAmmo = new JLabel(); 
+        lblAmmo.setText(GUIMain.eau.toString(GUIMain.eau.getAmmoniaque()));
+        lblAmmo.setBounds(391, 80, 25, 20);
         layersPT.setLayer(lblAmmo, 2);
         layersPT.add(lblAmmo);
 
-        lblNitrites = new JLabel("Somme nitrites: " + GUIMain.eau.sommeNitrites()); // + "\nListe NO2-: " +
-                                                                                    // cycle.eau.listeNitrites);
-        lblNitrites.setBounds(300, 480, 200, 25);
+        //Label qui affiche la valeur des nitrites
+        //lblNitrites = new JLabel(); 
+        lblNitrites.setText(GUIMain.eau.toString(GUIMain.eau.getNitrites()));
+        lblNitrites.setBounds(496, 80, 25, 20);
         layersPT.setLayer(lblNitrites, 2);
         layersPT.add(lblNitrites);
 
-        lblNitrates = new JLabel("Somme nitrates: " + Eau.nitrates);
-        lblNitrites.setBounds(550, 480, 200, 25);
-        layersPT.setLayer(lblNitrites, 2);
+        //Label qui affiche la valeur des nitrates
+       // lblNitrates = new JLabel();
+        lblNitrates.setText(GUIMain.eau.toString(GUIMain.eau.getNitrates()));
+        lblNitrates.setBounds(601, 80, 25, 20);
+        layersPT.setLayer(lblNitrates, 2);
         layersPT.add(lblNitrates);
 
     }
@@ -453,7 +473,7 @@ public class PanelTest extends JPanel implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == btnActu) {
+        /*if (e.getSource() == btnActu) {
             lblJour.setText("Jour " + GUIMain.jours);
             lblAmmo.setText("Ammoniaque: " + GUIMain.eau.getAmmoniaque()); // + " Liste NH3: " +
                                                                              // cycle.eau.listeAmmoniaque);
@@ -464,6 +484,6 @@ public class PanelTest extends JPanel implements ActionListener {
         if (e.getSource() == btnCycle) {
             cycle.eau.listeAmmoniaque.add((float) 0);
             new Thread(new CycleAzote()).start();
-        }
+        }*/
     }
 }
