@@ -57,8 +57,8 @@ public class Eau implements Runnable {
     
 
     public Eau(){
-        listeAmmoniaque.add(0, ammoniaque);
-        listeNitrites.add(0, nitrites);
+        /* listeAmmoniaque.add(0, ammoniaque);
+        listeNitrites.add(0, nitrites); */
     }
 
     // Getter pour le ph
@@ -397,6 +397,7 @@ public class Eau implements Runnable {
                 //System.out.println("Erreur dans le thread: " + Thread.currentThread().getName());
                 e.printStackTrace();
             }
+            
         }
     }
 }
