@@ -17,15 +17,26 @@ public class Temps {
 
     // Incrémente GUIMain.jours (timer global) au DUREE secondes 
 
+    /**
+     *      Pause le défilement du temps
+     */
     public static void pause(){
         journee.cancel();
         isPaused = true;
     }
 
+    
+    /** 
+     * @param jour
+     *      Affiche le jour actuel
+     */
     public static void jourAJour(int jour){
         GUIMain.label_jours.setText("J" + Integer.toString(jour));
     }
 
+    /**
+     *      Reprend le défilement du temps
+     */
     public static void reprendre(){
         journee = new Timer();
         isPaused = false;

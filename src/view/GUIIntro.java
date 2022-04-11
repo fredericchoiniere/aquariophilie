@@ -1,5 +1,6 @@
 //Jérémie Caron     itération 1
 //Classe pour l'affichage du frame d'introduction
+// Pour l'itération 3
 
 package view;
 
