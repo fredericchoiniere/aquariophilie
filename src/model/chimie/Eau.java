@@ -45,6 +45,8 @@ public class Eau implements Runnable {
 
     final short valeur_changement = 3;
 
+    public boolean dechetsCycleParti = false;
+
     public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeAmmoniaque = Collections.synchronizedList(listeAmmoniaqueTemp); // Liste synchronisée
     public ArrayList<Float> listeAmmoniaqueIteration = new ArrayList<Float>(); // Liste pour itérer dans boucle
@@ -112,7 +114,10 @@ public class Eau implements Runnable {
      *                  Setter pour le kH
      */
     public void setKH(float nouveauKH) {
-        kh = nouveauKH;
+        if (nouveauKH <= 0)
+            kh = 0;
+        else
+            kh = nouveauKH;
     }
 
     /**
@@ -253,14 +258,33 @@ public class Eau implements Runnable {
     /**
      * Pour l'itération 3
      */
-    public void variationKH() {
+    public void variationKH() { // acceptable de 4 à 8
+
+        if (sommeDechets > 10 && sommeDechets < 90) {
+            setKH((float) (kh - 0.006));
+        }
+        if (sommeDechets >= 90 && sommeDechets < 150) {
+            setKH((float) (kh - 0.018));
+        }
+        if (sommeDechets >= 150 && sommeDechets < 250) {
+            setKH((float) (kh - 0.084));
+        }
+        if (sommeDechets >= 250) {
+            setKH((float) (kh - 0.156));
+            if (!dechetsCycleParti) {
+                CycleAzote dechetsCycle = new CycleAzote();
+                Thread tDechetsCycle = new Thread(dechetsCycle);
+                tDechetsCycle.start();
+                dechetsCycleParti = true;
+            }
+        }
         // avec déchets
     }
 
     /**
      * Pour l'itération 3
      */
-    public void variationGH() {
+    public void variationGH() { // acceptable de 5 à 15
         // avec volume d'eau
     }
 
@@ -465,10 +489,14 @@ public class Eau implements Runnable {
                     absorption();
                     // variationPH();
                     variationNiveauEau();
+                    variationKH();
 
                     GUIMain.panelTest.lblAmmo.setText(toString(GUIMain.eau.getAmmoniaque()));
                     GUIMain.panelTest.lblNitrites.setText(toString(GUIMain.eau.getNitrites()));
                     GUIMain.panelTest.lblNitrates.setText(toString(GUIMain.eau.getNitrates()));
+                    GUIMain.panelTest.lblKH.setText(toString(GUIMain.eau.getKH()));
+                    System.out.println("Déchets: " + GUIMain.eau.sommeDechets + " kh: " + GUIMain.eau.getKH());
+
 
                     if (penteNitrites > nitrites) {
                         comportNitrates();
