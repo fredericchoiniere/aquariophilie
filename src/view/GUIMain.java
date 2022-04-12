@@ -8,10 +8,15 @@ package view;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
+import control.Control;
 import model.*;
 import model.chimie.*;
 import model.environnement.Temps;
@@ -34,7 +39,7 @@ public class GUIMain extends JFrame {
     // création des labels
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, eau_label, inventaire_ouvert,
             inventaire_fermer, inventaire_bg, filet_label, pause_label, reprendre_label, label_tutoriel,
-            label_information, hamis, ciseau_label, label_argent, pichet_label;
+            label_information, hamis, ciseau_label, label_argent, pichet_label, radio_on, radio_off;
     public static JLabel lblPipette = new JLabel();
     public static JLabel label_argent_aqua = new JLabel("");
     public static JLabel label_argent_shop = new JLabel("");
@@ -223,6 +228,22 @@ public class GUIMain extends JFrame {
         reprendre_label.setToolTipText("Reprend la progression du temps");
         reprendre_label.setVisible(true);
         panelAqua.add(reprendre_label);
+
+        // ajout du label pour le radio
+        radio_on = new JLabel();
+        radio_on.setIcon(new ImageIcon("res/outils/radio_on.png"));
+        radio_on.setBounds(250, 430, 70, 70);
+        radio_on.setToolTipText("Mettre le radio sur OFF");
+        radio_on.setVisible(true);
+        panelAqua.add(radio_on);
+
+        // ajout du label pour le radio
+        radio_off = new JLabel();
+        radio_off.setIcon(new ImageIcon("res/outils/radio_off.png"));
+        radio_off.setBounds(250, 430, 70, 70);
+        radio_off.setToolTipText("Mettre le radio sur ON");
+        radio_off.setVisible(false);
+        panelAqua.add(radio_off);
 
         // ajout de l'inventaire
         inventaire_bg = new JLabel();
@@ -583,6 +604,36 @@ public class GUIMain extends JFrame {
                 inventaire_bg.setVisible(false);
                 inventaire.setVisible(false);
 
+            }
+        });
+
+        // actionlistener pour ouvrir la radio
+        radio_off.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                radio_off.setVisible(false);
+                radio_on.setVisible(true);
+                label_tutoriel.setVisible(false);
+                        try {
+                            Control.audioPlayer.resumeAudio();
+                        } catch (UnsupportedAudioFileException e1) {
+                            System.out.println("erreur audio");
+                        } catch (IOException e1) {
+                            System.out.println("erreur audio");
+                        } catch (LineUnavailableException e1) {
+                            System.out.println("erreur audio");
+                        }
+            }
+        });
+
+        // actionlistener pour fermer la radio
+        radio_on.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                radio_off.setVisible(true);
+                radio_on.setVisible(false);
+                label_tutoriel.setVisible(false);
+                Control.audioPlayer.pause();
             }
         });
 

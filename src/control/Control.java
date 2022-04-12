@@ -4,10 +4,15 @@
 
 package control;
 
+import java.util.Scanner;
+
 import javax.swing.*;
+
+import model.SimpleAudioPlayer;
 import view.*;
 
 public class Control {
+    public static SimpleAudioPlayer audioPlayer;
 
     /**
      * @param args
@@ -27,6 +32,24 @@ public class Control {
         guiIntro.setLocationRelativeTo(null);
         guiIntro.setVisible(true);
 
+        try
+        {
+            
+            
+            
+            
+            audioPlayer = 
+                            new SimpleAudioPlayer();
+              
+            audioPlayer.play();
+              
+        }
+        
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
 }
+

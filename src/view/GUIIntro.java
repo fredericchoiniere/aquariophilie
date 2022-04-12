@@ -4,8 +4,12 @@
 
 package view;
 
+
 import javax.swing.*;
+
+
 import java.awt.event.*;
+
 import java.awt.*;
 
 public class GUIIntro extends JFrame implements ActionListener {
@@ -14,6 +18,7 @@ public class GUIIntro extends JFrame implements ActionListener {
     public JButton btnNouvellePartie, btnChargerPartie, btnModeEvaluation, btnCredit, btClose, btClassement,
             btInspiration;
     public JLabel titre;
+
 
     public GUIIntro() { // création du constructeur GUIIntro
 
@@ -121,6 +126,8 @@ public class GUIIntro extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) { // initialise GuiMain lorsque l'on clique sur enter
         // bouton pour une nouvelle partie
         if (e.getSource() == btnNouvellePartie) {
+            //SimpleAudioPlayer.playMusic();
+            
             GUIMain aquarium = new GUIMain();
             aquarium.setResizable(false);
             aquarium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -128,6 +135,8 @@ public class GUIIntro extends JFrame implements ActionListener {
             aquarium.setLocationRelativeTo(null);
             aquarium.setVisible(true);
             setVisible(false);
+
+            
         }
 
         // bouton pour reprendre la partie
