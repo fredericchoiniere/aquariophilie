@@ -25,7 +25,7 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
 
     Molecules mol;
 
-    public PanelInfo() { // créer un constructeur à la classe PanelInfo
+    public PanelInfo() { // Constructeur de la classe PanelInfo
 
         mol = new Molecules();
         mol.ammoniaqueAtomesMol();
@@ -57,44 +57,42 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
         lblN = new JLabel("N: " + mol.sommeMolN() + " mols d'azote");
         c.gridwidth = 1;
         c.gridy = 2;
-        // c.anchor = GridBagConstraints.NORTHEAST;
         add(lblN, c);
 
-        // lblAmmo = new JLabel("NH3: " + mol.ammoniaqueMgLtoMol() + " mols");
         lblAmmo = new JLabel("NH3: " + mol.eau.getAmmoniaque() + " au jour " + mol.eau.jours);
         c.gridx = 2;
-        // c.anchor = GridBagConstraints.NORTHWEST;
         add(lblAmmo, c);
 
         lblH = new JLabel("H: " + mol.molAtomeH + " mols d'hydrogène");
         c.gridx = 0;
         c.gridy = 3;
-        // c.anchor = GridBagConstraints.NORTHEAST;
         add(lblH, c);
 
         lblNit = new JLabel("NO2: " + mol.nitritesMgLtoMol() + " mols");
         c.gridx = 2;
-        // c.anchor = GridBagConstraints.NORTHWEST;
         add(lblNit, c);
 
         lblO = new JLabel("O: " + mol.sommeMolO() + " mols d'oxygène");
         c.gridx = 0;
         c.gridy = 4;
-        // c.anchor = GridBagConstraints.NORTHEAST;
         add(lblO, c);
 
         lblNat = new JLabel("NO3: " + mol.nitratesMgLtoMol() + " mols");
         c.gridx = 2;
-        // c.anchor = GridBagConstraints.NORTHWEST;
         add(lblNat, c);
-
     }
 
+    /**
+     *      Affiche l'action en cours
+     */
     public void setActionEnCours() {
         actionEnCours = GUIMain.actionEnCours;
         lblAction.setText("Action en cours: " + actionEnCours);
     }
 
+    /**
+     *      Contrôle l'affichage de la barre d'état et de l'action en cours
+     */
     public void changerEtatBarre() {
         switch (actionEnCours) {
             case "Cycle ammoniaque":
@@ -123,6 +121,9 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
         }
     }
 
+    /**
+     *          Méthode run de la classe PanelInfo
+     */
     @Override
     public void run() {
         while (true) {
@@ -167,11 +168,9 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
 
                 Thread.sleep(Temps.DUREE);
             } catch (InterruptedException e) {
-                // TODO: message à générer
                 e.printStackTrace();
             }
         }
     }
-
 }
 

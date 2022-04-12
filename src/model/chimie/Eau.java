@@ -46,6 +46,8 @@ public class Eau implements Runnable {
     public int nbAtomeH = 4206;
     public static int scoreEau;
 
+    final short valeur_changement = 3;
+
     public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeAmmoniaque = Collections.synchronizedList(listeAmmoniaqueTemp); // Liste synchronisée
     public ArrayList<Float> listeAmmoniaqueIteration = new ArrayList<Float>(); // Liste pour itérer dans boucle
@@ -60,56 +62,127 @@ public class Eau implements Runnable {
 
     public ArrayList<Integer> listeAbsorption = new ArrayList<Integer>();
 
+<<<<<<< HEAD
     // Getter pour le ph
+=======
+    /**
+     * @return float
+     *         Retourne la valeur du pH
+     */
+>>>>>>> a0f32f6a6612373eb160a6ecded2a17d69395b35
     public float getPH() {
         return ph;
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @return int
+     *         Retourne la valeur du pH en int
+     */
+>>>>>>> a0f32f6a6612373eb160a6ecded2a17d69395b35
     public int getPHint() {
         phInt = (int) ph;
         return phInt;
     }
 
+<<<<<<< HEAD
     // Setter pour le ph
+=======
+    /**
+     * @param nouveauPH
+     *                  Setter du pH
+     */
+>>>>>>> a0f32f6a6612373eb160a6ecded2a17d69395b35
     public void setPH(float nouveauPH) {
         ph = nouveauPH;
     }
 
+<<<<<<< HEAD
     // Getter pour le gh
+=======
+    /**
+     * @return float
+     *         Retourne le gH
+     */
+>>>>>>> a0f32f6a6612373eb160a6ecded2a17d69395b35
     public float getGH() {
         return gh;
     }
 
+<<<<<<< HEAD
     // Setter pour le gh
+=======
+    /**
+     * @param nouveauGH
+     *                  Setter pour le gH
+     */
+>>>>>>> a0f32f6a6612373eb160a6ecded2a17d69395b35
     public void setGH(float nouveauGH) {
         gh = nouveauGH;
     }
 
+<<<<<<< HEAD
     // Getter pour le kh
+=======
+    /**
+     * @return float
+     *         Retourne le kH
+     */
+>>>>>>> a0f32f6a6612373eb160a6ecded2a17d69395b35
     public float getKH() {
         return kh;
     }
 
+<<<<<<< HEAD
     // Setter pour le kh
+=======
+    /**
+     * @param nouveauKH
+     *                  Setter pour le kH
+     */
+>>>>>>> a0f32f6a6612373eb160a6ecded2a17d69395b35
     public void setKH(float nouveauKH) {
         kh = nouveauKH;
     }
 
+<<<<<<< HEAD
     // Getter pour le taux d'ammoniaque
+=======
+    /**
+     * @return float
+     *         Retourne le taux d'ammoniaque en mg/L
+     */
+>>>>>>> a0f32f6a6612373eb160a6ecded2a17d69395b35
     public float getAmmoniaque() {
         return sommeAmmoniaque;
     }
 
+<<<<<<< HEAD
     // Getter pour le taux de nitrites
+=======
+    /**
+     * @return float
+     *         Retourne le taux de nitrites en mg/L
+     */
+>>>>>>> a0f32f6a6612373eb160a6ecded2a17d69395b35
     public float getNitrites() {
         return sommeNitrites;
     }
 
+<<<<<<< HEAD
     // Getter pour le taux de nitrates
+=======
+    /**
+     * @return float
+     *         Retourne le taux de nitrates en mg/L
+     */
+>>>>>>> a0f32f6a6612373eb160a6ecded2a17d69395b35
     public float getNitrates() {
         return nitrates;
     }
 
+<<<<<<< HEAD
     public void changerEau() {
         ph = 7;
         kh = 8;
@@ -126,6 +199,28 @@ public class Eau implements Runnable {
     public void couleur() {
         // pourcentage de vert ou de gris dans l'eau
     }
+=======
+    /*
+     * public void changerEau() {
+     * ph = 7;
+     * kh = 8;
+     * gh = 5;
+     * nitrites = 0;
+     * nitrates = 0;
+     * ammoniaque = 0;
+     * 
+     * nbAtomeN = 0;
+     * nbAtomeO = 0;
+     * nbAtomeH = 0;
+     * }
+     */
+
+    /*
+     * public void couleur() {
+     * // pourcentage de vert ou de gris dans l'eau
+     * }
+     */
+>>>>>>> a0f32f6a6612373eb160a6ecded2a17d69395b35
 
     /**
      * @param ammoniaque
@@ -180,7 +275,14 @@ public class Eau implements Runnable {
         return nitrites;
     }
 
+<<<<<<< HEAD
     public void absorption() { // absorber nitrates
+=======
+    /**
+     * Gère l'absorption des déchets et des nitrates par les plantes
+     */
+    public void absorption() {
+>>>>>>> a0f32f6a6612373eb160a6ecded2a17d69395b35
         sommeDechets -= sommeAbsorptionDechets;
         nitrates -= sommeAbsorptionNitrates;
         if (sommeAbsorptionNitrates != 0) {
@@ -195,6 +297,13 @@ public class Eau implements Runnable {
             nitrates = 0;
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * Gère la variation de pH
+     * Non fonctionnel pour l'instant
+     */
+>>>>>>> a0f32f6a6612373eb160a6ecded2a17d69395b35
     public void variationPH() { // TODO: à balancer
         if (kh < 4) {
             setPH(getPH() - (float) 0.3);
@@ -210,10 +319,22 @@ public class Eau implements Runnable {
         }
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * Pour l'itération 3
+     */
+>>>>>>> a0f32f6a6612373eb160a6ecded2a17d69395b35
     public void variationKH() {
         // avec déchets
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * Pour l'itération 3
+     */
+>>>>>>> a0f32f6a6612373eb160a6ecded2a17d69395b35
     public void variationGH() {
         // avec volume d'eau
     }
@@ -228,8 +349,8 @@ public class Eau implements Runnable {
 
         hauteur -= 0.182;
 
-        hauteurEnPixels -= 1;
-        positionEnPixels++;
+        hauteurEnPixels -= valeur_changement;
+        positionEnPixels += valeur_changement;
 
         MethodeGUIMain.setEauDimensions(positionEnPixels, hauteurEnPixels);
 
@@ -238,6 +359,12 @@ public class Eau implements Runnable {
         System.out.println("hauteur eau: " + GUIMain.rectEau.getHeight());
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * Calcule la somme de déchets potentiels
+     */
+>>>>>>> a0f32f6a6612373eb160a6ecded2a17d69395b35
     public void accumulerDechets() {
         sommeDechets += potentielDechets;
     }
@@ -251,6 +378,12 @@ public class Eau implements Runnable {
         return nitrates;
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * Pour l'itération 3
+     */
+>>>>>>> a0f32f6a6612373eb160a6ecded2a17d69395b35
     public static void setScoreEau() {
         scoreEau = (int) (setScoreAmmo() + setScoreGH() + setScoreKH() + setScoreNitrates() + setScoreNitrites()
                 + setScorePH());
@@ -344,26 +477,27 @@ public class Eau implements Runnable {
 
     /**
      * @return float
-     *         Retourne la valeur du score pour les nitrites qui cotribue pour (24/100) du score de l'eau
+     *         Retourne la valeur du score pour les nitrites qui cotribue pour
+     *         (24/100) du score de l'eau
      */
     public static float setScoreNitrites() {
 
         float variationNitrites;
 
-        if(nitrites <= 0 && nitrites>= 1){
+        if (nitrites <= 0 && nitrites >= 1) {
             variationNitrites = 0;
-            scoreNitrites= 24;
-        }
-        else if(nitrites > 1){
-            variationNitrites= nitrites - 1;
-            scoreNitrites= (100-((50/17)*variationNitrites))*(24/100);
+            scoreNitrites = 24;
+        } else if (nitrites > 1) {
+            variationNitrites = nitrites - 1;
+            scoreNitrites = (100 - ((50 / 17) * variationNitrites)) * (24 / 100);
         }
         return scoreNitrites;
     }
 
     /**
      * @return float
-     *         Retourne la valeur du score pour les nitrates qui cotribue pour (16/100) du score de l'eau
+     *         Retourne la valeur du score pour les nitrates qui cotribue pour
+     *         (16/100) du score de l'eau
      */
     public static float setScoreNitrates() {
 
@@ -372,15 +506,14 @@ public class Eau implements Runnable {
         if (nitrates <= 4 || nitrates >= 8) {
             variationNitrates = 0;
             scoreNitrates = 16;
-        }
-        else if(nitrates > 40){
-            variationNitrates = nitrates- 40;
-            scoreNitrates = (100-((5/7)*variationNitrates))*(16/100);
+        } else if (nitrates > 40) {
+            variationNitrates = nitrates - 40;
+            scoreNitrates = (100 - ((5 / 7) * variationNitrates)) * (16 / 100);
         }
         return scoreNitrates;
     }
-    
-     /** 
+
+    /**
      * @return string
      *         Transforme un float en string (format 2 décimales #,##)
      */
@@ -388,16 +521,15 @@ public class Eau implements Runnable {
 
         String str = "0.00";
 
-        if(String.valueOf(flt).length() >= 4){
-           str = String.valueOf(flt).substring(0,4);
-        }
-        else{
+        if (String.valueOf(flt).length() >= 4) {
+            str = String.valueOf(flt).substring(0, 4);
+        } else {
             str = String.valueOf(flt);
         }
         return str;
     }
 
-    /** 
+    /**
      * Méthode run de la classe Eau
      * Incomplète pour l'instant
      */
@@ -421,8 +553,8 @@ public class Eau implements Runnable {
                     sommeNitrites();
                     accumulerDechets();
                     absorption();
-                    //variationPH();
-                    //variationNiveauEau();
+                    // variationPH();
+                    variationNiveauEau();
 
                     
 
@@ -446,14 +578,14 @@ public class Eau implements Runnable {
                     e.printStackTrace();
 
                 }
-            } else{ // permet de ne pas utiliser 23% du processeur si le temps est en pause
+            } else { // permet de ne pas utiliser 23% du processeur si le temps est en pause
                 try {
                     Thread.sleep(Temps.DUREE);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            
+
         }
     }
 }

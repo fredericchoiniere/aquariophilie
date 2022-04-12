@@ -255,7 +255,6 @@ public class PanelTest extends JPanel implements ActionListener {
                         }
                             break;
                         default:
-                            // TODO: message d'erreur
                             break;
                     }
                 }
