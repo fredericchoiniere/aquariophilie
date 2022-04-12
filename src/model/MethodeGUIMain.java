@@ -633,11 +633,15 @@ public class MethodeGUIMain {
         GUIMain.panelAqua.repaint();
     }
 
+    /**
+     * @return boolean
+     * 
+     */
     public static boolean rectAquarium(){
-        if(GUIMain.panelAqua.getMousePosition().getX() >= GUIMain.rectEau.getMinX()
-        && GUIMain.panelAqua.getMousePosition().getX() <= GUIMain.rectEau.getMaxX()
-        && GUIMain.panelAqua.getMousePosition().getY() >= GUIMain.rectEau.getMinY()
-        && GUIMain.panelAqua.getMousePosition().getY() <= GUIMain.rectEau.getMaxY()){
+        if(GUIMain.panelAqua.getMousePosition().getX() >= GUIMain.rectAquarium.getMinX()
+        && GUIMain.panelAqua.getMousePosition().getX() <= GUIMain.rectAquarium.getMaxX()
+        && GUIMain.panelAqua.getMousePosition().getY() >= GUIMain.rectAquarium.getMinY()
+        && GUIMain.panelAqua.getMousePosition().getY() <= GUIMain.rectAquarium.getMaxY()){
             return true;
         } else {
             return false;
