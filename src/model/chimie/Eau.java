@@ -13,24 +13,21 @@ import model.environnement.Temps;
 
 public class Eau implements Runnable {
 
-    public static float ph = 7;                 // Acidité de l'eau
-    public static int phInt = 7;                // Test pour le ph en integer
-    public static float gh = 10;                // Dureté de l'eau
-    public static float kh = 6;                 // Alcalinité de l'eau
-    private float penteNitrites = 0;            // Utile pour déterminer si la valeur des nitrites est en décroissance
-    public float sommeAbsorptionNitrates = 0;   // Score global des plantes
-    public float sommeContributionPH = 0;       // Utile pour délimiter l'intensité à laquelle le ph varie
-    public float volumeEau = (float) 37.85;     // Décrit le volume total d'eau dans l'aquarium en litres
-    public static float nitrites = 0;           // Quantité de nitrites mg/L. Doit tendre vers 0
-    public static float nitrates = 0;           // Quantité de nitrates mg/L
-    public static float ammoniaque = 0;         // Quantité d'ammoniaque dans l'eau
-    private float sommeAmmoniaque, sommeNitrites;// Indique la somme de toute l'ammoniaque ou de tous les nitrites dans l'eau (comptabilise plusieurs cycles simultanés) 
-    public float jours = GUIMain.jours;         // Indique le jour auquel on est rendu
+    public static float ph = 7; // 0 à 14
+    public static float gh = 10; // Dureté de l'eau de 0 à 25+ (tolérée entre 5 et 15)
+    public static float kh = 6; // Dureté de l'eau de 0 à 12+ (tolérée entre 4 et 8)
+    private float penteNitrites = 0;
+    public float sommeAbsorptionNitrates = 0; // score global des plantes
+    public float sommeContributionPH = 0;
+    public float volumeEau = (float) 37.85;
+    public static float nitrites = 0; // Doit etre 0, maximum 5mg par litre
+    public static float nitrates = 0; // max 50mg/L
+    public static float ammoniaque = 0;
+    private float sommeAmmoniaque, sommeNitrites;
+    public float jours = GUIMain.jours;
     public float hauteur = 35, largeur = 20, longueur = (float) 54.07; // Dimensions de l'aquarium de 10 gallons/37.85L
-    public static int hauteurEnPixels = 192;    // Hauteur en pixels de l'eau de l'aquarium rempli
-    public static int positionEnPixels = 305;   //
-
-    // public int temperature;
+    public static int hauteurEnPixels = 192; // Hauteur en pixels de l'eau de l'aquarium rempli
+    public static int positionEnPixels = 305;
 
     private static float scorePH;
     private static float scoreGH;
@@ -44,7 +41,8 @@ public class Eau implements Runnable {
     public int nbAtomeN = 0;
     public int nbAtomeO = 2103;
     public int nbAtomeH = 4206;
-    public static int scoreEau;
+    public int scoreEau = 0;
+    //public int scoreEauNonStatic;
 
     final short valeur_changement = 3;
 
@@ -75,8 +73,7 @@ public class Eau implements Runnable {
      *         Retourne la valeur du pH en int
      */
     public int getPHint() {
-        phInt = (int) ph;
-        return phInt;
+        return (int) ph;
     }
 
     /**
@@ -258,6 +255,9 @@ public class Eau implements Runnable {
      * Pour l'itération 3
      */
     public void variationKH() {
+
+
+
         // avec déchets
     }
 
@@ -272,7 +272,7 @@ public class Eau implements Runnable {
      * Dimension de l'aquarium en cm: 54,07L x 20W x 35H
      * La hauteur de l'eau dans l'aquarium rempli est 35cm
      * 
-     * 
+     * Pour l'itération 3
      */
     public void variationNiveauEau() {
 
@@ -307,9 +307,11 @@ public class Eau implements Runnable {
     /**
      * Pour l'itération 3
      */
-    public static void setScoreEau() {
+    public int getScoreEau() {
         scoreEau = (int) (setScoreAmmo() + setScoreGH() + setScoreKH() + setScoreNitrates() + setScoreNitrites()
                 + setScorePH());
+        return scoreEau;
+        //scoreEauNonStatic = scoreEau;
         // System.out.println("Score eau 1 : " + scoreEau);
     }
 
@@ -462,15 +464,6 @@ public class Eau implements Runnable {
         while (true) {
             jours = GUIMain.jours;
             if (!Temps.isPaused) {
-
-                GUIMain.panelTest.lblPH.setText(toString(GUIMain.eau.getPH()));
-                GUIMain.panelTest.lblGH.setText(toString(GUIMain.eau.getGH()));
-                GUIMain.panelTest.lblKH.setText(toString(GUIMain.eau.getKH()));
-                GUIMain.panelTest.lblAmmo.setText(toString(GUIMain.eau.getAmmoniaque()));
-                GUIMain.panelTest.lblNitrites.setText(toString(GUIMain.eau.getNitrites()));
-                GUIMain.panelTest.lblNitrates.setText(toString(GUIMain.eau.getNitrates()));
-                System.out.println(GUIMain.eau.getNitrates());
-
                 try {
                     sommeAmmoniaque();
                     sommeNitrites();
@@ -478,8 +471,15 @@ public class Eau implements Runnable {
                     absorption();
                     // variationPH();
                     variationNiveauEau();
-
                     
+                    GUIMain.panelTest.lblPH.setText(toString(GUIMain.eau.getPH()));
+                    GUIMain.panelTest.lblGH.setText(toString(GUIMain.eau.getGH()));
+                    GUIMain.panelTest.lblKH.setText(toString(GUIMain.eau.getKH()));
+                    GUIMain.panelTest.lblAmmo.setText(toString(GUIMain.eau.getAmmoniaque()));
+                    GUIMain.panelTest.lblNitrites.setText(toString(GUIMain.eau.getNitrites()));
+                    GUIMain.panelTest.lblNitrates.setText(toString(GUIMain.eau.getNitrates()));
+                    GUIMain.panelTest.lblScoreEau.setText(toString(GUIMain.eau.getScoreEau()));
+                    System.out.println(GUIMain.eau.getNitrates());
 
                     if (penteNitrites > nitrites) {
                         comportNitrates();
