@@ -13,21 +13,24 @@ import model.environnement.Temps;
 
 public class Eau implements Runnable {
 
-    public static float ph = 7; // 0 à 14
-    public static float gh = 10; // Dureté de l'eau de 0 à 25+ (tolérée entre 5 et 15)
-    public static float kh = 6; // Dureté de l'eau de 0 à 12+ (tolérée entre 4 et 8)
-    private float penteNitrites = 0;
-    public float sommeAbsorptionNitrates = 0; // score global des plantes
-    public float sommeContributionPH = 0;
-    public float volumeEau = (float) 37.85;
-    public static float nitrites = 0; // Doit etre 0, maximum 5mg par litre
-    public static float nitrates = 0; // max 50mg/L
-    public static float ammoniaque = 0;
-    private float sommeAmmoniaque, sommeNitrites;
-    public float jours = GUIMain.jours;
+    public static float ph = 7;                 // Acidité de l'eau
+    public static int phInt = 7;                // Test pour le ph en integer
+    public static float gh = 10;                // Dureté de l'eau
+    public static float kh = 6;                 // Alcalinité de l'eau
+    private float penteNitrites = 0;            // Utile pour déterminer si la valeur des nitrites est en décroissance
+    public float sommeAbsorptionNitrates = 0;   // Score global des plantes
+    public float sommeContributionPH = 0;       // Utile pour délimiter l'intensité à laquelle le ph varie
+    public float volumeEau = (float) 37.85;     // Décrit le volume total d'eau dans l'aquarium en litres
+    public static float nitrites = 0;           // Quantité de nitrites mg/L. Doit tendre vers 0
+    public static float nitrates = 0;           // Quantité de nitrates mg/L
+    public static float ammoniaque = 0;         // Quantité d'ammoniaque dans l'eau
+    private float sommeAmmoniaque, sommeNitrites;// Indique la somme de toute l'ammoniaque ou de tous les nitrites dans l'eau (comptabilise plusieurs cycles simultanés) 
+    public float jours = GUIMain.jours;         // Indique le jour auquel on est rendu
     public float hauteur = 35, largeur = 20, longueur = (float) 54.07; // Dimensions de l'aquarium de 10 gallons/37.85L
-    public static int hauteurEnPixels = 192; // Hauteur en pixels de l'eau de l'aquarium rempli
-    public static int positionEnPixels = 305;
+    public static int hauteurEnPixels = 192;    // Hauteur en pixels de l'eau de l'aquarium rempli
+    public static int positionEnPixels = 305;   //
+
+    // public int temperature;
 
     private static float scorePH;
     private static float scoreGH;
@@ -57,97 +60,57 @@ public class Eau implements Runnable {
 
     public ArrayList<Integer> listeAbsorption = new ArrayList<Integer>();
 
-    
-    /** 
-     * @return float
-     * Retourne la valeur du pH
-     */
+    // Getter pour le ph
     public float getPH() {
         return ph;
     }
 
-    
-    /** 
-     * @return int
-     * Retourne la valeur du pH en int
-     */
     public int getPHint() {
-        return (int) ph;
+        phInt = (int) ph;
+        return phInt;
     }
 
-    
-    /** 
-     * @param nouveauPH
-     * Setter du pH
-     */
+    // Setter pour le ph
     public void setPH(float nouveauPH) {
         ph = nouveauPH;
     }
 
-    
-    /** 
-     * @return float
-     * Retourne le gH
-     */
+    // Getter pour le gh
     public float getGH() {
         return gh;
     }
 
-    
-    /** 
-     * @param nouveauGH
-     * Setter pour le gH
-     */
+    // Setter pour le gh
     public void setGH(float nouveauGH) {
         gh = nouveauGH;
     }
 
-    
-    /** 
-     * @return float
-     * Retourne le kH
-     */
+    // Getter pour le kh
     public float getKH() {
         return kh;
     }
 
-    
-    /** 
-     * @param nouveauKH
-     * Setter pour le kH
-     */
+    // Setter pour le kh
     public void setKH(float nouveauKH) {
         kh = nouveauKH;
     }
 
-    
-    /** 
-     * @return float
-     * Retourne le taux d'ammoniaque en mg/L
-     */
+    // Getter pour le taux d'ammoniaque
     public float getAmmoniaque() {
         return sommeAmmoniaque;
     }
 
-    
-    /** 
-     * @return float
-     * Retourne le taux de nitrites en mg/L
-     */
+    // Getter pour le taux de nitrites
     public float getNitrites() {
         return sommeNitrites;
     }
 
-    
-    /** 
-     * @return float
-     * Retourne le taux de nitrates en mg/L
-     */
+    // Getter pour le taux de nitrates
     public float getNitrates() {
         return nitrates;
     }
 
-    /* public void changerEau() {
+    public void changerEau() {
         ph = 7;
         kh = 8;
         gh = 5;
@@ -158,11 +121,11 @@ public class Eau implements Runnable {
         nbAtomeN = 0;
         nbAtomeO = 0;
         nbAtomeH = 0;
-    } */
+    }
 
-    /* public void couleur() {
+    public void couleur() {
         // pourcentage de vert ou de gris dans l'eau
-    } */
+    }
 
     /**
      * @param ammoniaque
@@ -217,11 +180,7 @@ public class Eau implements Runnable {
         return nitrites;
     }
 
-    
-    /** 
-     *      Gère l'absorption des déchets et des nitrates par les plantes
-     */
-    public void absorption() {
+    public void absorption() { // absorber nitrates
         sommeDechets -= sommeAbsorptionDechets;
         nitrates -= sommeAbsorptionNitrates;
         if (sommeAbsorptionNitrates != 0) {
@@ -236,11 +195,6 @@ public class Eau implements Runnable {
             nitrates = 0;
     }
 
-    
-    /** 
-     *      Gère la variation de pH
-     *      Non fonctionnel pour l'instant
-     */
     public void variationPH() { // TODO: à balancer
         if (kh < 4) {
             setPH(getPH() - (float) 0.3);
@@ -256,16 +210,10 @@ public class Eau implements Runnable {
         }
     }
 
-    /** 
-     * Pour l'itération 3
-     */
     public void variationKH() {
         // avec déchets
     }
 
-    /** 
-     * Pour l'itération 3
-     */
     public void variationGH() {
         // avec volume d'eau
     }
@@ -274,7 +222,7 @@ public class Eau implements Runnable {
      * Dimension de l'aquarium en cm: 54,07L x 20W x 35H
      * La hauteur de l'eau dans l'aquarium rempli est 35cm
      * 
-     * Pour l'itération 3
+     * 
      */
     public void variationNiveauEau() {
 
@@ -290,9 +238,6 @@ public class Eau implements Runnable {
         System.out.println("hauteur eau: " + GUIMain.rectEau.getHeight());
     }
 
-    /** 
-     * Calcule la somme de déchets potentiels
-     */
     public void accumulerDechets() {
         sommeDechets += potentielDechets;
     }
@@ -306,9 +251,6 @@ public class Eau implements Runnable {
         return nitrates;
     }
 
-    /** 
-     * Pour l'itération 3
-     */
     public static void setScoreEau() {
         scoreEau = (int) (setScoreAmmo() + setScoreGH() + setScoreKH() + setScoreNitrates() + setScoreNitrites()
                 + setScorePH());
@@ -465,6 +407,15 @@ public class Eau implements Runnable {
         while (true) {
             jours = GUIMain.jours;
             if (!Temps.isPaused) {
+
+                GUIMain.panelTest.lblPH.setText(toString(GUIMain.eau.getPH()));
+                GUIMain.panelTest.lblGH.setText(toString(GUIMain.eau.getGH()));
+                GUIMain.panelTest.lblKH.setText(toString(GUIMain.eau.getKH()));
+                GUIMain.panelTest.lblAmmo.setText(toString(GUIMain.eau.getAmmoniaque()));
+                GUIMain.panelTest.lblNitrites.setText(toString(GUIMain.eau.getNitrites()));
+                GUIMain.panelTest.lblNitrates.setText(toString(GUIMain.eau.getNitrates()));
+                System.out.println(GUIMain.eau.getNitrates());
+
                 try {
                     sommeAmmoniaque();
                     sommeNitrites();
@@ -473,9 +424,7 @@ public class Eau implements Runnable {
                     //variationPH();
                     //variationNiveauEau();
 
-                    GUIMain.panelTest.lblAmmo.setText(toString(GUIMain.eau.getAmmoniaque()));
-                    GUIMain.panelTest.lblNitrites.setText(toString(GUIMain.eau.getNitrites()));
-                    GUIMain.panelTest.lblNitrates.setText(toString(GUIMain.eau.getNitrates()));
+                    
 
                     if (penteNitrites > nitrites) {
                         comportNitrates();
