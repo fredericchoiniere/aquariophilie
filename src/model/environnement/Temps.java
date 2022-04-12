@@ -6,31 +6,47 @@ package model.environnement;
 
 import java.util.*;
 
+import model.chimie.Eau;
 import model.jeu.Argent;
 import view.GUIMain;
 
 public class Temps {
     static Timer journee;
     public static int DUREE = 1500; // Durée d'une journée en millisecondes
+    public static boolean isPaused = true;
 
     // Incrémente GUIMain.jours (timer global) au DUREE secondes 
 
-    public Temps() {
-        reprendre();
-    }
-
+    /**
+     *      Pause le défilement du temps
+     */
     public static void pause(){
         journee.cancel();
+        isPaused = true;
     }
 
+    
+    /** 
+     * @param jour
+     *      Affiche le jour actuel
+     */
+    public static void jourAJour(int jour){
+        GUIMain.label_jours.setText("J" + Integer.toString(jour));
+    }
+
+    /**
+     *      Reprend le défilement du temps
+     */
     public static void reprendre(){
         journee = new Timer();
+        isPaused = false;
         journee.scheduleAtFixedRate(new TimerTask() {
             @Override
                 public void run() {
                     GUIMain.jours++;
+                    jourAJour((int) GUIMain.jours);
                     Argent.paye(GUIMain.label_argent_aqua, GUIMain.label_argent_shop);
-                    //System.out.println(GUIMain.aqua1+" "+GUIMain.aqua2+" "+GUIMain.aqua3+" "+GUIMain.aqua4+" "+GUIMain.aqua5+" "+GUIMain.aqua6);
+                    Eau.setScoreEau();
                 }
         }, 0, DUREE);
     }

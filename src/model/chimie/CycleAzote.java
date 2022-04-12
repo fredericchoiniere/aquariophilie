@@ -9,9 +9,7 @@ import view.GUIMain;
 
 public class CycleAzote implements Runnable {
 
-    public float jourInitial = GUIMain.jours;
-    public float jourFinal = jourInitial + 35;
-    public float jours = 0, tempAmmoniaque = 0, tempNitrites = 0;
+    public float jours = GUIMain.jours, tempAmmoniaque = 0, tempNitrites = 0;
     public Eau eau = GUIMain.eau;
 
     public String actionEnCours = "Aucune action initiale";
@@ -39,7 +37,7 @@ public class CycleAzote implements Runnable {
      */
     public void cycleNitrites(Eau eau) {
         eau.listeNitrites.remove(tempNitrites);
-        if (jours > 14 && jours < 35) {
+        if (jours >= 14 && jours <= 35) {
             tempNitrites = (float) (-3.56 * ((jours / 7) - 3.5) * ((jours / 7) - 3.5) + 8);
         } else {
             tempNitrites = 0;
@@ -47,23 +45,23 @@ public class CycleAzote implements Runnable {
         eau.addNitrites(tempNitrites);
     }
 
+    /** 
+     * Méthode run de la classe CycleAzote
+     */
     @Override
     public void run() {
         while (true) {
 
-            if ((jours + jourInitial) < GUIMain.jours)
-                jours++;
+            jours = GUIMain.jours;
 
             try {
                 if (jours >= 0 && jours <= 18) {
                     cycleAmmoniaque(eau);
                     actionEnCours = "Cycle ammoniaque";
-                    //System.out.println("Action en cours: " + actionEnCours + " dans thread " + Thread.currentThread().getName());
                 }
                 if (jours >= 14 && jours <= 35) {
                     cycleNitrites(eau);
                     actionEnCours = "Cycle nitrites";
-                    //System.out.println("Action en cours: " + actionEnCours + " dans thread " + Thread.currentThread().getName());
                 }
                 GUIMain.actionEnCours = actionEnCours;
                 Thread.sleep(Temps.DUREE);

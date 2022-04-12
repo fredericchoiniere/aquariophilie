@@ -1,48 +1,54 @@
-//Jérémie Caron,                    Frédéric Choinière    itération 2
+//Jérémie Caron, Frédéric Choinière    itération 2
 
 package model;
 
-import javax.swing.JLabel;
-
-import model.jeu.Aquarium;
-import model.jeu.Argent;
-import model.jeu.Inventaire;
-import model.plantes.BlueBlue;
-import model.plantes.JavaFern;
-import model.plantes.ScarletRot;
-import model.poissons.PoissonBetta;
-import model.poissons.PoissonRouge;
-import model.poissons.PoissonTetra;
+import model.jeu.*;
+import model.plantes.*;
+import model.poissons.*;
 import view.GUIMain;
-import java.awt.*;
 
+import java.awt.*;
 import javax.swing.*;
 
 public class MethodeGUIMain {
 
+    // call des attributs de la classe
     Aquarium aquarium;
     Inventaire inventaire;
     static Boolean hasPlants = false;
 
+    /**
+     * @param rectangle
+     * @param label
+     * @param icone
+     * @param label2
+     * @param emplacement
+     * @param hasPlant
+     * @param hasPlantString
+     * @param indexInv
+     * @param indexAqua
+     * @param pla
+     *                       méthode pour regarder quoi faire quand l'on dépose une
+     *                       plante dans l'aquarium
+     */
     public static void checkRectanglesDeco(Rectangle rectangle, JLabel label, Icon icone, JLabel label2,
-            String emplacement,
-            boolean hasPlant, String hasPlantString, int indexInv, int indexAqua, String pla) {
-        if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
-                && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
-                && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
-                && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
-
-            if (hasPlant) {
-                // System.out.println("emplacement déjà occupé");
-            } else {
-                setHasPlant(hasPlantString);
-                setPlantName(indexAqua, pla);
-                label.setIcon(icone);
-                label2.setIcon(Inventaire.empty_inv);
-                setEmpla(emplacement);
-                setEmplaToPlant(emplacement, pla, indexInv, indexAqua);
+            String emplacement, boolean hasPlant, String hasPlantString, int indexInv, int indexAqua, String pla) {
+        try {
+            if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
+                    && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
+                    && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
+                    && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
+                if (!hasPlant) {
+                    setHasPlant(hasPlantString);
+                    setPlantName(indexAqua, pla);
+                    label.setIcon(icone);
+                    label2.setIcon(Inventaire.empty_inv);
+                    setEmpla(emplacement);
+                    setEmplaToPlant(emplacement, pla, indexInv, indexAqua);
+                }
             }
-
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Veuillez rester à l'intérieur de l'application", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -50,99 +56,101 @@ public class MethodeGUIMain {
      * @param rectangle
      * @param label
      * @param icone
-     *                  regarder si la souris est dans le rectangle lors du
-     *                  lachement de la touche
+     *                  méthode pour regarder quoi faire quand l'on dépose un
+     *                  poisson dans l'aquarium
      */
     public static void checkRectanglesPoi(Rectangle rectangle, JLabel label1, Icon icone, JLabel label2,
-            String emplacement,
-            boolean hasFish, String hasFishString, int index, String poi, String aqua) {
-        if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
-                && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
-                && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
-                && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
-
-            if (hasFish == true) {
-                // System.out.println("emplacement déjà occupé");
-
-            } else {
-                setHasFish(hasFishString);
-                label1.setIcon(icone);
-                label2.setIcon(Inventaire.empty_inv);
-                setEmpla(emplacement);
-                setEmplaToFish(emplacement, poi, label1, index);
-                // setAquaName(poi, aqua);
-
-                // createPoissonRouge(emplacement, label1, index);
-                // createPoissonBetta(emplacement, label1, index);
-                // System.out.println("hasFish = " + hasFish);
-            }
-
-        }
-    }
-
-    public static void checkRectanglesPoiFilet(Rectangle rectangle, JLabel label1, Icon icone, 
-            boolean hasFish, String hasFishString, int index, String aqua) {
-        if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
-                && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
-                && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
-                && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
-
-            if (hasFish == true) {
-                setHasFishFalse(hasFishString);
-                label1.setIcon(icone);
-                // PanelShop.checkCase(Inventaire.img_inv_poi_rouge, "poisson", "rouge");
-
-                if (GUIMain.listePoissonsAqua.get(index).index == index) {
-                    GUIMain.listePoissonsAqua.get(index).direction = "empty";
-                    GUIMain.listePoissonsAqua.get(index).var = false;
-                    GUIMain.listePoissonsInv.set(index, GUIMain.poisson_default);
-                    checkFishType(aqua);
+            String emplacement, boolean hasFish, String hasFishString, int index, String poi, String aqua) {
+        try {
+            if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
+                    && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
+                    && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
+                    && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
+                if (!hasFish) {
+                    try {
+                        setHasFish(hasFishString);
+                        label1.setIcon(icone);
+                        label2.setIcon(Inventaire.empty_inv);
+                        setEmpla(emplacement);
+                        setEmplaToFish(emplacement, poi, label1, index);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-            } else {
-                System.out.println("à deja pas de poisson");
             }
-        }
-    }
-
-    public static void checkRectanglesDecoCis(Rectangle rectangle, JLabel label1, Icon icone, 
-            boolean hasPlant, String hasPlantString, int index, String plant) {
-        if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
-                && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
-                && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
-                && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
-
-            if (hasPlant == true) {
-                setHasPlantFalse(hasPlantString);
-                label1.setIcon(icone);
-                // PanelShop.checkCase(Inventaire.img_inv_poi_rouge, "poisson", "rouge");
-
-                // if (GUIMain.listePlantesAqua.get(index).index == index) {
-                GUIMain.listePlantesAqua.set(index, GUIMain.plante_default);
-                // checkFishType(plant);
-                // System.out.println(plant + " " + index);
-                checkPlantType(plant);
-                // }
-            } else {
-                // System.out.println("à deja pas de poisson");
-            }
-        }
-    }
-
-    public void checkRectanglesShop(Rectangle rectangle, JLabel label1, String emplacement) {
-        if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
-                && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
-                && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
-                && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
-            label1.setIcon(Inventaire.empty_inv);
-            setEmpla(emplacement);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Veuillez rester à l'intérieur de l'application", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     /**
-     * create a method that creates a new PoissonTetra and make it appear on the
-     * frame on panelAqua
+     * @param rectangle
+     * @param label1
+     * @param icone
+     * @param hasFish
+     * @param hasFishString
+     * @param index
+     * @param aqua
+     *                      méthode pour regarder quoi faire quand l'on dépose le
+     *                      filet dans l'aquarium
      */
+    public static void checkRectanglesPoiFilet(Rectangle rectangle, JLabel label1, Icon icone,
+            boolean hasFish, String hasFishString, int index, String aqua) {
+        try {
+            if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
+                    && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
+                    && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
+                    && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
+                if (hasFish) {
+                    setHasFishFalse(hasFishString);
+                    label1.setIcon(icone);
+                    GUIMain.listePoissonsAqua.get(index).direction = "empty";
+                    GUIMain.listePoissonsAqua.get(index).var = false;
+                    GUIMain.listePoissonsAqua.set(index, GUIMain.poisson_default);
+                    checkFishType(aqua);
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Veuillez rester à l'intérieur de l'application", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
+    /**
+     * @param rectangle
+     * @param label1
+     * @param icone
+     * @param hasPlant
+     * @param hasPlantString
+     * @param index
+     * @param plant
+     *                       méthode pour regarder quoi faire quand l'on dépose le
+     *                       ciseau dans l'aquarium
+     */
+    public static void checkRectanglesDecoCis(Rectangle rectangle, JLabel label1, Icon icone,
+            boolean hasPlant, String hasPlantString, int index, String plant) {
+        try {
+            if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
+                    && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
+                    && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
+                    && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
+                if (hasPlant) {
+                    setHasPlantFalse(hasPlantString);
+                    label1.setIcon(icone);
+                    GUIMain.listePlantesAqua.set(index, GUIMain.plante_default);
+                    checkPlantType(plant);
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Veuillez rester à l'intérieur de l'application", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    /**
+     * @param emplacement
+     * @param label
+     * @param index
+     *                    méthode pour créer un poisson tetra
+     */
     public static void createPoissonTetra(String emplacement, JLabel label1, int index) {
         GUIMain.listePoissonsAqua.set(index, GUIMain.listePoissonsInv.get(getEmplaToInt(emplacement)));
         GUIMain.poisson_tetra = (PoissonTetra) GUIMain.listePoissonsAqua.get(index);
@@ -156,6 +164,12 @@ public class MethodeGUIMain {
         setAquaName(index, "tetra");
     }
 
+    /**
+     * @param emplacement
+     * @param label
+     * @param index
+     *                    méthode pour créer un poisson betta
+     */
     public static void createPoissonBetta(String emplacement, JLabel label, int index) {
         GUIMain.listePoissonsAqua.set(index, GUIMain.listePoissonsInv.get(getEmplaToInt(emplacement)));
         GUIMain.poisson_betta = (PoissonBetta) GUIMain.listePoissonsAqua.get(index);
@@ -167,11 +181,15 @@ public class MethodeGUIMain {
         GUIMain.tpoisson_betta.start();
         GUIMain.panelAqua.add(GUIMain.poisson_betta);
         setAquaName(index, "betta");
-
     }
 
-    public static void createPoissonRouge(String emplacement, JLabel label1, int index) { // passer de l'inventaire à
-        // l'aquarium
+    /**
+     * @param emplacement
+     * @param label1
+     * @param index
+     *                    méthode pour créer un poisson rouge
+     */
+    public static void createPoissonRouge(String emplacement, JLabel label1, int index) {
         GUIMain.listePoissonsAqua.set(index, GUIMain.listePoissonsInv.get(getEmplaToInt(emplacement)));
         GUIMain.poisson_rouge = (PoissonRouge) GUIMain.listePoissonsAqua.get(index);
         GUIMain.poisson_rouge.setBounds(340, 324, 322, 156);
@@ -185,7 +203,7 @@ public class MethodeGUIMain {
     }
 
     /**
-     * set les labels des poissons visible
+     * méthode pour rendre les emplacements à poisson visible
      */
     public void aquaVisibleTrue() {
         aquarium.aqua1.setVisible(true);
@@ -194,11 +212,10 @@ public class MethodeGUIMain {
         aquarium.aqua4.setVisible(true);
         aquarium.aqua5.setVisible(true);
         aquarium.aqua6.setVisible(true);
-        GUIMain.shop_label.setVisible(true);
     }
 
     /**
-     * set les labels des poissons invisible
+     * méthode pour rendre les emplacements à poisson invisible
      */
     public void aquaVisibleFalse() {
         aquarium.aqua1.setVisible(false);
@@ -207,27 +224,34 @@ public class MethodeGUIMain {
         aquarium.aqua4.setVisible(false);
         aquarium.aqua5.setVisible(false);
         aquarium.aqua6.setVisible(false);
-        GUIMain.shop_label.setVisible(false);
     }
 
-    public void empVisibleTrue() { // set les labels des emplacements visible
+    /**
+     * méthode pour rendre les emplacements à plante visible
+     */
+    public void empVisibleTrue() {
         aquarium.emp1.setVisible(true);
         aquarium.emp2.setVisible(true);
         aquarium.emp3.setVisible(true);
-
     }
 
-    public void empVisibleFalse() { // set les labels des emplacements invisible
+    /**
+     * méthode pour rendre les emplacements à plante invisible
+     */
+    public void empVisibleFalse() {
         aquarium.emp1.setVisible(false);
         aquarium.emp2.setVisible(false);
         aquarium.emp3.setVisible(false);
     }
 
+    /**
+     * @param emplacement
+     *                    méthode pour remettre l'emplacement en empty
+     */
     public static void setEmpla(String emplacement) { // set l'emplacement du poisson
         switch (emplacement) { // dans l'inventaire
             case "empla1":
                 GUIMain.empla1 = "empty";
-                // System.out.println("cul");
                 break;
             case "empla2":
                 GUIMain.empla2 = "empty";
@@ -249,6 +273,11 @@ public class MethodeGUIMain {
         }
     }
 
+    /**
+     * @param emplacement
+     * @return index
+     *         méthode pour retourner un index selon l'emplacement
+     */
     public static int getEmplaToInt(String emplacement) { // TODO: à revoir
         int index = 420;
         switch (emplacement) {
@@ -276,8 +305,12 @@ public class MethodeGUIMain {
         return index;
     }
 
-    public static void setHasFish(String hasFish) { // set le poisson dans l'inventaire
-        switch (hasFish) { // dans l'inventaire
+    /**
+     * @param hasFish
+     *                méthode pour rendre l'emplacement rempli
+     */
+    public static void setHasFish(String hasFish) {
+        switch (hasFish) {
             case "hasFish1":
                 GUIMain.hasFish1 = true;
                 break;
@@ -301,8 +334,12 @@ public class MethodeGUIMain {
         }
     }
 
+    /**
+     * @param hasPlant
+     *                 méthode pour rendre l'emplacement rempli
+     */
     public static void setHasPlant(String hasPlant) {
-        switch (hasPlant) { // dans l'inventaire
+        switch (hasPlant) {
             case "hasPlant1":
                 GUIMain.hasPlant1 = true;
                 break;
@@ -317,8 +354,12 @@ public class MethodeGUIMain {
         }
     }
 
-    public static void setHasFishFalse(String hasFish) { // set le poisson dans l'inventaire
-        switch (hasFish) { // dans l'inventaire
+    /**
+     * @param hasFish
+     *                méthode pour rendre l'emplacement vide
+     */
+    public static void setHasFishFalse(String hasFish) {
+        switch (hasFish) {
             case "hasFish1":
                 GUIMain.hasFish1 = false;
                 break;
@@ -342,8 +383,12 @@ public class MethodeGUIMain {
         }
     }
 
-    public static void setHasPlantFalse(String hasPlant) { // set le poisson dans l'inventaire
-        switch (hasPlant) { // dans l'inventaire
+    /**
+     * @param hasPlant
+     *                 méthode pour rendre l'emplacement vide
+     */
+    public static void setHasPlantFalse(String hasPlant) {
+        switch (hasPlant) {
             case "hasPlant1":
                 GUIMain.hasPlant1 = false;
                 break;
@@ -358,9 +403,14 @@ public class MethodeGUIMain {
         }
     }
 
-    public static int setIndexPoi(int index1) { // set le poisson dans l'inventaire
+    /**
+     * @param index1
+     * @return index
+     *         méthode pour retourner un int en index
+     */
+    public static int setIndexPoi(int index1) {
         int index = 69;
-        switch (index1) { // dans l'inventaire
+        switch (index1) {
             case 0:
                 index = 0;
                 break;
@@ -385,9 +435,14 @@ public class MethodeGUIMain {
         return index;
     }
 
+    /**
+     * @param emplacement
+     * @param poi
+     * @param label1
+     * @param index
+     *                    méthode pour créer le poisson selon le type rentrer
+     */
     public static void setEmplaToFish(String emplacement, String poi, JLabel label1, int index) {
-        // impérativement
-
         switch (poi) {
             case "rouge":
                 createPoissonRouge(emplacement, label1, index);
@@ -403,39 +458,45 @@ public class MethodeGUIMain {
         }
     }
 
+    /**
+     * @param emplacement
+     * @param poi
+     * @param indexInv
+     * @param indexAqua
+     *                    méthode pour créer la plante selon le type rentrer
+     */
     public static void setEmplaToPlant(String emplacement, String poi, int indexInv, int indexAqua) {
-        // impérativement
-
         switch (poi) {
             case "blue":
                 GUIMain.listePlantesAqua.set(indexAqua, GUIMain.listePlantesInv.get(indexInv));
-                // System.out.println("blue");
                 Argent.emp1 += 2;
                 GUIMain.eau.sommeAbsorptionNitrates += BlueBlue.absorptionNitrates;
                 GUIMain.eau.sommeAbsorptionDechets += BlueBlue.absorptionDechets;
-
+                GUIMain.eau.sommeContributionPH += BlueBlue.contributionPH;
                 break;
             case "java":
                 GUIMain.listePlantesAqua.set(indexAqua, GUIMain.listePlantesInv.get(indexInv));
-                // System.out.println("java");
                 Argent.emp2 += 5;
                 GUIMain.eau.sommeAbsorptionNitrates += JavaFern.absorptionNitrates;
                 GUIMain.eau.sommeAbsorptionDechets += JavaFern.absorptionDechets;
-
+                GUIMain.eau.sommeContributionPH += JavaFern.contributionPH;
                 break;
             case "scarlet":
                 GUIMain.listePlantesAqua.set(indexAqua, GUIMain.listePlantesInv.get(indexInv));
-                // System.out.println("scarlet");
                 Argent.emp3 += 10;
                 GUIMain.eau.sommeAbsorptionNitrates += ScarletRot.absorptionNitrates;
                 GUIMain.eau.sommeAbsorptionDechets += ScarletRot.absorptionDechets;
-
+                GUIMain.eau.sommeContributionPH += ScarletRot.contributionPH;
                 break;
             default:
                 break;
         }
     }
 
+    /**
+     * @param aqua
+     *             méthode pour lorsque l'on enlève le poisson
+     */
     public static void checkFishType(String aqua) {
         switch (aqua) {
             case "rouge":
@@ -458,31 +519,43 @@ public class MethodeGUIMain {
         }
     }
 
-    public static void checkPlantType(String plant) {
-        switch (plant) {
+    /**
+     * @param plant
+     *              méthode pour lorsque l'on enlève la plante
+     */
+    public static void checkPlantType(String plante) {
+        switch (plante) {
             case "blue":
                 Argent.emp1 -= 2;
                 Argent.argent += BlueBlue.prix / 2;
                 GUIMain.eau.sommeAbsorptionNitrates -= BlueBlue.absorptionNitrates;
                 GUIMain.eau.sommeAbsorptionDechets -= BlueBlue.absorptionDechets;
+                GUIMain.eau.sommeContributionPH -= BlueBlue.contributionPH;
                 break;
             case "java":
                 Argent.emp2 -= 5;
                 Argent.argent += JavaFern.prix / 2;
                 GUIMain.eau.sommeAbsorptionNitrates -= JavaFern.absorptionNitrates;
                 GUIMain.eau.sommeAbsorptionDechets -= JavaFern.absorptionDechets;
+                GUIMain.eau.sommeContributionPH -= JavaFern.contributionPH;
                 break;
             case "scarlet":
                 Argent.emp3 -= 10;
                 Argent.argent += ScarletRot.prix / 2;
                 GUIMain.eau.sommeAbsorptionNitrates -= ScarletRot.absorptionNitrates;
                 GUIMain.eau.sommeAbsorptionDechets -= ScarletRot.absorptionDechets;
+                GUIMain.eau.sommeContributionPH -= ScarletRot.contributionPH;
                 break;
             default:
                 break;
         }
     }
 
+    /**
+     * @param index
+     * @param aqua
+     *              méthode pour set le nom du poisson selon l'index
+     */
     public static void setAquaName(int index, String aqua) {
         switch (index) {
             case 0:
@@ -503,12 +576,16 @@ public class MethodeGUIMain {
             case 5:
                 GUIMain.aqua6 = aqua;
                 break;
-
             default:
                 break;
         }
     }
 
+    /**
+     * @param index
+     * @param plant
+     *              méthode pour set le nom de la plante selon l'index
+     */
     public static void setPlantName(int index, String plant) {
         switch (index) {
             case 0:
@@ -525,13 +602,35 @@ public class MethodeGUIMain {
         }
     }
 
-    public static Boolean hasPlants(){
-        if(!GUIMain.hasPlant1 && !GUIMain.hasPlant2 && !GUIMain.hasPlant3){
+    /**
+     * @return Boolean
+     *         méthode pour retourner si il y a une plante
+     */
+    public static Boolean hasPlants() {
+        if (!GUIMain.hasPlant1 && !GUIMain.hasPlant2 && !GUIMain.hasPlant3) {
             hasPlants = false;
-        }
-        else
+        } else
             hasPlants = true;
-        System.out.println("hasplants: " + hasPlants);
         return hasPlants;
     }
+
+    /** 
+     * @return Rectangle
+     *      Retourne les dimensions du rectangle Eau
+     */
+    public static Rectangle getEauDimensions(){
+        return GUIMain.rectEau;
+    }
+
+    /** 
+     * @param y
+     * @param height
+     *          Redéfinit les dimensions du rectangle Eau en fonction des paramètres spécifiés 
+     *          Rafraîchit l'affichage de l'eau
+     */
+    public static void setEauDimensions(int y, int height){
+        GUIMain.rectEau.setBounds((int)GUIMain.rectEau.getX(), y, (int)GUIMain.rectEau.getWidth(), height);
+        GUIMain.panelAqua.repaint();
+    }
+
 }

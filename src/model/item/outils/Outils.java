@@ -3,11 +3,14 @@
 
 package model.item.outils;
 
-public class Outils { // extends Draggable components pour les Outils
+public class Outils {
 
+    // attributs de la classe
     public String nom = "";
 
-    // permet de prendre le nom pipette
+    /** 
+     *            méthode qui permet de donner le bo nom de l'outil
+     */
     public void adapterNom() {
         nom = getClass().getName().toLowerCase();
         nom = nom.substring(6);
