@@ -231,7 +231,7 @@ public class GUIMain extends JFrame {
         radio_on = new JLabel();
         radio_on.setIcon(new ImageIcon("res/outils/radio_on.png"));
         radio_on.setBounds(250, 430, 70, 70);
-        radio_on.setToolTipText("Mettre le radio sur OFF");
+        radio_on.setToolTipText("Mettre la radio sur OFF");
         radio_on.setVisible(true);
         panelAqua.add(radio_on);
 
@@ -239,7 +239,7 @@ public class GUIMain extends JFrame {
         radio_off = new JLabel();
         radio_off.setIcon(new ImageIcon("res/outils/radio_off.png"));
         radio_off.setBounds(250, 430, 70, 70);
-        radio_off.setToolTipText("Mettre le radio sur ON");
+        radio_off.setToolTipText("Mettre la radio sur ON");
         radio_off.setVisible(false);
         panelAqua.add(radio_off);
 
