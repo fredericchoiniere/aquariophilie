@@ -358,19 +358,34 @@ GUIMain <|-- PanelAqua
 GUIMain <|-- PanelShop
 GUIMain <|-- PanelInfo
 PanelAqua <|-- PanelTest
+PanelInfo <|-- Molecules
 
 Pipette *-- "hérite" Outils
 Ciseau *-- "hérite" Outils
 Filet *-- "hérite" Outils
 
+<<<<<<< HEAD
+Pipette *-- "hérite" Outils
+Ciseau *-- "hérite" Outils
+Filet *-- "hérite" Outils
+
+=======
+>>>>>>> 44ab1c0a9020db603f885220a6a8cdc86704257d
 Aquarium *-- "Fait partie" Emplacementaq
 Inventaire *-- "Fait partie" Emplacementinv
 CycleAzote *-- "Prend eau" GUIMain
 CycleAzote *-- "Prend temps" GUIMain
+<<<<<<< HEAD
 Eau *-- "Prend temps" GUIMain
 GUIMain *-- "methode" MethodeGUIMain
 PanelShop *-- "methode" Magasin
 PanelInfo *-- "prend l'argent" Argent
+=======
+Temps *-- "Prend temps" GUIMain
+GUIMain *-- "methode" MethodeGUIMain
+PanelShop *-- "methode" Magasin
+PanelShop *-- "prend l'argent" Argent
+>>>>>>> 44ab1c0a9020db603f885220a6a8cdc86704257d
 
 PoissonRouge *-- "hérite" Poisson
 PoissonBetta *-- "hérite" Poisson

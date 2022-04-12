@@ -35,7 +35,6 @@ public class GUIMain extends JFrame {
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, eau_label, inventaire_ouvert,
             inventaire_fermer, inventaire_bg, filet_label, pause_label, reprendre_label, label_tutoriel,
             label_information, hamis, ciseau_label, label_argent;
-    public static JLabel shop_label;
     public static JLabel lblPipette = new JLabel();
     public static JLabel label_argent_aqua = new JLabel("");
     public static JLabel label_argent_shop = new JLabel("");
@@ -47,8 +46,9 @@ public class GUIMain extends JFrame {
             aquaPla1, aquaPla2, aquaPla3, aquaPla4, aquaPla5, aquaPla6;
 
     // création des rectangles
-    Rectangle rectTest, rectEau, rectEmp1, rectEmp2, rectEmp3, rectAqua1, rectAqua2, rectAqua3, rectAqua4, rectAqua5,
+    Rectangle rectTest, rectEmp1, rectEmp2, rectEmp3, rectAqua1, rectAqua2, rectAqua3, rectAqua4, rectAqua5,
             rectAqua6, rectShop;
+    public static Rectangle rectEau;
 
     // creation des objets
     Temps temps;
@@ -59,10 +59,8 @@ public class GUIMain extends JFrame {
     public static PoissonRouge poisson_rouge;
     public static PoissonBetta poisson_betta;
     public static PoissonTetra poisson_tetra;
-    Pipette pipette2;
     Filet filet;
     Ciseau ciseau;
-    Shop shop;
     ImageIcon tetra_curseur;
     ImageIcon rajoutIcon = new ImageIcon();
     ImageIcon iconeAppli = new ImageIcon("res/background/icone_aquariophilie.png");
@@ -165,14 +163,6 @@ public class GUIMain extends JFrame {
         ciseau_label.setBounds(850, 500, size_ciseau.width, size_ciseau.height);
         ciseau_label.setVisible(true);
         panelAqua.add(ciseau_label);
-
-        // ajout du label pour le shop
-        shop = new Shop();
-        shop_label = new JLabel();
-        shop.setIcon(shop_label);
-        Dimension size_shop = new Dimension(300, 200);
-        shop_label.setBounds(700, 505, size_shop.width, size_shop.height);
-        shop_label.setVisible(false);
 
         // ajout de l'icone de notre kit ouvert
         aquarium_kit_ouvert = new JLabel();
@@ -281,7 +271,7 @@ public class GUIMain extends JFrame {
         panelAqua.setVisible(true);
 
         // ajout des zones pour les action listener
-        rectEau = new Rectangle(330, 310, 344, 192);
+        rectEau = new Rectangle(330, 305, 344, 192);
         rectTest = new Rectangle(panelTest.getBounds());
         rectEmp1 = new Rectangle(358, 408, 80, 80);
         rectEmp2 = new Rectangle(464, 408, 80, 80);
@@ -300,7 +290,7 @@ public class GUIMain extends JFrame {
         tabbedPane.add("Aquarium", panelAqua);
 
         // ---------------------------------------------------------------------------------------------------------------------------------------------------------
-        // creation du 2em tab
+        // création du 2ème tab
 
         // création du panel Magasin
         PanelShop panelShop = new PanelShop();
@@ -308,20 +298,20 @@ public class GUIMain extends JFrame {
         // ajout du label pour l'argent
         label_argent_shop.setBounds(475, 10, 100, 50);
         label_argent_shop.setFont(new Font("Verdana", Font.BOLD, 16));
-        label_argent_shop.setText("50 ₴");
+        label_argent_shop.setText("10000 ₴"); // Afficher vraie valeur
         label_argent_shop.setVisible(true);
         panelShop.add(label_argent_shop);
 
         tabbedPane.add("Magasin", panelShop);
 
         // --------------------------------------------------------------------------------------------------------------------------------------------------------
-        // creation du 3em tab
+        // création du 3ème tab
 
         // création du panel Magasin
         PanelInfo panelInfo = new PanelInfo();
         tPanelInfo = new Thread(panelInfo);
         tPanelInfo.start();
-        tabbedPane.add("À propos", panelInfo);
+        tabbedPane.add("Détails", panelInfo);
 
         // ajout du panel Info au tabbed pane
         add(tabbedPane);
@@ -352,6 +342,7 @@ public class GUIMain extends JFrame {
                 empty.setVisible(false);
                 setOutilsVisible();
                 label_tutoriel.setVisible(false);
+                basicCursor();
             }
         });
 
@@ -390,7 +381,6 @@ public class GUIMain extends JFrame {
                         pipette.changerEtatPanel(panelTest);
                     }
                 } catch (NullPointerException e1) {
-                    // do nothing
                 }
             }
         });
@@ -484,6 +474,7 @@ public class GUIMain extends JFrame {
                     aquarium_kit_ouvert.setVisible(false);
                     setOutilsVisible();
                     label_tutoriel.setVisible(false);
+                    basicCursor();
                 }
             }
         });
@@ -517,7 +508,7 @@ public class GUIMain extends JFrame {
         });
 
         // actionlistener pour arreter le jeu
-        pause_label.addMouseListener(new MouseAdapter() { // TODO: à revoir
+        pause_label.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Temps.pause();
@@ -529,7 +520,7 @@ public class GUIMain extends JFrame {
         });
 
         // actionlistener pour reprendre le jeu
-        reprendre_label.addMouseListener(new MouseAdapter() { // TODO: à revoir
+        reprendre_label.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Temps.reprendre();
@@ -541,7 +532,7 @@ public class GUIMain extends JFrame {
         });
 
         // actionlistener pour fermer le tutoriel
-        label_tutoriel.addMouseListener(new MouseAdapter() { // TODO: à revoir
+        label_tutoriel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 label_tutoriel.setVisible(false);
@@ -549,7 +540,7 @@ public class GUIMain extends JFrame {
         });
 
         // actionlistener pour ouvrir le tutoriel
-        label_information.addMouseListener(new MouseAdapter() { // TODO: à revoir
+        label_information.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 label_tutoriel.setVisible(true);
@@ -1061,7 +1052,6 @@ public class GUIMain extends JFrame {
         aquarium.aqua4.setVisible(true);
         aquarium.aqua5.setVisible(true);
         aquarium.aqua6.setVisible(true);
-        shop_label.setVisible(true);
     }
 
     /**
@@ -1074,7 +1064,6 @@ public class GUIMain extends JFrame {
         aquarium.aqua4.setVisible(false);
         aquarium.aqua5.setVisible(false);
         aquarium.aqua6.setVisible(false);
-        shop_label.setVisible(false);
     }
 
     /**

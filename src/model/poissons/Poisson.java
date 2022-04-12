@@ -4,6 +4,9 @@ package model.poissons;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import model.chimie.Eau;
+
 import java.awt.*;
 
 public class Poisson extends JPanel {
@@ -16,6 +19,7 @@ public class Poisson extends JPanel {
     public String direction = "droite";
     public boolean var = true;
     public String empInv, empAqua, nom;
+    int hauteur = Eau.hauteurEnPixels, compensationPosition = Eau.hauteurEnPixels-(4+(192-Eau.hauteurEnPixels));
 
     /**
      * @param isOpaque
@@ -106,6 +110,11 @@ public class Poisson extends JPanel {
         return nom;
     }
 
+    public int getHauteur(){ 
+        hauteur = 196 - Eau.hauteurEnPixels; // Traduit la hauteur en pixels de l'eau en coordonnées pour les poissons
+        return hauteur;
+    }
+
     /**
      * @param coter
      * @param img
@@ -131,7 +140,7 @@ public class Poisson extends JPanel {
     /**
      * @param label
      * @param type
-     *              méthode pour afficher les tooltip
+     *              méthode pour afficher les tooltips
      */
     public static void updateToolTip(JLabel label, String type) {
         switch (type) {

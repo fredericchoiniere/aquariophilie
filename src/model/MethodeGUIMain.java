@@ -32,16 +32,13 @@ public class MethodeGUIMain {
      *                       plante dans l'aquarium
      */
     public static void checkRectanglesDeco(Rectangle rectangle, JLabel label, Icon icone, JLabel label2,
-            String emplacement,
-            boolean hasPlant, String hasPlantString, int indexInv, int indexAqua, String pla) {
+            String emplacement, boolean hasPlant, String hasPlantString, int indexInv, int indexAqua, String pla) {
         try {
             if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
                     && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
                     && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
                     && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
-                if (hasPlant) {
-                    // do nothing
-                } else {
+                if (!hasPlant) {
                     setHasPlant(hasPlantString);
                     setPlantName(indexAqua, pla);
                     label.setIcon(icone);
@@ -51,7 +48,7 @@ public class MethodeGUIMain {
                 }
             }
         } catch (Exception e) {
-            // do nothing
+            JOptionPane.showMessageDialog(null, "Veuillez rester à l'intérieur de l'application", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -63,15 +60,13 @@ public class MethodeGUIMain {
      *                  poisson dans l'aquarium
      */
     public static void checkRectanglesPoi(Rectangle rectangle, JLabel label1, Icon icone, JLabel label2,
-            String emplacement,
-            boolean hasFish, String hasFishString, int index, String poi, String aqua) {
+            String emplacement, boolean hasFish, String hasFishString, int index, String poi, String aqua) {
         try {
             if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
                     && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
                     && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
                     && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
-                if (hasFish == true) {
-                } else {
+                if (!hasFish) {
                     try {
                         setHasFish(hasFishString);
                         label1.setIcon(icone);
@@ -79,13 +74,12 @@ public class MethodeGUIMain {
                         setEmpla(emplacement);
                         setEmplaToFish(emplacement, poi, label1, index);
                     } catch (Exception e) {
-                        System.out.println("erreur");
                         e.printStackTrace();
                     }
                 }
             }
         } catch (Exception e) {
-            // do nothing
+            JOptionPane.showMessageDialog(null, "Veuillez rester à l'intérieur de l'application", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -107,18 +101,17 @@ public class MethodeGUIMain {
                     && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
                     && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
                     && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
-                if (hasFish == true) {
+                if (hasFish) {
                     setHasFishFalse(hasFishString);
                     label1.setIcon(icone);
                     GUIMain.listePoissonsAqua.get(index).direction = "empty";
                     GUIMain.listePoissonsAqua.get(index).var = false;
                     GUIMain.listePoissonsAqua.set(index, GUIMain.poisson_default);
                     checkFishType(aqua);
-                } else {
                 }
             }
         } catch (Exception e) {
-            // do nothing
+            JOptionPane.showMessageDialog(null, "Veuillez rester à l'intérieur de l'application", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -140,32 +133,15 @@ public class MethodeGUIMain {
                     && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
                     && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
                     && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
-                if (hasPlant == true) {
+                if (hasPlant) {
                     setHasPlantFalse(hasPlantString);
                     label1.setIcon(icone);
                     GUIMain.listePlantesAqua.set(index, GUIMain.plante_default);
                     checkPlantType(plant);
-                } else {
                 }
             }
         } catch (Exception e) {
-            // do nothing
-        }
-    }
-
-    /**
-     * @param rectangle
-     * @param label1
-     * @param emplacement
-     *                    méthode pour remettre le label du shop en empty
-     */
-    public void checkRectanglesShop(Rectangle rectangle, JLabel label1, String emplacement) {
-        if (GUIMain.panelAqua.getMousePosition().getX() >= rectangle.getMinX()
-                && GUIMain.panelAqua.getMousePosition().getX() <= rectangle.getMaxX()
-                && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
-                && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
-            label1.setIcon(Inventaire.empty_inv);
-            setEmpla(emplacement);
+            JOptionPane.showMessageDialog(null, "Veuillez rester à l'intérieur de l'application", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -236,7 +212,6 @@ public class MethodeGUIMain {
         aquarium.aqua4.setVisible(true);
         aquarium.aqua5.setVisible(true);
         aquarium.aqua6.setVisible(true);
-        GUIMain.shop_label.setVisible(true);
     }
 
     /**
@@ -249,7 +224,6 @@ public class MethodeGUIMain {
         aquarium.aqua4.setVisible(false);
         aquarium.aqua5.setVisible(false);
         aquarium.aqua6.setVisible(false);
-        GUIMain.shop_label.setVisible(false);
     }
 
     /**
@@ -639,4 +613,24 @@ public class MethodeGUIMain {
             hasPlants = true;
         return hasPlants;
     }
+
+    /** 
+     * @return Rectangle
+     *      Retourne les dimensions du rectangle Eau
+     */
+    public static Rectangle getEauDimensions(){
+        return GUIMain.rectEau;
+    }
+
+    /** 
+     * @param y
+     * @param height
+     *          Redéfinit les dimensions du rectangle Eau en fonction des paramètres spécifiés 
+     *          Rafraîchit l'affichage de l'eau
+     */
+    public static void setEauDimensions(int y, int height){
+        GUIMain.rectEau.setBounds((int)GUIMain.rectEau.getX(), y, (int)GUIMain.rectEau.getWidth(), height);
+        GUIMain.panelAqua.repaint();
+    }
+
 }

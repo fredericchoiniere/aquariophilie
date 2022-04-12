@@ -84,7 +84,7 @@ public class PanelShop extends JPanel implements ActionListener {
         planteScarlet.addActionListener(this);
         add(planteScarlet);
 
-        // ajout du label pour le turoriel
+        // ajout du label pour le tutoriel
         label_tutoriel = new JLabel();
         label_tutoriel.setBounds(0, 0, 1000, 700);
         label_tutoriel.setIcon(new ImageIcon("res/background/tutoriel_shop.png"));
@@ -117,7 +117,7 @@ public class PanelShop extends JPanel implements ActionListener {
 
     /**
      * @param Graphics
-     *                 méthode pour painturer le background du panel
+     *                 méthode pour paint le background du panel
      */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -134,7 +134,7 @@ public class PanelShop extends JPanel implements ActionListener {
      * @param type
      * @param poisson
      * @param plante
-     * méthode pour voir dans quel emplacement de l'inventaire l'item sera placer
+     * méthode pour voir dans quel emplacement de l'inventaire l'item sera placé
      */
     public static void checkCase(ImageIcon icon, String type, String poisson, String plante) {
         if (GUIMain.empla1 == "empty") {
@@ -223,7 +223,7 @@ public class PanelShop extends JPanel implements ActionListener {
     /**
      * @param typePoisson
      * @param index
-     *                    méthode voir voir quel poisson ajouter à l'inventaire
+     *                    méthode pour voir quel poisson ajouter à l'inventaire
      */
     public static void checkFish(String typePoisson, int index) { 
         switch (typePoisson) {
@@ -250,7 +250,7 @@ public class PanelShop extends JPanel implements ActionListener {
     /**
      * @param typePlante
      * @param index
-     *                   méthode voir voir quel poisson ajouter à l'inventaire
+     *                   méthode pour voir quel plante ajouter à l'inventaire
      */
     public static void checkPlant(String typePlante, int index) {
         switch (typePlante) {
@@ -350,7 +350,7 @@ public class PanelShop extends JPanel implements ActionListener {
 
     /**
      * @param e
-     *          Action listener
+     *          Action listener pour acheter les poissons et les plantes du panelShop
      */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -359,7 +359,7 @@ public class PanelShop extends JPanel implements ActionListener {
             if (Magasin.gotMoney("rouge")) {
                 checkCase(Inventaire.img_inv_poi_rouge, "poisson", "rouge", "");
             } else {
-                System.out.println("Pas assez d'argent");
+                JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur", JOptionPane.PLAIN_MESSAGE);
             }
         }
         if (e.getSource() == poisson_betta) {
@@ -367,7 +367,7 @@ public class PanelShop extends JPanel implements ActionListener {
             if (Magasin.gotMoney("betta")) {
                 checkCase(Inventaire.img_inv_betta, "poisson", "betta", "");
             } else {
-                System.out.println("pas assez d'argent");
+                JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur", JOptionPane.PLAIN_MESSAGE);
             }
         }
         if (e.getSource() == poisson_tetra) {
@@ -375,7 +375,7 @@ public class PanelShop extends JPanel implements ActionListener {
             if (Magasin.gotMoney("tetra")) {
                 checkCase(Inventaire.img_inv_tetra, "poisson", "tetra", "");
             } else {
-                System.out.println("pas assez d'argent");
+                JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur", JOptionPane.PLAIN_MESSAGE);
             }
         }
         if (e.getSource() == planteBlue) {
@@ -383,7 +383,7 @@ public class PanelShop extends JPanel implements ActionListener {
             if (Magasin.gotMoney("blue")) {
                 checkCase(Inventaire.img_inv_tetra, "decoration", "", "blue");
             } else {
-                System.out.println("pas assez d'argent");
+                JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur", JOptionPane.PLAIN_MESSAGE);
             }
         }
         if (e.getSource() == planteFern) {
@@ -391,7 +391,7 @@ public class PanelShop extends JPanel implements ActionListener {
             if (Magasin.gotMoney("java")) {
                 checkCase(Inventaire.img_inv_tetra, "decoration", "", "java");
             } else {
-                System.out.println("pas assez d'argent");
+                JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur", JOptionPane.PLAIN_MESSAGE);
             }
         }
         if (e.getSource() == planteScarlet) {
@@ -399,7 +399,7 @@ public class PanelShop extends JPanel implements ActionListener {
             if (Magasin.gotMoney("scarlet")) {
                 checkCase(Inventaire.img_inv_tetra, "decoration", "", "scarlet");
             } else {
-                System.out.println("pas assez d'argent");
+                JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur", JOptionPane.PLAIN_MESSAGE);
             }
         }
     }
