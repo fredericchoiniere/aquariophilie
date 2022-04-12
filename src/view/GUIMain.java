@@ -34,7 +34,7 @@ public class GUIMain extends JFrame {
     // création des labels
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, eau_label, inventaire_ouvert,
             inventaire_fermer, inventaire_bg, filet_label, pause_label, reprendre_label, label_tutoriel,
-            label_information, hamis, ciseau_label, label_argent;
+            label_information, hamis, ciseau_label, label_argent, pichet_label;
     public static JLabel lblPipette = new JLabel();
     public static JLabel label_argent_aqua = new JLabel("");
     public static JLabel label_argent_shop = new JLabel("");
@@ -61,6 +61,7 @@ public class GUIMain extends JFrame {
     public static PoissonTetra poisson_tetra;
     Filet filet;
     Ciseau ciseau;
+    Pichet pichet;
     ImageIcon tetra_curseur;
     ImageIcon rajoutIcon = new ImageIcon();
     ImageIcon iconeAppli = new ImageIcon("res/background/icone_aquariophilie.png");
@@ -142,7 +143,7 @@ public class GUIMain extends JFrame {
         lblPipette = new JLabel();
         pipette.changerEtatLabel(lblPipette);
         Dimension size_pipette = lblPipette.getPreferredSize();
-        lblPipette.setBounds(850, 200, size_pipette.width, size_pipette.height);
+        lblPipette.setBounds(850, 180, size_pipette.width, size_pipette.height);
         lblPipette.setVisible(true);
         panelAqua.add(lblPipette);
 
@@ -151,7 +152,7 @@ public class GUIMain extends JFrame {
         filet_label = new JLabel();
         filet.setIcon(filet_label);
         Dimension size_filet = filet_label.getPreferredSize();
-        filet_label.setBounds(850, 350, size_filet.width, size_filet.height);
+        filet_label.setBounds(850, 300, size_filet.width, size_filet.height);
         filet_label.setVisible(true);
         panelAqua.add(filet_label);
 
@@ -160,9 +161,18 @@ public class GUIMain extends JFrame {
         ciseau_label = new JLabel();
         ciseau.setIcon(ciseau_label);
         Dimension size_ciseau = ciseau_label.getPreferredSize();
-        ciseau_label.setBounds(850, 500, size_ciseau.width, size_ciseau.height);
+        ciseau_label.setBounds(850, 420, size_ciseau.width, size_ciseau.height);
         ciseau_label.setVisible(true);
         panelAqua.add(ciseau_label);
+
+        // ajout du label pour le pichet
+        pichet = new Pichet();
+        pichet_label = new JLabel();
+        pichet.setIcon(pichet_label);
+        Dimension size_pichet = pichet_label.getPreferredSize();
+        pichet_label.setBounds(850, 540, size_pichet.width, size_pichet.height);
+        pichet_label.setVisible(true);
+        panelAqua.add(pichet_label);
 
         // ajout de l'icone de notre kit ouvert
         aquarium_kit_ouvert = new JLabel();
@@ -366,19 +376,38 @@ public class GUIMain extends JFrame {
                 pipette.changerEtatPanel(panelAqua);
                 label_tutoriel.setVisible(false);
             }
+
             @Override
             public void mouseReleased(MouseEvent e) {
                 try {
                     basicCursor();
-                    if (panelAqua.getMousePosition().getX() >= rectEau.getMinX()
-                            && panelAqua.getMousePosition().getX() <= rectEau.getMaxX()
-                            && panelAqua.getMousePosition().getY() >= rectEau.getMinY()
-                            && panelAqua.getMousePosition().getY() <= rectEau.getMaxY()) {
+                    if (MethodeGUIMain.rectAquarium()) {
                         lblPipette.setIcon(new ImageIcon("res/outils/pipette_pleine.png"));
                         pipette.setEstRemplie(true);
                         pipette.setNbGouttes(6);
                         pipette.changerEtatLabel(lblPipette);
                         pipette.changerEtatPanel(panelTest);
+                    }
+                } catch (NullPointerException e1) {
+                }
+            }
+        });
+
+        pichet_label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                pichet.changerCurseurPanel(panelAqua);
+                label_tutoriel.setVisible(false);
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                try {
+                    basicCursor();
+                    if (MethodeGUIMain.rectAquarium()) {
+                        Eau.hauteurEnPixels = 192;
+                        Eau.positionEnPixels = 305;
+                        panelAqua.repaint();
                     }
                 } catch (NullPointerException e1) {
                 }

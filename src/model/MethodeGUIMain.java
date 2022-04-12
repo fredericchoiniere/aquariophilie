@@ -633,4 +633,16 @@ public class MethodeGUIMain {
         GUIMain.panelAqua.repaint();
     }
 
+    public static boolean rectAquarium(){
+        if(GUIMain.panelAqua.getMousePosition().getX() >= GUIMain.rectEau.getMinX()
+        && GUIMain.panelAqua.getMousePosition().getX() <= GUIMain.rectEau.getMaxX()
+        && GUIMain.panelAqua.getMousePosition().getY() >= GUIMain.rectEau.getMinY()
+        && GUIMain.panelAqua.getMousePosition().getY() <= GUIMain.rectEau.getMaxY()){
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
 }
