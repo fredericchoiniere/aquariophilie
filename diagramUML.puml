@@ -3,7 +3,8 @@ scale 1
 
 
 class Control {
-    +main
+    +main()
+    +ImageIcon img
     +guiIntro
     +setVisible(): true
 }
@@ -21,36 +22,61 @@ class GUIIntro {
 }
 
 class CycleAzote {
-    +float: jour, jourFinale, jourInitial
+    +float: jours, jourFinal, jourInitial
     +byte: cycle
     +eau
-    +CycleAzote()
-    +cycleAmmoniaque(eau)
-    +cycleNitrite(eau)
+    +String actionEnCours
+    +cycleAmmoniaque(eau), cycleNitrite(eau)
     +run()
 }
 
 class Eau {
-    +int: ph, kh, gh, ammonium, nbAtomeN,
-    nbAtomeO, nbAtomeH, bacteries,
-    chlore, temperature, scoreEau
-    +float: volumeEau, nitrites,
-    nitrates, ammoniaque, jours
-    -float: sommeAmmoniaque, sommeNitrites
-    +byte: cycle
-    +listes<float>
-    +Eau(constructeur)
-    +changerEau(), couleur(), addAmmoniaque(),
-    sommeAmmoniaque(), sommeNitrites(),
-    comportNitrates()
-    +addNitrites(float, byte)
+    +float: ph, phInt, gh, kh, penteNitrites,
+    sommeAbsorptionNitrates, sommecontributionPH,
+    volumeEau, nitrites, nitrates,
+    ammoniaque, sommeAmmoniaque,
+    sommeNitrites, jours
+    -float: scorePH, scoreGH, scoreKh,
+    scoreAmmo, scoreNitrites, scoreNitrates
+    +int: sommeAbsorptionDechets,
+    potentielDechets, sommeDechets, nbAtomeN,
+    nbAtomeO, nbAtomeH, scoreEau
+    +Arraylists<float>
+    +Arraylists<int>
+    +getPH(), getPHint(), setPH(), getGH(),
+    setGH(), getKh(), setKh(), getAmmoniaque(),
+    getNitrites(), getNitrates(), changerEau(),
+    couleur(), sommeAmmoniaque(), sommeNitrites(),
+    absorption(), variationPH(), variationGH(),
+    accumulerDechets(), comportNitrates(),
+    setScoreEau(), setScorePH(), setScoreGH(),
+    setScoreKh(), setScoreAmmo(), setScoreNitrites(),
+    setScoreNitrates()
+    +addAmmoniaque(ammoniaque)
+    +addNitrites(nitrites)
     +run()
+}
+
+class Molecules {
+    +eau
+    +double: molAtomeNAmmo, molAtomeNNi,
+    molAtomeNNa, molAtomeONi, molAtomeONa,
+    molAtomeH, sommeMoLn, sommeMolO,
+    molAmmoniaque, molNitrites, molNitrates,
+    +float: masseMolaireAmmoniaque, masseMolaireNitrites,
+    masseMolaireNitrates
+    +ammoniaqueMgLtoMol(), ammoniaqueAtomesMol(),
+    nitritesMgLtoMol(), nitritesAtomesMol(),
+    nitratesMgLtoMol(), nitratesAtomesMol(),
+    sommeMolN(), sommeMolO(),
 }
 
 class Temps {
     +Timer: journee
-    +Temps(constructeur)
-    +scheduleAtFixedRate()
+    +int: DUREE
+    +boolean: isPaused
+    +pause(), reprendre()
+    +jourAJour(jour)
 }
 
 class Outils {
@@ -63,7 +89,25 @@ class Pipette {
     cruseur_plein, icone_vide,
     icone_plein
     +boolean: est_remplie
+    +int: nbGouttes
     +Pipette(constructeur)
+    +getEstRemplie(), setEstRemplie(),
+    getNbGouttes(), setNbGouttes(),
+    enleverUneGoutte()
+    +changerEtatLabel(label)
+    +changerEtatPanel(panel)
+}
+
+class Ciseau {
+    +ImageIcon: icone_filet
+    +Ciseau(constructeur)
+    +changerEtatLabel(label)
+    +changerEtatPanel(panel)
+}
+
+class Filet {
+    +ImageIcon: icone_filet
+    +Filet(constructeur)
     +changerEtatLabel(label)
     +changerEtatPanel(panel)
 }
@@ -73,9 +117,16 @@ class Aquarium {
     aqua1, aqua2, aqua3, aqua4,aqua5,
     aqua6
     +Dimension
-    -listes<Emplacementaq>
+    +ImageIcon: empty_poi
     +Aquarium(constructeur, panel)
     +setVisible(boolean)
+}
+
+class Argent {
+    +int: argent, emp1, emp2, emp3,
+    poi1, poi2, poi3
+    +String: montant
+    +paye(label, label2)
 }
 
 class Emplacementaq {
@@ -98,63 +149,151 @@ class Inventaire {
     +Emplacementinv: emp1, emp2, emp3,
     emp4, emp5, emp6
     +Dimension
-    -liste<Emplacementinv>
+    +ImageIcon: img_aqua_poi_rouge, img_inv_poi_rouge,
+    img_aqua_betta, img_inv_betta, img_aqua_tetra,
+    img_inv_tetra, java_fern, blue_blue,
+    scarlet_rot, img_temp, empty_poi, empty_inv,
     +Inventaire(constructeur, label)
     +setVisible(boolean)
 }
 
-class Poisson1 {
-    +int: x, y, vel_x, vel_y
-    +String: image
-    +boolean: swim
-    +image: img, poisson_droite,
-    poisson_gauche, empty
-    +panelAqua
-    +setOpaque(boolean)
-    +paintComponent(Graphics)
-    +setXVelocity(int), setYVelocity(int)
-    +deplacer(), nager()
-    +setImage(String)
+class Magasin {
+    +ajustement_argent(prix)
+    +checkPoissonPrix(type), checkPlantePrix(type),
+    gotMoney(type)
 }
 
-class Poisson2 {
-    +int: x, y, vel_x, vel_y
-    +String: image
-    +boolean: swim
-    +image: img, poisson_droite,
-    poisson_gauche, empty
-    +panelAqua
-    +setOpaque(boolean)
-    +paintComponent(Graphics)
-    +setXVelocity(int), setYVelocity(int)
-    +deplacer(), nager()
-    +setImage(String)
+class Plante {
+    int: index, prix
+    +String: empInv, empAqua, nom
+    +Plante(constructeur)
+}
+
+class BlueBlue {
+    +ImageIcon: icon
+    +int: prix, absorptionNitrates,
+    absorptionDechets
+    +float: contributionPH
+}
+
+class JavaFern {
+    +ImageIcon: icon
+    +int: prix, absorptionNitrates,
+    absorptionDechets
+    +float: contributionPH
+}
+
+class ScarletRot {
+    +ImageIcon: icon
+    +int: prix, absorptionNitrates,
+    absorptionDechets
+    +float: contributionPH
+}
+
+class Poisson {
+    +int: vel_x, vel_y, sante, index
+    +String: direction, empInv, empAqua, nom
+    +boolean: var
+    +setOpaque(isOpaque)
+    +setXVelocity(vel_x), setYVelocity(vel_y),
+    +setEmpInv(empInv), setEmpAqua(empAqua)
+    +setNom(nom)
+    +getXVelocity(), getYVelocity(), getEmpInv(),
+    getEmpAqua(), getNom()
+    +getImage(coter, img, poisson_droite, poisson_gauche, empty)
+    +updateToolTip(label, type)
+}
+
+class PoissonBetta {
+    +int: x, y, vel_x, vel_y, prix, dechets
+    +Image: img, poisson_droite, poisson_gauche
+    +paintComponent(), deplacer(),
+    +run()
+}
+
+class PoissonRouge {
+    +int: x, y, vel_x, vel_y, prix, dechets
+    +Image: img, poisson_droite, poisson_gauche, empty
+    +paintComponent(), deplacer(),
+    +run()
+}
+
+class PoissonTetra {
+    +int: x, y, vel_x, vel_y, prix, dechets
+    +Image: img, poisson_droite, poisson_gauche
+    +paintComponent(), deplacer(),
+    +run()
+}
+
+class MethodeGUIMain {
+    +Aquarium: aquarium
+    +Inventaire: inventaire
+    +boolean: hasPlant
+    +checkRectanglesDeco(rectangle, label, icone, labels2,
+    emplacement, hasPlant, hasPlantString, indexInv,
+    indexAqua, pla)
+    +checkRectanglesPoi(rectangle, label1, icone, label2,
+    emplacement, hasFish, hasFishString, index, poi,
+    aqua)
+    +checkRectanglesPoiFilet(rectangle, label1, icone, hasFish,
+    hasFishString, index, aqua)
+    +checkRectanglesDecoCiseau(rectangle, label1, icone, hasPlant,
+    hasPlantString, index, pla)
+    +createPoissonTetra(emplacement, label1, index), 
+    createPoissonRouge(emplacement, label1, index),
+    createPoissonBetta(emplacement, label1, index),
+    +aquaVisibleTrue(), aquaVisibleFalse(),
+    empVisibTrue(), empVisibFalse(),
+    +setEmpla(emplacement), getEmplaToInnt(emplacement)
+    +setHasFish(hasFish), setHasPlant(hasPlant), 
+    setHasFishFalse(hashFish), setHasPlantFalse(hasPlant)
+    +setIndexPoi(index1)
+    +setEmplaToFish(emplacement, poi, label1, index), 
+    setEmplaToPlant(emplacement, pla, label1, index)
+    +checkFishType(aqua), checkPlantType(plante)
+    +setAquaName(index, aqua), setPlantName(index, plant)
+    +hasPlant(), getEauDimensions(), setEauDimensions(dimension)
 }
 
 class PanelAqua {
     +PanelAqua(constructeur)
-    +paintComponent(Graphics)
-    +mouseListener()
+    +paintComponent()
 }
 
 class PanelInfo {
-    +JTextArea: textArea
-    +JScrollPane: scroll
+    +JLabel: lblAction, lblN, lblH, lblO,
+    lblAmmo, lblNit, lblNat, lblPH, lblGH,
+    lblKH
+    +DecimalFormat: df
+    Molecules: mol
+    +String: actionEnCours
     +PanelInfo(constructeur)
+    +setActionEnCours(), changerEtatBarre()
+    +run()
 }
 
 class PanelShop {
+    +int: i
+    +JButton: poisson_rouge, poisson_betta,
+    poisson_tetra, java_fern, blue_blue, scarlet_rot
+    + Dimension: shop_dimension
     +PanelShop(constructeur)
-    +paintComponent(Graphics)
+    +paintComponent()
+    +checkcase(icon, type, poisson, plante)
+    +checkFish(typePoisson, index), checkPlant(typePlante, index),
+    +setLabel(index, icon, typePlante)
+    +setName(index, typePlante)
 }
 
 class PanelTest {
     +CycleAqua: cycle
-    +JButton: button1, button2
+    +JLabel: lblAmmo, lblNitrites, lblNitrates,
+    lblPH, lblGH, lblKH, lblOKAmmo, lblOKNitrites,
+    lblOKNitrates, lblOKPH, lblOKGH, lblOKKH
     +Thread: cycle1
     +boolean: isFocused
+    +Molecules: mol
     +PanelTest(constructeur)
-    +actionPerformed()
 }
 
 class GUIMain {
@@ -162,40 +301,53 @@ class GUIMain {
     +PanelTest: panelTest
     +JTabbedPane: tabbedPane
     +JLabel: testEau, empty, aquarium_kit_ouvert,
-    aquarium_kit_fermer, pipette, eau_label,
-    inventaire_ouvert, inventaire_fermer,
-    inventaire_bg, label_argent
+    aquarium_kit_fermer, eau_label, eau_label,
+    inventaire_ouvert, inventaire_fermer, 
+    inventaire_bg, filet_label, pause_label, 
+    reprendre_label, label_tutoriel, label_information 
+    hamis, ciseau_label, label_argent
+    +JLabel lblPipette, label_argent_aqua,
+    label_argent_shop, label_jours
     +String: nom, empla1, empla2, empla3, empla4,
     empla5, empla6, poi1, poi2, poi3, poi4,
-    poi5, poi6
+    poi5, poi6, actionEnCours, pla1, pla2, pla3,
+    pla4, pla5, pla6, aqua1, aqua2, aqua3, aqua4,
+    aqua5, aqua6, aquaPla1, aquaPla2, aquaPla3,
+    aquaPla4, aquaPla5, aquaPla6
     +Rectangle: rectTest, rectEau, rectEmp1,
     rectEmp2, rectEmp3, rectEmp4, rectEmp5, rectEmp6,
     rectAqua1, rectAqua2, rectAqua3, rectAqua4,
-    rectAqua5, rectAqua6
+    rectAqua5, rectAqua6, rectShop, rectEau
     +Temps: temps
     +Eau: eau
-    +Poisson1: poisson1
-    +Poisson2: poisson2
     +Pipette: pipette
-    +ImageIcon: tetra_curseur
+    +Poisson: poisson_default
+    +Plante: plante_default
+    +PoissonRouge: poisson_rouge
+    +PoissonBetta: poisson_betta
+    +PoissonTetra: poisson_tetra
+    +Filet: filet
+    +Ciseau: ciseau
+    +ImageIcon: tetra_curseur, rajoutIcon,
+    iconeAppli
     +Inventaire: inventaire
     +Aquarium: aquarium
-    +Thread: GuiMainThread, threadEau
+    +CycleAzote: cycleInitial
+    +Arraylists<Poisson>, Arraylists<Plante>
+    +Thread: tpoisson_rouge, tpoisson_betta,
+    tpoisson_tetra, threadEau, tCycleInitial,
+    tPanelInfo
     +short: stade, iteration
-    +int: vel_x, vel_y, argent
-    +byte: cycle
+    +int: vel_x, vel_y
     +float: jours
-    +Dimension
-    +GUIMain(constructeur)
-    +addMouseListener(), mouseClicked(),
-    mousePressed(), mouseReleased()
+    +boolean: hasFish1, hasFish2, hasFish3, hasFish4,
+    hasFish5, hasFish6, hasPlant1, hasPlant2, hasPlant3
     +visibleBordersDeco(), visibleBordersPoi(),
     invisibleBordersDeco(), invisibleBordersPoi(),
-    basicCursor(), setCursor(), aquaVisibleTrue(),
-    aquaVisibleFalse()
-    +checkRectanglesDeco(rectangle, label, icone)
-    +checkRectanglesPoi(rectangle, label, icone)
-    +run()
+    basicCursor(), aquaVisibleTrue(), aquaVisibleFalse(),
+    empVisibTrue(), empVisibFalse(), setOutilsVisible(),
+    setOutilsInvisible()
+    +setCursor(label)
 }
 
 
@@ -207,20 +359,39 @@ GUIMain <|-- PanelShop
 GUIMain <|-- PanelInfo
 PanelAqua <|-- PanelTest
 
-Pipette *-- "Fait partie" Outils
+Pipette *-- "hérite" Outils
+Ciseau *-- "hérite" Outils
+Filet *-- "hérite" Outils
+
 Aquarium *-- "Fait partie" Emplacementaq
 Inventaire *-- "Fait partie" Emplacementinv
 CycleAzote *-- "Prend eau" GUIMain
 CycleAzote *-- "Prend temps" GUIMain
 Eau *-- "Prend temps" GUIMain
+GUIMain *-- "methode" MethodeGUIMain
+PanelShop *-- "methode" Magasin
+PanelInfo *-- "prend l'argent" Argent
+
+PoissonRouge *-- "hérite" Poisson
+PoissonBetta *-- "hérite" Poisson
+PoissonTetra *-- "hérite" Poisson
+JavaFern *-- "hérite" Plante
+BlueBlue *-- "hérite" Plante
+ScarletRot *-- "hérite" Plante
 
 GUIMain "1" o-- "1" Pipette
+GUIMain "1" o-- "1" Ciseau
+GUIMain "1" o-- "1" Filet
 GUIMain "1" o-- "1" Inventaire
 GUIMain "1" o-- "1" Aquarium
 GUIMain "1" o-- "1" Eau
 GUIMain "1" o-- "1" Temps
-GUIMain "1..*" o-- "1" Poisson1
-GUIMain "1..*" o-- "1" Poisson2
 
+PanelShop "1..*" o-- "1" PoissonRouge
+PanelShop "1..*" o-- "1" PoissonBetta
+PanelShop "1..*" o-- "1" PoissonTetra
+PanelShop "1..*" o-- "1" JavaFern
+PanelShop "1..*" o-- "1" BlueBlue
+PanelShop "1..*" o-- "1" ScarletRot
 
 @enduml
