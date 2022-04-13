@@ -9,7 +9,7 @@ import view.GUIMain;
 
 public class CycleAzote implements Runnable {
 
-    public float jours = GUIMain.jours, tempAmmoniaque = 0, tempNitrites = 0;
+    public float jours = GUIMain.jours, jourInitial = 0, tempAmmoniaque = 0, tempNitrites = 0, compteurJours = 0;
     public Eau eau = GUIMain.eau;
 
     public String actionEnCours = "Aucune action initiale";
@@ -19,7 +19,7 @@ public class CycleAzote implements Runnable {
      *            Démarre un cycle d'ammoniaque en fonction du temps, suivant une
      *            courbe
      */
-    public void cycleAmmoniaque(Eau eau) {
+    public void cycleAmmoniaque(Eau eau, float jours) {
         eau.listeAmmoniaque.remove(tempAmmoniaque);
         if (jours != 18) {
             tempAmmoniaque = (float) (-3.2 * ((jours / 7) - 1.25) * ((jours / 7) - 1.25) + 5);
@@ -35,7 +35,7 @@ public class CycleAzote implements Runnable {
      *            Incrémente les jours et calcule le nouveau taux d'ammoniaque et de
      *            nitrites
      */
-    public void cycleNitrites(Eau eau) {
+    public void cycleNitrites(Eau eau, float jours) {
         eau.listeNitrites.remove(tempNitrites);
         if (jours >= 14 && jours <= 35) {
             tempNitrites = (float) (-3.56 * ((jours / 7) - 3.5) * ((jours / 7) - 3.5) + 8);
@@ -50,20 +50,25 @@ public class CycleAzote implements Runnable {
      */
     @Override
     public void run() {
+            jours = GUIMain.jours;
+            jourInitial = jours;
         while (true) {
 
+            // fix les jours des cycles criss
             jours = GUIMain.jours;
+            compteurJours = jours - jourInitial;
 
             try {
-                if (jours >= 0 && jours <= 18) {
-                    cycleAmmoniaque(eau);
+                if (jours >= jourInitial && jours <= (jourInitial + 18)) { // >= 0 <= 18
+                    cycleAmmoniaque(eau, compteurJours);
                     actionEnCours = "Cycle ammoniaque";
                 }
-                if (jours >= 14 && jours <= 35) {
-                    cycleNitrites(eau);
+                if (jours >= (jourInitial + 14) && jours <= (jourInitial + 35)) { // >= 14 <= 35
+                    cycleNitrites(eau, compteurJours);
                     actionEnCours = "Cycle nitrites";
                 }
                 GUIMain.actionEnCours = actionEnCours;
+                jours++;
                 Thread.sleep(Temps.DUREE);
 
             } catch (Exception e) {

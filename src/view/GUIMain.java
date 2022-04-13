@@ -52,7 +52,9 @@ public class GUIMain extends JFrame {
 
     // création des rectangles
     Rectangle rectTest, rectEmp1, rectEmp2, rectEmp3, rectAqua1, rectAqua2, rectAqua3, rectAqua4, rectAqua5,
-            rectAqua6, rectShop;
+            rectAqua6;
+
+    public static Rectangle rectAquarium;
     public static Rectangle rectEau;
 
     // creation des objets
@@ -303,6 +305,7 @@ public class GUIMain extends JFrame {
 
         // ajout des zones pour les action listener
         rectEau = new Rectangle(330, 305, 344, 192);
+        rectAquarium = new Rectangle(330, 305, 344, 192);
         rectTest = new Rectangle(panelTest.getBounds());
         rectEmp1 = new Rectangle(358, 408, 80, 80);
         rectEmp2 = new Rectangle(464, 408, 80, 80);
@@ -313,7 +316,6 @@ public class GUIMain extends JFrame {
         rectAqua4 = new Rectangle(365, 417, 70, 70);
         rectAqua5 = new Rectangle(474, 417, 70, 70);
         rectAqua6 = new Rectangle(584, 417, 70, 70);
-        rectShop = new Rectangle(705, 505, 300, 200);
 
         aquarium = new Aquarium(panelAqua);
 
