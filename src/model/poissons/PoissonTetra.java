@@ -12,6 +12,7 @@ public class PoissonTetra extends Poisson implements Runnable {
     int vel_y = 1;
     public static int prix = 200;
     public static int dechets = 2;
+    public static int tolerance = 0;
 
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_tetra/poisson_droite.png");
