@@ -13,6 +13,8 @@ import model.poissons.PoissonTetra;
 
 public class Magasin {
 
+    static short emp = 0;
+
     /**
      * @param prix
      *             méthode qui permet de mettre à jour le montant d'argent
@@ -99,4 +101,50 @@ public class Magasin {
                 return false;
         }
     }
+
+    public static void generatingNumber()
+    {
+        emp = (short) (Math.random() * 3);
+    }
+
+    public static void rabais(short emp){
+        switch (emp) {
+            case 0:
+                PoissonRouge.prix = PoissonRouge.prix / 2;
+                break;
+            case 1:
+                Argent.normal = false;
+                break;
+            case 2:
+                Argent.normal = false;
+                break;
+                case 3:
+                Argent.normal = false;
+                break;
+                case 4:
+                Argent.normal = false;
+                break;
+                case 5:
+                Argent.normal = false;
+                break;
+                case 6:
+                Argent.normal = false;
+                break;
+                case 7:
+                Argent.normal = false;
+                break;
+                case 8:
+                Argent.normal = false;
+                break;
+                case 9:
+                Argent.normal = false;
+                break;
+                case 10:
+                Argent.normal = false;
+                break;
+            default:
+                break;
+        }
+    }
+    
 }

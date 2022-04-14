@@ -19,15 +19,22 @@ public class Argent {
 
     public static String montant = argent + "";
 
+    public static boolean normal = true;
+
     /**
      * @param label
      * @param label2
      *               méthode qui permet de mettre à jour le montant d'argent
      */
     public static void paye(JLabel label, JLabel label2) {
-        argent += emp1 + emp2 + emp3 + poi1 + poi2 + poi3;
-        montant = Integer.toString(argent);
-        label.setText(montant + "₴");
-        label2.setText(montant + "₴");
+        if (normal) {
+            argent += emp1 + emp2 + emp3 + poi1 + poi2 + poi3;
+            montant = Integer.toString(argent);
+            label.setText(montant + "₴");
+            label2.setText(montant + "₴");
+        } else {
+            label.setText("∞");
+            label2.setText("∞");
+        }
     }
 }
