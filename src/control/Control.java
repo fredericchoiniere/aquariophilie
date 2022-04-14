@@ -23,7 +23,6 @@ public class Control {
         GUIIntro guiIntro = new GUIIntro();
         ImageIcon img = new ImageIcon("res/background/icone_aquariophilie.png");
 
-
         // attributs du Frame intro
         guiIntro.setSize(500, 400);
         guiIntro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,24 +31,16 @@ public class Control {
         guiIntro.setLocationRelativeTo(null);
         guiIntro.setVisible(true);
 
-        try
-        {
-            
-            
-            
-            
-            audioPlayer = 
-                            new SimpleAudioPlayer();
-              
+        try {
+
+            audioPlayer = new SimpleAudioPlayer();
             audioPlayer.play();
-              
+
         }
-        
-        catch (Exception e)
-        {
+
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
 
 }
-
