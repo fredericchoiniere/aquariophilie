@@ -1,10 +1,9 @@
 // Jérémie Caron     itération 1
 // Frédéric Choinière   itération 2
+// Jérémie Caron    itération 3
 //Classe contrôleur qui initialise l'affichage du frame d'introduction
 
 package control;
-
-import java.util.Scanner;
 
 import javax.swing.*;
 
