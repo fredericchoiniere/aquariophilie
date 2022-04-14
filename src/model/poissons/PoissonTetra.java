@@ -4,6 +4,8 @@ package model.poissons;
 
 import java.awt.*;
 
+import model.environnement.Temps;
+
 public class PoissonTetra extends Poisson implements Runnable {
     // attributs de la classe
     int x = 160;
@@ -49,21 +51,30 @@ public class PoissonTetra extends Poisson implements Runnable {
     @Override
     public void run() {
         while (var) {
-            if (this.x > 286) {
-                setXVelocity(-vel_x);
-                direction = "gauche";
+            if (!Temps.isPaused) {
+                if (this.x > 286) {
+                    setXVelocity(-vel_x);
+                    direction = "gauche";
+                }
+                if (this.x < 4) {
+                    setXVelocity(1);
+                    direction = "droite";
+                }
+                if (this.y > 120) {
+                    setYVelocity(-vel_y);
+                }
+                if (this.y < getHauteur() + 40) { // 90 TODO: chier dequoi de sharp
+                    setYVelocity(1);
+                }
+                deplacer();
+            } else {
+                try {
+                    Thread.sleep(30);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-            if (this.x < 4) {
-                setXVelocity(1);
-                direction = "droite";
-            }
-            if (this.y > 120) {
-                setYVelocity(-vel_y);
-            }
-            if (this.y < 90) {
-                setYVelocity(1);
-            }
-            deplacer();
+
         }
     }
 

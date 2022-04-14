@@ -68,7 +68,7 @@ public class PoissonBetta extends Poisson implements Runnable {
                 deplacer();
             } else {
                 try {
-                    Thread.sleep(Temps.DUREE);
+                    Thread.sleep(30);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
