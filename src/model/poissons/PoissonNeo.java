@@ -1,4 +1,4 @@
-//Jérémie Caron, Frédéric Choinière     itération 2
+//Frédéric Choinière     itération 3
 
 package model.poissons;
 
@@ -6,21 +6,21 @@ import java.awt.*;
 
 import model.environnement.Temps;
 
-public class PoissonTetra extends Poisson implements Runnable {
+public class PoissonNeo extends Poisson implements Runnable {
+
     // attributs de la classe
-    int x = 160;
-    int y = 60;
+    int x = 12;
+    int y = 120;
     int vel_x = 1;
     int vel_y = 1;
-    public static int prix = 200;
-    public static int dechets = 2;
+    public static int prix = 125;
 
     Image img;
-    Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_tetra/poisson_droite.png");
-    Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_tetra/poisson_gauche.png");
+    Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_neo/poisson_droite.png");
+    Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_neo/poisson_gauche.png");
+    static Image empty = Toolkit.getDefaultToolkit().getImage("res/poissons/empty.png");
 
-    public PoissonTetra() {
-    }
+    public static int dechets = -2;
 
     /**
      * @param g
@@ -30,7 +30,8 @@ public class PoissonTetra extends Poisson implements Runnable {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         img = poisson_droite;
-        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, PoissonRouge.empty), x, y, this);
+        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, empty), x, y, this);
+
     }
 
     /**
@@ -40,7 +41,7 @@ public class PoissonTetra extends Poisson implements Runnable {
         this.x += getXVelocity();
         this.y += getYVelocity();
         try {
-            Thread.sleep(20);
+            Thread.sleep(50);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -55,20 +56,20 @@ public class PoissonTetra extends Poisson implements Runnable {
                     setXVelocity(-vel_x);
                     direction = "gauche";
                 }
-                if (this.x < 4) {           // 4
+                if (this.x < 4) {
                     setXVelocity(1);
                     direction = "droite";
                 }
-                if (this.y > 180) {
+                if (this.y > 140) { // limite du bas
                     setYVelocity(-vel_y);
                 }
-                if (this.y < getHauteur() + 90) { // 90 TODO: chier dequoi de sharp
+                if (this.y < 135) { // limite du haut
                     setYVelocity(1);
                 }
                 deplacer();
             } else {
                 try {
-                    Thread.sleep(30);
+                    Thread.sleep(50);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

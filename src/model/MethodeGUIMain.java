@@ -206,6 +206,19 @@ public class MethodeGUIMain {
         setAquaName(index, "rouge");
     }
 
+    public static void createPoissonNeo(String emplacement, JLabel label1, int index) {
+        GUIMain.listePoissonsAqua.set(index, GUIMain.listePoissonsInv.get(getEmplaToInt(emplacement)));
+        GUIMain.poisson_neo= (PoissonNeo) GUIMain.listePoissonsAqua.get(index);
+        GUIMain.poisson_neo.setBounds(340, 324, 322, 156);
+        GUIMain.poisson_neo.index = setIndexPoi(index);
+        GUIMain.tpoisson_neo = new Thread(GUIMain.poisson_neo);
+        Argent.poi1 += 1;
+        GUIMain.eau.potentielDechets += PoissonRouge.dechets;
+        GUIMain.tpoisson_neo.start();
+        GUIMain.panelAqua.add(GUIMain.poisson_neo);
+        setAquaName(index, "neo");
+    }
+
     /**
      * méthode pour rendre les emplacements à poisson visible
      */
@@ -457,6 +470,8 @@ public class MethodeGUIMain {
             case "tetra":
                 createPoissonTetra(emplacement, label1, index);
                 break;
+            case "neo":
+                createPoissonNeo(emplacement, label1, index);
             default:
                 break;
         }
@@ -517,6 +532,11 @@ public class MethodeGUIMain {
                 Argent.poi3 -= 2;
                 Argent.argent += PoissonTetra.prix / 2;
                 GUIMain.eau.potentielDechets -= PoissonTetra.dechets;
+                break;
+            case "neo":
+                Argent.poi3 -= 2;
+                Argent.argent += PoissonNeo.prix / 1.25;
+                GUIMain.eau.potentielDechets -= PoissonNeo.dechets;
                 break;
             default:
                 break;
