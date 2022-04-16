@@ -103,6 +103,7 @@ public class GUIMain extends JFrame implements ActionListener {
 
     // boutons temporaire
     JButton bt1, bt2, bt3, bt4, bt5;
+    public static JProgressBar progressBar;
 
     public GUIMain() { // création du constructeur GUIMain
 
@@ -326,11 +327,44 @@ public class GUIMain extends JFrame implements ActionListener {
 
 
         //ajout des jbuttons pour tester laqualité de l,eau
-        bt1 = new JButton("Nouvelle Partie");
+        bt1 = new JButton("20");
         bt1.addActionListener(this);
         bt1.setBounds(10, 10, 50, 50);
         bt1.setVisible(true);
         panelAqua.add(bt1);
+
+        bt2 = new JButton("40");
+        bt2.addActionListener(this);
+        bt2.setBounds(10, 70, 50, 50);
+        bt2.setVisible(true);
+        panelAqua.add(bt2);
+
+        bt3 = new JButton("60");
+        bt3.addActionListener(this);
+        bt3.setBounds(10, 130, 50, 50);
+        bt3.setVisible(true);
+        panelAqua.add(bt3);
+
+        bt4 = new JButton("80");
+        bt4.addActionListener(this);
+        bt4.setBounds(10, 190, 50, 50);
+        bt4.setVisible(true);
+        panelAqua.add(bt4);
+
+        bt5 = new JButton("100");
+        bt5.addActionListener(this);
+        bt5.setBounds(10, 250, 50, 50);
+        bt5.setVisible(true);
+        panelAqua.add(bt5);
+
+        progressBar = new JProgressBar();
+        progressBar.setString("sante poisson 1");
+        progressBar.setStringPainted(true);
+        progressBar.setForeground(new Color(46, 232, 158));
+        progressBar.setValue(100);
+        progressBar.setBounds(10, 310, 200, 20);
+        progressBar.setVisible(true);
+        panelAqua.add(progressBar);
 
         // ajout du layeredpane au tabbedane
         tabbedPane.add("Aquarium", panelAqua);
@@ -1209,7 +1243,25 @@ public class GUIMain extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        if(e.getSource() == bt1){ 
+            eau.scoreEau = 20;
+        }
+
+        if(e.getSource() == bt2){
+            eau.scoreEau = 40;
+        }
+
+        if(e.getSource() == bt3){
+            eau.scoreEau = 60;
+        }
+
+        if(e.getSource() == bt4){
+            eau.scoreEau = 80;
+        }
+
+        if(e.getSource() == bt5){
+            eau.scoreEau = 100;
+        }
         
     }
 

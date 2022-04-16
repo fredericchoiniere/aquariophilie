@@ -191,14 +191,37 @@ public class Poisson extends JPanel {
     }
 
     public static void levels(String type, short numb) {
+        System.out.println("Scroreau : " + GUIMain.eau.scoreEau);
         switch (type) {
+
             case "rouge":
                 if (GUIMain.eau.scoreEau >= 66 - PoissonRouge.tolerance) {
-                    GUIMain.listePoissonsAqua.get(numb).sante += 1;
+                    if(GUIMain.listePoissonsAqua.get(numb).sante < 100 && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
+                        GUIMain.listePoissonsAqua.get(numb).sante += 1;
+                    } else{
+                        GUIMain.listePoissonsAqua.get(numb).sante = 100;
+                    }
+                    System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    GUIMain.progressBar.setValue(GUIMain.listePoissonsAqua.get(numb).sante);
+
                 } else if (GUIMain.eau.scoreEau >= 33 - PoissonRouge.tolerance) {
-                    GUIMain.listePoissonsAqua.get(numb).sante -= 1;
-                } else if (GUIMain.eau.scoreEau >= 0 - PoissonRouge.tolerance) {
-                    GUIMain.listePoissonsAqua.get(numb).sante -= 2;
+                    if(GUIMain.listePoissonsAqua.get(numb).sante <= 100 && GUIMain.listePoissonsAqua.get(numb).sante > 0){
+                        GUIMain.listePoissonsAqua.get(numb).sante -= 1;
+                    } else { 
+                        //TODO: mettre le code pour enlever le poisson
+                        System.out.println("he died");
+                    }
+                    System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    GUIMain.progressBar.setValue(GUIMain.listePoissonsAqua.get(numb).sante);
+                } else if (GUIMain.eau.scoreEau > 0 - PoissonRouge.tolerance ) {
+                    if(GUIMain.listePoissonsAqua.get(numb).sante <= 100 && GUIMain.listePoissonsAqua.get(numb).sante > 0){
+                        GUIMain.listePoissonsAqua.get(numb).sante -= 2;
+                    } else { 
+                        //TODO: mettre le code pour enlever le poisson
+                        System.out.println("he died");
+                    }
+                    System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    GUIMain.progressBar.setValue(GUIMain.listePoissonsAqua.get(numb).sante);
                 }
                 break;
             case "betta":

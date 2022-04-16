@@ -45,7 +45,7 @@ public class Eau implements Runnable {
     public int nbAtomeN = 0;
     public int nbAtomeO = 2103;
     public int nbAtomeH = 4206;
-    public int scoreEau;
+    public int scoreEau = 100;
 
     final short valeur_changement = 1;
 
@@ -324,7 +324,7 @@ public class Eau implements Runnable {
 
         volumeEau = (float) ((hauteur * largeur * longueur) * 0.001);
 
-        System.out.println("hauteur eau: " + GUIMain.rectEau.getHeight());
+        //System.out.println("hauteur eau: " + GUIMain.rectEau.getHeight());
     }
 
     /**
@@ -346,11 +346,11 @@ public class Eau implements Runnable {
     /**
      * Pour l'itération 3
      */
-    public static void setScoreEau() {
+    /* public static void setScoreEau() {
         GUIMain.eau.scoreEau = (int) (setScoreAmmo() + setScoreGH() + setScoreKH() + setScoreNitrates() + setScoreNitrites()
                 + setScorePH());
         // System.out.println("Score eau 1 : " + scoreEau);
-    }
+    } */
 
     /**
      * @return float
@@ -514,7 +514,7 @@ public class Eau implements Runnable {
                     GUIMain.panelTest.lblNitrites.setText(toString(GUIMain.eau.getNitrites()));
                     GUIMain.panelTest.lblNitrates.setText(toString(GUIMain.eau.getNitrates()));
                     GUIMain.panelTest.lblKH.setText(toString(GUIMain.eau.getKH()));
-                    System.out.println("Déchets: " + GUIMain.eau.sommeDechets + " kh: " + GUIMain.eau.getKH());
+                    //System.out.println("Déchets: " + GUIMain.eau.sommeDechets + " kh: " + GUIMain.eau.getKH());
 
 
                     // section a lord jeremie
