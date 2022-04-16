@@ -221,7 +221,7 @@ public class Eau implements Runnable {
         listeNitritesIteration.addAll(listeNitrites);
         if (compteurJoursCycle >= 24) { // mi-cycle, début de la pente négative
             setNitrites.removeAll(listeNitritesIteration);
-        } // TODO: à terminer après avoir peté jay aus babyfoot
+        } // TODO: à terminer après avoir peté jay au babyfoot (à revoir)
         for (Float valeur : listeNitritesIteration) {
             
             
