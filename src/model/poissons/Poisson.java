@@ -5,7 +5,9 @@ package model.poissons;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import model.MethodeGUIMain;
 import model.chimie.Eau;
+import model.jeu.Inventaire;
 import view.GUIMain;
 
 import java.awt.*;
@@ -191,34 +193,34 @@ public class Poisson extends JPanel {
     }
 
     public static void levels(String type, short numb) {
-        System.out.println("Scroreau : " + GUIMain.eau.scoreEau);
+        System.out.println("ScroreEau : " + GUIMain.eau.scoreEau);
         switch (type) {
 
             case "rouge":
                 if (GUIMain.eau.scoreEau >= 66 - PoissonRouge.tolerance) {
-                    if(GUIMain.listePoissonsAqua.get(numb).sante < 100 && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
+                    if (GUIMain.listePoissonsAqua.get(numb).sante < 100
+                            && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
                         GUIMain.listePoissonsAqua.get(numb).sante += 1;
-                    } else{
+                    } else {
                         GUIMain.listePoissonsAqua.get(numb).sante = 100;
                     }
                     System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
                     GUIMain.progressBar.setValue(GUIMain.listePoissonsAqua.get(numb).sante);
-
                 } else if (GUIMain.eau.scoreEau >= 33 - PoissonRouge.tolerance) {
-                    if(GUIMain.listePoissonsAqua.get(numb).sante <= 100 && GUIMain.listePoissonsAqua.get(numb).sante > 0){
+                    if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
+                            && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
                         GUIMain.listePoissonsAqua.get(numb).sante -= 1;
-                    } else { 
-                        //TODO: mettre le code pour enlever le poisson
-                        System.out.println("he died");
+                    } else {
+                        killFish(numb);
                     }
                     System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
                     GUIMain.progressBar.setValue(GUIMain.listePoissonsAqua.get(numb).sante);
-                } else if (GUIMain.eau.scoreEau > 0 - PoissonRouge.tolerance ) {
-                    if(GUIMain.listePoissonsAqua.get(numb).sante <= 100 && GUIMain.listePoissonsAqua.get(numb).sante > 0){
+                } else if (GUIMain.eau.scoreEau > 0 - PoissonRouge.tolerance) {
+                    if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
+                            && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
                         GUIMain.listePoissonsAqua.get(numb).sante -= 2;
-                    } else { 
-                        //TODO: mettre le code pour enlever le poisson
-                        System.out.println("he died");
+                    } else {
+                        killFish(numb);
                     }
                     System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
                     GUIMain.progressBar.setValue(GUIMain.listePoissonsAqua.get(numb).sante);
@@ -226,20 +228,62 @@ public class Poisson extends JPanel {
                 break;
             case "betta":
                 if (GUIMain.eau.scoreEau >= 66 - PoissonBetta.tolerance) {
-                    GUIMain.listePoissonsAqua.get(numb).sante += 1;
+                    if (GUIMain.listePoissonsAqua.get(numb).sante < 100
+                            && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
+                        GUIMain.listePoissonsAqua.get(numb).sante += 1;
+                    } else {
+                        GUIMain.listePoissonsAqua.get(numb).sante = 100;
+                    }
+                    System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    GUIMain.progressBar.setValue(GUIMain.listePoissonsAqua.get(numb).sante);
                 } else if (GUIMain.eau.scoreEau >= 33 - PoissonBetta.tolerance) {
-                    GUIMain.listePoissonsAqua.get(numb).sante -= 1;
+                    if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
+                            && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
+                        GUIMain.listePoissonsAqua.get(numb).sante -= 1;
+                    } else {
+                        killFish(numb);
+                    }
+                    System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    GUIMain.progressBar.setValue(GUIMain.listePoissonsAqua.get(numb).sante);
                 } else if (GUIMain.eau.scoreEau > 0 - PoissonBetta.tolerance) {
-                    GUIMain.listePoissonsAqua.get(numb).sante -= 2;
+                    if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
+                            && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
+                        GUIMain.listePoissonsAqua.get(numb).sante -= 2;
+                    } else {
+                        killFish(numb);
+                    }
+                    System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    GUIMain.progressBar.setValue(GUIMain.listePoissonsAqua.get(numb).sante);
                 }
                 break;
             case "tetra":
                 if (GUIMain.eau.scoreEau >= 66 - PoissonTetra.tolerance) {
-                    GUIMain.listePoissonsAqua.get(numb).sante += 1;
+                    if (GUIMain.listePoissonsAqua.get(numb).sante < 100
+                            && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
+                        GUIMain.listePoissonsAqua.get(numb).sante += 1;
+                    } else {
+                        GUIMain.listePoissonsAqua.get(numb).sante = 100;
+                    }
+                    System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    GUIMain.progressBar.setValue(GUIMain.listePoissonsAqua.get(numb).sante);
                 } else if (GUIMain.eau.scoreEau >= 33 - PoissonTetra.tolerance) {
-                    GUIMain.listePoissonsAqua.get(numb).sante -= 1;
-                } else if (GUIMain.eau.scoreEau >= 0 - PoissonTetra.tolerance) {
-                    GUIMain.listePoissonsAqua.get(numb).sante -= 2;
+                    if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
+                            && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
+                        GUIMain.listePoissonsAqua.get(numb).sante -= 1;
+                    } else {
+                        killFish(numb);
+                    }
+                    System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    GUIMain.progressBar.setValue(GUIMain.listePoissonsAqua.get(numb).sante);
+                } else if (GUIMain.eau.scoreEau > 0 - PoissonTetra.tolerance) {
+                    if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
+                            && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
+                        GUIMain.listePoissonsAqua.get(numb).sante -= 2;
+                    } else {
+                        killFish(numb);
+                    }
+                    System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    GUIMain.progressBar.setValue(GUIMain.listePoissonsAqua.get(numb).sante);
                 }
                 break;
             default:
@@ -247,4 +291,46 @@ public class Poisson extends JPanel {
         }
     }
 
+    public static void killFish(short numb) {
+        MethodeGUIMain.checkFishType(fishType(numb));
+        setFalse(numb);
+        GUIMain.listePoissonsAqua.get(numb).direction = "empty";
+        GUIMain.listePoissonsAqua.get(numb).var = false;
+        GUIMain.listePoissonsAqua.set(numb, GUIMain.poisson_default);
+    }
+
+    public static void setFalse(short numb) {
+        switch (numb) {
+            case 0:
+                GUIMain.hasFish1 = false;
+                GUIMain.aquarium.aqua1.setIcon(Inventaire.empty_inv);
+                GUIMain.aqua1 = "empty";
+                break;
+            case 1:
+                GUIMain.hasFish2 = false;
+                GUIMain.aquarium.aqua2.setIcon(Inventaire.empty_inv);
+                GUIMain.aqua2 = "empty";
+                break;
+            case 2:
+                GUIMain.hasFish3 = false;
+                GUIMain.aquarium.aqua3.setIcon(Inventaire.empty_inv);
+                GUIMain.aqua3 = "empty";
+                break;
+            case 3:
+                GUIMain.hasFish4 = false;
+                GUIMain.aquarium.aqua4.setIcon(Inventaire.empty_inv);
+                GUIMain.aqua4 = "empty";
+                break;
+            case 4:
+                GUIMain.hasFish5 = false;
+                GUIMain.aquarium.aqua5.setIcon(Inventaire.empty_inv);
+                GUIMain.aqua5 = "empty";
+                break;
+            case 5:
+                GUIMain.hasFish6 = false;
+                GUIMain.aquarium.aqua6.setIcon(Inventaire.empty_inv);
+                GUIMain.aqua6 = "empty";
+                break;
+        }
+    }
 }

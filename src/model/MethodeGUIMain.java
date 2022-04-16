@@ -110,6 +110,7 @@ public class MethodeGUIMain {
                     GUIMain.listePoissonsAqua.get(index).var = false;
                     GUIMain.listePoissonsAqua.set(index, GUIMain.poisson_default);
                     checkFishType(aqua);
+                    Poisson.setFalse((short) index);
                 }
             }
         } catch (Exception e) {
