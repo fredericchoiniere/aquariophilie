@@ -39,7 +39,8 @@ public class GUIMain extends JFrame implements ActionListener {
     // création des labels
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, eau_label, inventaire_ouvert,
             inventaire_fermer, inventaire_bg, filet_label, pause_label, reprendre_label, label_tutoriel,
-            label_information, hamis, ciseau_label, label_argent, pichet_label, radio_on, radio_off;
+            label_information, hamis, ciseau_label, label_argent, pichet_label, radio_on, radio_off, kit_ouvert,
+            kit_fermer, kit_bg;
     public static JLabel lblPipette = new JLabel();
     public static JLabel label_argent_aqua = new JLabel("");
     public static JLabel label_argent_shop = new JLabel("");
@@ -49,31 +50,31 @@ public class GUIMain extends JFrame implements ActionListener {
     public static String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3, poi4, poi5, poi6,
             actionEnCours, pla1, pla2, pla3, pla4, pla5, pla6;
 
-	public static String aqua1;
+    public static String aqua1;
 
-	public static String aqua2;
+    public static String aqua2;
 
-	public static String aqua3;
+    public static String aqua3;
 
-	public static String aqua4;
+    public static String aqua4;
 
-	public static String aqua5;
+    public static String aqua5;
 
-	public static String aqua6;
+    public static String aqua6;
 
-	public static String emplacement;
+    public static String emplacement;
 
-	public static String aquaPla1;
+    public static String aquaPla1;
 
-	public static String aquaPla2;
+    public static String aquaPla2;
 
-	public static String aquaPla3;
+    public static String aquaPla3;
 
-	public static String aquaPla4;
+    public static String aquaPla4;
 
-	public static String aquaPla5;
+    public static String aquaPla5;
 
-	public static String aquaPla6;
+    public static String aquaPla6;
 
     // création des rectangles
     Rectangle rectTest, rectEmp1, rectEmp2, rectEmp3, rectAqua1, rectAqua2, rectAqua3, rectAqua4, rectAqua5,
@@ -232,6 +233,7 @@ public class GUIMain extends JFrame implements ActionListener {
         inventaire_ouvert = new JLabel();
         inventaire_ouvert.setIcon(new ImageIcon("res/background/inventaire_ouvert.png"));
         Dimension size_icone_inv = inventaire_ouvert.getPreferredSize();
+
         inventaire_ouvert.setBounds(50, 60, size_icone_inv.width, size_icone_inv.height);
         inventaire_ouvert.setVisible(false);
         panelAqua.add(inventaire_ouvert);
@@ -243,6 +245,22 @@ public class GUIMain extends JFrame implements ActionListener {
         inventaire_fermer.setToolTipText("Ouvre l'inventaire");
         inventaire_fermer.setVisible(true);
         panelAqua.add(inventaire_fermer);
+
+        // kit de soin ouvert
+        kit_ouvert = new JLabel();
+        kit_ouvert.setIcon(new ImageIcon("res/background/kit_ouvert.png"));
+        Dimension size_kit_ouvert = kit_ouvert.getPreferredSize();
+        kit_ouvert.setBounds(50, 140, size_kit_ouvert.width, size_kit_ouvert.height);
+        kit_ouvert.setVisible(false);
+        panelAqua.add(kit_ouvert);
+
+        // kit de soin fermer
+        kit_fermer = new JLabel();
+        kit_fermer.setIcon(new ImageIcon("res/background/kit_fermer.png"));
+        Dimension size_kit_fermer = kit_fermer.getPreferredSize();
+        kit_fermer.setBounds(50, 140, size_kit_fermer.width, size_kit_fermer.height);
+        kit_fermer.setVisible(true);
+        panelAqua.add(kit_fermer);
 
         // ajout du label pour pause
         pause_label = new JLabel();
@@ -278,13 +296,20 @@ public class GUIMain extends JFrame implements ActionListener {
 
         // ajout de l'inventaire
         inventaire_bg = new JLabel();
-        inventaire_bg.setIcon(new ImageIcon("res/background/inventaire.png"));
         Dimension size_inventaire = inventaire_bg.getPreferredSize();
+        inventaire_bg.setIcon(new ImageIcon("res/background/inventaire.png"));
         inventaire_bg.setBounds(5, 140, size_inventaire.width, size_inventaire.height);
         inventaire_bg.setVisible(false);
         panelAqua.add(inventaire_bg);
         inventaire = new Inventaire(inventaire_bg);
         inventaire.setVisible(false);
+
+        // ajout du label pour l'icone de la bouteille
+        kit_bg = new JLabel();
+        kit_bg.setIcon(new ImageIcon("res/background/kit.png"));
+        kit_bg.setBounds(5, 140, size_inventaire.width, size_inventaire.height);
+        kit_bg.setVisible(false);
+        panelAqua.add(kit_bg);
 
         // hamis love label
         hamis = new JLabel();
@@ -350,8 +375,7 @@ public class GUIMain extends JFrame implements ActionListener {
 
         aquarium = new Aquarium(panelAqua);
 
-
-        //ajout des jbuttons pour tester laqualité de l,eau
+        // ajout des jbuttons pour tester laqualité de l,eau
         bt1 = new JButton("20");
         bt1.addActionListener(this);
         bt1.setBounds(10, 10, 50, 50);
@@ -686,15 +710,15 @@ public class GUIMain extends JFrame implements ActionListener {
                 radio_off.setVisible(false);
                 radio_on.setVisible(true);
                 label_tutoriel.setVisible(false);
-                        try {
-                            Control.audioPlayer.resumeAudio();
-                        } catch (UnsupportedAudioFileException e1) {
-                            System.out.println("erreur audio");
-                        } catch (IOException e1) {
-                            System.out.println("erreur audio");
-                        } catch (LineUnavailableException e1) {
-                            System.out.println("erreur audio");
-                        }
+                try {
+                    Control.audioPlayer.resumeAudio();
+                } catch (UnsupportedAudioFileException e1) {
+                    System.out.println("erreur audio");
+                } catch (IOException e1) {
+                    System.out.println("erreur audio");
+                } catch (LineUnavailableException e1) {
+                    System.out.println("erreur audio");
+                }
             }
         });
 
@@ -1268,26 +1292,26 @@ public class GUIMain extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == bt1){ 
+        if (e.getSource() == bt1) {
             eau.scoreEau = 20;
         }
 
-        if(e.getSource() == bt2){
+        if (e.getSource() == bt2) {
             eau.scoreEau = 40;
         }
 
-        if(e.getSource() == bt3){
+        if (e.getSource() == bt3) {
             eau.scoreEau = 60;
         }
 
-        if(e.getSource() == bt4){
+        if (e.getSource() == bt4) {
             eau.scoreEau = 80;
         }
 
-        if(e.getSource() == bt5){
+        if (e.getSource() == bt5) {
             eau.scoreEau = 100;
         }
-        
+
     }
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------
