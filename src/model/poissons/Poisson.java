@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import model.chimie.Eau;
+import view.GUIMain;
 
 import java.awt.*;
 
@@ -14,12 +15,12 @@ public class Poisson extends JPanel {
     // attributs de la classe
     int vel_x = 1;
     int vel_y = 1;
-    static int sante = 100;
+    private short sante = 100;
     public int index;
     public String direction = "droite";
     public boolean var = true;
     public String empInv, empAqua, nom;
-    int hauteur = Eau.hauteurEnPixels, compensationPosition = Eau.hauteurEnPixels-(4+(192-Eau.hauteurEnPixels));
+    int hauteur = Eau.hauteurEnPixels, compensationPosition = Eau.hauteurEnPixels - (4 + (192 - Eau.hauteurEnPixels));
 
     /**
      * @param isOpaque
@@ -110,7 +111,7 @@ public class Poisson extends JPanel {
         return nom;
     }
 
-    public int getHauteur(){ 
+    public int getHauteur() {
         hauteur = 196 - Eau.hauteurEnPixels; // Traduit la hauteur en pixels de l'eau en coordonnées pour les poissons
         return hauteur;
     }
@@ -145,16 +146,80 @@ public class Poisson extends JPanel {
     public static void updateToolTip(JLabel label, String type) {
         switch (type) {
             case "rouge":
-                label.setToolTipText("Type: Poisson rouge" + "\nSanté: " + sante);
+                label.setToolTipText("Type: Poisson rouge" + "\nSanté: ");
                 break;
             case "betta":
-                label.setToolTipText("Type: Betta" + "\nSanté: " + sante);
+                label.setToolTipText("Type: Betta" + "\nSanté: ");
                 break;
             case "tetra":
-                label.setToolTipText("Type: Tetra" + "\nSanté: " + sante);
+                label.setToolTipText("Type: Tetra" + "\nSanté: ");
                 break;
             default:
                 label.setToolTipText("");
+                break;
+        }
+    }
+
+    public static void setSante(short poisson) {
+        if (fishType(poisson) == "rouge") {
+            levels("rouge", poisson);
+        } else if (fishType(poisson) == "betta") {
+            levels("betta", poisson);
+        } else if (fishType(poisson) == "tetra") {
+            levels("tetra", poisson);
+        }
+
+    }
+
+    public static String fishType(short poisson) {
+        switch (poisson) {
+            case 0:
+                return GUIMain.aqua1;
+            case 1:
+                return GUIMain.aqua2;
+            case 2:
+                return GUIMain.aqua3;
+            case 3:
+                return GUIMain.aqua4;
+            case 4:
+                return GUIMain.aqua5;
+            case 5:
+                return GUIMain.aqua6;
+            default:
+                return "";
+        }
+    }
+
+    public static void levels(String type, short numb) {
+        switch (type) {
+            case "rouge":
+                if (GUIMain.eau.scoreEau >= 66 - PoissonRouge.tolerance) {
+                    GUIMain.listePoissonsAqua.get(numb).sante += 1;
+                } else if (GUIMain.eau.scoreEau >= 33 - PoissonRouge.tolerance) {
+                    GUIMain.listePoissonsAqua.get(numb).sante -= 1;
+                } else if (GUIMain.eau.scoreEau >= 0 - PoissonRouge.tolerance) {
+                    GUIMain.listePoissonsAqua.get(numb).sante -= 2;
+                }
+                break;
+            case "betta":
+                if (GUIMain.eau.scoreEau >= 66 - PoissonBetta.tolerance) {
+                    GUIMain.listePoissonsAqua.get(numb).sante += 1;
+                } else if (GUIMain.eau.scoreEau >= 33 - PoissonBetta.tolerance) {
+                    GUIMain.listePoissonsAqua.get(numb).sante -= 1;
+                } else if (GUIMain.eau.scoreEau > 0 - PoissonBetta.tolerance) {
+                    GUIMain.listePoissonsAqua.get(numb).sante -= 2;
+                }
+                break;
+            case "tetra":
+                if (GUIMain.eau.scoreEau >= 66 - PoissonTetra.tolerance) {
+                    GUIMain.listePoissonsAqua.get(numb).sante += 1;
+                } else if (GUIMain.eau.scoreEau >= 33 - PoissonTetra.tolerance) {
+                    GUIMain.listePoissonsAqua.get(numb).sante -= 1;
+                } else if (GUIMain.eau.scoreEau >= 0 - PoissonTetra.tolerance) {
+                    GUIMain.listePoissonsAqua.get(numb).sante -= 2;
+                }
+                break;
+            default:
                 break;
         }
     }

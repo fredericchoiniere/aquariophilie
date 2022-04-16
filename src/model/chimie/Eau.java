@@ -1,5 +1,6 @@
 // Frédéric Choinière, Justin Plouffe   itération 1
 // Frédéric Choinière   itération 2
+// Jérémie Caron  itération 3
 // Classe qui contrôle les paramètres d'eau
 
 package model.chimie;
@@ -10,6 +11,7 @@ import java.util.*;
 import view.GUIMain;
 import model.MethodeGUIMain;
 import model.environnement.Temps;
+import model.poissons.Poisson;
 
 public class Eau implements Runnable {
 
@@ -41,7 +43,7 @@ public class Eau implements Runnable {
     public int nbAtomeN = 0;
     public int nbAtomeO = 2103;
     public int nbAtomeH = 4206;
-    public static int scoreEau;
+    public int scoreEau;
 
     final short valeur_changement = 3;
 
@@ -328,7 +330,7 @@ public class Eau implements Runnable {
      * Pour l'itération 3
      */
     public static void setScoreEau() {
-        scoreEau = (int) (setScoreAmmo() + setScoreGH() + setScoreKH() + setScoreNitrates() + setScoreNitrites()
+        GUIMain.eau.scoreEau = (int) (setScoreAmmo() + setScoreGH() + setScoreKH() + setScoreNitrates() + setScoreNitrites()
                 + setScorePH());
         // System.out.println("Score eau 1 : " + scoreEau);
     }
@@ -496,6 +498,16 @@ public class Eau implements Runnable {
                     GUIMain.panelTest.lblNitrates.setText(toString(GUIMain.eau.getNitrates()));
                     GUIMain.panelTest.lblKH.setText(toString(GUIMain.eau.getKH()));
                     System.out.println("Déchets: " + GUIMain.eau.sommeDechets + " kh: " + GUIMain.eau.getKH());
+
+
+                    // section a lord jeremie
+                    Poisson.setSante((short) 0);
+                    Poisson.setSante((short) 1);
+                    Poisson.setSante((short) 2);
+                    Poisson.setSante((short) 3);
+                    Poisson.setSante((short) 4);
+                    Poisson.setSante((short) 5);
+
 
 
                     if (penteNitrites > nitrites) {

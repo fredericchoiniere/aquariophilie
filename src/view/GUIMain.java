@@ -26,7 +26,7 @@ import model.plantes.Plante;
 import model.poissons.*;
 import view.tabs.*;
 
-public class GUIMain extends JFrame {
+public class GUIMain extends JFrame implements ActionListener {
 
     // appel des attributs de la classe GUIMain
     // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -98,6 +98,9 @@ public class GUIMain extends JFrame {
     public static float jours = (float) 0; // TIMER GLOBAL
     public static boolean hasFish1, hasFish2, hasFish3, hasFish4, hasFish5, hasFish6;
     public static boolean hasPlant1, hasPlant2, hasPlant3;
+
+    // boutons temporaire
+    JButton bt1, bt2, bt3, bt4, bt5;
 
     public GUIMain() { // création du constructeur GUIMain
 
@@ -318,6 +321,14 @@ public class GUIMain extends JFrame {
         rectAqua6 = new Rectangle(584, 417, 70, 70);
 
         aquarium = new Aquarium(panelAqua);
+
+
+        //ajout des jbuttons pour tester laqualité de l,eau
+        bt1 = new JButton("Nouvelle Partie");
+        bt1.addActionListener(this);
+        bt1.setBounds(10, 10, 50, 50);
+        bt1.setVisible(true);
+        panelAqua.add(bt1);
 
         // ajout du layeredpane au tabbedane
         tabbedPane.add("Aquarium", panelAqua);
@@ -1192,6 +1203,12 @@ public class GUIMain extends JFrame {
         ciseau_label.setVisible(false);
         filet_label.setVisible(false);
         label_information.setVisible(false);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        
     }
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------
