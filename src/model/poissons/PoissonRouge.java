@@ -14,6 +14,7 @@ public class PoissonRouge extends Poisson implements Runnable {
     int vel_x = 1;
     int vel_y = 1;
     public static int prix = 50;
+    public static int tolerance = 6;
 
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_droite.png");

@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import javax.sound.sampled.*;
 
-public class SimpleAudioPlayer {
+public class Radio {
 
     Long currentFrame;
     Clip clip;
@@ -17,7 +17,7 @@ public class SimpleAudioPlayer {
     static String filePath = "res/sons/ambiance.wav";
 
     // constructor to initialize streams and clip
-    public SimpleAudioPlayer()
+    public Radio()
             throws UnsupportedAudioFileException,
             IOException, LineUnavailableException {
         // create AudioInputStream object

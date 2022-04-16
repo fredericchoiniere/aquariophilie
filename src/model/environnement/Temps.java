@@ -46,7 +46,7 @@ public class Temps {
                     GUIMain.jours++;
                     jourAJour((int) GUIMain.jours);
                     Argent.paye(GUIMain.label_argent_aqua, GUIMain.label_argent_shop);
-                    Eau.setScoreEau();
+                    //Eau.setScoreEau();
                 }
         }, 0, DUREE);
     }

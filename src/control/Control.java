@@ -7,11 +7,11 @@ package control;
 
 import javax.swing.*;
 
-import model.SimpleAudioPlayer;
+import model.Radio;
 import view.*;
 
 public class Control {
-    public static SimpleAudioPlayer audioPlayer;
+    public static Radio audioPlayer;
 
     /**
      * @param args
@@ -32,7 +32,7 @@ public class Control {
 
         try {
 
-            audioPlayer = new SimpleAudioPlayer();
+            audioPlayer = new Radio();
             audioPlayer.play();
 
         }
