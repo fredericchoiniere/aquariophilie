@@ -47,8 +47,33 @@ public class GUIMain extends JFrame implements ActionListener {
 
     // création des String
     public static String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3, poi4, poi5, poi6,
-            actionEnCours, pla1, pla2, pla3, pla4, pla5, pla6, aqua1, aqua2, aqua3, aqua4, aqua5, aqua6, emplacement,
-            aquaPla1, aquaPla2, aquaPla3, aquaPla4, aquaPla5, aquaPla6;
+            actionEnCours, pla1, pla2, pla3, pla4, pla5, pla6;
+
+	public static String aqua1;
+
+	public static String aqua2;
+
+	public static String aqua3;
+
+	public static String aqua4;
+
+	public static String aqua5;
+
+	public static String aqua6;
+
+	public static String emplacement;
+
+	public static String aquaPla1;
+
+	public static String aquaPla2;
+
+	public static String aquaPla3;
+
+	public static String aquaPla4;
+
+	public static String aquaPla5;
+
+	public static String aquaPla6;
 
     // création des rectangles
     Rectangle rectTest, rectEmp1, rectEmp2, rectEmp3, rectAqua1, rectAqua2, rectAqua3, rectAqua4, rectAqua5,
@@ -74,7 +99,7 @@ public class GUIMain extends JFrame implements ActionListener {
     ImageIcon rajoutIcon = new ImageIcon();
     ImageIcon iconeAppli = new ImageIcon("res/background/icone_aquariophilie.png");
     Inventaire inventaire;
-    Aquarium aquarium;
+    public static Aquarium aquarium;
     public static CycleAzote cycleInitial;
 
     // création des listes
