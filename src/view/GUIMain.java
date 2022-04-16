@@ -250,7 +250,7 @@ public class GUIMain extends JFrame implements ActionListener {
         kit_ouvert = new JLabel();
         kit_ouvert.setIcon(new ImageIcon("res/background/kit_ouvert.png"));
         Dimension size_kit_ouvert = kit_ouvert.getPreferredSize();
-        kit_ouvert.setBounds(50, 140, size_kit_ouvert.width, size_kit_ouvert.height);
+        kit_ouvert.setBounds(50, 160, size_kit_ouvert.width, size_kit_ouvert.height);
         kit_ouvert.setVisible(false);
         panelAqua.add(kit_ouvert);
 
@@ -258,7 +258,7 @@ public class GUIMain extends JFrame implements ActionListener {
         kit_fermer = new JLabel();
         kit_fermer.setIcon(new ImageIcon("res/background/kit_fermer.png"));
         Dimension size_kit_fermer = kit_fermer.getPreferredSize();
-        kit_fermer.setBounds(50, 140, size_kit_fermer.width, size_kit_fermer.height);
+        kit_fermer.setBounds(50, 160, size_kit_fermer.width, size_kit_fermer.height);
         kit_fermer.setVisible(true);
         panelAqua.add(kit_fermer);
 
@@ -296,9 +296,8 @@ public class GUIMain extends JFrame implements ActionListener {
 
         // ajout de l'inventaire
         inventaire_bg = new JLabel();
-        Dimension size_inventaire = inventaire_bg.getPreferredSize();
         inventaire_bg.setIcon(new ImageIcon("res/background/inventaire.png"));
-        inventaire_bg.setBounds(5, 140, size_inventaire.width, size_inventaire.height);
+        inventaire_bg.setBounds(5, 140, 250, 475);
         inventaire_bg.setVisible(false);
         panelAqua.add(inventaire_bg);
         inventaire = new Inventaire(inventaire_bg);
@@ -307,7 +306,7 @@ public class GUIMain extends JFrame implements ActionListener {
         // ajout du label pour l'icone de la bouteille
         kit_bg = new JLabel();
         kit_bg.setIcon(new ImageIcon("res/background/kit.png"));
-        kit_bg.setBounds(5, 140, size_inventaire.width, size_inventaire.height);
+        kit_bg.setBounds(5, 140, 250, 475);
         kit_bg.setVisible(false);
         panelAqua.add(kit_bg);
 
