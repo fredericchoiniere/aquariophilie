@@ -66,6 +66,7 @@ public class GUIMain extends JFrame implements ActionListener {
     public static PoissonRouge poisson_rouge;
     public static PoissonBetta poisson_betta;
     public static PoissonTetra poisson_tetra;
+    public static PoissonNeo poisson_neo;
     Filet filet;
     Ciseau ciseau;
     Pichet pichet;
@@ -86,6 +87,7 @@ public class GUIMain extends JFrame implements ActionListener {
     public static Thread tpoisson_rouge;
     public static Thread tpoisson_betta;
     public static Thread tpoisson_tetra;
+    public static Thread tpoisson_neo;
     Thread threadEau;
     Thread tCycleInitial;
     Thread tPanelInfo;

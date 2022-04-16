@@ -27,9 +27,11 @@ public class Eau implements Runnable {
     public static float ammoniaque = 0;
     private float sommeAmmoniaque, sommeNitrites;
     public float jours = GUIMain.jours;
+    public float compteurJoursCycle = 0;
     public float hauteur = 35, largeur = 20, longueur = (float) 54.07; // Dimensions de l'aquarium de 10 gallons/37.85L
     public static int hauteurEnPixels = 192; // Hauteur en pixels de l'eau de l'aquarium rempli
     public static int positionEnPixels = 305;
+    
 
     private static float scorePH;
     private static float scoreGH;
@@ -45,7 +47,7 @@ public class Eau implements Runnable {
     public int nbAtomeH = 4206;
     public int scoreEau;
 
-    final short valeur_changement = 3;
+    final short valeur_changement = 1;
 
     public boolean dechetsCycleParti = false;
 
@@ -120,6 +122,14 @@ public class Eau implements Runnable {
             kh = 0;
         else
             kh = nouveauKH;
+    }
+
+    /**
+     * @param compteurJours
+     *      Permet de 
+     */
+    public void setCompteurJoursCycle(float compteurJours){
+        compteurJoursCycle = compteurJours;
     }
 
     /**
@@ -209,7 +219,14 @@ public class Eau implements Runnable {
     public float sommeNitrites() {
         sommeNitrites = 0;
         listeNitritesIteration.addAll(listeNitrites);
+        if (compteurJoursCycle >= 24) { // mi-cycle, début de la pente négative
+            setNitrites.removeAll(listeNitritesIteration);
+        } // TODO: à terminer après avoir peté jay aus babyfoot
         for (Float valeur : listeNitritesIteration) {
+            
+            
+            
+            
             if (!setNitrites.contains(valeur)) { // TODO: fix problème de valeurs qui reviennent dans courbe, J25 à 30 +
                                                  // 34,35 sont à 0
                 setNitrites.add(valeur);

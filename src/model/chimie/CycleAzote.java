@@ -14,6 +14,10 @@ public class CycleAzote implements Runnable {
 
     public String actionEnCours = "Aucune action initiale";
 
+    public float getCompteurJours(){
+        return compteurJours;
+    }
+
     /**
      * @param eau
      *            Démarre un cycle d'ammoniaque en fonction du temps, suivant une
@@ -60,11 +64,11 @@ public class CycleAzote implements Runnable {
 
             try {
                 if (jours >= jourInitial && jours <= (jourInitial + 18)) { // >= 0 <= 18
-                    cycleAmmoniaque(eau, compteurJours);
+                    cycleAmmoniaque(eau, getCompteurJours());
                     actionEnCours = "Cycle ammoniaque";
                 }
                 if (jours >= (jourInitial + 14) && jours <= (jourInitial + 35)) { // >= 14 <= 35
-                    cycleNitrites(eau, compteurJours);
+                    cycleNitrites(eau, getCompteurJours());
                     actionEnCours = "Cycle nitrites";
                 }
                 GUIMain.actionEnCours = actionEnCours;
