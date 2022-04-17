@@ -145,7 +145,7 @@ public class Poisson extends JPanel {
      * @param type
      *              méthode pour afficher les tooltips
      */
-    public static void updateToolTip(JLabel label, String type) {
+    public static void updateToolTip(JLabel label, String type) { // TODO: terminer
         switch (type) {
             case "rouge":
                 label.setToolTipText("Type: Poisson rouge" + "\nSanté: ");

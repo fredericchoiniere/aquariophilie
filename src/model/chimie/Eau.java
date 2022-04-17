@@ -7,6 +7,7 @@ package model.chimie;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import java.util.*;
 import view.GUIMain;
 import model.MethodeGUIMain;
@@ -25,13 +26,15 @@ public class Eau implements Runnable {
     public static float nitrites = 0; // Doit etre 0, maximum 5mg par litre
     public static float nitrates = 0; // max 50mg/L
     public static float ammoniaque = 0;
+    public float tempAmmoniaque = 0;
+    public float tempNitrites = 0;
     private float sommeAmmoniaque, sommeNitrites;
     public float jours = GUIMain.jours;
-    public float compteurJoursCycle = 0;
+    public float jourInitial = 0;
+    public static float compteurJoursCycle = 0;
     public float hauteur = 35, largeur = 20, longueur = (float) 54.07; // Dimensions de l'aquarium de 10 gallons/37.85L
     public static int hauteurEnPixels = 192; // Hauteur en pixels de l'eau de l'aquarium rempli
     public static int positionEnPixels = 305;
-    
 
     private static float scorePH;
     private static float scoreGH;
@@ -50,18 +53,22 @@ public class Eau implements Runnable {
     final short valeur_changement = 1;
 
     public boolean dechetsCycleParti = false;
+    public boolean menageDupesNit = true;
+
+    public String actionEnCours = "Aucune action initiale";
 
     public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeAmmoniaque = Collections.synchronizedList(listeAmmoniaqueTemp); // Liste synchronisée
-    public ArrayList<Float> listeAmmoniaqueIteration = new ArrayList<Float>(); // Liste pour itérer dans boucle
-    public HashSet<Float> setAmmoniaque = new HashSet<Float>(listeAmmoniaqueTemp); // Liste pour additionner le montant
-                                                                                   // total d'ammoniaque
+    public ListIterator<Float> iteratorAmmoniaque; // Itérateur pour additionner les valeurs d'ammoniaque
+    public ArrayList<Float> listeAmmoniaqueIteration = new ArrayList<Float>(); //
+    // Liste pour itérer dans boucle
+    // public HashSet<Float> setAmmoniaque = new
+    // HashSet<Float>(listeAmmoniaqueTemp); // Liste pour additionner le montant
+    // total d'ammoniaque
 
     public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
-    public ArrayList<Float> listeNitritesIteration = new ArrayList<Float>(); // Liste pour itérer dans boucle
-    public HashSet<Float> setNitrites = new HashSet<Float>(listeNitritesTemp); // Liste pour additionner le montant
-                                                                               // total de nitrites
+    public ListIterator<Float> iteratorNitrites; // Itérateur pour additionner les valeurs de nitrites
 
     public ArrayList<Integer> listeAbsorption = new ArrayList<Integer>();
 
@@ -126,10 +133,14 @@ public class Eau implements Runnable {
 
     /**
      * @param compteurJours
-     *      Permet de 
+     *                      Permet de
      */
-    public void setCompteurJoursCycle(float compteurJours){
+    public static void setCompteurJoursCycle(float compteurJours) {
         compteurJoursCycle = compteurJours;
+    }
+
+    public float getCompteurJoursCycle(){
+        return compteurJoursCycle;
     }
 
     /**
@@ -195,19 +206,73 @@ public class Eau implements Runnable {
         listeNitrites.add(nitrites);
     }
 
+    // TODO: DÉCALISSER CYCLEAZOTE.JAVA, BOUGER LES METHODES DANS UN SEUL THREAD (EAU) PIS JUSTE CRISSER UN BOOLEAN POUR REDEMARRER UN CYCLE
+
+/**
+     * @param eau
+     *            Démarre un cycle d'ammoniaque en fonction du temps, suivant une
+     *            courbe
+     */
+    public void cycleAmmoniaque(float jours) {
+        listeAmmoniaque.remove(tempAmmoniaque);
+        if (jours <= 18) {
+            tempAmmoniaque = (float) (-3.2 * ((jours / 7) - 1.25) * ((jours / 7) - 1.25) + 5);
+        } else {
+            tempAmmoniaque = 0;
+        }
+        addAmmoniaque(tempAmmoniaque);
+    }
+
+    /**
+     * @param eau
+     *            Méthode run de la classe CycleAzote
+     *            Incrémente les jours et calcule le nouveau taux d'ammoniaque et de
+     *            nitrites
+     */ 
+    public void cycleNitrites(float jours) {
+        listeNitrites.remove(tempNitrites);
+        if (jours >= 14 && jours <= 35) {
+            tempNitrites = (float) (-3.56 * ((jours / 7) - 3.5) * ((jours / 7) - 3.5) + 8);
+            //System.out.println("tempnitrites: " + tempNitrites + " au jour " + jours);
+        } else {
+            tempNitrites = 0;
+        }
+        addNitrites(tempNitrites);
+    }
+
+
+
+
+
     /**
      * @return float
      *         Additionne toutes les valeurs dans la listeAmmoniaque
      */
     public float sommeAmmoniaque() {
         sommeAmmoniaque = 0;
-        listeAmmoniaqueIteration.addAll(listeAmmoniaque);
-        for (Float valeur : listeAmmoniaqueIteration) {
-            if (!setAmmoniaque.contains(valeur)) {
-                setAmmoniaque.add(valeur);
-                sommeAmmoniaque += valeur;
-            }
+
+        // listeAmmoniaque.add((float) 0);
+        
+        iteratorAmmoniaque = listeAmmoniaqueTemp.listIterator();
+
+        while (iteratorAmmoniaque.hasNext()) {
+
+            sommeAmmoniaque += iteratorAmmoniaque.next();
+            iteratorAmmoniaque.remove();
+
         }
+
+        listeAmmoniaqueTemp.addAll(listeAmmoniaque);
+        /*
+         * listeAmmoniaqueIteration.addAll(listeAmmoniaque);
+         * for (Float valeur : listeAmmoniaqueIteration) {
+         * if (!setAmmoniaque.contains(valeur)) {
+         * setAmmoniaque.add(valeur);
+         * sommeAmmoniaque += valeur;
+         * }
+         * }
+         */
+
         ammoniaque = sommeAmmoniaque;
         return ammoniaque;
     }
@@ -218,21 +283,16 @@ public class Eau implements Runnable {
      */
     public float sommeNitrites() {
         sommeNitrites = 0;
-        listeNitritesIteration.addAll(listeNitrites);
-        if (compteurJoursCycle >= 24) { // mi-cycle, début de la pente négative
-            setNitrites.removeAll(listeNitritesIteration);
-        } // TODO: à terminer après avoir peté jay aus babyfoot
-        for (Float valeur : listeNitritesIteration) {
-            
-            
-            
-            
-            if (!setNitrites.contains(valeur)) { // TODO: fix problème de valeurs qui reviennent dans courbe, J25 à 30 +
-                                                 // 34,35 sont à 0
-                setNitrites.add(valeur);
-                sommeNitrites += valeur;
+        iteratorNitrites = listeNitrites.listIterator();
+
+        while (iteratorNitrites.hasNext()) {
+
+            if (iteratorNitrites.hasNext()) {
+                sommeNitrites += iteratorNitrites.next();
+                iteratorNitrites.remove();
             }
         }
+
         nitrites = sommeNitrites;
         return nitrites;
     }
@@ -291,9 +351,10 @@ public class Eau implements Runnable {
         if (sommeDechets >= 250) {
             setKH((float) (kh - 0.156));
             if (!dechetsCycleParti) {
-                CycleAzote dechetsCycle = new CycleAzote();
+                /* CycleAzote dechetsCycle = new CycleAzote();
                 Thread tDechetsCycle = new Thread(dechetsCycle);
-                tDechetsCycle.start();
+                tDechetsCycle.start(); */
+                jourInitial = jours;
                 dechetsCycleParti = true;
             }
         }
@@ -324,7 +385,7 @@ public class Eau implements Runnable {
 
         volumeEau = (float) ((hauteur * largeur * longueur) * 0.001);
 
-        //System.out.println("hauteur eau: " + GUIMain.rectEau.getHeight());
+        // System.out.println("hauteur eau: " + GUIMain.rectEau.getHeight());
     }
 
     /**
@@ -346,11 +407,14 @@ public class Eau implements Runnable {
     /**
      * Pour l'itération 3
      */
-    /* public static void setScoreEau() {
-        GUIMain.eau.scoreEau = (int) (setScoreAmmo() + setScoreGH() + setScoreKH() + setScoreNitrates() + setScoreNitrites()
-                + setScorePH());
-        // System.out.println("Score eau 1 : " + scoreEau);
-    } */
+    /*
+     * public static void setScoreEau() {
+     * GUIMain.eau.scoreEau = (int) (setScoreAmmo() + setScoreGH() + setScoreKH() +
+     * setScoreNitrates() + setScoreNitrites()
+     * + setScorePH());
+     * // System.out.println("Score eau 1 : " + scoreEau);
+     * }
+     */
 
     /**
      * @return float
@@ -498,8 +562,12 @@ public class Eau implements Runnable {
     @Override
     public void run() {
         penteNitrites = nitrites;
+        jours = GUIMain.jours;
+        jourInitial = jours;
         while (true) {
             jours = GUIMain.jours;
+            setCompteurJoursCycle(jours - jourInitial);
+
             if (!Temps.isPaused) {
                 try {
                     sommeAmmoniaque();
@@ -514,8 +582,8 @@ public class Eau implements Runnable {
                     GUIMain.panelTest.lblNitrites.setText(toString(GUIMain.eau.getNitrites()));
                     GUIMain.panelTest.lblNitrates.setText(toString(GUIMain.eau.getNitrates()));
                     GUIMain.panelTest.lblKH.setText(toString(GUIMain.eau.getKH()));
-                    //System.out.println("Déchets: " + GUIMain.eau.sommeDechets + " kh: " + GUIMain.eau.getKH());
 
+                    // System.out.println("Compteur jours: " + Eau.compteurJoursCycle);
 
                     // section a lord jeremie
                     Poisson.setSante((short) 0);
@@ -526,23 +594,31 @@ public class Eau implements Runnable {
                     Poisson.setSante((short) 5);
 
 
-
-                    if (penteNitrites > nitrites) {
+                    if (jours >= jourInitial && jours <= (jourInitial + 18)) { // >= 0 <= 18
+                        cycleAmmoniaque(getCompteurJoursCycle());
+                        actionEnCours = "Cycle ammoniaque";
+                        
+                    }
+                    if (jours >= (jourInitial + 14) && jours <= (jourInitial + 35)) { // >= 14 <= 35
+                        cycleNitrites(getCompteurJoursCycle());
+                        //System.out.println("Entré dans nitrites jour: " + getCompteurJours());
+                        actionEnCours = "Cycle nitrites";
+                    }
+                    
+                    if (penteNitrites >= nitrites) {
                         comportNitrates();
-                        /*
-                         * System.out.println("nitrates: " + nitrates + " absorption nit: " +
-                         * sommeAbsorptionNitrates +
-                         * " abs déchets: " + sommeAbsorptionDechets + " somme déchets: " +
-                         * sommeDechets + " au jour " + jours + " dans thread " +
-                         * Thread.currentThread().getName());
-                         */
-                        GUIMain.actionEnCours = "Cycle nitrates";
+                        actionEnCours = "Cycle nitrates";
                         if (nitrites != 0.0)
                             penteNitrites = nitrites;
+                        if (dechetsCycleParti)
+                            dechetsCycleParti = false;
                     } else {
                         penteNitrites = nitrites;
                     }
+
+                    GUIMain.actionEnCours = actionEnCours;
                     Thread.sleep(Temps.DUREE);
+
                 } catch (Exception e) {
                     e.printStackTrace();
 
