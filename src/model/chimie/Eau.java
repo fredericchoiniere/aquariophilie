@@ -142,7 +142,7 @@ public class Eau implements Runnable {
         compteurJoursCycle = compteurJours;
     }
 
-    public float getCompteurJoursCycle(){
+    public float getCompteurJoursCycle() {
         return compteurJoursCycle;
     }
 
@@ -209,9 +209,10 @@ public class Eau implements Runnable {
         listeNitrites.add(nitrites);
     }
 
-    // TODO: DÉCALISSER CYCLEAZOTE.JAVA, BOUGER LES METHODES DANS UN SEUL THREAD (EAU) PIS JUSTE CRISSER UN BOOLEAN POUR REDEMARRER UN CYCLE
+    // TODO: DÉCALISSER CYCLEAZOTE.JAVA, BOUGER LES METHODES DANS UN SEUL THREAD
+    // (EAU) PIS JUSTE CRISSER UN BOOLEAN POUR REDEMARRER UN CYCLE
 
-/**
+    /**
      * @param eau
      *            Démarre un cycle d'ammoniaque en fonction du temps, suivant une
      *            courbe
@@ -231,21 +232,17 @@ public class Eau implements Runnable {
      *            Méthode run de la classe CycleAzote
      *            Incrémente les jours et calcule le nouveau taux d'ammoniaque et de
      *            nitrites
-     */ 
+     */
     public void cycleNitrites(float jours) {
         listeNitrites.remove(tempNitrites);
         if (jours >= 14 && jours <= 35) {
             tempNitrites = (float) (-3.56 * ((jours / 7) - 3.5) * ((jours / 7) - 3.5) + 8);
-            //System.out.println("tempnitrites: " + tempNitrites + " au jour " + jours);
+            // System.out.println("tempnitrites: " + tempNitrites + " au jour " + jours);
         } else {
             tempNitrites = 0;
         }
         addNitrites(tempNitrites);
     }
-
-
-
-
 
     /**
      * @return float
@@ -253,7 +250,7 @@ public class Eau implements Runnable {
      */
     public float sommeAmmoniaque() {
         sommeAmmoniaque = 0;
-        
+
         iteratorAmmoniaque = listeAmmoniaqueTemp.listIterator();
 
         while (iteratorAmmoniaque.hasNext()) {
@@ -352,13 +349,15 @@ public class Eau implements Runnable {
         if (sommeDechets >= 250) {
             setKH((float) (kh - 0.156));
             if (!dechetsCycleParti) {
-                /* CycleAzote dechetsCycle = new CycleAzote();
-                Thread tDechetsCycle = new Thread(dechetsCycle);
-                tDechetsCycle.start(); */
-
-                partirCycle(jours);
-                
+                /*
+                 * CycleAzote dechetsCycle = new CycleAzote();
+                 * Thread tDechetsCycle = new Thread(dechetsCycle);
+                 * tDechetsCycle.start();
+                 */
                 dechetsCycleParti = true;
+                partirCycle(jours);
+                System.out.println("cycle démarré, boolean " + dechetsCycleParti);
+                
             }
         }
         // avec déchets
@@ -558,7 +557,7 @@ public class Eau implements Runnable {
         return str;
     }
 
-    public void partirCycle(float jourInit){
+    public void partirCycle(float jourInit) {
         listeCycles.add(new CycleAzote(jourInit));
     }
 
@@ -591,6 +590,8 @@ public class Eau implements Runnable {
                     GUIMain.panelTest.lblKH.setText(toString(GUIMain.eau.getKH()));
 
                     // System.out.println("Compteur jours: " + Eau.compteurJoursCycle);
+                    System.out.println("déchets: " + sommeDechets);
+
 
                     // section a lord jeremie
                     Poisson.setSante((short) 0);
@@ -600,36 +601,42 @@ public class Eau implements Runnable {
                     Poisson.setSante((short) 4);
                     Poisson.setSante((short) 5);
 
-
-                    if (jours >= jourInitial && jours <= (jourInitial + 18)) { // >= 0 <= 18
-                        //cycleAmmoniaque(getCompteurJoursCycle());
-                        actionEnCours = "Cycle ammoniaque";
-                        System.out.println("entré dans if ammo");
-                        for (CycleAzote cycle : listeCycles) {
-                            cycle.cycleAmmoniaque();
-                            System.out.println("entré dans for ammo");
-
-                        }
+                    for (CycleAzote cycle : listeCycles) {
+                        //cycle.setCompteurJoursCycle(jours);
+                        cycle.cycler(this, jours);
+                        //System.out.println("entré dans for ammo");
 
                     }
-                    if (jours >= (jourInitial + 14) && jours <= (jourInitial + 35)) { // >= 14 <= 35
-                        //cycleNitrites(getCompteurJoursCycle());
-                        //System.out.println("Entré dans nitrites jour: " + getCompteurJours());
-                        actionEnCours = "Cycle nitrites";
 
-                        for (CycleAzote cycle : listeCycles) {
-                            cycle.cycleNitrites();
+                    /*
+                     * if (jours >= jourInitial && jours <= (jourInitial + 18)) { // >= 0 <= 18 //
+                     *
+                     * //cycleAmmoniaque(getCompteurJoursCycle());
+                     * actionEnCours = "Cycle ammoniaque";
+                     * System.out.println("entré dans if ammo");
+                     * 
+                     * 
+                     * }
+                     * if (jours >= (jourInitial + 14) && jours <= (jourInitial + 35)) { // >= 14 <=
+                     * 35
+                     * //cycleNitrites(getCompteurJoursCycle());
+                     * //System.out.println("Entré dans nitrites jour: " + getCompteurJours());
+                     * actionEnCours = "Cycle nitrites";
+                     * 
+                     * for (CycleAzote cycle : listeCycles) {
+                     * cycle.cycleNitrites();
+                     * 
+                     * }
+                     * }
+                     */
 
-                        }
-                    }
-                    
                     if (penteNitrites >= nitrites) {
                         comportNitrates();
                         actionEnCours = "Cycle nitrates";
                         if (nitrites != 0.0)
                             penteNitrites = nitrites;
-                        if (dechetsCycleParti)
-                            dechetsCycleParti = false;
+                        //if (dechetsCycleParti)
+                        //    dechetsCycleParti = false;
                     } else {
                         penteNitrites = nitrites;
                     }
