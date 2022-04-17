@@ -6,7 +6,6 @@ package model.environnement;
 
 import java.util.*;
 
-import model.chimie.Eau;
 import model.jeu.Argent;
 import view.GUIMain;
 

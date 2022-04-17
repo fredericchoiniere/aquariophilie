@@ -4,27 +4,34 @@
 
 package model.chimie;
 
-import model.environnement.Temps;
 import view.GUIMain;
 
-public class CycleAzote implements Runnable {
+public class CycleAzote{
 
-    public float jours = GUIMain.jours, jourInitial = 0, tempAmmoniaque = 0, tempNitrites = 0, compteurJours = 0;
+    public float jours = GUIMain.jours, jourInitial, tempAmmoniaque = 0, tempNitrites = 0;
     public Eau eau = GUIMain.eau;
 
     public String actionEnCours = "Aucune action initiale";
 
-    public float getCompteurJours(){
-        return compteurJours;
+   
+    public CycleAzote(float jourInit){
+        jourInitial = jourInit;
     }
 
+    /* public float getCompteurJoursCycle(){
+        compteurJoursCycle = -
+        return compteurJoursCycle;
+    }
+ */
     /**
      * @param eau
      *            Démarre un cycle d'ammoniaque en fonction du temps, suivant une
      *            courbe
      */
-    public void cycleAmmoniaque(Eau eau, float jours) {
+    public void cycleAmmoniaque() {
         eau.listeAmmoniaque.remove(tempAmmoniaque);
+        System.out.println("jour cycle ammo: " + jours);
+
         if (jours <= 18) {
             tempAmmoniaque = (float) (-3.2 * ((jours / 7) - 1.25) * ((jours / 7) - 1.25) + 5);
         } else {
@@ -39,7 +46,7 @@ public class CycleAzote implements Runnable {
      *            Incrémente les jours et calcule le nouveau taux d'ammoniaque et de
      *            nitrites
      */ 
-    public void cycleNitrites(Eau eau, float jours) {
+    public void cycleNitrites() {
         eau.listeNitrites.remove(tempNitrites);
         if (jours >= 14 && jours <= 35) {
             tempNitrites = (float) (-3.56 * ((jours / 7) - 3.5) * ((jours / 7) - 3.5) + 8);
@@ -50,10 +57,12 @@ public class CycleAzote implements Runnable {
         eau.addNitrites(tempNitrites);
     }
 
+    
+
     /** 
      * Méthode run de la classe CycleAzote
      */
-    @Override
+    /* @Override
     public void run() {
             jours = GUIMain.jours;
             jourInitial = jours;
@@ -83,5 +92,5 @@ public class CycleAzote implements Runnable {
                 e.printStackTrace();
             }
         }
-    }
+    } */
 }

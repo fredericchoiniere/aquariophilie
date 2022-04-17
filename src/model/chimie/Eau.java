@@ -53,6 +53,7 @@ public class Eau implements Runnable {
     final short valeur_changement = 1;
 
     public boolean dechetsCycleParti = false;
+    public boolean cycleParti = true;
     public boolean menageDupesNit = true;
 
     public String actionEnCours = "Aucune action initiale";
@@ -71,6 +72,8 @@ public class Eau implements Runnable {
     public ListIterator<Float> iteratorNitrites; // Itérateur pour additionner les valeurs de nitrites
 
     public ArrayList<Integer> listeAbsorption = new ArrayList<Integer>();
+
+    public ArrayList<CycleAzote> listeCycles = new ArrayList<CycleAzote>();
 
     /**
      * @return float
@@ -250,8 +253,6 @@ public class Eau implements Runnable {
      */
     public float sommeAmmoniaque() {
         sommeAmmoniaque = 0;
-
-        // listeAmmoniaque.add((float) 0);
         
         iteratorAmmoniaque = listeAmmoniaqueTemp.listIterator();
 
@@ -354,7 +355,9 @@ public class Eau implements Runnable {
                 /* CycleAzote dechetsCycle = new CycleAzote();
                 Thread tDechetsCycle = new Thread(dechetsCycle);
                 tDechetsCycle.start(); */
-                jourInitial = jours;
+
+                partirCycle(jours);
+                
                 dechetsCycleParti = true;
             }
         }
@@ -555,6 +558,10 @@ public class Eau implements Runnable {
         return str;
     }
 
+    public void partirCycle(float jourInit){
+        listeCycles.add(new CycleAzote(jourInit));
+    }
+
     /**
      * Méthode run de la classe Eau
      * Incomplète pour l'instant
@@ -595,14 +602,25 @@ public class Eau implements Runnable {
 
 
                     if (jours >= jourInitial && jours <= (jourInitial + 18)) { // >= 0 <= 18
-                        cycleAmmoniaque(getCompteurJoursCycle());
+                        //cycleAmmoniaque(getCompteurJoursCycle());
                         actionEnCours = "Cycle ammoniaque";
-                        
+                        System.out.println("entré dans if ammo");
+                        for (CycleAzote cycle : listeCycles) {
+                            cycle.cycleAmmoniaque();
+                            System.out.println("entré dans for ammo");
+
+                        }
+
                     }
                     if (jours >= (jourInitial + 14) && jours <= (jourInitial + 35)) { // >= 14 <= 35
-                        cycleNitrites(getCompteurJoursCycle());
+                        //cycleNitrites(getCompteurJoursCycle());
                         //System.out.println("Entré dans nitrites jour: " + getCompteurJours());
                         actionEnCours = "Cycle nitrites";
+
+                        for (CycleAzote cycle : listeCycles) {
+                            cycle.cycleNitrites();
+
+                        }
                     }
                     
                     if (penteNitrites >= nitrites) {
