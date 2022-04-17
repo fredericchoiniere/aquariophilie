@@ -1150,7 +1150,7 @@ public class GUIMain extends JFrame implements ActionListener {
 
         // début des Threads pour l'eau
         threadEau.start();
-        tCycleInitial.start();
+        //tCycleInitial.start();
 
     } // fin du constructeur GUIMain
 

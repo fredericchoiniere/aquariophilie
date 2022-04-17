@@ -34,7 +34,7 @@ public class Control {
 
             audioPlayer = new Radio();
             audioPlayer.play();
-
+            audioPlayer.pause();
         }
 
         catch (Exception e) {
