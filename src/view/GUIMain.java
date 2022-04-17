@@ -49,32 +49,9 @@ public class GUIMain extends JFrame implements ActionListener {
     // création des String
     public static String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3, poi4, poi5, poi6,
             actionEnCours, pla1, pla2, pla3, pla4, pla5, pla6;
-
-    public static String aqua1;
-
-    public static String aqua2;
-
-    public static String aqua3;
-
-    public static String aqua4;
-
-    public static String aqua5;
-
-    public static String aqua6;
-
+    public static String aqua1, aqua2, aqua3, aqua4, aqua5, aqua6;
     public static String emplacement;
-
-    public static String aquaPla1;
-
-    public static String aquaPla2;
-
-    public static String aquaPla3;
-
-    public static String aquaPla4;
-
-    public static String aquaPla5;
-
-    public static String aquaPla6;
+    public static String aquaPla1, aquaPla2, aquaPla3, aquaPla4, aquaPla5, aquaPla6;
 
     // création des rectangles
     Rectangle rectTest, rectEmp1, rectEmp2, rectEmp3, rectAqua1, rectAqua2, rectAqua3, rectAqua4, rectAqua5,
@@ -100,6 +77,7 @@ public class GUIMain extends JFrame implements ActionListener {
     ImageIcon rajoutIcon = new ImageIcon();
     ImageIcon iconeAppli = new ImageIcon("res/background/icone_aquariophilie.png");
     Inventaire inventaire;
+    Sante sante;
     public static Aquarium aquarium;
     public static CycleAzote cycleInitial;
 
@@ -308,6 +286,8 @@ public class GUIMain extends JFrame implements ActionListener {
         kit_bg.setIcon(new ImageIcon("res/background/kit.png"));
         kit_bg.setBounds(5, 140, 250, 475);
         kit_bg.setVisible(false);
+        sante = new Sante(kit_bg);
+        sante.setVisible(Sante.state1, Sante.state2, Sante.state3, Sante.state4, Sante.state5, Sante.state6);
         panelAqua.add(kit_bg);
 
         // hamis love label
@@ -405,59 +385,61 @@ public class GUIMain extends JFrame implements ActionListener {
         bt5.setVisible(false);
         panelAqua.add(bt5);
 
-        prog1 = new JProgressBar();
-        prog1.setString("sante poisson 1");
-        prog1.setStringPainted(true);
-        prog1.setForeground(new Color(46, 232, 158));
-        prog1.setValue(100);
-        prog1.setBounds(10, 310, 200, 20);
-        prog1.setVisible(false);
-        panelAqua.add(prog1);
-
-        prog2 = new JProgressBar();
-        prog2.setString("sante poisson 2");
-        prog2.setStringPainted(true);
-        prog2.setForeground(new Color(46, 232, 158));
-        prog2.setValue(100);
-        prog2.setBounds(10, 370, 200, 20);
-        prog2.setVisible(false);
-        panelAqua.add(prog2);
-
-        prog3 = new JProgressBar();
-        prog3.setString("sante poisson 3");
-        prog3.setStringPainted(true);
-        prog3.setForeground(new Color(46, 232, 158));
-        prog3.setValue(100);
-        prog3.setBounds(10, 430, 200, 20);
-        prog3.setVisible(false);
-        panelAqua.add(prog3);
-
-        prog4 = new JProgressBar();
-        prog4.setString("sante poisson 4");
-        prog4.setStringPainted(true);
-        prog4.setForeground(new Color(46, 232, 158));
-        prog4.setValue(100);
-        prog4.setBounds(10, 490, 200, 20);
-        prog4.setVisible(false);
-        panelAqua.add(prog4);
-
-        prog5 = new JProgressBar(); 
-        prog5.setString("sante poisson 5");
-        prog5.setStringPainted(true);
-        prog5.setForeground(new Color(46, 232, 158));
-        prog5.setValue(100);
-        prog5.setBounds(10, 550, 200, 20);
-        prog5.setVisible(false);
-        panelAqua.add(prog5);
-
-        prog6 = new JProgressBar();
-        prog6.setString("sante poisson 6");
-        prog6.setStringPainted(true);
-        prog6.setForeground(new Color(46, 232, 158));
-        prog6.setValue(100);
-        prog6.setBounds(10, 610, 200, 20);
-        prog6.setVisible(false);
-        panelAqua.add(prog6);
+        /*
+         * prog1 = new JProgressBar();
+         * prog1.setString("sante poisson 1");
+         * prog1.setStringPainted(true);
+         * prog1.setForeground(new Color(46, 232, 158));
+         * prog1.setValue(100);
+         * prog1.setBounds(10, 310, 200, 20);
+         * prog1.setVisible(false);
+         * panelAqua.add(prog1);
+         * 
+         * prog2 = new JProgressBar();
+         * prog2.setString("sante poisson 2");
+         * prog2.setStringPainted(true);
+         * prog2.setForeground(new Color(46, 232, 158));
+         * prog2.setValue(100);
+         * prog2.setBounds(10, 370, 200, 20);
+         * prog2.setVisible(false);
+         * panelAqua.add(prog2);
+         * 
+         * prog3 = new JProgressBar();
+         * prog3.setString("sante poisson 3");
+         * prog3.setStringPainted(true);
+         * prog3.setForeground(new Color(46, 232, 158));
+         * prog3.setValue(100);
+         * prog3.setBounds(10, 430, 200, 20);
+         * prog3.setVisible(false);
+         * panelAqua.add(prog3);
+         * 
+         * prog4 = new JProgressBar();
+         * prog4.setString("sante poisson 4");
+         * prog4.setStringPainted(true);
+         * prog4.setForeground(new Color(46, 232, 158));
+         * prog4.setValue(100);
+         * prog4.setBounds(10, 490, 200, 20);
+         * prog4.setVisible(false);
+         * panelAqua.add(prog4);
+         * 
+         * prog5 = new JProgressBar();
+         * prog5.setString("sante poisson 5");
+         * prog5.setStringPainted(true);
+         * prog5.setForeground(new Color(46, 232, 158));
+         * prog5.setValue(100);
+         * prog5.setBounds(10, 550, 200, 20);
+         * prog5.setVisible(false);
+         * panelAqua.add(prog5);
+         * 
+         * prog6 = new JProgressBar();
+         * prog6.setString("sante poisson 6");
+         * prog6.setStringPainted(true);
+         * prog6.setForeground(new Color(46, 232, 158));
+         * prog6.setValue(100);
+         * prog6.setBounds(10, 610, 200, 20);
+         * prog6.setVisible(false);
+         * panelAqua.add(prog6);
+         */
 
         // ajout du layeredpane au tabbedane
         tabbedPane.add("Aquarium", panelAqua);
@@ -735,8 +717,8 @@ public class GUIMain extends JFrame implements ActionListener {
                 inventaire_fermer.setVisible(true);
                 inventaire_ouvert.setVisible(false);
                 setVisibleKit(true);
-                kit_ouvert.setBounds(50, 160, size_kit_ouvert.width, size_kit_ouvert.height);
-                kit_fermer.setBounds(50, 160, size_kit_ouvert.width, size_kit_ouvert.height);
+                kit_fermer.setBounds(150, 60, size_kit_fermer.width, size_kit_fermer.height);
+                kit_ouvert.setBounds(150, 60, size_kit_ouvert.width, size_kit_ouvert.height);
             }
         });
 
@@ -1235,7 +1217,7 @@ public class GUIMain extends JFrame implements ActionListener {
 
         // début des Threads pour l'eau
         threadEau.start();
-        //tCycleInitial.start();
+        // tCycleInitial.start();
 
     } // fin du constructeur GUIMain
 
@@ -1405,12 +1387,7 @@ public class GUIMain extends JFrame implements ActionListener {
         bt3.setVisible(b);
         bt4.setVisible(b);
         bt5.setVisible(b);
-        prog1.setVisible(b);
-        prog2.setVisible(b);
-        prog3.setVisible(b);
-        prog4.setVisible(b);
-        prog5.setVisible(b);
-        prog6.setVisible(b);
+        sante.setVisible(Sante.state1, Sante.state2, Sante.state3, Sante.state4, Sante.state5, Sante.state6);
     }
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------
