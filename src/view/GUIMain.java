@@ -129,7 +129,7 @@ public class GUIMain extends JFrame implements ActionListener {
 
     // boutons temporaire
     JButton bt1, bt2, bt3, bt4, bt5;
-    public static JProgressBar progressBar;
+    public static JProgressBar prog1, prog2, prog3, prog4, prog5, prog6;
 
     public GUIMain() { // création du constructeur GUIMain
 
@@ -250,7 +250,7 @@ public class GUIMain extends JFrame implements ActionListener {
         kit_ouvert = new JLabel();
         kit_ouvert.setIcon(new ImageIcon("res/background/kit_ouvert.png"));
         Dimension size_kit_ouvert = kit_ouvert.getPreferredSize();
-        kit_ouvert.setBounds(50, 140, size_kit_ouvert.width, size_kit_ouvert.height);
+        kit_ouvert.setBounds(50, 160, size_kit_ouvert.width, size_kit_ouvert.height);
         kit_ouvert.setVisible(false);
         panelAqua.add(kit_ouvert);
 
@@ -258,7 +258,7 @@ public class GUIMain extends JFrame implements ActionListener {
         kit_fermer = new JLabel();
         kit_fermer.setIcon(new ImageIcon("res/background/kit_fermer.png"));
         Dimension size_kit_fermer = kit_fermer.getPreferredSize();
-        kit_fermer.setBounds(50, 140, size_kit_fermer.width, size_kit_fermer.height);
+        kit_fermer.setBounds(50, 160, size_kit_fermer.width, size_kit_fermer.height);
         kit_fermer.setVisible(true);
         panelAqua.add(kit_fermer);
 
@@ -296,9 +296,8 @@ public class GUIMain extends JFrame implements ActionListener {
 
         // ajout de l'inventaire
         inventaire_bg = new JLabel();
-        Dimension size_inventaire = inventaire_bg.getPreferredSize();
         inventaire_bg.setIcon(new ImageIcon("res/background/inventaire.png"));
-        inventaire_bg.setBounds(5, 140, size_inventaire.width, size_inventaire.height);
+        inventaire_bg.setBounds(5, 140, 250, 475);
         inventaire_bg.setVisible(false);
         panelAqua.add(inventaire_bg);
         inventaire = new Inventaire(inventaire_bg);
@@ -307,7 +306,7 @@ public class GUIMain extends JFrame implements ActionListener {
         // ajout du label pour l'icone de la bouteille
         kit_bg = new JLabel();
         kit_bg.setIcon(new ImageIcon("res/background/kit.png"));
-        kit_bg.setBounds(5, 140, size_inventaire.width, size_inventaire.height);
+        kit_bg.setBounds(5, 140, 250, 475);
         kit_bg.setVisible(false);
         panelAqua.add(kit_bg);
 
@@ -379,41 +378,86 @@ public class GUIMain extends JFrame implements ActionListener {
         bt1 = new JButton("20");
         bt1.addActionListener(this);
         bt1.setBounds(10, 10, 50, 50);
-        bt1.setVisible(true);
+        bt1.setVisible(false);
         panelAqua.add(bt1);
 
         bt2 = new JButton("40");
         bt2.addActionListener(this);
         bt2.setBounds(10, 70, 50, 50);
-        bt2.setVisible(true);
+        bt2.setVisible(false);
         panelAqua.add(bt2);
 
         bt3 = new JButton("60");
         bt3.addActionListener(this);
         bt3.setBounds(10, 130, 50, 50);
-        bt3.setVisible(true);
+        bt3.setVisible(false);
         panelAqua.add(bt3);
 
         bt4 = new JButton("80");
         bt4.addActionListener(this);
         bt4.setBounds(10, 190, 50, 50);
-        bt4.setVisible(true);
+        bt4.setVisible(false);
         panelAqua.add(bt4);
 
         bt5 = new JButton("100");
         bt5.addActionListener(this);
         bt5.setBounds(10, 250, 50, 50);
-        bt5.setVisible(true);
+        bt5.setVisible(false);
         panelAqua.add(bt5);
 
-        progressBar = new JProgressBar();
-        progressBar.setString("sante poisson 1");
-        progressBar.setStringPainted(true);
-        progressBar.setForeground(new Color(46, 232, 158));
-        progressBar.setValue(100);
-        progressBar.setBounds(10, 310, 200, 20);
-        progressBar.setVisible(true);
-        panelAqua.add(progressBar);
+        prog1 = new JProgressBar();
+        prog1.setString("sante poisson 1");
+        prog1.setStringPainted(true);
+        prog1.setForeground(new Color(46, 232, 158));
+        prog1.setValue(100);
+        prog1.setBounds(10, 310, 200, 20);
+        prog1.setVisible(false);
+        panelAqua.add(prog1);
+
+        prog2 = new JProgressBar();
+        prog2.setString("sante poisson 2");
+        prog2.setStringPainted(true);
+        prog2.setForeground(new Color(46, 232, 158));
+        prog2.setValue(100);
+        prog2.setBounds(10, 370, 200, 20);
+        prog2.setVisible(false);
+        panelAqua.add(prog2);
+
+        prog3 = new JProgressBar();
+        prog3.setString("sante poisson 3");
+        prog3.setStringPainted(true);
+        prog3.setForeground(new Color(46, 232, 158));
+        prog3.setValue(100);
+        prog3.setBounds(10, 430, 200, 20);
+        prog3.setVisible(false);
+        panelAqua.add(prog3);
+
+        prog4 = new JProgressBar();
+        prog4.setString("sante poisson 4");
+        prog4.setStringPainted(true);
+        prog4.setForeground(new Color(46, 232, 158));
+        prog4.setValue(100);
+        prog4.setBounds(10, 490, 200, 20);
+        prog4.setVisible(false);
+        panelAqua.add(prog4);
+
+        prog5 = new JProgressBar(); 
+        prog5.setString("sante poisson 5");
+        prog5.setStringPainted(true);
+        prog5.setForeground(new Color(46, 232, 158));
+        prog5.setValue(100);
+        prog5.setBounds(10, 550, 200, 20);
+        prog5.setVisible(false);
+        panelAqua.add(prog5);
+
+        prog6 = new JProgressBar();
+        prog6.setString("sante poisson 6");
+        prog6.setStringPainted(true);
+        prog6.setForeground(new Color(46, 232, 158));
+        prog6.setValue(100);
+        prog6.setBounds(10, 610, 200, 20);
+        prog6.setVisible(false);
+        panelAqua.add(prog6);
 
         // ajout du layeredpane au tabbedane
         tabbedPane.add("Aquarium", panelAqua);
@@ -639,6 +683,9 @@ public class GUIMain extends JFrame implements ActionListener {
                 inventaire_bg.setVisible(false);
                 inventaire.setVisible(false);
                 label_tutoriel.setVisible(false);
+                kit_bg.setVisible(false);
+                kit_ouvert.setBounds(50, 160, size_kit_ouvert.width, size_kit_ouvert.height);
+                kit_fermer.setBounds(50, 160, size_kit_ouvert.width, size_kit_ouvert.height);
             }
         });
 
@@ -652,6 +699,44 @@ public class GUIMain extends JFrame implements ActionListener {
                 inventaire.setVisible(true);
                 hamis.setVisible(false);
                 label_tutoriel.setVisible(false);
+                kit_bg.setVisible(false);
+                kit_fermer.setBounds(150, 60, size_kit_fermer.width, size_kit_fermer.height);
+                kit_ouvert.setBounds(150, 60, size_kit_ouvert.width, size_kit_ouvert.height);
+                kit_ouvert.setVisible(false);
+                kit_fermer.setVisible(true);
+            }
+        });
+
+        // action listener pour fermer le kit
+        kit_ouvert.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                kit_ouvert.setVisible(false);
+                kit_fermer.setVisible(true);
+                kit_bg.setVisible(false);
+                inventaire_bg.setVisible(false);
+                setVisibleKit(false);
+                kit_bg.setVisible(false);
+                inventaire_fermer.setVisible(true);
+                inventaire_ouvert.setVisible(false);
+                kit_ouvert.setBounds(50, 160, size_kit_ouvert.width, size_kit_ouvert.height);
+                kit_fermer.setBounds(50, 160, size_kit_ouvert.width, size_kit_ouvert.height);
+            }
+        });
+
+        // action listener pour ouvrir le kit
+        kit_fermer.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                kit_ouvert.setVisible(true);
+                kit_fermer.setVisible(false);
+                inventaire_bg.setVisible(false);
+                kit_bg.setVisible(true);
+                inventaire_fermer.setVisible(true);
+                inventaire_ouvert.setVisible(false);
+                setVisibleKit(true);
+                kit_ouvert.setBounds(50, 160, size_kit_ouvert.width, size_kit_ouvert.height);
+                kit_fermer.setBounds(50, 160, size_kit_ouvert.width, size_kit_ouvert.height);
             }
         });
 
@@ -1312,6 +1397,20 @@ public class GUIMain extends JFrame implements ActionListener {
             eau.scoreEau = 100;
         }
 
+    }
+
+    public void setVisibleKit(boolean b) {
+        bt1.setVisible(b);
+        bt2.setVisible(b);
+        bt3.setVisible(b);
+        bt4.setVisible(b);
+        bt5.setVisible(b);
+        prog1.setVisible(b);
+        prog2.setVisible(b);
+        prog3.setVisible(b);
+        prog4.setVisible(b);
+        prog5.setVisible(b);
+        prog6.setVisible(b);
     }
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------
