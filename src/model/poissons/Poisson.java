@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import model.MethodeGUIMain;
 import model.chimie.Eau;
 import model.jeu.Inventaire;
+import model.jeu.Sante;
 import view.GUIMain;
 
 import java.awt.*;
@@ -205,7 +206,7 @@ public class Poisson extends JPanel {
                         GUIMain.listePoissonsAqua.get(numb).sante = 100;
                     }
                     System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
-                    GUIMain.prog1.setValue(GUIMain.listePoissonsAqua.get(numb).sante);
+                    setBarValue(numb);
                 } else if (GUIMain.eau.scoreEau >= 33 - PoissonRouge.tolerance) {
                     if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
                             && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
@@ -214,7 +215,7 @@ public class Poisson extends JPanel {
                         killFish(numb);
                     }
                     System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
-                    GUIMain.prog1.setValue(GUIMain.listePoissonsAqua.get(numb).sante);
+                    setBarValue(numb);
                 } else if (GUIMain.eau.scoreEau > 0 - PoissonRouge.tolerance) {
                     if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
                             && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
@@ -223,7 +224,7 @@ public class Poisson extends JPanel {
                         killFish(numb);
                     }
                     System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
-                    GUIMain.prog1.setValue(GUIMain.listePoissonsAqua.get(numb).sante);
+                    setBarValue(numb);
                 }
                 break;
             case "betta":
@@ -235,7 +236,7 @@ public class Poisson extends JPanel {
                         GUIMain.listePoissonsAqua.get(numb).sante = 100;
                     }
                     System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
-                    GUIMain.prog1.setValue(GUIMain.listePoissonsAqua.get(numb).sante);
+                    setBarValue(numb);
                 } else if (GUIMain.eau.scoreEau >= 33 - PoissonBetta.tolerance) {
                     if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
                             && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
@@ -244,7 +245,7 @@ public class Poisson extends JPanel {
                         killFish(numb);
                     }
                     System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
-                    GUIMain.prog1.setValue(GUIMain.listePoissonsAqua.get(numb).sante);
+                    setBarValue(numb);
                 } else if (GUIMain.eau.scoreEau > 0 - PoissonBetta.tolerance) {
                     if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
                             && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
@@ -253,7 +254,7 @@ public class Poisson extends JPanel {
                         killFish(numb);
                     }
                     System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
-                    GUIMain.prog1.setValue(GUIMain.listePoissonsAqua.get(numb).sante);
+                    setBarValue(numb);
                 }
                 break;
             case "tetra":
@@ -265,7 +266,7 @@ public class Poisson extends JPanel {
                         GUIMain.listePoissonsAqua.get(numb).sante = 100;
                     }
                     System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
-                    GUIMain.prog1.setValue(GUIMain.listePoissonsAqua.get(numb).sante);
+                    setBarValue(numb);
                 } else if (GUIMain.eau.scoreEau >= 33 - PoissonTetra.tolerance) {
                     if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
                             && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
@@ -274,7 +275,7 @@ public class Poisson extends JPanel {
                         killFish(numb);
                     }
                     System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
-                    GUIMain.prog1.setValue(GUIMain.listePoissonsAqua.get(numb).sante);
+                    setBarValue(numb);
                 } else if (GUIMain.eau.scoreEau > 0 - PoissonTetra.tolerance) {
                     if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
                             && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
@@ -283,7 +284,7 @@ public class Poisson extends JPanel {
                         killFish(numb);
                     }
                     System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
-                    GUIMain.prog1.setValue(GUIMain.listePoissonsAqua.get(numb).sante);
+                    setBarValue(numb);
                 }
                 break;
             default:
@@ -330,6 +331,31 @@ public class Poisson extends JPanel {
                 GUIMain.hasFish6 = false;
                 GUIMain.aquarium.aqua6.setIcon(Inventaire.empty_inv);
                 GUIMain.aqua6 = "empty";
+                break;
+        }
+    }
+
+    public static void setBarValue(short index) {
+        switch (index) {
+            case 0:
+                Sante.emp1.setValue(GUIMain.listePoissonsAqua.get(index).sante);
+                break;
+            case 1:
+                Sante.emp2.setValue(GUIMain.listePoissonsAqua.get(index).sante);
+                break;
+            case 2:
+                Sante.emp3.setValue(GUIMain.listePoissonsAqua.get(index).sante);
+                break;
+            case 3:
+                Sante.emp4.setValue(GUIMain.listePoissonsAqua.get(index).sante);
+                break;
+            case 4:
+                Sante.emp5.setValue(GUIMain.listePoissonsAqua.get(index).sante);
+                break;
+            case 5:
+                Sante.emp6.setValue(GUIMain.listePoissonsAqua.get(index).sante);
+                break;
+            default:
                 break;
         }
     }
