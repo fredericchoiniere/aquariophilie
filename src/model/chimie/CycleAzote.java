@@ -68,7 +68,7 @@ public class CycleAzote{
         if (jours >= jourInitial && jours <= (jourInitial + 18)) { // >= 0 <= 18 // TODO: checker la différence de jours pour les cycles
             //cycleAmmoniaque(getCompteurJoursCycle());
             actionEnCours = "Cycle ammoniaque";
-            System.out.println("entré dans if ammo");
+            //System.out.println("entré dans if ammo");
             
             //setCompteurJoursCycle(jours);
             cycleAmmoniaque(eau, jours);
