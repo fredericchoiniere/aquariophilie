@@ -128,10 +128,12 @@ public class GUIMain extends JFrame implements ActionListener {
         eau = new Eau();
         threadEau = new Thread(eau);
         threadEau.setName("ThreadEau");
-        cycleInitial = new CycleAzote();
-        tCycleInitial = new Thread(cycleInitial);
-        tCycleInitial.setName("ThreadCycleInitial");
-        actionEnCours = cycleInitial.actionEnCours;
+        //cycleInitial = new CycleAzote();
+        eau.partirCycle(jours);
+        //tCycleInitial = new Thread(cycleInitial);
+        //tCycleInitial.setName("ThreadCycleInitial");
+        //actionEnCours = cycleInitial.actionEnCours;
+        actionEnCours = "test";
 
         // creation du main tab
         tabbedPane = new JTabbedPane();
