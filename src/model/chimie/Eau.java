@@ -592,22 +592,12 @@ public class Eau implements Runnable {
                     // System.out.println("Compteur jours: " + Eau.compteurJoursCycle);
                     System.out.println("déchets: " + sommeDechets);
 
-
-                    // section a lord jeremie
-                    /* Poisson.setSante((short) 0);
-                    Poisson.setSante((short) 1);
-                    Poisson.setSante((short) 2);
-                    Poisson.setSante((short) 3);
-                    Poisson.setSante((short) 4);
-                    Poisson.setSante((short) 5); */
                     for (short i = 0; i < 6; i++)
                         Poisson.setSante(i);
 
                     for (CycleAzote cycle : listeCycles) {
                         //cycle.setCompteurJoursCycle(jours);
-                        cycle.cycler(this, jours);
-                        //System.out.println("entré dans for ammo");
-
+                        cycle.cycler(jours);
                     }
 
                     /*
