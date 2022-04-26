@@ -606,7 +606,7 @@ public class Eau implements Runnable {
                     GUIMain.panelTest.lblKH.setText(toString(GUIMain.eau.getKH()));
 
                     // System.out.println("Compteur jours: " + Eau.compteurJoursCycle);
-                    System.out.println("déchets: " + sommeDechets);
+                    //System.out.println("déchets: " + sommeDechets);
 
                     for (short i = 0; i < 6; i++)
                         Poisson.setSante(i);

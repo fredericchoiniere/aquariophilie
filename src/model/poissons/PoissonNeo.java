@@ -15,6 +15,8 @@ public class PoissonNeo extends Poisson implements Runnable {
     int vel_y = 1;
     public static int prix = 125;
 
+    public static int tolerance = 0;
+
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_neo/poisson_droite.png");
     Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_neo/poisson_gauche.png");

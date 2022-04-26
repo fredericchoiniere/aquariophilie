@@ -287,6 +287,36 @@ public class Poisson extends JPanel {
                     setBarValue(numb);
                 }
                 break;
+                case "neo":
+                if (GUIMain.eau.scoreEau >= 66 - PoissonNeo.tolerance) {
+                    if (GUIMain.listePoissonsAqua.get(numb).sante < 100
+                            && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
+                        GUIMain.listePoissonsAqua.get(numb).sante += 1;
+                    } else {
+                        GUIMain.listePoissonsAqua.get(numb).sante = 100;
+                    }
+                    //System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    setBarValue(numb);
+                } else if (GUIMain.eau.scoreEau >= 33 - PoissonNeo.tolerance) {
+                    if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
+                            && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
+                        GUIMain.listePoissonsAqua.get(numb).sante -= 1;
+                    } else {
+                        killFish(numb);
+                    }
+                    //System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    setBarValue(numb);
+                } else if (GUIMain.eau.scoreEau > 0 - PoissonNeo.tolerance) {
+                    if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
+                            && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
+                        GUIMain.listePoissonsAqua.get(numb).sante -= 2;
+                    } else {
+                        killFish(numb);
+                    }
+                    //System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    setBarValue(numb);
+                }
+                break;
             default:
                 break;
         }

@@ -543,7 +543,7 @@ public class MethodeGUIMain {
                 break;
             case "neo":
                 Argent.poi3 -= 2;
-                Argent.argent += PoissonNeo.prix / 1.25;
+                Argent.argent += PoissonNeo.prix / 2;
                 GUIMain.eau.potentielDechets -= PoissonNeo.dechets;
                 break;
             default:
@@ -649,6 +649,8 @@ public class MethodeGUIMain {
                 return Inventaire.img_betta_aqua;
             case "tetra":
                 return Inventaire.img_tetra_aqua;
+            case "neo":
+                return Inventaire.img_neo_aqua;
             default:
                 break;
         }
