@@ -420,8 +420,8 @@ public class PanelTest extends JPanel implements ActionListener {
             }
         });
 
-        cycle = GUIMain.cycleInitial;
-        cycle1 = new Thread(cycle);
+        /* cycle = GUIMain.cycleInitial;
+        cycle1 = new Thread(cycle); */ //TODO:?? 
 
         //Label qui affiche la valeur du ph
         lblPH.setText(GUIMain.eau.toString(GUIMain.eau.getPH()));

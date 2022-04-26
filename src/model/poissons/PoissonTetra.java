@@ -4,6 +4,8 @@ package model.poissons;
 
 import java.awt.*;
 
+import model.environnement.Temps;
+
 public class PoissonTetra extends Poisson implements Runnable {
     // attributs de la classe
     int x = 160;
@@ -12,6 +14,7 @@ public class PoissonTetra extends Poisson implements Runnable {
     int vel_y = 1;
     public static int prix = 200;
     public static int dechets = 2;
+    public static int tolerance = 0;
 
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_tetra/poisson_droite.png");
@@ -48,21 +51,30 @@ public class PoissonTetra extends Poisson implements Runnable {
     @Override
     public void run() {
         while (var) {
-            if (this.x > 286) {
-                setXVelocity(-vel_x);
-                direction = "gauche";
+            if (!Temps.isPaused) {
+                if (this.x > 286) {
+                    setXVelocity(-vel_x);
+                    direction = "gauche";
+                }
+                if (this.x < 4) {           // 4
+                    setXVelocity(1);
+                    direction = "droite";
+                }
+                if (this.y > 180) {
+                    setYVelocity(-vel_y);
+                }
+                if (this.y < getHauteur() + 90) { // 90 TODO: chier dequoi de sharp
+                    setYVelocity(1);
+                }
+                deplacer();
+            } else {
+                try {
+                    Thread.sleep(30);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-            if (this.x < 4) {
-                setXVelocity(1);
-                direction = "droite";
-            }
-            if (this.y > 120) {
-                setYVelocity(-vel_y);
-            }
-            if (this.y < 90) {
-                setYVelocity(1);
-            }
-            deplacer();
+
         }
     }
 

@@ -8,10 +8,15 @@ package view;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
+import control.Control;
 import model.*;
 import model.chimie.*;
 import model.environnement.Temps;
@@ -21,7 +26,7 @@ import model.plantes.Plante;
 import model.poissons.*;
 import view.tabs.*;
 
-public class GUIMain extends JFrame {
+public class GUIMain extends JFrame implements ActionListener {
 
     // appel des attributs de la classe GUIMain
     // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -34,7 +39,8 @@ public class GUIMain extends JFrame {
     // création des labels
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, eau_label, inventaire_ouvert,
             inventaire_fermer, inventaire_bg, filet_label, pause_label, reprendre_label, label_tutoriel,
-            label_information, hamis, ciseau_label, label_argent, pichet_label;
+            label_information, hamis, ciseau_label, label_argent, pichet_label, radio_on, radio_off, kit_ouvert,
+            kit_fermer, kit_bg;
     public static JLabel lblPipette = new JLabel();
     public static JLabel label_argent_aqua = new JLabel("");
     public static JLabel label_argent_shop = new JLabel("");
@@ -42,8 +48,10 @@ public class GUIMain extends JFrame {
 
     // création des String
     public static String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3, poi4, poi5, poi6,
-            actionEnCours, pla1, pla2, pla3, pla4, pla5, pla6, aqua1, aqua2, aqua3, aqua4, aqua5, aqua6, emplacement,
-            aquaPla1, aquaPla2, aquaPla3, aquaPla4, aquaPla5, aquaPla6;
+            actionEnCours, pla1, pla2, pla3, pla4, pla5, pla6;
+    public static String aqua1, aqua2, aqua3, aqua4, aqua5, aqua6;
+    public static String emplacement;
+    public static String aquaPla1, aquaPla2, aquaPla3, aquaPla4, aquaPla5, aquaPla6;
 
     // création des rectangles
     Rectangle rectTest, rectEmp1, rectEmp2, rectEmp3, rectAqua1, rectAqua2, rectAqua3, rectAqua4, rectAqua5,
@@ -61,6 +69,7 @@ public class GUIMain extends JFrame {
     public static PoissonRouge poisson_rouge;
     public static PoissonBetta poisson_betta;
     public static PoissonTetra poisson_tetra;
+    public static PoissonNeo poisson_neo;
     Filet filet;
     Ciseau ciseau;
     Pichet pichet;
@@ -68,7 +77,8 @@ public class GUIMain extends JFrame {
     ImageIcon rajoutIcon = new ImageIcon();
     ImageIcon iconeAppli = new ImageIcon("res/background/icone_aquariophilie.png");
     Inventaire inventaire;
-    Aquarium aquarium;
+    Sante sante;
+    public static Aquarium aquarium;
     public static CycleAzote cycleInitial;
 
     // création des listes
@@ -81,6 +91,7 @@ public class GUIMain extends JFrame {
     public static Thread tpoisson_rouge;
     public static Thread tpoisson_betta;
     public static Thread tpoisson_tetra;
+    public static Thread tpoisson_neo;
     Thread threadEau;
     Thread tCycleInitial;
     Thread tPanelInfo;
@@ -93,6 +104,10 @@ public class GUIMain extends JFrame {
     public static float jours = (float) 0; // TIMER GLOBAL
     public static boolean hasFish1, hasFish2, hasFish3, hasFish4, hasFish5, hasFish6;
     public static boolean hasPlant1, hasPlant2, hasPlant3;
+
+    // boutons temporaire
+    JButton bt1, bt2, bt3, bt4, bt5;
+    public static JProgressBar prog1, prog2, prog3, prog4, prog5, prog6;
 
     public GUIMain() { // création du constructeur GUIMain
 
@@ -113,10 +128,12 @@ public class GUIMain extends JFrame {
         eau = new Eau();
         threadEau = new Thread(eau);
         threadEau.setName("ThreadEau");
-        cycleInitial = new CycleAzote();
-        tCycleInitial = new Thread(cycleInitial);
-        tCycleInitial.setName("ThreadCycleInitial");
-        actionEnCours = cycleInitial.actionEnCours;
+        //cycleInitial = new CycleAzote();
+        eau.partirCycle(jours);
+        //tCycleInitial = new Thread(cycleInitial);
+        //tCycleInitial.setName("ThreadCycleInitial");
+        //actionEnCours = cycleInitial.actionEnCours;
+        actionEnCours = "test";
 
         // creation du main tab
         tabbedPane = new JTabbedPane();
@@ -196,6 +213,7 @@ public class GUIMain extends JFrame {
         inventaire_ouvert = new JLabel();
         inventaire_ouvert.setIcon(new ImageIcon("res/background/inventaire_ouvert.png"));
         Dimension size_icone_inv = inventaire_ouvert.getPreferredSize();
+
         inventaire_ouvert.setBounds(50, 60, size_icone_inv.width, size_icone_inv.height);
         inventaire_ouvert.setVisible(false);
         panelAqua.add(inventaire_ouvert);
@@ -207,6 +225,22 @@ public class GUIMain extends JFrame {
         inventaire_fermer.setToolTipText("Ouvre l'inventaire");
         inventaire_fermer.setVisible(true);
         panelAqua.add(inventaire_fermer);
+
+        // kit de soin ouvert
+        kit_ouvert = new JLabel();
+        kit_ouvert.setIcon(new ImageIcon("res/background/kit_ouvert.png"));
+        Dimension size_kit_ouvert = kit_ouvert.getPreferredSize();
+        kit_ouvert.setBounds(50, 160, size_kit_ouvert.width, size_kit_ouvert.height);
+        kit_ouvert.setVisible(false);
+        panelAqua.add(kit_ouvert);
+
+        // kit de soin fermer
+        kit_fermer = new JLabel();
+        kit_fermer.setIcon(new ImageIcon("res/background/kit_fermer.png"));
+        Dimension size_kit_fermer = kit_fermer.getPreferredSize();
+        kit_fermer.setBounds(50, 160, size_kit_fermer.width, size_kit_fermer.height);
+        kit_fermer.setVisible(true);
+        panelAqua.add(kit_fermer);
 
         // ajout du label pour pause
         pause_label = new JLabel();
@@ -224,15 +258,39 @@ public class GUIMain extends JFrame {
         reprendre_label.setVisible(true);
         panelAqua.add(reprendre_label);
 
+        // ajout du label pour le radio
+        radio_on = new JLabel();
+        radio_on.setIcon(new ImageIcon("res/outils/radio_on.png"));
+        radio_on.setBounds(250, 430, 70, 70);
+        radio_on.setToolTipText("Mettre la radio sur OFF");
+        radio_on.setVisible(false);
+        panelAqua.add(radio_on);
+
+        // ajout du label pour le radio
+        radio_off = new JLabel();
+        radio_off.setIcon(new ImageIcon("res/outils/radio_off.png"));
+        radio_off.setBounds(250, 430, 70, 70);
+        radio_off.setToolTipText("Mettre la radio sur ON");
+        radio_off.setVisible(true);
+        panelAqua.add(radio_off);
+
         // ajout de l'inventaire
         inventaire_bg = new JLabel();
         inventaire_bg.setIcon(new ImageIcon("res/background/inventaire.png"));
-        Dimension size_inventaire = inventaire_bg.getPreferredSize();
-        inventaire_bg.setBounds(5, 140, size_inventaire.width, size_inventaire.height);
+        inventaire_bg.setBounds(5, 140, 250, 475);
         inventaire_bg.setVisible(false);
         panelAqua.add(inventaire_bg);
         inventaire = new Inventaire(inventaire_bg);
         inventaire.setVisible(false);
+
+        // ajout du label pour l'icone de la bouteille
+        kit_bg = new JLabel();
+        kit_bg.setIcon(new ImageIcon("res/background/kit.png"));
+        kit_bg.setBounds(5, 140, 250, 475);
+        kit_bg.setVisible(false);
+        sante = new Sante(kit_bg);
+        sante.setVisible(Sante.state1, Sante.state2, Sante.state3, Sante.state4, Sante.state5, Sante.state6);
+        panelAqua.add(kit_bg);
 
         // hamis love label
         hamis = new JLabel();
@@ -297,6 +355,93 @@ public class GUIMain extends JFrame {
         rectAqua6 = new Rectangle(584, 417, 70, 70);
 
         aquarium = new Aquarium(panelAqua);
+
+        // ajout des jbuttons pour tester laqualité de l,eau
+        bt1 = new JButton("20");
+        bt1.addActionListener(this);
+        bt1.setBounds(10, 10, 50, 50);
+        bt1.setVisible(false);
+        panelAqua.add(bt1);
+
+        bt2 = new JButton("40");
+        bt2.addActionListener(this);
+        bt2.setBounds(10, 70, 50, 50);
+        bt2.setVisible(false);
+        panelAqua.add(bt2);
+
+        bt3 = new JButton("60");
+        bt3.addActionListener(this);
+        bt3.setBounds(10, 130, 50, 50);
+        bt3.setVisible(false);
+        panelAqua.add(bt3);
+
+        bt4 = new JButton("80");
+        bt4.addActionListener(this);
+        bt4.setBounds(10, 190, 50, 50);
+        bt4.setVisible(false);
+        panelAqua.add(bt4);
+
+        bt5 = new JButton("100");
+        bt5.addActionListener(this);
+        bt5.setBounds(10, 250, 50, 50);
+        bt5.setVisible(false);
+        panelAqua.add(bt5);
+
+        /*
+         * prog1 = new JProgressBar();
+         * prog1.setString("sante poisson 1");
+         * prog1.setStringPainted(true);
+         * prog1.setForeground(new Color(46, 232, 158));
+         * prog1.setValue(100);
+         * prog1.setBounds(10, 310, 200, 20);
+         * prog1.setVisible(false);
+         * panelAqua.add(prog1);
+         * 
+         * prog2 = new JProgressBar();
+         * prog2.setString("sante poisson 2");
+         * prog2.setStringPainted(true);
+         * prog2.setForeground(new Color(46, 232, 158));
+         * prog2.setValue(100);
+         * prog2.setBounds(10, 370, 200, 20);
+         * prog2.setVisible(false);
+         * panelAqua.add(prog2);
+         * 
+         * prog3 = new JProgressBar();
+         * prog3.setString("sante poisson 3");
+         * prog3.setStringPainted(true);
+         * prog3.setForeground(new Color(46, 232, 158));
+         * prog3.setValue(100);
+         * prog3.setBounds(10, 430, 200, 20);
+         * prog3.setVisible(false);
+         * panelAqua.add(prog3);
+         * 
+         * prog4 = new JProgressBar();
+         * prog4.setString("sante poisson 4");
+         * prog4.setStringPainted(true);
+         * prog4.setForeground(new Color(46, 232, 158));
+         * prog4.setValue(100);
+         * prog4.setBounds(10, 490, 200, 20);
+         * prog4.setVisible(false);
+         * panelAqua.add(prog4);
+         * 
+         * prog5 = new JProgressBar();
+         * prog5.setString("sante poisson 5");
+         * prog5.setStringPainted(true);
+         * prog5.setForeground(new Color(46, 232, 158));
+         * prog5.setValue(100);
+         * prog5.setBounds(10, 550, 200, 20);
+         * prog5.setVisible(false);
+         * panelAqua.add(prog5);
+         * 
+         * prog6 = new JProgressBar();
+         * prog6.setString("sante poisson 6");
+         * prog6.setStringPainted(true);
+         * prog6.setForeground(new Color(46, 232, 158));
+         * prog6.setValue(100);
+         * prog6.setBounds(10, 610, 200, 20);
+         * prog6.setVisible(false);
+         * panelAqua.add(prog6);
+         */
 
         // ajout du layeredpane au tabbedane
         tabbedPane.add("Aquarium", panelAqua);
@@ -522,6 +667,9 @@ public class GUIMain extends JFrame {
                 inventaire_bg.setVisible(false);
                 inventaire.setVisible(false);
                 label_tutoriel.setVisible(false);
+                kit_bg.setVisible(false);
+                kit_ouvert.setBounds(50, 160, size_kit_ouvert.width, size_kit_ouvert.height);
+                kit_fermer.setBounds(50, 160, size_kit_ouvert.width, size_kit_ouvert.height);
             }
         });
 
@@ -535,6 +683,44 @@ public class GUIMain extends JFrame {
                 inventaire.setVisible(true);
                 hamis.setVisible(false);
                 label_tutoriel.setVisible(false);
+                kit_bg.setVisible(false);
+                kit_fermer.setBounds(150, 60, size_kit_fermer.width, size_kit_fermer.height);
+                kit_ouvert.setBounds(150, 60, size_kit_ouvert.width, size_kit_ouvert.height);
+                kit_ouvert.setVisible(false);
+                kit_fermer.setVisible(true);
+            }
+        });
+
+        // action listener pour fermer le kit
+        kit_ouvert.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                kit_ouvert.setVisible(false);
+                kit_fermer.setVisible(true);
+                kit_bg.setVisible(false);
+                inventaire_bg.setVisible(false);
+                setVisibleKit(false);
+                kit_bg.setVisible(false);
+                inventaire_fermer.setVisible(true);
+                inventaire_ouvert.setVisible(false);
+                kit_ouvert.setBounds(50, 160, size_kit_ouvert.width, size_kit_ouvert.height);
+                kit_fermer.setBounds(50, 160, size_kit_ouvert.width, size_kit_ouvert.height);
+            }
+        });
+
+        // action listener pour ouvrir le kit
+        kit_fermer.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                kit_ouvert.setVisible(true);
+                kit_fermer.setVisible(false);
+                inventaire_bg.setVisible(false);
+                kit_bg.setVisible(true);
+                inventaire_fermer.setVisible(true);
+                inventaire_ouvert.setVisible(false);
+                setVisibleKit(true);
+                kit_fermer.setBounds(150, 60, size_kit_fermer.width, size_kit_fermer.height);
+                kit_ouvert.setBounds(150, 60, size_kit_ouvert.width, size_kit_ouvert.height);
             }
         });
 
@@ -583,6 +769,36 @@ public class GUIMain extends JFrame {
                 inventaire_bg.setVisible(false);
                 inventaire.setVisible(false);
 
+            }
+        });
+
+        // actionlistener pour ouvrir la radio
+        radio_off.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                radio_off.setVisible(false);
+                radio_on.setVisible(true);
+                label_tutoriel.setVisible(false);
+                try {
+                    Control.audioPlayer.resumeAudio();
+                } catch (UnsupportedAudioFileException e1) {
+                    System.out.println("erreur audio");
+                } catch (IOException e1) {
+                    System.out.println("erreur audio");
+                } catch (LineUnavailableException e1) {
+                    System.out.println("erreur audio");
+                }
+            }
+        });
+
+        // actionlistener pour fermer la radio
+        radio_on.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                radio_off.setVisible(true);
+                radio_on.setVisible(false);
+                label_tutoriel.setVisible(false);
+                Control.audioPlayer.pause();
             }
         });
 
@@ -1003,7 +1219,7 @@ public class GUIMain extends JFrame {
 
         // début des Threads pour l'eau
         threadEau.start();
-        tCycleInitial.start();
+        // tCycleInitial.start();
 
     } // fin du constructeur GUIMain
 
@@ -1141,6 +1357,39 @@ public class GUIMain extends JFrame {
         ciseau_label.setVisible(false);
         filet_label.setVisible(false);
         label_information.setVisible(false);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == bt1) {
+            eau.scoreEau = 20;
+        }
+
+        if (e.getSource() == bt2) {
+            eau.scoreEau = 40;
+        }
+
+        if (e.getSource() == bt3) {
+            eau.scoreEau = 60;
+        }
+
+        if (e.getSource() == bt4) {
+            eau.scoreEau = 80;
+        }
+
+        if (e.getSource() == bt5) {
+            eau.scoreEau = 100;
+        }
+
+    }
+
+    public void setVisibleKit(boolean b) {
+        bt1.setVisible(b);
+        bt2.setVisible(b);
+        bt3.setVisible(b);
+        bt4.setVisible(b);
+        bt5.setVisible(b);
+        sante.setVisible(Sante.state1, Sante.state2, Sante.state3, Sante.state4, Sante.state5, Sante.state6);
     }
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -6,7 +6,6 @@ package model.environnement;
 
 import java.util.*;
 
-import model.chimie.Eau;
 import model.jeu.Argent;
 import view.GUIMain;
 
@@ -47,6 +46,7 @@ public class Temps {
                     jourAJour((int) GUIMain.jours);
                     Argent.paye(GUIMain.label_argent_aqua, GUIMain.label_argent_shop);
                     GUIMain.eau.getScoreEau();
+                    //Eau.setScoreEau();
                 }
         }, 0, DUREE);
     }

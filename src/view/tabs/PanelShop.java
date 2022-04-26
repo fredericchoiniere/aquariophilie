@@ -17,7 +17,7 @@ public class PanelShop extends JPanel implements ActionListener {
 
     // Attributs de la classe
     static int i = 1;
-    JButton poisson_rouge, poisson_betta, poisson_tetra, planteBlue, planteFern, planteScarlet;
+    JButton poisson_rouge, poisson_betta, poisson_tetra, poisson_neo, planteBlue, planteFern, planteScarlet;
     Dimension shop_dimension = new Dimension(80, 80);
     JLabel label_tutoriel, label_information;
 
@@ -53,6 +53,15 @@ public class PanelShop extends JPanel implements ActionListener {
         poisson_tetra.setToolTipText("Prix: " + PoissonTetra.prix + "₴");
         poisson_tetra.addActionListener(this);
         add(poisson_tetra);
+
+        poisson_neo = new JButton();
+        poisson_neo.setIcon(new ImageIcon("res/poissons/poisson_neo/in_bag.png"));
+        poisson_neo.setBackground(new Color(53, 109, 127));
+        poisson_neo.setBorderPainted(false);
+        poisson_neo.setBounds(335, 214, shop_dimension.width, shop_dimension.height);
+        poisson_neo.setToolTipText("Prix: " + PoissonNeo.prix + "₴");
+        poisson_neo.addActionListener(this);
+        add(poisson_neo);
 
         // ajout du bouton plante bleue
         planteBlue = new JButton();
@@ -242,6 +251,11 @@ public class PanelShop extends JPanel implements ActionListener {
                 GUIMain.listePoissonsInv.get(index).setName("tetra" + i);
                 i++;
                 break;
+            case "neo":
+                GUIMain.listePoissonsInv.set(index, new PoissonNeo());
+                GUIMain.listePoissonsInv.get(index).setName("neo" + i);
+                i++;
+                break;
             default:
                 break;
         }
@@ -378,6 +392,14 @@ public class PanelShop extends JPanel implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur", JOptionPane.PLAIN_MESSAGE);
             }
         }
+        if (e.getSource() == poisson_neo) {
+            label_tutoriel.setVisible(false);
+            if (Magasin.gotMoney("neo")) {
+                checkCase(Inventaire.img_inv_neo, "poisson", "neo", "");
+            } else {
+                JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur", JOptionPane.PLAIN_MESSAGE);
+            }
+        }
         if (e.getSource() == planteBlue) {
             label_tutoriel.setVisible(false);
             if (Magasin.gotMoney("blue")) {
@@ -403,4 +425,7 @@ public class PanelShop extends JPanel implements ActionListener {
             }
         }
     }
+
+
+    
 }

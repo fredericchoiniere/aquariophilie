@@ -28,16 +28,32 @@ public class Inventaire {
                         new ImageIcon("res/poissons/poisson_rouge/in_bag.png").getImage().getScaledInstance(80,
                                         80,
                                         Image.SCALE_DEFAULT));
+        public static ImageIcon img_rouge_aqua = new ImageIcon(
+                        new ImageIcon("res/poissons/poisson_rouge/poisson_droite.png").getImage().getScaledInstance(70,
+                                        70,
+                                        Image.SCALE_DEFAULT));
 
         ImageIcon img_aqua_betta = new ImageIcon("res/poissons/poisson_betta/poisson_droite.png");
         public static ImageIcon img_inv_betta = new ImageIcon(
                         new ImageIcon("res/poissons/poisson_betta/in_bag.png")
                                         .getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
+        public static ImageIcon img_betta_aqua = new ImageIcon(
+                        new ImageIcon("res/poissons/poisson_betta/poisson_droite.png").getImage().getScaledInstance(55,
+                                        55,
+                                        Image.SCALE_DEFAULT));
 
         ImageIcon img_aqua_tetra = new ImageIcon("res/poissons/poisson_tetra/poisson_gauche.png");
         public static ImageIcon img_inv_tetra = new ImageIcon(
                         new ImageIcon("res/poissons/poisson_tetra/in_bag.png")
                                         .getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
+        public static ImageIcon img_tetra_aqua = new ImageIcon(
+                        new ImageIcon("res/poissons/poisson_tetra/poisson_droite.png").getImage().getScaledInstance(55,
+                                        55,
+                                        Image.SCALE_DEFAULT));
+        public static ImageIcon img_inv_neo = new ImageIcon(
+                        new ImageIcon("res/poissons/poisson_neo/poisson_droite.png").getImage().getScaledInstance(32,
+                                        14,
+                                        Image.SCALE_DEFAULT));;
 
         public static ImageIcon java_fern = new ImageIcon("res/background/decorations/java_fern.png");
         public static ImageIcon blue_blue = new ImageIcon("res/background/decorations/blue_blue.png");

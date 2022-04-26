@@ -5,7 +5,17 @@
 package view;
 
 import javax.swing.*;
+
+import model.jeu.Argent;
+import model.plantes.BlueBlue;
+import model.plantes.JavaFern;
+import model.plantes.ScarletRot;
+import model.poissons.PoissonBetta;
+import model.poissons.PoissonRouge;
+import model.poissons.PoissonTetra;
+
 import java.awt.event.*;
+
 import java.awt.*;
 
 public class GUIIntro extends JFrame implements ActionListener {
@@ -121,6 +131,8 @@ public class GUIIntro extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) { // initialise GuiMain lorsque l'on clique sur enter
         // bouton pour une nouvelle partie
         if (e.getSource() == btnNouvellePartie) {
+            // SimpleAudioPlayer.playMusic();
+
             GUIMain aquarium = new GUIMain();
             aquarium.setResizable(false);
             aquarium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -128,6 +140,14 @@ public class GUIIntro extends JFrame implements ActionListener {
             aquarium.setLocationRelativeTo(null);
             aquarium.setVisible(true);
             setVisible(false);
+
+            PoissonRouge.prix = 50;
+            PoissonBetta.prix = 500;
+            PoissonTetra.prix = 200;
+            JavaFern.prix = 450;
+            BlueBlue.prix = 200;
+            ScarletRot.prix = 1000;
+
         }
 
         // bouton pour reprendre la partie
@@ -137,7 +157,27 @@ public class GUIIntro extends JFrame implements ActionListener {
 
         // bouton pour le mode évaluation
         if (e.getSource() == btnModeEvaluation) {
-            // TODO
+            GUIMain aquarium = new GUIMain();
+            aquarium.setResizable(false);
+            aquarium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            aquarium.pack();
+            aquarium.setLocationRelativeTo(null);
+            aquarium.setVisible(true);
+            setVisible(false);
+
+            // enlevement du systeme de progression
+            PoissonRouge.prix = 0;
+            PoissonBetta.prix = 0;
+            PoissonTetra.prix = 0;
+            JavaFern.prix = 0;
+            BlueBlue.prix = 0;
+            ScarletRot.prix = 0;
+            Argent.argent = 0;
+            Argent.montant = "∞";
+            GUIMain.label_argent_aqua.setText("∞");
+            GUIMain.label_argent_shop.setText("∞");
+            Argent.normal = false;
+
         }
 
         // bouton pour les credits

@@ -4,6 +4,8 @@ package model.poissons;
 
 import java.awt.*;
 
+import model.environnement.Temps;
+
 public class PoissonBetta extends Poisson implements Runnable {
 
     // attributs de la classe
@@ -14,6 +16,7 @@ public class PoissonBetta extends Poisson implements Runnable {
     public static int prix = 500;
 
     public static int dechets = 4;
+    public static int tolerance = 12;
 
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_betta/poisson_droite.png");
@@ -47,21 +50,30 @@ public class PoissonBetta extends Poisson implements Runnable {
     @Override
     public void run() {
         while (var) {
-            if (x > 286) {
-                setXVelocity(-vel_x);
-                direction = "gauche";
+            if (!Temps.isPaused) {
+                if (x > 286) {
+                    setXVelocity(-vel_x);
+                    direction = "gauche";
+                }
+                if (x < 4) {
+                    setXVelocity(1);
+                    direction = "droite";
+                }
+                if (y > 120) { // 120
+                    setYVelocity(-vel_y);
+                }
+                if (y < getHauteur() - 14) {
+                    setYVelocity(1);
+                }
+                deplacer();
+            } else {
+                try {
+                    Thread.sleep(30);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-            if (x < 4) {
-                setXVelocity(1);
-                direction = "droite";
-            }
-            if (y > 120) { // 120
-                setYVelocity(-vel_y);
-            }
-            if (y < getHauteur()) {
-                setYVelocity(1);
-            }
-            deplacer();
+
         }
     }
 

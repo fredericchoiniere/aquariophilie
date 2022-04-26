@@ -8,10 +8,13 @@ import model.plantes.BlueBlue;
 import model.plantes.JavaFern;
 import model.plantes.ScarletRot;
 import model.poissons.PoissonBetta;
+import model.poissons.PoissonNeo;
 import model.poissons.PoissonRouge;
 import model.poissons.PoissonTetra;
 
 public class Magasin {
+
+    static short emp = 0;
 
     /**
      * @param prix
@@ -36,6 +39,9 @@ public class Magasin {
             case "tetra":
                 ajustement_argent(PoissonTetra.prix);
                 break;
+            case "neo":
+                ajustement_argent(PoissonNeo.prix);
+                break;    
             default:
                 break;
         }
@@ -83,6 +89,10 @@ public class Magasin {
                 if (Argent.argent >= PoissonTetra.prix) {
                     return true;
                 }
+            case "neo":
+                if (Argent.argent >= PoissonNeo.prix) {
+                    return true;
+                }
             case "java":
                 if (Argent.argent >= JavaFern.prix) {
                     return true;
@@ -99,4 +109,49 @@ public class Magasin {
                 return false;
         }
     }
+
+    public static void generatingNumber() {
+        emp = (short) (Math.random() * 3);
+    }
+
+    public static void rabais(short emp) {
+        switch (emp) {
+            case 0:
+                PoissonRouge.prix = PoissonRouge.prix / 2;
+                break;
+            case 1:
+                Argent.normal = false;
+                break;
+            case 2:
+                Argent.normal = false;
+                break;
+            case 3:
+                Argent.normal = false;
+                break;
+            case 4:
+                Argent.normal = false;
+                break;
+            case 5:
+                Argent.normal = false;
+                break;
+            case 6:
+                Argent.normal = false;
+                break;
+            case 7:
+                Argent.normal = false;
+                break;
+            case 8:
+                Argent.normal = false;
+                break;
+            case 9:
+                Argent.normal = false;
+                break;
+            case 10:
+                Argent.normal = false;
+                break;
+            default:
+                break;
+        }
+    }
+
 }
