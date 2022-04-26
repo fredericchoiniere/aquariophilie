@@ -8,7 +8,7 @@ import view.GUIMain;
 
 public class CycleAzote{
 
-    public float jours = GUIMain.jours, jourInitial, compteurJoursCycle = 0, tempAmmoniaque = 0, tempNitrites = 0;
+    public float jours = GUIMain.jours, jourInitial, joursCalcul = 0, compteurJoursCycle = 0, tempAmmoniaque = 0, tempNitrites = 0;
     public Eau eau = GUIMain.eau;
 
     public String actionEnCours = "Aucune action initiale";
@@ -18,11 +18,11 @@ public class CycleAzote{
         jourInitial = jourInit;
     }
 
-    /* public void setCompteurJoursCycle(float compteurJours) {
-        compteurJoursCycle = compteurJours;
+    public void incrJoursCalcul() {
+        joursCalcul++;
     }
 
-    public float getCompteurJoursCycle(){
+    /* public float getCompteurJoursCycle(){
         compteurJoursCycle =  jours - jourInitial;
         return compteurJoursCycle;
     } */
@@ -36,8 +36,11 @@ public class CycleAzote{
         eau.listeAmmoniaque.remove(tempAmmoniaque);
         //System.out.println("jour cycle ammo: " + jours);
 
-        if (jours <= 18) {
-            tempAmmoniaque = (float) (-3.2 * ((jours / 7) - 1.25) * ((jours / 7) - 1.25) + 5);
+        if (jours >= jourInitial && jours <= (jourInitial + 18)) {
+            tempAmmoniaque = (float) (-3.2 * ((joursCalcul / 7) - 1.25) * ((joursCalcul / 7) - 1.25) + 5);
+            if (tempAmmoniaque <= 0) {
+                tempAmmoniaque = 0;
+            }
         } else {
             tempAmmoniaque = 0;
         }
@@ -52,9 +55,11 @@ public class CycleAzote{
      */ 
     public void cycleNitrites(Eau eau, float jours) {
         eau.listeNitrites.remove(tempNitrites);
-        if (jours >= 14 && jours <= 35) {
-            tempNitrites = (float) (-3.56 * ((jours / 7) - 3.5) * ((jours / 7) - 3.5) + 8);
-            //System.out.println("tempnitrites: " + tempNitrites + " au jour " + jours);
+        if (jours >= (jourInitial + 14) && jours <= (jourInitial + 35)) {
+            tempNitrites = (float) (-3.56 * ((joursCalcul / 7) - 3.5) * ((joursCalcul / 7) - 3.5) + 8);
+            if (tempNitrites <= 0) {
+                tempNitrites = 0;
+            }
         } else {
             tempNitrites = 0;
         }
@@ -62,15 +67,16 @@ public class CycleAzote{
     }
 
        
-    public void cycler(Eau eau, float jours){
+    public void cycler(float jours){
 
+        
 
-        if (jours >= jourInitial && jours <= (jourInitial + 18)) { // >= 0 <= 18 // TODO: checker la différence de jours pour les cycles
+        if (jours >= jourInitial && jours <= (jourInitial + 18)) { // >= 0 <= 18
             //cycleAmmoniaque(getCompteurJoursCycle());
             actionEnCours = "Cycle ammoniaque";
-            System.out.println("entré dans if ammo");
+            //System.out.println("entré dans if ammo");
             
-            //setCompteurJoursCycle(jours);
+            
             cycleAmmoniaque(eau, jours);
         }
         if (jours >= (jourInitial + 14) && jours <= (jourInitial + 35)) { // >= 14 <= 35
@@ -83,6 +89,8 @@ public class CycleAzote{
 
             
         }
+
+        //GUIMain.eau = eau;
     }
 
     /** 
