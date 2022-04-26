@@ -22,11 +22,6 @@ public class CycleAzote{
         joursCalcul++;
     }
 
-    /* public float getCompteurJoursCycle(){
-        compteurJoursCycle =  jours - jourInitial;
-        return compteurJoursCycle;
-    } */
-
     /**
      * @param eau
      *            Démarre un cycle d'ammoniaque en fonction du temps, suivant une
@@ -90,7 +85,6 @@ public class CycleAzote{
             
         }
 
-        //GUIMain.eau = eau;
     }
 
     /** 

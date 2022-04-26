@@ -60,11 +60,6 @@ public class Eau implements Runnable {
     public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeAmmoniaque = Collections.synchronizedList(listeAmmoniaqueTemp); // Liste synchronisée
     public ListIterator<Float> iteratorAmmoniaque; // Itérateur pour additionner les valeurs d'ammoniaque
-    public ArrayList<Float> listeAmmoniaqueIteration = new ArrayList<Float>(); //
-    // Liste pour itérer dans boucle
-    // public HashSet<Float> setAmmoniaque = new
-    // HashSet<Float>(listeAmmoniaqueTemp); // Liste pour additionner le montant
-    // total d'ammoniaque
 
     public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
@@ -261,15 +256,18 @@ public class Eau implements Runnable {
      * Non fonctionnel pour l'instant
      */
     public void variationPH() { // TODO: à balancer
-        if (kh < 4) {
+        if (kh < 10 && kh >= 8) {
+            
+        }
+        if (kh < 8 && kh >= 6) {
             setPH(getPH() - (float) 0.3);
             setPH(getPH() + (float) (sommeContributionPH * 0.7));
         }
-        if (kh >= 4 && kh <= 8) {
+        if (kh < 6 && kh >= 4) {
             setPH(getPH() - (float) 0.15);
             setPH(getPH() + (float) (sommeContributionPH * 0.5));
         }
-        if (kh > 8) { // ph varie moins, mais score non optimal car kh trop élevé
+        if (kh < 4) { // ph varie moins, mais score non optimal car kh trop élevé
             setPH(getPH() - (float) 0.1);
             setPH(getPH() + (float) (sommeContributionPH * 0.3));
         }
@@ -304,7 +302,21 @@ public class Eau implements Runnable {
      */
     public void variationGH() { // acceptable de 5 à 15
         // avec volume d'eau
-
+        if (volumeEau < 37.85 && volumeEau >= 32) {
+            setGH((float) (gh - 0.009));
+        }
+        if (volumeEau < 32 && volumeEau >= 29) {
+            setGH((float) (gh - 0.035));
+        }
+        if (volumeEau < 29 && volumeEau >= 27) {
+            setGH((float) (gh - 0.095));
+        }
+        if (volumeEau < 27 && volumeEau >= 25) {
+            setGH((float) (gh - 0.156));
+        }
+        if (volumeEau < 25) {
+            setGH((float) (gh - 0.315));
+        }
 
     }
 
@@ -325,7 +337,15 @@ public class Eau implements Runnable {
 
         volumeEau = (float) ((hauteur * largeur * longueur) * 0.001);
 
-        // System.out.println("hauteur eau: " + GUIMain.rectEau.getHeight());
+        System.out.println("volume eau: " + volumeEau);
+    }
+
+    public void changerEau(){
+        volumeEau = (float) 37.85;
+        hauteur = 35;
+        kh = 6; // TODO: à checker pour façon différente d'augmenter kh
+        gh = 10;
+        ph = 7;
     }
 
     /**
@@ -527,6 +547,7 @@ public class Eau implements Runnable {
                     absorption();
                     variationPH();
                     variationNiveauEau();
+                    variationGH();
                     variationKH();
 
                     GUIMain.panelTest.lblPH.setText(toString(GUIMain.eau.getPH()));
