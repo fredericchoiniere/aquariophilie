@@ -26,7 +26,7 @@ public class Poisson extends JPanel {
     public String empInv, empAqua, nom;
     int hauteur = Eau.hauteurEnPixels, compensationPosition = Eau.hauteurEnPixels - (4 + (192 - Eau.hauteurEnPixels));
 
-    static Random random = new Random();
+    public static Random random = new Random();
     int randomNumber;
 
     /**
