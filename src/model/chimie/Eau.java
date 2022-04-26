@@ -564,8 +564,6 @@ public class Eau implements Runnable {
                     for (short i = 0; i < 6; i++)
                         Poisson.setSante(i);
 
-                    
-
                     for (CycleAzote cycle : listeCycles) {
                         //cycle.setCompteurJoursCycle(jours);
                         cycle.incrJoursCalcul();
