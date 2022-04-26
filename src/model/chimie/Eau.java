@@ -572,7 +572,7 @@ public class Eau implements Runnable {
         jourInitial = jours;
         while (true) {
             jours = GUIMain.jours;
-            setCompteurJoursCycle(jours - jourInitial);
+            //setCompteurJoursCycle(jours - jourInitial);
 
             if (!Temps.isPaused) {
                 try {
@@ -595,32 +595,13 @@ public class Eau implements Runnable {
                     for (short i = 0; i < 6; i++)
                         Poisson.setSante(i);
 
+                    
+
                     for (CycleAzote cycle : listeCycles) {
                         //cycle.setCompteurJoursCycle(jours);
+                        cycle.incrJoursCalcul();
                         cycle.cycler(jours);
                     }
-
-                    /*
-                     * if (jours >= jourInitial && jours <= (jourInitial + 18)) { // >= 0 <= 18 //
-                     *
-                     * //cycleAmmoniaque(getCompteurJoursCycle());
-                     * actionEnCours = "Cycle ammoniaque";
-                     * System.out.println("entré dans if ammo");
-                     * 
-                     * 
-                     * }
-                     * if (jours >= (jourInitial + 14) && jours <= (jourInitial + 35)) { // >= 14 <=
-                     * 35
-                     * //cycleNitrites(getCompteurJoursCycle());
-                     * //System.out.println("Entré dans nitrites jour: " + getCompteurJours());
-                     * actionEnCours = "Cycle nitrites";
-                     * 
-                     * for (CycleAzote cycle : listeCycles) {
-                     * cycle.cycleNitrites();
-                     * 
-                     * }
-                     * }
-                     */
 
                     if (penteNitrites >= nitrites) {
                         comportNitrates();
