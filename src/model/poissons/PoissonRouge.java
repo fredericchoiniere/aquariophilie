@@ -9,8 +9,13 @@ import model.environnement.Temps;
 public class PoissonRouge extends Poisson implements Runnable {
 
     // attributs de la classe
-    int x = 10;
-    int y = 10;
+    public int x_min = 4;
+    public int x_max = 286;
+    public int y_min = getHauteur() - 14;
+    public int y_max = 120;
+    public int x_temp = random.nextInt(x_max - x_min) + (1 + x_min);
+    public int y_temp = random.nextInt(y_max - y_min) + (1 + y_min);
+    public int side = random.nextInt(2) + 1;
     int vel_x = 1;
     int vel_y = 1;
     public static int prix = 50;
@@ -23,6 +28,10 @@ public class PoissonRouge extends Poisson implements Runnable {
 
     public static int dechets = 5;
 
+    public PoissonRouge() {
+        setImg();
+    }
+
     /**
      * @param g
      *          méthode pour dessiner le poisson
@@ -30,8 +39,7 @@ public class PoissonRouge extends Poisson implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        img = poisson_droite;
-        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, empty), x, y, this);
+        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, empty), x_temp, y_temp, this);
 
     }
 
@@ -39,8 +47,8 @@ public class PoissonRouge extends Poisson implements Runnable {
      * méthode pour faire bouger le poisson
      */
     public void deplacer() {
-        this.x += getXVelocity();
-        this.y += getYVelocity();
+        x_temp += getXVelocity();
+        y_temp += getYVelocity();
         try {
             Thread.sleep(30);
         } catch (InterruptedException e) {
@@ -49,22 +57,34 @@ public class PoissonRouge extends Poisson implements Runnable {
         repaint();
     }
 
+    public void setImg() {
+        if (side == 1) {
+            direction = "droite";
+            img = poisson_droite;
+            setXVelocity(1);
+        } else {
+            direction = "gauche";
+            img = poisson_gauche;
+            setXVelocity(-1);
+        }
+    }
+
     @Override
     public void run() {
         while (var) {
             if (!Temps.isPaused) {
-                if (this.x > 286) {
+                if (x_temp > x_max) {
                     setXVelocity(-vel_x);
                     direction = "gauche";
                 }
-                if (this.x < 4) {
+                if (x_temp < x_min) {
                     setXVelocity(1);
                     direction = "droite";
                 }
-                if (this.y > 120) {
+                if (y_temp > y_max) {
                     setYVelocity(-vel_y);
                 }
-                if (this.y < getHauteur() - 14) {
+                if (y_temp < getHauteur() - 14) {
                     setYVelocity(1);
                 }
                 deplacer();

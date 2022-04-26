@@ -48,6 +48,10 @@ public class Eau implements Runnable {
     public int nbAtomeO = 2103;
     public int nbAtomeH = 4206;
     public int scoreEau = 100;
+    /* make a randomiser from 1 to 10 */
+    public static Random random = new Random();
+    public static int randomNumber;
+    
 
     final short valeur_changement = 1;
 
@@ -559,7 +563,9 @@ public class Eau implements Runnable {
                     GUIMain.panelTest.lblScoreEau.setText(toString(GUIMain.eau.getScoreEau()));
 
                     // System.out.println("Compteur jours: " + Eau.compteurJoursCycle);
-                    System.out.println("déchets: " + sommeDechets);
+                    //System.out.println("déchets: " + sommeDechets);
+
+
 
                     for (short i = 0; i < 6; i++)
                         Poisson.setSante(i);

@@ -54,6 +54,10 @@ public class Inventaire {
                         new ImageIcon("res/poissons/poisson_neo/poisson_droite.png").getImage().getScaledInstance(32,
                                         14,
                                         Image.SCALE_DEFAULT));;
+        public static ImageIcon img_neo_aqua = new ImageIcon(
+                        new ImageIcon("res/poissons/poisson_neo/poisson_droite.png").getImage().getScaledInstance(55,
+                                        55,
+                                        Image.SCALE_DEFAULT));
 
         public static ImageIcon java_fern = new ImageIcon("res/background/decorations/java_fern.png");
         public static ImageIcon blue_blue = new ImageIcon("res/background/decorations/blue_blue.png");

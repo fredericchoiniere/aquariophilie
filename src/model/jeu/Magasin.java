@@ -2,20 +2,26 @@
 
 package model.jeu;
 
+import java.awt.Color;
+import java.util.Random;
+
 /* create a class that can access Argent class*/
 
 import model.plantes.BlueBlue;
 import model.plantes.Erdtree;
 import model.plantes.JavaFern;
 import model.plantes.ScarletRot;
+import model.poissons.Poisson;
 import model.poissons.PoissonBetta;
 import model.poissons.PoissonNeo;
 import model.poissons.PoissonRouge;
 import model.poissons.PoissonTetra;
+import view.tabs.PanelShop;
 
 public class Magasin {
 
-    static short emp = 0;
+    static int emp = 0;
+    static Random random = new Random();
 
     /**
      * @param prix
@@ -119,44 +125,99 @@ public class Magasin {
         }
     }
 
-    public static void generatingNumber() {
-        emp = (short) (Math.random() * 3);
+    public static int generatingNumber() {
+        return emp = random.nextInt(8) + 1;
     }
 
     public static void rabais(short emp) {
         switch (emp) {
-            case 0:
-                PoissonRouge.prix = PoissonRouge.prix / 2;
-                break;
             case 1:
-                Argent.normal = false;
+                PoissonRouge.prix = PoissonRouge.prix / 2;
+                PanelShop.poisson_rouge.setBackground(Color.GRAY);
+                PanelShop.poisson_betta.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_tetra.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_neo.setBackground(new Color(53, 109, 127));
+                PanelShop.planteFern.setBackground(new Color(53, 109, 127));
+                PanelShop.planteBlue.setBackground(new Color(53, 109, 127));
+                PanelShop.planteScarlet.setBackground(new Color(53, 109, 127));
+                PanelShop.planteErdtree.setBackground(new Color(53, 109, 127));
                 break;
             case 2:
-                Argent.normal = false;
+                PoissonBetta.prix = PoissonBetta.prix / 2;
+                PanelShop.poisson_betta.setBackground(Color.GRAY);
+                PanelShop.poisson_rouge.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_tetra.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_neo.setBackground(new Color(53, 109, 127));
+                PanelShop.planteFern.setBackground(new Color(53, 109, 127));
+                PanelShop.planteBlue.setBackground(new Color(53, 109, 127));
+                PanelShop.planteScarlet.setBackground(new Color(53, 109, 127));
+                PanelShop.planteErdtree.setBackground(new Color(53, 109, 127));
                 break;
             case 3:
-                Argent.normal = false;
+                PoissonTetra.prix = PoissonTetra.prix / 2;
+                PanelShop.poisson_tetra.setBackground(Color.GRAY);
+                PanelShop.poisson_betta.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_rouge.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_neo.setBackground(new Color(53, 109, 127));
+                PanelShop.planteFern.setBackground(new Color(53, 109, 127));
+                PanelShop.planteBlue.setBackground(new Color(53, 109, 127));
+                PanelShop.planteScarlet.setBackground(new Color(53, 109, 127));
+                PanelShop.planteErdtree.setBackground(new Color(53, 109, 127));
                 break;
             case 4:
-                Argent.normal = false;
+                PoissonNeo.prix = PoissonNeo.prix / 2;
+                PanelShop.poisson_neo.setBackground(Color.GRAY);
+                PanelShop.poisson_betta.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_tetra.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_rouge.setBackground(new Color(53, 109, 127));
+                PanelShop.planteFern.setBackground(new Color(53, 109, 127));
+                PanelShop.planteBlue.setBackground(new Color(53, 109, 127));
+                PanelShop.planteScarlet.setBackground(new Color(53, 109, 127));
+                PanelShop.planteErdtree.setBackground(new Color(53, 109, 127));
                 break;
             case 5:
-                Argent.normal = false;
+                JavaFern.prix = JavaFern.prix / 2;
+                PanelShop.planteFern.setBackground(Color.GRAY);
+                PanelShop.poisson_betta.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_tetra.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_neo.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_rouge.setBackground(new Color(53, 109, 127));
+                PanelShop.planteBlue.setBackground(new Color(53, 109, 127));
+                PanelShop.planteScarlet.setBackground(new Color(53, 109, 127));
+                PanelShop.planteErdtree.setBackground(new Color(53, 109, 127));
                 break;
             case 6:
-                Argent.normal = false;
+                BlueBlue.prix = BlueBlue.prix / 2;
+                PanelShop.planteBlue.setBackground(Color.GRAY);
+                PanelShop.poisson_betta.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_tetra.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_neo.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_rouge.setBackground(new Color(53, 109, 127));
+                PanelShop.planteFern.setBackground(new Color(53, 109, 127));
+                PanelShop.planteScarlet.setBackground(new Color(53, 109, 127));
+                PanelShop.planteErdtree.setBackground(new Color(53, 109, 127));
                 break;
             case 7:
-                Argent.normal = false;
+                ScarletRot.prix = ScarletRot.prix / 2;
+                PanelShop.planteScarlet.setBackground(Color.GRAY);
+                PanelShop.poisson_betta.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_tetra.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_neo.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_rouge.setBackground(new Color(53, 109, 127));
+                PanelShop.planteFern.setBackground(new Color(53, 109, 127));
+                PanelShop.planteBlue.setBackground(new Color(53, 109, 127));
+                PanelShop.planteErdtree.setBackground(new Color(53, 109, 127));
                 break;
             case 8:
-                Argent.normal = false;
-                break;
-            case 9:
-                Argent.normal = false;
-                break;
-            case 10:
-                Argent.normal = false;
+                Erdtree.prix = Erdtree.prix / 2;
+                PanelShop.planteErdtree.setBackground(Color.GRAY);
+                PanelShop.poisson_betta.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_tetra.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_neo.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_rouge.setBackground(new Color(53, 109, 127));
+                PanelShop.planteFern.setBackground(new Color(53, 109, 127));
+                PanelShop.planteBlue.setBackground(new Color(53, 109, 127));
+                PanelShop.planteScarlet.setBackground(new Color(53, 109, 127));
                 break;
             default:
                 break;

@@ -12,6 +12,7 @@ import model.jeu.Sante;
 import view.GUIMain;
 
 import java.awt.*;
+import java.util.Random;
 
 public class Poisson extends JPanel {
 
@@ -20,10 +21,13 @@ public class Poisson extends JPanel {
     int vel_y = 1;
     private short sante = 100;
     public int index;
-    public String direction = "droite";
+    public String direction ;
     public boolean var = true;
     public String empInv, empAqua, nom;
     int hauteur = Eau.hauteurEnPixels, compensationPosition = Eau.hauteurEnPixels - (4 + (192 - Eau.hauteurEnPixels));
+
+    public static Random random = new Random();
+    int randomNumber;
 
     /**
      * @param isOpaque
@@ -157,6 +161,9 @@ public class Poisson extends JPanel {
             case "tetra":
                 label.setToolTipText("Type: Tetra" + "\nSanté: ");
                 break;
+            case "neo":
+                label.setToolTipText("Type: Neo" + "\nSanté: ");
+                break;
             default:
                 label.setToolTipText("");
                 break;
@@ -170,8 +177,9 @@ public class Poisson extends JPanel {
             levels("betta", poisson);
         } else if (fishType(poisson) == "tetra") {
             levels("tetra", poisson);
+        } else if (fishType(poisson) == "neo") {
+            levels("neo", poisson);
         }
-
     }
 
     public static String fishType(short poisson) {
@@ -194,7 +202,7 @@ public class Poisson extends JPanel {
     }
 
     public static void levels(String type, short numb) {
-        //System.out.println("ScroreEau : " + GUIMain.eau.scoreEau);
+        // System.out.println("ScroreEau : " + GUIMain.eau.scoreEau);
         switch (type) {
 
             case "rouge":
@@ -205,7 +213,7 @@ public class Poisson extends JPanel {
                     } else {
                         GUIMain.listePoissonsAqua.get(numb).sante = 100;
                     }
-                    //System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    // System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
                     setBarValue(numb);
                 } else if (GUIMain.eau.scoreEau >= 33 - PoissonRouge.tolerance) {
                     if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
@@ -214,7 +222,7 @@ public class Poisson extends JPanel {
                     } else {
                         killFish(numb);
                     }
-                    //System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    // System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
                     setBarValue(numb);
                 } else if (GUIMain.eau.scoreEau > 0 - PoissonRouge.tolerance) {
                     if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
@@ -223,7 +231,7 @@ public class Poisson extends JPanel {
                     } else {
                         killFish(numb);
                     }
-                    //System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    // System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
                     setBarValue(numb);
                 }
                 break;
@@ -235,7 +243,7 @@ public class Poisson extends JPanel {
                     } else {
                         GUIMain.listePoissonsAqua.get(numb).sante = 100;
                     }
-                    //System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    // System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
                     setBarValue(numb);
                 } else if (GUIMain.eau.scoreEau >= 33 - PoissonBetta.tolerance) {
                     if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
@@ -244,7 +252,7 @@ public class Poisson extends JPanel {
                     } else {
                         killFish(numb);
                     }
-                    //System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    // System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
                     setBarValue(numb);
                 } else if (GUIMain.eau.scoreEau > 0 - PoissonBetta.tolerance) {
                     if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
@@ -253,7 +261,7 @@ public class Poisson extends JPanel {
                     } else {
                         killFish(numb);
                     }
-                    //System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    // System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
                     setBarValue(numb);
                 }
                 break;
@@ -265,7 +273,7 @@ public class Poisson extends JPanel {
                     } else {
                         GUIMain.listePoissonsAqua.get(numb).sante = 100;
                     }
-                    //System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    // System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
                     setBarValue(numb);
                 } else if (GUIMain.eau.scoreEau >= 33 - PoissonTetra.tolerance) {
                     if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
@@ -274,7 +282,7 @@ public class Poisson extends JPanel {
                     } else {
                         killFish(numb);
                     }
-                    //System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    // System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
                     setBarValue(numb);
                 } else if (GUIMain.eau.scoreEau > 0 - PoissonTetra.tolerance) {
                     if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
@@ -283,7 +291,37 @@ public class Poisson extends JPanel {
                     } else {
                         killFish(numb);
                     }
-                    //System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    // System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    setBarValue(numb);
+                }
+                break;
+            case "neo":
+                if (GUIMain.eau.scoreEau >= 66 - PoissonNeo.tolerance) {
+                    if (GUIMain.listePoissonsAqua.get(numb).sante < 100
+                            && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
+                        GUIMain.listePoissonsAqua.get(numb).sante += 1;
+                    } else {
+                        GUIMain.listePoissonsAqua.get(numb).sante = 100;
+                    }
+                    // System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    setBarValue(numb);
+                } else if (GUIMain.eau.scoreEau >= 33 - PoissonNeo.tolerance) {
+                    if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
+                            && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
+                        GUIMain.listePoissonsAqua.get(numb).sante -= 1;
+                    } else {
+                        killFish(numb);
+                    }
+                    // System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
+                    setBarValue(numb);
+                } else if (GUIMain.eau.scoreEau > 0 - PoissonNeo.tolerance) {
+                    if (GUIMain.listePoissonsAqua.get(numb).sante <= 100
+                            && GUIMain.listePoissonsAqua.get(numb).sante > 0) {
+                        GUIMain.listePoissonsAqua.get(numb).sante -= 2;
+                    } else {
+                        killFish(numb);
+                    }
+                    // System.out.println("Santé: " + GUIMain.listePoissonsAqua.get(numb).sante);
                     setBarValue(numb);
                 }
                 break;
