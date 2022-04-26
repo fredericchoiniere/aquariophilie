@@ -5,6 +5,7 @@ package model.jeu;
 /* create a class that can access Argent class*/
 
 import model.plantes.BlueBlue;
+import model.plantes.Erdtree;
 import model.plantes.JavaFern;
 import model.plantes.ScarletRot;
 import model.poissons.PoissonBetta;
@@ -41,7 +42,7 @@ public class Magasin {
                 break;
             case "neo":
                 ajustement_argent(PoissonNeo.prix);
-                break;    
+                break;
             default:
                 break;
         }
@@ -63,6 +64,10 @@ public class Magasin {
 
             case "scarlet":
                 ajustement_argent(ScarletRot.prix);
+                break;
+
+            case "erdtree":
+                ajustement_argent(Erdtree.prix);
                 break;
             default:
                 break;
@@ -103,6 +108,10 @@ public class Magasin {
                 }
             case "scarlet":
                 if (Argent.argent >= ScarletRot.prix) {
+                    return true;
+                }
+            case "erdtree":
+                if (Argent.argent >= Erdtree.prix) {
                     return true;
                 }
             default:

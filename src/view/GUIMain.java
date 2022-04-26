@@ -387,62 +387,6 @@ public class GUIMain extends JFrame implements ActionListener {
         bt5.setVisible(false);
         panelAqua.add(bt5);
 
-        /*
-         * prog1 = new JProgressBar();
-         * prog1.setString("sante poisson 1");
-         * prog1.setStringPainted(true);
-         * prog1.setForeground(new Color(46, 232, 158));
-         * prog1.setValue(100);
-         * prog1.setBounds(10, 310, 200, 20);
-         * prog1.setVisible(false);
-         * panelAqua.add(prog1);
-         * 
-         * prog2 = new JProgressBar();
-         * prog2.setString("sante poisson 2");
-         * prog2.setStringPainted(true);
-         * prog2.setForeground(new Color(46, 232, 158));
-         * prog2.setValue(100);
-         * prog2.setBounds(10, 370, 200, 20);
-         * prog2.setVisible(false);
-         * panelAqua.add(prog2);
-         * 
-         * prog3 = new JProgressBar();
-         * prog3.setString("sante poisson 3");
-         * prog3.setStringPainted(true);
-         * prog3.setForeground(new Color(46, 232, 158));
-         * prog3.setValue(100);
-         * prog3.setBounds(10, 430, 200, 20);
-         * prog3.setVisible(false);
-         * panelAqua.add(prog3);
-         * 
-         * prog4 = new JProgressBar();
-         * prog4.setString("sante poisson 4");
-         * prog4.setStringPainted(true);
-         * prog4.setForeground(new Color(46, 232, 158));
-         * prog4.setValue(100);
-         * prog4.setBounds(10, 490, 200, 20);
-         * prog4.setVisible(false);
-         * panelAqua.add(prog4);
-         * 
-         * prog5 = new JProgressBar();
-         * prog5.setString("sante poisson 5");
-         * prog5.setStringPainted(true);
-         * prog5.setForeground(new Color(46, 232, 158));
-         * prog5.setValue(100);
-         * prog5.setBounds(10, 550, 200, 20);
-         * prog5.setVisible(false);
-         * panelAqua.add(prog5);
-         * 
-         * prog6 = new JProgressBar();
-         * prog6.setString("sante poisson 6");
-         * prog6.setStringPainted(true);
-         * prog6.setForeground(new Color(46, 232, 158));
-         * prog6.setValue(100);
-         * prog6.setBounds(10, 610, 200, 20);
-         * prog6.setVisible(false);
-         * panelAqua.add(prog6);
-         */
-
         // ajout du layeredpane au tabbedane
         tabbedPane.add("Aquarium", panelAqua);
 
@@ -500,6 +444,7 @@ public class GUIMain extends JFrame implements ActionListener {
                 setOutilsVisible();
                 label_tutoriel.setVisible(false);
                 basicCursor();
+                kit_fermer.setVisible(true);
             }
         });
 
@@ -651,6 +596,7 @@ public class GUIMain extends JFrame implements ActionListener {
                     setOutilsVisible();
                     label_tutoriel.setVisible(false);
                     basicCursor();
+                    kit_fermer.setVisible(true);
                 }
             }
         });
@@ -1357,6 +1303,11 @@ public class GUIMain extends JFrame implements ActionListener {
         ciseau_label.setVisible(false);
         filet_label.setVisible(false);
         label_information.setVisible(false);
+        kit_bg.setVisible(false);
+        kit_fermer.setVisible(false);
+        kit_ouvert.setVisible(false);
+        kit_fermer.setBounds(50, 160, 80, 80);
+        kit_ouvert.setBounds(50, 160, 80, 80);
     }
 
     @Override

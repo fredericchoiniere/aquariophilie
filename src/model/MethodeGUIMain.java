@@ -508,6 +508,13 @@ public class MethodeGUIMain {
                 GUIMain.eau.sommeAbsorptionDechets += ScarletRot.absorptionDechets;
                 GUIMain.eau.sommeContributionPH += ScarletRot.contributionPH;
                 break;
+            case "erdtree":
+                GUIMain.listePlantesAqua.set(indexAqua, GUIMain.listePlantesInv.get(indexInv));
+                Argent.emp3 += 50;
+                GUIMain.eau.sommeAbsorptionNitrates += Erdtree.absorptionNitrates;
+                GUIMain.eau.sommeAbsorptionDechets += Erdtree.absorptionDechets;
+                GUIMain.eau.sommeContributionPH += Erdtree.contributionPH;
+                break;
             default:
                 break;
         }
@@ -570,6 +577,13 @@ public class MethodeGUIMain {
                 GUIMain.eau.sommeAbsorptionNitrates -= ScarletRot.absorptionNitrates;
                 GUIMain.eau.sommeAbsorptionDechets -= ScarletRot.absorptionDechets;
                 GUIMain.eau.sommeContributionPH -= ScarletRot.contributionPH;
+                break;
+            case "erdtree":
+                Argent.emp3 -= 50;
+                Argent.argent += Erdtree.prix / 2;
+                GUIMain.eau.sommeAbsorptionNitrates -= Erdtree.absorptionNitrates;
+                GUIMain.eau.sommeAbsorptionDechets -= Erdtree.absorptionDechets;
+                GUIMain.eau.sommeContributionPH -= Erdtree.contributionPH;
                 break;
             default:
                 break;

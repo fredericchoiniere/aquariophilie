@@ -17,7 +17,7 @@ public class PanelShop extends JPanel implements ActionListener {
 
     // Attributs de la classe
     static int i = 1;
-    JButton poisson_rouge, poisson_betta, poisson_tetra, poisson_neo, planteBlue, planteFern, planteScarlet;
+    JButton poisson_rouge, poisson_betta, poisson_tetra, poisson_neo, planteBlue, planteFern, planteScarlet, planteErdtree;
     Dimension shop_dimension = new Dimension(80, 80);
     JLabel label_tutoriel, label_information;
 
@@ -92,6 +92,16 @@ public class PanelShop extends JPanel implements ActionListener {
         planteScarlet.setToolTipText("Prix: " + ScarletRot.prix + "₴");
         planteScarlet.addActionListener(this);
         add(planteScarlet);
+
+        // ajout du bouton plante erdtree
+        planteErdtree = new JButton();
+        planteErdtree.setIcon(Erdtree.icon);
+        planteErdtree.setBackground(new Color(53, 109, 127));
+        planteErdtree.setBorderPainted(false);
+        planteErdtree.setBounds(335, 384, shop_dimension.width, shop_dimension.height);
+        planteErdtree.setToolTipText("Prix: " + Erdtree.prix + "₴");
+        planteErdtree.addActionListener(this);
+        add(planteErdtree);
 
         // ajout du label pour le tutoriel
         label_tutoriel = new JLabel();
@@ -289,6 +299,13 @@ public class PanelShop extends JPanel implements ActionListener {
                 setName(index, typePlante);
                 i++;
                 break;
+            case "erdtree":
+                GUIMain.listePlantesInv.set(index, new Erdtree());
+                GUIMain.listePlantesInv.get(index).setName("erdtree" + i);
+                setLabel(index, Erdtree.icon, typePlante);
+                setName(index, typePlante);
+                i++;
+                break;
             default:
                 break;
         }
@@ -421,6 +438,15 @@ public class PanelShop extends JPanel implements ActionListener {
             if (Magasin.gotMoney("scarlet")) {
                 checkCase(Inventaire.img_inv_tetra, "decoration", "", "scarlet");
             } else {
+                JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur", JOptionPane.PLAIN_MESSAGE);
+            }
+        }
+
+        if(e.getSource() == planteErdtree){
+            label_tutoriel.setVisible(false);
+            if(Magasin.gotMoney("erdtree")){
+                checkCase(Inventaire.img_inv_tetra, "decoration", "", "erdtree");
+            }else{
                 JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur", JOptionPane.PLAIN_MESSAGE);
             }
         }

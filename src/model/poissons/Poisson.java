@@ -306,31 +306,37 @@ public class Poisson extends JPanel {
                 GUIMain.hasFish1 = false;
                 GUIMain.aquarium.aqua1.setIcon(Inventaire.empty_inv);
                 GUIMain.aqua1 = "empty";
+                Sante.emp1.setValue(100);
                 break;
             case 1:
                 GUIMain.hasFish2 = false;
                 GUIMain.aquarium.aqua2.setIcon(Inventaire.empty_inv);
                 GUIMain.aqua2 = "empty";
+                Sante.emp2.setValue(100);
                 break;
             case 2:
                 GUIMain.hasFish3 = false;
                 GUIMain.aquarium.aqua3.setIcon(Inventaire.empty_inv);
                 GUIMain.aqua3 = "empty";
+                Sante.emp3.setValue(100);
                 break;
             case 3:
                 GUIMain.hasFish4 = false;
                 GUIMain.aquarium.aqua4.setIcon(Inventaire.empty_inv);
                 GUIMain.aqua4 = "empty";
+                Sante.emp4.setValue(100);
                 break;
             case 4:
                 GUIMain.hasFish5 = false;
                 GUIMain.aquarium.aqua5.setIcon(Inventaire.empty_inv);
                 GUIMain.aqua5 = "empty";
+                Sante.emp5.setValue(100);
                 break;
             case 5:
                 GUIMain.hasFish6 = false;
                 GUIMain.aquarium.aqua6.setIcon(Inventaire.empty_inv);
                 GUIMain.aqua6 = "empty";
+                Sante.emp6.setValue(100);
                 break;
         }
     }
