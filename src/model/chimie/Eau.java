@@ -409,6 +409,13 @@ public class Eau implements Runnable {
     /**
      * Pour l'itération 3
      */
+    public int getScoreEau() {
+        scoreEau = (int) (setScoreAmmo() + setScoreGH() + setScoreKH() + setScoreNitrates() + setScoreNitrites()
+                + setScorePH());
+        return scoreEau;
+        //scoreEauNonStatic = scoreEau;
+        // System.out.println("Score eau 1 : " + scoreEau);
+    }
     /*
      * public static void setScoreEau() {
      * GUIMain.eau.scoreEau = (int) (setScoreAmmo() + setScoreGH() + setScoreKH() +
@@ -582,6 +589,15 @@ public class Eau implements Runnable {
                     absorption();
                     // variationPH();
                     variationNiveauEau();
+                    
+                    GUIMain.panelTest.lblPH.setText(toString(GUIMain.eau.getPH()));
+                    GUIMain.panelTest.lblGH.setText(toString(GUIMain.eau.getGH()));
+                    GUIMain.panelTest.lblKH.setText(toString(GUIMain.eau.getKH()));
+                    GUIMain.panelTest.lblAmmo.setText(toString(GUIMain.eau.getAmmoniaque()));
+                    GUIMain.panelTest.lblNitrites.setText(toString(GUIMain.eau.getNitrites()));
+                    GUIMain.panelTest.lblNitrates.setText(toString(GUIMain.eau.getNitrates()));
+                    GUIMain.panelTest.lblScoreEau.setText(toString(GUIMain.eau.getScoreEau()));
+                    System.out.println(GUIMain.eau.getNitrates());
                     variationKH();
 
                     GUIMain.panelTest.lblAmmo.setText(toString(GUIMain.eau.getAmmoniaque()));
