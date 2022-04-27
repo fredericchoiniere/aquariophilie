@@ -257,24 +257,26 @@ public class Eau implements Runnable {
 
     /**
      * Gère la variation de pH
-     * Non fonctionnel pour l'instant
+     * Diminue avec le temps, augmenté par les plantes
      */
     public void variationPH() { // TODO: à balancer
-        if (kh < 10 && kh >= 8) {
-            
+        if (kh < 10 && kh >= 8) { // ph varie moins, mais score non optimal car kh trop élevé
+            setPH(getPH() - (float) 0.05);
+            setPH(getPH() + (float) (sommeContributionPH * 0.3));
         }
         if (kh < 8 && kh >= 6) {
-            setPH(getPH() - (float) 0.3);
-            setPH(getPH() + (float) (sommeContributionPH * 0.7));
+            setPH(getPH() - (float) 0.1);
+            setPH(getPH() + (float) (sommeContributionPH * 0.5));
         }
         if (kh < 6 && kh >= 4) {
             setPH(getPH() - (float) 0.15);
-            setPH(getPH() + (float) (sommeContributionPH * 0.5));
+            setPH(getPH() + (float) (sommeContributionPH * 0.7));
         }
-        if (kh < 4) { // ph varie moins, mais score non optimal car kh trop élevé
-            setPH(getPH() - (float) 0.1);
-            setPH(getPH() + (float) (sommeContributionPH * 0.3));
+        if (kh < 4) { 
+            setPH(getPH() - (float) 0.3);
+            setPH(getPH() + (float) (sommeContributionPH));
         }
+        System.out.println("PH: " + getPH() + " sommecontributionph: "  + sommeContributionPH);
     }
 
     /**
