@@ -109,6 +109,10 @@ public class GUIMain extends JFrame implements ActionListener {
     JButton bt1, bt2, bt3, bt4, bt5;
     public static JProgressBar prog1, prog2, prog3, prog4, prog5, prog6;
 
+    //Layeredpane
+    JLayeredPane layerAqua = new JLayeredPane();
+   
+
     public GUIMain() { // création du constructeur GUIMain
 
         // titre et image
@@ -145,6 +149,18 @@ public class GUIMain extends JFrame implements ActionListener {
         panelAqua = new PanelAqua();
         panelAqua.setLayout(null);
         panelAqua.setVisible(true);
+
+        inventaire_bg = new JLabel();
+        kit_bg = new JLabel();
+        radio_on = new JLabel();
+        radio_off = new JLabel();
+
+        layerAqua.setBounds(0, 0, 1000, 700);
+        layerAqua.add(inventaire_bg, 1);
+        layerAqua.add(kit_bg, 1);
+        layerAqua.add(radio_on, 1);
+        layerAqua.add(radio_off, 1);
+        add(layerAqua);
 
         // ajout du panel de l'interface du kit
         panelTest = new PanelTest();
@@ -197,7 +213,7 @@ public class GUIMain extends JFrame implements ActionListener {
         aquarium_kit_ouvert = new JLabel();
         aquarium_kit_ouvert.setIcon(new ImageIcon("res/outils/aquarium_kit/aquarium_kit_open.png"));
         Dimension size_wallgear_icon1 = aquarium_kit_ouvert.getPreferredSize();
-        aquarium_kit_ouvert.setBounds(143, 38, size_wallgear_icon1.width, size_wallgear_icon1.height);
+        aquarium_kit_ouvert.setBounds(146, 50, size_wallgear_icon1.width, size_wallgear_icon1.height);
         panelAqua.add(aquarium_kit_ouvert);
         aquarium_kit_ouvert.setVisible(false);
 
@@ -205,7 +221,7 @@ public class GUIMain extends JFrame implements ActionListener {
         aquarium_kit_fermer = new JLabel();
         aquarium_kit_fermer.setIcon(new ImageIcon("res/outils/aquarium_kit/aquarium_kit_closed.png"));
         Dimension size_wallgear_icon2 = aquarium_kit_fermer.getPreferredSize();
-        aquarium_kit_fermer.setBounds(143, 42, size_wallgear_icon2.width, size_wallgear_icon2.height);
+        aquarium_kit_fermer.setBounds(146, 62, size_wallgear_icon2.width, size_wallgear_icon2.height);
         aquarium_kit_fermer.setVisible(true);
         panelAqua.add(aquarium_kit_fermer);
 
@@ -213,14 +229,14 @@ public class GUIMain extends JFrame implements ActionListener {
         inventaire_ouvert = new JLabel();
         inventaire_ouvert.setIcon(new ImageIcon("res/background/inventaire_ouvert.png"));
         Dimension size_icone_inv = inventaire_ouvert.getPreferredSize();
-        inventaire_ouvert.setBounds(19, 40, size_icone_inv.width, size_icone_inv.height);
+        inventaire_ouvert.setBounds(19, 60, size_icone_inv.width, size_icone_inv.height);
         inventaire_ouvert.setVisible(false);
         panelAqua.add(inventaire_ouvert);
 
         // ajout du label pour icones de l'inventaire fermer
         inventaire_fermer = new JLabel();
         inventaire_fermer.setIcon(new ImageIcon("res/background/inventaire_fermer.png"));
-        inventaire_fermer.setBounds(19, 38, size_icone_inv.width, size_icone_inv.height);
+        inventaire_fermer.setBounds(19, 60, size_icone_inv.width, size_icone_inv.height);
         inventaire_fermer.setToolTipText("Ouvre l'inventaire");
         inventaire_fermer.setVisible(true);
         panelAqua.add(inventaire_fermer);
@@ -229,7 +245,7 @@ public class GUIMain extends JFrame implements ActionListener {
         kit_ouvert = new JLabel();
         kit_ouvert.setIcon(new ImageIcon("res/background/kit_ouvert.png"));
         Dimension size_kit_ouvert = kit_ouvert.getPreferredSize();
-        kit_ouvert.setBounds(82, 30, size_kit_ouvert.width, size_kit_ouvert.height);
+        kit_ouvert.setBounds(82, 51, size_kit_ouvert.width, size_kit_ouvert.height);
         kit_ouvert.setVisible(false);
         panelAqua.add(kit_ouvert);
 
@@ -237,7 +253,7 @@ public class GUIMain extends JFrame implements ActionListener {
         kit_fermer = new JLabel();
         kit_fermer.setIcon(new ImageIcon("res/background/kit_fermer.png"));
         Dimension size_kit_fermer = kit_fermer.getPreferredSize();
-        kit_fermer.setBounds(82, 30, size_kit_fermer.width, size_kit_fermer.height);
+        kit_fermer.setBounds(82, 51, size_kit_fermer.width, size_kit_fermer.height);
         kit_fermer.setVisible(true);
         panelAqua.add(kit_fermer);
 
@@ -258,32 +274,37 @@ public class GUIMain extends JFrame implements ActionListener {
         panelAqua.add(reprendre_label);
 
         // ajout du label pour le radio
-        radio_on = new JLabel();
+        //radio_on = new JLabel();
+        
         radio_on.setIcon(new ImageIcon("res/outils/radio_on.png"));
-        radio_on.setBounds(250, 430, 70, 70);
+        radio_on.setBounds(240, 400, 70, 70);
         radio_on.setToolTipText("Mettre la radio sur OFF");
         radio_on.setVisible(false);
         panelAqua.add(radio_on);
 
         // ajout du label pour le radio
-        radio_off = new JLabel();
+        //radio_off = new JLabel();
+        
         radio_off.setIcon(new ImageIcon("res/outils/radio_off.png"));
-        radio_off.setBounds(250, 430, 70, 70);
+        radio_off.setBounds(240, 400, 70, 70);
         radio_off.setToolTipText("Mettre la radio sur ON");
+        layerAqua.add(radio_off,0);
         radio_off.setVisible(true);
         panelAqua.add(radio_off);
 
         // ajout de l'inventaire
-        inventaire_bg = new JLabel();
+        //inventaire_bg = new JLabel();
+        //layerAqua.add(inventaire_bg,1);
         inventaire_bg.setIcon(new ImageIcon("res/background/inventaire.png"));
-        inventaire_bg.setBounds(5, 140, 250, 475);
+        inventaire_bg.setBounds(5, 150, 250, 475);
         inventaire_bg.setVisible(false);
         panelAqua.add(inventaire_bg);
         inventaire = new Inventaire(inventaire_bg);
         inventaire.setVisible(false);
 
         // ajout du label pour l'icone de la bouteille
-        kit_bg = new JLabel();
+        //kit_bg = new JLabel();
+        //layerAqua.add(kit_bg,1);
         kit_bg.setIcon(new ImageIcon("res/background/kit.png"));
         kit_bg.setBounds(5, 140, 250, 475);
         kit_bg.setVisible(false);
@@ -294,7 +315,7 @@ public class GUIMain extends JFrame implements ActionListener {
         // hamis love label
         hamis = new JLabel();
         hamis.setIcon(new ImageIcon("res/background/hamis_love.png"));
-        hamis.setBounds(137, 247, 25, 25);
+        hamis.setBounds(125, 225, 25, 25);
         hamis.setVisible(false);
         panelAqua.add(hamis);
 
@@ -342,7 +363,7 @@ public class GUIMain extends JFrame implements ActionListener {
         panelAqua.setVisible(true);
 
         // ajout des zones pour les action listener
-        rectEau = new Rectangle(330, 305, 344, 192);
+        rectEau = new Rectangle(341, 299, 336, 177);
         rectAquarium = new Rectangle(330, 305, 344, 192);
         rectTest = new Rectangle(panelTest.getBounds());
         rectEmp1 = new Rectangle(358, 408, 80, 80);
@@ -609,8 +630,10 @@ public class GUIMain extends JFrame implements ActionListener {
                 setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
                         tetra_curseur.getImage(),
                         new Point(0, 0), "curseur tétra"));
+                
                 inventaire_ouvert.setVisible(false);
                 inventaire_fermer.setVisible(true);
+                layerAqua.add(inventaire_bg, 1);
                 inventaire_bg.setVisible(false);
                 //inventaire.setVisible(false);
                 label_tutoriel.setVisible(false);
@@ -626,13 +649,14 @@ public class GUIMain extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
                 inventaire_ouvert.setVisible(true);
                 inventaire_fermer.setVisible(false);
+                
                 inventaire_bg.setVisible(true);
                 inventaire.setVisible(true);
                 hamis.setVisible(false);
                 label_tutoriel.setVisible(false);
                 kit_bg.setVisible(false);
-                kit_fermer.setBounds(82, 30, size_kit_fermer.width, size_kit_fermer.height);
-                kit_ouvert.setBounds(82, 30, size_kit_ouvert.width, size_kit_ouvert.height);
+                //kit_fermer.setBounds(82, 30, size_kit_fermer.width, size_kit_fermer.height);
+                //kit_ouvert.setBounds(82, 30, size_kit_ouvert.width, size_kit_ouvert.height);
                 kit_ouvert.setVisible(false);
                 kit_fermer.setVisible(true);
             }
@@ -650,8 +674,8 @@ public class GUIMain extends JFrame implements ActionListener {
                 kit_bg.setVisible(false);
                 inventaire_fermer.setVisible(true);
                 inventaire_ouvert.setVisible(false);
-                kit_ouvert.setBounds(82, 30, size_kit_ouvert.width, size_kit_ouvert.height);
-                kit_fermer.setBounds(82, 30, size_kit_ouvert.width, size_kit_ouvert.height);
+                //kit_ouvert.setBounds(82, 30, size_kit_ouvert.width, size_kit_ouvert.height);
+                //kit_fermer.setBounds(82, 30, size_kit_ouvert.width, size_kit_ouvert.height);
             }
         });
 
@@ -661,13 +685,14 @@ public class GUIMain extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
                 kit_ouvert.setVisible(true);
                 kit_fermer.setVisible(false);
+                //layerAqua.add(inventaire_bg, 1);
                 inventaire_bg.setVisible(false);
                 kit_bg.setVisible(true);
                 inventaire_fermer.setVisible(true);
                 inventaire_ouvert.setVisible(false);
                 setVisibleKit(true);
-                kit_fermer.setBounds(82, 30, size_kit_fermer.width, size_kit_fermer.height);
-                kit_ouvert.setBounds(82, 30, size_kit_ouvert.width, size_kit_ouvert.height);
+                //kit_fermer.setBounds(82, 30, size_kit_fermer.width, size_kit_fermer.height);
+                //kit_ouvert.setBounds(82, 30, size_kit_ouvert.width, size_kit_ouvert.height);
             }
         });
 
@@ -713,6 +738,7 @@ public class GUIMain extends JFrame implements ActionListener {
                         new Point(0, 0), "curseur tétra"));
                 inventaire_ouvert.setVisible(false);
                 inventaire_fermer.setVisible(true);
+                //layerAqua.add(inventaire_bg, 1);
                 inventaire_bg.setVisible(false);
                 inventaire.setVisible(false);
 
@@ -724,6 +750,7 @@ public class GUIMain extends JFrame implements ActionListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 radio_off.setVisible(false);
+                layerAqua.add(radio_on, 0);
                 radio_on.setVisible(true);
                 label_tutoriel.setVisible(false);
                 try {
