@@ -676,8 +676,6 @@ public class GUIMain extends JFrame implements ActionListener {
                 kit_bg.setVisible(false);
                 inventaire_fermer.setVisible(true);
                 inventaire_ouvert.setVisible(false);
-                //kit_ouvert.setBounds(82, 30, size_kit_ouvert.width, size_kit_ouvert.height);
-                //kit_fermer.setBounds(82, 30, size_kit_ouvert.width, size_kit_ouvert.height);
             }
         });
 
@@ -693,8 +691,6 @@ public class GUIMain extends JFrame implements ActionListener {
                 inventaire_fermer.setVisible(true);
                 inventaire_ouvert.setVisible(false);
                 setVisibleKit(true);
-                //kit_fermer.setBounds(82, 30, size_kit_fermer.width, size_kit_fermer.height);
-                //kit_ouvert.setBounds(82, 30, size_kit_ouvert.width, size_kit_ouvert.height);
             }
         });
 
