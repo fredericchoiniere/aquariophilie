@@ -308,8 +308,6 @@ public class Eau implements Runnable {
      */
     public void variationGH() { // acceptable de 5 à 15
         // avec volume d'eau
-<<<<<<< HEAD
-=======
         if (volumeEau < 37.85 && volumeEau >= 32) {
             setGH((float) (gh - 0.009));
         }
@@ -325,7 +323,6 @@ public class Eau implements Runnable {
         if (volumeEau < 25) {
             setGH((float) (gh - 0.315));
         }
->>>>>>> 26deb8ccac22a26c6e205dd2ceeb93268f59e659
 
     }
 
