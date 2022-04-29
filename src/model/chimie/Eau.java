@@ -374,6 +374,7 @@ public class Eau implements Runnable {
     public float setScorePH() {
 
         float variationPH;
+        //float scorePH=0;
 
         if (ph >= 5 && ph <= 9) {
             variationPH = 0;
@@ -381,8 +382,8 @@ public class Eau implements Runnable {
         } else if (ph < 5) {
             variationPH = 5 - ph;
             scorePH = ((100 - (20 * variationPH)) * (14 / 100));
-        } else if (ph > 8) {
-            variationPH = ph - 8;
+        } else if (ph > 9) {
+            variationPH = ph - 9;
             scorePH = ((100 - (20 * variationPH)) * (14 / 100));
         }
         return scorePH;
