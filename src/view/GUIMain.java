@@ -369,15 +369,15 @@ public class GUIMain extends JFrame implements ActionListener {
         rectEau = new Rectangle(341, 299, 336, 177);
         rectAquarium = new Rectangle(330, 305, 344, 192);
         rectTest = new Rectangle(panelTest.getBounds());
-        rectEmp1 = new Rectangle(358, 408, 80, 80);
-        rectEmp2 = new Rectangle(464, 408, 80, 80);
-        rectEmp3 = new Rectangle(572, 408, 80, 80);
-        rectAqua1 = new Rectangle(365, 321, 70, 70);
-        rectAqua2 = new Rectangle(474, 321, 70, 70);
-        rectAqua3 = new Rectangle(584, 321, 70, 70);
-        rectAqua4 = new Rectangle(365, 417, 70, 70);
-        rectAqua5 = new Rectangle(474, 417, 70, 70);
-        rectAqua6 = new Rectangle(584, 417, 70, 70);
+        rectEmp1 = new Rectangle(358, 388, 80, 80);
+        rectEmp2 = new Rectangle(464, 388, 80, 80);
+        rectEmp3 = new Rectangle(572, 388, 80, 80);
+        rectAqua1 = new Rectangle(365, 301, 70, 70);
+        rectAqua2 = new Rectangle(474, 301, 70, 70);
+        rectAqua3 = new Rectangle(584, 301, 70, 70);
+        rectAqua4 = new Rectangle(365, 397, 70, 70);
+        rectAqua5 = new Rectangle(474, 397, 70, 70);
+        rectAqua6 = new Rectangle(584, 397, 70, 70);
 
         aquarium = new Aquarium(panelAqua);
 
