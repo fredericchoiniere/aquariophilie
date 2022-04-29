@@ -48,7 +48,7 @@ public class MethodeGUIMain {
                 }
             }
         } catch (Exception e) {
-            GestionException.GestionExceptionPla(pla);
+            //GestionException.GestionExceptionPla(pla);
         }
     }
 
@@ -79,9 +79,10 @@ public class MethodeGUIMain {
                 }
             }
         } catch (Exception e) {
-            GestionException.GestionExceptionPoi(poi);
+            
+        }                                
         }
-    }
+    
 
     /**
      * @param rectangle
@@ -112,7 +113,7 @@ public class MethodeGUIMain {
                 }
             }
         } catch (Exception e) {
-            GestionException.GestionExceptionObjet();
+            //GestionException.GestionExceptionObjet();
         }
     }
 
@@ -142,7 +143,7 @@ public class MethodeGUIMain {
                 }
             }
         } catch (Exception e) {
-            GestionException.GestionExceptionObjet();
+            //GestionException.GestionExceptionObjet();
         }
     }
 
