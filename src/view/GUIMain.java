@@ -481,6 +481,7 @@ public class GUIMain extends JFrame implements ActionListener {
                         pipette.changerEtatPanel(panelTest);
                     }
                 } catch (NullPointerException e1) {
+                    GestionException.GestionExceptionObjet();
                 }
             }
         });
@@ -502,6 +503,7 @@ public class GUIMain extends JFrame implements ActionListener {
                         panelAqua.repaint();
                     }
                 } catch (NullPointerException e1) {
+                    GestionException.GestionExceptionObjet();
                 }
             }
         });
@@ -728,11 +730,11 @@ public class GUIMain extends JFrame implements ActionListener {
                 try {
                     Control.audioPlayer.resumeAudio();
                 } catch (UnsupportedAudioFileException e1) {
-                    System.out.println("erreur audio");
+                    GestionException.GestionExceptionRadio2();
                 } catch (IOException e1) {
-                    System.out.println("erreur audio");
+                    GestionException.GestionExceptionRadio2();
                 } catch (LineUnavailableException e1) {
-                    System.out.println("erreur audio");
+                    GestionException.GestionExceptionRadio2();
                 }
             }
         });

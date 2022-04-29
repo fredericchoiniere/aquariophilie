@@ -10,6 +10,7 @@ import java.util.List;
 
 import java.util.*;
 import view.GUIMain;
+import model.GestionException;
 import model.MethodeGUIMain;
 import model.environnement.Temps;
 import model.poissons.Poisson;
@@ -51,7 +52,6 @@ public class Eau implements Runnable {
     /* make a randomiser from 1 to 10 */
     public static Random random = new Random();
     public static int randomNumber;
-    
 
     final short valeur_changement = 1;
 
@@ -309,7 +309,6 @@ public class Eau implements Runnable {
     public void variationGH() { // acceptable de 5 à 15
         // avec volume d'eau
 
-
     }
 
     /**
@@ -355,7 +354,7 @@ public class Eau implements Runnable {
         scoreEau = (int) (setScoreAmmo() + setScoreGH() + setScoreKH() + setScoreNitrates() + setScoreNitrites()
                 + setScorePH());
         return scoreEau;
-        //scoreEauNonStatic = scoreEau;
+        // scoreEauNonStatic = scoreEau;
         // System.out.println("Score eau 1 : " + scoreEau);
     }
     /*
@@ -521,7 +520,7 @@ public class Eau implements Runnable {
         jourInitial = jours;
         while (true) {
             jours = GUIMain.jours;
-            //setCompteurJoursCycle(jours - jourInitial);
+            // setCompteurJoursCycle(jours - jourInitial);
 
             if (!Temps.isPaused) {
                 try {
@@ -542,16 +541,13 @@ public class Eau implements Runnable {
                     GUIMain.panelTest.lblScoreEau.setText(toString(GUIMain.eau.getScoreEau()));
 
                     // System.out.println("Compteur jours: " + Eau.compteurJoursCycle);
-                    //System.out.println("déchets: " + sommeDechets);
-
-
+                    // System.out.println("déchets: " + sommeDechets);
 
                     for (short i = 0; i < 6; i++)
                         Poisson.setSante(i);
-                    
 
                     for (CycleAzote cycle : listeCycles) {
-                        //cycle.setCompteurJoursCycle(jours);
+                        // cycle.setCompteurJoursCycle(jours);
                         cycle.incrJoursCalcul();
                         cycle.cycler(jours);
                     }
@@ -561,8 +557,8 @@ public class Eau implements Runnable {
                         actionEnCours = "Cycle nitrates";
                         if (nitrites != 0.0)
                             penteNitrites = nitrites;
-                        //if (dechetsCycleParti)
-                        //    dechetsCycleParti = false;
+                        // if (dechetsCycleParti)
+                        // dechetsCycleParti = false;
                     } else {
                         penteNitrites = nitrites;
                     }
@@ -571,14 +567,13 @@ public class Eau implements Runnable {
                     Thread.sleep(Temps.DUREE);
 
                 } catch (Exception e) {
-                    e.printStackTrace();
-
+                    GestionException.GestionExceptionThreadTemps();
                 }
             } else { // permet de ne pas utiliser 23% du processeur si le temps est en pause
                 try {
                     Thread.sleep(Temps.DUREE);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    GestionException.GestionExceptionThreadTemps();
                 }
             }
 

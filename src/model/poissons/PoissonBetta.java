@@ -6,6 +6,7 @@ import java.awt.*;
 
 import javax.swing.ImageIcon;
 
+import model.GestionException;
 import model.environnement.Temps;
 
 public class PoissonBetta extends Poisson implements Runnable {
@@ -53,7 +54,7 @@ public class PoissonBetta extends Poisson implements Runnable {
         try {
             Thread.sleep(30);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            GestionException.GestionExceptionThreadTemps();
         }
         repaint();
     }
@@ -93,7 +94,7 @@ public class PoissonBetta extends Poisson implements Runnable {
                 try {
                     Thread.sleep(30);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    GestionException.GestionExceptionThreadTemps();
                 }
             }
 

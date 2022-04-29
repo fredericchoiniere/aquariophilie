@@ -48,8 +48,7 @@ public class MethodeGUIMain {
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Veuillez rester à l'intérieur de l'application", "Erreur",
-                    JOptionPane.ERROR_MESSAGE);
+            GestionException.GestionExceptionPla(pla);
         }
     }
 
@@ -75,13 +74,12 @@ public class MethodeGUIMain {
                         setEmpla(emplacement);
                         setEmplaToFish(emplacement, poi, label1, index);
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        GestionException.GestionExceptionPoi(poi);
                     }
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Veuillez rester à l'intérieur de l'application", "Erreur",
-                    JOptionPane.ERROR_MESSAGE);
+            GestionException.GestionExceptionPoi(poi);
         }
     }
 
@@ -114,8 +112,7 @@ public class MethodeGUIMain {
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Veuillez rester à l'intérieur de l'application", "Erreur",
-                    JOptionPane.ERROR_MESSAGE);
+            GestionException.GestionExceptionObjet();
         }
     }
 
@@ -145,8 +142,7 @@ public class MethodeGUIMain {
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Veuillez rester à l'intérieur de l'application", "Erreur",
-                    JOptionPane.ERROR_MESSAGE);
+            GestionException.GestionExceptionObjet();
         }
     }
 

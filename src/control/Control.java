@@ -7,6 +7,7 @@ package control;
 
 import javax.swing.*;
 
+import model.GestionException;
 import model.Radio;
 import view.*;
 
@@ -38,7 +39,7 @@ public class Control {
         }
 
         catch (Exception e) {
-            e.printStackTrace();
+            GestionException.GestionExceptionRadio();
         }
     }
 

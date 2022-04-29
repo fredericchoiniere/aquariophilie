@@ -4,6 +4,7 @@ package model.poissons;
 
 import java.awt.*;
 
+import model.GestionException;
 import model.environnement.Temps;
 
 public class PoissonRouge extends Poisson implements Runnable {
@@ -52,7 +53,7 @@ public class PoissonRouge extends Poisson implements Runnable {
         try {
             Thread.sleep(30);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            GestionException.GestionExceptionThreadTemps();
         }
         repaint();
     }
@@ -92,7 +93,7 @@ public class PoissonRouge extends Poisson implements Runnable {
                 try {
                     Thread.sleep(30);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    GestionException.GestionExceptionThreadTemps();
                 }
             }
 
