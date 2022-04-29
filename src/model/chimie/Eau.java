@@ -365,9 +365,8 @@ public class Eau implements Runnable {
      * @return float
      *         Dicte le comportement des nitrates selon une courbe
      */
-    public float comportNitrates() {
+    public void comportNitrates() {
         nitrates = ((jours / 7) - 4);
-        return nitrates;
     }
 
     /**
