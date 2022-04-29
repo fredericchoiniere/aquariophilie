@@ -4,6 +4,7 @@ package model.poissons;
 
 import java.awt.*;
 
+import model.GestionException;
 import model.environnement.Temps;
 
 public class PoissonNeo extends Poisson implements Runnable {
@@ -53,7 +54,7 @@ public class PoissonNeo extends Poisson implements Runnable {
         try {
             Thread.sleep(50);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            GestionException.GestionExceptionThreadTemps();
         }
         repaint();
     }
@@ -93,7 +94,7 @@ public class PoissonNeo extends Poisson implements Runnable {
                 try {
                     Thread.sleep(50);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    GestionException.GestionExceptionThreadTemps();
                 }
             }
 

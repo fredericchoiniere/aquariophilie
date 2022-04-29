@@ -8,6 +8,8 @@ import java.awt.*;
 import java.text.DecimalFormat;
 
 import javax.swing.*;
+
+import model.GestionException;
 import model.chimie.Molecules;
 import model.environnement.Temps;
 import view.GUIMain;
@@ -168,7 +170,7 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
 
                 Thread.sleep(Temps.DUREE);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                GestionException.GestionExceptionThread();
             }
         }
     }

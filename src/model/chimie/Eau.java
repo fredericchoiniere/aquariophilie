@@ -10,6 +10,7 @@ import java.util.List;
 
 import java.util.*;
 import view.GUIMain;
+import model.GestionException;
 import model.MethodeGUIMain;
 import model.environnement.Temps;
 import model.poissons.Poisson;
@@ -51,7 +52,6 @@ public class Eau implements Runnable {
     /* make a randomiser from 1 to 10 */
     public static Random random = new Random();
     public static int randomNumber;
-    
 
     final short valeur_changement = 1;
 
@@ -64,11 +64,6 @@ public class Eau implements Runnable {
     public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeAmmoniaque = Collections.synchronizedList(listeAmmoniaqueTemp); // Liste synchronisée
     public ListIterator<Float> iteratorAmmoniaque; // Itérateur pour additionner les valeurs d'ammoniaque
-    public ArrayList<Float> listeAmmoniaqueIteration = new ArrayList<Float>(); //
-    // Liste pour itérer dans boucle
-    // public HashSet<Float> setAmmoniaque = new
-    // HashSet<Float>(listeAmmoniaqueTemp); // Liste pour additionner le montant
-    // total d'ammoniaque
 
     public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
@@ -262,21 +257,26 @@ public class Eau implements Runnable {
 
     /**
      * Gère la variation de pH
-     * Non fonctionnel pour l'instant
+     * Diminue avec le temps, augmenté par les plantes
      */
     public void variationPH() { // TODO: à balancer
-        if (kh < 4) {
-            setPH(getPH() - (float) 0.3);
-            setPH(getPH() + (float) (sommeContributionPH * 0.7));
-        }
-        if (kh >= 4 && kh <= 8) {
-            setPH(getPH() - (float) 0.15);
-            setPH(getPH() + (float) (sommeContributionPH * 0.5));
-        }
-        if (kh > 8) { // ph varie moins, mais score non optimal car kh trop élevé
-            setPH(getPH() - (float) 0.1);
+        if (kh < 10 && kh >= 8) { // ph varie moins, mais score non optimal car kh trop élevé
+            setPH(getPH() - (float) 0.05);
             setPH(getPH() + (float) (sommeContributionPH * 0.3));
         }
+        if (kh < 8 && kh >= 6) {
+            setPH(getPH() - (float) 0.1);
+            setPH(getPH() + (float) (sommeContributionPH * 0.5));
+        }
+        if (kh < 6 && kh >= 4) {
+            setPH(getPH() - (float) 0.15);
+            setPH(getPH() + (float) (sommeContributionPH * 0.7));
+        }
+        if (kh < 4) { 
+            setPH(getPH() - (float) 0.3);
+            setPH(getPH() + (float) (sommeContributionPH));
+        }
+        System.out.println("PH: " + getPH() + " sommecontributionph: "  + sommeContributionPH);
     }
 
     /**
@@ -308,7 +308,21 @@ public class Eau implements Runnable {
      */
     public void variationGH() { // acceptable de 5 à 15
         // avec volume d'eau
-
+        if (volumeEau < 37.85 && volumeEau >= 32) {
+            setGH((float) (gh - 0.009));
+        }
+        if (volumeEau < 32 && volumeEau >= 29) {
+            setGH((float) (gh - 0.035));
+        }
+        if (volumeEau < 29 && volumeEau >= 27) {
+            setGH((float) (gh - 0.095));
+        }
+        if (volumeEau < 27 && volumeEau >= 25) {
+            setGH((float) (gh - 0.156));
+        }
+        if (volumeEau < 25) {
+            setGH((float) (gh - 0.315));
+        }
 
     }
 
@@ -329,7 +343,15 @@ public class Eau implements Runnable {
 
         volumeEau = (float) ((hauteur * largeur * longueur) * 0.001);
 
-        // System.out.println("hauteur eau: " + GUIMain.rectEau.getHeight());
+        System.out.println("volume eau: " + volumeEau);
+    }
+
+    public void changerEau(){
+        volumeEau = (float) 37.85;
+        hauteur = 35;
+        kh = 6; // TODO: à checker pour façon différente d'augmenter kh
+        gh = 10;
+        ph = 7;
     }
 
     /**
@@ -355,7 +377,7 @@ public class Eau implements Runnable {
         scoreEau = (int) (setScoreAmmo() + setScoreGH() + setScoreKH() + setScoreNitrates() + setScoreNitrites()
                 + setScorePH());
         return scoreEau;
-        //scoreEauNonStatic = scoreEau;
+        // scoreEauNonStatic = scoreEau;
         // System.out.println("Score eau 1 : " + scoreEau);
     }
     /*
@@ -521,7 +543,7 @@ public class Eau implements Runnable {
         jourInitial = jours;
         while (true) {
             jours = GUIMain.jours;
-            //setCompteurJoursCycle(jours - jourInitial);
+            // setCompteurJoursCycle(jours - jourInitial);
 
             if (!Temps.isPaused) {
                 try {
@@ -531,6 +553,7 @@ public class Eau implements Runnable {
                     absorption();
                     variationPH();
                     variationNiveauEau();
+                    variationGH();
                     variationKH();
 
                     GUIMain.panelTest.lblPH.setText(toString(GUIMain.eau.getPH()));
@@ -542,16 +565,13 @@ public class Eau implements Runnable {
                     GUIMain.panelTest.lblScoreEau.setText(toString(GUIMain.eau.getScoreEau()));
 
                     // System.out.println("Compteur jours: " + Eau.compteurJoursCycle);
-                    //System.out.println("déchets: " + sommeDechets);
-
-
+                    // System.out.println("déchets: " + sommeDechets);
 
                     for (short i = 0; i < 6; i++)
                         Poisson.setSante(i);
-                    
 
                     for (CycleAzote cycle : listeCycles) {
-                        //cycle.setCompteurJoursCycle(jours);
+                        // cycle.setCompteurJoursCycle(jours);
                         cycle.incrJoursCalcul();
                         cycle.cycler(jours);
                     }
@@ -561,8 +581,8 @@ public class Eau implements Runnable {
                         actionEnCours = "Cycle nitrates";
                         if (nitrites != 0.0)
                             penteNitrites = nitrites;
-                        //if (dechetsCycleParti)
-                        //    dechetsCycleParti = false;
+                        // if (dechetsCycleParti)
+                        // dechetsCycleParti = false;
                     } else {
                         penteNitrites = nitrites;
                     }
@@ -571,14 +591,13 @@ public class Eau implements Runnable {
                     Thread.sleep(Temps.DUREE);
 
                 } catch (Exception e) {
-                    e.printStackTrace();
-
+                    GestionException.GestionExceptionThreadTemps();
                 }
             } else { // permet de ne pas utiliser 23% du processeur si le temps est en pause
                 try {
                     Thread.sleep(Temps.DUREE);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    GestionException.GestionExceptionThreadTemps();
                 }
             }
 

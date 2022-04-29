@@ -17,8 +17,15 @@ public class PanelShop extends JPanel implements ActionListener {
 
     // Attributs de la classe
     static int i = 1;
-    JButton poisson_rouge, poisson_betta, poisson_tetra, poisson_neo, planteBlue, planteFern, planteScarlet, planteErdtree;
-    Dimension shop_dimension = new Dimension(80, 80);
+    public static JButton poisson_rouge;
+    public static JButton poisson_betta;
+    public static JButton poisson_tetra;
+    public static JButton poisson_neo;
+    public static JButton planteBlue;
+    public static JButton planteFern;
+    public static JButton planteScarlet;
+    public static JButton planteErdtree;
+    public static Dimension shop_dimension = new Dimension(80, 80);
     JLabel label_tutoriel, label_information;
 
     public PanelShop() {

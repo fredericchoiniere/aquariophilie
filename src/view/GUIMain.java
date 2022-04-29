@@ -275,7 +275,20 @@ public class GUIMain extends JFrame implements ActionListener {
 
         // ajout du label pour le radio
         //radio_on = new JLabel();
-        
+        inventaire_bg.setIcon(new ImageIcon("res/background/inventaire.png"));
+        inventaire_bg.setBounds(10, 130, 250, 475);
+        inventaire_bg.setVisible(false);
+        panelAqua.add(inventaire_bg);
+        inventaire = new Inventaire(inventaire_bg);
+        inventaire.setVisible(false);
+
+        kit_bg.setIcon(new ImageIcon("res/background/kit.png"));
+        kit_bg.setBounds(5, 130, 250, 475);
+        kit_bg.setVisible(false);
+        sante = new Sante(kit_bg);
+        sante.setVisible(Sante.state1, Sante.state2, Sante.state3, Sante.state4, Sante.state5, Sante.state6);
+        panelAqua.add(kit_bg);
+
         radio_on.setIcon(new ImageIcon("res/outils/radio_on.png"));
         radio_on.setBounds(240, 400, 70, 70);
         radio_on.setToolTipText("Mettre la radio sur OFF");
@@ -295,22 +308,12 @@ public class GUIMain extends JFrame implements ActionListener {
         // ajout de l'inventaire
         //inventaire_bg = new JLabel();
         //layerAqua.add(inventaire_bg,1);
-        inventaire_bg.setIcon(new ImageIcon("res/background/inventaire.png"));
-        inventaire_bg.setBounds(10, 150, 250, 475);
-        inventaire_bg.setVisible(false);
-        panelAqua.add(inventaire_bg);
-        inventaire = new Inventaire(inventaire_bg);
-        inventaire.setVisible(false);
+        
 
         // ajout du label pour l'icone de la bouteille
         //kit_bg = new JLabel();
         //layerAqua.add(kit_bg,1);
-        kit_bg.setIcon(new ImageIcon("res/background/kit.png"));
-        kit_bg.setBounds(5, 140, 250, 475);
-        kit_bg.setVisible(false);
-        sante = new Sante(kit_bg);
-        sante.setVisible(Sante.state1, Sante.state2, Sante.state3, Sante.state4, Sante.state5, Sante.state6);
-        panelAqua.add(kit_bg);
+        
 
         // hamis love label
         hamis = new JLabel();
@@ -503,6 +506,7 @@ public class GUIMain extends JFrame implements ActionListener {
                         pipette.changerEtatPanel(panelTest);
                     }
                 } catch (NullPointerException e1) {
+                    GestionException.GestionExceptionObjet();
                 }
             }
         });
@@ -521,9 +525,11 @@ public class GUIMain extends JFrame implements ActionListener {
                     if (MethodeGUIMain.rectAquarium()) {
                         Eau.hauteurEnPixels = 192;
                         Eau.positionEnPixels = 305;
+                        eau.changerEau();
                         panelAqua.repaint();
                     }
                 } catch (NullPointerException e1) {
+                    GestionException.GestionExceptionObjet();
                 }
             }
         });
@@ -647,15 +653,11 @@ public class GUIMain extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
                 inventaire_ouvert.setVisible(true);
                 inventaire_fermer.setVisible(false);
-                inventaire_bg.setBounds(10, 150, 250, 475);
                 inventaire_bg.setVisible(true);
-                
                 inventaire.setVisible(true);
                 hamis.setVisible(false);
                 label_tutoriel.setVisible(false);
                 kit_bg.setVisible(false);
-                //kit_fermer.setBounds(82, 30, size_kit_fermer.width, size_kit_fermer.height);
-                //kit_ouvert.setBounds(82, 30, size_kit_ouvert.width, size_kit_ouvert.height);
                 kit_ouvert.setVisible(false);
                 kit_fermer.setVisible(true);
             }
@@ -673,8 +675,6 @@ public class GUIMain extends JFrame implements ActionListener {
                 kit_bg.setVisible(false);
                 inventaire_fermer.setVisible(true);
                 inventaire_ouvert.setVisible(false);
-                //kit_ouvert.setBounds(82, 30, size_kit_ouvert.width, size_kit_ouvert.height);
-                //kit_fermer.setBounds(82, 30, size_kit_ouvert.width, size_kit_ouvert.height);
             }
         });
 
@@ -690,8 +690,6 @@ public class GUIMain extends JFrame implements ActionListener {
                 inventaire_fermer.setVisible(true);
                 inventaire_ouvert.setVisible(false);
                 setVisibleKit(true);
-                //kit_fermer.setBounds(82, 30, size_kit_fermer.width, size_kit_fermer.height);
-                //kit_ouvert.setBounds(82, 30, size_kit_ouvert.width, size_kit_ouvert.height);
             }
         });
 
@@ -749,17 +747,17 @@ public class GUIMain extends JFrame implements ActionListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 radio_off.setVisible(false);
-                layerAqua.add(radio_on, 0);
+                //layerAqua.add(radio_on, 0);
                 radio_on.setVisible(true);
                 label_tutoriel.setVisible(false);
                 try {
                     Control.audioPlayer.resumeAudio();
                 } catch (UnsupportedAudioFileException e1) {
-                    System.out.println("erreur audio");
+                    GestionException.GestionExceptionRadio2();
                 } catch (IOException e1) {
-                    System.out.println("erreur audio");
+                    GestionException.GestionExceptionRadio2();
                 } catch (LineUnavailableException e1) {
-                    System.out.println("erreur audio");
+                    GestionException.GestionExceptionRadio2();
                 }
             }
         });
@@ -1316,6 +1314,7 @@ public class GUIMain extends JFrame implements ActionListener {
         ciseau_label.setVisible(true);
         filet_label.setVisible(true);
         label_information.setVisible(true);
+        pichet_label.setVisible(true);
     }
 
     /**
@@ -1323,18 +1322,10 @@ public class GUIMain extends JFrame implements ActionListener {
      */
     public void setOutilsInvisible() {
         lblPipette.setVisible(false);
-        //inventaire_ouvert.setVisible(false);
-        //inventaire_fermer.setVisible(false);
-        //inventaire_bg.setVisible(false);
-        //label_argent_aqua.setVisible(false);
         ciseau_label.setVisible(false);
         filet_label.setVisible(false);
         label_information.setVisible(false);
-        //kit_bg.setVisible(false);
-        //kit_fermer.setVisible(false);
-        //kit_ouvert.setVisible(false);
-        //kit_fermer.setBounds(82, 30, 80, 80);
-        //kit_ouvert.setBounds(82, 30, 80, 80);
+        pichet_label.setVisible(false);
     }
 
     @Override
