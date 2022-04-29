@@ -25,7 +25,7 @@ public class PanelShop extends JPanel implements ActionListener {
     public static JButton planteFern;
     public static JButton planteScarlet;
     public static JButton planteErdtree;
-    Dimension shop_dimension = new Dimension(80, 80);
+    public static Dimension shop_dimension = new Dimension(80, 80);
     JLabel label_tutoriel, label_information;
 
     public PanelShop() {
