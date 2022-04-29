@@ -627,7 +627,6 @@ public class GUIMain extends JFrame implements ActionListener {
         inventaire_ouvert.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                
                 setCursor(Toolkit.getDefaultToolkit().createCustomCursor(tetra_curseur.getImage(),new Point(0, 0), "curseur tétra"));
                 
                 inventaire_ouvert.setVisible(false);
