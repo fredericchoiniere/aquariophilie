@@ -40,7 +40,7 @@ public class GUIMain extends JFrame implements ActionListener {
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, eau_label, inventaire_ouvert,
             inventaire_fermer, inventaire_bg, filet_label, pause_label, reprendre_label, label_tutoriel,
             label_information, hamis, ciseau_label, label_argent, pichet_label, radio_on, radio_off, kit_ouvert,
-            kit_fermer, kit_bg;
+            kit_fermer, kit_bg, plant;
     public static JLabel lblPipette = new JLabel();
     public static JLabel label_argent_aqua = new JLabel("");
     public static JLabel label_argent_shop = new JLabel("");
@@ -56,6 +56,8 @@ public class GUIMain extends JFrame implements ActionListener {
     // création des rectangles
     Rectangle rectTest, rectEmp1, rectEmp2, rectEmp3, rectAqua1, rectAqua2, rectAqua3, rectAqua4, rectAqua5,
             rectAqua6;
+
+    public static Rectangle rectPlant;
 
     public static Rectangle rectAquarium;
     public static Rectangle rectEau;
@@ -315,9 +317,15 @@ public class GUIMain extends JFrame implements ActionListener {
         // hamis love label
         hamis = new JLabel();
         hamis.setIcon(new ImageIcon("res/background/hamis_love.png"));
-        hamis.setBounds(125, 225, 25, 25);
+        hamis.setBounds(125, 215, 25, 25);
         hamis.setVisible(false);
         panelAqua.add(hamis);
+
+        plant = new JLabel();
+        plant.setIcon(new ImageIcon("res/background/hamis_love.png"));
+        plant.setBounds(845, 570, 25, 25);
+        plant.setVisible(false);
+        panelAqua.add(plant);
 
         // ajout du label vide
         empty = new JLabel("");
@@ -375,6 +383,9 @@ public class GUIMain extends JFrame implements ActionListener {
         rectAqua4 = new Rectangle(365, 397, 70, 70);
         rectAqua5 = new Rectangle(474, 397, 70, 70);
         rectAqua6 = new Rectangle(584, 397, 70, 70);
+
+        rectPlant = new Rectangle(850,500, 100, 200);
+        
 
         aquarium = new Aquarium(panelAqua);
 
@@ -530,6 +541,8 @@ public class GUIMain extends JFrame implements ActionListener {
                         Eau.positionEnPixels = 305;
                         //eau.changerEau();
                         panelAqua.repaint();
+                    } else if(MethodeGUIMain.rectPlant()){
+                        plant.setVisible(true);
                     }
                 } catch (NullPointerException e1) {
                     GestionException.GestionExceptionObjet();

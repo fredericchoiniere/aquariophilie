@@ -79,7 +79,7 @@ public class MethodeGUIMain {
                 }
             }
         } catch (Exception e) {
-            
+
         }                                
         }
     
@@ -695,6 +695,18 @@ public class MethodeGUIMain {
                 && GUIMain.panelAqua.getMousePosition().getX() <= GUIMain.rectAquarium.getMaxX()
                 && GUIMain.panelAqua.getMousePosition().getY() >= GUIMain.rectAquarium.getMinY()
                 && GUIMain.panelAqua.getMousePosition().getY() <= GUIMain.rectAquarium.getMaxY()) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public static boolean rectPlant() {
+        if (GUIMain.panelAqua.getMousePosition().getX() >= GUIMain.rectPlant.getMinX()
+                && GUIMain.panelAqua.getMousePosition().getX() <= GUIMain.rectPlant.getMaxX()
+                && GUIMain.panelAqua.getMousePosition().getY() >= GUIMain.rectPlant.getMinY()
+                && GUIMain.panelAqua.getMousePosition().getY() <= GUIMain.rectPlant.getMaxY()) {
             return true;
         } else {
             return false;
