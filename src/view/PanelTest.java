@@ -473,40 +473,40 @@ public class PanelTest extends JPanel implements ActionListener {
         layersPT.add(lblNitrates);
     
         //Label qui affiche la valeur du score du ph
-        //lblScorePH.setText(GUIMain.eau.toString((float)));
-        lblPH.setBounds(76, 80, 25, 20);
-        layersPT.setLayer(lblPH, 2);
-        layersPT.add(lblPH);
+        lblScorePH.setText(GUIMain.eau.toString((GUIMain.eau.setScorePH())));
+        lblScorePH.setBounds(76, 60, 25, 20);
+        layersPT.setLayer(lblScorePH, 2);
+        layersPT.add(lblScorePH);
 
         //Label qui affiche la valeur du score du gh
-        lblPH.setText(GUIMain.eau.toString(GUIMain.eau.getPH()));
-        lblPH.setBounds(76, 80, 25, 20);
-        layersPT.setLayer(lblPH, 2);
-        layersPT.add(lblPH);
+        lblScoreGH.setText(GUIMain.eau.toString(GUIMain.eau.setScoreGH()));
+        lblScoreGH.setBounds(181, 60, 25, 20);
+        layersPT.setLayer(lblScoreGH, 2);
+        layersPT.add(lblScoreGH);
 
         //Label qui affiche la valeur du score du kh
-        lblPH.setText(GUIMain.eau.toString(GUIMain.eau.getPH()));
-        lblPH.setBounds(76, 80, 25, 20);
-        layersPT.setLayer(lblPH, 2);
-        layersPT.add(lblPH);
+        lblScoreKH.setText(GUIMain.eau.toString(GUIMain.eau.setScoreKH()));
+        lblScoreKH.setBounds(286, 60, 25, 20);
+        layersPT.setLayer(lblScoreKH, 2);
+        layersPT.add(lblScoreKH);
 
         //Label qui affiche la valeur du score de l'ammoniaque
-        lblPH.setText(GUIMain.eau.toString(GUIMain.eau.getPH()));
-        lblPH.setBounds(76, 80, 25, 20);
-        layersPT.setLayer(lblPH, 2);
-        layersPT.add(lblPH);
+        lblScoreAmmo.setText(GUIMain.eau.toString(GUIMain.eau.setScoreAmmo()));
+        lblScoreAmmo.setBounds(391, 60, 25, 20);
+        layersPT.setLayer(lblScoreAmmo, 2);
+        layersPT.add(lblScoreAmmo);
 
         //Label qui affiche la valeur du score des nitrites
-        lblPH.setText(GUIMain.eau.toString(GUIMain.eau.getPH()));
-        lblPH.setBounds(76, 80, 25, 20);
-        layersPT.setLayer(lblPH, 2);
-        layersPT.add(lblPH);
+        lblScoreNitrites.setText(GUIMain.eau.toString(GUIMain.eau.setScoreNitrites()));
+        lblScoreNitrites.setBounds(496, 60, 25, 20);
+        layersPT.setLayer(lblScoreNitrites, 2);
+        layersPT.add(lblScoreNitrites);
 
         //Label qui affiche la valeur du score des nitrates
-        lblPH.setText(GUIMain.eau.toString(GUIMain.eau.getPH()));
-        lblPH.setBounds(76, 80, 25, 20);
-        layersPT.setLayer(lblPH, 2);
-        layersPT.add(lblPH);
+        lblScoreNitrates.setText(GUIMain.eau.toString(GUIMain.eau.setScoreNitrates()));
+        lblScoreNitrates.setBounds(601, 60, 25, 20);
+        layersPT.setLayer(lblScoreNitrates, 2);
+        layersPT.add(lblScoreNitrates);
 
 
         lblScoreEau = new JLabel();

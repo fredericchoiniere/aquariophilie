@@ -525,7 +525,7 @@ public class GUIMain extends JFrame implements ActionListener {
                     if (MethodeGUIMain.rectAquarium()) {
                         Eau.hauteurEnPixels = 192;
                         Eau.positionEnPixels = 305;
-                        eau.changerEau();
+                        //eau.changerEau();
                         panelAqua.repaint();
                     }
                 } catch (NullPointerException e1) {
