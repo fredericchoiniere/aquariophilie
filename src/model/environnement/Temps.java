@@ -32,7 +32,7 @@ public class Temps {
      *      Affiche le jour actuel
      */
     public static void jourAJour(int jour){
-        GUIMain.label_jours.setText("J" + Integer.toString(jour));
+        GUIMain.label_jours.setText(Integer.toString(jour));
     }
 
     /**

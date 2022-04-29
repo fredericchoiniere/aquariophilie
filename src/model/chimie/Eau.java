@@ -33,8 +33,8 @@ public class Eau implements Runnable {
     public float jours = GUIMain.jours;
     public float jourInitial = 0;
     public float hauteur = 35, largeur = 20, longueur = (float) 54.07; // Dimensions de l'aquarium de 10 gallons/37.85L
-    public static int hauteurEnPixels = 192; // Hauteur en pixels de l'eau de l'aquarium rempli
-    public static int positionEnPixels = 305;
+    public static int hauteurEnPixels = 177; //192// Hauteur en pixels de l'eau de l'aquarium rempli
+    public static int positionEnPixels = 299;//305
 
     private static float scorePH;
     private static float scoreGH;
