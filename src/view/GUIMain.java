@@ -110,7 +110,7 @@ public class GUIMain extends JFrame implements ActionListener {
     public static JProgressBar prog1, prog2, prog3, prog4, prog5, prog6;
 
     //Layeredpane
-    JLayeredPane layerAqua = new JLayeredPane();
+    //JLayeredPane layerAqua = new JLayeredPane();
    
 
     public GUIMain() { // création du constructeur GUIMain
@@ -154,14 +154,14 @@ public class GUIMain extends JFrame implements ActionListener {
         kit_bg = new JLabel();
         radio_on = new JLabel();
         radio_off = new JLabel();
-
+        /*
         layerAqua.setBounds(0, 0, 1000, 700);
         layerAqua.add(inventaire_bg, 1);
         layerAqua.add(kit_bg, 1);
         layerAqua.add(radio_on, 1);
         layerAqua.add(radio_off, 1);
         add(layerAqua);
-
+        */
         // ajout du panel de l'interface du kit
         panelTest = new PanelTest();
         panelTest.setBounds(150, 100, 700, 500);
@@ -288,7 +288,7 @@ public class GUIMain extends JFrame implements ActionListener {
         radio_off.setIcon(new ImageIcon("res/outils/radio_off.png"));
         radio_off.setBounds(240, 400, 70, 70);
         radio_off.setToolTipText("Mettre la radio sur ON");
-        layerAqua.add(radio_off,0);
+        //layerAqua.add(radio_off,0);
         radio_off.setVisible(true);
         panelAqua.add(radio_off);
 
@@ -296,7 +296,7 @@ public class GUIMain extends JFrame implements ActionListener {
         //inventaire_bg = new JLabel();
         //layerAqua.add(inventaire_bg,1);
         inventaire_bg.setIcon(new ImageIcon("res/background/inventaire.png"));
-        inventaire_bg.setBounds(5, 150, 250, 475);
+        inventaire_bg.setBounds(10, 150, 250, 475);
         inventaire_bg.setVisible(false);
         panelAqua.add(inventaire_bg);
         inventaire = new Inventaire(inventaire_bg);
@@ -630,16 +630,15 @@ public class GUIMain extends JFrame implements ActionListener {
         inventaire_ouvert.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
-                        tetra_curseur.getImage(),
-                        new Point(0, 0), "curseur tétra"));
+                
+                setCursor(Toolkit.getDefaultToolkit().createCustomCursor(tetra_curseur.getImage(),new Point(0, 0), "curseur tétra"));
                 
                 inventaire_ouvert.setVisible(false);
                 inventaire_fermer.setVisible(true);
-                layerAqua.add(inventaire_bg, 1);
+                //layerAqua.add(inventaire_bg, 1);
                 inventaire_bg.setVisible(false);
-                //inventaire.setVisible(false);
                 label_tutoriel.setVisible(false);
+                //inventaire.setVisible(false);
                 //kit_bg.setVisible(false);
                 //kit_ouvert.setBounds(82, 30, size_kit_ouvert.width, size_kit_ouvert.height);
                 //kit_fermer.setBounds(82, 30, size_kit_ouvert.width, size_kit_ouvert.height);
@@ -652,8 +651,9 @@ public class GUIMain extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
                 inventaire_ouvert.setVisible(true);
                 inventaire_fermer.setVisible(false);
-                
+                inventaire_bg.setBounds(10, 150, 250, 475);
                 inventaire_bg.setVisible(true);
+                
                 inventaire.setVisible(true);
                 hamis.setVisible(false);
                 label_tutoriel.setVisible(false);
