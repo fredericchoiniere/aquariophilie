@@ -22,6 +22,7 @@ public class Eau implements Runnable {
     private float penteNitrites = 0;
     public float sommeAbsorptionNitrates = 0; // score global des plantes
     public float sommeContributionPH = 0;
+    public float variationPH = 0;
     public float volumeEau = (float) 37.85;
     public static float nitrites = 0; // Doit etre 0, maximum 5mg par litre
     public static float nitrates = 0; // max 50mg/L
@@ -35,7 +36,7 @@ public class Eau implements Runnable {
     public static int hauteurEnPixels = 177; //192// Hauteur en pixels de l'eau de l'aquarium rempli
     public static int positionEnPixels = 299;//305
 
-    private static float scorePH;
+    private static float scorePH = 0;
     private static float scoreGH;
     private static float scoreKH;
     private static float scoreAmmo;
@@ -48,7 +49,6 @@ public class Eau implements Runnable {
     public int nbAtomeO = 2103;
     public int nbAtomeH = 4206;
     public int scoreEau = 100;
-    /* make a randomiser from 1 to 10 */
     public static Random random = new Random();
     public static int randomNumber;
     
@@ -370,21 +370,24 @@ public class Eau implements Runnable {
      *         Retourne la valeur du score pour le PH qui cotribue pour (14/100) du
      *         score de l'eau
      */
-    public float setScorePH() {
+    public float setScorePH() { // TODO: rentre dans le négatif, à vérifier avec autres scores
 
-        float variationPH;
+        //float variationPH;
         //float scorePH=0;
 
         if (ph >= 5 && ph <= 9) {
             variationPH = 0;
             scorePH = 14;
-        } else if (ph < 5) {
-            variationPH = 5 - ph;
-            scorePH = ((100 - (20 * variationPH)) * (14 / 100));
-        } else if (ph > 9) {
-            variationPH = ph - 9;
-            scorePH = ((100 - (20 * variationPH)) * (14 / 100));
+        } else if (getPH() < 5) {
+            variationPH = 5 - getPH();
+            System.out.println("variaph: " + variationPH);
+            scorePH = (float) ((100.0 - (20.0 * variationPH)) * (14.0 / 100.0));
+        } else if (getPH() > 9) {
+            variationPH = getPH() - 9;
+            scorePH = (float) ((100.0 - (20.0 * variationPH)) * (14.0 / 100.0));
         }
+        
+        System.out.println("scoreph: " + scorePH);
         return scorePH;
     }
 
