@@ -1,3 +1,5 @@
+// Jérémie Caron    itération 3
+
 package model;
 
 import java.io.File;

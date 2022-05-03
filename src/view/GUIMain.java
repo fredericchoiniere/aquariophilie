@@ -1,5 +1,6 @@
 //Jérémie Caron, Frédéric Choinière     itération 1
 //Jérémie Caron, Frédéric Choinière     itération 2
+// Jérémie Caron    itération 3
 //Classe d'affichage principale
 
 package view;

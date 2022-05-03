@@ -1,6 +1,7 @@
 //Jérémie Caron     itération 1
 //Jérémie Caron, Frédéric Choinière     itération 2
-//Classe pour l'affichage du magasin, pour itération 2
+// Jérémie Caron    itération 3
+//Classe pour l'affichage du magasin, pour itération 3
 
 package view.tabs;
 

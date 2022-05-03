@@ -2,6 +2,8 @@
 
 package model.plantes;
 
+// Jérémie Caron    itération 3
+
 import javax.swing.ImageIcon;
 
 public class BlueBlue extends Plante {

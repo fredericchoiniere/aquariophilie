@@ -1,4 +1,5 @@
 //Jérémie Caron, Frédéric Choinière    itération 2
+// Jérémie Caron    itération 3
 
 package model;
 

@@ -347,9 +347,8 @@ public class Eau implements Runnable {
      */
     public void variationNiveauEau() {
 
-        hauteur -= 0.182;
-
         if (hauteurEnPixels > 100) {
+            hauteur -= 0.182;
             hauteurEnPixels -= valeur_changement;
             positionEnPixels += valeur_changement;
             MethodeGUIMain.setEauDimensions(positionEnPixels, hauteurEnPixels);
@@ -357,8 +356,8 @@ public class Eau implements Runnable {
             MethodeGUIMain.setEauDimensions(positionEnPixels, hauteurEnPixels);
         }
         volumeEau = (float) ((hauteur * largeur * longueur) * 0.001);
-        System.out.println("volume eau: " + volumeEau);
-        System.out.println("GH: " + gh);
+        //System.out.println("volume eau: " + volumeEau);
+        //System.out.println("GH: " + gh);
 
         // System.out.println("hauteur eau: " + GUIMain.rectEau.getHeight());
     }

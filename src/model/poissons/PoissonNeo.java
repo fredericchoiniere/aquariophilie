@@ -1,4 +1,4 @@
-//Frédéric Choinière     itération 3
+//Frédéric Choinière, Jérémie Caron  itération 3
 
 package model.poissons;
 
