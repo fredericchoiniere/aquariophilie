@@ -271,19 +271,6 @@ public class Eau implements Runnable {
      * pH diminue avec temps, plantes augmentent pH
      */
     public void variationPH() { // TODO: à balancer
-        /* if (kh < 4) {
-            setPH(getPH() - (float) 0.14);
-            setPH(getPH() + (float) (sommeContributionPH * 0.6));
-        }
-        if (kh >= 4 && kh <= 8) {
-            setPH(getPH() - (float) 0.08);
-            setPH(getPH() + (float) (sommeContributionPH * 0.4));
-        }
-        if (kh > 8) { // ph varie moins, mais score non optimal car kh trop élevé
-            setPH(getPH() - (float) 0.04);
-            setPH(getPH() + (float) (sommeContributionPH * 0.2));
-        } */
-
         if (getKH() > 8) {
             setPH(getPH() - (float) 0.008);
             setPH(getPH() + (float) (sommeContributionPH * 0.05));
@@ -373,7 +360,7 @@ public class Eau implements Runnable {
         // System.out.println("hauteur eau: " + GUIMain.rectEau.getHeight());
     }
     
-    public void changerEau(){
+    public void changerEau(){ // TODO: implémenter cooldown avec scheduleatfixedrate pour outils
         volumeEau = (float) 37.85;
         hauteur = 35;
         kh = 6; // TODO: à checker pour façon différente d'augmenter kh

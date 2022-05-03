@@ -4,8 +4,6 @@ package model.poissons;
 
 import java.awt.*;
 
-import javax.swing.ImageIcon;
-
 import model.GestionException;
 import model.environnement.Temps;
 
