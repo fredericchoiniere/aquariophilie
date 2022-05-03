@@ -1,5 +1,6 @@
 //Jérémie Caron     itération 1
 //Jérémie Caron     itération 2
+// Jérémie Caron    itération 3
 //Classe qui gère l'inventaire et ses emplacements
 
 package model.jeu;

@@ -1,5 +1,6 @@
 // Frédéric Choinière   itération 1
 // Frédéric Choinière, Jérémie Caron   itération 2
+// Jérémie Caron    itération 3
 // Classe qui contrôle le temps et le timer global
 
 package model.environnement;

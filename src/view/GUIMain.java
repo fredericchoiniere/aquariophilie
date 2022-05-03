@@ -1,5 +1,6 @@
 //Jérémie Caron, Frédéric Choinière     itération 1
 //Jérémie Caron, Frédéric Choinière     itération 2
+// Jérémie Caron    itération 3
 //Classe d'affichage principale
 
 package view;
@@ -383,8 +384,7 @@ public class GUIMain extends JFrame implements ActionListener {
         rectAqua5 = new Rectangle(474, 397, 70, 70);
         rectAqua6 = new Rectangle(584, 397, 70, 70);
 
-        rectPlant = new Rectangle(850,500, 100, 200);
-        
+        rectPlant = new Rectangle(850, 500, 100, 200);
 
         aquarium = new Aquarium(panelAqua);
 
@@ -540,7 +540,7 @@ public class GUIMain extends JFrame implements ActionListener {
                         Eau.positionEnPixels = 298;
                         eau.changerEau();
                         panelAqua.repaint();
-                    } else if(MethodeGUIMain.rectPlant()){
+                    } else if (MethodeGUIMain.rectPlant()) {
                         plant.setVisible(true);
                     }
                 } catch (NullPointerException e1) {
