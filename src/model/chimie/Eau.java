@@ -297,7 +297,7 @@ public class Eau implements Runnable {
             if (!dechetsCycleParti) {
                 dechetsCycleParti = true;
                 partirCycle(jours);
-               // System.out.println("cycle démarré, boolean " + dechetsCycleParti);
+                // System.out.println("cycle démarré, boolean " + dechetsCycleParti);
             }
         }
     }
@@ -383,14 +383,14 @@ public class Eau implements Runnable {
             scorePH = 14;
         } else if (getPH() < 5) {
             variationPH = 5 - getPH();
-            //System.out.println("variaph: " + variationPH);
+            // System.out.println("variaph: " + variationPH);
             scorePH = (float) ((100.0 - (20.0 * variationPH)) * (14.0 / 100.0));
         } else if (getPH() > 9) {
             variationPH = getPH() - 9;
             scorePH = (float) ((100.0 - (20.0 * variationPH)) * (14.0 / 100.0));
         }
 
-        //System.out.println("scoreph: " + scorePH);
+        // System.out.println("scoreph: " + scorePH);
         return scorePH;
     }
 
