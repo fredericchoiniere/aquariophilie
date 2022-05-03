@@ -6,6 +6,7 @@ package view.tabs;
 import java.awt.*;
 import javax.swing.*;
 
+
 import model.MethodeGUIMain;
 
 public class PanelAqua extends JPanel { // extends JPanel pour créer un Jpanel
