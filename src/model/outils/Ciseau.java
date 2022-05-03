@@ -1,7 +1,7 @@
 //Jérémie Caron     itération 2
 //Classe pour l'outil filet
 
-package model.item.outils;
+package model.outils;
 
 import javax.swing.*;
 

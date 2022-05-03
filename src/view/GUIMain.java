@@ -20,7 +20,7 @@ import control.Control;
 import model.*;
 import model.chimie.*;
 import model.environnement.Temps;
-import model.item.outils.*;
+import model.outils.*;
 import model.jeu.*;
 import model.plantes.Plante;
 import model.poissons.*;
@@ -537,7 +537,7 @@ public class GUIMain extends JFrame implements ActionListener {
                     if (MethodeGUIMain.rectAquarium()) {
                         Eau.hauteurEnPixels = 177;
                         Eau.positionEnPixels = 298;
-                        // eau.changerEau();
+                        eau.changerEau();
                         panelAqua.repaint();
                     } else if (MethodeGUIMain.rectPlant()) {
                         plant.setVisible(true);
