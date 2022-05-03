@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 public class Argent {
 
     // attributs de la classe
-    public static int argent = 10000;
+    public static int argent = 500;
 
     public static int emp1 = 0;
     public static int emp2 = 0;

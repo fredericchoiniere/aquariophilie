@@ -268,20 +268,41 @@ public class Eau implements Runnable {
 
     /**
      * Gère la variation de pH
-     * Non fonctionnel pour l'instant
+     * pH diminue avec temps, plantes augmentent pH
      */
     public void variationPH() { // TODO: à balancer
-        if (kh < 4) {
+        /* if (kh < 4) {
             setPH(getPH() - (float) 0.14);
-            setPH(getPH() + (float) (sommeContributionPH * 0.7));
+            setPH(getPH() + (float) (sommeContributionPH * 0.6));
         }
         if (kh >= 4 && kh <= 8) {
             setPH(getPH() - (float) 0.08);
-            setPH(getPH() + (float) (sommeContributionPH * 0.5));
+            setPH(getPH() + (float) (sommeContributionPH * 0.4));
         }
         if (kh > 8) { // ph varie moins, mais score non optimal car kh trop élevé
             setPH(getPH() - (float) 0.04);
-            setPH(getPH() + (float) (sommeContributionPH * 0.3));
+            setPH(getPH() + (float) (sommeContributionPH * 0.2));
+        } */
+
+        if (getKH() > 8) {
+            setPH(getPH() - (float) 0.008);
+            setPH(getPH() + (float) (sommeContributionPH * 0.05));
+        }
+        if (getKH() <= 8 && getKH() > 6) {
+            setPH(getPH() - (float) 0.014);
+            setPH(getPH() + (float) (sommeContributionPH * 0.09));
+        }
+        if (getKH() <= 6 && getKH() > 5) {
+            setPH(getPH() - (float) 0.024);
+            setPH(getPH() + (float) (sommeContributionPH * 0.14));
+        }
+        if (getKH() <= 5 && getKH() > 4) {
+            setPH(getPH() - (float) 0.068);
+            setPH(getPH() + (float) (sommeContributionPH * 0.22));
+        }
+        if (getKH() <= 4) {
+            setPH(getPH() - (float) 0.128);
+            setPH(getPH() + (float) (sommeContributionPH * 0.4));
         }
     }
 
@@ -314,7 +335,21 @@ public class Eau implements Runnable {
      */
     public void variationGH() { // acceptable de 5 à 15
         // avec volume d'eau
-
+        if (volumeEau < 37.85 && volumeEau >= 32) {
+            setGH((float) (gh - 0.009));
+        }
+        if (volumeEau < 32 && volumeEau >= 29) {
+            setGH((float) (gh - 0.035));
+        }
+        if (volumeEau < 29 && volumeEau >= 27) {
+            setGH((float) (gh - 0.095));
+        }
+        if (volumeEau < 27 && volumeEau >= 25) {
+            setGH((float) (gh - 0.156));
+        }
+        if (volumeEau < 25) {
+            setGH((float) (gh - 0.315));
+        }
 
     }
 
@@ -336,6 +371,14 @@ public class Eau implements Runnable {
         volumeEau = (float) ((hauteur * largeur * longueur) * 0.001);
 
         // System.out.println("hauteur eau: " + GUIMain.rectEau.getHeight());
+    }
+    
+    public void changerEau(){
+        volumeEau = (float) 37.85;
+        hauteur = 35;
+        kh = 6; // TODO: à checker pour façon différente d'augmenter kh
+        gh = 10;
+        ph = 7;
     }
 
     /**
@@ -393,7 +436,7 @@ public class Eau implements Runnable {
             scorePH = (float) ((100.0 - (20.0 * variationPH)) * (14.0 / 100.0));
         }
         
-        System.out.println("scoreph: " + scorePH);
+        //System.out.println("scoreph: " + scorePH);
         return scorePH;
     }
 
@@ -539,6 +582,7 @@ public class Eau implements Runnable {
                     absorption();
                     variationPH();
                     variationNiveauEau();
+                    variationGH();
                     variationKH();
 
                     GUIMain.panelTest.lblPH.setText(toString(GUIMain.eau.getPH()));

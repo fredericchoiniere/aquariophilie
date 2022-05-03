@@ -1,7 +1,7 @@
 //Jérémie Caron     itération 1
 //Classe mère des différents outils
 
-package model.item.outils;
+package model.outils;
 
 public class Outils {
 

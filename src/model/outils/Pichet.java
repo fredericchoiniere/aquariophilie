@@ -1,21 +1,21 @@
-//Jérémie Caron     itération 2
-//Classe pour l'outil filet
+//Jérémie Caron     itération 3
+//Classe pour l'outil pichet
 
-package model.item.outils;
+package model.outils;
 
 import javax.swing.*;
 
 import java.awt.*;
 
-public class Filet extends Outils {
+public class Pichet extends Outils {
 
     // attributs de la classe
-    ImageIcon icone_filet; 
+    ImageIcon icone_pilet; 
 
-    public Filet() { 
+    public Pichet() { 
         super();
         adapterNom();
-        icone_filet = new ImageIcon("res/outils/filet.png"); 
+        icone_pilet = new ImageIcon("res/outils/pichet.png"); 
     }
 
     
@@ -24,7 +24,7 @@ public class Filet extends Outils {
      *             méthode qui permet d'afficher l'image de l'outil 
      */
     public void setIcon(JLabel label) {
-        label.setIcon(icone_filet);
+        label.setIcon(icone_pilet);
     }
 
     
@@ -34,7 +34,7 @@ public class Filet extends Outils {
      */
     public void changerCurseurPanel(JPanel panel) {
             panel.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
-                    icone_filet.getImage(),
+                    icone_pilet.getImage(),
                     new Point(0, 0), "curseur plein"));
        
 }
