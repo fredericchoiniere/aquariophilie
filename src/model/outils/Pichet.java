@@ -10,21 +10,20 @@ import java.awt.*;
 public class Pichet extends Outils {
 
     // attributs de la classe
-    ImageIcon icone_pilet; 
+    ImageIcon icone_pichet; 
 
     public Pichet() { 
         super();
         adapterNom();
-        icone_pilet = new ImageIcon("res/outils/pichet.png"); 
+        icone_pichet = new ImageIcon("res/outils/pichet.png"); 
     }
 
-    
     /** 
      * @param label
      *             méthode qui permet d'afficher l'image de l'outil 
      */
     public void setIcon(JLabel label) {
-        label.setIcon(icone_pilet);
+        label.setIcon(icone_pichet);
     }
 
     
@@ -34,7 +33,7 @@ public class Pichet extends Outils {
      */
     public void changerCurseurPanel(JPanel panel) {
             panel.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
-                    icone_pilet.getImage(),
+                    icone_pichet.getImage(),
                     new Point(0, 0), "curseur plein"));
        
 }

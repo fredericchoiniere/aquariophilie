@@ -433,9 +433,6 @@ public class PanelTest extends JPanel implements ActionListener {
             }
         });
 
-        /* cycle = GUIMain.cycleInitial;
-        cycle1 = new Thread(cycle); */ //TODO:?? 
-
         //Label qui affiche la valeur du ph
         lblPH.setText(GUIMain.eau.toString(GUIMain.eau.getPH()));
         lblPH.setBounds(76, 80, 25, 20);

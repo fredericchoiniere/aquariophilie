@@ -40,7 +40,7 @@ public class GUIMain extends JFrame implements ActionListener {
     // création des labels
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, eau_label, inventaire_ouvert,
             inventaire_fermer, inventaire_bg, filet_label, pause_label, reprendre_label, label_tutoriel,
-            label_information, hamis, ciseau_label, label_argent, pichet_label, radio_on, radio_off, kit_ouvert,
+            label_information, hamis, ciseau_label, label_argent, pichet_label, coquillage_label, radio_on, radio_off, kit_ouvert,
             kit_fermer, kit_bg, plant;
     public static JLabel lblPipette = new JLabel();
     public static JLabel label_argent_aqua = new JLabel("");
@@ -75,6 +75,7 @@ public class GUIMain extends JFrame implements ActionListener {
     Filet filet;
     Ciseau ciseau;
     Pichet pichet;
+    Coquillage coquillage;
     ImageIcon tetra_curseur;
     ImageIcon rajoutIcon = new ImageIcon();
     ImageIcon iconeAppli = new ImageIcon("res/background/icone_aquariophilie.png");
@@ -209,6 +210,15 @@ public class GUIMain extends JFrame implements ActionListener {
         pichet_label.setBounds(912, 123, size_pichet.width, size_pichet.height);
         pichet_label.setVisible(true);
         panelAqua.add(pichet_label);
+
+        // ajout du label pour le pichet
+        coquillage = new Coquillage();
+        coquillage_label = new JLabel();
+        coquillage.setIcon(coquillage_label);
+        Dimension size_coquillage = coquillage_label.getPreferredSize();
+        coquillage_label.setBounds(872, 270, size_coquillage.width, size_coquillage.height);
+        coquillage_label.setVisible(true);
+        panelAqua.add(coquillage_label);
 
         // ajout de l'icone de notre kit ouvert
         aquarium_kit_ouvert = new JLabel();
@@ -542,6 +552,29 @@ public class GUIMain extends JFrame implements ActionListener {
                         panelAqua.repaint();
                     } else if (MethodeGUIMain.rectPlant()) {
                         plant.setVisible(true);
+                    }
+                } catch (NullPointerException e1) {
+                    GestionException.GestionExceptionObjet();
+                }
+            }
+        });
+
+        coquillage_label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                coquillage.changerCurseurPanel(panelAqua);
+                label_tutoriel.setVisible(false);
+                aquarium_kit_ouvert.setVisible(false);
+                aquarium_kit_fermer.setVisible(true);
+                panelTest.setVisible(false);
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                try {
+                    basicCursor();
+                    if (MethodeGUIMain.rectAquarium()) {
+                        eau.setKH((float)(eau.getKH() + (eau.getKH()*0.2)));
                     }
                 } catch (NullPointerException e1) {
                     GestionException.GestionExceptionObjet();
@@ -1364,6 +1397,7 @@ public class GUIMain extends JFrame implements ActionListener {
         filet_label.setVisible(true);
         label_information.setVisible(true);
         pichet_label.setVisible(true);
+        coquillage_label.setVisible(true);
     }
 
     /**
@@ -1375,6 +1409,7 @@ public class GUIMain extends JFrame implements ActionListener {
         filet_label.setVisible(false);
         label_information.setVisible(false);
         pichet_label.setVisible(false);
+        coquillage_label.setVisible(false);
     }
 
     @Override

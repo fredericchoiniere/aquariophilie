@@ -1,21 +1,19 @@
-//Jérémie Caron     itération 2
-//Classe pour l'outil ciseau
+// Frédéric Choinière   itération 3
+// Classe pour l'outil coquillage (sert à remonter le niveau de KH)
 
 package model.outils;
 
 import javax.swing.*;
-
 import java.awt.*;
 
-public class Ciseau extends Outils {
+public class Coquillage extends Outils{
+    
+    ImageIcon icone_coquillage;
 
-    // attributs de la classe
-    ImageIcon icone_ciseau;
-
-    public Ciseau() {
+    public Coquillage() {
         super();
         adapterNom();
-        icone_ciseau = new ImageIcon("res/outils/ciseau.png");
+        icone_coquillage = new ImageIcon("res/outils/coquillage.png");
     }
 
     /**
@@ -23,7 +21,7 @@ public class Ciseau extends Outils {
      *              méthode qui permet d'afficher l'image de l'outil
      */
     public void setIcon(JLabel label) {
-        label.setIcon(icone_ciseau);
+        label.setIcon(icone_coquillage);
     }
 
     /**
@@ -32,7 +30,7 @@ public class Ciseau extends Outils {
      */
     public void changerCurseurPanel(JPanel panel) {
         panel.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
-                icone_ciseau.getImage(),
+                icone_coquillage.getImage(),
                 new Point(0, 0), "curseur plein"));
 
     }
