@@ -99,7 +99,10 @@ public class Eau implements Runnable {
      *                  Setter du pH
      */
     public void setPH(float nouveauPH) {
-        ph = nouveauPH;
+        if (nouveauPH <= 0)
+            ph = 0;
+        else
+            ph = nouveauPH;
     }
 
     /**
@@ -115,7 +118,10 @@ public class Eau implements Runnable {
      *                  Setter pour le gH
      */
     public void setGH(float nouveauGH) {
-        gh = nouveauGH;
+        if (nouveauGH <= 0)
+            gh = 0;
+        else
+            gh = nouveauGH;
     }
 
     /**
@@ -266,15 +272,15 @@ public class Eau implements Runnable {
      */
     public void variationPH() { // TODO: à balancer
         if (kh < 4) {
-            setPH(getPH() - (float) 0.3);
+            setPH(getPH() - (float) 0.14);
             setPH(getPH() + (float) (sommeContributionPH * 0.7));
         }
         if (kh >= 4 && kh <= 8) {
-            setPH(getPH() - (float) 0.15);
+            setPH(getPH() - (float) 0.08);
             setPH(getPH() + (float) (sommeContributionPH * 0.5));
         }
         if (kh > 8) { // ph varie moins, mais score non optimal car kh trop élevé
-            setPH(getPH() - (float) 0.1);
+            setPH(getPH() - (float) 0.04);
             setPH(getPH() + (float) (sommeContributionPH * 0.3));
         }
     }

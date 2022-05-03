@@ -30,7 +30,7 @@ public class GUIIntro extends JFrame implements ActionListener {
         setTitle("Aquariophilie");
 
         // Entrer dans l'application pour tester
-        JPanel simplePanel = new JPanel();
+        JPanel simplePanel = new JPanel(); 
 
         // Gestionnaire
         GridBagLayout g = new GridBagLayout();
