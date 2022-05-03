@@ -8,9 +8,11 @@ import javax.swing.*;
 
 import model.jeu.Argent;
 import model.plantes.BlueBlue;
+import model.plantes.Erdtree;
 import model.plantes.JavaFern;
 import model.plantes.ScarletRot;
 import model.poissons.PoissonBetta;
+import model.poissons.PoissonNeo;
 import model.poissons.PoissonRouge;
 import model.poissons.PoissonTetra;
 
@@ -174,9 +176,11 @@ public class GUIIntro extends JFrame implements ActionListener {
             PoissonRouge.prix = 50;
             PoissonBetta.prix = 500;
             PoissonTetra.prix = 200;
+            PoissonNeo.prix = 125;
             JavaFern.prix = 450;
             BlueBlue.prix = 200;
             ScarletRot.prix = 1000;
+            Erdtree.prix = 5000;
 
         }
 
@@ -199,9 +203,11 @@ public class GUIIntro extends JFrame implements ActionListener {
             PoissonRouge.prix = 0;
             PoissonBetta.prix = 0;
             PoissonTetra.prix = 0;
+            PoissonNeo.prix = 0;
             JavaFern.prix = 0;
             BlueBlue.prix = 0;
             ScarletRot.prix = 0;
+            Erdtree.prix = 0;
             Argent.argent = 0;
             Argent.montant = "∞";
             GUIMain.label_argent_aqua.setText("∞");

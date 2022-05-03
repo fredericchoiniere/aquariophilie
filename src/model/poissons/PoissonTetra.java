@@ -11,8 +11,8 @@ public class PoissonTetra extends Poisson implements Runnable {
     // attributs de la classe
     public int x_min = 4;
     public int x_max = 286;
-    public int y_min = 90;
-    public int y_max = 122;
+    public int y_min = 75;
+    public int y_max = 110;
     public int x_temp = random.nextInt(x_max - x_min) + (1 + x_min);
     public int y_temp = random.nextInt(y_max - y_min) + (1 + y_min);
     public int side = random.nextInt(2) + 1;
