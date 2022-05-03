@@ -58,7 +58,6 @@ public class GUIMain extends JFrame implements ActionListener {
             rectAqua6;
 
     public static Rectangle rectPlant;
-
     public static Rectangle rectAquarium;
     public static Rectangle rectEau;
 
@@ -537,8 +536,8 @@ public class GUIMain extends JFrame implements ActionListener {
                 try {
                     basicCursor();
                     if (MethodeGUIMain.rectAquarium()) {
-                        Eau.hauteurEnPixels = 192;
-                        Eau.positionEnPixels = 305;
+                        Eau.hauteurEnPixels = 177;
+                        Eau.positionEnPixels = 298;
                         //eau.changerEau();
                         panelAqua.repaint();
                     } else if(MethodeGUIMain.rectPlant()){

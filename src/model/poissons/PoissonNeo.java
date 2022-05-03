@@ -12,15 +12,14 @@ public class PoissonNeo extends Poisson implements Runnable {
     // attributs de la classe
     public int x_min = 4;
     public int x_max = 286;
-    public int y_min = 135;
-    public int y_max = 140;
+    public int y_min = 120;
+    public int y_max = 125;
     public int x_temp = random.nextInt(x_max - x_min) + (1 + x_min);
     public int y_temp = random.nextInt(y_max - y_min) + (1 + y_min);
     public int side = random.nextInt(2) + 1;
     int vel_x = 1;
     int vel_y = 1;
     public static int prix = 125;
-
     public static int tolerance = 0;
 
     Image img;

@@ -51,11 +51,11 @@ public class Inventaire {
                                         55,
                                         Image.SCALE_DEFAULT));
         public static ImageIcon img_inv_neo = new ImageIcon(
-                        new ImageIcon("res/poissons/poisson_neo/poisson_droite.png").getImage().getScaledInstance(32,
-                                        14,
+                        new ImageIcon("res/poissons/poisson_neo/in_bag.png").getImage().getScaledInstance(80,
+                                        80,
                                         Image.SCALE_DEFAULT));;
         public static ImageIcon img_neo_aqua = new ImageIcon(
-                        new ImageIcon("res/poissons/poisson_neo/poisson_droite.png").getImage().getScaledInstance(55,
+                        new ImageIcon("res/poissons/poisson_neo/aqua_img.png").getImage().getScaledInstance(55,
                                         55,
                                         Image.SCALE_DEFAULT));
 
