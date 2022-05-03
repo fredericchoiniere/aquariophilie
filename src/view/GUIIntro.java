@@ -1,6 +1,6 @@
 //Jérémie Caron     itération 1
+// Justin Plouffe Itération 3
 //Classe pour l'affichage du frame d'introduction
-// Pour l'itération 3
 
 package view;
 
@@ -50,8 +50,6 @@ public class GUIIntro extends JFrame implements ActionListener {
         panelIntro.add(btnNouvellePartie);
         //layerIntro.add(btnNouvellePartie);
        
-        
-
         // mode evaluation
         btnModeEvaluation = new JButton("Mode Evaluation");
         btnModeEvaluation.addActionListener(this);
