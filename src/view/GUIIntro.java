@@ -30,16 +30,13 @@ public class GUIIntro extends JFrame implements ActionListener {
         setTitle("Aquariophilie");
 
         // Entrer dans l'application pour tester
-        JPanel simplePanel = new JPanel();
+        JPanel panelIntro = new JPanel();
+        panelIntro.setOpaque(false);
 
         // Gestionnaire
         GridBagLayout g = new GridBagLayout();
-        simplePanel.setLayout(g);
+        panelIntro.setLayout(g);
         GridBagConstraints constraints = new GridBagConstraints();
-
-        // label pour le titre
-        titre = new JLabel("Aquariophilie");
-        titre.setFont(new Font("Verdana", Font.BOLD, 30));
         constraints.gridx = 0;
         constraints.gridy = 0;
         constraints.weightx = 0.5;
@@ -47,7 +44,30 @@ public class GUIIntro extends JFrame implements ActionListener {
         constraints.gridwidth = 3;
         constraints.gridheight = 1;
         constraints.fill = 0;
-        simplePanel.add(titre, constraints);
+
+        //JLayeredPane layerIntro = new JLayeredPane();
+        //layerIntro.setBounds(0, 0, 500, 40);
+        //layerIntro.setOpaque(false);
+
+        //Animation d'arriere-plan
+        JLabel lblGifIntro = new JLabel(new ImageIcon("res/background/intro.gif"));
+        //lblGifIntro.setBounds(0, 0, 500, 380);
+        //getContentPane().add(lblGifIntro);
+        //setLocationRelativeTo(null);
+        lblGifIntro.setVisible(true);
+        g.addLayoutComponent(lblGifIntro, constraints);
+        lblGifIntro.add(Box.createGlue(), constraints);
+        //layerIntro.add(lblGifIntro, 0);
+        
+
+
+        // label pour le titre
+        titre = new JLabel("Aquariophilie");
+        titre.setFont(new Font("Verdana", Font.BOLD, 30));
+        //layerIntro.add(titre, 1);
+        titre.setVisible(true);
+        panelIntro.add(titre, constraints);
+        
 
         // création des boutons pour les nombreuses action possible sur le Frame intro
         // -----------------------------------------------------------------------------------------------------------------------------
@@ -55,42 +75,51 @@ public class GUIIntro extends JFrame implements ActionListener {
         // nouvelle partie
         btnNouvellePartie = new JButton("Nouvelle Partie");
         btnNouvellePartie.addActionListener(this);
+        //btnNouvellePartie.setBounds(50,50, 200, 20);
+        //layerIntro.add(btnNouvellePartie, 1);
+        btnNouvellePartie.setVisible(true);
         constraints.gridx = 1;
         constraints.gridy = 1;
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.fill = 2;
-        simplePanel.add(btnNouvellePartie, constraints);
+        panelIntro.add(btnNouvellePartie, constraints);
 
         // charger partie
         btnChargerPartie = new JButton("Charger Partie");
         btnChargerPartie.addActionListener(this);
         constraints.gridx = 1;
         constraints.gridy = 2;
-        simplePanel.add(btnChargerPartie, constraints);
+        panelIntro.add(btnChargerPartie, constraints);
 
         // mode evaluation
         btnModeEvaluation = new JButton("Mode Evaluation");
         btnModeEvaluation.addActionListener(this);
         constraints.gridx = 1;
         constraints.gridy = 3;
-        simplePanel.add(btnModeEvaluation, constraints);
-
+        panelIntro.add(btnModeEvaluation, constraints);
+        
         // credit
         btnCredit = new JButton("Credit");
         btnCredit.addActionListener(this);
+        //layerIntro.add(btnCredit, 1);
+        btnCredit.setVisible(true);
+        
         constraints.gridx = 1;
         constraints.gridy = 4;
-        simplePanel.add(btnCredit, constraints);
+        panelIntro.add(btnCredit, constraints);
 
         // fermer l'application
         btClose = new JButton("Fermer");
         btClose.addActionListener(this);
+        //layerIntro.add(btClose, 1);
+        btClose.setVisible(true);
         constraints.gridx = 0;
         constraints.gridy = 5;
         constraints.fill = 0;
-        simplePanel.add(btClose, constraints);
+        panelIntro.add(btClose, constraints);
 
+        /*
         // classement
         btClassement = new JButton("Classement");
         btClassement.addActionListener(this);
@@ -104,8 +133,9 @@ public class GUIIntro extends JFrame implements ActionListener {
         constraints.gridx = 2;
         constraints.gridy = 5;
         simplePanel.add(btInspiration, constraints);
-
-        add(simplePanel);
+        */
+        //panelIntro.add(layerIntro);
+        add(panelIntro);
 
         // action listener sur la touche enter pour aller plus vite
         btnNouvellePartie.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -239,8 +269,10 @@ public class GUIIntro extends JFrame implements ActionListener {
         if (e.getSource() == btInspiration) {
             // TODO
         }
-
+        
     }
+
+    
 
     // --------------------------------------------------------------------------------------------------------------------------------
 
