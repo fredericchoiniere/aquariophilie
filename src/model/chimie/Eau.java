@@ -386,6 +386,7 @@ public class Eau implements Runnable {
      */
     public void comportNitrates() {
         nitrates = ((jours / 7) - 4);
+        //TODO: réduire avec changement d'eau
     }
 
     /**
