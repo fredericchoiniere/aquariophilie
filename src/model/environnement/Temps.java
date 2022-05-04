@@ -12,7 +12,7 @@ import model.jeu.Magasin;
 import view.GUIMain;
 
 public class Temps {
-    static Timer journee;
+    static Timer journee, cooldown;
     public static int DUREE = 1500; // Durée d'une journée en millisecondes
     public static boolean isPaused = true;
     static short i = 0;
@@ -26,7 +26,6 @@ public class Temps {
         journee.cancel();
         isPaused = true;
     }
-
     
     /** 
      * @param jour

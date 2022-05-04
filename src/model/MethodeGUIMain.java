@@ -16,7 +16,14 @@ public class MethodeGUIMain {
     // call des attributs de la classe
     Aquarium aquarium;
     Inventaire inventaire;
-    static Boolean hasPlants = false;
+    static Boolean hasPlants = false, cooldownC, cooldownP;
+    public static Boolean isCoquillage = false;
+    public static Boolean isPichet = false;
+    public static int clickRecentC = 0, clickRecentP = 0, live;
+
+    static final int CD_COQUILLAGE = 12000;
+    static final int CD_PICHET = 20000;
+
 
     /**
      * @param rectangle
@@ -713,6 +720,48 @@ public class MethodeGUIMain {
             return false;
         }
 
+    }
+
+    public static boolean cooldownC(){
+        
+        live = (int) System.currentTimeMillis();
+
+        if (isCoquillage) {
+            if (Math.abs(live - clickRecentC) < CD_COQUILLAGE){
+                System.out.println("coquillage sous cooldown, live: " + live + "\nclickrecent: " + clickRecentC);
+                System.out.println("delta temps (ms): " + Math.abs(live - clickRecentC));
+                cooldownC = true;
+            }
+            else{
+                cooldownC = false;
+                clickRecentC = live;
+                System.out.println("coquillage pas sous cooldown");
+            }
+            isCoquillage = false;
+        }
+
+        return cooldownC;
+        
+    }
+
+    public static boolean cooldownP(){
+
+        live = (int) System.currentTimeMillis();
+
+        if (isPichet) {
+            if (Math.abs(live - clickRecentP) < CD_PICHET){
+                System.out.println("pichet sous cooldown, live: " + live + "\nclickrecent: " + clickRecentP);
+                System.out.println("delta temps (ms): " + Math.abs(live - clickRecentP));
+                cooldownP = true;
+            }
+            else{
+                cooldownP = false;
+                clickRecentP = live;
+                System.out.println("pichet pas sous cooldown");
+            }
+            isPichet = false;
+        }
+        return cooldownP;
     }
 
 }
