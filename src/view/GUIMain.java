@@ -40,9 +40,23 @@ public class GUIMain extends JFrame implements ActionListener {
     // création des labels
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, eau_label, inventaire_ouvert,
             inventaire_fermer, inventaire_bg, filet_label, pause_label, reprendre_label, label_tutoriel,
-            label_information, hamis, ciseau_label, label_argent, pichet_label, coquillage_label, radio_on, radio_off,
-            kit_ouvert,
-            kit_fermer, kit_bg, plant;
+            label_information, hamis, ciseau_label, label_argent;
+
+    static JLabel pichet_label;
+
+    static JLabel coquillage_label;
+
+    JLabel radio_on;
+
+    JLabel radio_off;
+
+    JLabel kit_ouvert;
+
+    JLabel kit_fermer;
+
+    JLabel kit_bg;
+
+    JLabel plant;
     public static JLabel lblPipette = new JLabel();
     public static JLabel label_argent_aqua = new JLabel("");
     public static JLabel label_argent_shop = new JLabel("");
@@ -75,8 +89,8 @@ public class GUIMain extends JFrame implements ActionListener {
     public static PoissonNeo poisson_neo;
     Filet filet;
     Ciseau ciseau;
-    Pichet pichet;
-    Coquillage coquillage;
+    static Pichet pichet;
+    static Coquillage coquillage;
     ImageIcon tetra_curseur;
     ImageIcon rajoutIcon = new ImageIcon();
     ImageIcon iconeAppli = new ImageIcon("res/background/icone_aquariophilie.png");
@@ -575,7 +589,7 @@ public class GUIMain extends JFrame implements ActionListener {
 
                 MethodeGUIMain.isCoquillage = true;
 
-                if (!MethodeGUIMain.cooldownC()){
+                if (!MethodeGUIMain.cooldownC()) {
                     coquillage.changerCurseurPanel(panelAqua);
                     label_tutoriel.setVisible(false);
                     aquarium_kit_ouvert.setVisible(false);
@@ -1461,6 +1475,24 @@ public class GUIMain extends JFrame implements ActionListener {
         bt4.setVisible(b);
         bt5.setVisible(b);
         sante.setVisible(Sante.state1, Sante.state2, Sante.state3, Sante.state4, Sante.state5, Sante.state6);
+    }
+
+    public static void setCooldownVisible(boolean b) {
+        if (MethodeGUIMain.cooldownC) {
+            coquillage_label.setIcon(new ImageIcon("res/outils/coquillage_cd.png"));
+        }
+        if (MethodeGUIMain.cooldownP) {
+            pichet_label.setIcon(new ImageIcon("res/outils/pichet_cd.png"));
+        }
+    }
+
+    public static void setCooldownInvisible(boolean b) {
+        if (!MethodeGUIMain.cooldownC) {
+            coquillage.setIcon(coquillage_label);
+        }
+        if (!MethodeGUIMain.cooldownP) {
+            pichet.setIcon(pichet_label);
+        }
     }
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------

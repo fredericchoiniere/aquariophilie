@@ -16,7 +16,9 @@ public class MethodeGUIMain {
     // call des attributs de la classe
     Aquarium aquarium;
     Inventaire inventaire;
-    static Boolean hasPlants = false, cooldownC, cooldownP;
+    static Boolean hasPlants = false;
+    public static Boolean cooldownC = false;
+    public static Boolean cooldownP = false;
     public static Boolean isCoquillage = false;
     public static Boolean isPichet = false;
     public static Boolean dansRectC = false, dansRectP = false;
@@ -732,11 +734,13 @@ public class MethodeGUIMain {
                 System.out.println("coquillage sous cooldown, live: " + live + "\nclickrecent: " + clickRecentC);
                 System.out.println("delta temps (ms): " + Math.abs(live - clickRecentC));
                 cooldownC = true;
+                GUIMain.setCooldownVisible(cooldownC);
             }
             else{
                 cooldownC = false;
                 dansRectC = false;
                 clickRecentC = live;
+                GUIMain.setCooldownInvisible(cooldownC);
                 System.out.println("coquillage pas sous cooldown");
             }
             isCoquillage = false;
@@ -755,11 +759,13 @@ public class MethodeGUIMain {
                 System.out.println("pichet sous cooldown, live: " + live + "\nclickrecent: " + clickRecentP);
                 System.out.println("delta temps (ms): " + Math.abs(live - clickRecentP));
                 cooldownP = true;
+                GUIMain.setCooldownVisible(cooldownP);
             }
             else{
                 cooldownP = false;
                 dansRectP = false;
                 clickRecentP = live;
+                GUIMain.setCooldownInvisible(cooldownP);
                 System.out.println("pichet pas sous cooldown");
             }
             isPichet = false;
