@@ -365,13 +365,12 @@ public class Eau implements Runnable {
     public void changerEau(){ // TODO: implémenter cooldown avec scheduleatfixedrate pour outils
         volumeEau = (float) 37.85;
         hauteur = 35;
-        kh = 6; // TODO: à checker pour façon différente d'augmenter kh
+        kh = 6;
         gh = 10;
         ph = 7;
         System.out.println("déchets pré changement: " + sommeDechets);
         sommeDechets -= (sommeDechets * 0.50);
         System.out.println("déchets post changement: " + sommeDechets);
-
     }
 
     /**
@@ -414,9 +413,6 @@ public class Eau implements Runnable {
      *         score de l'eau
      */
     public float setScorePH() { // TODO: rentre dans le négatif, à vérifier avec autres scores
-
-        // float variationPH;
-        // float scorePH=0;
 
         if (ph >= 6 && ph <= 9) {
             variationPH = 0;

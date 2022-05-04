@@ -40,7 +40,8 @@ public class GUIMain extends JFrame implements ActionListener {
     // création des labels
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, eau_label, inventaire_ouvert,
             inventaire_fermer, inventaire_bg, filet_label, pause_label, reprendre_label, label_tutoriel,
-            label_information, hamis, ciseau_label, label_argent, pichet_label, coquillage_label, radio_on, radio_off, kit_ouvert,
+            label_information, hamis, ciseau_label, label_argent, pichet_label, coquillage_label, radio_on, radio_off,
+            kit_ouvert,
             kit_fermer, kit_bg, plant;
     public static JLabel lblPipette = new JLabel();
     public static JLabel label_argent_aqua = new JLabel("");
@@ -130,7 +131,7 @@ public class GUIMain extends JFrame implements ActionListener {
                 new Point(0, 0), "curseur tétra"));
 
         // attributs du constructeur
-        temps = new Temps();
+        // temps = new Temps();
         eau = new Eau();
         threadEau = new Thread(eau);
         threadEau.setName("ThreadEau");
@@ -534,50 +535,65 @@ public class GUIMain extends JFrame implements ActionListener {
         pichet_label.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                pichet.changerCurseurPanel(panelAqua);
-                label_tutoriel.setVisible(false);
-                aquarium_kit_ouvert.setVisible(false);
-                aquarium_kit_fermer.setVisible(true);
-                panelTest.setVisible(false);
+
+                MethodeGUIMain.isPichet = true;
+
+                if (!MethodeGUIMain.cooldownP()) {
+                    pichet.changerCurseurPanel(panelAqua);
+                    label_tutoriel.setVisible(false);
+                    aquarium_kit_ouvert.setVisible(false);
+                    aquarium_kit_fermer.setVisible(true);
+                    panelTest.setVisible(false);
+                }
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                try {
-                    basicCursor();
-                    if (MethodeGUIMain.rectAquarium()) {
-                        Eau.hauteurEnPixels = 177;
-                        Eau.positionEnPixels = 298;
-                        eau.changerEau();
-                        panelAqua.repaint();
-                    } else if (MethodeGUIMain.rectPlant()) {
-                        plant.setVisible(true);
+                if (!MethodeGUIMain.cooldownP()) {
+                    try {
+                        basicCursor();
+                        if (MethodeGUIMain.rectAquarium()) {
+                            Eau.hauteurEnPixels = 177;
+                            Eau.positionEnPixels = 298;
+                            eau.changerEau();
+                            panelAqua.repaint();
+                        } else if (MethodeGUIMain.rectPlant()) {
+                            plant.setVisible(true);
+                        }
+                    } catch (NullPointerException e1) {
+                        GestionException.GestionExceptionObjet();
                     }
-                } catch (NullPointerException e1) {
-                    GestionException.GestionExceptionObjet();
                 }
             }
         });
 
         coquillage_label.addMouseListener(new MouseAdapter() {
+
             @Override
             public void mousePressed(MouseEvent e) {
-                coquillage.changerCurseurPanel(panelAqua);
-                label_tutoriel.setVisible(false);
-                aquarium_kit_ouvert.setVisible(false);
-                aquarium_kit_fermer.setVisible(true);
-                panelTest.setVisible(false);
+
+                MethodeGUIMain.isCoquillage = true;
+
+                if (!MethodeGUIMain.cooldownC()){
+                    coquillage.changerCurseurPanel(panelAqua);
+                    label_tutoriel.setVisible(false);
+                    aquarium_kit_ouvert.setVisible(false);
+                    aquarium_kit_fermer.setVisible(true);
+                    panelTest.setVisible(false);
+                }
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                try {
-                    basicCursor();
-                    if (MethodeGUIMain.rectAquarium()) {
-                        eau.setKH((float)(eau.getKH() + (eau.getKH()*0.2)));
+                if (!MethodeGUIMain.cooldownC()) {
+                    try {
+                        basicCursor();
+                        if (MethodeGUIMain.rectAquarium()) {
+                            eau.setKH((float) (eau.getKH() + (eau.getKH() * 0.2)));
+                        }
+                    } catch (NullPointerException e1) {
+                        GestionException.GestionExceptionObjet();
                     }
-                } catch (NullPointerException e1) {
-                    GestionException.GestionExceptionObjet();
                 }
             }
         });
