@@ -29,8 +29,8 @@ public class GUIIntro extends JFrame implements ActionListener {
         JLabel lblGif = new JLabel();
         lblGif.setIcon(new ImageIcon("res/background/intro2.png"));
         lblGif.setBounds(0,0,500,400);
-        panelIntro.add(lblGif);
-        //layerIntro.add(lblGif,0);
+        //panelIntro.add(lblGif);
+        layerIntro.add(lblGif,0);
             
         // label pour le titre
         titre = new JLabel("Aquariophilie");
@@ -46,9 +46,9 @@ public class GUIIntro extends JFrame implements ActionListener {
         btnNouvellePartie = new JButton("Nouvelle Partie");
         btnNouvellePartie.addActionListener(this);
         btnNouvellePartie.setBounds(150, 0, 200, 50);
-        //btnNouvellePartie.setVisible(true);
-        panelIntro.add(btnNouvellePartie);
-        //layerIntro.add(btnNouvellePartie);
+        btnNouvellePartie.setVisible(true);
+        //panelIntro.add(btnNouvellePartie);
+        layerIntro.add(btnNouvellePartie,1);
        
         
 
