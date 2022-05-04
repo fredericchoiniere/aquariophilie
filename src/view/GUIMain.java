@@ -1,6 +1,7 @@
 //Jérémie Caron, Frédéric Choinière     itération 1
 //Jérémie Caron, Frédéric Choinière     itération 2
 // Jérémie Caron    itération 3
+
 //Classe d'affichage principale
 
 package view;
@@ -515,6 +516,12 @@ public class GUIMain extends JFrame implements ActionListener {
                 panelTest.setVisible(true);
                 // setOutilsInvisible();
                 label_tutoriel.setVisible(false);
+                inventaire_bg.setVisible(false);
+                inventaire_ouvert.setVisible(false);
+                inventaire_fermer.setVisible(true);
+                kit_fermer.setVisible(true);
+                kit_bg.setVisible(false);
+                kit_ouvert.setVisible(false);
             }
         });
 

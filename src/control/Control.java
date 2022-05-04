@@ -19,17 +19,12 @@ public class Control {
      *             permet d'initialiser le frame Introduction
      */
     public static void main(String[] args) {
-
-        GUIIntro guiIntro = new GUIIntro();
-        ImageIcon img = new ImageIcon("res/background/icone_aquariophilie.png");
-
         // attributs du Frame intro
-        guiIntro.setSize(500, 400);
-        guiIntro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        guiIntro.setResizable(false);
-        guiIntro.setIconImage(img.getImage());
-        guiIntro.setLocationRelativeTo(null);
-        guiIntro.setVisible(true);
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                GUIIntro.guiIntroFrame();    
+            }
+        });
 
         try {
 
