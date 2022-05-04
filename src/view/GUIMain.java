@@ -553,6 +553,7 @@ public class GUIMain extends JFrame implements ActionListener {
                     try {
                         basicCursor();
                         if (MethodeGUIMain.rectAquarium()) {
+                            MethodeGUIMain.dansRectP = true;
                             Eau.hauteurEnPixels = 177;
                             Eau.positionEnPixels = 298;
                             eau.changerEau();
@@ -589,6 +590,7 @@ public class GUIMain extends JFrame implements ActionListener {
                     try {
                         basicCursor();
                         if (MethodeGUIMain.rectAquarium()) {
+                            MethodeGUIMain.dansRectC = true;
                             eau.setKH((float) (eau.getKH() + (eau.getKH() * 0.2)));
                         }
                     } catch (NullPointerException e1) {
