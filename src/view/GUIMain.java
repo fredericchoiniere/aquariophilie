@@ -41,7 +41,9 @@ public class GUIMain extends JFrame implements ActionListener {
     // création des labels
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, eau_label, inventaire_ouvert,
             inventaire_fermer, inventaire_bg, filet_label, pause_label, reprendre_label, label_tutoriel,
-            label_information, hamis, ciseau_label, label_argent;
+            label_information, hamis, ciseau_label, label_argent, label_pause2, label_reprendre2;
+
+    public static JLabel label_jours2;
 
     static JLabel pichet_label;
 
@@ -58,6 +60,7 @@ public class GUIMain extends JFrame implements ActionListener {
     JLabel kit_bg;
 
     JLabel plant;
+
     public static JLabel lblPipette = new JLabel();
     public static JLabel label_argent_aqua = new JLabel("");
     public static JLabel label_argent_shop = new JLabel("");
@@ -287,7 +290,7 @@ public class GUIMain extends JFrame implements ActionListener {
         // ajout du label pour pause
         pause_label = new JLabel();
         pause_label.setIcon(new ImageIcon("res/background/pause.png"));
-        pause_label.setBounds(488, 13, 40, 40);
+        pause_label.setBounds(492, 13, 40, 40);
         pause_label.setToolTipText("Pause la progression du temps");
         pause_label.setVisible(false);
         panelAqua.add(pause_label);
@@ -295,7 +298,7 @@ public class GUIMain extends JFrame implements ActionListener {
         // ajout du label pour reprendre
         reprendre_label = new JLabel();
         reprendre_label.setIcon(new ImageIcon("res/background/reprendre.png"));
-        reprendre_label.setBounds(488, 13, 40, 40);
+        reprendre_label.setBounds(492, 13, 40, 40);
         reprendre_label.setToolTipText("Reprend la progression du temps");
         reprendre_label.setVisible(true);
         panelAqua.add(reprendre_label);
@@ -360,9 +363,9 @@ public class GUIMain extends JFrame implements ActionListener {
         panelAqua.add(empty);
 
         // ajout du label pour l'argent
-        label_argent_aqua.setBounds(605, 10, 100, 50);
+        label_argent_aqua.setBounds(612, 10, 100, 50);
         label_argent_aqua.setFont(new Font("Verdana", Font.BOLD, 16));
-        label_argent_aqua.setText(Argent.montant + "₴");
+        label_argent_aqua.setText(Argent.montant + "฿");
         label_argent_aqua.setForeground(Color.WHITE);
         label_argent_aqua.setVisible(true);
         panelAqua.add(label_argent_aqua);
@@ -455,11 +458,35 @@ public class GUIMain extends JFrame implements ActionListener {
         PanelShop panelShop = new PanelShop();
 
         // ajout du label pour l'argent
-        label_argent_shop.setBounds(475, 10, 100, 50);
+        label_argent_shop.setBounds(612, 13, 100, 50);
         label_argent_shop.setFont(new Font("Verdana", Font.BOLD, 16));
-        label_argent_shop.setText("10000 ₴"); // Afficher vraie valeur
+        label_argent_shop.setForeground(Color.WHITE);
+        label_argent_shop.setText("500฿"); // Afficher vraie valeur
         label_argent_shop.setVisible(true);
         panelShop.add(label_argent_shop);
+
+        label_pause2 = new JLabel();
+        label_pause2.setIcon(new ImageIcon("res/background/pause.png"));
+        label_pause2.setBounds(492, 21, 40, 40);
+        label_pause2.setToolTipText("Pause la progression du temps");
+        label_pause2.setVisible(false);
+        panelShop.add(label_pause2);
+
+        // ajout du label pour reprendre
+        label_reprendre2 = new JLabel();
+        label_reprendre2.setIcon(new ImageIcon("res/background/reprendre.png"));
+        label_reprendre2.setBounds(492, 21, 40, 40);
+        label_reprendre2.setToolTipText("Reprend la progression du temps");
+        label_reprendre2.setVisible(true);
+        panelShop.add(label_reprendre2);
+
+        label_jours2 = new JLabel();
+        label_jours2.setBounds(363, 13, 100, 50);
+        label_jours2.setFont(new Font("Verdana", Font.BOLD, 16));
+        label_jours2.setText("1");
+        label_jours2.setForeground(Color.WHITE);
+        label_jours2.setVisible(true);
+        panelShop.add(label_jours2);
 
         tabbedPane.add("Magasin", panelShop);
 
@@ -809,7 +836,9 @@ public class GUIMain extends JFrame implements ActionListener {
                 panelTest.setVisible(false);
                 Temps.pause();
                 pause_label.setVisible(false);
+                label_pause2.setVisible(false);
                 reprendre_label.setVisible(true);
+                label_reprendre2.setVisible(true);
                 label_tutoriel.setVisible(false);
                 Temps.isPaused = true;
             }
@@ -825,6 +854,42 @@ public class GUIMain extends JFrame implements ActionListener {
                 Temps.reprendre();
                 pause_label.setVisible(true);
                 reprendre_label.setVisible(false);
+                label_pause2.setVisible(true);
+                label_reprendre2.setVisible(false);
+                label_tutoriel.setVisible(false);
+                Temps.isPaused = false;
+            }
+        });
+
+        // actionlistener pour arreter le jeu
+        label_pause2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                aquarium_kit_ouvert.setVisible(false);
+                aquarium_kit_fermer.setVisible(true);
+                panelTest.setVisible(false);
+                Temps.pause();
+                pause_label.setVisible(false);
+                reprendre_label.setVisible(true);
+                label_pause2.setVisible(false);
+                label_reprendre2.setVisible(true);
+                label_tutoriel.setVisible(false);
+                Temps.isPaused = true;
+            }
+        });
+
+        // actionlistener pour reprendre le jeu
+        label_reprendre2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                aquarium_kit_ouvert.setVisible(false);
+                aquarium_kit_fermer.setVisible(true);
+                panelTest.setVisible(false);
+                Temps.reprendre();
+                pause_label.setVisible(true);
+                reprendre_label.setVisible(false);
+                label_pause2.setVisible(true);
+                label_reprendre2.setVisible(false);
                 label_tutoriel.setVisible(false);
                 Temps.isPaused = false;
             }

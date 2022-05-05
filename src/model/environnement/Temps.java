@@ -26,6 +26,7 @@ public class Temps {
      */
     public static void jourAJour(int jour) {
         GUIMain.label_jours.setText(Integer.toString(jour));
+        GUIMain.label_jours2.setText(Integer.toString(jour));
     }
 
     public static void checkCooldown() {

@@ -3,6 +3,7 @@
 
 package model.jeu;
 
+import java.awt.Color;
 import java.util.Random;
 
 /* create a class that can access Argent class*/
@@ -138,14 +139,14 @@ public class Magasin {
     }
 
     public static void updateToolTip(){
-        PanelShop.poisson_rouge.setToolTipText("Prix: " + PoissonRouge.prix + "₴");
-        PanelShop.poisson_betta.setToolTipText("Prix: " + PoissonBetta.prix + "₴");
-        PanelShop.poisson_tetra.setToolTipText("Prix: " + PoissonTetra.prix + "₴");
-        PanelShop.poisson_neo.setToolTipText("Prix: " + PoissonNeo.prix + "₴");
-        PanelShop.planteBlue.setToolTipText("Prix: " + BlueBlue.prix + "₴");
-        PanelShop.planteFern.setToolTipText("Prix: " + JavaFern.prix + "₴");
-        PanelShop.planteScarlet.setToolTipText("Prix: " + ScarletRot.prix + "₴");
-        PanelShop.planteErdtree.setToolTipText("Prix: " + Erdtree.prix + "₴");
+        PanelShop.poisson_rouge.setToolTipText("Prix: " + PoissonRouge.prix + "฿");
+        PanelShop.poisson_betta.setToolTipText("Prix: " + PoissonBetta.prix + "฿");
+        PanelShop.poisson_tetra.setToolTipText("Prix: " + PoissonTetra.prix + "฿");
+        PanelShop.poisson_neo.setToolTipText("Prix: " + PoissonNeo.prix + "฿");
+        PanelShop.planteBlue.setToolTipText("Prix: " + BlueBlue.prix + "฿");
+        PanelShop.planteFern.setToolTipText("Prix: " + JavaFern.prix + "฿");
+        PanelShop.planteScarlet.setToolTipText("Prix: " + ScarletRot.prix + "฿");
+        PanelShop.planteErdtree.setToolTipText("Prix: " + Erdtree.prix + "฿");
     }
 
     public static void rabais(short emp) {
@@ -153,98 +154,162 @@ public class Magasin {
             case 1:
                 PoissonRouge.prix = PoissonRouge.prix / 2;
                 updateToolTip();
-                PanelShop.poisson_rouge.setBounds(150, 550, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_rouge.setBounds(648, 367, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_rouge.setBackground(new Color(82, 171, 198));
                 PanelShop.poisson_betta.setBounds(135, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_betta.setBackground(new Color(53, 109, 127));
                 PanelShop.poisson_tetra.setBounds(235, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_tetra.setBackground(new Color(53, 109, 127));
                 PanelShop.poisson_neo.setBounds(335, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_neo.setBackground(new Color(53, 109, 127));
                 PanelShop.planteBlue.setBounds(35, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteBlue.setBackground(new Color(53, 109, 127));
                 PanelShop.planteFern.setBounds(135, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteFern.setBackground(new Color(53, 109, 127));
                 PanelShop.planteScarlet.setBounds(235, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteScarlet.setBackground(new Color(53, 109, 127));
                 PanelShop.planteErdtree.setBounds(335, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteErdtree.setBackground(new Color(53, 109, 127));
                 break;
             case 2:
                 PoissonBetta.prix = PoissonBetta.prix / 2;
                 updateToolTip();
                 PanelShop.poisson_rouge.setBounds(35, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
-                PanelShop.poisson_betta.setBounds(150, 550, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_rouge.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_betta.setBounds(648, 367, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_betta.setBackground(new Color(82, 171, 198));
                 PanelShop.poisson_tetra.setBounds(235, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_tetra.setBackground(new Color(53, 109, 127));
                 PanelShop.poisson_neo.setBounds(335, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_neo.setBackground(new Color(53, 109, 127));
                 PanelShop.planteBlue.setBounds(35, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteBlue.setBackground(new Color(53, 109, 127));
                 PanelShop.planteFern.setBounds(135, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteFern.setBackground(new Color(53, 109, 127));
                 PanelShop.planteScarlet.setBounds(235, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteScarlet.setBackground(new Color(53, 109, 127));
                 PanelShop.planteErdtree.setBounds(335, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteErdtree.setBackground(new Color(53, 109, 127));
                 break;
             case 3:
                 PoissonTetra.prix = PoissonTetra.prix / 2;
                 updateToolTip();
                 PanelShop.poisson_rouge.setBounds(35, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_rouge.setBackground(new Color(53, 109, 127));
                 PanelShop.poisson_betta.setBounds(135, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
-                PanelShop.poisson_tetra.setBounds(150, 550, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_betta.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_tetra.setBounds(648, 367, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_tetra.setBackground(new Color(82, 171, 198));
                 PanelShop.poisson_neo.setBounds(335, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_neo.setBackground(new Color(53, 109, 127));
                 PanelShop.planteBlue.setBounds(35, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteBlue.setBackground(new Color(53, 109, 127));
                 PanelShop.planteFern.setBounds(135, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteFern.setBackground(new Color(53, 109, 127));
                 PanelShop.planteScarlet.setBounds(235, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteScarlet.setBackground(new Color(53, 109, 127));
                 PanelShop.planteErdtree.setBounds(335, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteErdtree.setBackground(new Color(53, 109, 127));
                 break;
             case 4:
                 PoissonNeo.prix = PoissonNeo.prix / 2;
                 updateToolTip();
                 PanelShop.poisson_rouge.setBounds(35, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_rouge.setBackground(new Color(53, 109, 127));
                 PanelShop.poisson_betta.setBounds(135, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_betta.setBackground(new Color(53, 109, 127));
                 PanelShop.poisson_tetra.setBounds(235, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
-                PanelShop.poisson_neo.setBounds(150, 550, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_tetra.setBackground(new Color(53, 109, 127));
+                PanelShop.poisson_neo.setBounds(648, 367, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_neo.setBackground(new Color(82, 171, 198));
                 PanelShop.planteBlue.setBounds(35, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteBlue.setBackground(new Color(53, 109, 127));
                 PanelShop.planteFern.setBounds(135, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteFern.setBackground(new Color(53, 109, 127));
                 PanelShop.planteScarlet.setBounds(235, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteScarlet.setBackground(new Color(53, 109, 127));
                 PanelShop.planteErdtree.setBounds(335, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteErdtree.setBackground(new Color(53, 109, 127));
                 break;
             case 5:
                 JavaFern.prix = JavaFern.prix / 2;
                 updateToolTip();
                 PanelShop.poisson_rouge.setBounds(35, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_rouge.setBackground(new Color(53, 109, 127));
                 PanelShop.poisson_betta.setBounds(135, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_betta.setBackground(new Color(53, 109, 127));
                 PanelShop.poisson_tetra.setBounds(235, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_tetra.setBackground(new Color(53, 109, 127));
                 PanelShop.poisson_neo.setBounds(335, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_neo.setBackground(new Color(53, 109, 127));
                 PanelShop.planteBlue.setBounds(35, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
-                PanelShop.planteFern.setBounds(150, 550, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteBlue.setBackground(new Color(53, 109, 127));
+                PanelShop.planteFern.setBounds(648, 367, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteFern.setBackground(new Color(82, 171, 198));
                 PanelShop.planteScarlet.setBounds(235, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteScarlet.setBackground(new Color(53, 109, 127));
                 PanelShop.planteErdtree.setBounds(335, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteErdtree.setBackground(new Color(53, 109, 127));
                 break;
             case 6:
                 BlueBlue.prix = BlueBlue.prix / 2;
                 updateToolTip();
                 PanelShop.poisson_rouge.setBounds(35, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_rouge.setBackground(new Color(53, 109, 127));
                 PanelShop.poisson_betta.setBounds(135, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_betta.setBackground(new Color(53, 109, 127));
                 PanelShop.poisson_tetra.setBounds(235, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_tetra.setBackground(new Color(53, 109, 127));
                 PanelShop.poisson_neo.setBounds(335, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
-                PanelShop.planteBlue.setBounds(150, 550, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_neo.setBackground(new Color(53, 109, 127));
+                PanelShop.planteBlue.setBounds(648, 367, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteBlue.setBackground(new Color(82, 171, 198));
                 PanelShop.planteFern.setBounds(135, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteFern.setBackground(new Color(53, 109, 127));
                 PanelShop.planteScarlet.setBounds(235, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteScarlet.setBackground(new Color(53, 109, 127));
                 PanelShop.planteErdtree.setBounds(335, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteErdtree.setBackground(new Color(53, 109, 127));
                 break;
             case 7:
                 ScarletRot.prix = ScarletRot.prix / 2;
                 updateToolTip();
                 PanelShop.poisson_rouge.setBounds(35, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_rouge.setBackground(new Color(53, 109, 127));
                 PanelShop.poisson_betta.setBounds(135, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_betta.setBackground(new Color(53, 109, 127));
                 PanelShop.poisson_tetra.setBounds(235, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_tetra.setBackground(new Color(53, 109, 127));
                 PanelShop.poisson_neo.setBounds(335, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_neo.setBackground(new Color(53, 109, 127));
                 PanelShop.planteBlue.setBounds(35, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteBlue.setBackground(new Color(53, 109, 127));
                 PanelShop.planteFern.setBounds(135, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
-                PanelShop.planteScarlet.setBounds(150, 550, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteFern.setBackground(new Color(53, 109, 127));
+                PanelShop.planteScarlet.setBounds(648, 367, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteScarlet.setBackground(new Color(82, 171, 198));
                 PanelShop.planteErdtree.setBounds(335, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteErdtree.setBackground(new Color(53, 109, 127));
                 break;
             case 8:
                 Erdtree.prix = Erdtree.prix / 2;
                 updateToolTip();
                 PanelShop.poisson_rouge.setBounds(35, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_rouge.setBackground(new Color(53, 109, 127));
                 PanelShop.poisson_betta.setBounds(135, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_betta.setBackground(new Color(53, 109, 127));
                 PanelShop.poisson_tetra.setBounds(235, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_tetra.setBackground(new Color(53, 109, 127));
                 PanelShop.poisson_neo.setBounds(335, 214, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.poisson_neo.setBackground(new Color(53, 109, 127));
                 PanelShop.planteBlue.setBounds(35, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteBlue.setBackground(new Color(53, 109, 127));
                 PanelShop.planteFern.setBounds(135, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteFern.setBackground(new Color(53, 109, 127));
                 PanelShop.planteScarlet.setBounds(235, 384, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
-                PanelShop.planteErdtree.setBounds(150, 550, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteScarlet.setBackground(new Color(53, 109, 127));
+                PanelShop.planteErdtree.setBounds(648, 367, PanelShop.shop_dimension.width, PanelShop.shop_dimension.height);
+                PanelShop.planteErdtree.setBackground(new Color(82, 171, 198));
                 break;
             default:
                 break;
