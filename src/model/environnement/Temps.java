@@ -6,7 +6,7 @@
 package model.environnement;
 
 import java.util.*;
-
+import model.MethodeGUIMain;
 import model.jeu.Argent;
 import model.jeu.Magasin;
 import view.GUIMain;
@@ -18,14 +18,6 @@ public class Temps {
     static short i = 0;
 
     // Incrémente GUIMain.jours (timer global) au DUREE secondes 
-
-    /**
-     *      Pause le défilement du temps
-     */
-    public static void pause(){
-        journee.cancel();
-        isPaused = true;
-    }
     
     /** 
      * @param jour
@@ -34,7 +26,37 @@ public class Temps {
     public static void jourAJour(int jour){
         GUIMain.label_jours.setText(Integer.toString(jour));
     }
+    
+    public static void checkCooldown(){
+        cooldown = new Timer();
+        cooldown.schedule(new TimerTask() {
+            @Override
+            public void run() {
 
+                MethodeGUIMain.live = (int) System.currentTimeMillis();
+
+                if (MethodeGUIMain.cooldownC()) {
+                    GUIMain.setCooldownVisibleC();
+                } else {
+                    GUIMain.setCooldownInvisibleC();
+                }
+                
+                if (MethodeGUIMain.cooldownP()) {
+                    GUIMain.setCooldownVisibleP();
+                } else {
+                    GUIMain.setCooldownInvisibleP();
+                }
+            }
+        }, 0, 500); // vérifie à chaque seconde
+    }
+
+    /**
+     *      Pause le défilement du temps
+     */
+    public static void pause(){
+        journee.cancel();
+        isPaused = true;
+    }
     /**
      *      Reprend le défilement du temps
      */
@@ -48,6 +70,7 @@ public class Temps {
                     jourAJour((int) GUIMain.jours);
                     Argent.paye(GUIMain.label_argent_aqua, GUIMain.label_argent_shop);
                     GUIMain.eau.getScoreEau();
+                    //MethodeGUIMain.checkCooldown();
 
                     if(i > 5){
                         i = 0;
