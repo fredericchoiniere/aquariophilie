@@ -138,14 +138,14 @@ public class Magasin {
     }
 
     public static void updateToolTip(){
-        PanelShop.poisson_rouge.setToolTipText("Prix: " + PoissonRouge.prix + "₴");
-        PanelShop.poisson_betta.setToolTipText("Prix: " + PoissonBetta.prix + "₴");
-        PanelShop.poisson_tetra.setToolTipText("Prix: " + PoissonTetra.prix + "₴");
-        PanelShop.poisson_neo.setToolTipText("Prix: " + PoissonNeo.prix + "₴");
-        PanelShop.planteBlue.setToolTipText("Prix: " + BlueBlue.prix + "₴");
-        PanelShop.planteFern.setToolTipText("Prix: " + JavaFern.prix + "₴");
-        PanelShop.planteScarlet.setToolTipText("Prix: " + ScarletRot.prix + "₴");
-        PanelShop.planteErdtree.setToolTipText("Prix: " + Erdtree.prix + "₴");
+        PanelShop.poisson_rouge.setToolTipText("Prix: " + PoissonRouge.prix + "฿");
+        PanelShop.poisson_betta.setToolTipText("Prix: " + PoissonBetta.prix + "฿");
+        PanelShop.poisson_tetra.setToolTipText("Prix: " + PoissonTetra.prix + "฿");
+        PanelShop.poisson_neo.setToolTipText("Prix: " + PoissonNeo.prix + "฿");
+        PanelShop.planteBlue.setToolTipText("Prix: " + BlueBlue.prix + "฿");
+        PanelShop.planteFern.setToolTipText("Prix: " + JavaFern.prix + "฿");
+        PanelShop.planteScarlet.setToolTipText("Prix: " + ScarletRot.prix + "฿");
+        PanelShop.planteErdtree.setToolTipText("Prix: " + Erdtree.prix + "฿");
     }
 
     public static void rabais(short emp) {

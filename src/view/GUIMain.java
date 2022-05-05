@@ -273,7 +273,7 @@ public class GUIMain extends JFrame implements ActionListener {
         // ajout du label pour pause
         pause_label = new JLabel();
         pause_label.setIcon(new ImageIcon("res/background/pause.png"));
-        pause_label.setBounds(488, 13, 40, 40);
+        pause_label.setBounds(492, 13, 40, 40);
         pause_label.setToolTipText("Pause la progression du temps");
         pause_label.setVisible(false);
         panelAqua.add(pause_label);
@@ -281,7 +281,7 @@ public class GUIMain extends JFrame implements ActionListener {
         // ajout du label pour reprendre
         reprendre_label = new JLabel();
         reprendre_label.setIcon(new ImageIcon("res/background/reprendre.png"));
-        reprendre_label.setBounds(488, 13, 40, 40);
+        reprendre_label.setBounds(492, 13, 40, 40);
         reprendre_label.setToolTipText("Reprend la progression du temps");
         reprendre_label.setVisible(true);
         panelAqua.add(reprendre_label);
@@ -346,9 +346,9 @@ public class GUIMain extends JFrame implements ActionListener {
         panelAqua.add(empty);
 
         // ajout du label pour l'argent
-        label_argent_aqua.setBounds(605, 10, 100, 50);
+        label_argent_aqua.setBounds(612, 10, 100, 50);
         label_argent_aqua.setFont(new Font("Verdana", Font.BOLD, 16));
-        label_argent_aqua.setText(Argent.montant + "₴");
+        label_argent_aqua.setText(Argent.montant + "฿");
         label_argent_aqua.setForeground(Color.WHITE);
         label_argent_aqua.setVisible(true);
         panelAqua.add(label_argent_aqua);
@@ -441,11 +441,27 @@ public class GUIMain extends JFrame implements ActionListener {
         PanelShop panelShop = new PanelShop();
 
         // ajout du label pour l'argent
-        label_argent_shop.setBounds(475, 10, 100, 50);
+        label_argent_shop.setBounds(612, 13, 100, 50);
         label_argent_shop.setFont(new Font("Verdana", Font.BOLD, 16));
-        label_argent_shop.setText("10000 ₴"); // Afficher vraie valeur
+        label_argent_shop.setForeground(Color.WHITE);
+        label_argent_shop.setText("500฿"); // Afficher vraie valeur
         label_argent_shop.setVisible(true);
         panelShop.add(label_argent_shop);
+
+        pause_label = new JLabel();
+        pause_label.setIcon(new ImageIcon("res/background/pause.png"));
+        pause_label.setBounds(492, 21, 40, 40);
+        pause_label.setToolTipText("Pause la progression du temps");
+        pause_label.setVisible(false);
+        panelShop.add(pause_label);
+
+        // ajout du label pour reprendre
+        reprendre_label = new JLabel();
+        reprendre_label.setIcon(new ImageIcon("res/background/reprendre.png"));
+        reprendre_label.setBounds(492, 21, 40, 40);
+        reprendre_label.setToolTipText("Reprend la progression du temps");
+        reprendre_label.setVisible(true);
+        panelShop.add(reprendre_label);
 
         tabbedPane.add("Magasin", panelShop);
 

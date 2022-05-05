@@ -36,7 +36,8 @@ public class GUIIntro extends JPanel {
 
             btnNouvellePartie = new JButton("Nouvelle Partie");
 
-            // ils sont ici parce que ca marchait pas en les callant à l'extérieur de la méthode so fuckit (pour fred qui va se plaindre)
+            // ils sont ici parce que ca marchait pas en les callant à l'extérieur de la
+            // méthode so fuckit (pour fred qui va se plaindre)
             btnNouvellePartie.addActionListener((ActionListener) new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     GUIMain aquarium = new GUIMain();

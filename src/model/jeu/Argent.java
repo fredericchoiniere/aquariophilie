@@ -31,8 +31,8 @@ public class Argent {
         if (normal) {
             argent += emp1 + emp2 + emp3 + poi1 + poi2 + poi3;
             montant = Integer.toString(argent);
-            label.setText(montant + "₴");
-            label2.setText(montant + "₴");
+            label.setText(montant + "฿");
+            label2.setText(montant + "฿");
         } else {
             label.setText("∞");
             label2.setText("∞");
