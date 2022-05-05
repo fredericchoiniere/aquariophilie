@@ -79,7 +79,7 @@ public class GUIMain extends JFrame implements ActionListener {
     public static Rectangle rectEau;
 
     // creation des objets
-    Temps temps;
+    // Temps temps;
     public static Eau eau;
     public static Pipette pipette;
     public static Poisson poisson_default = new Poisson();
@@ -123,6 +123,7 @@ public class GUIMain extends JFrame implements ActionListener {
     public static float jours = (float) 0; // TIMER GLOBAL
     public static boolean hasFish1, hasFish2, hasFish3, hasFish4, hasFish5, hasFish6;
     public static boolean hasPlant1, hasPlant2, hasPlant3;
+    public static boolean coquillageVis = false, coquillageInvis = false, pichetVis = false, pichetInvis = false;
 
     // boutons temporaire
     JButton bt1, bt2, bt3, bt4, bt5;
@@ -146,7 +147,6 @@ public class GUIMain extends JFrame implements ActionListener {
                 new Point(0, 0), "curseur tétra"));
 
         // attributs du constructeur
-        // temps = new Temps();
         eau = new Eau();
         threadEau = new Thread(eau);
         threadEau.setName("ThreadEau");
@@ -593,8 +593,6 @@ public class GUIMain extends JFrame implements ActionListener {
 
             @Override
             public void mousePressed(MouseEvent e) {
-
-                MethodeGUIMain.isCoquillage = true;
 
                 if (!MethodeGUIMain.cooldownC()) {
                     coquillage.changerCurseurPanel(panelAqua);
@@ -1311,6 +1309,7 @@ public class GUIMain extends JFrame implements ActionListener {
 
         // début des Threads pour l'eau
         threadEau.start();
+        Temps.checkCooldown();
         // tCycleInitial.start();
 
     } // fin du constructeur GUIMain
@@ -1484,22 +1483,20 @@ public class GUIMain extends JFrame implements ActionListener {
         sante.setVisible(Sante.state1, Sante.state2, Sante.state3, Sante.state4, Sante.state5, Sante.state6);
     }
 
-    public static void setCooldownVisible(boolean b) {
-        if (MethodeGUIMain.cooldownC) {
-            coquillage_label.setIcon(new ImageIcon("res/outils/coquillage_cd.png"));
-        }
-        if (MethodeGUIMain.cooldownP) {
-            pichet_label.setIcon(new ImageIcon("res/outils/pichet_cd.png"));
-        }
+    public static void setCooldownVisibleC() {
+        coquillage_label.setIcon(new ImageIcon("res/outils/coquillage_cd.png"));
     }
 
-    public static void setCooldownInvisible(boolean b) {
-        if (!MethodeGUIMain.cooldownC) {
-            coquillage.setIcon(coquillage_label);
-        }
-        if (!MethodeGUIMain.cooldownP) {
-            pichet.setIcon(pichet_label);
-        }
+    public static void setCooldownInvisibleC() {
+        coquillage.setIcon(coquillage_label);
+    }
+
+    public static void setCooldownVisibleP() {
+        pichet_label.setIcon(new ImageIcon("res/outils/pichet_cd.png"));
+    }
+
+    public static void setCooldownInvisibleP() {
+        pichet.setIcon(pichet_label);
     }
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------

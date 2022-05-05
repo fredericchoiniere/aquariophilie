@@ -27,7 +27,6 @@ public class MethodeGUIMain {
     static final int CD_COQUILLAGE = 12000;
     static final int CD_PICHET = 20000;
 
-
     /**
      * @param rectangle
      * @param label
@@ -59,7 +58,7 @@ public class MethodeGUIMain {
                 }
             }
         } catch (Exception e) {
-            //GestionException.GestionExceptionPla(pla);
+            // GestionException.GestionExceptionPla(pla);
         }
     }
 
@@ -91,9 +90,8 @@ public class MethodeGUIMain {
             }
         } catch (Exception e) {
 
-        }                                
         }
-    
+    }
 
     /**
      * @param rectangle
@@ -124,7 +122,7 @@ public class MethodeGUIMain {
                 }
             }
         } catch (Exception e) {
-            //GestionException.GestionExceptionObjet();
+            // GestionException.GestionExceptionObjet();
         }
     }
 
@@ -154,7 +152,7 @@ public class MethodeGUIMain {
                 }
             }
         } catch (Exception e) {
-            //GestionException.GestionExceptionObjet();
+            // GestionException.GestionExceptionObjet();
         }
     }
 
@@ -217,7 +215,7 @@ public class MethodeGUIMain {
 
     public static void createPoissonNeo(String emplacement, JLabel label1, int index) {
         GUIMain.listePoissonsAqua.set(index, GUIMain.listePoissonsInv.get(getEmplaToInt(emplacement)));
-        GUIMain.poisson_neo= (PoissonNeo) GUIMain.listePoissonsAqua.get(index);
+        GUIMain.poisson_neo = (PoissonNeo) GUIMain.listePoissonsAqua.get(index);
         GUIMain.poisson_neo.setBounds(340, 324, 322, 156);
         GUIMain.poisson_neo.index = setIndexPoi(index);
         GUIMain.tpoisson_neo = new Thread(GUIMain.poisson_neo);
@@ -722,54 +720,37 @@ public class MethodeGUIMain {
         } else {
             return false;
         }
-
     }
 
-    public static boolean cooldownC(){
-        
-        live = (int) System.currentTimeMillis();
+    public static boolean cooldownC() {
 
-        if (isCoquillage) {
-            if (Math.abs(live - clickRecentC) < CD_COQUILLAGE && dansRectC){
-                System.out.println("coquillage sous cooldown, live: " + live + "\nclickrecent: " + clickRecentC);
-                System.out.println("delta temps (ms): " + Math.abs(live - clickRecentC));
-                cooldownC = true;
-                GUIMain.setCooldownVisible(cooldownC);
-            }
-            else{
-                cooldownC = false;
-                dansRectC = false;
-                clickRecentC = live;
-                GUIMain.setCooldownInvisible(cooldownC);
-                System.out.println("coquillage pas sous cooldown");
-            }
-            isCoquillage = false;
+        if (Math.abs(live - clickRecentC) < CD_COQUILLAGE && dansRectC) {
+            /* System.out.println("coquillage sous cooldown, live: " + live + "\nclickrecent: " + clickRecentC);
+            System.out.println("delta temps (ms): " + Math.abs(live - clickRecentC)); */
+            cooldownC = true;
+        } else {
+            cooldownC = false;
+            dansRectC = false;
+            clickRecentC = live;
+            //System.out.println("coquillage pas sous cooldown");
         }
 
         return cooldownC;
-        
     }
 
-    public static boolean cooldownP(){
+    public static boolean cooldownP() {
 
-        live = (int) System.currentTimeMillis();
-
-        if (isPichet) {
-            if (Math.abs(live - clickRecentP) < CD_PICHET && dansRectP){
-                System.out.println("pichet sous cooldown, live: " + live + "\nclickrecent: " + clickRecentP);
-                System.out.println("delta temps (ms): " + Math.abs(live - clickRecentP));
-                cooldownP = true;
-                GUIMain.setCooldownVisible(cooldownP);
-            }
-            else{
-                cooldownP = false;
-                dansRectP = false;
-                clickRecentP = live;
-                GUIMain.setCooldownInvisible(cooldownP);
-                System.out.println("pichet pas sous cooldown");
-            }
-            isPichet = false;
+        if (Math.abs(live - clickRecentP) < CD_PICHET && dansRectP) {
+            /* System.out.println("pichet sous cooldown, live: " + live + "\nclickrecent: " + clickRecentP);
+            System.out.println("delta temps (ms): " + Math.abs(live - clickRecentP)); */
+            cooldownP = true;
+        } else {
+            cooldownP = false;
+            dansRectP = false;
+            clickRecentP = live;
+            //System.out.println("pichet pas sous cooldown");
         }
+
         return cooldownP;
     }
 
