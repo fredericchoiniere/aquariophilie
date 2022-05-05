@@ -8,6 +8,7 @@ import java.awt.event.*;
 import java.awt.*;
 import model.chimie.CycleAzote;
 import model.chimie.Molecules;
+//import model.environnement.Temps;
 
 public class PanelTest extends JPanel implements ActionListener {
 
@@ -20,6 +21,13 @@ public class PanelTest extends JPanel implements ActionListener {
     public JLabel lblPH;
     public JLabel lblGH;
     public JLabel lblKH;
+    public JLabel lblScorePH;
+    public JLabel lblScoreGH;
+    public JLabel lblScoreKH;
+    public JLabel lblScoreAmmo;
+    public JLabel lblScoreNitrites;
+    public JLabel lblScoreNitrates;
+    public JLabel lblScoreEau;
 
     JLabel lblOKAmmo;
     JLabel lblOKNitrites;
@@ -45,13 +53,6 @@ public class PanelTest extends JPanel implements ActionListener {
 
         JLabel lblPT_BG = new JLabel(); // label panel test back ground
 
-        lblPH = new JLabel("0.00");
-        lblGH = new JLabel("0.00");
-        lblKH = new JLabel("0.00");
-        lblAmmo = new JLabel("0.00");
-        lblNitrites = new JLabel("0.00");
-        lblNitrates = new JLabel("0.00");
-
         JLabel lblSoluPH = new JLabel(); // label solution ph
         JLabel lblSoluGH = new JLabel();
         JLabel lblSoluKH = new JLabel();
@@ -65,6 +66,20 @@ public class PanelTest extends JPanel implements ActionListener {
         JLabel lblOKAmmo = new JLabel();
         JLabel lblOKNitrites = new JLabel();
         JLabel lblOKNitrates = new JLabel();
+
+        lblPH = new JLabel("0.00");
+        lblGH = new JLabel("0.00");
+        lblKH = new JLabel("0.00");
+        lblAmmo = new JLabel("0.00");
+        lblNitrites = new JLabel("0.00");
+        lblNitrates = new JLabel("0.00");
+
+        lblScorePH = new JLabel("100");
+        lblScoreGH = new JLabel("100");
+        lblScoreKH = new JLabel("100");
+        lblScoreAmmo = new JLabel("100");
+        lblScoreNitrites = new JLabel("100");
+        lblScoreNitrates = new JLabel("100");
 
         layersPT.setBounds(0, 0, 700, 500);
         add(layersPT);
@@ -328,7 +343,6 @@ public class PanelTest extends JPanel implements ActionListener {
                 if (GUIMain.pipette.getEstRemplie()) {
 
                     GUIMain.pipette.enleverUneGoutte();
-                    
 
                     if (GUIMain.eau.getAmmoniaque() >= 0 && GUIMain.eau.getAmmoniaque() < 0.25) {
                         lblSoluAmmoniaque.setIcon(new ImageIcon("res/outils/gradation_solutions/ammoniaque/0.png"));
@@ -360,8 +374,8 @@ public class PanelTest extends JPanel implements ActionListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (GUIMain.pipette.getEstRemplie()) {
+
                     GUIMain.pipette.enleverUneGoutte();
-                    
 
                     if (GUIMain.eau.getNitrites() >= 0 && GUIMain.eau.getNitrites() < 0.25) {
                         lblSoluNitrites.setIcon(new ImageIcon("res/outils/gradation_solutions/nitrites/0.png"));
@@ -390,8 +404,8 @@ public class PanelTest extends JPanel implements ActionListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (GUIMain.pipette.getEstRemplie()) {
+
                     GUIMain.pipette.enleverUneGoutte();
-                    
 
                     if (GUIMain.eau.getNitrates() >= 0 && GUIMain.eau.getNitrates() < 5) {
                         lblSoluNitrates.setIcon(new ImageIcon("res/outils/gradation_solutions/nitrates/0.png"));
@@ -419,50 +433,85 @@ public class PanelTest extends JPanel implements ActionListener {
             }
         });
 
-        cycle = GUIMain.cycleInitial;
-        cycle1 = new Thread(cycle);
-
         //Label qui affiche la valeur du ph
-        //lblPH = new JLabel(); 
         lblPH.setText(GUIMain.eau.toString(GUIMain.eau.getPH()));
         lblPH.setBounds(76, 80, 25, 20);
         layersPT.setLayer(lblPH, 2);
         layersPT.add(lblPH);
 
         //Label qui affiche la valeur du gh
-        //lblGH = new JLabel(); 
         lblGH.setText(GUIMain.eau.toString(GUIMain.eau.getGH()));
         lblGH.setBounds(181, 80, 25, 20);
         layersPT.setLayer(lblGH, 2);
         layersPT.add(lblGH);
 
         //Label qui affiche la valeur du kh
-        //lblKH = new JLabel(); 
         lblKH.setText(GUIMain.eau.toString(GUIMain.eau.getKH()));
         lblKH.setBounds(286, 80, 25, 20);
         layersPT.setLayer(lblKH, 2);
         layersPT.add(lblKH);
 
         //Label qui affiche la valeur de l'ammoniaque
-        //lblAmmo = new JLabel(); 
         lblAmmo.setText(GUIMain.eau.toString(GUIMain.eau.getAmmoniaque()));
         lblAmmo.setBounds(391, 80, 25, 20);
         layersPT.setLayer(lblAmmo, 2);
         layersPT.add(lblAmmo);
 
         //Label qui affiche la valeur des nitrites
-        //lblNitrites = new JLabel(); 
         lblNitrites.setText(GUIMain.eau.toString(GUIMain.eau.getNitrites()));
         lblNitrites.setBounds(496, 80, 25, 20);
         layersPT.setLayer(lblNitrites, 2);
         layersPT.add(lblNitrites);
 
         //Label qui affiche la valeur des nitrates
-       // lblNitrates = new JLabel();
         lblNitrates.setText(GUIMain.eau.toString(GUIMain.eau.getNitrates()));
         lblNitrates.setBounds(601, 80, 25, 20);
         layersPT.setLayer(lblNitrates, 2);
         layersPT.add(lblNitrates);
+    
+        //Label qui affiche la valeur du score du ph
+        lblScorePH.setText(GUIMain.eau.toString((GUIMain.eau.setScorePH())));
+        lblScorePH.setBounds(76, 60, 25, 20);
+        layersPT.setLayer(lblScorePH, 2);
+        layersPT.add(lblScorePH);
+
+        //Label qui affiche la valeur du score du gh
+        lblScoreGH.setText(GUIMain.eau.toString(GUIMain.eau.setScoreGH()));
+        lblScoreGH.setBounds(181, 60, 25, 20);
+        layersPT.setLayer(lblScoreGH, 2);
+        layersPT.add(lblScoreGH);
+
+        //Label qui affiche la valeur du score du kh
+        lblScoreKH.setText(GUIMain.eau.toString(GUIMain.eau.setScoreKH()));
+        lblScoreKH.setBounds(286, 60, 25, 20);
+        layersPT.setLayer(lblScoreKH, 2);
+        layersPT.add(lblScoreKH);
+
+        //Label qui affiche la valeur du score de l'ammoniaque
+        lblScoreAmmo.setText(GUIMain.eau.toString(GUIMain.eau.setScoreAmmo()));
+        lblScoreAmmo.setBounds(391, 60, 25, 20);
+        layersPT.setLayer(lblScoreAmmo, 2);
+        layersPT.add(lblScoreAmmo);
+
+        //Label qui affiche la valeur du score des nitrites
+        lblScoreNitrites.setText(GUIMain.eau.toString(GUIMain.eau.setScoreNitrites()));
+        lblScoreNitrites.setBounds(496, 60, 25, 20);
+        layersPT.setLayer(lblScoreNitrites, 2);
+        layersPT.add(lblScoreNitrites);
+
+        //Label qui affiche la valeur du score des nitrates
+        lblScoreNitrates.setText(GUIMain.eau.toString(GUIMain.eau.setScoreNitrates()));
+        lblScoreNitrates.setBounds(601, 60, 25, 20);
+        layersPT.setLayer(lblScoreNitrates, 2);
+        layersPT.add(lblScoreNitrates);
+
+
+        lblScoreEau = new JLabel();
+        lblScoreEau.setVisible(true);
+        lblScoreEau.setText(GUIMain.eau.toString(GUIMain.eau.getScoreEau()));
+        lblScoreEau.setBounds(0, 0, 25, 20);
+        layersPT.setLayer(lblScoreEau, 2);
+        layersPT.add(lblScoreEau);
 
     }
 
@@ -472,17 +521,28 @@ public class PanelTest extends JPanel implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        /*if (e.getSource() == btnActu) {
-            lblJour.setText("Jour " + GUIMain.jours);
-            lblAmmo.setText("Ammoniaque: " + GUIMain.eau.getAmmoniaque()); // + " Liste NH3: " +
-                                                                             // cycle.eau.listeAmmoniaque);
-            lblNitrites.setText("Nitrites: " + GUIMain.eau.getNitrites()); // + " Liste NO2-: " +
-                                                                             // cycle.eau.listeNitrites);
-            lblNitrates.setText("Nitrates: " + Eau.nitrates);
-        }
-        if (e.getSource() == btnCycle) {
-            cycle.eau.listeAmmoniaque.add((float) 0);
-            new Thread(new CycleAzote()).start();
-        }*/
+        
     }
+
+    /**
+     * Méthode run de la classe PanelTest
+     * Incomplète pour l'instant
+     
+    @Override
+    public void run() {
+        while (true) {
+            
+            if (!Temps.isPaused) {
+                
+                    
+            } else { // permet de ne pas utiliser 23% du processeur si le temps est en pause
+                try {
+                    Thread.sleep(Temps.DUREE);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+    }*/
 }

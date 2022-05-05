@@ -1,6 +1,7 @@
 //Jérémie Caron     itération 1
 //Jérémie Caron, Frédéric Choinière     itération 2
-//Classe pour l'affichage du magasin, pour itération 2
+// Jérémie Caron    itération 3
+//Classe pour l'affichage du magasin, pour itération 3
 
 package view.tabs;
 
@@ -17,8 +18,15 @@ public class PanelShop extends JPanel implements ActionListener {
 
     // Attributs de la classe
     static int i = 1;
-    JButton poisson_rouge, poisson_betta, poisson_tetra, planteBlue, planteFern, planteScarlet;
-    Dimension shop_dimension = new Dimension(80, 80);
+    public static JButton poisson_rouge;
+    public static JButton poisson_betta;
+    public static JButton poisson_tetra;
+    public static JButton poisson_neo;
+    public static JButton planteBlue;
+    public static JButton planteFern;
+    public static JButton planteScarlet;
+    public static JButton planteErdtree;
+    public static Dimension shop_dimension = new Dimension(80, 80);
     JLabel label_tutoriel, label_information;
 
     public PanelShop() {
@@ -30,7 +38,7 @@ public class PanelShop extends JPanel implements ActionListener {
         poisson_rouge.setBackground(new Color(53, 109, 127));
         poisson_rouge.setBorderPainted(false);
         poisson_rouge.setBounds(35, 214, shop_dimension.width, shop_dimension.height);
-        poisson_rouge.setToolTipText("Prix: " + PoissonRouge.prix + "₴");
+        poisson_rouge.setToolTipText("Prix: " + PoissonRouge.prix + "฿");
         poisson_rouge.addActionListener(this);
         add(poisson_rouge);
 
@@ -40,7 +48,7 @@ public class PanelShop extends JPanel implements ActionListener {
         poisson_betta.setBackground(new Color(53, 109, 127));
         poisson_betta.setBorderPainted(false);
         poisson_betta.setBounds(135, 214, shop_dimension.width, shop_dimension.height);
-        poisson_betta.setToolTipText("Prix: " + PoissonBetta.prix + "₴");
+        poisson_betta.setToolTipText("Prix: " + PoissonBetta.prix + "฿");
         poisson_betta.addActionListener(this);
         add(poisson_betta);
 
@@ -50,9 +58,18 @@ public class PanelShop extends JPanel implements ActionListener {
         poisson_tetra.setBackground(new Color(53, 109, 127));
         poisson_tetra.setBorderPainted(false);
         poisson_tetra.setBounds(235, 214, shop_dimension.width, shop_dimension.height);
-        poisson_tetra.setToolTipText("Prix: " + PoissonTetra.prix + "₴");
+        poisson_tetra.setToolTipText("Prix: " + PoissonTetra.prix + "฿");
         poisson_tetra.addActionListener(this);
         add(poisson_tetra);
+
+        poisson_neo = new JButton();
+        poisson_neo.setIcon(new ImageIcon("res/poissons/poisson_neo/in_bag.png"));
+        poisson_neo.setBackground(new Color(53, 109, 127));
+        poisson_neo.setBorderPainted(false);
+        poisson_neo.setBounds(335, 214, shop_dimension.width, shop_dimension.height);
+        poisson_neo.setToolTipText("Prix: " + PoissonNeo.prix + "฿");
+        poisson_neo.addActionListener(this);
+        add(poisson_neo);
 
         // ajout du bouton plante bleue
         planteBlue = new JButton();
@@ -60,7 +77,7 @@ public class PanelShop extends JPanel implements ActionListener {
         planteBlue.setBackground(new Color(53, 109, 127));
         planteBlue.setBorderPainted(false);
         planteBlue.setBounds(35, 384, shop_dimension.width, shop_dimension.height);
-        planteBlue.setToolTipText("Prix: " + BlueBlue.prix + "₴");
+        planteBlue.setToolTipText("Prix: " + BlueBlue.prix + "฿");
         planteBlue.addActionListener(this);
         add(planteBlue);
 
@@ -70,7 +87,7 @@ public class PanelShop extends JPanel implements ActionListener {
         planteFern.setBackground(new Color(53, 109, 127));
         planteFern.setBorderPainted(false);
         planteFern.setBounds(135, 384, shop_dimension.width, shop_dimension.height);
-        planteFern.setToolTipText("Prix: " + JavaFern.prix + "₴");
+        planteFern.setToolTipText("Prix: " + JavaFern.prix + "฿");
         planteFern.addActionListener(this);
         add(planteFern);
 
@@ -80,9 +97,19 @@ public class PanelShop extends JPanel implements ActionListener {
         planteScarlet.setBackground(new Color(53, 109, 127));
         planteScarlet.setBorderPainted(false);
         planteScarlet.setBounds(235, 384, shop_dimension.width, shop_dimension.height);
-        planteScarlet.setToolTipText("Prix: " + ScarletRot.prix + "₴");
+        planteScarlet.setToolTipText("Prix: " + ScarletRot.prix + "฿");
         planteScarlet.addActionListener(this);
         add(planteScarlet);
+
+        // ajout du bouton plante erdtree
+        planteErdtree = new JButton();
+        planteErdtree.setIcon(Erdtree.icon);
+        planteErdtree.setBackground(new Color(53, 109, 127));
+        planteErdtree.setBorderPainted(false);
+        planteErdtree.setBounds(335, 384, shop_dimension.width, shop_dimension.height);
+        planteErdtree.setToolTipText("Prix: " + Erdtree.prix + "฿");
+        planteErdtree.addActionListener(this);
+        add(planteErdtree);
 
         // ajout du label pour le tutoriel
         label_tutoriel = new JLabel();
@@ -242,6 +269,11 @@ public class PanelShop extends JPanel implements ActionListener {
                 GUIMain.listePoissonsInv.get(index).setName("tetra" + i);
                 i++;
                 break;
+            case "neo":
+                GUIMain.listePoissonsInv.set(index, new PoissonNeo());
+                GUIMain.listePoissonsInv.get(index).setName("neo" + i);
+                i++;
+                break;
             default:
                 break;
         }
@@ -272,6 +304,13 @@ public class PanelShop extends JPanel implements ActionListener {
                 GUIMain.listePlantesInv.set(index, new ScarletRot());
                 GUIMain.listePlantesInv.get(index).setName("scarlet" + i);
                 setLabel(index, ScarletRot.icon, typePlante);
+                setName(index, typePlante);
+                i++;
+                break;
+            case "erdtree":
+                GUIMain.listePlantesInv.set(index, new Erdtree());
+                GUIMain.listePlantesInv.get(index).setName("erdtree" + i);
+                setLabel(index, Erdtree.icon, typePlante);
                 setName(index, typePlante);
                 i++;
                 break;
@@ -378,6 +417,14 @@ public class PanelShop extends JPanel implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur", JOptionPane.PLAIN_MESSAGE);
             }
         }
+        if (e.getSource() == poisson_neo) {
+            label_tutoriel.setVisible(false);
+            if (Magasin.gotMoney("neo")) {
+                checkCase(Inventaire.img_inv_neo, "poisson", "neo", "");
+            } else {
+                JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur", JOptionPane.PLAIN_MESSAGE);
+            }
+        }
         if (e.getSource() == planteBlue) {
             label_tutoriel.setVisible(false);
             if (Magasin.gotMoney("blue")) {
@@ -402,5 +449,17 @@ public class PanelShop extends JPanel implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur", JOptionPane.PLAIN_MESSAGE);
             }
         }
+
+        if(e.getSource() == planteErdtree){
+            label_tutoriel.setVisible(false);
+            if(Magasin.gotMoney("erdtree")){
+                checkCase(Inventaire.img_inv_tetra, "decoration", "", "erdtree");
+            }else{
+                JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur", JOptionPane.PLAIN_MESSAGE);
+            }
+        }
     }
+
+
+    
 }

@@ -1,4 +1,5 @@
 //Jérémie Caron, Frédéric Choinière    itération 2
+// Jérémie Caron    itération 3
 
 package model;
 
@@ -16,6 +17,15 @@ public class MethodeGUIMain {
     Aquarium aquarium;
     Inventaire inventaire;
     static Boolean hasPlants = false;
+    public static Boolean cooldownC = false;
+    public static Boolean cooldownP = false;
+    public static Boolean isCoquillage = false;
+    public static Boolean isPichet = false;
+    public static Boolean dansRectC = false, dansRectP = false;
+    public static int clickRecentC = 0, clickRecentP = 0, live;
+
+    static final int CD_COQUILLAGE = 12000;
+    static final int CD_PICHET = 20000;
 
     /**
      * @param rectangle
@@ -48,7 +58,7 @@ public class MethodeGUIMain {
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Veuillez rester à l'intérieur de l'application", "Erreur", JOptionPane.ERROR_MESSAGE);
+            // GestionException.GestionExceptionPla(pla);
         }
     }
 
@@ -69,17 +79,17 @@ public class MethodeGUIMain {
                 if (!hasFish) {
                     try {
                         setHasFish(hasFishString);
-                        label1.setIcon(icone);
+                        label1.setIcon(getIconFish(poi));
                         label2.setIcon(Inventaire.empty_inv);
                         setEmpla(emplacement);
                         setEmplaToFish(emplacement, poi, label1, index);
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        GestionException.GestionExceptionPoi(poi);
                     }
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Veuillez rester à l'intérieur de l'application", "Erreur", JOptionPane.ERROR_MESSAGE);
+
         }
     }
 
@@ -108,10 +118,11 @@ public class MethodeGUIMain {
                     GUIMain.listePoissonsAqua.get(index).var = false;
                     GUIMain.listePoissonsAqua.set(index, GUIMain.poisson_default);
                     checkFishType(aqua);
+                    Poisson.setFalse((short) index);
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Veuillez rester à l'intérieur de l'application", "Erreur", JOptionPane.ERROR_MESSAGE);
+            // GestionException.GestionExceptionObjet();
         }
     }
 
@@ -141,7 +152,7 @@ public class MethodeGUIMain {
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Veuillez rester à l'intérieur de l'application", "Erreur", JOptionPane.ERROR_MESSAGE);
+            // GestionException.GestionExceptionObjet();
         }
     }
 
@@ -200,6 +211,19 @@ public class MethodeGUIMain {
         GUIMain.tpoisson_rouge.start();
         GUIMain.panelAqua.add(GUIMain.poisson_rouge);
         setAquaName(index, "rouge");
+    }
+
+    public static void createPoissonNeo(String emplacement, JLabel label1, int index) {
+        GUIMain.listePoissonsAqua.set(index, GUIMain.listePoissonsInv.get(getEmplaToInt(emplacement)));
+        GUIMain.poisson_neo = (PoissonNeo) GUIMain.listePoissonsAqua.get(index);
+        GUIMain.poisson_neo.setBounds(340, 324, 322, 156);
+        GUIMain.poisson_neo.index = setIndexPoi(index);
+        GUIMain.tpoisson_neo = new Thread(GUIMain.poisson_neo);
+        Argent.poi1 += 1;
+        GUIMain.eau.potentielDechets += PoissonRouge.dechets;
+        GUIMain.tpoisson_neo.start();
+        GUIMain.panelAqua.add(GUIMain.poisson_neo);
+        setAquaName(index, "neo");
     }
 
     /**
@@ -453,6 +477,8 @@ public class MethodeGUIMain {
             case "tetra":
                 createPoissonTetra(emplacement, label1, index);
                 break;
+            case "neo":
+                createPoissonNeo(emplacement, label1, index);
             default:
                 break;
         }
@@ -488,6 +514,13 @@ public class MethodeGUIMain {
                 GUIMain.eau.sommeAbsorptionDechets += ScarletRot.absorptionDechets;
                 GUIMain.eau.sommeContributionPH += ScarletRot.contributionPH;
                 break;
+            case "erdtree":
+                GUIMain.listePlantesAqua.set(indexAqua, GUIMain.listePlantesInv.get(indexInv));
+                Argent.emp3 += 50;
+                GUIMain.eau.sommeAbsorptionNitrates += Erdtree.absorptionNitrates;
+                GUIMain.eau.sommeAbsorptionDechets += Erdtree.absorptionDechets;
+                GUIMain.eau.sommeContributionPH += Erdtree.contributionPH;
+                break;
             default:
                 break;
         }
@@ -513,6 +546,11 @@ public class MethodeGUIMain {
                 Argent.poi3 -= 2;
                 Argent.argent += PoissonTetra.prix / 2;
                 GUIMain.eau.potentielDechets -= PoissonTetra.dechets;
+                break;
+            case "neo":
+                Argent.poi3 -= 2;
+                Argent.argent += PoissonNeo.prix / 2;
+                GUIMain.eau.potentielDechets -= PoissonNeo.dechets;
                 break;
             default:
                 break;
@@ -545,6 +583,13 @@ public class MethodeGUIMain {
                 GUIMain.eau.sommeAbsorptionNitrates -= ScarletRot.absorptionNitrates;
                 GUIMain.eau.sommeAbsorptionDechets -= ScarletRot.absorptionDechets;
                 GUIMain.eau.sommeContributionPH -= ScarletRot.contributionPH;
+                break;
+            case "erdtree":
+                Argent.emp3 -= 50;
+                Argent.argent += Erdtree.prix / 2;
+                GUIMain.eau.sommeAbsorptionNitrates -= Erdtree.absorptionNitrates;
+                GUIMain.eau.sommeAbsorptionDechets -= Erdtree.absorptionDechets;
+                GUIMain.eau.sommeContributionPH -= Erdtree.contributionPH;
                 break;
             default:
                 break;
@@ -602,6 +647,22 @@ public class MethodeGUIMain {
         }
     }
 
+    public static ImageIcon getIconFish(String poi) {
+        switch (poi) {
+            case "rouge":
+                return Inventaire.img_rouge_aqua;
+            case "betta":
+                return Inventaire.img_betta_aqua;
+            case "tetra":
+                return Inventaire.img_tetra_aqua;
+            case "neo":
+                return Inventaire.img_neo_aqua;
+            default:
+                break;
+        }
+        return null;
+    }
+
     /**
      * @return Boolean
      *         méthode pour retourner si il y a une plante
@@ -614,23 +675,83 @@ public class MethodeGUIMain {
         return hasPlants;
     }
 
-    /** 
+    /**
      * @return Rectangle
-     *      Retourne les dimensions du rectangle Eau
+     *         Retourne les dimensions du rectangle Eau
      */
-    public static Rectangle getEauDimensions(){
+    public static Rectangle getEauDimensions() {
         return GUIMain.rectEau;
     }
 
-    /** 
+    /**
      * @param y
      * @param height
-     *          Redéfinit les dimensions du rectangle Eau en fonction des paramètres spécifiés 
-     *          Rafraîchit l'affichage de l'eau
+     *               Redéfinit les dimensions du rectangle Eau en fonction des
+     *               paramètres spécifiés
+     *               Rafraîchit l'affichage de l'eau
      */
-    public static void setEauDimensions(int y, int height){
-        GUIMain.rectEau.setBounds((int)GUIMain.rectEau.getX(), y, (int)GUIMain.rectEau.getWidth(), height);
+    public static void setEauDimensions(int y, int height) {
+        GUIMain.rectEau.setBounds((int) GUIMain.rectEau.getX(), y, (int) GUIMain.rectEau.getWidth(), height);
         GUIMain.panelAqua.repaint();
+    }
+
+    /**
+     * @return boolean
+     * 
+     */
+    public static boolean rectAquarium() {
+        if (GUIMain.panelAqua.getMousePosition().getX() >= GUIMain.rectAquarium.getMinX()
+                && GUIMain.panelAqua.getMousePosition().getX() <= GUIMain.rectAquarium.getMaxX()
+                && GUIMain.panelAqua.getMousePosition().getY() >= GUIMain.rectAquarium.getMinY()
+                && GUIMain.panelAqua.getMousePosition().getY() <= GUIMain.rectAquarium.getMaxY()) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public static boolean rectPlant() {
+        if (GUIMain.panelAqua.getMousePosition().getX() >= GUIMain.rectPlant.getMinX()
+                && GUIMain.panelAqua.getMousePosition().getX() <= GUIMain.rectPlant.getMaxX()
+                && GUIMain.panelAqua.getMousePosition().getY() >= GUIMain.rectPlant.getMinY()
+                && GUIMain.panelAqua.getMousePosition().getY() <= GUIMain.rectPlant.getMaxY()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean cooldownC() {
+
+        if (Math.abs(live - clickRecentC) < CD_COQUILLAGE && dansRectC) {
+            /* System.out.println("coquillage sous cooldown, live: " + live + "\nclickrecent: " + clickRecentC);
+            System.out.println("delta temps (ms): " + Math.abs(live - clickRecentC)); */
+            cooldownC = true;
+        } else {
+            cooldownC = false;
+            dansRectC = false;
+            clickRecentC = live;
+            //System.out.println("coquillage pas sous cooldown");
+        }
+
+        return cooldownC;
+    }
+
+    public static boolean cooldownP() {
+
+        if (Math.abs(live - clickRecentP) < CD_PICHET && dansRectP) {
+            /* System.out.println("pichet sous cooldown, live: " + live + "\nclickrecent: " + clickRecentP);
+            System.out.println("delta temps (ms): " + Math.abs(live - clickRecentP)); */
+            cooldownP = true;
+        } else {
+            cooldownP = false;
+            dansRectP = false;
+            clickRecentP = live;
+            //System.out.println("pichet pas sous cooldown");
+        }
+
+        return cooldownP;
     }
 
 }
