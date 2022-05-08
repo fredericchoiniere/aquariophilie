@@ -1,6 +1,6 @@
 //Jérémie Caron, Frédéric Choinière     itération 1
 //Jérémie Caron, Frédéric Choinière     itération 2
-// Jérémie Caron    itération 3
+//Jérémie Caron, Frédéric Choinière     itération 3
 
 //Classe d'affichage principale
 
@@ -17,6 +17,8 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import control.Control;
 import model.*;
@@ -161,6 +163,7 @@ public class GUIMain extends JFrame implements ActionListener {
         actionEnCours = "test";
 
         // creation du main tab
+        UIManager.put("TabbedPane.selected", new Color(73, 206, 239)); // TODO: ajuster couleur quand possible
         tabbedPane = new JTabbedPane();
 
         // creation du premier tab
@@ -517,6 +520,32 @@ public class GUIMain extends JFrame implements ActionListener {
         aquaPla1 = "";
         aquaPla2 = "";
         aquaPla3 = "";
+
+        //change listener pour le 3e tab "Détails"
+        tabbedPane.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                JTabbedPane tabSelection = (JTabbedPane) e.getSource();
+                
+                switch (tabSelection.getSelectedIndex()){
+                    case 0:
+                        //setSize(size_panel_aqua.width, size_panel_aqua.height); // TODO: revoir le resize avec les patnais
+                        //setSize(panelInfo.getSize());
+                        break;
+                    case 1:
+                        //setSize(size_panel_aqua.width, size_panel_aqua.height); // TODO: revoir le resize avec les patnais
+                        //setSize(panelShop.getSize());
+                        break;
+                    case 2:     // Vérifie si le tab "Détails" est sélectionné
+                        setSize(500, 700); //TODO: setprefferedsize img background
+
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+        });
 
         // action listener pour fermer panelTest
         aquarium_kit_ouvert.addMouseListener(new MouseAdapter() {

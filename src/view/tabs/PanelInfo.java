@@ -124,6 +124,17 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
     }
 
     /**
+     * @param Graphics
+     *                 méthode pour paint le background du panel
+     */
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2D = (Graphics2D) g;
+        Image background = Toolkit.getDefaultToolkit().getImage("res/background/background_details.png");
+        g2D.drawImage(background, 5, 0, this);
+    }
+
+    /**
      *          Méthode run de la classe PanelInfo
      */
     @Override
