@@ -4,13 +4,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+
+import model.jeu.Argent;
+import model.plantes.*;
+import model.poissons.*;
+
 import java.awt.event.*;
 
 public class GUIIntro extends JPanel {
     private Image image;
     public static JLabel label;
-    public static JButton btnNouvellePartie, btnChargerPartie, btnModeEvaluation, btnCredit, btClose, btClassement,
-            btInspiration;
+    public static JButton btnNouvellePartie, btnModeEvaluation, btnQuitter, btnCredits;
 
     static ImageIcon img = new ImageIcon("res/background/icone_aquariophilie.png");
 
@@ -35,7 +39,6 @@ public class GUIIntro extends JPanel {
             imagePanel.setLayout(null);
 
             btnNouvellePartie = new JButton("Nouvelle Partie");
-
             // ils sont ici parce que ca marchait pas en les callant à l'extérieur de la
             // méthode so fuckit (pour fred qui va se plaindre)
             btnNouvellePartie.addActionListener((ActionListener) new ActionListener() {
@@ -62,9 +65,63 @@ public class GUIIntro extends JPanel {
                     }
                 }
             });
-            btnNouvellePartie.setBounds(150, 0, 200, 50);
+            btnNouvellePartie.setBounds(140, 130, 220, 50);
             btnNouvellePartie.setVisible(true);
             imagePanel.add(btnNouvellePartie);
+
+            btnModeEvaluation = new JButton("Mode Évaluation");
+            btnModeEvaluation.addActionListener((ActionListener) new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    GUIMain aquarium = new GUIMain();
+            aquarium.setResizable(false);
+            aquarium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            aquarium.pack();
+            aquarium.setLocationRelativeTo(null);
+            aquarium.setVisible(true);
+            frame.setVisible(false);
+
+            // enlevement du systeme de progression
+            PoissonRouge.prix = 0;
+            PoissonBetta.prix = 0;
+            PoissonTetra.prix = 0;
+            PoissonNeo.prix = 0;
+            JavaFern.prix = 0;
+            BlueBlue.prix = 0;
+            ScarletRot.prix = 0;
+            Erdtree.prix = 0;
+            Argent.argent = 0;
+            Argent.montant = "∞";
+            GUIMain.label_argent_aqua.setText("∞");
+            GUIMain.label_argent_shop.setText("∞");
+            Argent.normal = false;
+                }
+            });
+            btnModeEvaluation.setBounds(140, 185, 220, 50);
+            btnModeEvaluation.setVisible(true);
+            imagePanel.add(btnModeEvaluation);
+
+
+            btnQuitter = new JButton("Quitter");
+            btnQuitter.addActionListener((ActionListener) new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    System.exit(0);
+                }
+            });
+            btnQuitter.setBounds(140, 240, 105, 50);
+            btnQuitter.setVisible(true);
+            imagePanel.add(btnQuitter);
+
+
+            btnCredits = new JButton("Credits");
+            btnQuitter.addActionListener((ActionListener) new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    //TOTO: afficher les credits
+                }
+            });
+            btnCredits.setBounds(255, 240, 105, 50);
+            btnCredits.setVisible(true);
+            imagePanel.add(btnCredits);
+
 
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null);
