@@ -50,18 +50,7 @@ public class GUIMain extends JFrame implements ActionListener {
     static JLabel pichet_label;
 
     static JLabel coquillage_label;
-
-    JLabel radio_on;
-
-    JLabel radio_off;
-
-    JLabel kit_ouvert;
-
-    JLabel kit_fermer;
-
-    JLabel kit_bg;
-
-    JLabel plant;
+    JLabel radio_on, radio_off, kit_ouvert, kit_fermer, kit_bg, plant;
 
     public static JLabel lblPipette = new JLabel();
     public static JLabel label_argent_aqua = new JLabel("");
@@ -104,6 +93,7 @@ public class GUIMain extends JFrame implements ActionListener {
     Sante sante;
     public static Aquarium aquarium;
     public static CycleAzote cycleInitial;
+    Dimension dimAqua, dimShop, dimInfo;
 
     // création des listes
     public static ArrayList<Poisson> listePoissonsAqua = new ArrayList<Poisson>(6);
@@ -173,6 +163,7 @@ public class GUIMain extends JFrame implements ActionListener {
         panelAqua = new PanelAqua();
         panelAqua.setLayout(null);
         panelAqua.setVisible(true);
+        dimAqua = panelAqua.getPreferredSize();
 
         inventaire_bg = new JLabel();
         kit_bg = new JLabel();
@@ -529,21 +520,23 @@ public class GUIMain extends JFrame implements ActionListener {
                 
                 switch (tabSelection.getSelectedIndex()){
                     case 0:
-                        //setSize(size_panel_aqua.width, size_panel_aqua.height); // TODO: revoir le resize avec les patnais
-                        //setSize(panelInfo.getSize());
+                        setSize(1020, 765); // TODO: revoir le resize avec les patnais
+                        //setPreferredSize(new Dimension(1000, 700));
+                        //setSize(dimAqua);
                         break;
                     case 1:
                         //setSize(size_panel_aqua.width, size_panel_aqua.height); // TODO: revoir le resize avec les patnais
                         //setSize(panelShop.getSize());
+                        setSize(1020, 765);
                         break;
                     case 2:     // Vérifie si le tab "Détails" est sélectionné
-                        setSize(500, 700); //TODO: setprefferedsize img background
-
+                        setSize(520, 765); //TODO: setprefferedsize img background
+                        //panelInfo.setPreferredSize(new Dimension(500, 700));
+                        //setSize(panelInfo.getSize());
                         break;
                     default:
                         break;
                 }
-
             }
         });
 

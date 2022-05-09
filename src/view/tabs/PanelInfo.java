@@ -29,6 +29,8 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
 
     public PanelInfo() { // Constructeur de la classe PanelInfo
 
+        //setPreferredSize(new Dimension(500, 700));
+
         mol = new Molecules();
         mol.ammoniaqueAtomesMol();
         mol.nitritesAtomesMol();
@@ -131,7 +133,7 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
         Image background = Toolkit.getDefaultToolkit().getImage("res/background/background_details.png");
-        g2D.drawImage(background, 5, 0, this);
+        g2D.drawImage(background, 0, 0, this);
     }
 
     /**
