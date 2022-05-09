@@ -145,11 +145,7 @@ public class GUIMain extends JFrame implements ActionListener {
         eau = new Eau();
         threadEau = new Thread(eau);
         threadEau.setName("ThreadEau");
-        // cycleInitial = new CycleAzote();
         eau.partirCycle(jours);
-        // tCycleInitial = new Thread(cycleInitial);
-        // tCycleInitial.setName("ThreadCycleInitial");
-        // actionEnCours = cycleInitial.actionEnCours;
         actionEnCours = "test";
 
         // creation du main tab
@@ -517,22 +513,18 @@ public class GUIMain extends JFrame implements ActionListener {
             @Override
             public void stateChanged(ChangeEvent e) {
                 JTabbedPane tabSelection = (JTabbedPane) e.getSource();
-                
                 switch (tabSelection.getSelectedIndex()){
-                    case 0:
+                    case 0:     // Vérifie si le tab "Aquarium" est sélectionné
                         setSize(1020, 765); // TODO: revoir le resize avec les patnais
-                        //setPreferredSize(new Dimension(1000, 700));
-                        //setSize(dimAqua);
+                        setLocationRelativeTo(null);
                         break;
-                    case 1:
-                        //setSize(size_panel_aqua.width, size_panel_aqua.height); // TODO: revoir le resize avec les patnais
-                        //setSize(panelShop.getSize());
+                    case 1:     // Vérifie si le tab "Magasin" est sélectionné
                         setSize(1020, 765);
+                        setLocationRelativeTo(null);
                         break;
                     case 2:     // Vérifie si le tab "Détails" est sélectionné
-                        setSize(520, 765); //TODO: setprefferedsize img background
-                        //panelInfo.setPreferredSize(new Dimension(500, 700));
-                        //setSize(panelInfo.getSize());
+                        setSize(520, 765);
+                        setLocationRelativeTo(null);
                         break;
                     default:
                         break;
