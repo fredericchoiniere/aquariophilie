@@ -4,6 +4,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+
+import model.jeu.Argent;
+import model.plantes.*;
+import model.poissons.*;
+
 import java.awt.event.*;
 
 public class GUIIntro extends JPanel {
@@ -65,9 +70,36 @@ public class GUIIntro extends JPanel {
             imagePanel.add(btnNouvellePartie);
 
             btnModeEvaluation = new JButton("Mode Évaluation");
+            btnModeEvaluation.addActionListener((ActionListener) new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    GUIMain aquarium = new GUIMain();
+            aquarium.setResizable(false);
+            aquarium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            aquarium.pack();
+            aquarium.setLocationRelativeTo(null);
+            aquarium.setVisible(true);
+            frame.setVisible(false);
+
+            // enlevement du systeme de progression
+            PoissonRouge.prix = 0;
+            PoissonBetta.prix = 0;
+            PoissonTetra.prix = 0;
+            PoissonNeo.prix = 0;
+            JavaFern.prix = 0;
+            BlueBlue.prix = 0;
+            ScarletRot.prix = 0;
+            Erdtree.prix = 0;
+            Argent.argent = 0;
+            Argent.montant = "∞";
+            GUIMain.label_argent_aqua.setText("∞");
+            GUIMain.label_argent_shop.setText("∞");
+            Argent.normal = false;
+                }
+            });
             btnModeEvaluation.setBounds(140, 185, 220, 50);
             btnModeEvaluation.setVisible(true);
             imagePanel.add(btnModeEvaluation);
+
 
             btnQuitter = new JButton("Quitter");
             btnQuitter.addActionListener((ActionListener) new ActionListener() {
@@ -79,7 +111,13 @@ public class GUIIntro extends JPanel {
             btnQuitter.setVisible(true);
             imagePanel.add(btnQuitter);
 
+
             btnCredits = new JButton("Credits");
+            btnQuitter.addActionListener((ActionListener) new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    //TOTO: afficher les credits
+                }
+            });
             btnCredits.setBounds(255, 240, 105, 50);
             btnCredits.setVisible(true);
             imagePanel.add(btnCredits);
