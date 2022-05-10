@@ -942,7 +942,6 @@ public class GUIMain extends JFrame implements ActionListener {
                 // layerAqua.add(inventaire_bg, 1);
                 inventaire_bg.setVisible(false);
                 inventaire.setVisible(false);
-
             }
         });
 

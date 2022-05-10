@@ -148,6 +148,14 @@ public class GUIIntro extends JPanel {
             btnCredits.setVisible(true);
             imagePanel.add(btnCredits);
 
+            JLabel label_titre = new JLabel();
+            ImageIcon titre = new ImageIcon(
+                        new ImageIcon("res/background/aquariophilie2.png").getImage());
+                                        
+            label_titre.setIcon(titre);
+            label_titre.setBounds(56, 40, 380, 52);
+            imagePanel.add(label_titre);
+
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null);
             frame.add(imagePanel);
