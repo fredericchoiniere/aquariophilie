@@ -43,7 +43,7 @@ public class GUIMain extends JFrame implements ActionListener {
     // création des labels
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, eau_label, inventaire_ouvert,
             inventaire_fermer, inventaire_bg, filet_label, pause_label, reprendre_label, label_tutoriel,
-            label_information, hamis, ciseau_label, label_argent, label_pause2, label_reprendre2;
+            label_information, hamis, ciseau_label, label_argent, label_pause2, label_reprendre2, meme;
 
     public static JLabel label_jours2;
 
@@ -382,6 +382,12 @@ public class GUIMain extends JFrame implements ActionListener {
         label_information.setVisible(true);
         panelAqua.add(label_information);
 
+        meme = new JLabel(".");
+        meme.setBounds(0, 0, 3, 3);
+        meme.setVisible(true);
+        panelAqua.add(meme);
+        
+
         // -----------------------------------------------------
 
         // ajout de panel Aqua au layered pane
@@ -564,6 +570,15 @@ public class GUIMain extends JFrame implements ActionListener {
                 kit_fermer.setVisible(true);
                 kit_bg.setVisible(false);
                 kit_ouvert.setVisible(false);
+            }
+        });
+
+        meme.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                PanelAqua.background = Toolkit.getDefaultToolkit().getImage("res/meme/god.png");
+                System.out.println("meme");
+                JOptionPane.showMessageDialog(null, "Vous avez découvert un easter egg!" + "\n" + "Vous pouvez retourner en arrère en appuyant sur l'inventaire!");
             }
         });
 
@@ -777,13 +792,9 @@ public class GUIMain extends JFrame implements ActionListener {
 
                 inventaire_ouvert.setVisible(false);
                 inventaire_fermer.setVisible(true);
-                // layerAqua.add(inventaire_bg, 1);
                 inventaire_bg.setVisible(false);
                 label_tutoriel.setVisible(false);
-                // inventaire.setVisible(false);
-                // kit_bg.setVisible(false);
-                // kit_ouvert.setBounds(82, 30, size_kit_ouvert.width, size_kit_ouvert.height);
-                // kit_fermer.setBounds(82, 30, size_kit_ouvert.width, size_kit_ouvert.height);
+                PanelAqua.background = Toolkit.getDefaultToolkit().getImage("res/background/background.png");
             }
         });
 
@@ -803,6 +814,7 @@ public class GUIMain extends JFrame implements ActionListener {
                 kit_bg.setVisible(false);
                 kit_ouvert.setVisible(false);
                 kit_fermer.setVisible(true);
+                PanelAqua.background = Toolkit.getDefaultToolkit().getImage("res/background/background.png");
             }
         });
 
