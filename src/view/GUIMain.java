@@ -386,7 +386,6 @@ public class GUIMain extends JFrame implements ActionListener {
         meme.setBounds(0, 0, 3, 3);
         meme.setVisible(true);
         panelAqua.add(meme);
-        
 
         // -----------------------------------------------------
 
@@ -452,7 +451,6 @@ public class GUIMain extends JFrame implements ActionListener {
 
         // création du panel Magasin
         PanelShop panelShop = new PanelShop();
-        
 
         // ajout du label pour l'argent
         label_argent_shop.setBounds(612, 8, 100, 50);
@@ -515,21 +513,21 @@ public class GUIMain extends JFrame implements ActionListener {
         aquaPla2 = "";
         aquaPla3 = "";
 
-        //change listener pour le 3e tab "Détails"
+        // change listener pour le 3e tab "Détails"
         tabbedPane.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 JTabbedPane tabSelection = (JTabbedPane) e.getSource();
-                switch (tabSelection.getSelectedIndex()){
-                    case 0:     // Vérifie si le tab "Aquarium" est sélectionné
+                switch (tabSelection.getSelectedIndex()) {
+                    case 0: // Vérifie si le tab "Aquarium" est sélectionné
                         setSize(1020, 765); // TODO: revoir le resize avec les patnais
                         setLocationRelativeTo(null);
                         break;
-                    case 1:     // Vérifie si le tab "Magasin" est sélectionné
+                    case 1: // Vérifie si le tab "Magasin" est sélectionné
                         setSize(1020, 765);
                         setLocationRelativeTo(null);
                         break;
-                    case 2:     // Vérifie si le tab "Détails" est sélectionné
+                    case 2: // Vérifie si le tab "Détails" est sélectionné
                         setSize(520, 765);
                         setLocationRelativeTo(null);
                         break;
@@ -578,7 +576,8 @@ public class GUIMain extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
                 PanelAqua.background = Toolkit.getDefaultToolkit().getImage("res/meme/god.png");
                 System.out.println("meme");
-                JOptionPane.showMessageDialog(null, "Vous avez découvert un easter egg!" + "\n" + "Vous pouvez retourner en arrère en appuyant sur l'inventaire!");
+                JOptionPane.showMessageDialog(null, "Vous avez découvert un easter egg!" + "\n"
+                        + "Vous pouvez retourner en arrère en appuyant sur l'inventaire!");
             }
         });
 

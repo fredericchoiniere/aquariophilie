@@ -134,10 +134,10 @@ public class GUIIntro extends JPanel {
                             + "\n2" + "\n2" + "\n2");
 
                     JScrollPane scrollPane = new JScrollPane(textArea);
-                    
+
                     frame.add(scrollPane);
 
-                    //rame.add(textArea);
+                    // rame.add(textArea);
                     frame.setSize(700, 700);
                     frame.setVisible(true);
                     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
