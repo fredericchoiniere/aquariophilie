@@ -446,9 +446,10 @@ public class GUIMain extends JFrame implements ActionListener {
 
         // création du panel Magasin
         PanelShop panelShop = new PanelShop();
+        
 
         // ajout du label pour l'argent
-        label_argent_shop.setBounds(612, 13, 100, 50);
+        label_argent_shop.setBounds(612, 8, 100, 50);
         label_argent_shop.setFont(new Font("Verdana", Font.BOLD, 16));
         label_argent_shop.setForeground(Color.WHITE);
         label_argent_shop.setText("500฿"); // Afficher vraie valeur
@@ -457,7 +458,7 @@ public class GUIMain extends JFrame implements ActionListener {
 
         label_pause2 = new JLabel();
         label_pause2.setIcon(new ImageIcon("res/background/pause.png"));
-        label_pause2.setBounds(492, 21, 40, 40);
+        label_pause2.setBounds(492, 16, 40, 40);
         label_pause2.setToolTipText("Pause la progression du temps");
         label_pause2.setVisible(false);
         panelShop.add(label_pause2);
@@ -465,7 +466,7 @@ public class GUIMain extends JFrame implements ActionListener {
         // ajout du label pour reprendre
         label_reprendre2 = new JLabel();
         label_reprendre2.setIcon(new ImageIcon("res/background/reprendre.png"));
-        label_reprendre2.setBounds(492, 21, 40, 40);
+        label_reprendre2.setBounds(492, 16, 40, 40);
         label_reprendre2.setToolTipText("Reprend la progression du temps");
         label_reprendre2.setVisible(true);
         panelShop.add(label_reprendre2);
