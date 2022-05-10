@@ -304,7 +304,7 @@ public class GUIMain extends JFrame implements ActionListener {
         inventaire.setVisible(false);
 
         kit_bg.setIcon(new ImageIcon("res/background/kit.png"));
-        kit_bg.setBounds(5, 130, 250, 475);
+        kit_bg.setBounds(10, 130, 250, 475);
         kit_bg.setVisible(false);
         sante = new Sante(kit_bg);
         sante.setVisible(Sante.state1, Sante.state2, Sante.state3, Sante.state4, Sante.state5, Sante.state6);
@@ -393,43 +393,43 @@ public class GUIMain extends JFrame implements ActionListener {
         //----------------------------------------------------------
 
         label_tuto1 = new JLabel();
-        label_tuto1.setBounds(0, 0, 1000, 700);
+        label_tuto1.setBounds(5, 0, 1000, 700);
         label_tuto1.setIcon(new ImageIcon("res/background/tutos/tuto1.png"));
         label_tuto1.setVisible(true);
         panelAqua.add(label_tuto1);
 
         label_tuto2 = new JLabel();
-        label_tuto2.setBounds(0, 0, 1000, 700);
+        label_tuto2.setBounds(5, 0, 1000, 700);
         label_tuto2.setIcon(new ImageIcon("res/background/tutos/tuto2.png"));
         label_tuto2.setVisible(false);
         panelAqua.add(label_tuto2); 
 
         label_tuto3 = new JLabel();
-        label_tuto3.setBounds(0, 0, 1000, 700);
+        label_tuto3.setBounds(5, 0, 1000, 700);
         label_tuto3.setIcon(new ImageIcon("res/background/tutos/tuto3.png"));
         label_tuto3.setVisible(false);
         panelAqua.add(label_tuto3);
 
         label_tuto4 = new JLabel();
-        label_tuto4.setBounds(0, 0, 1000, 700); 
+        label_tuto4.setBounds(5, 0, 1000, 700); 
         label_tuto4.setIcon(new ImageIcon("res/background/tutos/tuto4.png"));
         label_tuto4.setVisible(false);
         panelAqua.add(label_tuto4);
 
         label_tuto5 = new JLabel();
-        label_tuto5.setBounds(0, 0, 1000, 700);
+        label_tuto5.setBounds(5, 0, 1000, 700);
         label_tuto5.setIcon(new ImageIcon("res/background/tutos/tuto5.png"));
         label_tuto5.setVisible(false);
         panelAqua.add(label_tuto5);
 
         label_tuto6 = new JLabel();
-        label_tuto6.setBounds(0, 0, 1000, 700);
+        label_tuto6.setBounds(5, 0, 1000, 700);
         label_tuto6.setIcon(new ImageIcon("res/background/tutos/tuto6.png"));
         label_tuto6.setVisible(false);
         panelAqua.add(label_tuto6);
 
         label_tuto7 = new JLabel();
-        label_tuto7.setBounds(0, 0, 1000, 700);
+        label_tuto7.setBounds(5, 0, 1000, 700);
         label_tuto7.setIcon(new ImageIcon("res/background/tutos/tuto7.png"));
         label_tuto7.setVisible(false);
         panelAqua.add(label_tuto7);
@@ -1035,10 +1035,55 @@ public class GUIMain extends JFrame implements ActionListener {
         });
 
         // actionlistener pour ouvrir le tutoriel
+        //--------------------------------------------------------------------------
         label_tuto1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                label_tutoriel.setVisible(true);
+                label_tuto1.setVisible(false);
+                label_tuto2.setVisible(true);
+            }});
+        
+        label_tuto2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                label_tuto2.setVisible(false);
+                label_tuto3.setVisible(true);
+            }});
+
+        label_tuto3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                label_tuto3.setVisible(false);
+                label_tuto4.setVisible(true);
+            }});
+
+        label_tuto4.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                label_tuto4.setVisible(false);
+                label_tuto5.setVisible(true);
+            }});
+
+        label_tuto5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                label_tuto5.setVisible(false);
+                label_tuto6.setVisible(true);
+            }});
+
+        label_tuto6.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                label_tuto6.setVisible(false);
+                label_tuto7.setVisible(true);
+            }});
+
+        label_tuto7.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                label_tuto7.setVisible(false);
+                label_tuto8.setVisible(true);
+            }});
             
         // actionlistener sur les items de l'inventaire
         // ---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1508,16 +1553,6 @@ public class GUIMain extends JFrame implements ActionListener {
     }
 
     /**
-     * méthode pour set le curseur par défaut
-     */
-    public void basicCursor() {
-        tetra_curseur = new ImageIcon("res/icone_souris/tetra_cursor.png");
-        panelAqua.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
-                tetra_curseur.getImage(),
-                new Point(0, 0), "custom cursor"));
-    }
-
-    /**
      * @param label
      *              méthode pour set un autre curseur
      */
@@ -1647,8 +1682,15 @@ public class GUIMain extends JFrame implements ActionListener {
         pichet.setIcon(pichet_label);
     }
 
+    public void basicCursor() {
+        tetra_curseur = new ImageIcon("res/icone_souris/tetra_cursor.png");
+        panelAqua.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
+                tetra_curseur.getImage(),
+                new Point(0, 0), "custom cursor"));
+    }
     // ------------------------------------------------------------------------------------------------------------------------------------------------------
 
 }
 
 // Слава Україні!
+
