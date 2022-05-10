@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 //Jérémie Caron     itération 1
 // Justin Plouffe Itération 3
 //Classe pour l'affichage du frame d'introduction
 
-=======
->>>>>>> 402805dcbcbceef9598353bf1dc74c7c97b581e4
 package view;
 
 import java.awt.*;
@@ -39,29 +36,11 @@ public class GUIIntro extends JPanel {
         try {
             JFrame frame = new JFrame("Image");
 
-<<<<<<< HEAD
-        // nouvelle partie
-        btnNouvellePartie = new JButton("Nouvelle Partie");
-        btnNouvellePartie.addActionListener(this);
-        btnNouvellePartie.setBounds(150, 0, 200, 50);
-        //btnNouvellePartie.setVisible(true);
-        panelIntro.add(btnNouvellePartie);
-        //layerIntro.add(btnNouvellePartie);
-       
-        // mode evaluation
-        btnModeEvaluation = new JButton("Mode Evaluation");
-        btnModeEvaluation.addActionListener(this);
-        
-        // credit
-        btnCredit = new JButton("Credit");
-        btnCredit.addActionListener(this);
-=======
             Image image = Toolkit.getDefaultToolkit().getImage(
                     "res/background/intro.gif");
 
             GUIIntro imagePanel = new GUIIntro(image);
             imagePanel.setLayout(null);
->>>>>>> 402805dcbcbceef9598353bf1dc74c7c97b581e4
 
             btnNouvellePartie = new JButton("Nouvelle Partie");
             // ils sont ici parce que ca marchait pas en les callant à l'extérieur de la
