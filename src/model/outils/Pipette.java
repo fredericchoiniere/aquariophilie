@@ -1,7 +1,7 @@
 //Jérémie Caron     itération 1
 //Classe pour l'outil pipette
 
-package model.item.outils;
+package model.outils;
 
 import javax.swing.*;
 import java.awt.*;

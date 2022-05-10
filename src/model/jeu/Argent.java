@@ -1,4 +1,5 @@
 //Jérémie Caron     itération 2
+// Jérémie Caron    itération 3
 
 package model.jeu;
 
@@ -7,7 +8,7 @@ import javax.swing.JLabel;
 public class Argent {
 
     // attributs de la classe
-    public static int argent = 10000;
+    public static int argent = 500;
 
     public static int emp1 = 0;
     public static int emp2 = 0;
@@ -30,8 +31,8 @@ public class Argent {
         if (normal) {
             argent += emp1 + emp2 + emp3 + poi1 + poi2 + poi3;
             montant = Integer.toString(argent);
-            label.setText(montant + "₴");
-            label2.setText(montant + "₴");
+            label.setText(montant + "฿");
+            label2.setText(montant + "฿");
         } else {
             label.setText("∞");
             label2.setText("∞");

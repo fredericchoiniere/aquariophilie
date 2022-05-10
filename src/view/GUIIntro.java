@@ -1,47 +1,45 @@
+<<<<<<< HEAD
 //Jérémie Caron     itération 1
 // Justin Plouffe Itération 3
 //Classe pour l'affichage du frame d'introduction
 
+=======
+>>>>>>> 402805dcbcbceef9598353bf1dc74c7c97b581e4
 package view;
 
-import javax.swing.*;
-import java.awt.event.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 
-public class GUIIntro extends JFrame implements ActionListener {
+import model.jeu.Argent;
+import model.plantes.*;
+import model.poissons.*;
 
-    // créer les attributs de la classe
-    public JButton btnNouvellePartie, btnChargerPartie, btnModeEvaluation, btnCredit, btClose, btClassement,
-            btInspiration;
-    public JLabel titre;
+import java.awt.event.*;
 
-    public GUIIntro() { // création du constructeur GUIIntro
+public class GUIIntro extends JPanel {
+    private Image image;
+    public static JLabel label;
+    public static JButton btnNouvellePartie, btnModeEvaluation, btnQuitter, btnCredits;
 
-        setTitle("Aquariophilie");
+    static ImageIcon img = new ImageIcon("res/background/icone_aquariophilie.png");
 
-        // Entrer dans l'application pour tester
-        JPanel panelIntro = new JPanel();
-        panelIntro.setOpaque(false);
-        panelIntro.setLayout(null);
+    GUIIntro(Image image) {
+        this.image = image;
+    }
 
-        JLayeredPane layerIntro = new JLayeredPane();
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+    }
 
-        JLabel lblGif = new JLabel();
-        lblGif.setIcon(new ImageIcon("res/background/intro2.png"));
-        lblGif.setBounds(0,0,500,400);
-        panelIntro.add(lblGif);
-        //layerIntro.add(lblGif,0);
-            
-        // label pour le titre
-        titre = new JLabel("Aquariophilie");
-        titre.setFont(new Font("Verdana", Font.BOLD, 30));
-        titre.setBounds(100, 0, 350, 100);
-        panelIntro.add(titre);
-        //layerIntro.add(titre,1);
-        
-        // création des boutons pour les nombreuses action possible sur le Frame intro
-        // -----------------------------------------------------------------------------------------------------------------------------
+    public static void guiIntroFrame() {
+        try {
+            JFrame frame = new JFrame("Image");
 
+<<<<<<< HEAD
         // nouvelle partie
         btnNouvellePartie = new JButton("Nouvelle Partie");
         btnNouvellePartie.addActionListener(this);
@@ -57,64 +55,123 @@ public class GUIIntro extends JFrame implements ActionListener {
         // credit
         btnCredit = new JButton("Credit");
         btnCredit.addActionListener(this);
+=======
+            Image image = Toolkit.getDefaultToolkit().getImage(
+                    "res/background/intro.gif");
 
-        // fermer l'application
-        btClose = new JButton("Fermer");
-        btClose.addActionListener(this);
+            GUIIntro imagePanel = new GUIIntro(image);
+            imagePanel.setLayout(null);
+>>>>>>> 402805dcbcbceef9598353bf1dc74c7c97b581e4
 
-        panelIntro.add(layerIntro);
-        add(panelIntro);
-
-        // action listener sur la touche enter pour aller plus vite
-        btnNouvellePartie.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnNouvellePartie = new JButton("Nouvelle Partie");
+            // ils sont ici parce que ca marchait pas en les callant à l'extérieur de la
+            // méthode so fuckit (pour fred qui va se plaindre)
+            btnNouvellePartie.addActionListener((ActionListener) new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
                     GUIMain aquarium = new GUIMain();
                     aquarium.setResizable(false);
                     aquarium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     aquarium.pack();
                     aquarium.setLocationRelativeTo(null);
                     aquarium.setVisible(true);
-                    setVisible(false);
+                    frame.setVisible(false);
                 }
-            }
-        });
+            });
+            btnNouvellePartie.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                        GUIMain aquarium = new GUIMain();
+                        aquarium.setResizable(false);
+                        aquarium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        aquarium.pack();
+                        aquarium.setLocationRelativeTo(null);
+                        aquarium.setVisible(true);
+                        frame.setVisible(false);
+                    }
+                }
+            });
+            btnNouvellePartie.setBounds(140, 130, 220, 50);
+            btnNouvellePartie.setVisible(true);
+            imagePanel.add(btnNouvellePartie);
 
-    }
-
-    /**
-     * ActionListeners pour la classe GUIIntro
-     */
-    @Override
-    public void actionPerformed(ActionEvent e) { // initialise GuiMain lorsque l'on clique sur enter
-        // bouton pour une nouvelle partie
-        if (e.getSource() == btnNouvellePartie) {
-            GUIMain aquarium = new GUIMain();
+            btnModeEvaluation = new JButton("Mode Évaluation");
+            btnModeEvaluation.addActionListener((ActionListener) new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    GUIMain aquarium = new GUIMain();
             aquarium.setResizable(false);
             aquarium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             aquarium.pack();
             aquarium.setLocationRelativeTo(null);
             aquarium.setVisible(true);
-            setVisible(false);
-        }
+            frame.setVisible(false);
 
-        // bouton pour le mode évaluation
-        if (e.getSource() == btnModeEvaluation) {
-            // TODO
-        }
+            // enlevement du systeme de progression
+            PoissonRouge.prix = 0;
+            PoissonBetta.prix = 0;
+            PoissonTetra.prix = 0;
+            PoissonNeo.prix = 0;
+            JavaFern.prix = 0;
+            BlueBlue.prix = 0;
+            ScarletRot.prix = 0;
+            Erdtree.prix = 0;
+            Argent.argent = 0;
+            Argent.montant = "∞";
+            GUIMain.label_argent_aqua.setText("∞");
+            GUIMain.label_argent_shop.setText("∞");
+            Argent.normal = false;
+                }
+            });
+            btnModeEvaluation.setBounds(140, 185, 220, 50);
+            btnModeEvaluation.setVisible(true);
+            imagePanel.add(btnModeEvaluation);
 
-        // bouton pour les credits
-        if (e.getSource() == btnCredit) { // TODO: à revoir
-           
-        }
 
-        // bouton pour fermer l'application
-        if (e.getSource() == btClose) {
-            System.exit(0);
-        }
+            btnQuitter = new JButton("Quitter");
+            btnQuitter.addActionListener((ActionListener) new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    System.exit(0);
+                }
+            });
+            btnQuitter.setBounds(140, 240, 105, 50);
+            btnQuitter.setVisible(true);
+            imagePanel.add(btnQuitter);
 
+
+            btnCredits = new JButton("Credits");
+            btnQuitter.addActionListener((ActionListener) new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    //TOTO: afficher les credits
+                }
+            });
+            btnCredits.setBounds(255, 240, 105, 50);
+            btnCredits.setVisible(true);
+            imagePanel.add(btnCredits);
+
+
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setLocationRelativeTo(null);
+            frame.add(imagePanel);
+            frame.setSize(500, 400);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setResizable(false);
+            frame.setIconImage(img.getImage());
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+            frame.setTitle("Aquariophilie");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    // --------------------------------------------------------------------------------------------------------------------------------
-
+    /*
+     * public static void main(String[] args) {
+     * 
+     * SwingUtilities.invokeLater(new Runnable() {
+     * public void run() {
+     * createAndShowUI();
+     * }
+     * });
+     * }
+     */
 }

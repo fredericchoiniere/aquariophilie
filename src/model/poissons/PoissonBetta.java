@@ -1,10 +1,9 @@
 //Jérémie Caron, Frédéric Choinière     itération 2
+// Jérémie Caron    itération 3
 
 package model.poissons;
 
 import java.awt.*;
-
-import javax.swing.ImageIcon;
 
 import model.GestionException;
 import model.environnement.Temps;

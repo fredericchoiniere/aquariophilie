@@ -1,6 +1,7 @@
 //Jérémie Caron     itération 1
 //Jérémie Caron, Frédéric Choinière     itération 2
-//Classe pour l'affichage du magasin, pour itération 2
+// Jérémie Caron    itération 3
+//Classe pour l'affichage du magasin, pour itération 3
 
 package view.tabs;
 
@@ -37,7 +38,7 @@ public class PanelShop extends JPanel implements ActionListener {
         poisson_rouge.setBackground(new Color(53, 109, 127));
         poisson_rouge.setBorderPainted(false);
         poisson_rouge.setBounds(35, 214, shop_dimension.width, shop_dimension.height);
-        poisson_rouge.setToolTipText("Prix: " + PoissonRouge.prix + "₴");
+        poisson_rouge.setToolTipText("Prix: " + PoissonRouge.prix + "฿");
         poisson_rouge.addActionListener(this);
         add(poisson_rouge);
 
@@ -47,7 +48,7 @@ public class PanelShop extends JPanel implements ActionListener {
         poisson_betta.setBackground(new Color(53, 109, 127));
         poisson_betta.setBorderPainted(false);
         poisson_betta.setBounds(135, 214, shop_dimension.width, shop_dimension.height);
-        poisson_betta.setToolTipText("Prix: " + PoissonBetta.prix + "₴");
+        poisson_betta.setToolTipText("Prix: " + PoissonBetta.prix + "฿");
         poisson_betta.addActionListener(this);
         add(poisson_betta);
 
@@ -57,7 +58,7 @@ public class PanelShop extends JPanel implements ActionListener {
         poisson_tetra.setBackground(new Color(53, 109, 127));
         poisson_tetra.setBorderPainted(false);
         poisson_tetra.setBounds(235, 214, shop_dimension.width, shop_dimension.height);
-        poisson_tetra.setToolTipText("Prix: " + PoissonTetra.prix + "₴");
+        poisson_tetra.setToolTipText("Prix: " + PoissonTetra.prix + "฿");
         poisson_tetra.addActionListener(this);
         add(poisson_tetra);
 
@@ -66,7 +67,7 @@ public class PanelShop extends JPanel implements ActionListener {
         poisson_neo.setBackground(new Color(53, 109, 127));
         poisson_neo.setBorderPainted(false);
         poisson_neo.setBounds(335, 214, shop_dimension.width, shop_dimension.height);
-        poisson_neo.setToolTipText("Prix: " + PoissonNeo.prix + "₴");
+        poisson_neo.setToolTipText("Prix: " + PoissonNeo.prix + "฿");
         poisson_neo.addActionListener(this);
         add(poisson_neo);
 
@@ -76,7 +77,7 @@ public class PanelShop extends JPanel implements ActionListener {
         planteBlue.setBackground(new Color(53, 109, 127));
         planteBlue.setBorderPainted(false);
         planteBlue.setBounds(35, 384, shop_dimension.width, shop_dimension.height);
-        planteBlue.setToolTipText("Prix: " + BlueBlue.prix + "₴");
+        planteBlue.setToolTipText("Prix: " + BlueBlue.prix + "฿");
         planteBlue.addActionListener(this);
         add(planteBlue);
 
@@ -86,7 +87,7 @@ public class PanelShop extends JPanel implements ActionListener {
         planteFern.setBackground(new Color(53, 109, 127));
         planteFern.setBorderPainted(false);
         planteFern.setBounds(135, 384, shop_dimension.width, shop_dimension.height);
-        planteFern.setToolTipText("Prix: " + JavaFern.prix + "₴");
+        planteFern.setToolTipText("Prix: " + JavaFern.prix + "฿");
         planteFern.addActionListener(this);
         add(planteFern);
 
@@ -96,7 +97,7 @@ public class PanelShop extends JPanel implements ActionListener {
         planteScarlet.setBackground(new Color(53, 109, 127));
         planteScarlet.setBorderPainted(false);
         planteScarlet.setBounds(235, 384, shop_dimension.width, shop_dimension.height);
-        planteScarlet.setToolTipText("Prix: " + ScarletRot.prix + "₴");
+        planteScarlet.setToolTipText("Prix: " + ScarletRot.prix + "฿");
         planteScarlet.addActionListener(this);
         add(planteScarlet);
 
@@ -106,7 +107,7 @@ public class PanelShop extends JPanel implements ActionListener {
         planteErdtree.setBackground(new Color(53, 109, 127));
         planteErdtree.setBorderPainted(false);
         planteErdtree.setBounds(335, 384, shop_dimension.width, shop_dimension.height);
-        planteErdtree.setToolTipText("Prix: " + Erdtree.prix + "₴");
+        planteErdtree.setToolTipText("Prix: " + Erdtree.prix + "฿");
         planteErdtree.addActionListener(this);
         add(planteErdtree);
 

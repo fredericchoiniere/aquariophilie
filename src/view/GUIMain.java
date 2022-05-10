@@ -1,5 +1,7 @@
 //Jérémie Caron, Frédéric Choinière     itération 1
 //Jérémie Caron, Frédéric Choinière     itération 2
+//Jérémie Caron, Frédéric Choinière     itération 3
+
 //Classe d'affichage principale
 
 package view;
@@ -15,12 +17,14 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import control.Control;
 import model.*;
 import model.chimie.*;
 import model.environnement.Temps;
-import model.item.outils.*;
+import model.outils.*;
 import model.jeu.*;
 import model.plantes.Plante;
 import model.poissons.*;
@@ -39,8 +43,15 @@ public class GUIMain extends JFrame implements ActionListener {
     // création des labels
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, eau_label, inventaire_ouvert,
             inventaire_fermer, inventaire_bg, filet_label, pause_label, reprendre_label, label_tutoriel,
-            label_information, hamis, ciseau_label, label_argent, pichet_label, radio_on, radio_off, kit_ouvert,
-            kit_fermer, kit_bg, plant;
+            label_information, hamis, ciseau_label, label_argent, label_pause2, label_reprendre2;
+
+    public static JLabel label_jours2;
+
+    static JLabel pichet_label;
+
+    static JLabel coquillage_label;
+    JLabel radio_on, radio_off, kit_ouvert, kit_fermer, kit_bg, plant;
+
     public static JLabel lblPipette = new JLabel();
     public static JLabel label_argent_aqua = new JLabel("");
     public static JLabel label_argent_shop = new JLabel("");
@@ -62,7 +73,7 @@ public class GUIMain extends JFrame implements ActionListener {
     public static Rectangle rectEau;
 
     // creation des objets
-    Temps temps;
+    // Temps temps;
     public static Eau eau;
     public static Pipette pipette;
     public static Poisson poisson_default = new Poisson();
@@ -73,7 +84,8 @@ public class GUIMain extends JFrame implements ActionListener {
     public static PoissonNeo poisson_neo;
     Filet filet;
     Ciseau ciseau;
-    Pichet pichet;
+    static Pichet pichet;
+    static Coquillage coquillage;
     ImageIcon tetra_curseur;
     ImageIcon rajoutIcon = new ImageIcon();
     ImageIcon iconeAppli = new ImageIcon("res/background/icone_aquariophilie.png");
@@ -81,6 +93,7 @@ public class GUIMain extends JFrame implements ActionListener {
     Sante sante;
     public static Aquarium aquarium;
     public static CycleAzote cycleInitial;
+    Dimension dimAqua, dimShop, dimInfo;
 
     // création des listes
     public static ArrayList<Poisson> listePoissonsAqua = new ArrayList<Poisson>(6);
@@ -105,6 +118,7 @@ public class GUIMain extends JFrame implements ActionListener {
     public static float jours = (float) 0; // TIMER GLOBAL
     public static boolean hasFish1, hasFish2, hasFish3, hasFish4, hasFish5, hasFish6;
     public static boolean hasPlant1, hasPlant2, hasPlant3;
+    public static boolean coquillageVis = false, coquillageInvis = false, pichetVis = false, pichetInvis = false;
 
     // boutons temporaire
     JButton bt1, bt2, bt3, bt4, bt5;
@@ -128,18 +142,14 @@ public class GUIMain extends JFrame implements ActionListener {
                 new Point(0, 0), "curseur tétra"));
 
         // attributs du constructeur
-        temps = new Temps();
         eau = new Eau();
         threadEau = new Thread(eau);
         threadEau.setName("ThreadEau");
-        // cycleInitial = new CycleAzote();
         eau.partirCycle(jours);
-        // tCycleInitial = new Thread(cycleInitial);
-        // tCycleInitial.setName("ThreadCycleInitial");
-        // actionEnCours = cycleInitial.actionEnCours;
         actionEnCours = "test";
 
         // creation du main tab
+        UIManager.put("TabbedPane.selected", new Color(73, 206, 239)); // TODO: ajuster couleur quand possible
         tabbedPane = new JTabbedPane();
 
         // creation du premier tab
@@ -149,6 +159,7 @@ public class GUIMain extends JFrame implements ActionListener {
         panelAqua = new PanelAqua();
         panelAqua.setLayout(null);
         panelAqua.setVisible(true);
+        dimAqua = panelAqua.getPreferredSize();
 
         inventaire_bg = new JLabel();
         kit_bg = new JLabel();
@@ -209,6 +220,15 @@ public class GUIMain extends JFrame implements ActionListener {
         pichet_label.setVisible(true);
         panelAqua.add(pichet_label);
 
+        // ajout du label pour le pichet
+        coquillage = new Coquillage();
+        coquillage_label = new JLabel();
+        coquillage.setIcon(coquillage_label);
+        Dimension size_coquillage = coquillage_label.getPreferredSize();
+        coquillage_label.setBounds(872, 270, size_coquillage.width, size_coquillage.height);
+        coquillage_label.setVisible(true);
+        panelAqua.add(coquillage_label);
+
         // ajout de l'icone de notre kit ouvert
         aquarium_kit_ouvert = new JLabel();
         aquarium_kit_ouvert.setIcon(new ImageIcon("res/outils/aquarium_kit/aquarium_kit_open.png"));
@@ -260,7 +280,7 @@ public class GUIMain extends JFrame implements ActionListener {
         // ajout du label pour pause
         pause_label = new JLabel();
         pause_label.setIcon(new ImageIcon("res/background/pause.png"));
-        pause_label.setBounds(488, 13, 40, 40);
+        pause_label.setBounds(492, 13, 40, 40);
         pause_label.setToolTipText("Pause la progression du temps");
         pause_label.setVisible(false);
         panelAqua.add(pause_label);
@@ -268,7 +288,7 @@ public class GUIMain extends JFrame implements ActionListener {
         // ajout du label pour reprendre
         reprendre_label = new JLabel();
         reprendre_label.setIcon(new ImageIcon("res/background/reprendre.png"));
-        reprendre_label.setBounds(488, 13, 40, 40);
+        reprendre_label.setBounds(492, 13, 40, 40);
         reprendre_label.setToolTipText("Reprend la progression du temps");
         reprendre_label.setVisible(true);
         panelAqua.add(reprendre_label);
@@ -333,9 +353,9 @@ public class GUIMain extends JFrame implements ActionListener {
         panelAqua.add(empty);
 
         // ajout du label pour l'argent
-        label_argent_aqua.setBounds(605, 10, 100, 50);
+        label_argent_aqua.setBounds(612, 10, 100, 50);
         label_argent_aqua.setFont(new Font("Verdana", Font.BOLD, 16));
-        label_argent_aqua.setText(Argent.montant + "₴");
+        label_argent_aqua.setText(Argent.montant + "฿");
         label_argent_aqua.setForeground(Color.WHITE);
         label_argent_aqua.setVisible(true);
         panelAqua.add(label_argent_aqua);
@@ -383,8 +403,7 @@ public class GUIMain extends JFrame implements ActionListener {
         rectAqua5 = new Rectangle(474, 397, 70, 70);
         rectAqua6 = new Rectangle(584, 397, 70, 70);
 
-        rectPlant = new Rectangle(850,500, 100, 200);
-        
+        rectPlant = new Rectangle(850, 500, 100, 200);
 
         aquarium = new Aquarium(panelAqua);
 
@@ -429,11 +448,35 @@ public class GUIMain extends JFrame implements ActionListener {
         PanelShop panelShop = new PanelShop();
 
         // ajout du label pour l'argent
-        label_argent_shop.setBounds(475, 10, 100, 50);
+        label_argent_shop.setBounds(612, 13, 100, 50);
         label_argent_shop.setFont(new Font("Verdana", Font.BOLD, 16));
-        label_argent_shop.setText("10000 ₴"); // Afficher vraie valeur
+        label_argent_shop.setForeground(Color.WHITE);
+        label_argent_shop.setText("500฿"); // Afficher vraie valeur
         label_argent_shop.setVisible(true);
         panelShop.add(label_argent_shop);
+
+        label_pause2 = new JLabel();
+        label_pause2.setIcon(new ImageIcon("res/background/pause.png"));
+        label_pause2.setBounds(492, 21, 40, 40);
+        label_pause2.setToolTipText("Pause la progression du temps");
+        label_pause2.setVisible(false);
+        panelShop.add(label_pause2);
+
+        // ajout du label pour reprendre
+        label_reprendre2 = new JLabel();
+        label_reprendre2.setIcon(new ImageIcon("res/background/reprendre.png"));
+        label_reprendre2.setBounds(492, 21, 40, 40);
+        label_reprendre2.setToolTipText("Reprend la progression du temps");
+        label_reprendre2.setVisible(true);
+        panelShop.add(label_reprendre2);
+
+        label_jours2 = new JLabel();
+        label_jours2.setBounds(363, 13, 100, 50);
+        label_jours2.setFont(new Font("Verdana", Font.BOLD, 16));
+        label_jours2.setText("1");
+        label_jours2.setForeground(Color.WHITE);
+        label_jours2.setVisible(true);
+        panelShop.add(label_jours2);
 
         tabbedPane.add("Magasin", panelShop);
 
@@ -465,6 +508,30 @@ public class GUIMain extends JFrame implements ActionListener {
         aquaPla2 = "";
         aquaPla3 = "";
 
+        //change listener pour le 3e tab "Détails"
+        tabbedPane.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                JTabbedPane tabSelection = (JTabbedPane) e.getSource();
+                switch (tabSelection.getSelectedIndex()){
+                    case 0:     // Vérifie si le tab "Aquarium" est sélectionné
+                        setSize(1020, 765); // TODO: revoir le resize avec les patnais
+                        setLocationRelativeTo(null);
+                        break;
+                    case 1:     // Vérifie si le tab "Magasin" est sélectionné
+                        setSize(1020, 765);
+                        setLocationRelativeTo(null);
+                        break;
+                    case 2:     // Vérifie si le tab "Détails" est sélectionné
+                        setSize(520, 765);
+                        setLocationRelativeTo(null);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+
         // action listener pour fermer panelTest
         aquarium_kit_ouvert.addMouseListener(new MouseAdapter() {
             @Override
@@ -490,6 +557,12 @@ public class GUIMain extends JFrame implements ActionListener {
                 panelTest.setVisible(true);
                 // setOutilsInvisible();
                 label_tutoriel.setVisible(false);
+                inventaire_bg.setVisible(false);
+                inventaire_ouvert.setVisible(false);
+                inventaire_fermer.setVisible(true);
+                kit_fermer.setVisible(true);
+                kit_bg.setVisible(false);
+                kit_ouvert.setVisible(false);
             }
         });
 
@@ -524,27 +597,65 @@ public class GUIMain extends JFrame implements ActionListener {
         pichet_label.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                pichet.changerCurseurPanel(panelAqua);
-                label_tutoriel.setVisible(false);
-                aquarium_kit_ouvert.setVisible(false);
-                aquarium_kit_fermer.setVisible(true);
-                panelTest.setVisible(false);
+
+                MethodeGUIMain.isPichet = true;
+
+                if (!MethodeGUIMain.cooldownP()) {
+                    pichet.changerCurseurPanel(panelAqua);
+                    label_tutoriel.setVisible(false);
+                    aquarium_kit_ouvert.setVisible(false);
+                    aquarium_kit_fermer.setVisible(true);
+                    panelTest.setVisible(false);
+                }
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                try {
-                    basicCursor();
-                    if (MethodeGUIMain.rectAquarium()) {
-                        Eau.hauteurEnPixels = 177;
-                        Eau.positionEnPixels = 298;
-                        //eau.changerEau();
-                        panelAqua.repaint();
-                    } else if(MethodeGUIMain.rectPlant()){
-                        plant.setVisible(true);
+                if (!MethodeGUIMain.cooldownP()) {
+                    try {
+                        basicCursor();
+                        if (MethodeGUIMain.rectAquarium()) {
+                            MethodeGUIMain.dansRectP = true;
+                            Eau.hauteurEnPixels = 177;
+                            Eau.positionEnPixels = 298;
+                            eau.changerEau();
+                            panelAqua.repaint();
+                        } else if (MethodeGUIMain.rectPlant()) {
+                            plant.setVisible(true);
+                        }
+                    } catch (NullPointerException e1) {
+                        GestionException.GestionExceptionObjet();
                     }
-                } catch (NullPointerException e1) {
-                    GestionException.GestionExceptionObjet();
+                }
+            }
+        });
+
+        coquillage_label.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+                if (!MethodeGUIMain.cooldownC()) {
+                    coquillage.changerCurseurPanel(panelAqua);
+                    label_tutoriel.setVisible(false);
+                    aquarium_kit_ouvert.setVisible(false);
+                    aquarium_kit_fermer.setVisible(true);
+                    panelTest.setVisible(false);
+                }
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                if (!MethodeGUIMain.cooldownC()) {
+                    try {
+                        basicCursor();
+                        if (MethodeGUIMain.rectAquarium()) {
+                            MethodeGUIMain.dansRectC = true;
+                            eau.setKH((float) (eau.getKH() + (eau.getKH() * 0.2)));
+                        }
+                    } catch (NullPointerException e1) {
+                        GestionException.GestionExceptionObjet();
+                    }
                 }
             }
         });
@@ -739,7 +850,9 @@ public class GUIMain extends JFrame implements ActionListener {
                 panelTest.setVisible(false);
                 Temps.pause();
                 pause_label.setVisible(false);
+                label_pause2.setVisible(false);
                 reprendre_label.setVisible(true);
+                label_reprendre2.setVisible(true);
                 label_tutoriel.setVisible(false);
                 Temps.isPaused = true;
             }
@@ -755,6 +868,42 @@ public class GUIMain extends JFrame implements ActionListener {
                 Temps.reprendre();
                 pause_label.setVisible(true);
                 reprendre_label.setVisible(false);
+                label_pause2.setVisible(true);
+                label_reprendre2.setVisible(false);
+                label_tutoriel.setVisible(false);
+                Temps.isPaused = false;
+            }
+        });
+
+        // actionlistener pour arreter le jeu
+        label_pause2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                aquarium_kit_ouvert.setVisible(false);
+                aquarium_kit_fermer.setVisible(true);
+                panelTest.setVisible(false);
+                Temps.pause();
+                pause_label.setVisible(false);
+                reprendre_label.setVisible(true);
+                label_pause2.setVisible(false);
+                label_reprendre2.setVisible(true);
+                label_tutoriel.setVisible(false);
+                Temps.isPaused = true;
+            }
+        });
+
+        // actionlistener pour reprendre le jeu
+        label_reprendre2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                aquarium_kit_ouvert.setVisible(false);
+                aquarium_kit_fermer.setVisible(true);
+                panelTest.setVisible(false);
+                Temps.reprendre();
+                pause_label.setVisible(true);
+                reprendre_label.setVisible(false);
+                label_pause2.setVisible(true);
+                label_reprendre2.setVisible(false);
                 label_tutoriel.setVisible(false);
                 Temps.isPaused = false;
             }
@@ -1239,6 +1388,7 @@ public class GUIMain extends JFrame implements ActionListener {
 
         // début des Threads pour l'eau
         threadEau.start();
+        Temps.checkCooldown();
         // tCycleInitial.start();
 
     } // fin du constructeur GUIMain
@@ -1364,6 +1514,7 @@ public class GUIMain extends JFrame implements ActionListener {
         filet_label.setVisible(true);
         label_information.setVisible(true);
         pichet_label.setVisible(true);
+        coquillage_label.setVisible(true);
     }
 
     /**
@@ -1375,6 +1526,7 @@ public class GUIMain extends JFrame implements ActionListener {
         filet_label.setVisible(false);
         label_information.setVisible(false);
         pichet_label.setVisible(false);
+        coquillage_label.setVisible(false);
     }
 
     @Override
@@ -1408,6 +1560,22 @@ public class GUIMain extends JFrame implements ActionListener {
         bt4.setVisible(b);
         bt5.setVisible(b);
         sante.setVisible(Sante.state1, Sante.state2, Sante.state3, Sante.state4, Sante.state5, Sante.state6);
+    }
+
+    public static void setCooldownVisibleC() {
+        coquillage_label.setIcon(new ImageIcon("res/outils/coquillage_cd.png"));
+    }
+
+    public static void setCooldownInvisibleC() {
+        coquillage.setIcon(coquillage_label);
+    }
+
+    public static void setCooldownVisibleP() {
+        pichet_label.setIcon(new ImageIcon("res/outils/pichet_cd.png"));
+    }
+
+    public static void setCooldownInvisibleP() {
+        pichet.setIcon(pichet_label);
     }
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------

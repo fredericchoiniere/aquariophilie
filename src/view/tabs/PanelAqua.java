@@ -32,7 +32,7 @@ public class PanelAqua extends JPanel { // extends JPanel pour créer un Jpanel
         g2D.drawImage(background, 5, 0, this);
 
         g2D.setColor(new Color(102, 181, 255, 174));
-        g2D.fill(MethodeGUIMain.getEauDimensions());
+        g2D.fill(MethodeGUIMain.getEauDimensions()); // TODO: checker si rectEau aligné avec aquarium et paint accordingly
 
         
 
