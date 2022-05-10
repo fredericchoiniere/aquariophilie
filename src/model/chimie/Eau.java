@@ -63,10 +63,6 @@ public class Eau implements Runnable {
     public List<Float> listeAmmoniaque = Collections.synchronizedList(listeAmmoniaqueTemp); // Liste synchronisée
     public ListIterator<Float> iteratorAmmoniaque; // Itérateur pour additionner les valeurs d'ammoniaque
     public ArrayList<Float> listeAmmoniaqueIteration = new ArrayList<Float>(); //
-    // Liste pour itérer dans boucle
-    // public HashSet<Float> setAmmoniaque = new
-    // HashSet<Float>(listeAmmoniaqueTemp); // Liste pour additionner le montant
-    // total d'ammoniaque
 
     public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
@@ -164,27 +160,6 @@ public class Eau implements Runnable {
     public float getNitrates() {
         return nitrates;
     }
-
-    /*
-     * public void changerEau() {
-     * ph = 7;
-     * kh = 8;
-     * gh = 5;
-     * nitrites = 0;
-     * nitrates = 0;
-     * ammoniaque = 0;
-     * 
-     * nbAtomeN = 0;
-     * nbAtomeO = 0;
-     * nbAtomeH = 0;
-     * }
-     */
-
-    /*
-     * public void couleur() {
-     * // pourcentage de vert ou de gris dans l'eau
-     * }
-     */
 
     /**
      * @param ammoniaque
@@ -395,32 +370,22 @@ public class Eau implements Runnable {
         scoreEau = (setScorePH() + setScoreGH() + setScoreKH() + setScoreAmmo() + setScoreNitrates()
                 + setScoreNitrites());
         return scoreEau;
-        // scoreEauNonStatic = scoreEau;
-        // System.out.println("Score eau 1 : " + scoreEau);
     }
-    /*
-     * public static void setScoreEau() {
-     * GUIMain.eau.scoreEau = (int) (setScoreAmmo() + setScoreGH() + setScoreKH() +
-     * setScoreNitrates() + setScoreNitrites()
-     * + setScorePH());
-     * // System.out.println("Score eau 1 : " + scoreEau);
-     * }
-     */
 
     /**
      * @return float
      *         Retourne la valeur du score pour le PH qui cotribue pour (14/100) du
      *         score de l'eau
      */
-    public float setScorePH() { // TODO: rentre dans le négatif, à vérifier avec autres scores
+    public float setScorePH() {
 
         if (ph >= 6 && ph <= 9) {
             scorePH = (float) 14.0;
         }
-        if (getPH() == 0){
+        if (getPH() <= 1){
             scorePH = (float) 0.0;
         }
-        if (getPH() < 6 && getPH() != 0) {
+        if (getPH() < 6 && getPH() > 1) {
             variationPH = 6 - getPH();
             scorePH = (float) ((100.0 - (20.0 * variationPH)) * (14.0 / 100.0));
         }
@@ -428,8 +393,6 @@ public class Eau implements Runnable {
             variationPH = getPH() - 9;
             scorePH = (float) ((100.0 - (20.0 * variationPH)) * (14.0 / 100.0));
         }
-        
-        //System.out.println("scoreph: " + scorePH);
         return scorePH;
     }
 
@@ -469,12 +432,16 @@ public class Eau implements Runnable {
         float variationKH;
 
         if (kh >= 4 && kh <= 8) {
-            variationKH = 0;
             scoreKH = (float) 14.0;
-        } else if (kh < 4) {
+        }
+        if (kh == 0) {
+            scoreKH = (float) 0.0;
+        }
+        if (kh < 4 && kh != 0) {
             variationKH = 4 - kh;
             scoreKH = (float) (100 - (12.5 * variationKH)) * (14 / 100);
-        } else if (kh > 8) {
+        }
+        if (kh > 8) {
             variationKH = kh - 8;
             scoreKH = (float) (100 - (12.5 * variationKH)) * (14 / 100);
         }
