@@ -528,7 +528,7 @@ public class Eau implements Runnable {
 
         float variationNitrates;
 
-        if (nitrates <= 4 || nitrates >= 8) {
+        if (nitrates <= 40) {
             variationNitrates = 0;
             scoreNitrates = (float) 16.0;
         } else if (nitrates > 40) {

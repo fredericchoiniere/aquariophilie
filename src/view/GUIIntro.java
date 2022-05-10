@@ -1,3 +1,7 @@
+//Jérémie Caron     itération 1
+//Jérémie caron, Justin Plouffe Itération 3
+//Classe pour l'affichage du frame d'introduction
+
 package view;
 
 import java.awt.*;
@@ -37,6 +41,7 @@ public class GUIIntro extends JPanel {
 
             GUIIntro imagePanel = new GUIIntro(image);
             imagePanel.setLayout(null);
+            // nouvelle partie
 
             btnNouvellePartie = new JButton("Nouvelle Partie");
             // ils sont ici parce que ca marchait pas en les callant à l'extérieur de la
@@ -73,33 +78,32 @@ public class GUIIntro extends JPanel {
             btnModeEvaluation.addActionListener((ActionListener) new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     GUIMain aquarium = new GUIMain();
-            aquarium.setResizable(false);
-            aquarium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            aquarium.pack();
-            aquarium.setLocationRelativeTo(null);
-            aquarium.setVisible(true);
-            frame.setVisible(false);
+                    aquarium.setResizable(false);
+                    aquarium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    aquarium.pack();
+                    aquarium.setLocationRelativeTo(null);
+                    aquarium.setVisible(true);
+                    frame.setVisible(false);
 
-            // enlevement du systeme de progression
-            PoissonRouge.prix = 0;
-            PoissonBetta.prix = 0;
-            PoissonTetra.prix = 0;
-            PoissonNeo.prix = 0;
-            JavaFern.prix = 0;
-            BlueBlue.prix = 0;
-            ScarletRot.prix = 0;
-            Erdtree.prix = 0;
-            Argent.argent = 0;
-            Argent.montant = "∞";
-            GUIMain.label_argent_aqua.setText("∞");
-            GUIMain.label_argent_shop.setText("∞");
-            Argent.normal = false;
+                    // enlevement du systeme de progression
+                    PoissonRouge.prix = 0;
+                    PoissonBetta.prix = 0;
+                    PoissonTetra.prix = 0;
+                    PoissonNeo.prix = 0;
+                    JavaFern.prix = 0;
+                    BlueBlue.prix = 0;
+                    ScarletRot.prix = 0;
+                    Erdtree.prix = 0;
+                    Argent.argent = 0;
+                    Argent.montant = "∞";
+                    GUIMain.label_argent_aqua.setText("∞");
+                    GUIMain.label_argent_shop.setText("∞");
+                    Argent.normal = false;
                 }
             });
             btnModeEvaluation.setBounds(140, 185, 220, 50);
             btnModeEvaluation.setVisible(true);
             imagePanel.add(btnModeEvaluation);
-
 
             btnQuitter = new JButton("Quitter");
             btnQuitter.addActionListener((ActionListener) new ActionListener() {
@@ -111,17 +115,38 @@ public class GUIIntro extends JPanel {
             btnQuitter.setVisible(true);
             imagePanel.add(btnQuitter);
 
-
-            btnCredits = new JButton("Credits");
-            btnQuitter.addActionListener((ActionListener) new ActionListener() {
+            btnCredits = new JButton("Crédits");
+            btnCredits.addActionListener((ActionListener) new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    //TOTO: afficher les credits
+                    /** create a frame with a text area and make it appear and everything */
+                    JFrame frame = new JFrame("Credits");
+                    JTextArea textArea = new JTextArea();
+                    /** create a scrollpane and add it to the textarea */
+
+                    /** add the scrollpane to the frame */
+
+                    textArea.setEditable(false);
+                    textArea.setText("Heyo !\n" + "Canadian checkers are the best.\n" + "I hope you enjoy this game.\n"
+                            + "Thanks for playing!\n" + "Jérémie Caron" + "\n" + "Justin Plouffe" + "/n" + "Version 1.0"
+                            + "\n" + "Version 2.0" + "\n" + "Version 3.0" + "\n" + "Version 4.0" + "\n" + "Version 5.0"
+                            + "\n" + "Version 6.0" + "\n1" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2"
+                            + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2"
+                            + "\n2" + "\n2" + "\n2");
+
+                    JScrollPane scrollPane = new JScrollPane(textArea);
+                    
+                    frame.add(scrollPane);
+
+                    //rame.add(textArea);
+                    frame.setSize(700, 700);
+                    frame.setVisible(true);
+                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    frame.setLocationRelativeTo(null);
                 }
             });
             btnCredits.setBounds(255, 240, 105, 50);
             btnCredits.setVisible(true);
             imagePanel.add(btnCredits);
-
 
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null);
