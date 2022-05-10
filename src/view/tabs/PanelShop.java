@@ -123,9 +123,9 @@ public class PanelShop extends JPanel implements ActionListener {
 
         // ajout du label pour le tutoriel
         label_tutoriel = new JLabel();
-        label_tutoriel.setBounds(0, 0, 1000, 700);
+        label_tutoriel.setBounds(5, 0, 1000, 700);
         label_tutoriel.setIcon(new ImageIcon("res/background/tutoriel_shop.png"));
-        label_tutoriel.setVisible(true);
+        label_tutoriel.setVisible(false);
         add(label_tutoriel);
 
         // ajout du label pour information
@@ -134,7 +134,6 @@ public class PanelShop extends JPanel implements ActionListener {
         label_information.setIcon(new ImageIcon("res/background/informations.png"));
         label_information.setVisible(true);
         add(label_information);
-
 
         // création des labels pour afficher les prix des poissons
         rouge = new JLabel();
@@ -200,7 +199,6 @@ public class PanelShop extends JPanel implements ActionListener {
         erdtree.setForeground(new Color(51, 0, 0));
         erdtree.setVisible(true);
         add(erdtree);
-
 
         // création des labels pour afficher le prix en rabais
         rabais_rouge = new JLabel();
@@ -274,7 +272,6 @@ public class PanelShop extends JPanel implements ActionListener {
         message.setForeground(new Color(51, 0, 0));
         message.setVisible(true);
         add(message);
-
 
         // actionlistener pour fermer le tutoriel
         label_tutoriel.addMouseListener(new MouseAdapter() {

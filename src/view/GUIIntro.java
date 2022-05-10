@@ -134,10 +134,10 @@ public class GUIIntro extends JPanel {
                             + "\n2" + "\n2" + "\n2");
 
                     JScrollPane scrollPane = new JScrollPane(textArea);
-                    
+
                     frame.add(scrollPane);
 
-                    //rame.add(textArea);
+                    // rame.add(textArea);
                     frame.setSize(700, 700);
                     frame.setVisible(true);
                     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -147,6 +147,14 @@ public class GUIIntro extends JPanel {
             btnCredits.setBounds(255, 240, 105, 50);
             btnCredits.setVisible(true);
             imagePanel.add(btnCredits);
+
+            JLabel label_titre = new JLabel();
+            ImageIcon titre = new ImageIcon(
+                        new ImageIcon("res/background/aquariophilie2.png").getImage());
+                                        
+            label_titre.setIcon(titre);
+            label_titre.setBounds(56, 40, 380, 52);
+            imagePanel.add(label_titre);
 
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null);
