@@ -1,3 +1,7 @@
+//Jérémie Caron     itération 1
+//Jérémie caron, Justin Plouffe Itération 3
+//Classe pour l'affichage du frame d'introduction
+
 package view;
 
 import java.awt.*;
@@ -37,6 +41,7 @@ public class GUIIntro extends JPanel {
 
             GUIIntro imagePanel = new GUIIntro(image);
             imagePanel.setLayout(null);
+        // nouvelle partie
 
             btnNouvellePartie = new JButton("Nouvelle Partie");
             // ils sont ici parce que ca marchait pas en les callant à l'extérieur de la
