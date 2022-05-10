@@ -398,6 +398,42 @@ public class GUIMain extends JFrame implements ActionListener {
         label_tuto1.setVisible(true);
         panelAqua.add(label_tuto1);
 
+        label_tuto2 = new JLabel();
+        label_tuto2.setBounds(0, 0, 1000, 700);
+        label_tuto2.setIcon(new ImageIcon("res/background/tutos/tuto2.png"));
+        label_tuto2.setVisible(false);
+        panelAqua.add(label_tuto2); 
+
+        label_tuto3 = new JLabel();
+        label_tuto3.setBounds(0, 0, 1000, 700);
+        label_tuto3.setIcon(new ImageIcon("res/background/tutos/tuto3.png"));
+        label_tuto3.setVisible(false);
+        panelAqua.add(label_tuto3);
+
+        label_tuto4 = new JLabel();
+        label_tuto4.setBounds(0, 0, 1000, 700); 
+        label_tuto4.setIcon(new ImageIcon("res/background/tutos/tuto4.png"));
+        label_tuto4.setVisible(false);
+        panelAqua.add(label_tuto4);
+
+        label_tuto5 = new JLabel();
+        label_tuto5.setBounds(0, 0, 1000, 700);
+        label_tuto5.setIcon(new ImageIcon("res/background/tutos/tuto5.png"));
+        label_tuto5.setVisible(false);
+        panelAqua.add(label_tuto5);
+
+        label_tuto6 = new JLabel();
+        label_tuto6.setBounds(0, 0, 1000, 700);
+        label_tuto6.setIcon(new ImageIcon("res/background/tutos/tuto6.png"));
+        label_tuto6.setVisible(false);
+        panelAqua.add(label_tuto6);
+
+        label_tuto7 = new JLabel();
+        label_tuto7.setBounds(0, 0, 1000, 700);
+        label_tuto7.setIcon(new ImageIcon("res/background/tutos/tuto7.png"));
+        label_tuto7.setVisible(false);
+        panelAqua.add(label_tuto7);
+
 
         // -----------------------------------------------------
 
@@ -998,6 +1034,12 @@ public class GUIMain extends JFrame implements ActionListener {
             }
         });
 
+        // actionlistener pour ouvrir le tutoriel
+        label_tuto1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                label_tutoriel.setVisible(true);
+            
         // actionlistener sur les items de l'inventaire
         // ---------------------------------------------------------------------------------------------------------------------------------------------------
 
