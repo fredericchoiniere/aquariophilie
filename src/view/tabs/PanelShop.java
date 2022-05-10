@@ -123,9 +123,9 @@ public class PanelShop extends JPanel implements ActionListener {
 
         // ajout du label pour le tutoriel
         label_tutoriel = new JLabel();
-        label_tutoriel.setBounds(0, 0, 1000, 700);
+        label_tutoriel.setBounds(5, 0, 1000, 700);
         label_tutoriel.setIcon(new ImageIcon("res/background/tutoriel_shop.png"));
-        label_tutoriel.setVisible(true);
+        label_tutoriel.setVisible(false);
         add(label_tutoriel);
 
         // ajout du label pour information
