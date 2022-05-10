@@ -284,21 +284,21 @@ public class PanelTest extends JPanel implements ActionListener {
                 if (GUIMain.pipette.getEstRemplie()) {
                     GUIMain.pipette.enleverUneGoutte();
                     
-                    if (GUIMain.eau.getGH() >= 0 && GUIMain.eau.getGH() < 5) {
+                    if (GUIMain.eau.getGH() >= 0 && GUIMain.eau.getGH() < 4) {
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/0.png"));
                         lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
                     }
-                    else if (GUIMain.eau.getGH() >= 5 && GUIMain.eau.getGH() < 10) {
+                    else if (GUIMain.eau.getGH() >= 4 && GUIMain.eau.getGH() < 6) {
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/1.png"));
                         lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
                     }
-                    else if (GUIMain.eau.getGH() >= 10 && GUIMain.eau.getGH() < 15) {
+                    else if (GUIMain.eau.getGH() >= 6 && GUIMain.eau.getGH() < 8) {
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/2.png"));
                         lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
-                    } else if (GUIMain.eau.getGH() >= 15 && GUIMain.eau.getGH() < 25) {
+                    } else if (GUIMain.eau.getGH() >= 8 && GUIMain.eau.getGH() < 10) {
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/3.png"));
                         lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
-                    } else if (GUIMain.eau.getGH() >= 25) {
+                    } else if (GUIMain.eau.getGH() >= 10) {
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/4.png"));
                         lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
                     }

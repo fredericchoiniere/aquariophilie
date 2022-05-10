@@ -7,7 +7,6 @@ package model.chimie;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import java.util.*;
 import view.GUIMain;
 import model.MethodeGUIMain;
@@ -17,7 +16,7 @@ import model.poissons.Poisson;
 public class Eau implements Runnable {
 
     public static float ph = 7; // 0 à 14
-    public static float gh = 10; // Dureté de l'eau de 0 à 25+ (tolérée entre 5 et 15)
+    public static float gh = 8; // Dureté de l'eau de 0 à 25+ (tolérée entre 3 et 8) dGH
     public static float kh = 6; // Dureté de l'eau de 0 à 12+ (tolérée entre 4 et 8)
     private float penteNitrites = 0;
     public float sommeAbsorptionNitrates = 0; // score global des plantes
@@ -48,7 +47,7 @@ public class Eau implements Runnable {
     public int nbAtomeN = 0;
     public int nbAtomeO = 2103;
     public int nbAtomeH = 4206;
-    public int scoreEau = 100;
+    public float scoreEau = (float) 100.0;
     public static Random random = new Random();
     public static int randomNumber;
 
@@ -64,10 +63,6 @@ public class Eau implements Runnable {
     public List<Float> listeAmmoniaque = Collections.synchronizedList(listeAmmoniaqueTemp); // Liste synchronisée
     public ListIterator<Float> iteratorAmmoniaque; // Itérateur pour additionner les valeurs d'ammoniaque
     public ArrayList<Float> listeAmmoniaqueIteration = new ArrayList<Float>(); //
-    // Liste pour itérer dans boucle
-    // public HashSet<Float> setAmmoniaque = new
-    // HashSet<Float>(listeAmmoniaqueTemp); // Liste pour additionner le montant
-    // total d'ammoniaque
 
     public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
@@ -165,27 +160,6 @@ public class Eau implements Runnable {
     public float getNitrates() {
         return nitrates;
     }
-
-    /*
-     * public void changerEau() {
-     * ph = 7;
-     * kh = 8;
-     * gh = 5;
-     * nitrites = 0;
-     * nitrates = 0;
-     * ammoniaque = 0;
-     * 
-     * nbAtomeN = 0;
-     * nbAtomeO = 0;
-     * nbAtomeH = 0;
-     * }
-     */
-
-    /*
-     * public void couleur() {
-     * // pourcentage de vert ou de gris dans l'eau
-     * }
-     */
 
     /**
      * @param ammoniaque
@@ -392,41 +366,33 @@ public class Eau implements Runnable {
     /**
      * Pour l'itération 3
      */
-    public int getScoreEau() {
-        scoreEau = (int) (setScorePH() + setScoreGH() + setScoreKH() + setScoreAmmo() + setScoreNitrates()
+    public float getScoreEau() {
+        scoreEau = (setScorePH() + setScoreGH() + setScoreKH() + setScoreAmmo() + setScoreNitrates()
                 + setScoreNitrites());
         return scoreEau;
-        // scoreEauNonStatic = scoreEau;
-        // System.out.println("Score eau 1 : " + scoreEau);
     }
-    /*
-     * public static void setScoreEau() {
-     * GUIMain.eau.scoreEau = (int) (setScoreAmmo() + setScoreGH() + setScoreKH() +
-     * setScoreNitrates() + setScoreNitrites()
-     * + setScorePH());
-     * // System.out.println("Score eau 1 : " + scoreEau);
-     * }
-     */
 
     /**
      * @return float
      *         Retourne la valeur du score pour le PH qui cotribue pour (14/100) du
      *         score de l'eau
      */
-    public float setScorePH() { // TODO: rentre dans le négatif, à vérifier avec autres scores
+    public float setScorePH() {
 
         if (ph >= 6 && ph <= 9) {
-            variationPH = 0;
-            scorePH = 14;
-        } else if (getPH() < 6) {
+            scorePH = (float) 14.0;
+        }
+        if (getPH() <= 1){
+            scorePH = (float) 0.0;
+        }
+        if (getPH() < 6 && getPH() > 1) {
             variationPH = 6 - getPH();
             scorePH = (float) ((100.0 - (20.0 * variationPH)) * (14.0 / 100.0));
-        } else if (getPH() > 9) {
+        }
+        if (getPH() > 9) {
             variationPH = getPH() - 9;
             scorePH = (float) ((100.0 - (20.0 * variationPH)) * (14.0 / 100.0));
         }
-        
-        //System.out.println("scoreph: " + scorePH);
         return scorePH;
     }
 
@@ -438,16 +404,20 @@ public class Eau implements Runnable {
     public float setScoreGH() {
 
         float variationGH;
-
-        if (gh >= 5 && gh <= 15) {
-            variationGH = 0;
-            scoreGH = 14;
-        } else if (gh < 5) {
-            variationGH = 4 - gh;
-            scoreGH = (100 - (4 * variationGH)) * (14 / 100);
-        } else if (gh > 8) {
+        
+        if (gh >= 6 && gh <= 8) {
+            scoreGH = (float) 14.0;
+        }
+        if (gh == 0) {
+            scoreGH = (float) 0.0;
+        }
+        if (gh < 6 && gh != 0) {
+            variationGH = 6 - gh;
+            scoreGH = (float) ((100.0 - (15.0 * variationGH)) * (14.0 / 100.0));
+        }
+        if (gh > 8) {
             variationGH = gh - 8;
-            scoreGH = (100 - (4 * variationGH)) * (14 / 100);
+            scoreGH = (float) ((100.0 - (15.0 * variationGH)) * (14.0 / 100.0));
         }
         return scoreGH;
     }
@@ -462,12 +432,16 @@ public class Eau implements Runnable {
         float variationKH;
 
         if (kh >= 4 && kh <= 8) {
-            variationKH = 0;
-            scoreKH = 14;
-        } else if (kh < 4) {
+            scoreKH = (float) 14.0;
+        }
+        if (kh == 0) {
+            scoreKH = (float) 0.0;
+        }
+        if (kh < 4 && kh != 0) {
             variationKH = 4 - kh;
             scoreKH = (float) (100 - (12.5 * variationKH)) * (14 / 100);
-        } else if (kh > 8) {
+        }
+        if (kh > 8) {
             variationKH = kh - 8;
             scoreKH = (float) (100 - (12.5 * variationKH)) * (14 / 100);
         }
@@ -485,10 +459,10 @@ public class Eau implements Runnable {
 
         if (ammoniaque <= 0.5) {
             variationAmmo = 0;
-            scoreAmmo = 18;
+            scoreAmmo = (float) 18.0;
         } else if (ammoniaque > 0.5) {
             variationAmmo = (float) (ammoniaque - 0.5);
-            scoreAmmo = (100 - ((200 / 19) * variationAmmo)) * (18 / 100);
+            scoreAmmo = (float) ((100.0 - ((200.0 / 19.0) * variationAmmo)) * (18.0 / 100.0));
         }
         return scoreAmmo;
     }
@@ -504,10 +478,10 @@ public class Eau implements Runnable {
 
         if (nitrites <= 1) {
             variationNitrites = 0;
-            scoreNitrites = 24;
+            scoreNitrites = (float) 24.0;
         } else if (nitrites > 1) {
             variationNitrites = nitrites - 1;
-            scoreNitrites = (100 - ((50 / 17) * variationNitrites)) * (24 / 100);
+            scoreNitrites = (float) ((100.0 - ((50.0 / 17.0) * variationNitrites)) * (24.0 / 100.0));
         }
         return scoreNitrites;
     }
@@ -523,10 +497,10 @@ public class Eau implements Runnable {
 
         if (nitrates <= 40) {
             variationNitrates = 0;
-            scoreNitrates = 16;
+            scoreNitrates = (float) 16.0;
         } else if (nitrates > 40) {
             variationNitrates = nitrates - 40;
-            scoreNitrates = (100 - ((5 / 7) * variationNitrates)) * (16 / 100);
+            scoreNitrates = (float) ((100.0 - ((5.0 / 7.0) * variationNitrates)) * (16.0 / 100.0));
         }
         return scoreNitrates;
     }
