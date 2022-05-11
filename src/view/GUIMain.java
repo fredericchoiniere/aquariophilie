@@ -428,12 +428,6 @@ public class GUIMain extends JFrame implements ActionListener {
         label_tuto6.setVisible(false);
         panelAqua.add(label_tuto6);
 
-        label_tuto7 = new JLabel();
-        label_tuto7.setBounds(5, 0, 1000, 700);
-        label_tuto7.setIcon(new ImageIcon("res/background/tutos/tuto7.png"));
-        label_tuto7.setVisible(false);
-        panelAqua.add(label_tuto7);
-
 
         // -----------------------------------------------------
 
@@ -530,6 +524,12 @@ public class GUIMain extends JFrame implements ActionListener {
         label_jours2.setForeground(Color.WHITE);
         label_jours2.setVisible(true);
         panelShop.add(label_jours2);
+
+        label_tuto7 = new JLabel();
+        label_tuto7.setBounds(5, 0, 1000, 700);
+        label_tuto7.setIcon(new ImageIcon("res/background/tutos/tuto7.png"));
+        label_tuto7.setVisible(false);
+        panelShop.add(label_tuto7);
 
         tabbedPane.add("Magasin", panelShop);
 
@@ -1048,6 +1048,9 @@ public class GUIMain extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
                 label_tuto2.setVisible(false);
                 label_tuto3.setVisible(true);
+                inventaire_fermer.setVisible(false);
+                inventaire_ouvert.setVisible(true);
+                inventaire_bg.setVisible(true);
             }});
 
         label_tuto3.addMouseListener(new MouseAdapter() {
@@ -1055,6 +1058,12 @@ public class GUIMain extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
                 label_tuto3.setVisible(false);
                 label_tuto4.setVisible(true);
+                inventaire_fermer.setVisible(true);
+                inventaire_ouvert.setVisible(false);
+                inventaire_bg.setVisible(false);
+                kit_fermer.setVisible(false);
+                kit_ouvert.setVisible(true);
+                kit_bg.setVisible(true);
             }});
 
         label_tuto4.addMouseListener(new MouseAdapter() {
@@ -1062,6 +1071,12 @@ public class GUIMain extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
                 label_tuto4.setVisible(false);
                 label_tuto5.setVisible(true);
+                kit_fermer.setVisible(true);
+                kit_ouvert.setVisible(false);
+                kit_bg.setVisible(false);
+                aquarium_kit_ouvert.setVisible(true);
+                aquarium_kit_fermer.setVisible(false);
+                panelTest.setVisible(true);
             }});
 
         label_tuto5.addMouseListener(new MouseAdapter() {
@@ -1069,6 +1084,9 @@ public class GUIMain extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
                 label_tuto5.setVisible(false);
                 label_tuto6.setVisible(true);
+                aquarium_kit_ouvert.setVisible(false);
+                aquarium_kit_fermer.setVisible(true);
+                panelTest.setVisible(false);
             }});
 
         label_tuto6.addMouseListener(new MouseAdapter() {
@@ -1076,6 +1094,7 @@ public class GUIMain extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
                 label_tuto6.setVisible(false);
                 label_tuto7.setVisible(true);
+                tabbedPane.setSelectedIndex(1);
             }});
 
         label_tuto7.addMouseListener(new MouseAdapter() {
