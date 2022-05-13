@@ -1146,48 +1146,25 @@ public class GUIMain extends JFrame implements ActionListener {
         skip_tuto1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                skip_tuto1.setVisible(false);
-                skip_tuto2.setVisible(false);
-                label_tuto1.setVisible(false);
-                label_tuto2.setVisible(false);
-                label_tuto3.setVisible(false);
-                label_tuto4.setVisible(false);
-                label_tuto5.setVisible(false);
-                label_tuto6.setVisible(false);
-                label_tuto7.setVisible(true);
-                inventaire_fermer.setVisible(true);
-                inventaire_ouvert.setVisible(false);
-                inventaire_bg.setVisible(false);
-                kit_fermer.setVisible(true);
-                kit_ouvert.setVisible(false);
-                kit_bg.setVisible(false);
-                aquarium_kit_ouvert.setVisible(false);
-                aquarium_kit_fermer.setVisible(true);
-                panelTest.setVisible(false);
-                pichet_label.setVisible(true);
-                lblPipette.setVisible(true);
-                ciseau_label.setVisible(true);
-                filet_label.setVisible(true);
-                coquillage_label.setVisible(true);
-                // label_tuto8.setVisible(false);
+                setEverythingGood();
             }
         });
 
         skip_tuto2.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                skip_tuto1.setVisible(false);
-                skip_tuto2.setVisible(false);
-                label_tuto1.setVisible(false);
-                label_tuto2.setVisible(false);
-                label_tuto3.setVisible(false);
-                label_tuto4.setVisible(false);
-                label_tuto5.setVisible(false);
-                label_tuto6.setVisible(false);
-                label_tuto7.setVisible(true);
-                // label_tuto8.setVisible(false);
+                setEverythingGood();
             }
         });
+
+        skip_tuto3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                setEverythingGood();
+            }
+        });
+
+
 
         // actionlistener sur les items de l'inventaire
         // ---------------------------------------------------------------------------------------------------------------------------------------------------
