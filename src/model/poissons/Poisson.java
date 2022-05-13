@@ -15,7 +15,7 @@ import view.GUIMain;
 import java.awt.*;
 import java.util.Random;
 
-public class Poisson extends JPanel {
+public class Poisson extends JPanel { // TODO: quand meurent, fishstick
 
     // attributs de la classe
     int vel_x = 1;
@@ -26,6 +26,8 @@ public class Poisson extends JPanel {
     public boolean var = true;
     public String empInv, empAqua, nom;
     int hauteur = Eau.hauteurEnPixels, compensationPosition = Eau.hauteurEnPixels - (4 + (192 - Eau.hauteurEnPixels));
+
+    static Poisson selection;
 
     public static Random random = new Random();
     int randomNumber;
@@ -119,6 +121,10 @@ public class Poisson extends JPanel {
         return nom;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getHauteur() {
         hauteur = 196 - Eau.hauteurEnPixels; // Traduit la hauteur en pixels de l'eau en coordonnées pour les poissons
         return hauteur;
@@ -171,18 +177,11 @@ public class Poisson extends JPanel {
         }
     }
 
-    public static void setSante(short poisson) {
-        if (fishType(poisson) == "rouge") {
-            levels("rouge", poisson);
-        } else if (fishType(poisson) == "betta") {
-            levels("betta", poisson);
-        } else if (fishType(poisson) == "tetra") {
-            levels("tetra", poisson);
-        } else if (fishType(poisson) == "neo") {
-            levels("neo", poisson);
-        }
-    }
-
+    
+    /** 
+     * @param poisson
+     * @return String
+     */
     public static String fishType(short poisson) {
         switch (poisson) {
             case 0:
@@ -202,7 +201,80 @@ public class Poisson extends JPanel {
         }
     }
 
-    public static void levels(String type, short numb) {
+    
+    /** 
+     * @param numb
+     */
+    public static void setSante(short numb) {
+        switch (fishType(numb)) {
+            case "rouge":
+                ajusterSante(numb, PoissonRouge.tolerance);
+                break;
+            case "betta":
+                ajusterSante(numb, PoissonBetta.tolerance);
+                break;
+            case "tetra":
+                ajusterSante(numb, PoissonTetra.tolerance);
+                break;
+            case "neo":
+                ajusterSante(numb, PoissonNeo.tolerance);
+                break;
+            default:
+                break;
+        }
+    }
+
+    
+    /** 
+     * @param numb
+     * @param tolerance
+     */
+    public static void ajusterSante(short numb, int tolerance){
+
+        selection = GUIMain.listePoissonsAqua.get(numb);
+
+        if (!selection.checkTolerances()) {
+            killFish(numb);
+        }
+
+        if (GUIMain.eau.scoreEau >= 66 - tolerance) {
+            if (selection.sante < 100
+                    && selection.sante > 0) {
+                selection.sante += 1;
+            } else {
+                selection.sante = 100;
+            }
+            setBarValue(numb);
+        } else if (GUIMain.eau.scoreEau >= 33 - tolerance) {
+            if (selection.sante <= 100
+                    && selection.sante > 0) {
+                selection.sante -= 1;
+            } else {
+                killFish(numb);
+            }
+            setBarValue(numb);
+        } else if (GUIMain.eau.scoreEau > 0 - tolerance) {
+            if (selection.sante <= 100
+                    && selection.sante > 0) {
+                selection.sante -= 2;
+            } else {
+                killFish(numb);
+            }
+            setBarValue(numb);
+        }
+    }
+
+    
+    /** 
+     * @return boolean
+     */
+    public boolean checkTolerances(){ // TODO: checker niveaux dans GUIMain.eau et juger adéquatement avec héritage dans autres classes poissons
+        
+        
+        return true;
+    }
+
+    /* public static void levels(String type, short numb) {
         // System.out.println("ScroreEau : " + GUIMain.eau.scoreEau);
         switch (type) {
 
@@ -329,7 +401,7 @@ public class Poisson extends JPanel {
             default:
                 break;
         }
-    }
+    } */
 
     public static void killFish(short numb) {
         MethodeGUIMain.checkFishType(fishType(numb));
@@ -339,6 +411,10 @@ public class Poisson extends JPanel {
         GUIMain.listePoissonsAqua.set(numb, GUIMain.poisson_default);
     }
 
+    
+    /** 
+     * @param numb
+     */
     public static void setFalse(short numb) {
         switch (numb) {
             case 0:
@@ -380,6 +456,10 @@ public class Poisson extends JPanel {
         }
     }
 
+    
+    /** 
+     * @param index
+     */
     public static void setBarValue(short index) {
         switch (index) {
             case 0:
@@ -405,3 +485,5 @@ public class Poisson extends JPanel {
         }
     }
 }
+
+// Слава Україні!

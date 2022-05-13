@@ -62,6 +62,10 @@ public class CycleAzote{
     }
 
        
+    
+    /** 
+     * @param jours
+     */
     public void cycler(float jours){
 
         
@@ -122,3 +126,5 @@ public class CycleAzote{
         }
     } */
 }
+
+// Слава Україні!

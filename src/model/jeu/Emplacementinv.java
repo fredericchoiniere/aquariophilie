@@ -24,3 +24,5 @@ public class Emplacementinv extends JLabel {
         return plein;
     }
 }
+
+// Слава Україні!

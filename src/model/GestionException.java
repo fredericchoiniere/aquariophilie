@@ -6,12 +6,20 @@ import javax.swing.JOptionPane;
 
 public class GestionException {
 
+    
+    /** 
+     * @param type
+     */
     public static void GestionExceptionPoi(String type) {
         JOptionPane.showMessageDialog(null, "Le poisson de type: " + type
                 + " a été placé hors de l'application. Il est donc revenu dans l'inventaire. Veuiller le déposer dans l'emplacement approprié.",
                 "Erreur", JOptionPane.ERROR_MESSAGE);
     }
 
+    
+    /** 
+     * @param type
+     */
     public static void GestionExceptionPla(String type) {
         JOptionPane.showMessageDialog(null, "La plante de type: " + type
                 + ", a été placé hors de l'application. Il est donc revenu dans l'inventaire. Veuiller le déposer dans l'emplacement approprié.",
@@ -49,3 +57,5 @@ public class GestionException {
     }
 
 }
+
+// Слава Україні!

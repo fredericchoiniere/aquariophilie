@@ -18,26 +18,19 @@ public class PanelShop extends JPanel implements ActionListener {
 
     // Attributs de la classe
     static int i = 1;
-    public static JButton poisson_rouge;
-    public static JButton poisson_betta;
-    public static JButton poisson_tetra;
-    public static JButton poisson_neo;
-    public static JButton planteBlue;
-    public static JButton planteFern;
-    public static JButton planteScarlet;
-    public static JButton planteErdtree;
+
+    // création des boutons
+    public static JButton poisson_rouge, poisson_betta, poisson_tetra, poisson_neo, planteBlue, planteFern,
+            planteScarlet, planteErdtree;
+
+    // création des labels
     public JLabel rouge, betta, tetra, neo, blue, fern, scarlet, erdtree;
-    public static JLabel rabais_rouge;
-    public static JLabel rabais_betta;
-    public static JLabel rabais_tetra;
-    public static JLabel rabais_neo;
-    public static JLabel rabais_blue;
-    public static JLabel rabais_fern;
-    public static JLabel rabais_scarlet;
-    public static JLabel rabais_erdtree;
-    public static JLabel message;
+
+    public static JLabel rabais_rouge, rabais_betta, rabais_tetra, rabais_neo, rabais_blue, rabais_fern, rabais_scarlet,
+            rabais_erdtree, message;
+
+    // création des dimensions
     public static Dimension shop_dimension = new Dimension(80, 80);
-    JLabel label_tutoriel, label_information;
 
     public PanelShop() {
         setLayout(null);
@@ -120,20 +113,6 @@ public class PanelShop extends JPanel implements ActionListener {
         planteErdtree.setToolTipText("Prix: " + Erdtree.prix + "฿");
         planteErdtree.addActionListener(this);
         add(planteErdtree);
-
-        // ajout du label pour le tutoriel
-        label_tutoriel = new JLabel();
-        label_tutoriel.setBounds(5, 0, 1000, 700);
-        label_tutoriel.setIcon(new ImageIcon("res/background/tutoriel_shop.png"));
-        label_tutoriel.setVisible(false);
-        add(label_tutoriel);
-
-        // ajout du label pour information
-        label_information = new JLabel();
-        label_information.setBounds(965, 5, 30, 30);
-        label_information.setIcon(new ImageIcon("res/background/informations.png"));
-        label_information.setVisible(true);
-        add(label_information);
 
         // création des labels pour afficher les prix des poissons
         rouge = new JLabel();
@@ -272,23 +251,8 @@ public class PanelShop extends JPanel implements ActionListener {
         message.setForeground(new Color(51, 0, 0));
         message.setVisible(true);
         add(message);
-
-        // actionlistener pour fermer le tutoriel
-        label_tutoriel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                label_tutoriel.setVisible(false);
-            }
-        });
-
-        // actionlistener pour ouvrir le tutoriel
-        label_information.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                label_tutoriel.setVisible(true);
-            }
-        });
     }
+    // actionlistener pour fermer le tutoriel
 
     /**
      * @param Graphics
@@ -544,43 +508,66 @@ public class PanelShop extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == poisson_rouge) {
-            label_tutoriel.setVisible(false);
-            if (Magasin.gotMoney("rouge")) {
-                checkCase(Inventaire.img_inv_poi_rouge, "poisson", "rouge", "");
+            if (GUIMain.isSelected6) {
+                GUIMain.label_tuto7.setVisible(false);
+                GUIMain.tabbedPane.setSelectedIndex(2);
+                GUIMain.label_tuto8.setVisible(true);
+                GUIMain.isSelected6 = false;
             } else {
-                JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
-                        JOptionPane.PLAIN_MESSAGE);
+                if (Magasin.gotMoney("rouge")) {
+                    checkCase(Inventaire.img_inv_poi_rouge, "poisson", "rouge", "");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
+                            JOptionPane.PLAIN_MESSAGE);
+                }
             }
         }
         if (e.getSource() == poisson_betta) {
-            label_tutoriel.setVisible(false);
-            if (Magasin.gotMoney("betta")) {
-                checkCase(Inventaire.img_inv_betta, "poisson", "betta", "");
+            if (GUIMain.isSelected6) {
+                GUIMain.label_tuto7.setVisible(false);
+                GUIMain.tabbedPane.setSelectedIndex(2);
+                GUIMain.label_tuto8.setVisible(true);
+                GUIMain.isSelected6 = false;
             } else {
-                JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
-                        JOptionPane.PLAIN_MESSAGE);
+                if (Magasin.gotMoney("betta")) {
+                    checkCase(Inventaire.img_inv_betta, "poisson", "betta", "");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
+                            JOptionPane.PLAIN_MESSAGE);
+                }
             }
         }
         if (e.getSource() == poisson_tetra) {
-            label_tutoriel.setVisible(false);
-            if (Magasin.gotMoney("tetra")) {
-                checkCase(Inventaire.img_inv_tetra, "poisson", "tetra", "");
+            if (GUIMain.isSelected6) {
+                GUIMain.label_tuto7.setVisible(false);
+                GUIMain.tabbedPane.setSelectedIndex(2);
+                GUIMain.label_tuto8.setVisible(true);
+                GUIMain.isSelected6 = false;
             } else {
-                JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
-                        JOptionPane.PLAIN_MESSAGE);
+                if (Magasin.gotMoney("tetra")) {
+                    checkCase(Inventaire.img_inv_tetra, "poisson", "tetra", "");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
+                            JOptionPane.PLAIN_MESSAGE);
+                }
             }
         }
         if (e.getSource() == poisson_neo) {
-            label_tutoriel.setVisible(false);
-            if (Magasin.gotMoney("neo")) {
-                checkCase(Inventaire.img_inv_neo, "poisson", "neo", "");
+            if (GUIMain.isSelected6) {
+                GUIMain.label_tuto7.setVisible(false);
+                GUIMain.tabbedPane.setSelectedIndex(2);
+                GUIMain.label_tuto8.setVisible(true);
+                GUIMain.isSelected6 = false;
             } else {
-                JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
-                        JOptionPane.PLAIN_MESSAGE);
+                if (Magasin.gotMoney("neo")) {
+                    checkCase(Inventaire.img_inv_neo, "poisson", "neo", "");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
+                            JOptionPane.PLAIN_MESSAGE);
+                }
             }
         }
         if (e.getSource() == planteBlue) {
-            label_tutoriel.setVisible(false);
             if (Magasin.gotMoney("blue")) {
                 checkCase(Inventaire.img_inv_tetra, "decoration", "", "blue");
             } else {
@@ -589,33 +576,52 @@ public class PanelShop extends JPanel implements ActionListener {
             }
         }
         if (e.getSource() == planteFern) {
-            label_tutoriel.setVisible(false);
-            if (Magasin.gotMoney("java")) {
-                checkCase(Inventaire.img_inv_tetra, "decoration", "", "java");
+            if (GUIMain.isSelected6) {
+                GUIMain.label_tuto7.setVisible(false);
+                GUIMain.tabbedPane.setSelectedIndex(2);
+                GUIMain.label_tuto8.setVisible(true);
+                GUIMain.isSelected6 = false;
             } else {
-                JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
-                        JOptionPane.PLAIN_MESSAGE);
+                if (Magasin.gotMoney("java")) {
+                    checkCase(Inventaire.img_inv_tetra, "decoration", "", "java");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
+                            JOptionPane.PLAIN_MESSAGE);
+                }
             }
         }
         if (e.getSource() == planteScarlet) {
-            label_tutoriel.setVisible(false);
-            if (Magasin.gotMoney("scarlet")) {
-                checkCase(Inventaire.img_inv_tetra, "decoration", "", "scarlet");
+            if (GUIMain.isSelected6) {
+                GUIMain.label_tuto7.setVisible(false);
+                GUIMain.tabbedPane.setSelectedIndex(2);
+                GUIMain.label_tuto8.setVisible(true);
+                GUIMain.isSelected6 = false;
             } else {
-                JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
-                        JOptionPane.PLAIN_MESSAGE);
+                if (Magasin.gotMoney("scarlet")) {
+                    checkCase(Inventaire.img_inv_tetra, "decoration", "", "scarlet");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
+                            JOptionPane.PLAIN_MESSAGE);
+                }
             }
         }
-
         if (e.getSource() == planteErdtree) {
-            label_tutoriel.setVisible(false);
-            if (Magasin.gotMoney("erdtree")) {
-                checkCase(Inventaire.img_inv_tetra, "decoration", "", "erdtree");
+            if (GUIMain.isSelected6) {
+                GUIMain.label_tuto7.setVisible(false);
+                GUIMain.tabbedPane.setSelectedIndex(2);
+                GUIMain.label_tuto8.setVisible(true);
+                GUIMain.isSelected6 = false;
             } else {
-                JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
-                        JOptionPane.PLAIN_MESSAGE);
+                if (Magasin.gotMoney("erdtree")) {
+                    checkCase(Inventaire.img_inv_tetra, "decoration", "", "erdtree");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
+                            JOptionPane.PLAIN_MESSAGE);
+                }
             }
         }
     }
 
 }
+
+// Слава Україні!

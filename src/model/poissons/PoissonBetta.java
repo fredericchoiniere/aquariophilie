@@ -101,3 +101,5 @@ public class PoissonBetta extends Poisson implements Runnable {
     }
 
 }
+
+// Слава Україні!

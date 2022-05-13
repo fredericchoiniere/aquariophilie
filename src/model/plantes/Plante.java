@@ -14,3 +14,5 @@ public class Plante extends JLabel {
     public Plante() {
     }
 }
+
+// Слава Україні!

@@ -54,6 +54,13 @@ public class Radio {
         status = "paused";
     }
 
+    
+    /** 
+     * @throws UnsupportedAudioFileException
+     * @throws IOException
+     * @throws LineUnavailableException
+     * Méthode pour rejouer la musique
+     */
     // Method pour reprendre après une pause
     public void resumeAudio() throws UnsupportedAudioFileException,
             IOException, LineUnavailableException {
@@ -68,6 +75,13 @@ public class Radio {
         this.play();
     }
 
+    
+    /** 
+     * @throws UnsupportedAudioFileException
+     * @throws IOException
+     * @throws LineUnavailableException
+     * Méthode pour remettre à zéro le son
+     */
     // Method to reset audio stream
     public void resetAudioStream() throws UnsupportedAudioFileException, IOException,
             LineUnavailableException {
@@ -78,3 +92,5 @@ public class Radio {
     }
 
 }
+
+// Слава Україні!

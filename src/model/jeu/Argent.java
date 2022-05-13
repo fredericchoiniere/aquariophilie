@@ -39,3 +39,5 @@ public class Argent {
         }
     }
 }
+
+// Слава Україні!

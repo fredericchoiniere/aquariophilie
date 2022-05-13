@@ -14,28 +14,13 @@ import model.chimie.Molecules;
 public class PanelTest extends JPanel implements ActionListener {
 
     CycleAzote cycle;
-    //JButton btnActu, btnCycle;
-    //public JLabel lblJour;
-    public JLabel lblAmmo;
-    public JLabel lblNitrites;
-    public JLabel lblNitrates;
-    public JLabel lblPH;
-    public JLabel lblGH;
-    public JLabel lblKH;
-    public JLabel lblScorePH;
-    public JLabel lblScoreGH;
-    public JLabel lblScoreKH;
-    public JLabel lblScoreAmmo;
-    public JLabel lblScoreNitrites;
-    public JLabel lblScoreNitrates;
-    public JLabel lblScoreEau;
+    // JButton btnActu, btnCycle;
 
-    JLabel lblOKAmmo;
-    JLabel lblOKNitrites;
-    JLabel lblOKNitrates;
-    JLabel lblOKPH;
-    JLabel lblOKGH;
-    JLabel lblOKKH;
+    // création des labels
+    public JLabel lblAmmo, lblNitrites, lblNitrates, lblPH, lblGH, lblKH, lblScorePH, lblScoreGH, lblScoreKH,
+            lblScoreAmmo, lblScoreNitrites, lblScoreNitrates, lblScoreEau, lblOKAmmo, lblOKNitrites, lblOKNitrates,
+            lblOKPH, lblOKGH, lblOKKH;
+
     Thread cycle1;
     boolean isFocused;
     Molecules mol = new Molecules();
@@ -52,15 +37,14 @@ public class PanelTest extends JPanel implements ActionListener {
 
         JLayeredPane layersPT = new JLayeredPane(); // layers panel test
 
+        // création des labels
         JLabel lblPT_BG = new JLabel(); // label panel test back ground
-
         JLabel lblSoluPH = new JLabel(); // label solution ph
         JLabel lblSoluGH = new JLabel();
         JLabel lblSoluKH = new JLabel();
         JLabel lblSoluAmmoniaque = new JLabel();
         JLabel lblSoluNitrites = new JLabel();
         JLabel lblSoluNitrates = new JLabel();
-
         JLabel lblOKPH = new JLabel();
         JLabel lblOKGH = new JLabel();
         JLabel lblOKKH = new JLabel();
@@ -192,7 +176,6 @@ public class PanelTest extends JPanel implements ActionListener {
                 if (GUIMain.pipette.getEstRemplie()) {
 
                     GUIMain.pipette.enleverUneGoutte();
-                    
 
                     switch (GUIMain.eau.getPHint()) {
                         case 0: {
@@ -277,22 +260,20 @@ public class PanelTest extends JPanel implements ActionListener {
             }
         });
 
-        // {}
+        // Comportement lorsqu'on clic sur la solution GH
         lblSoluGH.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (GUIMain.pipette.getEstRemplie()) {
                     GUIMain.pipette.enleverUneGoutte();
-                    
+
                     if (GUIMain.eau.getGH() >= 0 && GUIMain.eau.getGH() < 4) {
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/0.png"));
                         lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/non_tolerance.png"));
-                    }
-                    else if (GUIMain.eau.getGH() >= 4 && GUIMain.eau.getGH() < 6) {
+                    } else if (GUIMain.eau.getGH() >= 4 && GUIMain.eau.getGH() < 6) {
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/1.png"));
                         lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
-                    }
-                    else if (GUIMain.eau.getGH() >= 6 && GUIMain.eau.getGH() < 8) {
+                    } else if (GUIMain.eau.getGH() >= 6 && GUIMain.eau.getGH() < 8) {
                         lblSoluGH.setIcon(new ImageIcon("res/outils/gradation_solutions/gh/2.png"));
                         lblOKGH.setIcon(new ImageIcon("res/outils/gradation_solutions/etat/tolerance.png"));
                     } else if (GUIMain.eau.getGH() >= 8 && GUIMain.eau.getGH() < 10) {
@@ -306,13 +287,13 @@ public class PanelTest extends JPanel implements ActionListener {
             }
         });
 
+        // Comportement lorsqu'on clic sur la solution KH
         lblSoluKH.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
 
                 if (GUIMain.pipette.getEstRemplie()) {
                     GUIMain.pipette.enleverUneGoutte();
-                    
 
                     if (GUIMain.eau.getKH() >= 0 && GUIMain.eau.getKH() < 2) {
                         lblSoluKH.setIcon(new ImageIcon("res/outils/gradation_solutions/kh/0.png"));
@@ -337,6 +318,7 @@ public class PanelTest extends JPanel implements ActionListener {
             }
         });
 
+        // Comportement lorsqu'on clic sur la solution Ammoniaque
         lblSoluAmmoniaque.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -371,6 +353,7 @@ public class PanelTest extends JPanel implements ActionListener {
             }
         });
 
+        // Comportement lorsqu'on clic sur la solution nitrites
         lblSoluNitrites.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -401,6 +384,7 @@ public class PanelTest extends JPanel implements ActionListener {
             }
         });
 
+        // Comportement lorsqu'on clic sur la solution nitrates
         lblSoluNitrates.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -434,78 +418,77 @@ public class PanelTest extends JPanel implements ActionListener {
             }
         });
 
-        //Label qui affiche la valeur du ph
+        // Label qui affiche la valeur du ph
         lblPH.setText(GUIMain.eau.toString(GUIMain.eau.getPH()));
         lblPH.setBounds(76, 80, 25, 20);
         layersPT.setLayer(lblPH, 2);
         layersPT.add(lblPH);
 
-        //Label qui affiche la valeur du gh
+        // Label qui affiche la valeur du gh
         lblGH.setText(GUIMain.eau.toString(GUIMain.eau.getGH()));
         lblGH.setBounds(181, 80, 25, 20);
         layersPT.setLayer(lblGH, 2);
         layersPT.add(lblGH);
 
-        //Label qui affiche la valeur du kh
+        // Label qui affiche la valeur du kh
         lblKH.setText(GUIMain.eau.toString(GUIMain.eau.getKH()));
         lblKH.setBounds(286, 80, 25, 20);
         layersPT.setLayer(lblKH, 2);
         layersPT.add(lblKH);
 
-        //Label qui affiche la valeur de l'ammoniaque
+        // Label qui affiche la valeur de l'ammoniaque
         lblAmmo.setText(GUIMain.eau.toString(GUIMain.eau.getAmmoniaque()));
         lblAmmo.setBounds(391, 80, 25, 20);
         layersPT.setLayer(lblAmmo, 2);
         layersPT.add(lblAmmo);
 
-        //Label qui affiche la valeur des nitrites
+        // Label qui affiche la valeur des nitrites
         lblNitrites.setText(GUIMain.eau.toString(GUIMain.eau.getNitrites()));
         lblNitrites.setBounds(496, 80, 25, 20);
         layersPT.setLayer(lblNitrites, 2);
         layersPT.add(lblNitrites);
 
-        //Label qui affiche la valeur des nitrates
+        // Label qui affiche la valeur des nitrates
         lblNitrates.setText(GUIMain.eau.toString(GUIMain.eau.getNitrates()));
         lblNitrates.setBounds(601, 80, 25, 20);
         layersPT.setLayer(lblNitrates, 2);
         layersPT.add(lblNitrates);
-    
-        //Label qui affiche la valeur du score du ph
+
+        // Label qui affiche la valeur du score du ph
         lblScorePH.setText(GUIMain.eau.toString((GUIMain.eau.setScorePH())));
         lblScorePH.setBounds(76, 60, 25, 20);
         layersPT.setLayer(lblScorePH, 2);
         layersPT.add(lblScorePH);
 
-        //Label qui affiche la valeur du score du gh
+        // Label qui affiche la valeur du score du gh
         lblScoreGH.setText(GUIMain.eau.toString(GUIMain.eau.setScoreGH()));
         lblScoreGH.setBounds(181, 60, 25, 20);
         layersPT.setLayer(lblScoreGH, 2);
         layersPT.add(lblScoreGH);
 
-        //Label qui affiche la valeur du score du kh
+        // Label qui affiche la valeur du score du kh
         lblScoreKH.setText(GUIMain.eau.toString(GUIMain.eau.setScoreKH()));
         lblScoreKH.setBounds(286, 60, 25, 20);
         layersPT.setLayer(lblScoreKH, 2);
         layersPT.add(lblScoreKH);
 
-        //Label qui affiche la valeur du score de l'ammoniaque
+        // Label qui affiche la valeur du score de l'ammoniaque
         lblScoreAmmo.setText(GUIMain.eau.toString(GUIMain.eau.setScoreAmmo()));
         lblScoreAmmo.setBounds(391, 60, 25, 20);
         layersPT.setLayer(lblScoreAmmo, 2);
         layersPT.add(lblScoreAmmo);
 
-        //Label qui affiche la valeur du score des nitrites
+        // Label qui affiche la valeur du score des nitrites
         lblScoreNitrites.setText(GUIMain.eau.toString(GUIMain.eau.setScoreNitrites()));
         lblScoreNitrites.setBounds(496, 60, 25, 20);
         layersPT.setLayer(lblScoreNitrites, 2);
         layersPT.add(lblScoreNitrites);
 
-        //Label qui affiche la valeur du score des nitrates
+        // Label qui affiche la valeur du score des nitrates
         lblScoreNitrates.setText(GUIMain.eau.toString(GUIMain.eau.setScoreNitrates()));
         lblScoreNitrates.setBounds(601, 60, 25, 20);
         layersPT.setLayer(lblScoreNitrates, 2);
         layersPT.add(lblScoreNitrates);
-
 
         lblScoreEau = new JLabel();
         lblScoreEau.setVisible(true);
@@ -522,28 +505,8 @@ public class PanelTest extends JPanel implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+
     }
-
-    /**
-     * Méthode run de la classe PanelTest
-     * Incomplète pour l'instant
-     
-    @Override
-    public void run() {
-        while (true) {
-            
-            if (!Temps.isPaused) {
-                
-                    
-            } else { // permet de ne pas utiliser 23% du processeur si le temps est en pause
-                try {
-                    Thread.sleep(Temps.DUREE);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-        }
-    }*/
 }
+
+// Слава Україні!

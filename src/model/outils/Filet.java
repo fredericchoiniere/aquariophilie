@@ -37,3 +37,5 @@ public class Filet extends Outils {
 
     }
 }
+
+// Слава Україні!

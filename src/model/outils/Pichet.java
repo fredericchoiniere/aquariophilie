@@ -10,31 +10,32 @@ import java.awt.*;
 public class Pichet extends Outils {
 
     // attributs de la classe
-    ImageIcon icone_pichet; 
+    ImageIcon icone_pichet;
 
-    public Pichet() { 
+    public Pichet() {
         super();
         adapterNom();
-        icone_pichet = new ImageIcon("res/outils/pichet.png"); 
+        icone_pichet = new ImageIcon("res/outils/pichet.png");
     }
 
-    /** 
+    /**
      * @param label
-     *             méthode qui permet d'afficher l'image de l'outil 
+     *              méthode qui permet d'afficher l'image de l'outil
      */
     public void setIcon(JLabel label) {
         label.setIcon(icone_pichet);
     }
 
-    
-    /** 
+    /**
      * @param panel
-     *            méthode qui permet de mettre le bon curseur 
+     *              méthode qui permet de mettre le bon curseur
      */
     public void changerCurseurPanel(JPanel panel) {
-            panel.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
-                    icone_pichet.getImage(),
-                    new Point(0, 0), "curseur plein"));
-       
+        panel.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
+                icone_pichet.getImage(),
+                new Point(0, 0), "curseur plein"));
+
+    }
 }
-}
+
+// Слава Україні!

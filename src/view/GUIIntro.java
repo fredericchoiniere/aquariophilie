@@ -26,6 +26,10 @@ public class GUIIntro extends JPanel {
         this.image = image;
     }
 
+    /**
+     * @param g
+     *          permet de paint le frame d'introduction
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -41,8 +45,8 @@ public class GUIIntro extends JPanel {
 
             GUIIntro imagePanel = new GUIIntro(image);
             imagePanel.setLayout(null);
-            // nouvelle partie
-
+            
+            // bouton pour nouvelle partie
             btnNouvellePartie = new JButton("Nouvelle Partie");
             // ils sont ici parce que ca marchait pas en les callant à l'extérieur de la
             // méthode so fuckit (pour fred qui va se plaindre)
@@ -74,6 +78,7 @@ public class GUIIntro extends JPanel {
             btnNouvellePartie.setVisible(true);
             imagePanel.add(btnNouvellePartie);
 
+            // bouton pour mode évaluation
             btnModeEvaluation = new JButton("Mode Évaluation");
             btnModeEvaluation.addActionListener((ActionListener) new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -105,6 +110,7 @@ public class GUIIntro extends JPanel {
             btnModeEvaluation.setVisible(true);
             imagePanel.add(btnModeEvaluation);
 
+            // ajout du bouton pour quitter
             btnQuitter = new JButton("Quitter");
             btnQuitter.addActionListener((ActionListener) new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -115,6 +121,7 @@ public class GUIIntro extends JPanel {
             btnQuitter.setVisible(true);
             imagePanel.add(btnQuitter);
 
+            // ajout du bouton pour les credits
             btnCredits = new JButton("Crédits");
             btnCredits.addActionListener((ActionListener) new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -148,14 +155,16 @@ public class GUIIntro extends JPanel {
             btnCredits.setVisible(true);
             imagePanel.add(btnCredits);
 
+            // ajout du label titre
             JLabel label_titre = new JLabel();
             ImageIcon titre = new ImageIcon(
-                        new ImageIcon("res/background/aquariophilie2.png").getImage());
-                                        
+                    new ImageIcon("res/background/aquariophilie2.png").getImage());
+
             label_titre.setIcon(titre);
             label_titre.setBounds(56, 40, 380, 52);
             imagePanel.add(label_titre);
 
+            // attributs du frame intro
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null);
             frame.add(imagePanel);
@@ -171,15 +180,6 @@ public class GUIIntro extends JPanel {
             e.printStackTrace();
         }
     }
-
-    /*
-     * public static void main(String[] args) {
-     * 
-     * SwingUtilities.invokeLater(new Runnable() {
-     * public void run() {
-     * createAndShowUI();
-     * }
-     * });
-     * }
-     */
 }
+
+// Слава Україні!
