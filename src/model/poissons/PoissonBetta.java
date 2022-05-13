@@ -23,7 +23,7 @@ public class PoissonBetta extends Poisson implements Runnable {
     public static int prix = 500;
 
     public static int dechets = 4;
-    public static int tolerance = 12;
+    public static int tolerance = 8;
 
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_betta/poisson_droite.png");

@@ -343,9 +343,9 @@ public class Eau implements Runnable {
         gh = 10;
         ph = 7;
         nitrates -= 10;
-        System.out.println("déchets pré changement: " + sommeDechets);
+        //System.out.println("déchets pré changement: " + sommeDechets);
         sommeDechets -= (sommeDechets * 0.50);
-        System.out.println("déchets post changement: " + sommeDechets);
+        //System.out.println("déchets post changement: " + sommeDechets);
     }
 
     /**
