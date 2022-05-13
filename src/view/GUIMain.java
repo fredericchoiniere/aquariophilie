@@ -150,7 +150,7 @@ public class GUIMain extends JFrame implements ActionListener {
         actionEnCours = "test";
 
         // creation du main tab
-        UIManager.put("TabbedPane.selected", new Color(73, 206, 239)); // TODO: ajuster couleur quand possible
+        UIManager.put("TabbedPane.selected", new Color(0, 153, 153));
         tabbedPane = new JTabbedPane();
 
         // creation du premier tab
@@ -532,7 +532,7 @@ public class GUIMain extends JFrame implements ActionListener {
                 JTabbedPane tabSelection = (JTabbedPane) e.getSource();
                 switch (tabSelection.getSelectedIndex()) {
                     case 0: // Vérifie si le tab "Aquarium" est sélectionné
-                        setSize(1020, 765); // TODO: revoir le resize avec les patnais
+                        setSize(1020, 765);
                         setLocationRelativeTo(null);
                         break;
                     case 1: // Vérifie si le tab "Magasin" est sélectionné

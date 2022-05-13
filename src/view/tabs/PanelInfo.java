@@ -19,6 +19,10 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
 
     // appel des attributs de la classe
     JLabel lblAction, lblN, lblH, lblO, lblAmmo, lblNit, lblNat, lblPH, lblGH, lblKH;
+    static JLabel lblScore, lblDechets, lblAbsDechets;
+
+    float scoreEau = GUIMain.eau.getScoreEau();
+
     JProgressBar progressBar;
 
     String actionEnCours = GUIMain.actionEnCours;
@@ -29,8 +33,6 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
 
     public PanelInfo() { // Constructeur de la classe PanelInfo
 
-        //setPreferredSize(new Dimension(500, 700));
-
         mol = new Molecules();
         mol.ammoniaqueAtomesMol();
         mol.nitritesAtomesMol();
@@ -40,9 +42,9 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
         GridBagConstraints c = new GridBagConstraints();
 
         lblAction = new JLabel("Action en cours: ");
-        c.gridx = 0;
+        c.gridx = 1;
         c.gridy = 0;
-        c.gridwidth = 3;
+        c.gridwidth = 1;
         c.gridheight = 1;
         c.weightx = 1;
         c.weighty = 0.5;
@@ -58,32 +60,53 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
         c.anchor = GridBagConstraints.NORTH;
         add(progressBar, c);
 
-        lblN = new JLabel("N: " + mol.sommeMolN() + " mols d'azote");
+        lblScore = new JLabel("Score: " + GUIMain.eau.getScoreEau());
         c.gridwidth = 1;
+        c.gridx = 1;
         c.gridy = 2;
+        add(lblScore, c);
+
+        lblDechets = new JLabel("Déchets accumulés : " + GUIMain.eau.sommeDechets);
+        c.gridy = 3;
+        add(lblDechets, c);
+
+        lblAbsDechets = new JLabel("Potentiel d'absorbtion: " + GUIMain.eau.sommeAbsorptionDechets);
+        c.gridy = 4;
+        add(lblAbsDechets, c);
+
+        lblN = new JLabel("N: " + mol.sommeMolN() + " mols d'azote");
+        c.gridx = 0;
+        c.gridy = 5;
+        c.anchor = GridBagConstraints.EAST;
         add(lblN, c);
 
         lblAmmo = new JLabel("NH3: " + mol.eau.getAmmoniaque() + " au jour " + mol.eau.jours);
         c.gridx = 2;
+        c.anchor = GridBagConstraints.WEST;
         add(lblAmmo, c);
 
         lblH = new JLabel("H: " + mol.molAtomeH + " mols d'hydrogène");
         c.gridx = 0;
-        c.gridy = 3;
+        c.gridy = 6;
+        c.anchor = GridBagConstraints.EAST;
         add(lblH, c);
 
         lblNit = new JLabel("NO2: " + mol.nitritesMgLtoMol() + " mols");
         c.gridx = 2;
+        c.anchor = GridBagConstraints.WEST;
         add(lblNit, c);
 
         lblO = new JLabel("O: " + mol.sommeMolO() + " mols d'oxygène");
         c.gridx = 0;
-        c.gridy = 4;
+        c.gridy = 7;
+        c.anchor = GridBagConstraints.EAST;
         add(lblO, c);
 
         lblNat = new JLabel("NO3: " + mol.nitratesMgLtoMol() + " mols");
         c.gridx = 2;
+        c.anchor = GridBagConstraints.WEST;
         add(lblNat, c);
+
     }
 
     /**
@@ -150,6 +173,10 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
 
                 setActionEnCours();
                 changerEtatBarre();
+
+                lblScore.setText("Score: " + GUIMain.eau.getScoreEau());
+                lblDechets.setText("Déchets accumulés : " + GUIMain.eau.sommeDechets);
+                lblAbsDechets.setText("Potentiel d'absorbtion: " + GUIMain.eau.sommeAbsorptionDechets);
 
                 if(mol.sommeMolN() != 0)
                     lblN.setText("N: " + df.format(mol.sommeMolN()) + " mols d'azote");

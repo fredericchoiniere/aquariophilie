@@ -15,7 +15,7 @@ import view.GUIMain;
 import java.awt.*;
 import java.util.Random;
 
-public class Poisson extends JPanel {
+public class Poisson extends JPanel { // TODO: quand meurent, fishstick
 
     // attributs de la classe
     int vel_x = 1;

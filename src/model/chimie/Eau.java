@@ -243,7 +243,7 @@ public class Eau implements Runnable {
      * Gère la variation de pH
      * pH diminue avec temps, plantes augmentent pH
      */
-    public void variationPH() { // TODO: à balancer
+    public void variationPH() {
         if (getKH() > 8) {
             setPH(getPH() - (float) 0.008);
             setPH(getPH() + (float) (sommeContributionPH * 0.05));
@@ -336,12 +336,13 @@ public class Eau implements Runnable {
         // System.out.println("hauteur eau: " + GUIMain.rectEau.getHeight());
     }
     
-    public void changerEau(){ // TODO: implémenter cooldown avec scheduleatfixedrate pour outils
+    public void changerEau(){ // TODO: clean up poissons morts
         volumeEau = (float) 37.85;
         hauteur = 35;
         kh = 6;
         gh = 10;
         ph = 7;
+        nitrates -= 10;
         System.out.println("déchets pré changement: " + sommeDechets);
         sommeDechets -= (sommeDechets * 0.50);
         System.out.println("déchets post changement: " + sommeDechets);
@@ -360,7 +361,6 @@ public class Eau implements Runnable {
      */
     public void comportNitrates() {
         nitrates = ((jours / 7) - 4);
-        //TODO: réduire avec changement d'eau
     }
 
     /**
@@ -564,6 +564,7 @@ public class Eau implements Runnable {
                     GUIMain.panelTest.lblScoreNitrates.setText(toString(GUIMain.eau.setScoreNitrates()));
 
                     GUIMain.panelTest.lblScoreEau.setText(toString(GUIMain.eau.getScoreEau()));
+                    
 
                     // System.out.println("Compteur jours: " + Eau.compteurJoursCycle);
                     // System.out.println("déchets: " + sommeDechets);

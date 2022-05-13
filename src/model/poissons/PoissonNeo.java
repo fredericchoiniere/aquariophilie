@@ -27,7 +27,7 @@ public class PoissonNeo extends Poisson implements Runnable {
     Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_neo/poisson_gauche.png");
     static Image empty = Toolkit.getDefaultToolkit().getImage("res/poissons/empty.png");
 
-    public static int dechets = -2;
+    public static int dechets = (-2);
 
     public PoissonNeo() {
         setImg();
