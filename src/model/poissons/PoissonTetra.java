@@ -99,3 +99,5 @@ public class PoissonTetra extends Poisson implements Runnable {
     }
 
 }
+
+// Слава Україні!

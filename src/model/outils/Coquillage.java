@@ -35,3 +35,5 @@ public class Coquillage extends Outils{
 
     }
 }
+
+// Слава Україні!

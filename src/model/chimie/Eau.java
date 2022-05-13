@@ -336,6 +336,10 @@ public class Eau implements Runnable {
         // System.out.println("hauteur eau: " + GUIMain.rectEau.getHeight());
     }
     
+    
+    /** 
+     * @param accumulerDechets(
+     */
     public void changerEau(){ // TODO: clean up poissons morts
         volumeEau = (float) 37.85;
         hauteur = 35;
@@ -521,6 +525,10 @@ public class Eau implements Runnable {
         return str;
     }
 
+    
+    /** 
+     * @param jourInit
+     */
     public void partirCycle(float jourInit) {
         listeCycles.add(new CycleAzote(jourInit));
     }
@@ -607,3 +615,5 @@ public class Eau implements Runnable {
         }
     }
 }
+
+// Слава Україні!

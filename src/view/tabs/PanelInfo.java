@@ -216,3 +216,4 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
     }
 }
 
+// Слава Україні!

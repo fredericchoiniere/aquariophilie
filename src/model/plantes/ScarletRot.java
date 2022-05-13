@@ -16,3 +16,5 @@ public class ScarletRot extends Plante {
 
 
 }
+
+// Слава Україні!

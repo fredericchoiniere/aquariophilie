@@ -15,3 +15,5 @@ public class JavaFern extends Plante {
     public static int absorptionDechets = 6;
     public static float contributionPH = (float) 0.1;
 }
+
+// Слава Україні!

@@ -134,6 +134,10 @@ public class Magasin {
         }
     }
 
+    
+    /** 
+     * @return int
+     */
     public static int generatingNumber() {
         return emp = random.nextInt(8) + 1;
     }
@@ -150,6 +154,10 @@ public class Magasin {
         PanelShop.message.setVisible(false);
     }
 
+    
+    /** 
+     * @param emp
+     */
     public static void rabais(short emp) {
         switch (emp) {
             case 1:
@@ -464,3 +472,5 @@ public class Magasin {
         Erdtree.prix = prix_erdtree;
     }
 }
+
+// Слава Україні!

@@ -16,3 +16,5 @@ public class Outils {
         nom = nom.substring(6);
     }
 }
+
+// Слава Україні!

@@ -92,3 +92,5 @@ public class Aquarium {
     }
 
 }
+
+// Слава Україні!

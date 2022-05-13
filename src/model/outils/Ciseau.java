@@ -37,3 +37,5 @@ public class Ciseau extends Outils {
 
     }
 }
+
+// Слава Україні!

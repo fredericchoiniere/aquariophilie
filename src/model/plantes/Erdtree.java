@@ -13,3 +13,5 @@ public class Erdtree extends Plante {
     public static float contributionPH = (float) 0.05;
 
 }
+
+// Слава Україні!

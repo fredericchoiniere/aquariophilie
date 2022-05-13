@@ -106,3 +106,5 @@ public class Temps {
     }
 
 }
+
+// Слава Україні!

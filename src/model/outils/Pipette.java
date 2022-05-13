@@ -100,3 +100,5 @@ public class Pipette extends Outils {
         }
     }
 }
+
+// Слава Україні!

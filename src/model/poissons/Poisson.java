@@ -3,10 +3,8 @@
 
 package model.poissons;
 
-import javax.sound.sampled.BooleanControl;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import model.MethodeGUIMain;
 import model.chimie.Eau;
 import model.jeu.Inventaire;
@@ -122,6 +120,10 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
         return nom;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getHauteur() {
         hauteur = 196 - Eau.hauteurEnPixels; // Traduit la hauteur en pixels de l'eau en coordonnées pour les poissons
         return hauteur;
@@ -174,6 +176,11 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
         }
     }
 
+    
+    /** 
+     * @param poisson
+     * @return String
+     */
     public static String fishType(short poisson) {
         switch (poisson) {
             case 0:
@@ -193,6 +200,10 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
         }
     }
 
+    
+    /** 
+     * @param numb
+     */
     public static void setSante(short numb) {
         switch (fishType(numb)) {
             case "rouge":
@@ -228,6 +239,11 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
         }
     }
 
+    
+    /** 
+     * @param numb
+     * @param tolerance
+     */
     public static void ajusterSante(short numb, int tolerance){
         if (GUIMain.eau.scoreEau >= 66 - tolerance) {
             if (selection.sante < 100
@@ -407,6 +423,10 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
         GUIMain.listePoissonsAqua.set(numb, GUIMain.poisson_default);
     }
 
+    
+    /** 
+     * @param numb
+     */
     public static void setFalse(short numb) {
         switch (numb) {
             case 0:
@@ -448,6 +468,10 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
         }
     }
 
+    
+    /** 
+     * @param index
+     */
     public static void setBarValue(short index) {
         switch (index) {
             case 0:
@@ -473,3 +497,5 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
         }
     }
 }
+
+// Слава Україні!
