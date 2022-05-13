@@ -27,6 +27,8 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
     public String empInv, empAqua, nom;
     int hauteur = Eau.hauteurEnPixels, compensationPosition = Eau.hauteurEnPixels - (4 + (192 - Eau.hauteurEnPixels));
 
+    static Poisson selection;
+
     public static Random random = new Random();
     int randomNumber;
 
@@ -171,18 +173,6 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
         }
     }
 
-    public static void setSante(short poisson) {
-        if (fishType(poisson) == "rouge") {
-            levels("rouge", poisson);
-        } else if (fishType(poisson) == "betta") {
-            levels("betta", poisson);
-        } else if (fishType(poisson) == "tetra") {
-            levels("tetra", poisson);
-        } else if (fishType(poisson) == "neo") {
-            levels("neo", poisson);
-        }
-    }
-
     public static String fishType(short poisson) {
         switch (poisson) {
             case 0:
@@ -202,7 +192,67 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
         }
     }
 
-    public static void levels(String type, short numb) {
+    public static void setSante(short numb) {
+        switch (fishType(numb)) {
+            case "rouge":
+                ajusterSante(numb, PoissonRouge.tolerance);
+                break;
+            case "betta":
+                ajusterSante(numb, PoissonBetta.tolerance);
+                break;
+            case "tetra":
+                ajusterSante(numb, PoissonTetra.tolerance);
+                break;
+            case "neo":
+                ajusterSante(numb, PoissonNeo.tolerance);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public static void ajusterSante(short numb, int tolerance){
+
+        selection = GUIMain.listePoissonsAqua.get(numb);
+
+        if (!selection.checkTolerances()) {
+            killFish(numb);
+        }
+
+        if (GUIMain.eau.scoreEau >= 66 - tolerance) {
+            if (selection.sante < 100
+                    && selection.sante > 0) {
+                selection.sante += 1;
+            } else {
+                selection.sante = 100;
+            }
+            setBarValue(numb);
+        } else if (GUIMain.eau.scoreEau >= 33 - tolerance) {
+            if (selection.sante <= 100
+                    && selection.sante > 0) {
+                selection.sante -= 1;
+            } else {
+                killFish(numb);
+            }
+            setBarValue(numb);
+        } else if (GUIMain.eau.scoreEau > 0 - tolerance) {
+            if (selection.sante <= 100
+                    && selection.sante > 0) {
+                selection.sante -= 2;
+            } else {
+                killFish(numb);
+            }
+            setBarValue(numb);
+        }
+    }
+
+    public boolean checkTolerances(){ // TODO: checker niveaux dans GUIMain.eau et juger adéquatement avec héritage dans autres classes poissons
+        
+        
+        return true;
+    }
+
+    /* public static void levels(String type, short numb) {
         // System.out.println("ScroreEau : " + GUIMain.eau.scoreEau);
         switch (type) {
 
@@ -329,7 +379,7 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
             default:
                 break;
         }
-    }
+    } */
 
     public static void killFish(short numb) {
         MethodeGUIMain.checkFishType(fishType(numb));
