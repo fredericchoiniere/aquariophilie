@@ -1138,8 +1138,7 @@ public class GUIMain extends JFrame implements ActionListener {
         label_tuto8.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                tabbedPane.setSelectedIndex(0);
-                label_tuto8.setVisible(false);
+                setEverythingGood();
             }
         });
 
@@ -1796,6 +1795,7 @@ public class GUIMain extends JFrame implements ActionListener {
         ciseau_label.setVisible(true);
         filet_label.setVisible(true);
         coquillage_label.setVisible(true);
+        tabbedPane.setSelectedIndex(0);
     }
     // ------------------------------------------------------------------------------------------------------------------------------------------------------
 
