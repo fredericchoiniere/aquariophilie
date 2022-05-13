@@ -62,6 +62,10 @@ public class CycleAzote{
     }
 
        
+    
+    /** 
+     * @param jours
+     */
     public void cycler(float jours){
 
         

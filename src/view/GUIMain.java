@@ -1782,6 +1782,8 @@ public class GUIMain extends JFrame {
         tabbedPane.setEnabledAt(1, true);
         tabbedPane.setEnabledAt(2, true);
     }
+
+    
 }
 
 // Слава Україні!

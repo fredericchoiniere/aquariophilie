@@ -18,26 +18,19 @@ public class PanelShop extends JPanel implements ActionListener {
 
     // Attributs de la classe
     static int i = 1;
-    public static JButton poisson_rouge;
-    public static JButton poisson_betta;
-    public static JButton poisson_tetra;
-    public static JButton poisson_neo;
-    public static JButton planteBlue;
-    public static JButton planteFern;
-    public static JButton planteScarlet;
-    public static JButton planteErdtree;
+
+    // création des boutons
+    public static JButton poisson_rouge, poisson_betta, poisson_tetra, poisson_neo, planteBlue, planteFern,
+            planteScarlet, planteErdtree;
+
+    // création des labels
     public JLabel rouge, betta, tetra, neo, blue, fern, scarlet, erdtree;
-    public static JLabel rabais_rouge;
-    public static JLabel rabais_betta;
-    public static JLabel rabais_tetra;
-    public static JLabel rabais_neo;
-    public static JLabel rabais_blue;
-    public static JLabel rabais_fern;
-    public static JLabel rabais_scarlet;
-    public static JLabel rabais_erdtree;
-    public static JLabel message;
+
+    public static JLabel rabais_rouge, rabais_betta, rabais_tetra, rabais_neo, rabais_blue, rabais_fern, rabais_scarlet,
+            rabais_erdtree, message;
+
+    // création des dimensions
     public static Dimension shop_dimension = new Dimension(80, 80);
-    JLabel label_tutoriel, label_information;
 
     public PanelShop() {
         setLayout(null);
@@ -120,8 +113,6 @@ public class PanelShop extends JPanel implements ActionListener {
         planteErdtree.setToolTipText("Prix: " + Erdtree.prix + "฿");
         planteErdtree.addActionListener(this);
         add(planteErdtree);
-
-        // ajout du label pour le tutoriel
 
         // création des labels pour afficher les prix des poissons
         rouge = new JLabel();
@@ -523,7 +514,6 @@ public class PanelShop extends JPanel implements ActionListener {
                 GUIMain.label_tuto8.setVisible(true);
                 GUIMain.isSelected6 = false;
             } else {
-                label_tutoriel.setVisible(false);
                 if (Magasin.gotMoney("rouge")) {
                     checkCase(Inventaire.img_inv_poi_rouge, "poisson", "rouge", "");
                 } else {
@@ -539,7 +529,6 @@ public class PanelShop extends JPanel implements ActionListener {
                 GUIMain.label_tuto8.setVisible(true);
                 GUIMain.isSelected6 = false;
             } else {
-                label_tutoriel.setVisible(false);
                 if (Magasin.gotMoney("betta")) {
                     checkCase(Inventaire.img_inv_betta, "poisson", "betta", "");
                 } else {
@@ -555,7 +544,6 @@ public class PanelShop extends JPanel implements ActionListener {
                 GUIMain.label_tuto8.setVisible(true);
                 GUIMain.isSelected6 = false;
             } else {
-                label_tutoriel.setVisible(false);
                 if (Magasin.gotMoney("tetra")) {
                     checkCase(Inventaire.img_inv_tetra, "poisson", "tetra", "");
                 } else {
@@ -571,7 +559,6 @@ public class PanelShop extends JPanel implements ActionListener {
                 GUIMain.label_tuto8.setVisible(true);
                 GUIMain.isSelected6 = false;
             } else {
-                label_tutoriel.setVisible(false);
                 if (Magasin.gotMoney("neo")) {
                     checkCase(Inventaire.img_inv_neo, "poisson", "neo", "");
                 } else {
@@ -581,7 +568,6 @@ public class PanelShop extends JPanel implements ActionListener {
             }
         }
         if (e.getSource() == planteBlue) {
-            label_tutoriel.setVisible(false);
             if (Magasin.gotMoney("blue")) {
                 checkCase(Inventaire.img_inv_tetra, "decoration", "", "blue");
             } else {
@@ -596,7 +582,6 @@ public class PanelShop extends JPanel implements ActionListener {
                 GUIMain.label_tuto8.setVisible(true);
                 GUIMain.isSelected6 = false;
             } else {
-                label_tutoriel.setVisible(false);
                 if (Magasin.gotMoney("java")) {
                     checkCase(Inventaire.img_inv_tetra, "decoration", "", "java");
                 } else {
@@ -612,7 +597,6 @@ public class PanelShop extends JPanel implements ActionListener {
                 GUIMain.label_tuto8.setVisible(true);
                 GUIMain.isSelected6 = false;
             } else {
-                label_tutoriel.setVisible(false);
                 if (Magasin.gotMoney("scarlet")) {
                     checkCase(Inventaire.img_inv_tetra, "decoration", "", "scarlet");
                 } else {
@@ -628,7 +612,6 @@ public class PanelShop extends JPanel implements ActionListener {
                 GUIMain.label_tuto8.setVisible(true);
                 GUIMain.isSelected6 = false;
             } else {
-                label_tutoriel.setVisible(false);
                 if (Magasin.gotMoney("erdtree")) {
                     checkCase(Inventaire.img_inv_tetra, "decoration", "", "erdtree");
                 } else {

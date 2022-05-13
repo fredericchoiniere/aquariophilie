@@ -121,6 +121,10 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
         return nom;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getHauteur() {
         hauteur = 196 - Eau.hauteurEnPixels; // Traduit la hauteur en pixels de l'eau en coordonnées pour les poissons
         return hauteur;
@@ -173,6 +177,11 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
         }
     }
 
+    
+    /** 
+     * @param poisson
+     * @return String
+     */
     public static String fishType(short poisson) {
         switch (poisson) {
             case 0:
@@ -192,6 +201,10 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
         }
     }
 
+    
+    /** 
+     * @param numb
+     */
     public static void setSante(short numb) {
         switch (fishType(numb)) {
             case "rouge":
@@ -211,6 +224,11 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
         }
     }
 
+    
+    /** 
+     * @param numb
+     * @param tolerance
+     */
     public static void ajusterSante(short numb, int tolerance){
 
         selection = GUIMain.listePoissonsAqua.get(numb);
@@ -246,6 +264,10 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
         }
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean checkTolerances(){ // TODO: checker niveaux dans GUIMain.eau et juger adéquatement avec héritage dans autres classes poissons
         
         
@@ -389,6 +411,10 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
         GUIMain.listePoissonsAqua.set(numb, GUIMain.poisson_default);
     }
 
+    
+    /** 
+     * @param numb
+     */
     public static void setFalse(short numb) {
         switch (numb) {
             case 0:
@@ -430,6 +456,10 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
         }
     }
 
+    
+    /** 
+     * @param index
+     */
     public static void setBarValue(short index) {
         switch (index) {
             case 0:

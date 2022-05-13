@@ -19,15 +19,16 @@ public class Control {
      *             permet d'initialiser le frame Introduction
      */
     public static void main(String[] args) {
-        // attributs du Frame intro
+        
+        // appel du frame intro
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                GUIIntro.guiIntroFrame();    
+                GUIIntro.guiIntroFrame();
             }
         });
 
+        // création de la radio
         try {
-
             audioPlayer = new Radio();
             audioPlayer.play();
             audioPlayer.pause();

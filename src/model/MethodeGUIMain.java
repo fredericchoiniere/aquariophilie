@@ -213,6 +213,11 @@ public class MethodeGUIMain {
         setAquaName(index, "rouge");
     }
 
+    /**
+     * @param emplacement
+     * @param label1
+     * @param index
+     */
     public static void createPoissonNeo(String emplacement, JLabel label1, int index) {
         GUIMain.listePoissonsAqua.set(index, GUIMain.listePoissonsInv.get(getEmplaToInt(emplacement)));
         GUIMain.poisson_neo = (PoissonNeo) GUIMain.listePoissonsAqua.get(index);
@@ -224,48 +229,6 @@ public class MethodeGUIMain {
         GUIMain.tpoisson_neo.start();
         GUIMain.panelAqua.add(GUIMain.poisson_neo);
         setAquaName(index, "neo");
-    }
-
-    /**
-     * méthode pour rendre les emplacements à poisson visible
-     */
-    public void aquaVisibleTrue() {
-        aquarium.aqua1.setVisible(true);
-        aquarium.aqua2.setVisible(true);
-        aquarium.aqua3.setVisible(true);
-        aquarium.aqua4.setVisible(true);
-        aquarium.aqua5.setVisible(true);
-        aquarium.aqua6.setVisible(true);
-    }
-
-    /**
-     * méthode pour rendre les emplacements à poisson invisible
-     */
-    public void aquaVisibleFalse() {
-        aquarium.aqua1.setVisible(false);
-        aquarium.aqua2.setVisible(false);
-        aquarium.aqua3.setVisible(false);
-        aquarium.aqua4.setVisible(false);
-        aquarium.aqua5.setVisible(false);
-        aquarium.aqua6.setVisible(false);
-    }
-
-    /**
-     * méthode pour rendre les emplacements à plante visible
-     */
-    public void empVisibleTrue() {
-        aquarium.emp1.setVisible(true);
-        aquarium.emp2.setVisible(true);
-        aquarium.emp3.setVisible(true);
-    }
-
-    /**
-     * méthode pour rendre les emplacements à plante invisible
-     */
-    public void empVisibleFalse() {
-        aquarium.emp1.setVisible(false);
-        aquarium.emp2.setVisible(false);
-        aquarium.emp3.setVisible(false);
     }
 
     /**
@@ -647,6 +610,10 @@ public class MethodeGUIMain {
         }
     }
 
+    /**
+     * @param poi
+     * @return ImageIcon
+     */
     public static ImageIcon getIconFish(String poi) {
         switch (poi) {
             case "rouge":
@@ -711,6 +678,9 @@ public class MethodeGUIMain {
 
     }
 
+    /**
+     * @return boolean
+     */
     public static boolean rectPlant() {
         if (GUIMain.panelAqua.getMousePosition().getX() >= GUIMain.rectPlant.getMinX()
                 && GUIMain.panelAqua.getMousePosition().getX() <= GUIMain.rectPlant.getMaxX()
@@ -722,33 +692,45 @@ public class MethodeGUIMain {
         }
     }
 
+    /**
+     * @return boolean
+     */
     public static boolean cooldownC() {
 
         if (Math.abs(live - clickRecentC) < CD_COQUILLAGE && dansRectC) {
-            /* System.out.println("coquillage sous cooldown, live: " + live + "\nclickrecent: " + clickRecentC);
-            System.out.println("delta temps (ms): " + Math.abs(live - clickRecentC)); */
+            /*
+             * System.out.println("coquillage sous cooldown, live: " + live +
+             * "\nclickrecent: " + clickRecentC);
+             * System.out.println("delta temps (ms): " + Math.abs(live - clickRecentC));
+             */
             cooldownC = true;
         } else {
             cooldownC = false;
             dansRectC = false;
             clickRecentC = live;
-            //System.out.println("coquillage pas sous cooldown");
+            // System.out.println("coquillage pas sous cooldown");
         }
 
         return cooldownC;
     }
 
+    /**
+     * @return boolean
+     */
     public static boolean cooldownP() {
 
         if (Math.abs(live - clickRecentP) < CD_PICHET && dansRectP) {
-            /* System.out.println("pichet sous cooldown, live: " + live + "\nclickrecent: " + clickRecentP);
-            System.out.println("delta temps (ms): " + Math.abs(live - clickRecentP)); */
+            /*
+             * System.out.println("pichet sous cooldown, live: " + live + "\nclickrecent: "
+             * + clickRecentP);
+             * System.out.println("delta temps (ms): " + Math.abs(live - clickRecentP));
+             */
             cooldownP = true;
         } else {
             cooldownP = false;
             dansRectP = false;
             clickRecentP = live;
-            //System.out.println("pichet pas sous cooldown");
+            // System.out.println("pichet pas sous cooldown");
         }
 
         return cooldownP;

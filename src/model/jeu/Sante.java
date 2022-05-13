@@ -67,6 +67,15 @@ public class Sante {
         label.add(emp6);
     }
 
+    
+    /** 
+     * @param etat1
+     * @param etat2
+     * @param etat3
+     * @param etat4
+     * @param etat5
+     * @param etat6
+     */
     public void setVisible(boolean etat1, boolean etat2, boolean etat3, boolean etat4, boolean etat5, boolean etat6) {
         emp1.setVisible(etat1);
         emp2.setVisible(etat2);
