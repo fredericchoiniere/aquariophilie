@@ -38,14 +38,25 @@ public class GUIMain extends JFrame implements ActionListener {
 
     public static PanelTest panelTest;
 
-    JTabbedPane tabbedPane;
+    public static JTabbedPane tabbedPane;
 
     // création des labels
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, eau_label, inventaire_ouvert,
             inventaire_fermer, inventaire_bg, filet_label, pause_label, reprendre_label, label_tutoriel,
-            label_information, hamis, ciseau_label, label_argent, label_pause2, label_reprendre2, meme, label_tuto1,
-            label_tuto2, label_tuto3, label_tuto4, label_tuto5, label_tuto6, label_tuto7, label_tuto8, skip_tuto1,
-            skip_tuto2, skip_tuto3;
+            label_tutoriel1,
+            label_information, label_information1, hamis, ciseau_label, label_argent, label_pause2, label_reprendre2,
+            meme, label_tuto1,
+            label_tuto2, label_tuto3, label_tuto4, label_tuto5, label_tuto6;
+
+    public static JLabel label_tuto7;
+
+    public static JLabel label_tuto8;
+
+    JLabel skip_tuto1;
+
+    JLabel skip_tuto2;
+
+    JLabel skip_tuto3;
 
     public static JLabel label_jours2;
 
@@ -120,6 +131,7 @@ public class GUIMain extends JFrame implements ActionListener {
     public static float jours = (float) 0; // TIMER GLOBAL
     public static boolean hasFish1, hasFish2, hasFish3, hasFish4, hasFish5, hasFish6;
     public static boolean hasPlant1, hasPlant2, hasPlant3;
+    public static boolean isSelected6;
     public static boolean coquillageVis = false, coquillageInvis = false, pichetVis = false, pichetInvis = false;
 
     // boutons temporaire
@@ -162,6 +174,48 @@ public class GUIMain extends JFrame implements ActionListener {
         panelAqua.setLayout(null);
         panelAqua.setVisible(true);
         dimAqua = panelAqua.getPreferredSize();
+
+        skip_tuto1 = new JLabel();
+        skip_tuto1.setBounds(930, 660, 60, 34);
+        skip_tuto1.setIcon(new ImageIcon("res/background/tutos/skip_tuto.png"));
+        skip_tuto1.setVisible(true);
+        panelAqua.add(skip_tuto1);
+
+        label_tuto1 = new JLabel();
+        label_tuto1.setBounds(5, 0, 1000, 700);
+        label_tuto1.setIcon(new ImageIcon("res/background/tutos/tuto1.png"));
+        label_tuto1.setVisible(true);
+        panelAqua.add(label_tuto1);
+
+        label_tuto2 = new JLabel();
+        label_tuto2.setBounds(5, 0, 1000, 700);
+        label_tuto2.setIcon(new ImageIcon("res/background/tutos/tuto2.png"));
+        label_tuto2.setVisible(false);
+        panelAqua.add(label_tuto2);
+
+        label_tuto3 = new JLabel();
+        label_tuto3.setBounds(5, 0, 1000, 700);
+        label_tuto3.setIcon(new ImageIcon("res/background/tutos/tuto3.png"));
+        label_tuto3.setVisible(false);
+        panelAqua.add(label_tuto3);
+
+        label_tuto4 = new JLabel();
+        label_tuto4.setBounds(5, 0, 1000, 700);
+        label_tuto4.setIcon(new ImageIcon("res/background/tutos/tuto4.png"));
+        label_tuto4.setVisible(false);
+        panelAqua.add(label_tuto4);
+
+        label_tuto5 = new JLabel();
+        label_tuto5.setBounds(5, 0, 1000, 700);
+        label_tuto5.setIcon(new ImageIcon("res/background/tutos/tuto5.png"));
+        label_tuto5.setVisible(false);
+        panelAqua.add(label_tuto5);
+
+        label_tuto6 = new JLabel();
+        label_tuto6.setBounds(5, 0, 1000, 700);
+        label_tuto6.setIcon(new ImageIcon("res/background/tutos/tuto6.png"));
+        label_tuto6.setVisible(false);
+        panelAqua.add(label_tuto6);
 
         inventaire_bg = new JLabel();
         kit_bg = new JLabel();
@@ -392,48 +446,6 @@ public class GUIMain extends JFrame implements ActionListener {
         // création des labels tutoriel
         // ----------------------------------------------------------
 
-        skip_tuto1 = new JLabel();
-        skip_tuto1.setBounds(930, 660, 60, 34);
-        skip_tuto1.setIcon(new ImageIcon("res/background/tutos/skip_tuto.png"));
-        skip_tuto1.setVisible(true);
-        panelAqua.add(skip_tuto1);
-
-        label_tuto1 = new JLabel();
-        label_tuto1.setBounds(5, 0, 1000, 700);
-        label_tuto1.setIcon(new ImageIcon("res/background/tutos/tuto1.png"));
-        label_tuto1.setVisible(true);
-        panelAqua.add(label_tuto1);
-
-        label_tuto2 = new JLabel();
-        label_tuto2.setBounds(5, 0, 1000, 700);
-        label_tuto2.setIcon(new ImageIcon("res/background/tutos/tuto2.png"));
-        label_tuto2.setVisible(false);
-        panelAqua.add(label_tuto2);
-
-        label_tuto3 = new JLabel();
-        label_tuto3.setBounds(5, 0, 1000, 700);
-        label_tuto3.setIcon(new ImageIcon("res/background/tutos/tuto3.png"));
-        label_tuto3.setVisible(false);
-        panelAqua.add(label_tuto3);
-
-        label_tuto4 = new JLabel();
-        label_tuto4.setBounds(5, 0, 1000, 700);
-        label_tuto4.setIcon(new ImageIcon("res/background/tutos/tuto4.png"));
-        label_tuto4.setVisible(false);
-        panelAqua.add(label_tuto4);
-
-        label_tuto5 = new JLabel();
-        label_tuto5.setBounds(5, 0, 1000, 700);
-        label_tuto5.setIcon(new ImageIcon("res/background/tutos/tuto5.png"));
-        label_tuto5.setVisible(false);
-        panelAqua.add(label_tuto5);
-
-        label_tuto6 = new JLabel();
-        label_tuto6.setBounds(5, 0, 1000, 700);
-        label_tuto6.setIcon(new ImageIcon("res/background/tutos/tuto6.png"));
-        label_tuto6.setVisible(false);
-        panelAqua.add(label_tuto6);
-
         // -----------------------------------------------------
 
         // ajout de panel Aqua au layered pane
@@ -499,6 +511,31 @@ public class GUIMain extends JFrame implements ActionListener {
         // création du panel Magasin
         PanelShop panelShop = new PanelShop();
 
+        skip_tuto2 = new JLabel();
+        skip_tuto2.setBounds(930, 660, 60, 34);
+        skip_tuto2.setIcon(new ImageIcon("res/background/tutos/skip_tuto.png"));
+        skip_tuto2.setVisible(true);
+        panelShop.add(skip_tuto2);
+
+        label_tuto7 = new JLabel();
+        label_tuto7.setBounds(5, 0, 1000, 700);
+        label_tuto7.setIcon(new ImageIcon("res/background/tutos/tuto7.png"));
+        label_tuto7.setVisible(false);
+        panelShop.add(label_tuto7);
+
+        // ajout du label pour information
+        label_information1 = new JLabel();
+        label_information1.setBounds(965, 5, 30, 30);
+        label_information1.setIcon(new ImageIcon("res/background/informations.png"));
+        label_information1.setVisible(true);
+        panelShop.add(label_information1);
+
+        label_tutoriel1 = new JLabel();
+        label_tutoriel1.setBounds(5, 0, 1000, 700);
+        label_tutoriel1.setIcon(new ImageIcon("res/background/tutoriel_shop.png"));
+        label_tutoriel1.setVisible(false);
+        panelShop.add(label_tutoriel1);
+
         // ajout du label pour l'argent
         label_argent_shop.setBounds(612, 8, 100, 50);
         label_argent_shop.setFont(new Font("Verdana", Font.BOLD, 16));
@@ -530,18 +567,6 @@ public class GUIMain extends JFrame implements ActionListener {
         label_jours2.setVisible(true);
         panelShop.add(label_jours2);
 
-        label_tuto7 = new JLabel();
-        label_tuto7.setBounds(5, 0, 1000, 700);
-        label_tuto7.setIcon(new ImageIcon("res/background/tutos/tuto7.png"));
-        label_tuto7.setVisible(false);
-        panelShop.add(label_tuto7);
-
-        skip_tuto2 = new JLabel();
-        skip_tuto2.setBounds(930, 660, 60, 34);
-        skip_tuto2.setIcon(new ImageIcon("res/background/tutos/skip_tuto.png"));
-        skip_tuto2.setVisible(true);
-        panelAqua.add(skip_tuto2);
-
         tabbedPane.add("Magasin", panelShop);
 
         // --------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -553,19 +578,22 @@ public class GUIMain extends JFrame implements ActionListener {
         tPanelInfo.start();
         tabbedPane.add("Détails", panelInfo);
 
+        skip_tuto3 = new JLabel();
+        skip_tuto3.setBounds(450, 720, 60, 34);
+        skip_tuto3.setIcon(new ImageIcon("res/background/tutos/skip_tuto.png"));
+        skip_tuto3.setVisible(true);
+        panelInfo.add(skip_tuto3);
+
         label_tuto8 = new JLabel();
         label_tuto8.setBounds(0, 0, 520, 765);
         label_tuto8.setIcon(new ImageIcon("res/background/tutos/tuto7.png"));
         label_tuto8.setVisible(false);
         panelInfo.add(label_tuto8);
 
-        skip_tuto3 = new JLabel();
-        skip_tuto3.setBounds(930, 660, 60, 34);
-        skip_tuto3.setIcon(new ImageIcon("res/background/tutos/skip_tuto.png"));
-        skip_tuto3.setVisible(true);
-        panelInfo.add(skip_tuto3);
-
         // ajout du panel Info au tabbed pane
+        tabbedPane.setEnabledAt(0, false);
+        tabbedPane.setEnabledAt(1, false);
+        tabbedPane.setEnabledAt(2, false);
         add(tabbedPane);
 
         // ---------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1057,6 +1085,21 @@ public class GUIMain extends JFrame implements ActionListener {
             }
         });
 
+        label_tutoriel1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                label_tutoriel1.setVisible(false);
+            }
+        });
+
+        // actionlistener pour ouvrir le tutoriel
+        label_information1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                label_tutoriel1.setVisible(true);
+            }
+        });
+
         // actionlistener pour ouvrir le tutoriel
         // --------------------------------------------------------------------------
         label_tuto1.addMouseListener(new MouseAdapter() {
@@ -1064,6 +1107,14 @@ public class GUIMain extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
                 label_tuto1.setVisible(false);
                 label_tuto2.setVisible(true);
+                inventaire_fermer.setVisible(false);
+                kit_fermer.setVisible(false);
+                aquarium_kit_fermer.setVisible(false);
+                pichet_label.setVisible(false);
+                lblPipette.setVisible(false);
+                ciseau_label.setVisible(false);
+                filet_label.setVisible(false);
+                coquillage_label.setVisible(false);
             }
         });
 
@@ -1114,6 +1165,11 @@ public class GUIMain extends JFrame implements ActionListener {
                 aquarium_kit_ouvert.setVisible(false);
                 aquarium_kit_fermer.setVisible(true);
                 panelTest.setVisible(false);
+                pichet_label.setVisible(true);
+                lblPipette.setVisible(true);
+                ciseau_label.setVisible(true);
+                filet_label.setVisible(true);
+                coquillage_label.setVisible(true);
             }
         });
 
@@ -1123,6 +1179,7 @@ public class GUIMain extends JFrame implements ActionListener {
                 label_tuto6.setVisible(false);
                 label_tuto7.setVisible(true);
                 tabbedPane.setSelectedIndex(1);
+                isSelected6 = true;
             }
         });
 
@@ -1132,6 +1189,7 @@ public class GUIMain extends JFrame implements ActionListener {
                 label_tuto7.setVisible(false);
                 tabbedPane.setSelectedIndex(2);
                 label_tuto8.setVisible(true);
+                isSelected6 = false;
             }
         });
 
@@ -1162,8 +1220,6 @@ public class GUIMain extends JFrame implements ActionListener {
                 setEverythingGood();
             }
         });
-
-
 
         // actionlistener sur les items de l'inventaire
         // ---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1796,6 +1852,9 @@ public class GUIMain extends JFrame implements ActionListener {
         filet_label.setVisible(true);
         coquillage_label.setVisible(true);
         tabbedPane.setSelectedIndex(0);
+        tabbedPane.setEnabledAt(0, true);
+        tabbedPane.setEnabledAt(1, true);
+        tabbedPane.setEnabledAt(2, true);
     }
     // ------------------------------------------------------------------------------------------------------------------------------------------------------
 
