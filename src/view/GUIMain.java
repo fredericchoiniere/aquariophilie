@@ -554,7 +554,7 @@ public class GUIMain extends JFrame implements ActionListener {
         tabbedPane.add("Détails", panelInfo);
 
         label_tuto8 = new JLabel();
-        label_tuto8.setBounds(5, 0, 1000, 700);
+        label_tuto8.setBounds(0, 0, 520, 765);
         label_tuto8.setIcon(new ImageIcon("res/background/tutos/tuto7.png"));
         label_tuto8.setVisible(false);
         panelInfo.add(label_tuto8);
@@ -1130,7 +1130,16 @@ public class GUIMain extends JFrame implements ActionListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 label_tuto7.setVisible(false);
+                tabbedPane.setSelectedIndex(2);
                 label_tuto8.setVisible(true);
+            }
+        });
+
+        label_tuto8.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                tabbedPane.setSelectedIndex(0);
+                label_tuto8.setVisible(false);
             }
         });
 
