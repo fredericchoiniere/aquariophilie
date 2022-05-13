@@ -485,3 +485,5 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
         }
     }
 }
+
+// Слава Україні!

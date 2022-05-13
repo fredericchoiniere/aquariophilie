@@ -737,3 +737,5 @@ public class MethodeGUIMain {
     }
 
 }
+
+// Слава Україні!

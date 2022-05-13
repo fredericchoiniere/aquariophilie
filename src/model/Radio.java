@@ -92,3 +92,5 @@ public class Radio {
     }
 
 }
+
+// Слава Україні!

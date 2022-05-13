@@ -102,3 +102,5 @@ public class PoissonRouge extends Poisson implements Runnable {
     }
 
 }
+
+// Слава Україні!

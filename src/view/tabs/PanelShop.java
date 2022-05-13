@@ -623,3 +623,5 @@ public class PanelShop extends JPanel implements ActionListener {
     }
 
 }
+
+// Слава Україні!

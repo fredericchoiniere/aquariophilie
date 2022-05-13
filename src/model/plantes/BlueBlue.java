@@ -17,3 +17,5 @@ public class BlueBlue extends Plante {
 
 
 }
+
+// Слава Україні!

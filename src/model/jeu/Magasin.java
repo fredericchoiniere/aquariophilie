@@ -472,3 +472,5 @@ public class Magasin {
         Erdtree.prix = prix_erdtree;
     }
 }
+
+// Слава Україні!

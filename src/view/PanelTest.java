@@ -508,3 +508,5 @@ public class PanelTest extends JPanel implements ActionListener {
 
     }
 }
+
+// Слава Україні!

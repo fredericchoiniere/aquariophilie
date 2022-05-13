@@ -35,3 +35,5 @@ public class PanelAqua extends JPanel { // extends JPanel pour créer un Jpanel
     }
 
 }
+
+// Слава Україні!

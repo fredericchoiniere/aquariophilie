@@ -57,3 +57,5 @@ public class GestionException {
     }
 
 }
+
+// Слава Україні!

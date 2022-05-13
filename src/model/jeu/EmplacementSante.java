@@ -9,3 +9,5 @@ public class EmplacementSante extends JProgressBar {
         super();
     }
 }
+
+// Слава Україні!

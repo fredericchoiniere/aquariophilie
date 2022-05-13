@@ -615,3 +615,5 @@ public class Eau implements Runnable {
         }
     }
 }
+
+// Слава Україні!

@@ -101,3 +101,5 @@ public class PoissonNeo extends Poisson implements Runnable {
     }
 
 }
+
+// Слава Україні!

@@ -85,3 +85,5 @@ public class Sante {
         emp6.setVisible(etat6);
     }
 }
+
+// Слава Україні!

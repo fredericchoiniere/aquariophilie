@@ -40,3 +40,5 @@ public class Control {
     }
 
 }
+
+// Слава Україні!

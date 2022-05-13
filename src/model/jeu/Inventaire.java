@@ -124,3 +124,5 @@ public class Inventaire {
         }
 
 }
+
+// Слава Україні!

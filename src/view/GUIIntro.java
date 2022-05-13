@@ -181,3 +181,5 @@ public class GUIIntro extends JPanel {
         }
     }
 }
+
+// Слава Україні!
