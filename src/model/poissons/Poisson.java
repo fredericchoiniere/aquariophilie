@@ -12,6 +12,7 @@ import model.jeu.Sante;
 import view.GUIMain;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Poisson extends JPanel { // TODO: quand meurent, fishstick
@@ -26,10 +27,14 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
     public String empInv, empAqua, nom;
     int hauteur = Eau.hauteurEnPixels, compensationPosition = Eau.hauteurEnPixels - (4 + (192 - Eau.hauteurEnPixels));
 
-    static Poisson selection;
+    static Poisson selection = new Poisson();
 
     public static Random random = new Random();
     int randomNumber;
+
+    static ArrayList<Short> listeACleanUp = new ArrayList<Short>();
+
+    static Image rip = Toolkit.getDefaultToolkit().getImage("res/poissons/rip.png");
 
     /**
      * @param isOpaque
@@ -138,11 +143,13 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
      * @return Image
      *         méthode pour changer l'image selon la direction
      */
-    public Image getImage(String coter, Image img, Image poisson_droite, Image poisson_gauche, Image empty) {
+    public Image getImage(String coter, Image img, Image poisson_droite, Image poisson_gauche, Image empty, Image rip) {
         if (coter == "droite") {
             img = poisson_droite;
         } else if (coter == "gauche") {
             img = poisson_gauche;
+        } else if (coter == "rip") {
+            img = rip;
         } else if (coter == "empty") {
             img = empty;
         } else {
@@ -416,11 +423,17 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
     } */
 
     public static void killFish(short numb) {
-        MethodeGUIMain.checkFishType(fishType(numb));
-        setFalse(numb);
-        GUIMain.listePoissonsAqua.get(numb).direction = "empty";
-        GUIMain.listePoissonsAqua.get(numb).var = false;
-        GUIMain.listePoissonsAqua.set(numb, GUIMain.poisson_default);
+        MethodeGUIMain.checkFishType(fishType(numb));       // Quand on enlève poisson
+        GUIMain.listePoissonsAqua.get(numb).direction = "rip";
+        GUIMain.listePoissonsAqua.get(numb).setXVelocity(0);
+        GUIMain.listePoissonsAqua.get(numb).setYVelocity(1); //TODO: faire arrêter au fond de l'aquarium et revoir argent
+        listeACleanUp.add(numb);
+    }
+
+    public static void cleanUp(){
+        for (short indexMorts : listeACleanUp) {
+            setFalse(indexMorts);
+        }
     }
 
     
@@ -428,6 +441,9 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
      * @param numb
      */
     public static void setFalse(short numb) {
+        GUIMain.listePoissonsAqua.get(numb).direction = "empty";
+        GUIMain.listePoissonsAqua.get(numb).var = false;
+        GUIMain.listePoissonsAqua.set(numb, GUIMain.poisson_default);
         switch (numb) {
             case 0:
                 GUIMain.hasFish1 = false;

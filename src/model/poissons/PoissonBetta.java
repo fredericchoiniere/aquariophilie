@@ -40,7 +40,7 @@ public class PoissonBetta extends Poisson implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, PoissonRouge.empty), x_temp, y_temp,
+        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, PoissonRouge.empty, Poisson.rip), x_temp, y_temp,
                 this);
     }
 

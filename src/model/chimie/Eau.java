@@ -350,6 +350,7 @@ public class Eau implements Runnable {
         //System.out.println("déchets pré changement: " + sommeDechets);
         sommeDechets -= (sommeDechets * 0.50);
         //System.out.println("déchets post changement: " + sommeDechets);
+        Poisson.cleanUp();
     }
 
     /**
