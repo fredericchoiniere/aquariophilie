@@ -44,7 +44,8 @@ public class GUIMain extends JFrame implements ActionListener {
     JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, eau_label, inventaire_ouvert,
             inventaire_fermer, inventaire_bg, filet_label, pause_label, reprendre_label, label_tutoriel,
             label_information, hamis, ciseau_label, label_argent, label_pause2, label_reprendre2, meme, label_tuto1,
-            label_tuto2, label_tuto3, label_tuto4, label_tuto5, label_tuto6, label_tuto7, label_tuto8;
+            label_tuto2, label_tuto3, label_tuto4, label_tuto5, label_tuto6, label_tuto7, label_tuto8, skip_tuto1,
+            skip_tuto2, skip_tuto3;
 
     public static JLabel label_jours2;
 
@@ -388,9 +389,14 @@ public class GUIMain extends JFrame implements ActionListener {
         meme.setVisible(true);
         panelAqua.add(meme);
 
-
         // création des labels tutoriel
-        //----------------------------------------------------------
+        // ----------------------------------------------------------
+
+        skip_tuto1 = new JLabel();
+        skip_tuto1.setBounds(930, 660, 60, 34);
+        skip_tuto1.setIcon(new ImageIcon("res/background/tutos/skip_tuto.png"));
+        skip_tuto1.setVisible(true);
+        panelAqua.add(skip_tuto1);
 
         label_tuto1 = new JLabel();
         label_tuto1.setBounds(5, 0, 1000, 700);
@@ -402,7 +408,7 @@ public class GUIMain extends JFrame implements ActionListener {
         label_tuto2.setBounds(5, 0, 1000, 700);
         label_tuto2.setIcon(new ImageIcon("res/background/tutos/tuto2.png"));
         label_tuto2.setVisible(false);
-        panelAqua.add(label_tuto2); 
+        panelAqua.add(label_tuto2);
 
         label_tuto3 = new JLabel();
         label_tuto3.setBounds(5, 0, 1000, 700);
@@ -411,7 +417,7 @@ public class GUIMain extends JFrame implements ActionListener {
         panelAqua.add(label_tuto3);
 
         label_tuto4 = new JLabel();
-        label_tuto4.setBounds(5, 0, 1000, 700); 
+        label_tuto4.setBounds(5, 0, 1000, 700);
         label_tuto4.setIcon(new ImageIcon("res/background/tutos/tuto4.png"));
         label_tuto4.setVisible(false);
         panelAqua.add(label_tuto4);
@@ -427,7 +433,6 @@ public class GUIMain extends JFrame implements ActionListener {
         label_tuto6.setIcon(new ImageIcon("res/background/tutos/tuto6.png"));
         label_tuto6.setVisible(false);
         panelAqua.add(label_tuto6);
-
 
         // -----------------------------------------------------
 
@@ -531,6 +536,12 @@ public class GUIMain extends JFrame implements ActionListener {
         label_tuto7.setVisible(false);
         panelShop.add(label_tuto7);
 
+        skip_tuto2 = new JLabel();
+        skip_tuto2.setBounds(930, 660, 60, 34);
+        skip_tuto2.setIcon(new ImageIcon("res/background/tutos/skip_tuto.png"));
+        skip_tuto2.setVisible(true);
+        panelAqua.add(skip_tuto2);
+
         tabbedPane.add("Magasin", panelShop);
 
         // --------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -541,6 +552,18 @@ public class GUIMain extends JFrame implements ActionListener {
         tPanelInfo = new Thread(panelInfo);
         tPanelInfo.start();
         tabbedPane.add("Détails", panelInfo);
+
+        label_tuto8 = new JLabel();
+        label_tuto8.setBounds(5, 0, 1000, 700);
+        label_tuto8.setIcon(new ImageIcon("res/background/tutos/tuto7.png"));
+        label_tuto8.setVisible(false);
+        panelInfo.add(label_tuto8);
+
+        skip_tuto3 = new JLabel();
+        skip_tuto3.setBounds(930, 660, 60, 34);
+        skip_tuto3.setIcon(new ImageIcon("res/background/tutos/skip_tuto.png"));
+        skip_tuto3.setVisible(true);
+        panelInfo.add(skip_tuto3);
 
         // ajout du panel Info au tabbed pane
         add(tabbedPane);
@@ -1035,14 +1058,15 @@ public class GUIMain extends JFrame implements ActionListener {
         });
 
         // actionlistener pour ouvrir le tutoriel
-        //--------------------------------------------------------------------------
+        // --------------------------------------------------------------------------
         label_tuto1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 label_tuto1.setVisible(false);
                 label_tuto2.setVisible(true);
-            }});
-        
+            }
+        });
+
         label_tuto2.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -1051,7 +1075,8 @@ public class GUIMain extends JFrame implements ActionListener {
                 inventaire_fermer.setVisible(false);
                 inventaire_ouvert.setVisible(true);
                 inventaire_bg.setVisible(true);
-            }});
+            }
+        });
 
         label_tuto3.addMouseListener(new MouseAdapter() {
             @Override
@@ -1064,7 +1089,8 @@ public class GUIMain extends JFrame implements ActionListener {
                 kit_fermer.setVisible(false);
                 kit_ouvert.setVisible(true);
                 kit_bg.setVisible(true);
-            }});
+            }
+        });
 
         label_tuto4.addMouseListener(new MouseAdapter() {
             @Override
@@ -1077,7 +1103,8 @@ public class GUIMain extends JFrame implements ActionListener {
                 aquarium_kit_ouvert.setVisible(true);
                 aquarium_kit_fermer.setVisible(false);
                 panelTest.setVisible(true);
-            }});
+            }
+        });
 
         label_tuto5.addMouseListener(new MouseAdapter() {
             @Override
@@ -1087,7 +1114,8 @@ public class GUIMain extends JFrame implements ActionListener {
                 aquarium_kit_ouvert.setVisible(false);
                 aquarium_kit_fermer.setVisible(true);
                 panelTest.setVisible(false);
-            }});
+            }
+        });
 
         label_tuto6.addMouseListener(new MouseAdapter() {
             @Override
@@ -1095,15 +1123,63 @@ public class GUIMain extends JFrame implements ActionListener {
                 label_tuto6.setVisible(false);
                 label_tuto7.setVisible(true);
                 tabbedPane.setSelectedIndex(1);
-            }});
+            }
+        });
 
         label_tuto7.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 label_tuto7.setVisible(false);
                 label_tuto8.setVisible(true);
-            }});
-            
+            }
+        });
+
+        skip_tuto1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                skip_tuto1.setVisible(false);
+                skip_tuto2.setVisible(false);
+                label_tuto1.setVisible(false);
+                label_tuto2.setVisible(false);
+                label_tuto3.setVisible(false);
+                label_tuto4.setVisible(false);
+                label_tuto5.setVisible(false);
+                label_tuto6.setVisible(false);
+                label_tuto7.setVisible(true);
+                inventaire_fermer.setVisible(true);
+                inventaire_ouvert.setVisible(false);
+                inventaire_bg.setVisible(false);
+                kit_fermer.setVisible(true);
+                kit_ouvert.setVisible(false);
+                kit_bg.setVisible(false);
+                aquarium_kit_ouvert.setVisible(false);
+                aquarium_kit_fermer.setVisible(true);
+                panelTest.setVisible(false);
+                pichet_label.setVisible(true);
+                lblPipette.setVisible(true);
+                ciseau_label.setVisible(true);
+                filet_label.setVisible(true);
+                coquillage_label.setVisible(true);
+                // label_tuto8.setVisible(false);
+            }
+        });
+
+        skip_tuto2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                skip_tuto1.setVisible(false);
+                skip_tuto2.setVisible(false);
+                label_tuto1.setVisible(false);
+                label_tuto2.setVisible(false);
+                label_tuto3.setVisible(false);
+                label_tuto4.setVisible(false);
+                label_tuto5.setVisible(false);
+                label_tuto6.setVisible(false);
+                label_tuto7.setVisible(true);
+                // label_tuto8.setVisible(false);
+            }
+        });
+
         // actionlistener sur les items de l'inventaire
         // ---------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -1707,9 +1783,36 @@ public class GUIMain extends JFrame implements ActionListener {
                 tetra_curseur.getImage(),
                 new Point(0, 0), "custom cursor"));
     }
+
+    public void setEverythingGood() {
+        skip_tuto1.setVisible(false);
+        skip_tuto2.setVisible(false);
+        skip_tuto3.setVisible(false);
+        label_tuto1.setVisible(false);
+        label_tuto2.setVisible(false);
+        label_tuto3.setVisible(false);
+        label_tuto4.setVisible(false);
+        label_tuto5.setVisible(false);
+        label_tuto6.setVisible(false);
+        label_tuto7.setVisible(true);
+        label_tuto8.setVisible(false);
+        inventaire_fermer.setVisible(true);
+        inventaire_ouvert.setVisible(false);
+        inventaire_bg.setVisible(false);
+        kit_fermer.setVisible(true);
+        kit_ouvert.setVisible(false);
+        kit_bg.setVisible(false);
+        aquarium_kit_ouvert.setVisible(false);
+        aquarium_kit_fermer.setVisible(true);
+        panelTest.setVisible(false);
+        pichet_label.setVisible(true);
+        lblPipette.setVisible(true);
+        ciseau_label.setVisible(true);
+        filet_label.setVisible(true);
+        coquillage_label.setVisible(true);
+    }
     // ------------------------------------------------------------------------------------------------------------------------------------------------------
 
 }
 
 // Слава Україні!
-
