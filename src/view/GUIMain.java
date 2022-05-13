@@ -1779,7 +1779,7 @@ public class GUIMain extends JFrame implements ActionListener {
         label_tuto4.setVisible(false);
         label_tuto5.setVisible(false);
         label_tuto6.setVisible(false);
-        label_tuto7.setVisible(true);
+        label_tuto7.setVisible(false);
         label_tuto8.setVisible(false);
         inventaire_fermer.setVisible(true);
         inventaire_ouvert.setVisible(false);
