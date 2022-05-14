@@ -10,7 +10,6 @@ public class CycleAzote{
 
     public float jours = GUIMain.jours, jourInitial, joursCalcul = 0, compteurJoursCycle = 0, tempAmmoniaque = 0, tempNitrites = 0;
     public Eau eau = GUIMain.eau;
-
     public String actionEnCours = "Aucune action initiale";
 
    
@@ -24,6 +23,7 @@ public class CycleAzote{
 
     /**
      * @param eau
+     * @param jours
      *            Démarre un cycle d'ammoniaque en fonction du temps, suivant une
      *            courbe
      */
@@ -60,71 +60,21 @@ public class CycleAzote{
         }
         eau.addNitrites(tempNitrites);
     }
-
-       
     
     /** 
      * @param jours
      */
     public void cycler(float jours){
 
-        
-
-        if (jours >= jourInitial && jours <= (jourInitial + 18)) { // >= 0 <= 18
-            //cycleAmmoniaque(getCompteurJoursCycle());
+        if (jours >= jourInitial && jours <= (jourInitial + 18)) { 
             actionEnCours = "Cycle ammoniaque";
-            //System.out.println("entré dans if ammo");
-            
-            
             cycleAmmoniaque(eau, jours);
         }
-        if (jours >= (jourInitial + 14) && jours <= (jourInitial + 35)) { // >= 14 <= 35
-            //cycleNitrites(getCompteurJoursCycle());
-            //System.out.println("Entré dans nitrites jour: " + getCompteurJours());
+        if (jours >= (jourInitial + 14) && jours <= (jourInitial + 35)) { 
             actionEnCours = "Cycle nitrites";
-
-
             cycleNitrites(eau, jours);
-
-            
         }
 
     }
 
-    /** 
-     * Méthode run de la classe CycleAzote
-     */
-    /* @Override
-    public void run() {
-            jours = GUIMain.jours;
-            jourInitial = jours;
-        while (true) {
-
-            // fix les jours des cycles criss
-            jours = GUIMain.jours;
-            compteurJours = jours - jourInitial;
-            Eau.setCompteurJoursCycle(compteurJours);
-
-            try {
-                if (jours >= jourInitial && jours <= (jourInitial + 18)) { // >= 0 <= 18
-                    cycleAmmoniaque(eau, getCompteurJours());
-                    actionEnCours = "Cycle ammoniaque";
-                }
-                if (jours >= (jourInitial + 14) && jours <= (jourInitial + 35)) { // >= 14 <= 35
-                    cycleNitrites(eau, getCompteurJours());
-                    //System.out.println("Entré dans nitrites jour: " + getCompteurJours());
-                    actionEnCours = "Cycle nitrites";
-                }
-                GUIMain.actionEnCours = actionEnCours;
-                jours++;
-                Thread.sleep(Temps.DUREE);
-
-            } catch (Exception e) {
-                System.out.println("Erreur dans le run() de CycleAzote.java");
-                e.printStackTrace();
-            }
-        }
-    } */
 }
-
-// Слава Україні!
