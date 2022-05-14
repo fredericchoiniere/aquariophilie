@@ -518,7 +518,7 @@ public class GUIMain extends JFrame {
         // ajout du label pour le tutoriel
         label_tuto8 = new JLabel();
         label_tuto8.setBounds(0, 0, 520, 765);
-        label_tuto8.setIcon(new ImageIcon("res/background/tutos/tuto7.png"));
+        label_tuto8.setIcon(new ImageIcon("res/background/tutos/tuto8.png"));
         label_tuto8.setVisible(false);
         panelInfo.add(label_tuto8);
 
