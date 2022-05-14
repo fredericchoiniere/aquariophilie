@@ -151,43 +151,43 @@ public class GUIMain extends JFrame {
 
         skip_tuto1 = new JLabel();
         skip_tuto1.setBounds(930, 660, 60, 34);
-        skip_tuto1.setIcon(new ImageIcon("res/background/tutos/skip_tuto.png"));
+        skip_tuto1.setIcon(new ImageIcon("res/tutoriel/skip_tuto.png"));
         skip_tuto1.setVisible(true);
         panelAqua.add(skip_tuto1);
 
         label_tuto1 = new JLabel();
         label_tuto1.setBounds(5, 0, 1000, 700);
-        label_tuto1.setIcon(new ImageIcon("res/background/tutos/tuto1.png"));
+        label_tuto1.setIcon(new ImageIcon("res/tutoriel/tuto1.png"));
         label_tuto1.setVisible(true);
         panelAqua.add(label_tuto1);
 
         label_tuto2 = new JLabel();
         label_tuto2.setBounds(5, 0, 1000, 700);
-        label_tuto2.setIcon(new ImageIcon("res/background/tutos/tuto2.png"));
+        label_tuto2.setIcon(new ImageIcon("res/tutoriel/tuto2.png"));
         label_tuto2.setVisible(false);
         panelAqua.add(label_tuto2);
 
         label_tuto3 = new JLabel();
         label_tuto3.setBounds(5, 0, 1000, 700);
-        label_tuto3.setIcon(new ImageIcon("res/background/tutos/tuto3.png"));
+        label_tuto3.setIcon(new ImageIcon("res/tutoriel/tuto3.png"));
         label_tuto3.setVisible(false);
         panelAqua.add(label_tuto3);
 
         label_tuto4 = new JLabel();
         label_tuto4.setBounds(5, 0, 1000, 700);
-        label_tuto4.setIcon(new ImageIcon("res/background/tutos/tuto4.png"));
+        label_tuto4.setIcon(new ImageIcon("res/tutoriel/tuto4.png"));
         label_tuto4.setVisible(false);
         panelAqua.add(label_tuto4);
 
         label_tuto5 = new JLabel();
         label_tuto5.setBounds(5, 0, 1000, 700);
-        label_tuto5.setIcon(new ImageIcon("res/background/tutos/tuto5.png"));
+        label_tuto5.setIcon(new ImageIcon("res/tutoriel/tuto5.png"));
         label_tuto5.setVisible(false);
         panelAqua.add(label_tuto5);
 
         label_tuto6 = new JLabel();
         label_tuto6.setBounds(5, 0, 1000, 700);
-        label_tuto6.setIcon(new ImageIcon("res/background/tutos/tuto6.png"));
+        label_tuto6.setIcon(new ImageIcon("res/tutoriel/tuto6.png"));
         label_tuto6.setVisible(false);
         panelAqua.add(label_tuto6);
 
@@ -383,17 +383,17 @@ public class GUIMain extends JFrame {
         label_jours.setVisible(true);
         panelAqua.add(label_jours);
 
-        // ajout du label pour le turoriel
+        // ajout du label pour information panelAqua
         label_tutoriel = new JLabel();
         label_tutoriel.setBounds(5, 0, 1000, 700);
-        label_tutoriel.setIcon(new ImageIcon("res/background/tutoriel.png"));
+        label_tutoriel.setIcon(new ImageIcon("res/tutoriel/info/infoAqua.png"));
         label_tutoriel.setVisible(false);
         panelAqua.add(label_tutoriel);
 
         // ajout du label pour information
         label_information = new JLabel();
         label_information.setBounds(965, 5, 30, 30);
-        label_information.setIcon(new ImageIcon("res/background/informations.png"));
+        label_information.setIcon(new ImageIcon("res/tutoriel/info/informations.png"));
         label_information.setVisible(true);
         panelAqua.add(label_information);
 
@@ -403,7 +403,7 @@ public class GUIMain extends JFrame {
         meme.setVisible(true);
         panelAqua.add(meme);
 
-        // ajout de panel Aqua au layered pane
+        // ajout de panel Aqua
         Dimension size_panel_aqua = panelAqua.getPreferredSize();
         panelAqua.setBounds(0, 0, size_panel_aqua.width, size_panel_aqua.height);
         panelAqua.setVisible(true);
@@ -438,28 +438,28 @@ public class GUIMain extends JFrame {
         // ajout du bouton skip tutoriel
         skip_tuto2 = new JLabel();
         skip_tuto2.setBounds(930, 660, 60, 34);
-        skip_tuto2.setIcon(new ImageIcon("res/background/tutos/skip_tuto.png"));
+        skip_tuto2.setIcon(new ImageIcon("res/tutoriel/skip_tuto.png"));
         skip_tuto2.setVisible(true);
         panelShop.add(skip_tuto2);
 
-        // ajout du label pour le tutoriel
+        // ajout du label information pour le panel aqua
         label_tuto7 = new JLabel();
         label_tuto7.setBounds(5, 0, 1000, 700);
-        label_tuto7.setIcon(new ImageIcon("res/background/tutos/tuto7.png"));
+        label_tuto7.setIcon(new ImageIcon("res/tutoriel/tuto7.png"));
         label_tuto7.setVisible(false);
         panelShop.add(label_tuto7);
 
-        // ajout du label pour information
+        // ajout du label pour information du panel aqua
         label_information1 = new JLabel();
         label_information1.setBounds(965, 5, 30, 30);
-        label_information1.setIcon(new ImageIcon("res/background/informations.png"));
+        label_information1.setIcon(new ImageIcon("res/tutoriel/info/informations.png"));
         label_information1.setVisible(true);
         panelShop.add(label_information1);
 
-        // ajout du label tutoriel
+        // ajout du label information du magasin
         label_tutoriel1 = new JLabel();
         label_tutoriel1.setBounds(5, 0, 1000, 700);
-        label_tutoriel1.setIcon(new ImageIcon("res/background/tutoriel_shop.png"));
+        label_tutoriel1.setIcon(new ImageIcon("res/tutoriel/info/infoMagasin.png"));
         label_tutoriel1.setVisible(false);
         panelShop.add(label_tutoriel1);
 
@@ -511,14 +511,14 @@ public class GUIMain extends JFrame {
         // ajout du boutons pour skip le tutoriel
         skip_tuto3 = new JLabel();
         skip_tuto3.setBounds(450, 720, 60, 34);
-        skip_tuto3.setIcon(new ImageIcon("res/background/tutos/skip_tuto.png"));
+        skip_tuto3.setIcon(new ImageIcon("res/tutoriel/skip_tuto.png"));
         skip_tuto3.setVisible(true);
         panelInfo.add(skip_tuto3);
 
         // ajout du label pour le tutoriel
         label_tuto8 = new JLabel();
         label_tuto8.setBounds(0, 0, 520, 765);
-        label_tuto8.setIcon(new ImageIcon("res/background/tutos/tuto8.png"));
+        label_tuto8.setIcon(new ImageIcon("res/tutoriel/tuto8.png"));
         label_tuto8.setVisible(false);
         panelInfo.add(label_tuto8);
 
