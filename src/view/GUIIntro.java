@@ -17,7 +17,7 @@ import java.awt.event.*;
 
 public class GUIIntro extends JPanel {
     private Image image;
-    public static JLabel label;
+    public static JLabel label, lblNouvellePartie, lblModeEvaluation;
     public static JButton btnNouvellePartie, btnModeEvaluation, btnQuitter, btnCredits;
 
     static ImageIcon img = new ImageIcon("res/background/icone_aquariophilie.png");
@@ -46,8 +46,11 @@ public class GUIIntro extends JPanel {
             GUIIntro imagePanel = new GUIIntro(image);
             imagePanel.setLayout(null);
             
+            lblNouvellePartie = new JLabel();
+
             // bouton pour nouvelle partie
-            btnNouvellePartie = new JButton("Nouvelle Partie");
+            btnNouvellePartie = new JButton(new ImageIcon("res/intro/nouvellePartie.png"));
+
             // ils sont ici parce que ca marchait pas en les callant à l'extérieur de la
             // méthode so fuckit (pour fred qui va se plaindre)
             btnNouvellePartie.addActionListener((ActionListener) new ActionListener() {
@@ -74,12 +77,16 @@ public class GUIIntro extends JPanel {
                     }
                 }
             });
+
             btnNouvellePartie.setBounds(140, 130, 220, 50);
+            btnNouvellePartie.setOpaque(false);
+            btnNouvellePartie.setContentAreaFilled(false);
+            btnNouvellePartie.setBorderPainted(false);
             btnNouvellePartie.setVisible(true);
             imagePanel.add(btnNouvellePartie);
 
             // bouton pour mode évaluation
-            btnModeEvaluation = new JButton("Mode Évaluation");
+            btnModeEvaluation = new JButton(new ImageIcon("res/intro/modeEvaluation.png"));
             btnModeEvaluation.addActionListener((ActionListener) new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     GUIMain aquarium = new GUIMain();
@@ -106,23 +113,30 @@ public class GUIIntro extends JPanel {
                     Argent.normal = false;
                 }
             });
+
             btnModeEvaluation.setBounds(140, 185, 220, 50);
+            btnModeEvaluation.setOpaque(false);
+            btnModeEvaluation.setContentAreaFilled(false);
+            btnModeEvaluation.setBorderPainted(false);
             btnModeEvaluation.setVisible(true);
             imagePanel.add(btnModeEvaluation);
 
             // ajout du bouton pour quitter
-            btnQuitter = new JButton("Quitter");
+            btnQuitter = new JButton(new ImageIcon("res/intro/quitter.png"));
             btnQuitter.addActionListener((ActionListener) new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     System.exit(0);
                 }
             });
             btnQuitter.setBounds(140, 240, 105, 50);
+            btnQuitter.setOpaque(false);
+            btnQuitter.setContentAreaFilled(false);
+            btnQuitter.setBorderPainted(false);
             btnQuitter.setVisible(true);
             imagePanel.add(btnQuitter);
 
             // ajout du bouton pour les credits
-            btnCredits = new JButton("Crédits");
+            btnCredits = new JButton(new ImageIcon("res/intro/credits.png"));
             btnCredits.addActionListener((ActionListener) new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     /** create a frame with a text area and make it appear and everything */
@@ -152,6 +166,9 @@ public class GUIIntro extends JPanel {
                 }
             });
             btnCredits.setBounds(255, 240, 105, 50);
+            btnCredits.setOpaque(false);
+            btnCredits.setContentAreaFilled(false);
+            btnCredits.setBorderPainted(false);
             btnCredits.setVisible(true);
             imagePanel.add(btnCredits);
 
