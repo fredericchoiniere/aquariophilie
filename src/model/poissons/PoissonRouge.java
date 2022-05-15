@@ -35,7 +35,7 @@ public class PoissonRouge extends Poisson implements Runnable {
         setImg();
     }
 
-    public static boolean checkTolerances() { // ammo 2 nit 1 nat 40
+    public static boolean checkTolerances() {
         if (GUIMain.eau.getPH() < 3 || GUIMain.eau.getPH() > 9 || GUIMain.eau.getGH() < 3
                 || GUIMain.eau.getAmmoniaque() > 3 || GUIMain.eau.getNitrites() > 2 || GUIMain.eau.getNitrates() > 50) {
             return false;
