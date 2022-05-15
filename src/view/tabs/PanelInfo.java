@@ -14,11 +14,13 @@ import model.chimie.Molecules;
 import model.environnement.Temps;
 import view.GUIMain;
 
-public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/GH/KH, ajouter compatibilité plusieurs cycles,
+public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/GH/KH, ajouter compatibilité plusieurs
+                                                            // cycles,
                                                             // ajouter infos déchets et absorption
 
     // appel des attributs de la classe
-    public static JLabel lblAction, lblN, lblH, lblO, lblAmmo, lblNit, lblNat, lblPH, lblGH, lblKH, lblScore, lblDechets, lblAbsDechets;
+    public static JLabel lblAction, lblN, lblH, lblO, lblAmmo, lblNit, lblNat, lblPH, lblGH, lblKH, lblScore,
+            lblDechets, lblAbsDechets;
 
     float scoreEau = GUIMain.eau.getScoreEau();
 
@@ -68,7 +70,7 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
         add(lblN);
 
         lblAmmo = new JLabel("NH3: " + mol.eau.getAmmoniaque() + " au jour " + mol.eau.jours);
-        lblAmmo.setBounds(60, 480, 200, 20);
+        lblAmmo.setBounds(330, 480, 200, 20);
         add(lblAmmo);
 
         lblH = new JLabel("H: " + mol.molAtomeH + " mols d'hydrogène");
@@ -80,17 +82,29 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
         add(lblNit);
 
         lblO = new JLabel("O: " + mol.sommeMolO() + " mols d'oxygène");
-        lblO.setBounds(330, 480, 200, 20);
+        lblO.setBounds(60, 480, 200, 20);
         add(lblO);
 
         lblNat = new JLabel("NO3: " + mol.nitratesMgLtoMol() + " mols");
         lblNat.setBounds(330, 540, 200, 20);
         add(lblNat);
 
+        lblPH = new JLabel("PH: " + GUIMain.eau.getPH());
+        lblPH.setBounds(60, 600, 200, 20);
+        add(lblPH);
+
+        lblGH = new JLabel("GH: " + GUIMain.eau.getGH());
+        lblGH.setBounds(330, 600, 200, 20);
+        add(lblGH);
+
+        lblKH = new JLabel("KH: " + GUIMain.eau.getKH());
+        lblKH.setBounds(60, 660, 200, 20);
+        add(lblKH);
+
     }
 
     /**
-     *      Affiche l'action en cours
+     * Affiche l'action en cours
      */
     public void setActionEnCours() {
         actionEnCours = GUIMain.actionEnCours;
@@ -98,20 +112,20 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
     }
 
     /**
-     *      Contrôle l'affichage de la barre d'état et de l'action en cours
+     * Contrôle l'affichage de la barre d'état et de l'action en cours
      */
     public void changerEtatBarre() {
         switch (actionEnCours) {
             case "Cycle ammoniaque":
                 progressBar.setString("La concentration d'ammoniaque augmente");
                 progressBar.setMaximum(18);
-                progressBar.setValue((int)(mol.eau.jours));
+                progressBar.setValue((int) (mol.eau.jours));
                 break;
             case "Cycle nitrites":
                 progressBar.setString("NH3 + O2 → NO2 + 3H");
                 progressBar.setMinimum(14);
                 progressBar.setMaximum(35);
-                progressBar.setValue((int)(mol.eau.jours));
+                progressBar.setValue((int) (mol.eau.jours));
                 break;
             case "Cycle nitrates":
                 if (mol.molNitrites == 0.0) {
@@ -140,7 +154,7 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
     }
 
     /**
-     *          Méthode run de la classe PanelInfo
+     * Méthode run de la classe PanelInfo
      */
     @Override
     public void run() {
@@ -158,27 +172,27 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
                 lblDechets.setText("Déchets accumulés : " + GUIMain.eau.sommeDechets);
                 lblAbsDechets.setText("Potentiel d'absorbtion: " + GUIMain.eau.sommeAbsorptionDechets);
 
-                if(mol.sommeMolN() != 0)
+                if (mol.sommeMolN() != 0)
                     lblN.setText("N: " + df.format(mol.sommeMolN()) + " mols d'azote");
                 else
                     lblN.setText("N: " + mol.sommeMolN() + " mols d'azote");
 
-                if(mol.molAtomeH != 0)
+                if (mol.molAtomeH != 0)
                     lblH.setText("H: " + df.format(mol.molAtomeH) + " mols d'hydrogène");
-                else 
+                else
                     lblH.setText("H: " + mol.molAtomeH + " mols d'hydrogène");
 
-                if(mol.sommeMolO() != 0)
+                if (mol.sommeMolO() != 0)
                     lblO.setText("O: " + df.format(mol.sommeMolO()) + " mols d'oxygène");
                 else
                     lblO.setText("O: " + mol.sommeMolO() + " mols d'oxygène");
 
-                if(mol.ammoniaqueMgLtoMol() != 0)
+                if (mol.ammoniaqueMgLtoMol() != 0)
                     lblAmmo.setText("NH3: " + df.format(mol.ammoniaqueMgLtoMol()) + " mols");
                 else
                     lblAmmo.setText("NH3: " + mol.ammoniaqueMgLtoMol() + " mols");
 
-                if(mol.nitritesMgLtoMol() != 0)
+                if (mol.nitritesMgLtoMol() != 0)
                     lblNit.setText("NO2: " + df.format(mol.nitritesMgLtoMol()) + " mols");
                 else
                     lblNit.setText("NO2: " + mol.nitritesMgLtoMol() + " mols");
