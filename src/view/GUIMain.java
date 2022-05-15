@@ -1126,20 +1126,20 @@ public class GUIMain extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 label_tuto7.setVisible(false);
-                /* PanelInfo.lblAction.setVisible(false);
-                PanelInfo.lblN.setVisible(false);
-                PanelInfo.lblH.setVisible(false);
-                PanelInfo.lblO.setVisible(false);
-                PanelInfo.lblAmmo.setVisible(false);
-                PanelInfo.lblNit.setVisible(false);
-                PanelInfo.lblNat.setVisible(false);
-                PanelInfo.lblPH.setVisible(false);
-                PanelInfo.lblGH.setVisible(false);
-                PanelInfo.lblKH.setVisible(false);
-                PanelInfo.lblScore.setVisible(false);
-                PanelInfo.lblDechets.setVisible(false);
-                PanelInfo.lblAbsDechets.setVisible(false);
-                PanelInfo.progressBar.setVisible(false); */
+                //PanelInfo.lblAction.setVisible(false);
+                //PanelInfo.lblN.setVisible(false);
+                //PanelInfo.lblH.setVisible(false);
+                //PanelInfo.lblO.setVisible(false);
+                //PanelInfo.lblAmmo.setVisible(false);
+                //PanelInfo.lblNit.setVisible(false);
+                //PanelInfo.lblNat.setVisible(false);
+                //PanelInfo.lblPH.setVisible(false);
+                //PanelInfo.lblGH.setVisible(false);
+                //PanelInfo.lblKH.setVisible(false);
+                //PanelInfo.lblScore.setVisible(false);
+                //PanelInfo.lblDechets.setVisible(false);
+                //PanelInfo.lblAbsDechets.setVisible(false);
+                //PanelInfo.progressBar.setVisible(false); 
                 tabbedPane.setSelectedIndex(2);
                 label_tuto8.setVisible(true);
                 isSelected6 = false;
@@ -1170,13 +1170,13 @@ public class GUIMain extends JFrame {
             }
         });
 
-        // actionlistener pour skip le tutoriel
+        /* // actionlistener pour skip le tutoriel
         skip_tuto3.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 setEverythingGood();
             }
-        });
+        }); */
 
         // actionlistener sur les items de l'inventaire
         // ---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1769,7 +1769,7 @@ public class GUIMain extends JFrame {
     public void setEverythingGood() {
         skip_tuto1.setVisible(false);
         skip_tuto2.setVisible(false);
-        skip_tuto3.setVisible(false);
+        //skip_tuto3.setVisible(false);
         label_tuto1.setVisible(false);
         label_tuto2.setVisible(false);
         label_tuto3.setVisible(false);
@@ -1796,8 +1796,8 @@ public class GUIMain extends JFrame {
         tabbedPane.setEnabledAt(0, true);
         tabbedPane.setEnabledAt(1, true);
         tabbedPane.setEnabledAt(2, true);
-        /* PanelInfo.lblAction.setVisible(true);
-        PanelInfo.lblN.setVisible(true);
+        /*PanelInfo.lblAction.setVisible(true);
+         PanelInfo.lblN.setVisible(true);
         PanelInfo.lblH.setVisible(true);
         PanelInfo.lblO.setVisible(true);
         PanelInfo.lblAmmo.setVisible(true);
@@ -1808,8 +1808,8 @@ public class GUIMain extends JFrame {
         PanelInfo.lblKH.setVisible(true);
         PanelInfo.lblScore.setVisible(true);
         PanelInfo.lblDechets.setVisible(true);
-        PanelInfo.lblAbsDechets.setVisible(true);
-        PanelInfo.progressBar.setVisible(true); */
+        PanelInfo.lblAbsDechets.setVisible(true);*/
+        PanelInfo.progressBar.setVisible(true); 
     }
 
 }
