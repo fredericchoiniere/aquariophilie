@@ -15,7 +15,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Poisson extends JPanel { // TODO: quand meurent, fishstick
+public class Poisson extends JPanel {
 
     // attributs de la classe
     int vel_x = 1;
@@ -323,7 +323,7 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
      */
     public static void setFalse(short numb) {
         GUIMain.listePoissonsAqua.get(numb).direction = "empty";
-        GUIMain.listePoissonsAqua.get(numb).var = false;
+        //GUIMain.listePoissonsAqua.get(numb).var = false;
         GUIMain.listePoissonsAqua.set(numb, GUIMain.poisson_default);
         switch (numb) {
             case 0:
