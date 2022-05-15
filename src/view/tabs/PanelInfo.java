@@ -38,74 +38,55 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
         mol.nitritesAtomesMol();
         mol.nitratesAtomesMol();
 
-        setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
+        setLayout(null);
 
         lblAction = new JLabel("Action en cours: ");
-        c.gridx = 1;
-        c.gridy = 0;
-        c.gridwidth = 1;
-        c.gridheight = 1;
-        c.weightx = 1;
-        c.weighty = 0.5;
-        c.anchor = GridBagConstraints.SOUTH;
-        add(lblAction, c);
+        lblAction.setBounds(190, 98, 200, 20);
+        add(lblAction);
 
         progressBar = new JProgressBar();
         progressBar.setString("Aucune action en cours");
         progressBar.setStringPainted(true);
         progressBar.setForeground(new Color(46, 232, 158));
         progressBar.setValue(50);
-        c.gridy = 1;
-        c.anchor = GridBagConstraints.NORTH;
-        add(progressBar, c);
+        progressBar.setBounds(152, 130, 200, 20);
+        add(progressBar);
 
         lblScore = new JLabel("Score: " + GUIMain.eau.getScoreEau());
-        c.gridwidth = 1;
-        c.gridx = 1;
-        c.gridy = 2;
-        add(lblScore, c);
+        lblScore.setBounds(215, 230, 200, 20);
+        add(lblScore);
 
         lblDechets = new JLabel("Déchets accumulés : " + GUIMain.eau.sommeDechets);
-        c.gridy = 3;
-        add(lblDechets, c);
+        lblDechets.setBounds(187, 275, 200, 20);
+        add(lblDechets);
 
         lblAbsDechets = new JLabel("Potentiel d'absorbtion: " + GUIMain.eau.sommeAbsorptionDechets);
-        c.gridy = 4;
-        add(lblAbsDechets, c);
+        lblAbsDechets.setBounds(182, 320, 200, 20);
+        add(lblAbsDechets);
 
         lblN = new JLabel("N: " + mol.sommeMolN() + " mols d'azote");
-        c.gridx = 0;
-        c.gridy = 5;
-        c.anchor = GridBagConstraints.EAST;
-        add(lblN, c);
+        lblN.setBounds(60, 420, 200, 20);
+        add(lblN);
 
         lblAmmo = new JLabel("NH3: " + mol.eau.getAmmoniaque() + " au jour " + mol.eau.jours);
-        c.gridx = 2;
-        c.anchor = GridBagConstraints.WEST;
-        add(lblAmmo, c);
+        lblAmmo.setBounds(60, 480, 200, 20);
+        add(lblAmmo);
 
         lblH = new JLabel("H: " + mol.molAtomeH + " mols d'hydrogène");
-        c.gridx = 0;
-        c.gridy = 6;
-        c.anchor = GridBagConstraints.EAST;
-        add(lblH, c);
+        lblH.setBounds(60, 540, 200, 20);
+        add(lblH);
 
         lblNit = new JLabel("NO2: " + mol.nitritesMgLtoMol() + " mols");
-        c.gridx = 2;
-        c.anchor = GridBagConstraints.WEST;
-        add(lblNit, c);
+        lblNit.setBounds(330, 420, 200, 20);
+        add(lblNit);
 
         lblO = new JLabel("O: " + mol.sommeMolO() + " mols d'oxygène");
-        c.gridx = 0;
-        c.gridy = 7;
-        c.anchor = GridBagConstraints.EAST;
-        add(lblO, c);
+        lblO.setBounds(330, 480, 200, 20);
+        add(lblO);
 
         lblNat = new JLabel("NO3: " + mol.nitratesMgLtoMol() + " mols");
-        c.gridx = 2;
-        c.anchor = GridBagConstraints.WEST;
-        add(lblNat, c);
+        lblNat.setBounds(330, 540, 200, 20);
+        add(lblNat);
 
     }
 

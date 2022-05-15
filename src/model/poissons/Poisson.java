@@ -293,6 +293,11 @@ public class Poisson extends JPanel {
         }
     }
 
+    
+    /** 
+     * @param type
+     * @return boolean
+     */
     public boolean checkTolerances(String type) {
 
         switch (type) {
@@ -316,6 +321,10 @@ public class Poisson extends JPanel {
         return boolTolerances;
     }
 
+    
+    /** 
+     * @param numb
+     */
     public static void killFish(short numb) {
         MethodeGUIMain.checkFishType(fishType(numb));
         GUIMain.listePoissonsAqua.get(numb).direction = "rip";
@@ -421,30 +430,6 @@ public class Poisson extends JPanel {
             System.out.println("Were fucked");
         }
     }
-
-/*     public static void setBarValue(short index) {
-        switch (index) {
-            case 0:
-                Sante.emp1.setValue(GUIMain.listePoissonsAqua.get(index).sante);
-                break;
-            case 1:
-                Sante.emp2.setValue(GUIMain.listePoissonsAqua.get(index).sante);
-                break;
-            case 2:
-                Sante.emp3.setValue(GUIMain.listePoissonsAqua.get(index).sante);
-                break;
-            case 3:
-                Sante.emp4.setValue(GUIMain.listePoissonsAqua.get(index).sante);
-                break;
-            case 4:
-                Sante.emp5.setValue(GUIMain.listePoissonsAqua.get(index).sante);
-                break;
-            case 5:
-                Sante.emp6.setValue(GUIMain.listePoissonsAqua.get(index).sante);
-                break;
-            default:
-                break;
-        } */
        
     public static void trackFishTypeAndProgressBarCalicul() {
         System.out.println(GUIMain.hasFish1 + " " + GUIMain.hasFish2 + " " + GUIMain.hasFish3 + " " + GUIMain.hasFish4 + " " + GUIMain.hasFish5 + " " + GUIMain.hasFish6);
