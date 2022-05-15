@@ -574,7 +574,8 @@ public class Eau implements Runnable {
 
                     GUIMain.panelTest.lblScoreEau.setText(toString(GUIMain.eau.getScoreEau()));
                     
-
+                    Poisson.trackFishTypeAndProgressBarCalicul();
+                    
                     // System.out.println("Compteur jours: " + Eau.compteurJoursCycle);
                     // System.out.println("déchets: " + sommeDechets);
 

@@ -381,7 +381,49 @@ public class Poisson extends JPanel {
      * @param index
      */
     public static void setBarValue(short index) {
-        /* switch (index) {
+        if (GUIMain.hasFish1) {
+            Sante.emp1.setVisible(true);
+            Sante.emp1.setValue(GUIMain.listePoissonsAqua.get(index).sante);
+            if (selection.isDead) {
+                Sante.emp1.setValue(0);
+            }
+        } if (GUIMain.hasFish2) {
+            Sante.emp2.setVisible(true);
+            Sante.emp2.setValue(GUIMain.listePoissonsAqua.get(index).sante);
+            if (selection.isDead) {
+                Sante.emp2.setValue(0);
+            }
+        } if (GUIMain.hasFish3) {
+            Sante.emp3.setVisible(true);
+            Sante.emp3.setValue(GUIMain.listePoissonsAqua.get(index).sante);
+            if (selection.isDead) {
+                Sante.emp3.setValue(0);
+            }
+        } if (GUIMain.hasFish4) {
+            Sante.emp4.setVisible(true);
+            Sante.emp4.setValue(GUIMain.listePoissonsAqua.get(index).sante);
+            if (selection.isDead) {
+                Sante.emp4.setValue(0);
+            }
+        } if (GUIMain.hasFish5) {
+            Sante.emp5.setVisible(true);
+            Sante.emp5.setValue(GUIMain.listePoissonsAqua.get(index).sante);
+            if (selection.isDead) {
+                Sante.emp5.setValue(0);
+            }
+        } if (GUIMain.hasFish6) {
+            Sante.emp6.setVisible(true);
+            Sante.emp6.setValue(GUIMain.listePoissonsAqua.get(index).sante);
+            if (selection.isDead) {
+                Sante.emp6.setValue(0);
+            }
+        } else {
+            System.out.println("Were fucked"); // TODO: ??
+        }
+    }
+
+/*     public static void setBarValue(short index) {
+        switch (index) {
             case 0:
                 Sante.emp1.setValue(GUIMain.listePoissonsAqua.get(index).sante);
                 break;
@@ -404,21 +446,8 @@ public class Poisson extends JPanel {
                 break;
         } */
        
-        //listeVraisPoissons = GUIMain.listePoissonsAqua;
-        /* for (Poisson vraiPoisson : GUIMain.listePoissonsAqua) {
-            //System.out.println("" + vraiPoisson.getClass().getSimpleName());
-            if (!vraiPoisson.getClass().getSimpleName().equals("Poisson") && !listeVraisPoissons.contains(vraiPoisson)) {
-                listeVraisPoissons.add(vraiPoisson);
-                System.out.println("" + listeVraisPoissons);
-            }
-            if (vraiPoisson.isDead && listeVraisPoissons.contains(vraiPoisson)) {
-                listeVraisPoissons.remove(vraiPoisson);
-            }
-        } */
-
-        //System.out.println("" + listeVraisPoissons);
-
-
+    public static void trackFishTypeAndProgressBarCalicul() { // TODO: ??
+        System.out.println(GUIMain.hasFish1 + " " + GUIMain.hasFish2 + " " + GUIMain.hasFish3 + " " + GUIMain.hasFish4 + " " + GUIMain.hasFish5 + " " + GUIMain.hasFish6);
     }
 }
 
