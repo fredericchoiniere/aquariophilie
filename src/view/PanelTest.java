@@ -22,10 +22,6 @@ public class PanelTest extends JPanel {
             lblScoreAmmo, lblScoreNitrites, lblScoreNitrates, lblOKAmmo, lblOKNitrites, lblOKNitrates,
             lblOKPH, lblOKGH, lblOKKH;
 
-    Thread cycle1;
-
-    boolean isFocused;
-
     Molecules mol = new Molecules();
 
     public PanelTest() {
@@ -48,12 +44,12 @@ public class PanelTest extends JPanel {
         JLabel lblSoluAmmoniaque = new JLabel();
         JLabel lblSoluNitrites = new JLabel();
         JLabel lblSoluNitrates = new JLabel();
-        JLabel lblOKPH = new JLabel();
-        JLabel lblOKGH = new JLabel();
-        JLabel lblOKKH = new JLabel();
-        JLabel lblOKAmmo = new JLabel();
-        JLabel lblOKNitrites = new JLabel();
-        JLabel lblOKNitrates = new JLabel();
+        lblOKPH = new JLabel();
+        lblOKGH = new JLabel();
+        lblOKKH = new JLabel();
+        lblOKAmmo = new JLabel();
+        lblOKNitrites = new JLabel();
+        lblOKNitrates = new JLabel();
 
         lblPH = new JLabel("0.00");
         lblGH = new JLabel("0.00");
