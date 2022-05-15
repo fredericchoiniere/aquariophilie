@@ -25,6 +25,9 @@ import model.outils.*;
 import model.jeu.*;
 import model.plantes.Plante;
 import model.poissons.*;
+import view.jeu.Aquarium;
+import view.jeu.Inventaire;
+import view.jeu.Sante;
 import view.tabs.*;
 
 public class GUIMain extends JFrame {
@@ -1786,6 +1789,18 @@ public class GUIMain extends JFrame {
         PanelInfo.lblDechets.setVisible(true);
         PanelInfo.lblAbsDechets.setVisible(true);
         PanelInfo.progressBar.setVisible(true);
+    }
+
+    /**
+     * @param y
+     * @param height
+     *               Redéfinit les dimensions du rectangle Eau en fonction des
+     *               paramètres spécifiés
+     *               Rafraîchit l'affichage de l'eau
+     */
+    public static void setEauDimensions(int y, int height) {
+        GUIMain.rectEau.setBounds((int) GUIMain.rectEau.getX(), y, (int) GUIMain.rectEau.getWidth(), height);
+        GUIMain.panelAqua.repaint();
     }
 
 }

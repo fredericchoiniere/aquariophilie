@@ -4,7 +4,7 @@
 
 // Classe qui gère l'aquarium et ses emplacements
 
-package model.jeu;
+package view.jeu;
 
 import java.awt.*;
 import javax.swing.*;

@@ -2,7 +2,7 @@
 
 //Classe des emplacements de l'inventaire
 
-package model.jeu;
+package view.jeu;
 
 import javax.swing.JLabel;
 

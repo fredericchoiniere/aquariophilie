@@ -9,6 +9,9 @@ import model.jeu.*;
 import model.plantes.*;
 import model.poissons.*;
 import view.GUIMain;
+import view.jeu.Aquarium;
+import view.jeu.Inventaire;
+
 import java.awt.*;
 import javax.swing.*;
 
@@ -653,18 +656,6 @@ public class MethodeGUIMain {
      */
     public static Rectangle getEauDimensions() {
         return GUIMain.rectEau;
-    }
-
-    /**
-     * @param y
-     * @param height
-     *               Redéfinit les dimensions du rectangle Eau en fonction des
-     *               paramètres spécifiés
-     *               Rafraîchit l'affichage de l'eau
-     */
-    public static void setEauDimensions(int y, int height) {
-        GUIMain.rectEau.setBounds((int) GUIMain.rectEau.getX(), y, (int) GUIMain.rectEau.getWidth(), height);
-        GUIMain.panelAqua.repaint();
     }
 
     /**

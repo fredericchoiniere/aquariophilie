@@ -2,7 +2,7 @@
 
 //Classe des emplacements de l'aquarium
 
-package model.jeu;
+package view.jeu;
 
 import javax.swing.JLabel;
 
