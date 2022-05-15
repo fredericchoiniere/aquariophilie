@@ -1156,11 +1156,31 @@ public class GUIMain extends JFrame {
             }
         });
 
-        // actionlistener pour skip le tutoriel
+        /*// actionlistener pour skip le tutoriel
         skip_tuto3.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 setEverythingGood();
+            }
+        });*/
+
+        //key listener pour skip avec la touche entrer
+        skip_tuto1.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                    setEverythingGood();
+                }
+            }
+        });
+
+        //key listener pour skip avec la touche entrer
+        skip_tuto2.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                    setEverythingGood();
+                }
             }
         });
 

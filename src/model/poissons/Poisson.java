@@ -1,5 +1,6 @@
 // Itération 2: Frédéric Choinière, Jérémie Caron
 // Itération 3: Jérémie Caron
+//TODO:Commenter la classe
 
 package model.poissons;
 
@@ -285,7 +286,7 @@ public class Poisson extends JPanel {
      * TODO: commenter
      */
     public boolean checkTolerances(String type) { // TODO: set tolerances pour autres types
-        
+
         switch (type) {
             case "rouge":
                 boolTolerances = PoissonRouge.checkTolerances();

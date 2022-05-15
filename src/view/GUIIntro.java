@@ -139,12 +139,8 @@ public class GUIIntro extends JPanel {
             btnCredits = new JButton(new ImageIcon("res/intro/credits.png"));
             btnCredits.addActionListener((ActionListener) new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    /** create a frame with a text area and make it appear and everything */
                     JFrame frame = new JFrame("Credits");
                     JTextArea textArea = new JTextArea();
-                    /** create a scrollpane and add it to the textarea */
-
-                    /** add the scrollpane to the frame */
 
                     textArea.setEditable(false);
                     textArea.setText("Heyo !\n" + "Canadian checkers are the best.\n" + "We hope you enjoy this game.\n"
