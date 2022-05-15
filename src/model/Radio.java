@@ -44,7 +44,6 @@ public class Radio {
      */
     public void pause() {
         if (status.equals("paused")) {
-            System.out.println("audio is already paused");
             return;
         }
         this.currentFrame = this.clip.getMicrosecondPosition();
@@ -62,8 +61,6 @@ public class Radio {
     public void resumeAudio() throws UnsupportedAudioFileException,
             IOException, LineUnavailableException {
         if (status.equals("play")) {
-            System.out.println("Audio is already " +
-                    "being played");
             return;
         }
         clip.close();

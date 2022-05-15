@@ -37,7 +37,6 @@ public class Magasin {
          */
         public static void ajustement_argent(int prix) {
                 Argent.argent -= prix;
-                System.out.println("prix ajustement: " + prix);
         }
 
         /**
@@ -71,7 +70,6 @@ public class Magasin {
                 switch (type) {
                         case "java":
                                 ajustement_argent(JavaFern.prix);
-                                System.out.println("prix checkplante: " + JavaFern.prix);
                                 break;
 
                         case "blue":
@@ -115,7 +113,6 @@ public class Magasin {
                                 }       else return false;
                         case "java":
                                 if (Argent.argent >= JavaFern.prix) {
-                                        System.out.println("prix got money: " + JavaFern.prix);
                                         return true;
                                 }       else return false;
                         case "blue":
