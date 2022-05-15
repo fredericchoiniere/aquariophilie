@@ -18,12 +18,11 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
                                                             // ajouter infos déchets et absorption
 
     // appel des attributs de la classe
-    JLabel lblAction, lblN, lblH, lblO, lblAmmo, lblNit, lblNat, lblPH, lblGH, lblKH;
-    static JLabel lblScore, lblDechets, lblAbsDechets;
+    public static JLabel lblAction, lblN, lblH, lblO, lblAmmo, lblNit, lblNat, lblPH, lblGH, lblKH, lblScore, lblDechets, lblAbsDechets;
 
     float scoreEau = GUIMain.eau.getScoreEau();
 
-    JProgressBar progressBar;
+    public static JProgressBar progressBar;
 
     String actionEnCours = GUIMain.actionEnCours;
 

@@ -338,7 +338,7 @@ public class Eau implements Runnable {
     /** 
      * Remets des valeurs de base lors d'un changement d'eau à l'aide de l'outil pichet
      */
-    public void changerEau(){ // TODO: clean up poissons morts
+    public void changerEau(){
         volumeEau = (float) 37.85;
         hauteur = 35;
         kh = 6;

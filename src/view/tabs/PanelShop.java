@@ -356,7 +356,7 @@ public class PanelShop extends JPanel implements ActionListener {
                 Magasin.checkPlantePrix(plante);
             }
         } else {
-            System.out.println("Inventaire rempli");
+            JOptionPane.showMessageDialog(null, "Achat impossible: inventaire plein", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -518,7 +518,7 @@ public class PanelShop extends JPanel implements ActionListener {
                     checkCase(Inventaire.img_inv_poi_rouge, "poisson", "rouge", "");
                 } else {
                     JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
-                            JOptionPane.PLAIN_MESSAGE);
+                            JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
@@ -533,7 +533,7 @@ public class PanelShop extends JPanel implements ActionListener {
                     checkCase(Inventaire.img_inv_betta, "poisson", "betta", "");
                 } else {
                     JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
-                            JOptionPane.PLAIN_MESSAGE);
+                            JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
@@ -548,7 +548,7 @@ public class PanelShop extends JPanel implements ActionListener {
                     checkCase(Inventaire.img_inv_tetra, "poisson", "tetra", "");
                 } else {
                     JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
-                            JOptionPane.PLAIN_MESSAGE);
+                            JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
@@ -563,7 +563,7 @@ public class PanelShop extends JPanel implements ActionListener {
                     checkCase(Inventaire.img_inv_neo, "poisson", "neo", "");
                 } else {
                     JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
-                            JOptionPane.PLAIN_MESSAGE);
+                            JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
@@ -572,7 +572,7 @@ public class PanelShop extends JPanel implements ActionListener {
                 checkCase(Inventaire.img_inv_tetra, "decoration", "", "blue");
             } else {
                 JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
-                        JOptionPane.PLAIN_MESSAGE);
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
         if (e.getSource() == planteFern) {
@@ -586,7 +586,7 @@ public class PanelShop extends JPanel implements ActionListener {
                     checkCase(Inventaire.img_inv_tetra, "decoration", "", "java");
                 } else {
                     JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
-                            JOptionPane.PLAIN_MESSAGE);
+                            JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
@@ -601,7 +601,7 @@ public class PanelShop extends JPanel implements ActionListener {
                     checkCase(Inventaire.img_inv_tetra, "decoration", "", "scarlet");
                 } else {
                     JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
-                            JOptionPane.PLAIN_MESSAGE);
+                            JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
@@ -616,7 +616,7 @@ public class PanelShop extends JPanel implements ActionListener {
                     checkCase(Inventaire.img_inv_tetra, "decoration", "", "erdtree");
                 } else {
                     JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
-                            JOptionPane.PLAIN_MESSAGE);
+                            JOptionPane.ERROR_MESSAGE);
                 }
             }
         }

@@ -164,19 +164,31 @@ public class Poisson extends JPanel {
      * @param type
      *              méthode pour afficher les tooltips
      */
-    public static void updateToolTip(JLabel label, String type) { // TODO: terminer
+    public static void updateToolTip(JLabel label, String type) { // TODO: terminer tooltips
         switch (type) {
             case "rouge":
-                label.setToolTipText("Type: Poisson rouge" + "\nSanté: ");
+                label.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Poisson rouge</strong></span></p>" + 
+                "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">50</span></span><span style=\"color: #008080;\">฿</span></p>" +
+                "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">5 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>" +
+                "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #ff9900;\">moyenne</span></span></span></p></html>");
                 break;
             case "betta":
-                label.setToolTipText("Type: Betta" + "\nSanté: ");
+                label.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Betta</strong></span></p>" + 
+                "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">500</span></span><span style=\"color: #008080;\">฿</span></p>" +
+                "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">4 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>" +
+                "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #008000;\">&eacute;lev&eacute;e</span></span></span></p></html>");
                 break;
             case "tetra":
-                label.setToolTipText("Type: Tetra" + "\nSanté: ");
+                label.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Tetra</strong></span></p>" + 
+                "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">200</span></span><span style=\"color: #008080;\">฿</span></p>" +
+                "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">2 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>" +
+                "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #993366;\">faible</span></span></span></p></html>");
                 break;
             case "neo":
-                label.setToolTipText("Type: Neo" + "\nSanté: ");
+                label.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Neocaridina</strong></span></p>" + 
+                "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">125</span></span><span style=\"color: #008080;\">฿</span></p>" +
+                "<p>Absorbe <span style=\"color: #008080;\">2 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>" +
+                "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #ff0000;\">tr&egrave;s faible</span></span></span></p></html>");
                 break;
             default:
                 label.setToolTipText("");
@@ -431,11 +443,11 @@ public class Poisson extends JPanel {
                 Sante.emp6.setValue(0);
             }
         } else {
-            System.out.println("Were fucked");
+            System.out.println("Were fucked"); // TODO: ??
         }
     }
        
-    public static void trackFishTypeAndProgressBarCalicul() {
+    public static void trackFishTypeAndProgressBarCalicul() { // TODO: ??
         System.out.println(GUIMain.hasFish1 + " " + GUIMain.hasFish2 + " " + GUIMain.hasFish3 + " " + GUIMain.hasFish4 + " " + GUIMain.hasFish5 + " " + GUIMain.hasFish6);
     }
 }
