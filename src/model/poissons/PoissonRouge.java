@@ -84,7 +84,7 @@ public class PoissonRouge extends Poisson implements Runnable {
     @Override
     public void run() {
         while (var) {
-            if (!isDead) {
+            //if (this.isDead == false) {
                 if (!Temps.isPaused) {
                     if (x_temp > x_max) {
                         setXVelocity(-vel_x);
@@ -96,6 +96,11 @@ public class PoissonRouge extends Poisson implements Runnable {
                     }
                     if (y_temp > y_max) {
                         setYVelocity(-vel_y);
+                        if(isDead){
+                            System.out.println("poisson rouge mort");
+                            setYVelocity(0);
+                            this.var = false;
+                        }
                     }
                     if (y_temp < getHauteur() - 14) {
                         setYVelocity(1);
@@ -109,12 +114,8 @@ public class PoissonRouge extends Poisson implements Runnable {
                     }
                 }
 
-            } else if (isDead) {
-                if (y_temp >= 120) {
-                    setYVelocity(0);
-                }
             }
-        }
+        
     }
 
 }
