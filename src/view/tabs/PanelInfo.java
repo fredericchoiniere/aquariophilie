@@ -28,6 +28,7 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
     String actionEnCours = GUIMain.actionEnCours;
 
     DecimalFormat df = new DecimalFormat("0.###E0");
+    DecimalFormat dff = new DecimalFormat("#0.00");
 
     Molecules mol;
 
@@ -53,7 +54,7 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
         progressBar.setBounds(102, 130, 300, 20);
         add(progressBar);
 
-        lblScore = new JLabel("Score: " + GUIMain.eau.getScoreEau());
+        lblScore = new JLabel("Score: " + dff.format(GUIMain.eau.getScoreEau()));
         lblScore.setBounds(215, 230, 200, 20);
         add(lblScore);
 
@@ -89,18 +90,17 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
         lblNat.setBounds(330, 540, 200, 20);
         add(lblNat);
 
-        lblPH = new JLabel("PH: " + GUIMain.eau.getPH());
+        lblPH = new JLabel("PH: " + dff.format(GUIMain.eau.getPH()));
         lblPH.setBounds(60, 600, 200, 20);
         add(lblPH);
 
-        lblGH = new JLabel("GH: " + GUIMain.eau.getGH());
+        lblGH = new JLabel("GH: " + dff.format(GUIMain.eau.getGH()));
         lblGH.setBounds(330, 600, 200, 20);
         add(lblGH);
 
-        lblKH = new JLabel("KH: " + GUIMain.eau.getKH());
-        lblKH.setBounds(60, 660, 200, 20);
+        lblKH = new JLabel("KH: " + dff.format(GUIMain.eau.getKH()));
+        lblKH.setBounds(195, 600, 200, 20);
         add(lblKH);
-
     }
 
     /**
@@ -133,7 +133,7 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
                     progressBar.setValue(progressBar.getMaximum());
                 } else {
                     progressBar.setString("NO2 + H2O → NO3 + 2H");
-                    progressBar.setValue((int) (mol.eau.jours + 1));
+                    progressBar.setValue((int) (mol.eau.jours));
                 }
                 break;
             default:
@@ -161,7 +161,6 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
     public void run() {
         while (true) {
             try {
-
                 mol.ammoniaqueAtomesMol();
                 mol.nitritesAtomesMol();
                 mol.nitratesAtomesMol();
@@ -169,9 +168,13 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
                 setActionEnCours();
                 changerEtatBarre();
 
-                lblScore.setText("Score: " + GUIMain.eau.getScoreEau());
+                lblScore.setText("Score: " + dff.format(GUIMain.eau.getScoreEau()));
                 lblDechets.setText("Déchets accumulés : " + GUIMain.eau.sommeDechets);
                 lblAbsDechets.setText("Potentiel d'absorbtion: " + GUIMain.eau.sommeAbsorptionDechets);
+
+                lblGH.setText("GH: " + dff.format(GUIMain.eau.getGH()));
+                lblPH.setText("PH: " + dff.format(GUIMain.eau.getPH()));
+                lblKH.setText("KH: " + dff.format(GUIMain.eau.getKH()));
 
                 if (mol.sommeMolN() != 0)
                     lblN.setText("N: " + df.format(mol.sommeMolN()) + " mols d'azote");
