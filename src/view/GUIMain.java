@@ -448,7 +448,7 @@ public class GUIMain extends JFrame {
         label_tuto7.setBounds(5, 0, 1000, 700);
         label_tuto7.setIcon(new ImageIcon("res/tutoriel/tuto7.png"));
         label_tuto7.setVisible(false);
-        panelShop.add(label_tuto7);      
+        panelShop.add(label_tuto7);
 
         // ajout du label information du magasin
         label_tutoriel1 = new JLabel();
@@ -510,11 +510,11 @@ public class GUIMain extends JFrame {
         tabbedPane.add("Détails", panelInfo);
 
         // ajout du boutons pour skip le tutoriel
-        skip_tuto3 = new JLabel();
+        /* skip_tuto3 = new JLabel();
         skip_tuto3.setBounds(450, 720, 60, 34);
         skip_tuto3.setIcon(new ImageIcon("res/tutoriel/skip_tuto.png"));
         skip_tuto3.setVisible(true);
-        panelInfo.add(skip_tuto3);
+        panelInfo.add(skip_tuto3); */
 
         // ajout du label pour le tutoriel
         label_tuto8 = new JLabel();
@@ -1126,6 +1126,20 @@ public class GUIMain extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 label_tuto7.setVisible(false);
+                /* PanelInfo.lblAction.setVisible(false);
+                PanelInfo.lblN.setVisible(false);
+                PanelInfo.lblH.setVisible(false);
+                PanelInfo.lblO.setVisible(false);
+                PanelInfo.lblAmmo.setVisible(false);
+                PanelInfo.lblNit.setVisible(false);
+                PanelInfo.lblNat.setVisible(false);
+                PanelInfo.lblPH.setVisible(false);
+                PanelInfo.lblGH.setVisible(false);
+                PanelInfo.lblKH.setVisible(false);
+                PanelInfo.lblScore.setVisible(false);
+                PanelInfo.lblDechets.setVisible(false);
+                PanelInfo.lblAbsDechets.setVisible(false);
+                PanelInfo.progressBar.setVisible(false); */
                 tabbedPane.setSelectedIndex(2);
                 label_tuto8.setVisible(true);
                 isSelected6 = false;
@@ -1782,6 +1796,20 @@ public class GUIMain extends JFrame {
         tabbedPane.setEnabledAt(0, true);
         tabbedPane.setEnabledAt(1, true);
         tabbedPane.setEnabledAt(2, true);
+        /* PanelInfo.lblAction.setVisible(true);
+        PanelInfo.lblN.setVisible(true);
+        PanelInfo.lblH.setVisible(true);
+        PanelInfo.lblO.setVisible(true);
+        PanelInfo.lblAmmo.setVisible(true);
+        PanelInfo.lblNit.setVisible(true);
+        PanelInfo.lblNat.setVisible(true);
+        PanelInfo.lblPH.setVisible(true);
+        PanelInfo.lblGH.setVisible(true);
+        PanelInfo.lblKH.setVisible(true);
+        PanelInfo.lblScore.setVisible(true);
+        PanelInfo.lblDechets.setVisible(true);
+        PanelInfo.lblAbsDechets.setVisible(true);
+        PanelInfo.progressBar.setVisible(true); */
     }
 
 }

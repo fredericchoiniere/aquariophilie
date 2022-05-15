@@ -340,7 +340,7 @@ public class Eau implements Runnable {
     /** 
      * @param accumulerDechets(
      */
-    public void changerEau(){ // TODO: clean up poissons morts
+    public void changerEau(){
         volumeEau = (float) 37.85;
         hauteur = 35;
         kh = 6;

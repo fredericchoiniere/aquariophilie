@@ -405,7 +405,7 @@ public class Poisson extends JPanel {
         } */
        
         //listeVraisPoissons = GUIMain.listePoissonsAqua;
-        for (Poisson vraiPoisson : GUIMain.listePoissonsAqua) {
+        /* for (Poisson vraiPoisson : GUIMain.listePoissonsAqua) {
             //System.out.println("" + vraiPoisson.getClass().getSimpleName());
             if (!vraiPoisson.getClass().getSimpleName().equals("Poisson") && !listeVraisPoissons.contains(vraiPoisson)) {
                 listeVraisPoissons.add(vraiPoisson);
@@ -414,7 +414,7 @@ public class Poisson extends JPanel {
             if (vraiPoisson.isDead && listeVraisPoissons.contains(vraiPoisson)) {
                 listeVraisPoissons.remove(vraiPoisson);
             }
-        }
+        } */
 
         //System.out.println("" + listeVraisPoissons);
 
