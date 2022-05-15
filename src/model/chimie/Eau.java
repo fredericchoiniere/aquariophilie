@@ -21,41 +21,37 @@ public class Eau implements Runnable {
     public static float kh = 6; // Alcalinité de l'eau
     private float penteNitrites = 0;
     public float sommeAbsorptionNitrates = 0, sommeContributionPH = 0, variationPH = 0;
-    public float volumeEau = (float) 37.85;
     public static float nitrites = 0, nitrates = 0, ammoniaque = 0;
     public float tempAmmoniaque = 0, tempNitrites = 0;
     private float sommeAmmoniaque, sommeNitrites;
     public float jours = GUIMain.jours, jourInitial = 0;
     public float hauteur = 35, largeur = 20, longueur = (float) 54.07; // Dimensions de l'aquarium de 10 gallons/37.85L
     private static float scorePH, scoreGH, scoreKH, scoreAmmo, scoreNitrites, scoreNitrates;
+    public float volumeEau = (float) 37.85; // Volume d'eau dans l'aquarium rempli
     public float scoreEau = (float) 100.0;
 
-    public static int hauteurEnPixels = 177; // 192// Hauteur en pixels de l'eau de l'aquarium rempli
+    public static int hauteurEnPixels = 177; // 192  Hauteur en pixels de l'eau de l'aquarium rempli
     public static int positionEnPixels = 299;// 305
-    public int sommeAbsorptionDechets = 0;
-    public int potentielDechets = 0, sommeDechets = 0;
+    public int sommeAbsorptionDechets = 0, potentielDechets = 0, sommeDechets = 0;
     public static int randomNumber;
 
     public static Random random = new Random();
 
     final short valeur_changement = 1;
 
-    public boolean dechetsCycleParti = false;
-    public boolean cycleParti = true;
-    public boolean menageDupesNit = true;
+    public boolean dechetsCycleParti = false, cycleParti = true, menageDupesNit = true;
 
     public String actionEnCours = "Aucune action initiale";
    
-    public ArrayList<Float> listeAmmoniaqueIteration = new ArrayList<Float>(); //
-    public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0); // Liste à synchroniser
-    public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public ArrayList<Integer> listeAbsorption = new ArrayList<Integer>();
     public ArrayList<CycleAzote> listeCycles = new ArrayList<CycleAzote>();
 
+    public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0); // Liste à synchroniser    
     public List<Float> listeAmmoniaque = Collections.synchronizedList(listeAmmoniaqueTemp); // Liste synchronisée
-    public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
-
     public ListIterator<Float> iteratorAmmoniaque; // Itérateur pour additionner les valeurs d'ammoniaque
+    
+    public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0); // Liste à synchroniser
+    public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
     public ListIterator<Float> iteratorNitrites; // Itérateur pour additionner les valeurs de nitrites
 
     /**
