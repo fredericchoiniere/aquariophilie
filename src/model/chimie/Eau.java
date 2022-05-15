@@ -297,9 +297,9 @@ public class Eau implements Runnable {
             hauteur -= 0.182;
             hauteurEnPixels -= valeur_changement;
             positionEnPixels += valeur_changement;
-            MethodeGUIMain.setEauDimensions(positionEnPixels, hauteurEnPixels);
+            GUIMain.setEauDimensions(positionEnPixels, hauteurEnPixels);
         } else {
-            MethodeGUIMain.setEauDimensions(positionEnPixels, hauteurEnPixels);
+            GUIMain.setEauDimensions(positionEnPixels, hauteurEnPixels);
         }
         volumeEau = (float) ((hauteur * largeur * longueur) * 0.001);
     }

@@ -2,7 +2,7 @@
 
 //Classe des emplacements de la santé
 
-package model.jeu;
+package view.jeu;
 import javax.swing.JProgressBar;
 
 public class EmplacementSante extends JProgressBar {

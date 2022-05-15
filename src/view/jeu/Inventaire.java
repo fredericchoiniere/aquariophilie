@@ -4,10 +4,11 @@
 
 //Classe qui gère l'inventaire et ses emplacements
 
-package model.jeu;
+package view.jeu;
 
 import java.awt.*;
 import javax.swing.*;
+
 import model.poissons.Poisson;
 
 public class Inventaire {

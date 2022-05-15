@@ -13,6 +13,7 @@ import model.jeu.*;
 import model.plantes.*;
 import model.poissons.*;
 import view.GUIMain;
+import view.jeu.Inventaire;
 
 public class PanelShop extends JPanel implements ActionListener {
 

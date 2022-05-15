@@ -1,7 +1,7 @@
 // Iteration 3: Jérémie Caron
 
 // Classe qui créer et gère les progressBar de la Sante
-package model.jeu;
+package view.jeu;
 
 import java.awt.*;
 import javax.swing.*;

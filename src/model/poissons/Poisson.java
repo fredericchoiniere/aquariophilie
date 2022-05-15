@@ -9,9 +9,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import model.MethodeGUIMain;
 import model.chimie.Eau;
-import model.jeu.Inventaire;
-import model.jeu.Sante;
 import view.GUIMain;
+import view.jeu.Inventaire;
+import view.jeu.Sante;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
