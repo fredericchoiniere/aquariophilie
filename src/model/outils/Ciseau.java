@@ -1,4 +1,4 @@
-//Jérémie Caron     itération 2
+// Itération 2: Jérémie Caron
 //Classe pour l'outil ciseau
 
 package model.outils;

@@ -1,6 +1,6 @@
-//Jérémie Caron     itération 2
-// Jérémie Caron    itération 3
-
+// Itération 1: Jérémie Caron
+// Itération 2: Jérémie Caron
+// Itération 3: 
 package model.jeu;
 
 import javax.swing.JLabel;

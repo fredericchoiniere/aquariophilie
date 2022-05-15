@@ -1,5 +1,5 @@
-//Frédéric Choinière, Justin Plouffe
-// Itération 2
+// Itération 1: Frédéric Choinière, Justin Plouffe
+// Itération 2: Frédéric Choinière
 
 package model.chimie;
 

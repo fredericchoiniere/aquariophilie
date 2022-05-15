@@ -1,4 +1,5 @@
-//Jérémie Caron     itération 1
+// Itération 1: Jérémie Caron
+// Itération 2 : Justin Plouffe
 //Classe pour l'outil pipette
 
 package model.outils;

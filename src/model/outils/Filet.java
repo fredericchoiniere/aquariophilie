@@ -1,10 +1,9 @@
-//Jérémie Caron     itération 2
+// Itération 2: Jérémie Caron
 //Classe pour l'outil filet
 
 package model.outils;
 
 import javax.swing.*;
-
 import java.awt.*;
 
 public class Filet extends Outils {
