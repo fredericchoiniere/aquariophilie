@@ -13,9 +13,7 @@ import model.chimie.Molecules;
 import model.environnement.Temps;
 import view.GUIMain;
 
-public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/GH/KH, ajouter compatibilité plusieurs
-                                                            // cycles,
-                                                            // ajouter infos déchets et absorption
+public class PanelInfo extends JPanel implements Runnable {
 
     // appel des attributs de la classe
     public static JLabel lblAction, lblN, lblH, lblO, lblAmmo, lblNit, lblNat, lblPH, lblGH, lblKH, lblScore,

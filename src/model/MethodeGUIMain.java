@@ -270,7 +270,7 @@ public class MethodeGUIMain {
      * @return index
      *         méthode pour retourner un index selon l'emplacement
      */
-    public static int getEmplaToInt(String emplacement) { // TODO: à revoir
+    public static int getEmplaToInt(String emplacement) { 
         int index = 420;
         switch (emplacement) {
             case "empla1":

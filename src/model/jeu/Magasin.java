@@ -146,14 +146,42 @@ public class Magasin {
          * Méthode qui permet de mettre les tooltips à jour
          */
         public static void updateToolTip() { // TODO: terminer tooltips
-                PanelShop.poisson_rouge.setToolTipText("Prix: " + PoissonRouge.prix + "฿");
-                PanelShop.poisson_betta.setToolTipText("Prix: " + PoissonBetta.prix + "฿");
-                PanelShop.poisson_tetra.setToolTipText("Prix: " + PoissonTetra.prix + "฿");
-                PanelShop.poisson_neo.setToolTipText("Prix: " + PoissonNeo.prix + "฿");
-                PanelShop.planteBlue.setToolTipText("Prix: " + BlueBlue.prix + "฿");
-                PanelShop.planteFern.setToolTipText("Prix: " + JavaFern.prix + "฿");
-                PanelShop.planteScarlet.setToolTipText("Prix: " + ScarletRot.prix + "฿");
-                PanelShop.planteErdtree.setToolTipText("Prix: " + Erdtree.prix + "฿");
+                PanelShop.poisson_rouge.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Poisson rouge</strong></span></p>" +
+                "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">" + PoissonRouge.prix + "</span></span><span style=\"color: #008080;\">฿</span></p>" +
+                "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">5 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>" +
+                "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #ff9900;\">moyenne</span></span></span></p></html>");
+                PanelShop.poisson_betta.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Betta</strong></span></p>" +
+                "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">" + PoissonBetta.prix + "</span></span><span style=\"color: #008080;\">฿</span></p>" +
+                "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">4 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>" +
+                "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #008000;\">&eacute;lev&eacute;e</span></span></span></p></html>");
+                PanelShop.poisson_tetra.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Tetra</strong></span></p>" +
+                "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">" + PoissonTetra.prix + "</span></span><span style=\"color: #008080;\">฿</span></p>" +
+                "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">2 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>" +
+                "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #993366;\">faible</span></span></span></p></html>");
+                PanelShop.poisson_neo.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Neocaridina</strong></span></p>" +
+                "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">" + PoissonNeo.prix + "</span></span><span style=\"color: #008080;\">฿</span></p>" +
+                "<p>Absorbe <span style=\"color: #008080;\">2 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>" +
+                "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #ff0000;\">tr&egrave;s faible</span></span></span></p></html>");
+                PanelShop.planteBlue.setToolTipText("<html><p>Type: <strong><span style=\"color: #339966;\">Blue blue</span></strong></p>" +
+                "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #339966;\">" + BlueBlue.prix + "฿</span></span></p>" +
+                "<p><span style=\"color: #000000;\">Absorbe <span style=\"color: #339966;\">3 <span style=\"color: #000000;\">mg/L de nitrates par jour</span></span></span></p> " +
+                "<p><span style=\"color: #000000;\"><span style=\"color: #339966;\"><span style=\"color: #000000;\">Absorbe <span style=\"color: #339966;\">10 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></span></span></span></p> " +
+                "<p><span style=\"color: #000000;\"><span style=\"color: #339966;\"><span style=\"color: #000000;\"><span style=\"color: #339966;\"><span style=\"color: #000000;\">Contribution PH: <span style=\"color: #008000;\">faible</span></span></span></span></span></span></p></html>");
+                PanelShop.planteFern.setToolTipText("<html><p>Type: <strong><span style=\"color: #339966;\">Java Fern</span></strong></p>" +
+                "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #339966;\">" + JavaFern.prix + "฿</span></span></p>" +
+                "<p><span style=\"color: #000000;\">Absorbe <span style=\"color: #339966;\">5 <span style=\"color: #000000;\">mg/L de nitrates par jour</span></span></span></p> " +
+                "<p><span style=\"color: #000000;\"><span style=\"color: #339966;\"><span style=\"color: #000000;\">Absorbe <span style=\"color: #339966;\">6 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></span></span></span></p> " +
+                "<p><span style=\"color: #000000;\"><span style=\"color: #339966;\"><span style=\"color: #000000;\"><span style=\"color: #339966;\"><span style=\"color: #000000;\">Contribution PH: <span style=\"color: #ff9900;\">moyenne</span></span></span></span></span></span></p></html>");
+                PanelShop.planteScarlet.setToolTipText("<html><p>Type: <strong><span style=\"color: #339966;\">Scarlet rot</span></strong></p>" +
+                "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #339966;\">" + ScarletRot.prix + "฿</span></span></p>" +
+                "<p><span style=\"color: #000000;\">Absorbe <span style=\"color: #339966;\">8 <span style=\"color: #000000;\">mg/L de nitrates par jour</span></span></span></p> " +
+                "<p><span style=\"color: #000000;\"><span style=\"color: #339966;\"><span style=\"color: #000000;\">Absorbe <span style=\"color: #339966;\">20 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></span></span></span></p> " +
+                "<p><span style=\"color: #000000;\"><span style=\"color: #339966;\"><span style=\"color: #000000;\"><span style=\"color: #339966;\"><span style=\"color: #000000;\">Contribution PH: <span style=\"color: #993366;\">&eacute;lev&eacute;e</span></span></span></span></span></span></p></html>");
+                PanelShop.planteErdtree.setToolTipText("<html><p>Type: <strong><span style=\"color: #339966;\">Erdtree</span></strong></p>" +
+                "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #339966;\">" + Erdtree.prix + "฿</span></span></p>" +
+                "<p><span style=\"color: #000000;\">Absorbe <span style=\"color: #339966;\">10000 <span style=\"color: #000000;\">mg/L de nitrates par jour</span></span></span></p> " +
+                "<p><span style=\"color: #000000;\"><span style=\"color: #339966;\"><span style=\"color: #000000;\">Absorbe <span style=\"color: #339966;\">10000 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></span></span></span></p> " +
+                "<p><span style=\"color: #000000;\"><span style=\"color: #339966;\"><span style=\"color: #000000;\"><span style=\"color: #339966;\"><span style=\"color: #000000;\">Contribution PH: <span style=\"color: #008000;\">faible</span></span></span></span></span></span></p></html>");
                 PanelShop.message.setVisible(false);
         }
 

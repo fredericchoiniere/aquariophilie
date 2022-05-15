@@ -172,38 +172,27 @@ public class Poisson extends JPanel {
             case "rouge":
                 label.setToolTipText(
                         "<html><p>Type: <span style=\"color: #008080;\"><strong>Poisson rouge</strong></span></p>" +
-                                "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">50</span></span><span style=\"color: #008080;\">฿</span></p>"
-                                +
-                                "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">5 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>"
-                                +
-                                "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #ff9900;\">moyenne</span></span></span></p></html>");
+                        "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">" + PoissonRouge.prix + "</span></span><span style=\"color: #008080;\">฿</span></p>" +
+                        "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">5 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>" +
+                        "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #ff9900;\">moyenne</span></span></span></p></html>");
                 break;
             case "betta":
-                label.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Betta</strong></span></p>"
-                        +
-                        "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">500</span></span><span style=\"color: #008080;\">฿</span></p>"
-                        +
-                        "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">4 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>"
-                        +
+                label.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Betta</strong></span></p>" +
+                        "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">" + PoissonBetta.prix + "</span></span><span style=\"color: #008080;\">฿</span></p>" +
+                        "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">4 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>" +
                         "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #008000;\">&eacute;lev&eacute;e</span></span></span></p></html>");
                 break;
             case "tetra":
-                label.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Tetra</strong></span></p>"
-                        +
-                        "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">200</span></span><span style=\"color: #008080;\">฿</span></p>"
-                        +
-                        "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">2 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>"
-                        +
+                label.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Tetra</strong></span></p>" +
+                        "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">" + PoissonTetra.prix + "</span></span><span style=\"color: #008080;\">฿</span></p>" +
+                        "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">2 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>" +
                         "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #993366;\">faible</span></span></span></p></html>");
                 break;
             case "neo":
-                label.setToolTipText(
-                        "<html><p>Type: <span style=\"color: #008080;\"><strong>Neocaridina</strong></span></p>" +
-                                "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">125</span></span><span style=\"color: #008080;\">฿</span></p>"
-                                +
-                                "<p>Absorbe <span style=\"color: #008080;\">2 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>"
-                                +
-                                "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #ff0000;\">tr&egrave;s faible</span></span></span></p></html>");
+                label.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Neocaridina</strong></span></p>" +
+                        "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">" + PoissonNeo.prix + "</span></span><span style=\"color: #008080;\">฿</span></p>" +
+                        "<p>Absorbe <span style=\"color: #008080;\">2 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>" +
+                        "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #ff0000;\">tr&egrave;s faible</span></span></span></p></html>");
                 break;
             default:
                 label.setToolTipText("");
