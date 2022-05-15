@@ -312,14 +312,11 @@ public class Eau implements Runnable {
         if (volumeEau < 25) {
             setGH((float) (gh - 0.315));
         }
-
     }
 
     /**
      * Dimension de l'aquarium en cm: 54,07L x 20W x 35H
      * La hauteur de l'eau dans l'aquarium rempli est 35cm
-     * 
-     * Pour l'itération 3
      */
     public void variationNiveauEau() {
 
@@ -334,7 +331,6 @@ public class Eau implements Runnable {
         volumeEau = (float) ((hauteur * largeur * longueur) * 0.001);
     }
     
-    
     /** 
      * Remets des valeurs de base lors d'un changement d'eau à l'aide de l'outil pichet
      */
@@ -342,12 +338,10 @@ public class Eau implements Runnable {
         volumeEau = (float) 37.85;
         hauteur = 35;
         kh = 6;
-        gh = 10;
+        gh = (float) 8.5;
         ph = 7;
         nitrates -= 10;
-        //System.out.println("déchets pré changement: " + sommeDechets);
         sommeDechets -= (sommeDechets * 0.50);
-        //System.out.println("déchets post changement: " + sommeDechets);
         Poisson.cleanUp();
     }
 
@@ -363,7 +357,11 @@ public class Eau implements Runnable {
      *         Dicte le comportement des nitrates selon une courbe
      */
     public void comportNitrates() {
-        nitrates = ((jours / 7) - 4);
+        if (((jours / 7) - 4) > 0) {
+            nitrates = ((jours / 7) - 4);
+        }
+        else nitrates = 0;
+        
     }
 
     /**

@@ -70,19 +70,19 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
         add(lblN);
 
         lblAmmo = new JLabel("NH3: " + mol.eau.getAmmoniaque() + " au jour " + mol.eau.jours);
-        lblAmmo.setBounds(330, 480, 200, 20);
+        lblAmmo.setBounds(330, 420, 200, 20);
         add(lblAmmo);
 
         lblH = new JLabel("H: " + mol.molAtomeH + " mols d'hydrogène");
-        lblH.setBounds(60, 540, 200, 20);
+        lblH.setBounds(60, 480, 200, 20);
         add(lblH);
 
         lblNit = new JLabel("NO2: " + mol.nitritesMgLtoMol() + " mols");
-        lblNit.setBounds(330, 420, 200, 20);
+        lblNit.setBounds(330, 480, 200, 20);
         add(lblNit);
 
         lblO = new JLabel("O: " + mol.sommeMolO() + " mols d'oxygène");
-        lblO.setBounds(60, 480, 200, 20);
+        lblO.setBounds(60, 540, 200, 20);
         add(lblO);
 
         lblNat = new JLabel("NO3: " + mol.nitratesMgLtoMol() + " mols");

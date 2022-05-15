@@ -311,7 +311,7 @@ public class Poisson extends JPanel {
      * @return boolean
      * TODO: commenter
      */
-    public boolean checkTolerances(String type) { // TODO: set tolerances pour autres types
+    public boolean checkTolerances(String type) {
 
         switch (type) {
             case "rouge":
@@ -448,13 +448,7 @@ public class Poisson extends JPanel {
             if (selection.isDead) {
                 Sante.emp6.setValue(0);
             }
-        } else {
-            System.out.println("Were fucked"); // TODO: ??
         }
-    }
-       
-    public static void trackFishTypeAndProgressBarCalicul() { // TODO: ??
-        System.out.println(GUIMain.hasFish1 + " " + GUIMain.hasFish2 + " " + GUIMain.hasFish3 + " " + GUIMain.hasFish4 + " " + GUIMain.hasFish5 + " " + GUIMain.hasFish6);
     }
 }
 
