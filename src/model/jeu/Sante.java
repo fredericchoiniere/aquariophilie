@@ -9,7 +9,8 @@ public class Sante {
     public static EmplacementSante emp1, emp2, emp3, emp4, emp5, emp6;
     final Dimension size_icone_sante = new Dimension(200, 20);
 
-    public static boolean state1 = true, state2 = true, state3 = true, state4 = true, state5 = true, state6 = true;
+    public static boolean state1 = false, state2 = false, state3 = false, state4 = false, state5 = false,
+            state6 = false;
 
     public Sante(JLabel label) {
         emp1 = new EmplacementSante();
@@ -67,8 +68,7 @@ public class Sante {
         label.add(emp6);
     }
 
-    
-    /** 
+    /**
      * @param etat1
      * @param etat2
      * @param etat3
