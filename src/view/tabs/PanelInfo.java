@@ -42,7 +42,7 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
         setLayout(null); // layout du panel info
 
         lblAction = new JLabel("Action en cours: ");
-        lblAction.setBounds(190, 98, 200, 20);
+        lblAction.setBounds(152, 98, 200, 20);
         add(lblAction);
 
         progressBar = new JProgressBar();
@@ -50,7 +50,7 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
         progressBar.setStringPainted(true);
         progressBar.setForeground(new Color(46, 232, 158));
         progressBar.setValue(50);
-        progressBar.setBounds(152, 130, 200, 20);
+        progressBar.setBounds(102, 130, 300, 20);
         add(progressBar);
 
         lblScore = new JLabel("Score: " + GUIMain.eau.getScoreEau());
@@ -119,21 +119,22 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
             case "Cycle ammoniaque":
                 progressBar.setString("La concentration d'ammoniaque augmente");
                 progressBar.setMaximum(18);
-                progressBar.setValue((int) (mol.eau.jours));
+                progressBar.setValue((int) (mol.eau.jours + 1));
                 break;
             case "Cycle nitrites":
                 progressBar.setString("NH3 + O2 → NO2 + 3H");
                 progressBar.setMinimum(14);
                 progressBar.setMaximum(35);
-                progressBar.setValue((int) (mol.eau.jours));
+                progressBar.setValue((int) (mol.eau.jours + 1));
                 break;
             case "Cycle nitrates":
                 if (mol.molNitrites == 0.0) {
                     progressBar.setString("Les bactéries Nitrobacter relâchent des nitrates");
+                    progressBar.setValue(progressBar.getMaximum());
                 } else {
                     progressBar.setString("NO2 + H2O → NO3 + 2H");
+                    progressBar.setValue((int) (mol.eau.jours + 1));
                 }
-                progressBar.setValue(progressBar.getMaximum());
                 break;
             default:
                 progressBar.setString("Aucune action en cours");

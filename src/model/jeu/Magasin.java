@@ -1,5 +1,5 @@
 // Itération 1: Jérémie Caron
-// Itération 3: Jérémie Caron
+// Itération 3: Jérémie Caron, Frédéric Choinière
 
 // Classe qui permet de faire le magasin avec la gestion des achats
 
@@ -37,11 +37,12 @@ public class Magasin {
          */
         public static void ajustement_argent(int prix) {
                 Argent.argent -= prix;
+                System.out.println("prix ajustement: " + prix);
         }
 
         /**
          * @param String
-         *               méthode qui permet de voir lle bon prix pour le bon item
+         *               méthode qui permet de voir le bon prix pour le bon item
          */
         public static void checkPoissonPrix(String type) {
                 switch (type) {
@@ -64,12 +65,13 @@ public class Magasin {
 
         /**
          * @param String
-         *               méthode qui permet de voir lle bon prix pour le bon item
+         *               méthode qui permet de voir le bon prix pour le bon item
          */
         public static void checkPlantePrix(String type) {
                 switch (type) {
                         case "java":
                                 ajustement_argent(JavaFern.prix);
+                                System.out.println("prix checkplante: " + JavaFern.prix);
                                 break;
 
                         case "blue":
@@ -91,43 +93,43 @@ public class Magasin {
         /**
          * @param String
          * @return boolean
-         *         méthode qui permet de voir si on a asser d'argent
+         *         méthode qui permet de voir si on a assez d'argent
          */
         public static boolean gotMoney(String type) {
                 switch (type) {
                         case "rouge":
                                 if (Argent.argent >= PoissonRouge.prix) {
                                         return true;
-                                }
+                                }       else return false;
                         case "betta":
                                 if (Argent.argent >= PoissonBetta.prix) {
                                         return true;
-                                }
+                                }       else return false;
                         case "tetra":
-                                // System.out.println(Argent.argent);
                                 if (Argent.argent >= PoissonTetra.prix) {
                                         return true;
-                                }
+                                }       else return false;
                         case "neo":
                                 if (Argent.argent >= PoissonNeo.prix) {
                                         return true;
-                                }
+                                }       else return false;
                         case "java":
                                 if (Argent.argent >= JavaFern.prix) {
+                                        System.out.println("prix got money: " + JavaFern.prix);
                                         return true;
-                                }
+                                }       else return false;
                         case "blue":
                                 if (Argent.argent >= BlueBlue.prix) {
                                         return true;
-                                }
+                                }       else return false;
                         case "scarlet":
                                 if (Argent.argent >= ScarletRot.prix) {
                                         return true;
-                                }
+                                }       else return false;
                         case "erdtree":
                                 if (Argent.argent >= Erdtree.prix) {
                                         return true;
-                                }
+                                }       else return false;
                         default:
                                 return false;
                 }
@@ -143,7 +145,7 @@ public class Magasin {
         /**
          * Méthode qui permet de mettre les tooltips à jour
          */
-        public static void updateToolTip() {
+        public static void updateToolTip() { // TODO: terminer tooltips
                 PanelShop.poisson_rouge.setToolTipText("Prix: " + PoissonRouge.prix + "฿");
                 PanelShop.poisson_betta.setToolTipText("Prix: " + PoissonBetta.prix + "฿");
                 PanelShop.poisson_tetra.setToolTipText("Prix: " + PoissonTetra.prix + "฿");
