@@ -98,7 +98,6 @@ public class PoissonRouge extends Poisson implements Runnable {
                     if (y_temp > y_max) {
                         setYVelocity(-vel_y);
                         if(isDead){
-                            System.out.println("poisson rouge mort");
                             setYVelocity(0);
                             this.var = false;
                         }
