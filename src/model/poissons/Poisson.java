@@ -1,5 +1,6 @@
-// Frédéric Choinière, Jérémie Caron    itération 2
-// Jérémie Caron, Frédéric Choinière    itération 3
+// Itération 2: Frédéric Choinière, Jérémie Caron
+// Itération 3: Jérémie Caron, Frédéric Choinière
+//TODO:Commenter la classe
 
 package model.poissons;
 
@@ -295,10 +296,10 @@ public class Poisson extends JPanel {
 
     
     /** 
-     * @param type
      * @return boolean
+     * TODO: commenter
      */
-    public boolean checkTolerances(String type) {
+    public boolean checkTolerances(String type) { // TODO: set tolerances pour autres types
 
         switch (type) {
             case "rouge":
@@ -321,9 +322,10 @@ public class Poisson extends JPanel {
         return boolTolerances;
     }
 
-    
-    /** 
+    /**
+     * 
      * @param numb
+     * TODO:commenter
      */
     public static void killFish(short numb) {
         MethodeGUIMain.checkFishType(fishType(numb));
@@ -342,6 +344,7 @@ public class Poisson extends JPanel {
 
     /**
      * @param numb
+     * TODO:commenter
      */
     public static void setFalse(short numb) {
         GUIMain.listePoissonsAqua.get(numb).direction = "empty";
@@ -388,6 +391,7 @@ public class Poisson extends JPanel {
 
     /**
      * @param index
+     * TODO:Commenter
      */
     public static void setBarValue(short index) {
         if (GUIMain.hasFish1) {

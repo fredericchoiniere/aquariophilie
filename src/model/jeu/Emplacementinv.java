@@ -1,4 +1,4 @@
-//Jérémie Caron, Frédéric Choinière     itération 1
+//Itération 1: Jérémie Caron, Frédéric Choinière
 //Classe des emplacements de l'inventaire
 
 package model.jeu;

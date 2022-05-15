@@ -1,4 +1,5 @@
-// Jérémie Caron    itération 3
+// Iteration 3: Jérémie Caron
+// TODO:Commenter la classe
 
 package model.jeu;
 

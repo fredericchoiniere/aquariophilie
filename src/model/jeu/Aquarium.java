@@ -1,7 +1,7 @@
-//Jérémie Caron     itération 1
-//Jérémie Caron     itération 2
-// Jérémie Caron    itération 3
-//Classe qui gère l'aquarium et ses emplacements
+// Itération 1: Jérémie Caron
+// Itération 2: Jérémie Caron
+// Itération 3: Jérémie Caron
+// Classe qui gère l'aquarium et ses emplacements
 
 package model.jeu;
 

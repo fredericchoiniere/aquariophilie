@@ -1,6 +1,6 @@
-// Frédéric Choinière   itération 1
-// Frédéric Choinière, Jérémie Caron   itération 2
-// Jérémie Caron    itération 3
+// Itération 1: Frédéric Choinière
+// Itération 2: Frédéric Choinière, Jérémie Caron
+// Itération 3: Jérémie Caron
 // Classe qui contrôle le temps et le timer global
 
 package model.environnement;
@@ -28,7 +28,9 @@ public class Temps {
         GUIMain.label_jours.setText(Integer.toString(jour));
         GUIMain.label_jours2.setText(Integer.toString(jour));
     }
-
+    /**
+     *  TODO:Commenter
+     */
     public static void checkCooldown() {
         cooldown = new Timer();
         cooldown.schedule(new TimerTask() {
@@ -99,8 +101,6 @@ public class Temps {
                 } else {
                     i++;
                 }
-
-                // Eau.setScoreEau();
             }
         }, 0, DUREE);
     }

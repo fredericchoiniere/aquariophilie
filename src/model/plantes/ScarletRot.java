@@ -1,4 +1,4 @@
-//Jérémie Caron, Frédéric Choinière     itération 2
+//Itération 2: Jérémie Caron, Frédéric Choinière
 
 package model.plantes;
 

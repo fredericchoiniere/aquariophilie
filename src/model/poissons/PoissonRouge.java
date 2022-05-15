@@ -1,5 +1,6 @@
-//Jérémie Caron, Frédéric Choinière     itération 2
-// Jérémie Caron    itération 3
+// Itération 2: Jérémie Caron, Frédéric Choinière     itération 2
+// Itération 3: Jérémie Caron
+//TODO:Commenter
 
 package model.poissons;
 
@@ -69,6 +70,9 @@ public class PoissonRouge extends Poisson implements Runnable {
         repaint();
     }
 
+    /**
+     * TODO:Commenter
+     */
     public void setImg() {
         if (side == 1) {
             direction = "droite";
@@ -81,6 +85,9 @@ public class PoissonRouge extends Poisson implements Runnable {
         }
     }
 
+    /**
+     * TODO:Commenter
+     */
     @Override
     public void run() {
         while (var) {

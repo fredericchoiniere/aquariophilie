@@ -1,5 +1,5 @@
-//Jérémie Caron     itération 2
-// Jérémie Caron    itération 3
+// Itération 1: Jérémie Caron
+// Itération 3: Jérémie Caron
 
 package model.jeu;
 
@@ -461,6 +461,9 @@ public class Magasin {
         }
     }
 
+    /**
+     *  TODO:commenter
+     */
     public static void resetPrice() {
         PoissonBetta.prix = prix_betta;
         PoissonRouge.prix = prix_rouge;
