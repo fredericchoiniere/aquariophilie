@@ -112,12 +112,14 @@ public class MethodeGUIMain {
                     && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
                     && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
                 if (hasFish) {
+                    if (!GUIMain.listePoissonsAqua.get(index).isDead) {
+                        checkFishType(aqua);
+                    }
                     setHasFishFalse(hasFishString);
                     label1.setIcon(icone);
                     GUIMain.listePoissonsAqua.get(index).direction = "empty";
                     GUIMain.listePoissonsAqua.get(index).var = false;
-                    GUIMain.listePoissonsAqua.set(index, GUIMain.poisson_default);
-                    checkFishType(aqua);
+                    GUIMain.listePoissonsAqua.set(index, GUIMain.poisson_default); // TODO: l'enlever de listeVraisPoissons
                     Poisson.setFalse((short) index);
                 }
             }
@@ -224,8 +226,8 @@ public class MethodeGUIMain {
         GUIMain.poisson_neo.setBounds(340, 324, 322, 156);
         GUIMain.poisson_neo.index = setIndexPoi(index);
         GUIMain.tpoisson_neo = new Thread(GUIMain.poisson_neo);
-        Argent.poi1 += 1;
-        GUIMain.eau.potentielDechets += PoissonRouge.dechets;
+        Argent.poi4 += 2;
+        GUIMain.eau.potentielDechets += PoissonNeo.dechets;
         GUIMain.tpoisson_neo.start();
         GUIMain.panelAqua.add(GUIMain.poisson_neo);
         setAquaName(index, "neo");
@@ -511,7 +513,7 @@ public class MethodeGUIMain {
                 GUIMain.eau.potentielDechets -= PoissonTetra.dechets;
                 break;
             case "neo":
-                Argent.poi3 -= 2;
+                Argent.poi4 -= 2;
                 Argent.argent += PoissonNeo.prix / 2;
                 GUIMain.eau.potentielDechets -= PoissonNeo.dechets;
                 break;

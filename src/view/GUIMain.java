@@ -135,6 +135,7 @@ public class GUIMain extends JFrame {
 
         // creation du main tab
         UIManager.put("TabbedPane.selected", new Color(0, 153, 153));
+        UIManager.put("Button.select", new Color(53, 109, 127));
         tabbedPane = new JTabbedPane();
 
         // creation du premier tab

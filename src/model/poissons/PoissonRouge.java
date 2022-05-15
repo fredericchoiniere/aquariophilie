@@ -28,7 +28,6 @@ public class PoissonRouge extends Poisson implements Runnable {
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_droite.png");
     Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_gauche.png");
     static Image empty = Toolkit.getDefaultToolkit().getImage("res/poissons/empty.png");
-    // Image rip = Toolkit.getDefaultToolkit().getImage("res/poissons/rip.png");
 
     public static int dechets = 5;
 
@@ -36,7 +35,7 @@ public class PoissonRouge extends Poisson implements Runnable {
         setImg();
     }
 
-    public static boolean checkTolerances() { // ammo 2 nit 1 nat 40
+    public static boolean checkTolerances() {
         if (GUIMain.eau.getPH() < 3 || GUIMain.eau.getPH() > 9 || GUIMain.eau.getGH() < 3
                 || GUIMain.eau.getAmmoniaque() > 3 || GUIMain.eau.getNitrites() > 2 || GUIMain.eau.getNitrates() > 50) {
             return false;
@@ -85,7 +84,6 @@ public class PoissonRouge extends Poisson implements Runnable {
     @Override
     public void run() {
         while (var) {
-            //if (this.isDead == false) {
                 if (!Temps.isPaused) {
                     if (x_temp > x_max) {
                         setXVelocity(-vel_x);
@@ -114,10 +112,6 @@ public class PoissonRouge extends Poisson implements Runnable {
                     }
                 }
 
-            /* } else if (this.isDead == true) {
-                if (y_temp == 120) {
-                    setYVelocity(2);
-                }// allo */
             }
         
     }

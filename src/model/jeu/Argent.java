@@ -17,6 +17,7 @@ public class Argent {
     public static int poi1 = 1; // rouge
     public static int poi2 = 0; // betta
     public static int poi3 = 0; // tetra
+    public static int poi4 = 0; // neo
 
     public static String montant = argent + "";
 
@@ -29,7 +30,7 @@ public class Argent {
      */
     public static void paye(JLabel label, JLabel label2) {
         if (normal) {
-            argent += emp1 + emp2 + emp3 + poi1 + poi2 + poi3;
+            argent += emp1 + emp2 + emp3 + poi1 + poi2 + poi3 + poi4;
             montant = Integer.toString(argent);
             label.setText(montant + "฿");
             label2.setText(montant + "฿");

@@ -7,6 +7,7 @@ import java.awt.*;
 
 import model.GestionException;
 import model.environnement.Temps;
+import view.GUIMain;
 
 public class PoissonTetra extends Poisson implements Runnable {
     // attributs de la classe
@@ -29,6 +30,14 @@ public class PoissonTetra extends Poisson implements Runnable {
 
     public PoissonTetra() {
         setImg();
+    }
+
+    public static boolean checkTolerances() {
+        if (GUIMain.eau.getPH() < 4 || GUIMain.eau.getPH() > 9 || GUIMain.eau.getGH() < 3
+                || GUIMain.eau.getAmmoniaque() > 2 || GUIMain.eau.getNitrites() > 1 || GUIMain.eau.getNitrates() > 40) {
+            return false;
+        }
+        return true;
     }
 
     /**

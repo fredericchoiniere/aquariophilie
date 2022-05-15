@@ -1,5 +1,5 @@
 // Frédéric Choinière, Jérémie Caron    itération 2
-// Jérémie Caron    itération 3
+// Jérémie Caron, Frédéric Choinière    itération 3
 
 package model.poissons;
 
@@ -15,7 +15,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Poisson extends JPanel { // TODO: quand meurent, fishstick
+public class Poisson extends JPanel {
 
     // attributs de la classe
     int vel_x = 1;
@@ -33,6 +33,7 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
     int randomNumber;
 
     static ArrayList<Short> listeACleanUp = new ArrayList<Short>();
+    public static ArrayList<Poisson> listeVraisPoissons = new ArrayList<Poisson>(6);
 
     static Image rip = Toolkit.getDefaultToolkit().getImage("res/poissons/rip.png");
 
@@ -209,34 +210,50 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
      * @param numb
      */
     public static void setSante(short numb) {
+        selection = GUIMain.listePoissonsAqua.get(numb);
         switch (fishType(numb)) {
             case "rouge":
                 ajusterSante(numb, PoissonRouge.tolerance);
-                selection = (PoissonRouge) GUIMain.listePoissonsAqua.get(numb);
+                //selection = (PoissonRouge) GUIMain.listePoissonsAqua.get(numb);
                 if (!selection.checkTolerances("rouge") && !selection.isDead) {
-                    killFish(numb);
-                    selection.isDead = true;
+                    selection.sante -= 15;
+                    if (selection.sante <= 0) {
+                        killFish(numb);
+                        selection.isDead = true;
+                    }
                 }
                 break;
             case "betta":
                 ajusterSante(numb, PoissonBetta.tolerance);
-                selection = (PoissonBetta) GUIMain.listePoissonsAqua.get(numb);
+                //selection = (PoissonBetta) GUIMain.listePoissonsAqua.get(numb);
                 if (!selection.checkTolerances("betta") && !selection.isDead) {
-                    killFish(numb);
+                    selection.sante -= 15;
+                    if (selection.sante <= 0) {
+                        killFish(numb);
+                        selection.isDead = true;
+                    }
                 }
                 break;
             case "tetra":
                 ajusterSante(numb, PoissonTetra.tolerance);
-                selection = (PoissonTetra) GUIMain.listePoissonsAqua.get(numb);
+                //selection = (PoissonTetra) GUIMain.listePoissonsAqua.get(numb);
                 if (!selection.checkTolerances("tetra") && !selection.isDead) {
-                    killFish(numb);
+                    selection.sante -= 15;
+                    if (selection.sante <= 0) {
+                        killFish(numb);
+                        selection.isDead = true;
+                    }
                 }
                 break;
             case "neo":
                 ajusterSante(numb, PoissonNeo.tolerance);
-                selection = (PoissonNeo) GUIMain.listePoissonsAqua.get(numb);
+                //selection = (PoissonNeo) GUIMain.listePoissonsAqua.get(numb);
                 if (!selection.checkTolerances("neo") && !selection.isDead) {
-                    killFish(numb);
+                    selection.sante -= 15;
+                    if (selection.sante <= 0) {
+                        killFish(numb);
+                        selection.isDead = true;
+                    }
                 }
                 break;
             default:
@@ -276,11 +293,20 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
         }
     }
 
-    public boolean checkTolerances(String type) { // TODO: set tolerances pour autres types
+    public boolean checkTolerances(String type) {
 
         switch (type) {
             case "rouge":
                 boolTolerances = PoissonRouge.checkTolerances();
+                break;
+            case "betta":
+                boolTolerances = PoissonBetta.checkTolerances();
+                break;
+            case "tetra":
+                boolTolerances = PoissonTetra.checkTolerances();
+                break;
+            case "neo":
+                boolTolerances = PoissonNeo.checkTolerances();
                 break;
 
             default:
@@ -294,7 +320,7 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
         MethodeGUIMain.checkFishType(fishType(numb));
         GUIMain.listePoissonsAqua.get(numb).direction = "rip";
         GUIMain.listePoissonsAqua.get(numb).setXVelocity(0);
-        GUIMain.listePoissonsAqua.get(numb).setYVelocity(1); // TODO: faire arrêter au fond de l'aquarium
+        GUIMain.listePoissonsAqua.get(numb).setYVelocity(1);
         listeACleanUp.add(numb);
     }
 
@@ -310,7 +336,6 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
      */
     public static void setFalse(short numb) {
         GUIMain.listePoissonsAqua.get(numb).direction = "empty";
-        GUIMain.listePoissonsAqua.get(numb).var = false;
         GUIMain.listePoissonsAqua.set(numb, GUIMain.poisson_default);
         switch (numb) {
             case 0:
@@ -419,9 +444,8 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
                 break;
             default:
                 break;
-        }
-    } */
-
+        } */
+       
     public static void trackFishTypeAndProgressBarCalicul() {
         System.out.println(GUIMain.hasFish1 + " " + GUIMain.hasFish2 + " " + GUIMain.hasFish3 + " " + GUIMain.hasFish4 + " " + GUIMain.hasFish5 + " " + GUIMain.hasFish6);
     }

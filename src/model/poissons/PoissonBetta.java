@@ -7,6 +7,7 @@ import java.awt.*;
 
 import model.GestionException;
 import model.environnement.Temps;
+import view.GUIMain;
 
 public class PoissonBetta extends Poisson implements Runnable {
 
@@ -31,6 +32,14 @@ public class PoissonBetta extends Poisson implements Runnable {
 
     public PoissonBetta() {
         setImg();
+    }
+
+    public static boolean checkTolerances() {
+        if (GUIMain.eau.getPH() < 3 || GUIMain.eau.getPH() > 9 || GUIMain.eau.getGH() < 3
+                || GUIMain.eau.getAmmoniaque() > 4 || GUIMain.eau.getNitrites() > 3 || GUIMain.eau.getNitrates() > 55) {
+            return false;
+        }
+        return true;
     }
 
     /**
