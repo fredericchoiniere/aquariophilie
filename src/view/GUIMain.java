@@ -447,14 +447,7 @@ public class GUIMain extends JFrame {
         label_tuto7.setBounds(5, 0, 1000, 700);
         label_tuto7.setIcon(new ImageIcon("res/tutoriel/tuto7.png"));
         label_tuto7.setVisible(false);
-        panelShop.add(label_tuto7);
-
-        // ajout du label pour information du panel aqua
-        label_information1 = new JLabel();
-        label_information1.setBounds(965, 5, 30, 30);
-        label_information1.setIcon(new ImageIcon("res/tutoriel/info/informations.png"));
-        label_information1.setVisible(true);
-        panelShop.add(label_information1);
+        panelShop.add(label_tuto7);      
 
         // ajout du label information du magasin
         label_tutoriel1 = new JLabel();
@@ -462,6 +455,13 @@ public class GUIMain extends JFrame {
         label_tutoriel1.setIcon(new ImageIcon("res/tutoriel/info/infoMagasin.png"));
         label_tutoriel1.setVisible(false);
         panelShop.add(label_tutoriel1);
+
+        // ajout du label pour information du panel aqua
+        label_information1 = new JLabel();
+        label_information1.setBounds(965, 5, 30, 30);
+        label_information1.setIcon(new ImageIcon("res/tutoriel/info/informations.png"));
+        label_information1.setVisible(true);
+        panelShop.add(label_information1);
 
         // ajout du label pour l'argent
         label_argent_shop.setBounds(612, 8, 100, 50);
@@ -1783,7 +1783,6 @@ public class GUIMain extends JFrame {
         tabbedPane.setEnabledAt(2, true);
     }
 
-    
 }
 
 // Слава Україні!
