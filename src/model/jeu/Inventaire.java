@@ -1,13 +1,13 @@
 // Itération 1: Jérémie Caron
 // Itération 2: Jérémie Caron
 // Itération 3: Jérémie Caron
+
 //Classe qui gère l'inventaire et ses emplacements
 
 package model.jeu;
 
 import java.awt.*;
 import javax.swing.*;
-
 import model.poissons.Poisson;
 
 public class Inventaire {
@@ -19,6 +19,7 @@ public class Inventaire {
         public static Emplacementinv emp4;
         public static Emplacementinv emp5;
         public static Emplacementinv emp6;
+
         final Dimension size_icone_inv = new Dimension(80, 80);
 
         Poisson poisson_default = new Poisson();
@@ -51,6 +52,7 @@ public class Inventaire {
                         new ImageIcon("res/poissons/poisson_tetra/poisson_droite.png").getImage().getScaledInstance(55,
                                         55,
                                         Image.SCALE_DEFAULT));
+
         public static ImageIcon img_inv_neo = new ImageIcon(
                         new ImageIcon("res/poissons/poisson_neo/in_bag.png").getImage().getScaledInstance(80,
                                         80,
@@ -63,9 +65,7 @@ public class Inventaire {
         public static ImageIcon java_fern = new ImageIcon("res/background/decorations/java_fern.png");
         public static ImageIcon blue_blue = new ImageIcon("res/background/decorations/blue_blue.png");
         public static ImageIcon scarlet_rot = new ImageIcon("res/background/decorations/scarlet_rot.png");
-
         public static ImageIcon img_temp = new ImageIcon("res/background/decorations/planteTemp.png");
-
         ImageIcon empty_poi = new ImageIcon("res/poissons/poisson_rouge/poisson_droite.png");
         public static ImageIcon empty_inv = new ImageIcon(
                         new ImageIcon("res/poissons/empty.png").getImage().getScaledInstance(80, 80,
@@ -122,7 +122,6 @@ public class Inventaire {
                 emp5.setVisible(etat);
                 emp6.setVisible(etat);
         }
-
 }
 
 // Слава Україні!

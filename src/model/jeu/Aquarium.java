@@ -1,6 +1,7 @@
 // Itération 1: Jérémie Caron
 // Itération 2: Jérémie Caron
 // Itération 3: Jérémie Caron
+
 // Classe qui gère l'aquarium et ses emplacements
 
 package model.jeu;
@@ -12,8 +13,10 @@ public class Aquarium {
 
     // attributs de la classe
     public Emplacementaq emp1, emp2, emp3, aqua1, aqua2, aqua3, aqua4, aqua5, aqua6;
+
     final Dimension size_icone_inv = new Dimension(80, 80);
     final Dimension size_icone_poi = new Dimension(70, 70);
+
     public static ImageIcon empty_poi = new ImageIcon("res/poissons/empty.png");
 
     
@@ -90,7 +93,6 @@ public class Aquarium {
         aqua5.setVisible(etat);
         aqua6.setVisible(etat);
     }
-
 }
 
 // Слава Україні!

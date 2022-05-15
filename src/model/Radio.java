@@ -1,14 +1,16 @@
 // Itération 3: Jérémie Caron
 
+// Classe qui controle la radio
+
 package model;
 
 import java.io.File;
 import java.io.IOException;
-
 import javax.sound.sampled.*;
 
 public class Radio {
 
+    // attributs de la classe
     Long currentFrame;
     Clip clip;
 
@@ -18,24 +20,28 @@ public class Radio {
     AudioInputStream audioInputStream;
     static String filePath = "res/sons/ambiance.wav";
 
-    // constructeur pour initialiser l'audio stream et le clip 
+    // constructeur pour initialiser l'audio stream et le clip
     public Radio()
             throws UnsupportedAudioFileException,
             IOException, LineUnavailableException {
-        
+
         audioInputStream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
         clip = AudioSystem.getClip();
         clip.open(audioInputStream);
         clip.loop(Clip.LOOP_CONTINUOUSLY); // pour qu'il n'arrete pas à la fin de son cycle
     }
 
-    // Methode pour jouer la musique
+    /**
+     * Methode pour jouer la musique
+     */
     public void play() {
         clip.start();
         status = "play";
     }
 
-    // Methode pour mettre la musique sur pause
+    /**
+     * Methode pour mettre la musique sur pause
+     */
     public void pause() {
         if (status.equals("paused")) {
             System.out.println("audio is already paused");
@@ -46,12 +52,12 @@ public class Radio {
         status = "paused";
     }
 
-    
-    /** 
+    /**
      * @throws UnsupportedAudioFileException
      * @throws IOException
      * @throws LineUnavailableException
-     * Méthode pour rejouer la musique (rejouer après une pause)
+     *                                       Méthode pour rejouer la musique
+     *                                       (rejouer après une pause)
      */
     public void resumeAudio() throws UnsupportedAudioFileException,
             IOException, LineUnavailableException {
@@ -66,12 +72,11 @@ public class Radio {
         this.play();
     }
 
-    
-    /** 
+    /**
      * @throws UnsupportedAudioFileException
      * @throws IOException
      * @throws LineUnavailableException
-     * Méthode pour remettre le son à zéro
+     *                                       Méthode pour remettre le son à zéro
      */
     public void resetAudioStream() throws UnsupportedAudioFileException, IOException,
             LineUnavailableException {
@@ -80,7 +85,6 @@ public class Radio {
         clip.open(audioInputStream);
         clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
-
 }
 
 // Слава Україні!

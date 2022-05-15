@@ -1,6 +1,7 @@
 // Itération 1: Frédéric Choinière
 // Itération 2: Frédéric Choinière, Jérémie Caron
 // Itération 3: Jérémie Caron
+
 // Classe qui contrôle le temps et le timer global
 
 package model.environnement;
@@ -18,8 +19,6 @@ public class Temps {
     public static boolean isPaused = true, beenPaused = false;;
     static short i = 0;
 
-    // Incrémente GUIMain.jours (timer global) au DUREE secondes
-
     /**
      * @param jour
      *             Affiche le jour actuel
@@ -28,8 +27,9 @@ public class Temps {
         GUIMain.label_jours.setText(Integer.toString(jour));
         GUIMain.label_jours2.setText(Integer.toString(jour));
     }
+
     /**
-     *  TODO:Commenter
+     * Méthode pour partir et arreter les cooldowns
      */
     public static void checkCooldown() {
         cooldown = new Timer();
@@ -37,17 +37,13 @@ public class Temps {
             @Override
             public void run() {
                 if (!isPaused) {
-
                     tempsActuel = (int) System.currentTimeMillis();
-
                     MethodeGUIMain.live = tempsActuel - (tempsReprise - tempsPause);
-                    
                     if (MethodeGUIMain.cooldownC()) {
                         GUIMain.setCooldownVisibleC();
                     } else {
                         GUIMain.setCooldownInvisibleC();
                     }
-
                     if (MethodeGUIMain.cooldownP()) {
                         GUIMain.setCooldownVisibleP();
                     } else {
@@ -60,7 +56,6 @@ public class Temps {
                         e.printStackTrace();
                     }
                 }
-
             }
         }, 0, 500); // vérifie à chaque seconde
     }
@@ -92,8 +87,6 @@ public class Temps {
                 jourAJour((int) GUIMain.jours);
                 Argent.paye(GUIMain.label_argent_aqua, GUIMain.label_argent_shop);
                 GUIMain.eau.getScoreEau();
-                // MethodeGUIMain.checkCooldown();
-
                 if (i > 5) {
                     i = 0;
                     Magasin.resetPrice();
@@ -104,7 +97,6 @@ public class Temps {
             }
         }, 0, DUREE);
     }
-
 }
 
 // Слава Україні!

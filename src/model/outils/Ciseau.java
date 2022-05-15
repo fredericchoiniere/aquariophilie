@@ -1,10 +1,10 @@
 // Itération 2: Jérémie Caron
+
 //Classe pour l'outil ciseau
 
 package model.outils;
 
 import javax.swing.*;
-
 import java.awt.*;
 
 public class Ciseau extends Outils {

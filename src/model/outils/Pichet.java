@@ -1,10 +1,10 @@
 // Itération 3: Jérémie Caron
+
 //Classe pour l'outil pichet
 
 package model.outils;
 
 import javax.swing.*;
-
 import java.awt.*;
 
 public class Pichet extends Outils {
@@ -34,7 +34,6 @@ public class Pichet extends Outils {
         panel.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
                 icone_pichet.getImage(),
                 new Point(0, 0), "curseur plein"));
-
     }
 }
 

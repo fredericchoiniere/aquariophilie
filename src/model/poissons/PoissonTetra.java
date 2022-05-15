@@ -1,15 +1,17 @@
 // Itération 2: Jérémie Caron, Frédéric Choinière
 // Itération 3: Jérémie Caron
 
+// Classe qui permet de stocker les attribus et faire nager le poisson
+
 package model.poissons;
 
 import java.awt.*;
-
 import model.GestionException;
 import model.environnement.Temps;
 import view.GUIMain;
 
 public class PoissonTetra extends Poisson implements Runnable {
+
     // attributs de la classe
     public int x_min = 4;
     public int x_max = 286;
@@ -32,6 +34,10 @@ public class PoissonTetra extends Poisson implements Runnable {
         setImg();
     }
 
+    /**
+     * @return boolean
+     *        Méthode qu permet de voir si le poisson est correct dans le paramètre
+     */
     public static boolean checkTolerances() {
         if (GUIMain.eau.getPH() < 4 || GUIMain.eau.getPH() > 9 || GUIMain.eau.getGH() < 3
                 || GUIMain.eau.getAmmoniaque() > 2 || GUIMain.eau.getNitrites() > 1 || GUIMain.eau.getNitrates() > 40) {
@@ -47,7 +53,8 @@ public class PoissonTetra extends Poisson implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, PoissonRouge.empty, Poisson.rip), x_temp, y_temp,
+        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, PoissonRouge.empty, Poisson.rip), x_temp,
+                y_temp,
                 this);
     }
 
@@ -66,7 +73,7 @@ public class PoissonTetra extends Poisson implements Runnable {
     }
 
     /**
-     * TODO:Commenter
+     * Méthode qui permet de faire tourner le poisson
      */
     public void setImg() {
         if (side == 1) {
@@ -81,7 +88,7 @@ public class PoissonTetra extends Poisson implements Runnable {
     }
 
     /**
-     * TODO: Commenter
+     * Méthode qui permet de faire bouger le poisson
      */
     @Override
     public void run() {
@@ -97,7 +104,7 @@ public class PoissonTetra extends Poisson implements Runnable {
                 }
                 if (y_temp > y_max) {
                     setYVelocity(-vel_y);
-                    if(isDead){
+                    if (isDead) {
                         setYVelocity(0);
                         this.var = false;
                     }

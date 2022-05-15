@@ -1,10 +1,11 @@
 // Itération 2: Jérémie Caron, Frédéric Choinière
 // Itération 3: Jérémie Caron
 
+// Classe qui permet de stocker les attribus et faire nager le poisson
+
 package model.poissons;
 
 import java.awt.*;
-
 import model.GestionException;
 import model.environnement.Temps;
 import view.GUIMain;
@@ -22,7 +23,6 @@ public class PoissonBetta extends Poisson implements Runnable {
     public int vel_x = 1;
     public int vel_y = 1;
     public static int prix = 500;
-
     public static int dechets = 4;
     public static int tolerance = 8;
 
@@ -34,6 +34,11 @@ public class PoissonBetta extends Poisson implements Runnable {
         setImg();
     }
 
+    /**
+     * @return boolean
+     *         Méthode qu permet de voir si le poisson est correct dans le paramètre
+     *         actuel de l'eau
+     */
     public static boolean checkTolerances() {
         if (GUIMain.eau.getPH() < 3 || GUIMain.eau.getPH() > 9 || GUIMain.eau.getGH() < 3
                 || GUIMain.eau.getAmmoniaque() > 4 || GUIMain.eau.getNitrites() > 3 || GUIMain.eau.getNitrates() > 55) {
@@ -68,6 +73,9 @@ public class PoissonBetta extends Poisson implements Runnable {
         repaint();
     }
 
+    /**
+     * Méthode pour faire tourner le poisson
+     */
     public void setImg() {
         if (side == 1) {
             direction = "droite";
@@ -80,6 +88,9 @@ public class PoissonBetta extends Poisson implements Runnable {
         }
     }
 
+    /**
+     * Méthode pour faire nager le poisson
+     */
     @Override
     public void run() {
         while (var) {
@@ -113,7 +124,6 @@ public class PoissonBetta extends Poisson implements Runnable {
 
         }
     }
-
 }
 
 // Слава Україні!

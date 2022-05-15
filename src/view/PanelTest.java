@@ -1,6 +1,8 @@
-// Frédéric Choinière, Jérémie Caron   itération 1
-// Justin Plouffe itération 2
-// Justin Plouffe Itération 3
+// Itération 1: Frédéric Choinière, Jérémie Caron
+// Itération 2: Justin Plouffe
+// Itération 3: Justin Plouffe
+
+// Classe du panel pour tester l,eau
 
 package view;
 
@@ -9,10 +11,10 @@ import java.awt.event.*;
 import java.awt.*;
 import model.chimie.CycleAzote;
 import model.chimie.Molecules;
-//import model.environnement.Temps;
 
-public class PanelTest extends JPanel implements ActionListener {
+public class PanelTest extends JPanel {
 
+    // attributs de la classe
     CycleAzote cycle;
 
     // création des labels
@@ -21,7 +23,9 @@ public class PanelTest extends JPanel implements ActionListener {
             lblOKPH, lblOKGH, lblOKKH;
 
     Thread cycle1;
+
     boolean isFocused;
+
     Molecules mol = new Molecules();
 
     public PanelTest() {
@@ -57,7 +61,6 @@ public class PanelTest extends JPanel implements ActionListener {
         lblAmmo = new JLabel("0.00");
         lblNitrites = new JLabel("0.00");
         lblNitrates = new JLabel("0.00");
-
         lblScorePH = new JLabel("100");
         lblScoreGH = new JLabel("100");
         lblScoreKH = new JLabel("100");
@@ -171,11 +174,8 @@ public class PanelTest extends JPanel implements ActionListener {
         lblSoluPH.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
                 if (GUIMain.pipette.getEstRemplie()) {
-
                     GUIMain.pipette.enleverUneGoutte();
-
                     switch (GUIMain.eau.getPHint()) {
                         case 0: {
                             lblSoluPH.setIcon(new ImageIcon("res/outils/gradation_solutions/ph/0.png"));
@@ -495,15 +495,6 @@ public class PanelTest extends JPanel implements ActionListener {
         lblScoreEau.setBounds(0, 0, 25, 20);
         layersPT.setLayer(lblScoreEau, 2);
         layersPT.add(lblScoreEau);
-
-    }
-
-    /**
-     * @param e
-     *          Actionlistener
-     */
-    @Override
-    public void actionPerformed(ActionEvent e) {
 
     }
 }

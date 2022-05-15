@@ -1,19 +1,21 @@
 // Itération 1: Jérémie Caron
 // Itération 2 : Justin Plouffe
+
 //Classe pour l'outil pipette
 
 package model.outils;
 
 import javax.swing.*;
 import java.awt.*;
-
 import view.GUIMain;
 
 public class Pipette extends Outils {
 
     // attributs de la classe
     ImageIcon curseur_vide, curseur_plein, icone_vide, icone_plein;
+
     public boolean est_remplie = false;
+
     public int nbGouttes = 0;
 
     public Pipette() {
