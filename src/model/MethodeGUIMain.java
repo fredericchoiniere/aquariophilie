@@ -1,13 +1,14 @@
 // Itération 2: Jérémie Caron, Frédéric Choinière
 // Itération 3: Jérémie Caron
 
+// Classe qui gère les méthode de la classe GUIMain
+
 package model;
 
 import model.jeu.*;
 import model.plantes.*;
 import model.poissons.*;
 import view.GUIMain;
-
 import java.awt.*;
 import javax.swing.*;
 
@@ -15,15 +16,17 @@ public class MethodeGUIMain {
 
     // call des attributs de la classe
     Aquarium aquarium;
+
     Inventaire inventaire;
+
     static Boolean hasPlants = false;
     public static Boolean cooldownC = false;
     public static Boolean cooldownP = false;
     public static Boolean isCoquillage = false;
     public static Boolean isPichet = false;
     public static Boolean dansRectC = false, dansRectP = false;
-    public static int clickRecentC = 0, clickRecentP = 0, live;
 
+    public static int clickRecentC = 0, clickRecentP = 0, live;
     static final int CD_COQUILLAGE = 12000;
     static final int CD_PICHET = 20000;
 
@@ -58,7 +61,7 @@ public class MethodeGUIMain {
                 }
             }
         } catch (Exception e) {
-            // GestionException.GestionExceptionPla(pla);
+            GestionException.GestionExceptionPla(pla);
         }
     }
 
@@ -89,7 +92,7 @@ public class MethodeGUIMain {
                 }
             }
         } catch (Exception e) {
-
+            GestionException.GestionExceptionPoi(poi);
         }
     }
 
@@ -124,7 +127,7 @@ public class MethodeGUIMain {
                 }
             }
         } catch (Exception e) {
-            // GestionException.GestionExceptionObjet();
+            GestionException.GestionExceptionObjet();
         }
     }
 
@@ -154,7 +157,7 @@ public class MethodeGUIMain {
                 }
             }
         } catch (Exception e) {
-            // GestionException.GestionExceptionObjet();
+            GestionException.GestionExceptionObjet();
         }
     }
 
@@ -698,21 +701,13 @@ public class MethodeGUIMain {
      * @return boolean
      */
     public static boolean cooldownC() {
-
         if (Math.abs(live - clickRecentC) < CD_COQUILLAGE && dansRectC) {
-            /*
-             * System.out.println("coquillage sous cooldown, live: " + live +
-             * "\nclickrecent: " + clickRecentC);
-             * System.out.println("delta temps (ms): " + Math.abs(live - clickRecentC));
-             */
             cooldownC = true;
         } else {
             cooldownC = false;
             dansRectC = false;
             clickRecentC = live;
-            // System.out.println("coquillage pas sous cooldown");
         }
-
         return cooldownC;
     }
 
@@ -720,24 +715,15 @@ public class MethodeGUIMain {
      * @return boolean
      */
     public static boolean cooldownP() {
-
         if (Math.abs(live - clickRecentP) < CD_PICHET && dansRectP) {
-            /*
-             * System.out.println("pichet sous cooldown, live: " + live + "\nclickrecent: "
-             * + clickRecentP);
-             * System.out.println("delta temps (ms): " + Math.abs(live - clickRecentP));
-             */
             cooldownP = true;
         } else {
             cooldownP = false;
             dansRectP = false;
             clickRecentP = live;
-            // System.out.println("pichet pas sous cooldown");
         }
-
         return cooldownP;
     }
-
 }
 
 // Слава Україні!

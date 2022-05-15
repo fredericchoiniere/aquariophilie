@@ -1,5 +1,7 @@
 // Itétation 3: Jérémie Caron
 
+//Classe des emplacements de la santé
+
 package model.jeu;
 import javax.swing.JProgressBar;
 

@@ -1,19 +1,22 @@
 // Iteration 3: Jérémie Caron
-// TODO:Commenter la classe
 
+// Classe qui créer et gère les progressBar de la Sante
 package model.jeu;
 
 import java.awt.*;
 import javax.swing.*;
 
 public class Sante {
+    // attributs de la classe
     public static EmplacementSante emp1, emp2, emp3, emp4, emp5, emp6;
+
     final Dimension size_icone_sante = new Dimension(200, 20);
 
     public static boolean state1 = false, state2 = false, state3 = false, state4 = false, state5 = false,
             state6 = false;
 
     public Sante(JLabel label) {
+        // création des emplacements de la santé
         emp1 = new EmplacementSante();
         emp1.setBounds(20, 50, (int) size_icone_sante.getWidth(), (int) size_icone_sante.getHeight());
         emp1.setValue(100);
@@ -70,12 +73,13 @@ public class Sante {
     }
 
     /**
-     * @param etat1
-     * @param etat2
-     * @param etat3
-     * @param etat4
-     * @param etat5
-     * @param etat6
+     * @param boolean
+     * @param boolean
+     * @param boolean
+     * @param boolean
+     * @param boolean
+     * @param boolean
+     *                Méthode pour set visible ou invisible les progress Bar
      */
     public void setVisible(boolean etat1, boolean etat2, boolean etat3, boolean etat4, boolean etat5, boolean etat6) {
         emp1.setVisible(etat1);

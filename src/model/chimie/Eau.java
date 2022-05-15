@@ -1,6 +1,7 @@
 // Itération 1: Frédéric Choinière, Justin Plouffe
 // Itération 2: Frédéric Choinière
 // Itération 3: Jérémie Caron, Justin Plouffe
+
 // Classe qui contrôle les paramètres d'eau
 
 package model.chimie;
@@ -24,7 +25,7 @@ public class Eau implements Runnable {
     public float variationPH = 0;
     public float volumeEau = (float) 37.85;
     public static float nitrites = 0;
-    public static float nitrates = 0; 
+    public static float nitrates = 0;
     public static float ammoniaque = 0;
     public float tempAmmoniaque = 0;
     public float tempNitrites = 0;
@@ -32,26 +33,21 @@ public class Eau implements Runnable {
     public float jours = GUIMain.jours;
     public float jourInitial = 0;
     public float hauteur = 35, largeur = 20, longueur = (float) 54.07; // Dimensions de l'aquarium de 10 gallons/37.85L
-    public static int hauteurEnPixels = 177; // 192// Hauteur en pixels de l'eau de l'aquarium rempli
-    public static int positionEnPixels = 299;// 305
-
     private static float scorePH = 0;
     private static float scoreGH;
     private static float scoreKH;
     private static float scoreAmmo;
     private static float scoreNitrites;
     private static float scoreNitrates;
+    public float scoreEau = (float) 100.0;
 
+    public static int hauteurEnPixels = 177; // 192// Hauteur en pixels de l'eau de l'aquarium rempli
+    public static int positionEnPixels = 299;// 305
     public int sommeAbsorptionDechets = 0;
     public int potentielDechets = 0, sommeDechets = 0;
-    /*
-    public int nbAtomeN = 0;
-    public int nbAtomeO = 2103;
-    public int nbAtomeH = 4206;
-    */
-    public float scoreEau = (float) 100.0;
-    public static Random random = new Random();
     public static int randomNumber;
+
+    public static Random random = new Random();
 
     final short valeur_changement = 1;
 
@@ -65,13 +61,10 @@ public class Eau implements Runnable {
     public List<Float> listeAmmoniaque = Collections.synchronizedList(listeAmmoniaqueTemp); // Liste synchronisée
     public ListIterator<Float> iteratorAmmoniaque; // Itérateur pour additionner les valeurs d'ammoniaque
     public ArrayList<Float> listeAmmoniaqueIteration = new ArrayList<Float>(); //
-
     public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
     public ListIterator<Float> iteratorNitrites; // Itérateur pour additionner les valeurs de nitrites
-
     public ArrayList<Integer> listeAbsorption = new ArrayList<Integer>();
-
     public ArrayList<CycleAzote> listeCycles = new ArrayList<CycleAzote>();
 
     /**
@@ -91,8 +84,8 @@ public class Eau implements Runnable {
     }
 
     /**
-     * @param nouveauPH
-     *                  Setter du pH
+     * @param float
+     *              Setter du pH
      */
     public void setPH(float nouveauPH) {
         if (nouveauPH <= 0)
@@ -110,8 +103,8 @@ public class Eau implements Runnable {
     }
 
     /**
-     * @param nouveauGH
-     *                  Setter pour le gH
+     * @param float
+     *              Setter pour le gH
      */
     public void setGH(float nouveauGH) {
         if (nouveauGH <= 0)
@@ -129,8 +122,8 @@ public class Eau implements Runnable {
     }
 
     /**
-     * @param nouveauKH
-     *                  Setter pour le kH
+     * @param float
+     *              Setter pour le kH
      */
     public void setKH(float nouveauKH) {
         if (nouveauKH <= 0)
@@ -164,9 +157,9 @@ public class Eau implements Runnable {
     }
 
     /**
-     * @param ammoniaque
-     *                   Ajoute une valeur d'ammoniaque fournie dans la
-     *                   listeAmmoniaque
+     * @param float
+     *              Ajoute une valeur d'ammoniaque fournie dans la
+     *              listeAmmoniaque
      */
     public void addAmmoniaque(float ammoniaque) { // ajouter différence, mettre dans intervalle [tant que y > 0 && pente
                                                   // négative]
@@ -174,8 +167,8 @@ public class Eau implements Runnable {
     }
 
     /**
-     * @param nitrites
-     *                 Ajoute une valeur de nitrites fournie dans la listeNitrites
+     * @param float
+     *              Ajoute une valeur de nitrites fournie dans la listeNitrites
      */
     public void addNitrites(float nitrites) { // ajouter différence, mettre dans intervalle
         listeNitrites.add(nitrites);
@@ -187,18 +180,12 @@ public class Eau implements Runnable {
      */
     public float sommeAmmoniaque() {
         sommeAmmoniaque = 0;
-
         iteratorAmmoniaque = listeAmmoniaqueTemp.listIterator();
-
         while (iteratorAmmoniaque.hasNext()) {
-
             sommeAmmoniaque += iteratorAmmoniaque.next();
             iteratorAmmoniaque.remove();
-
         }
-
         listeAmmoniaqueTemp.addAll(listeAmmoniaque);
-
         ammoniaque = sommeAmmoniaque;
         return ammoniaque;
     }
@@ -210,15 +197,12 @@ public class Eau implements Runnable {
     public float sommeNitrites() {
         sommeNitrites = 0;
         iteratorNitrites = listeNitrites.listIterator();
-
         while (iteratorNitrites.hasNext()) {
-
             if (iteratorNitrites.hasNext()) {
                 sommeNitrites += iteratorNitrites.next();
                 iteratorNitrites.remove();
             }
         }
-
         nitrites = sommeNitrites;
         return nitrites;
     }
@@ -287,7 +271,6 @@ public class Eau implements Runnable {
             if (!dechetsCycleParti) {
                 dechetsCycleParti = true;
                 partirCycle(jours);
-                // System.out.println("cycle démarré, boolean " + dechetsCycleParti);
             }
         }
     }
@@ -319,7 +302,6 @@ public class Eau implements Runnable {
      * La hauteur de l'eau dans l'aquarium rempli est 35cm
      */
     public void variationNiveauEau() {
-
         if (hauteurEnPixels > 100) {
             hauteur -= 0.182;
             hauteurEnPixels -= valeur_changement;
@@ -334,7 +316,7 @@ public class Eau implements Runnable {
     /** 
      * Remets des valeurs de base lors d'un changement d'eau à l'aide de l'outil pichet
      */
-    public void changerEau(){
+    public void changerEau() {
         volumeEau = (float) 37.85;
         hauteur = 35;
         kh = 6;
@@ -366,7 +348,7 @@ public class Eau implements Runnable {
 
     /**
      * @return scoreEau
-     * Retourne un score sur 100 de la qualité globale de l'eau
+     *         Retourne un score sur 100 de la qualité globale de l'eau
      */
     public float getScoreEau() {
         scoreEau = (setScorePH() + setScoreGH() + setScoreKH() + setScoreAmmo() + setScoreNitrates()
@@ -380,11 +362,10 @@ public class Eau implements Runnable {
      *         score de l'eau
      */
     public float setScorePH() {
-
         if (ph >= 6 && ph <= 9) {
             scorePH = (float) 14.0;
         }
-        if (getPH() <= 1){
+        if (getPH() <= 1) {
             scorePH = (float) 0.0;
         }
         if (getPH() < 6 && getPH() > 1) {
@@ -406,7 +387,7 @@ public class Eau implements Runnable {
     public float setScoreGH() {
 
         float variationGH;
-        
+
         if (gh >= 6 && gh <= 8) {
             scoreGH = (float) 14.0;
         }
@@ -430,9 +411,7 @@ public class Eau implements Runnable {
      *         score de l'eau
      */
     public float setScoreKH() {
-
         float variationKH;
-
         if (kh >= 4 && kh <= 8) {
             scoreKH = (float) 14.0;
         }
@@ -456,9 +435,7 @@ public class Eau implements Runnable {
      *         (18/100) du score de l'eau
      */
     public float setScoreAmmo() {
-
         float variationAmmo = 0;
-
         if (ammoniaque <= 0.5) {
             variationAmmo = 0;
             scoreAmmo = (float) 18.0;
@@ -475,9 +452,7 @@ public class Eau implements Runnable {
      *         (24/100) du score de l'eau
      */
     public float setScoreNitrites() {
-
         float variationNitrites;
-
         if (nitrites <= 1) {
             variationNitrites = 0;
             scoreNitrites = (float) 24.0;
@@ -494,9 +469,7 @@ public class Eau implements Runnable {
      *         (16/100) du score de l'eau
      */
     public float setScoreNitrates() {
-
         float variationNitrates;
-
         if (nitrates <= 40) {
             variationNitrates = 0;
             scoreNitrates = (float) 16.0;
@@ -508,14 +481,12 @@ public class Eau implements Runnable {
     }
 
     /**
-     * @param  flt
+     * @param float
      * @return string
      *         Transforme un float en string (format 2 décimales #,##)
      */
     public String toString(float flt) {
-
         String str = "0.00";
-
         if (String.valueOf(flt).length() >= 4) {
             str = String.valueOf(flt).substring(0, 4);
         } else {
@@ -524,16 +495,18 @@ public class Eau implements Runnable {
         return str;
     }
 
-    /** 
-     * @param jourInit
-     *        Ajoute un cycle dans une liste, ce qui permet d'avoir plusieurs cycles simultanés
+    /**
+     * @param float
+     *              Ajoute un cycle dans une liste, ce qui permet d'avoir
+     *              plusieurs cycles simultanés
      */
     public void partirCycle(float jourInit) {
         listeCycles.add(new CycleAzote(jourInit));
     }
 
     /**
-     * Méthode run de la classe Eau
+     * Méthode run de la classe Eau qui garde toute les valeurs de l'eau ou autre à
+     * jour
      */
     @Override
     public void run() {
@@ -542,8 +515,6 @@ public class Eau implements Runnable {
         jourInitial = jours;
         while (true) {
             jours = GUIMain.jours;
-            // setCompteurJoursCycle(jours - jourInitial);
-
             if (!Temps.isPaused) {
                 try {
                     sommeAmmoniaque();
@@ -568,7 +539,6 @@ public class Eau implements Runnable {
                     GUIMain.panelTest.lblScoreAmmo.setText(toString(GUIMain.eau.setScoreAmmo()));
                     GUIMain.panelTest.lblScoreNitrites.setText(toString(GUIMain.eau.setScoreNitrites()));
                     GUIMain.panelTest.lblScoreNitrates.setText(toString(GUIMain.eau.setScoreNitrates()));
-
                     GUIMain.panelTest.lblScoreEau.setText(toString(GUIMain.eau.getScoreEau()));
 
                     for (short i = 0; i < 6; i++)
@@ -602,7 +572,6 @@ public class Eau implements Runnable {
                     e.printStackTrace();
                 }
             }
-
         }
     }
 }

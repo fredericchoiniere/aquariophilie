@@ -1,14 +1,13 @@
-//Jérémie Caron     itération 1
-//Frédéric Choinière     itération 2
+// Itération 1: Jérémie Caron
+// Itération 2: Frédéric Choinière
+
 //Classe pour l'affichage des infos
 
 package view.tabs;
 
 import java.awt.*;
 import java.text.DecimalFormat;
-
 import javax.swing.*;
-
 import model.GestionException;
 import model.chimie.Molecules;
 import model.environnement.Temps;
@@ -34,12 +33,13 @@ public class PanelInfo extends JPanel implements Runnable { // TODO: ajouter PH/
 
     public PanelInfo() { // Constructeur de la classe PanelInfo
 
+        // création des labels et progressBar du paneel info
         mol = new Molecules();
         mol.ammoniaqueAtomesMol();
         mol.nitritesAtomesMol();
         mol.nitratesAtomesMol();
 
-        setLayout(null);
+        setLayout(null); // layout du panel info
 
         lblAction = new JLabel("Action en cours: ");
         lblAction.setBounds(190, 98, 200, 20);

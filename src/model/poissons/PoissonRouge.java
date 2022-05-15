@@ -1,11 +1,11 @@
 // Itération 2: Jérémie Caron, Frédéric Choinière     itération 2
 // Itération 3: Jérémie Caron
-//TODO:Commenter
+
+// Classe qui permet de stocker les attribus et faire nager le poisson
 
 package model.poissons;
 
 import java.awt.*;
-
 import model.GestionException;
 import model.environnement.Temps;
 import view.GUIMain;
@@ -24,18 +24,22 @@ public class PoissonRouge extends Poisson implements Runnable {
     int vel_y = 1;
     public static int prix = 50;
     public static int tolerance = 6;
+    public static int dechets = 5;
 
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_droite.png");
     Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_gauche.png");
     static Image empty = Toolkit.getDefaultToolkit().getImage("res/poissons/empty.png");
 
-    public static int dechets = 5;
-
     public PoissonRouge() {
         setImg();
     }
 
+    
+    /** 
+     * @return boolean
+     *        Méthode qu permet de voir si le poisson est correct dans le paramètre
+     */
     public static boolean checkTolerances() {
         if (GUIMain.eau.getPH() < 3 || GUIMain.eau.getPH() > 9 || GUIMain.eau.getGH() < 3
                 || GUIMain.eau.getAmmoniaque() > 3 || GUIMain.eau.getNitrites() > 2 || GUIMain.eau.getNitrates() > 50) {
@@ -71,7 +75,7 @@ public class PoissonRouge extends Poisson implements Runnable {
     }
 
     /**
-     * TODO:Commenter
+     * Méthode qui permet de faire tourner le poisson
      */
     public void setImg() {
         if (side == 1) {
@@ -86,7 +90,7 @@ public class PoissonRouge extends Poisson implements Runnable {
     }
 
     /**
-     * TODO:Commenter
+     * méthode pour faire bouger le poisson
      */
     @Override
     public void run() {

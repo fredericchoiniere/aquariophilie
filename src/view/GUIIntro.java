@@ -1,5 +1,6 @@
 // Itération 1: Jérémie Caron
 // Itération 3: Jérémie Caron, Justin Plouffe
+
 //Classe pour l'affichage du frame d'introduction
 
 package view;
@@ -8,16 +9,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-
 import model.jeu.Argent;
 import model.plantes.*;
 import model.poissons.*;
-
 import java.awt.event.*;
 
 public class GUIIntro extends JPanel {
+    // attributs de la classe
     private Image image;
+
     public static JLabel label, lblNouvellePartie, lblModeEvaluation;
+
     public static JButton btnNouvellePartie, btnModeEvaluation, btnQuitter, btnCredits;
 
     static ImageIcon img = new ImageIcon("res/background/icone_aquariophilie.png");
@@ -35,7 +37,6 @@ public class GUIIntro extends JPanel {
         super.paintComponent(g);
         g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
     }
-
     public static void guiIntroFrame() {
         try {
             JFrame frame = new JFrame("Image");

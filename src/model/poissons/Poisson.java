@@ -1,6 +1,7 @@
 // Itération 2: Frédéric Choinière, Jérémie Caron
 // Itération 3: Jérémie Caron, Frédéric Choinière
-//TODO:Commenter la classe
+
+// Classe qui controle les poissons (classe mère des poissons)
 
 package model.poissons;
 
@@ -11,7 +12,6 @@ import model.chimie.Eau;
 import model.jeu.Inventaire;
 import model.jeu.Sante;
 import view.GUIMain;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
@@ -21,17 +21,20 @@ public class Poisson extends JPanel {
     // attributs de la classe
     int vel_x = 1;
     int vel_y = 1;
-    private short sante = 100;
+    int randomNumber;
     public int index;
-    public String direction;
-    public boolean var = true, boolTolerances = true, isDead = false;
-    public String empInv, empAqua, nom;
     int hauteur = Eau.hauteurEnPixels, compensationPosition = Eau.hauteurEnPixels - (4 + (192 - Eau.hauteurEnPixels));
+
+    private short sante = 100;
+
+    public boolean var = true, boolTolerances = true, isDead = false;
+
+    public String direction;
+    public String empInv, empAqua, nom;
 
     static Poisson selection = new Poisson();
 
     public static Random random = new Random();
-    int randomNumber;
 
     static ArrayList<Short> listeACleanUp = new ArrayList<Short>();
     public static ArrayList<Poisson> listeVraisPoissons = new ArrayList<Poisson>(6);
@@ -39,8 +42,8 @@ public class Poisson extends JPanel {
     static Image rip = Toolkit.getDefaultToolkit().getImage("res/poissons/rip.png");
 
     /**
-     * @param isOpaque
-     *                 méthode pour rendre opaque
+     * @param boolean
+     *                méthode pour rendre opaque
      */
     @Override
     public void setOpaque(boolean isOpaque) {
@@ -48,16 +51,16 @@ public class Poisson extends JPanel {
     }
 
     /**
-     * @param vel_x
-     *              méthode pour donner la vitesse en x
+     * @param int
+     *            méthode pour donner la vitesse en x
      */
     public void setXVelocity(int vel_x) {
         this.vel_x = vel_x;
     }
 
     /**
-     * @param vel_y
-     *              méthode pour donner la vitesse en y
+     * @param int
+     *            méthode pour donner la vitesse en y
      */
     public void setYVelocity(int vel_y) {
         this.vel_y = vel_y;
@@ -160,35 +163,47 @@ public class Poisson extends JPanel {
     }
 
     /**
-     * @param label
-     * @param type
-     *              méthode pour afficher les tooltips
+     * @param JLabel
+     * @param String
+     *               méthode pour afficher les tooltipsdépendement du poisson
      */
     public static void updateToolTip(JLabel label, String type) { // TODO: terminer tooltips si changement de balance
         switch (type) {
             case "rouge":
-                label.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Poisson rouge</strong></span></p>" + 
-                "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">50</span></span><span style=\"color: #008080;\">฿</span></p>" +
-                "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">5 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>" +
-                "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #ff9900;\">moyenne</span></span></span></p></html>");
+                label.setToolTipText(
+                        "<html><p>Type: <span style=\"color: #008080;\"><strong>Poisson rouge</strong></span></p>" +
+                                "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">50</span></span><span style=\"color: #008080;\">฿</span></p>"
+                                +
+                                "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">5 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>"
+                                +
+                                "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #ff9900;\">moyenne</span></span></span></p></html>");
                 break;
             case "betta":
-                label.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Betta</strong></span></p>" + 
-                "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">500</span></span><span style=\"color: #008080;\">฿</span></p>" +
-                "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">4 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>" +
-                "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #008000;\">&eacute;lev&eacute;e</span></span></span></p></html>");
+                label.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Betta</strong></span></p>"
+                        +
+                        "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">500</span></span><span style=\"color: #008080;\">฿</span></p>"
+                        +
+                        "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">4 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>"
+                        +
+                        "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #008000;\">&eacute;lev&eacute;e</span></span></span></p></html>");
                 break;
             case "tetra":
-                label.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Tetra</strong></span></p>" + 
-                "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">200</span></span><span style=\"color: #008080;\">฿</span></p>" +
-                "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">2 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>" +
-                "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #993366;\">faible</span></span></span></p></html>");
+                label.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Tetra</strong></span></p>"
+                        +
+                        "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">200</span></span><span style=\"color: #008080;\">฿</span></p>"
+                        +
+                        "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">2 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>"
+                        +
+                        "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #993366;\">faible</span></span></span></p></html>");
                 break;
             case "neo":
-                label.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Neocaridina</strong></span></p>" + 
-                "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">125</span></span><span style=\"color: #008080;\">฿</span></p>" +
-                "<p>Absorbe <span style=\"color: #008080;\">2 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>" +
-                "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #ff0000;\">tr&egrave;s faible</span></span></span></p></html>");
+                label.setToolTipText(
+                        "<html><p>Type: <span style=\"color: #008080;\"><strong>Neocaridina</strong></span></p>" +
+                                "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">125</span></span><span style=\"color: #008080;\">฿</span></p>"
+                                +
+                                "<p>Absorbe <span style=\"color: #008080;\">2 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>"
+                                +
+                                "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #ff0000;\">tr&egrave;s faible</span></span></span></p></html>");
                 break;
             default:
                 label.setToolTipText("");
@@ -199,6 +214,7 @@ public class Poisson extends JPanel {
     /**
      * @param poisson
      * @return String
+     *         Méthode qui retourne le type de poisson dans un emplacement
      */
     public static String fishType(short poisson) {
         switch (poisson) {
@@ -220,14 +236,14 @@ public class Poisson extends JPanel {
     }
 
     /**
-     * @param numb
+     * @param short
+     *              Méthode qui change la sante d'un poisson selon son index
      */
     public static void setSante(short numb) {
         selection = GUIMain.listePoissonsAqua.get(numb);
         switch (fishType(numb)) {
             case "rouge":
                 ajusterSante(numb, PoissonRouge.tolerance);
-                //selection = (PoissonRouge) GUIMain.listePoissonsAqua.get(numb);
                 if (!selection.checkTolerances("rouge") && !selection.isDead) {
                     selection.sante -= 15;
                     if (selection.sante <= 0) {
@@ -238,7 +254,6 @@ public class Poisson extends JPanel {
                 break;
             case "betta":
                 ajusterSante(numb, PoissonBetta.tolerance);
-                //selection = (PoissonBetta) GUIMain.listePoissonsAqua.get(numb);
                 if (!selection.checkTolerances("betta") && !selection.isDead) {
                     selection.sante -= 15;
                     if (selection.sante <= 0) {
@@ -249,7 +264,6 @@ public class Poisson extends JPanel {
                 break;
             case "tetra":
                 ajusterSante(numb, PoissonTetra.tolerance);
-                //selection = (PoissonTetra) GUIMain.listePoissonsAqua.get(numb);
                 if (!selection.checkTolerances("tetra") && !selection.isDead) {
                     selection.sante -= 15;
                     if (selection.sante <= 0) {
@@ -260,7 +274,6 @@ public class Poisson extends JPanel {
                 break;
             case "neo":
                 ajusterSante(numb, PoissonNeo.tolerance);
-                //selection = (PoissonNeo) GUIMain.listePoissonsAqua.get(numb);
                 if (!selection.checkTolerances("neo") && !selection.isDead) {
                     selection.sante -= 15;
                     if (selection.sante <= 0) {
@@ -277,6 +290,8 @@ public class Poisson extends JPanel {
     /**
      * @param numb
      * @param tolerance
+     *                  Méthode qui ajuste la sante du poisson seon le score de
+     *                  l'eau
      */
     public static void ajusterSante(short numb, int tolerance) {
         if (GUIMain.eau.scoreEau >= 66 - tolerance) {
@@ -306,10 +321,9 @@ public class Poisson extends JPanel {
         }
     }
 
-    
-    /** 
+    /**
      * @return boolean
-     * TODO: commenter
+     *         Méthode qui regarde si les poisson sont dans leur tolérances
      */
     public boolean checkTolerances(String type) {
 
@@ -326,18 +340,16 @@ public class Poisson extends JPanel {
             case "neo":
                 boolTolerances = PoissonNeo.checkTolerances();
                 break;
-
             default:
                 break;
         }
-
         return boolTolerances;
     }
 
     /**
      * 
-     * @param numb
-     * TODO:commenter
+     * @param short
+     *              Méthode pour quand le poisson meurt
      */
     public static void killFish(short numb) {
         MethodeGUIMain.checkFishType(fishType(numb));
@@ -347,6 +359,9 @@ public class Poisson extends JPanel {
         listeACleanUp.add(numb);
     }
 
+    /**
+     * Méthode pour clean les poisson mort
+     */
     public static void cleanUp() {
         for (short indexMorts : listeACleanUp) {
             setFalse(indexMorts);
@@ -355,8 +370,8 @@ public class Poisson extends JPanel {
     }
 
     /**
-     * @param numb
-     * TODO:commenter
+     * @param short
+     *              Méthode qui permet d'enlever le poisson mort de l'application
      */
     public static void setFalse(short numb) {
         GUIMain.listePoissonsAqua.get(numb).direction = "empty";
@@ -409,7 +424,7 @@ public class Poisson extends JPanel {
 
     /**
      * @param index
-     * TODO:Commenter
+     *              Méthode qui permet de mettre les bars de vie à jour
      */
     public static void setBarValue(short index) {
         if (GUIMain.hasFish1) {
@@ -418,31 +433,36 @@ public class Poisson extends JPanel {
             if (selection.isDead) {
                 Sante.emp1.setValue(0);
             }
-        } if (GUIMain.hasFish2) {
+        }
+        if (GUIMain.hasFish2) {
             Sante.emp2.setVisible(true);
             Sante.emp2.setValue(GUIMain.listePoissonsAqua.get(index).sante);
             if (selection.isDead) {
                 Sante.emp2.setValue(0);
             }
-        } if (GUIMain.hasFish3) {
+        }
+        if (GUIMain.hasFish3) {
             Sante.emp3.setVisible(true);
             Sante.emp3.setValue(GUIMain.listePoissonsAqua.get(index).sante);
             if (selection.isDead) {
                 Sante.emp3.setValue(0);
             }
-        } if (GUIMain.hasFish4) {
+        }
+        if (GUIMain.hasFish4) {
             Sante.emp4.setVisible(true);
             Sante.emp4.setValue(GUIMain.listePoissonsAqua.get(index).sante);
             if (selection.isDead) {
                 Sante.emp4.setValue(0);
             }
-        } if (GUIMain.hasFish5) {
+        }
+        if (GUIMain.hasFish5) {
             Sante.emp5.setVisible(true);
             Sante.emp5.setValue(GUIMain.listePoissonsAqua.get(index).sante);
             if (selection.isDead) {
                 Sante.emp5.setValue(0);
             }
-        } if (GUIMain.hasFish6) {
+        }
+        if (GUIMain.hasFish6) {
             Sante.emp6.setVisible(true);
             Sante.emp6.setValue(GUIMain.listePoissonsAqua.get(index).sante);
             if (selection.isDead) {

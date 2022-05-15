@@ -1,9 +1,10 @@
 //Itération 3: Frédéric Choinière, Jérémie Caron
 
+// Classe qui permet de stocker les attribus et faire nager le poisson
+
 package model.poissons;
 
 import java.awt.*;
-
 import model.GestionException;
 import model.environnement.Temps;
 import view.GUIMain;
@@ -22,18 +23,23 @@ public class PoissonNeo extends Poisson implements Runnable {
     int vel_y = 1;
     public static int prix = 125;
     public static int tolerance = 0;
+    public static int dechets = (-2);
 
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_neo/poisson_droite.png");
     Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_neo/poisson_gauche.png");
     static Image empty = Toolkit.getDefaultToolkit().getImage("res/poissons/empty.png");
 
-    public static int dechets = (-2);
-
     public PoissonNeo() {
         setImg();
     }
 
+    
+    /** 
+     * @param 50
+     * @return boolean
+     *        Méthode qu permet de voir si le poisson est correct dans le paramètre
+     */
     public static boolean checkTolerances() { // ammo 2 nit 1 nat 40
         if (GUIMain.eau.getPH() < 4 || GUIMain.eau.getPH() > 8 || GUIMain.eau.getGH() < 3
                 || GUIMain.eau.getAmmoniaque() > 1 || GUIMain.eau.getNitrites() > 1 || GUIMain.eau.getNitrates() > 50) {
@@ -67,6 +73,9 @@ public class PoissonNeo extends Poisson implements Runnable {
         repaint();
     }
 
+    /**
+     *         Méthode qui permet de faire tourner le poisson
+     */
     public void setImg() {
         if (side == 1) {
             direction = "droite";
@@ -79,6 +88,9 @@ public class PoissonNeo extends Poisson implements Runnable {
         }
     }
 
+    /**
+     *         Méthode qui permet de faire nager le poisson
+     */
     @Override
     public void run() {
         while (var) {

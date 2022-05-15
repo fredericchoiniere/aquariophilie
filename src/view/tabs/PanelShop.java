@@ -1,6 +1,7 @@
-//Jérémie Caron     itération 1
-//Jérémie Caron, Frédéric Choinière     itération 2
-// Jérémie Caron    itération 3
+// Itération 1: Jérémie Caron, Frédéric Choinière
+// Itération 2: Jérémie Caron, Frédéric Choinière
+// Itération 3: Jérémie Caron
+
 //Classe pour l'affichage du magasin, pour itération 3
 
 package view.tabs;
@@ -8,7 +9,6 @@ package view.tabs;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-
 import model.jeu.*;
 import model.plantes.*;
 import model.poissons.*;
@@ -362,7 +362,8 @@ public class PanelShop extends JPanel implements ActionListener {
                 Magasin.checkPlantePrix(plante);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Achat impossible: inventaire plein", "Erreur", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Achat impossible: inventaire plein", "Erreur",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -436,7 +437,6 @@ public class PanelShop extends JPanel implements ActionListener {
             default:
                 break;
         }
-
     }
 
     /**
@@ -627,7 +627,6 @@ public class PanelShop extends JPanel implements ActionListener {
             }
         }
     }
-
 }
 
 // Слава Україні!

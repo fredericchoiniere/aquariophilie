@@ -7,19 +7,16 @@
 package view;
 
 // import pour le bon fonctionnement de la classe
-
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
 import control.Control;
 import model.*;
 import model.chimie.*;
@@ -47,7 +44,6 @@ public class GUIMain extends JFrame {
             radio_on, radio_off, kit_ouvert, kit_fermer, kit_bg, plant, skip_tuto1, skip_tuto2;
 
     public static JLabel label_tuto7, label_tuto8, label_jours2, pichet_label, coquillage_label;
-
     public static JLabel lblPipette = new JLabel();
     public static JLabel label_argent_aqua = new JLabel("");
     public static JLabel label_argent_shop = new JLabel("");
@@ -101,10 +97,13 @@ public class GUIMain extends JFrame {
 
     // création des attributs
     short stade, iteration = 0;
+
     int vel_x = 2;
     int vel_y = 2;
     public int argent = 0;
+
     public static float jours = (float) 0; // TIMER GLOBAL
+
     public static boolean hasFish1, hasFish2, hasFish3, hasFish4, hasFish5, hasFish6, hasPlant1, hasPlant2, hasPlant3,
             isSelected6;
     public static boolean coquillageVis = false, coquillageInvis = false, pichetVis = false, pichetInvis = false;
@@ -585,7 +584,6 @@ public class GUIMain extends JFrame {
                 aquarium_kit_ouvert.setVisible(true);
                 empty.setVisible(true);
                 panelTest.setVisible(true);
-                // setOutilsInvisible();
                 label_tutoriel.setVisible(false);
                 inventaire_bg.setVisible(false);
                 inventaire_ouvert.setVisible(false);

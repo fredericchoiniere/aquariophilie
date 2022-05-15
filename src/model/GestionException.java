@@ -1,12 +1,13 @@
 // Itération 3: Jérémie Caron, Justin Plouffe
 
+// Classe qui permet de faire la gestion des exceptions
+
 package model;
 
 import javax.swing.JOptionPane;
 
 public class GestionException {
 
-    
     /** 
      * @param type
      *        Exception si l'utilisateur dépose un poisson hors de l'application
@@ -71,7 +72,6 @@ public class GestionException {
                 "Erreur survenue avec la mise en pause ou le démarrage de la radio",
                 "Erreur", JOptionPane.ERROR_MESSAGE);
     }
-
 }
 
 // Слава Україні!
