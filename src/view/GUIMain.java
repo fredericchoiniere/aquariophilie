@@ -1164,6 +1164,7 @@ public class GUIMain extends JFrame {
             }
         });*/
 
+        //TODO: key listener fonctionnent pas
         //key listener pour skip avec la touche entrer
         skip_tuto1.addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
