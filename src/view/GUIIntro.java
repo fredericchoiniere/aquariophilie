@@ -1,5 +1,5 @@
-//Jérémie Caron     itération 1
-//Jérémie caron, Justin Plouffe Itération 3
+// Itération 1: Jérémie Caron
+// Itération 3: Jérémie Caron, Justin Plouffe
 //Classe pour l'affichage du frame d'introduction
 
 package view;
@@ -139,15 +139,11 @@ public class GUIIntro extends JPanel {
             btnCredits = new JButton(new ImageIcon("res/intro/credits.png"));
             btnCredits.addActionListener((ActionListener) new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    /** create a frame with a text area and make it appear and everything */
                     JFrame frame = new JFrame("Credits");
                     JTextArea textArea = new JTextArea();
-                    /** create a scrollpane and add it to the textarea */
-
-                    /** add the scrollpane to the frame */
 
                     textArea.setEditable(false);
-                    textArea.setText("Heyo !\n" + "Canadian checkers are the best.\n" + "I hope you enjoy this game.\n"
+                    textArea.setText("Heyo !\n" + "Canadian checkers are the best.\n" + "We hope you enjoy this game.\n"
                             + "Thanks for playing!\n" + "Jérémie Caron" + "\n" + "Justin Plouffe" + "/n" + "Version 1.0"
                             + "\n" + "Version 2.0" + "\n" + "Version 3.0" + "\n" + "Version 4.0" + "\n" + "Version 5.0"
                             + "\n" + "Version 6.0" + "\n1" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2"

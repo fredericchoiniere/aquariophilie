@@ -1,4 +1,4 @@
-//Jérémie Caron     itération 3
+// Itération 3: Jérémie Caron
 //Classe pour l'outil pichet
 
 package model.outils;

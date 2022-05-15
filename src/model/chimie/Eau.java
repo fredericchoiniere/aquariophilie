@@ -1,6 +1,6 @@
-// Frédéric Choinière, Justin Plouffe   itération 1
-// Frédéric Choinière   itération 2
-// Jérémie Caron  itération 3
+// Itération 1: Frédéric Choinière, Justin Plouffe
+// Itération 2: Frédéric Choinière
+// Itération 3: Jérémie Caron, Justin Plouffe
 // Classe qui contrôle les paramètres d'eau
 
 package model.chimie;
@@ -15,16 +15,16 @@ import model.poissons.Poisson;
 
 public class Eau implements Runnable {
 
-    public static float ph = 7; // 0 à 14
-    public static float gh = 8; // Dureté de l'eau de 0 à 25+ (tolérée entre 3 et 8) dGH
-    public static float kh = 6; // Dureté de l'eau de 0 à 12+ (tolérée entre 4 et 8)
+    public static float ph = 7; // Acidité 0 à 14
+    public static float gh = 8; // Dureté de l'eau
+    public static float kh = 6; // Alcalinité de l'eau
     private float penteNitrites = 0;
     public float sommeAbsorptionNitrates = 0; // score global des plantes
     public float sommeContributionPH = 0;
     public float variationPH = 0;
     public float volumeEau = (float) 37.85;
-    public static float nitrites = 0; // Doit etre 0, maximum 5mg par litre
-    public static float nitrates = 0; // max 50mg/L
+    public static float nitrites = 0;
+    public static float nitrates = 0; 
     public static float ammoniaque = 0;
     public float tempAmmoniaque = 0;
     public float tempNitrites = 0;
@@ -44,9 +44,11 @@ public class Eau implements Runnable {
 
     public int sommeAbsorptionDechets = 0;
     public int potentielDechets = 0, sommeDechets = 0;
+    /*
     public int nbAtomeN = 0;
     public int nbAtomeO = 2103;
     public int nbAtomeH = 4206;
+    */
     public float scoreEau = (float) 100.0;
     public static Random random = new Random();
     public static int randomNumber;
@@ -330,15 +332,11 @@ public class Eau implements Runnable {
             MethodeGUIMain.setEauDimensions(positionEnPixels, hauteurEnPixels);
         }
         volumeEau = (float) ((hauteur * largeur * longueur) * 0.001);
-        //System.out.println("volume eau: " + volumeEau);
-        //System.out.println("GH: " + gh);
-
-        // System.out.println("hauteur eau: " + GUIMain.rectEau.getHeight());
     }
     
     
     /** 
-     * @param accumulerDechets(
+     * Remets des valeurs de base lors d'un changement d'eau à l'aide de l'outil pichet
      */
     public void changerEau(){
         volumeEau = (float) 37.85;
@@ -369,7 +367,8 @@ public class Eau implements Runnable {
     }
 
     /**
-     * Pour l'itération 3
+     * @return scoreEau
+     * Retourne un score sur 100 de la qualité globale de l'eau
      */
     public float getScoreEau() {
         scoreEau = (setScorePH() + setScoreGH() + setScoreKH() + setScoreAmmo() + setScoreNitrates()
@@ -378,7 +377,7 @@ public class Eau implements Runnable {
     }
 
     /**
-     * @return float
+     * @return scorePh
      *         Retourne la valeur du score pour le PH qui cotribue pour (14/100) du
      *         score de l'eau
      */
@@ -402,7 +401,7 @@ public class Eau implements Runnable {
     }
 
     /**
-     * @return float
+     * @return scoreGH
      *         Retourne la valeur du score pour le GH qui cotribue pour (14/100) du
      *         score de l'eau
      */
@@ -428,7 +427,7 @@ public class Eau implements Runnable {
     }
 
     /**
-     * @return float
+     * @return scoreKh
      *         Retourne la valeur du score pour le KH qui contribue pour (14/100) du
      *         score de l'eau
      */
@@ -454,7 +453,7 @@ public class Eau implements Runnable {
     }
 
     /**
-     * @return float
+     * @return scoreAmmo
      *         Retourne la valeur du score pour l'ammoniaque qui cotribue pour
      *         (18/100) du score de l'eau
      */
@@ -473,7 +472,7 @@ public class Eau implements Runnable {
     }
 
     /**
-     * @return float
+     * @return scoreNitrites
      *         Retourne la valeur du score pour les nitrites qui cotribue pour
      *         (24/100) du score de l'eau
      */
@@ -492,7 +491,7 @@ public class Eau implements Runnable {
     }
 
     /**
-     * @return float
+     * @return scoreNitrates
      *         Retourne la valeur du score pour les nitrates qui cotribue pour
      *         (16/100) du score de l'eau
      */
@@ -511,6 +510,7 @@ public class Eau implements Runnable {
     }
 
     /**
+     * @param  flt
      * @return string
      *         Transforme un float en string (format 2 décimales #,##)
      */
@@ -526,9 +526,9 @@ public class Eau implements Runnable {
         return str;
     }
 
-    
     /** 
      * @param jourInit
+     *        Ajoute un cycle dans une liste, ce qui permet d'avoir plusieurs cycles simultanés
      */
     public void partirCycle(float jourInit) {
         listeCycles.add(new CycleAzote(jourInit));
@@ -536,7 +536,6 @@ public class Eau implements Runnable {
 
     /**
      * Méthode run de la classe Eau
-     * Incomplète pour l'instant
      */
     @Override
     public void run() {
@@ -573,17 +572,11 @@ public class Eau implements Runnable {
                     GUIMain.panelTest.lblScoreNitrates.setText(toString(GUIMain.eau.setScoreNitrates()));
 
                     GUIMain.panelTest.lblScoreEau.setText(toString(GUIMain.eau.getScoreEau()));
-                    
-                    Poisson.trackFishTypeAndProgressBarCalicul();
-                    
-                    // System.out.println("Compteur jours: " + Eau.compteurJoursCycle);
-                    // System.out.println("déchets: " + sommeDechets);
 
                     for (short i = 0; i < 6; i++)
                         Poisson.setSante(i);
 
                     for (CycleAzote cycle : listeCycles) {
-                        // cycle.setCompteurJoursCycle(jours);
                         cycle.incrJoursCalcul();
                         cycle.cycler(jours);
                     }
@@ -593,8 +586,6 @@ public class Eau implements Runnable {
                         actionEnCours = "Cycle nitrates";
                         if (nitrites != 0.0)
                             penteNitrites = nitrites;
-                        // if (dechetsCycleParti)
-                        // dechetsCycleParti = false;
                     } else {
                         penteNitrites = nitrites;
                     }

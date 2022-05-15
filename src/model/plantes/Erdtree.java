@@ -1,4 +1,4 @@
-// Jérémie Caron    itération 3
+// Itération 3: Jérémie Caron
 
 package model.plantes;
 

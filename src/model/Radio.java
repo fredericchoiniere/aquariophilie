@@ -1,4 +1,4 @@
-// Jérémie Caron    itération 3
+// Itération 3: Jérémie Caron
 
 package model;
 
@@ -18,32 +18,24 @@ public class Radio {
     AudioInputStream audioInputStream;
     static String filePath = "res/sons/ambiance.wav";
 
-    // constructor to initialize streams and clip
+    // constructeur pour initialiser l'audio stream et le clip 
     public Radio()
             throws UnsupportedAudioFileException,
             IOException, LineUnavailableException {
-        // create AudioInputStream object
+        
         audioInputStream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
-
-        // create clip reference
         clip = AudioSystem.getClip();
-
-        // open audioInputStream to the clip
         clip.open(audioInputStream);
-
-        // pour qu'il n'arrete pas à la fin de son cycle
-        clip.loop(Clip.LOOP_CONTINUOUSLY);
+        clip.loop(Clip.LOOP_CONTINUOUSLY); // pour qu'il n'arrete pas à la fin de son cycle
     }
 
-    // Method pour jouer la musique
+    // Methode pour jouer la musique
     public void play() {
-        // start the clip
         clip.start();
-
         status = "play";
     }
 
-    // Method pour pauser la music
+    // Methode pour mettre la musique sur pause
     public void pause() {
         if (status.equals("paused")) {
             System.out.println("audio is already paused");
@@ -59,9 +51,8 @@ public class Radio {
      * @throws UnsupportedAudioFileException
      * @throws IOException
      * @throws LineUnavailableException
-     * Méthode pour rejouer la musique
+     * Méthode pour rejouer la musique (rejouer après une pause)
      */
-    // Method pour reprendre après une pause
     public void resumeAudio() throws UnsupportedAudioFileException,
             IOException, LineUnavailableException {
         if (status.equals("play")) {
@@ -80,9 +71,8 @@ public class Radio {
      * @throws UnsupportedAudioFileException
      * @throws IOException
      * @throws LineUnavailableException
-     * Méthode pour remettre à zéro le son
+     * Méthode pour remettre le son à zéro
      */
-    // Method to reset audio stream
     public void resetAudioStream() throws UnsupportedAudioFileException, IOException,
             LineUnavailableException {
         audioInputStream = AudioSystem.getAudioInputStream(

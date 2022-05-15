@@ -14,7 +14,6 @@ import model.chimie.Molecules;
 public class PanelTest extends JPanel implements ActionListener {
 
     CycleAzote cycle;
-    // JButton btnActu, btnCycle;
 
     // création des labels
     public JLabel lblAmmo, lblNitrites, lblNitrates, lblPH, lblGH, lblKH, lblScorePH, lblScoreGH, lblScoreKH,

@@ -1,5 +1,6 @@
-// Frédéric Choinière, Jérémie Caron    itération 2
-// Jérémie Caron, Frédéric Choinière    itération 3
+// Itération 2: Frédéric Choinière, Jérémie Caron
+// Itération 3: Jérémie Caron, Frédéric Choinière
+//TODO:Commenter la classe
 
 package model.poissons;
 
@@ -305,7 +306,12 @@ public class Poisson extends JPanel {
         }
     }
 
-    public boolean checkTolerances(String type) {
+    
+    /** 
+     * @return boolean
+     * TODO: commenter
+     */
+    public boolean checkTolerances(String type) { // TODO: set tolerances pour autres types
 
         switch (type) {
             case "rouge":
@@ -328,6 +334,11 @@ public class Poisson extends JPanel {
         return boolTolerances;
     }
 
+    /**
+     * 
+     * @param numb
+     * TODO:commenter
+     */
     public static void killFish(short numb) {
         MethodeGUIMain.checkFishType(fishType(numb));
         GUIMain.listePoissonsAqua.get(numb).direction = "rip";
@@ -345,6 +356,7 @@ public class Poisson extends JPanel {
 
     /**
      * @param numb
+     * TODO:commenter
      */
     public static void setFalse(short numb) {
         GUIMain.listePoissonsAqua.get(numb).direction = "empty";
@@ -354,36 +366,42 @@ public class Poisson extends JPanel {
                 GUIMain.hasFish1 = false;
                 GUIMain.aquarium.aqua1.setIcon(Inventaire.empty_inv);
                 GUIMain.aqua1 = "empty";
+                Sante.emp1.setVisible(false);
                 Sante.emp1.setValue(100);
                 break;
             case 1:
                 GUIMain.hasFish2 = false;
                 GUIMain.aquarium.aqua2.setIcon(Inventaire.empty_inv);
                 GUIMain.aqua2 = "empty";
+                Sante.emp2.setVisible(false);
                 Sante.emp2.setValue(100);
                 break;
             case 2:
                 GUIMain.hasFish3 = false;
                 GUIMain.aquarium.aqua3.setIcon(Inventaire.empty_inv);
                 GUIMain.aqua3 = "empty";
+                Sante.emp3.setVisible(false);
                 Sante.emp3.setValue(100);
                 break;
             case 3:
                 GUIMain.hasFish4 = false;
                 GUIMain.aquarium.aqua4.setIcon(Inventaire.empty_inv);
                 GUIMain.aqua4 = "empty";
+                Sante.emp4.setVisible(false);
                 Sante.emp4.setValue(100);
                 break;
             case 4:
                 GUIMain.hasFish5 = false;
                 GUIMain.aquarium.aqua5.setIcon(Inventaire.empty_inv);
                 GUIMain.aqua5 = "empty";
+                Sante.emp5.setVisible(false);
                 Sante.emp5.setValue(100);
                 break;
             case 5:
                 GUIMain.hasFish6 = false;
                 GUIMain.aquarium.aqua6.setIcon(Inventaire.empty_inv);
                 GUIMain.aqua6 = "empty";
+                Sante.emp6.setVisible(false);
                 Sante.emp6.setValue(100);
                 break;
         }
@@ -391,6 +409,7 @@ public class Poisson extends JPanel {
 
     /**
      * @param index
+     * TODO:Commenter
      */
     public static void setBarValue(short index) {
         if (GUIMain.hasFish1) {
@@ -433,30 +452,6 @@ public class Poisson extends JPanel {
             System.out.println("Were fucked"); // TODO: ??
         }
     }
-
-/*     public static void setBarValue(short index) {
-        switch (index) {
-            case 0:
-                Sante.emp1.setValue(GUIMain.listePoissonsAqua.get(index).sante);
-                break;
-            case 1:
-                Sante.emp2.setValue(GUIMain.listePoissonsAqua.get(index).sante);
-                break;
-            case 2:
-                Sante.emp3.setValue(GUIMain.listePoissonsAqua.get(index).sante);
-                break;
-            case 3:
-                Sante.emp4.setValue(GUIMain.listePoissonsAqua.get(index).sante);
-                break;
-            case 4:
-                Sante.emp5.setValue(GUIMain.listePoissonsAqua.get(index).sante);
-                break;
-            case 5:
-                Sante.emp6.setValue(GUIMain.listePoissonsAqua.get(index).sante);
-                break;
-            default:
-                break;
-        } */
        
     public static void trackFishTypeAndProgressBarCalicul() { // TODO: ??
         System.out.println(GUIMain.hasFish1 + " " + GUIMain.hasFish2 + " " + GUIMain.hasFish3 + " " + GUIMain.hasFish4 + " " + GUIMain.hasFish5 + " " + GUIMain.hasFish6);

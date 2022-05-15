@@ -1,4 +1,4 @@
-// Frédéric Choinière   itération 3
+// Itération 3: Frédéric Choinière
 // Classe pour l'outil coquillage (sert à remonter le niveau de KH)
 
 package model.outils;
