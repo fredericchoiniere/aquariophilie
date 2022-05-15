@@ -141,21 +141,22 @@ public class GUIIntro extends JPanel {
             btnCredits.addActionListener((ActionListener) new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     JFrame frame = new JFrame("Credits");
-                    JTextArea textArea = new JTextArea();
+                    JTextPane textPane = new JTextPane();
 
-                    textArea.setEditable(false);
-                    textArea.setText("Heyo !\n" + "Canadian checkers are the best.\n" + "We hope you enjoy this game.\n"
+                    //TODO: faire les crédits
+                    textPane.setEditable(false);
+                    textPane.setText("Heyo !\n" + "Canadian checkers are the best.\n" + "We hope you enjoy this game.\n"
                             + "Thanks for playing!\n" + "Jérémie Caron" + "\n" + "Justin Plouffe" + "/n" + "Version 1.0"
                             + "\n" + "Version 2.0" + "\n" + "Version 3.0" + "\n" + "Version 4.0" + "\n" + "Version 5.0"
                             + "\n" + "Version 6.0" + "\n1" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2"
                             + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2"
                             + "\n2" + "\n2" + "\n2");
 
-                    JScrollPane scrollPane = new JScrollPane(textArea);
+                    JScrollPane scrollPane = new JScrollPane(textPane);
 
                     frame.add(scrollPane);
 
-                    // rame.add(textArea);
+                    // rame.add(textPane);
                     frame.setSize(700, 700);
                     frame.setVisible(true);
                     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
