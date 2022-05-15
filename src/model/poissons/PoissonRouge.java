@@ -84,7 +84,6 @@ public class PoissonRouge extends Poisson implements Runnable {
     @Override
     public void run() {
         while (var) {
-            //if (this.isDead == false) {
                 if (!Temps.isPaused) {
                     if (x_temp > x_max) {
                         setXVelocity(-vel_x);
