@@ -7,6 +7,7 @@ import java.awt.*;
 
 import model.GestionException;
 import model.environnement.Temps;
+import view.GUIMain;
 
 public class PoissonBetta extends Poisson implements Runnable {
 
@@ -23,7 +24,7 @@ public class PoissonBetta extends Poisson implements Runnable {
     public static int prix = 500;
 
     public static int dechets = 4;
-    public static int tolerance = 12;
+    public static int tolerance = 8;
 
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_betta/poisson_droite.png");
@@ -33,6 +34,14 @@ public class PoissonBetta extends Poisson implements Runnable {
         setImg();
     }
 
+    public static boolean checkTolerances() {
+        if (GUIMain.eau.getPH() < 3 || GUIMain.eau.getPH() > 9 || GUIMain.eau.getGH() < 3
+                || GUIMain.eau.getAmmoniaque() > 4 || GUIMain.eau.getNitrites() > 3 || GUIMain.eau.getNitrates() > 55) {
+            return false;
+        }
+        return true;
+    }
+
     /**
      * @param g
      *          méthode pour dessiner le poisson
@@ -40,7 +49,8 @@ public class PoissonBetta extends Poisson implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, PoissonRouge.empty), x_temp, y_temp,
+        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, PoissonRouge.empty, Poisson.rip), x_temp,
+                y_temp,
                 this);
     }
 
@@ -84,6 +94,10 @@ public class PoissonBetta extends Poisson implements Runnable {
                 }
                 if (y_temp > y_max) { // 120
                     setYVelocity(-vel_y);
+                    if (isDead) {
+                        setYVelocity(0);
+                        this.var = false;
+                    }
                 }
                 if (y_temp < getHauteur() - 14) {
                     setYVelocity(1);

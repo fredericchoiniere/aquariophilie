@@ -6,6 +6,7 @@ import java.awt.*;
 
 import model.GestionException;
 import model.environnement.Temps;
+import view.GUIMain;
 
 public class PoissonNeo extends Poisson implements Runnable {
 
@@ -33,6 +34,14 @@ public class PoissonNeo extends Poisson implements Runnable {
         setImg();
     }
 
+    public static boolean checkTolerances() { // ammo 2 nit 1 nat 40
+        if (GUIMain.eau.getPH() < 4 || GUIMain.eau.getPH() > 8 || GUIMain.eau.getGH() < 3
+                || GUIMain.eau.getAmmoniaque() > 1 || GUIMain.eau.getNitrites() > 1 || GUIMain.eau.getNitrates() > 50) {
+            return false;
+        }
+        return true;
+    }
+
     /**
      * @param g
      *          méthode pour dessiner le poisson
@@ -40,7 +49,7 @@ public class PoissonNeo extends Poisson implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, empty), x_temp, y_temp, this);
+        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, empty, Poisson.rip), x_temp, y_temp, this);
 
     }
 
@@ -84,6 +93,10 @@ public class PoissonNeo extends Poisson implements Runnable {
                 }
                 if (y_temp > y_max) { // limite du bas
                     setYVelocity(0);
+                    if(isDead){
+                        setYVelocity(0);
+                        this.var = false;
+                    }
                 }
                 if (y_temp < y_min) { // limite du haut
                     setYVelocity(0);
