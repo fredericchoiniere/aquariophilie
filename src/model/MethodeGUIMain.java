@@ -112,12 +112,14 @@ public class MethodeGUIMain {
                     && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
                     && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
                 if (hasFish) {
+                    if (!GUIMain.listePoissonsAqua.get(index).isDead) {
+                        checkFishType(aqua);
+                    }
                     setHasFishFalse(hasFishString);
                     label1.setIcon(icone);
                     GUIMain.listePoissonsAqua.get(index).direction = "empty";
                     GUIMain.listePoissonsAqua.get(index).var = false;
-                    GUIMain.listePoissonsAqua.set(index, GUIMain.poisson_default);
-                    checkFishType(aqua);
+                    GUIMain.listePoissonsAqua.set(index, GUIMain.poisson_default); // TODO: l'enlever de listeVraisPoissons
                     Poisson.setFalse((short) index);
                 }
             }

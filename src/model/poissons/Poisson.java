@@ -1,5 +1,5 @@
 // Frédéric Choinière, Jérémie Caron    itération 2
-// Jérémie Caron    itération 3
+// Jérémie Caron, Frédéric Choinière    itération 3
 
 package model.poissons;
 
@@ -33,6 +33,7 @@ public class Poisson extends JPanel {
     int randomNumber;
 
     static ArrayList<Short> listeACleanUp = new ArrayList<Short>();
+    public static ArrayList<Poisson> listeVraisPoissons = new ArrayList<Poisson>(6);
 
     static Image rip = Toolkit.getDefaultToolkit().getImage("res/poissons/rip.png");
 
@@ -209,37 +210,50 @@ public class Poisson extends JPanel {
      * @param numb
      */
     public static void setSante(short numb) {
+        selection = GUIMain.listePoissonsAqua.get(numb);
         switch (fishType(numb)) {
             case "rouge":
                 ajusterSante(numb, PoissonRouge.tolerance);
-                selection = (PoissonRouge) GUIMain.listePoissonsAqua.get(numb);
+                //selection = (PoissonRouge) GUIMain.listePoissonsAqua.get(numb);
                 if (!selection.checkTolerances("rouge") && !selection.isDead) {
-                    killFish(numb);
-                    selection.isDead = true;
+                    selection.sante -= 15;
+                    if (selection.sante <= 0) {
+                        killFish(numb);
+                        selection.isDead = true;
+                    }
                 }
                 break;
             case "betta":
                 ajusterSante(numb, PoissonBetta.tolerance);
-                selection = (PoissonBetta) GUIMain.listePoissonsAqua.get(numb);
+                //selection = (PoissonBetta) GUIMain.listePoissonsAqua.get(numb);
                 if (!selection.checkTolerances("betta") && !selection.isDead) {
-                    killFish(numb);
-                    selection.isDead = true;
+                    selection.sante -= 15;
+                    if (selection.sante <= 0) {
+                        killFish(numb);
+                        selection.isDead = true;
+                    }
                 }
                 break;
             case "tetra":
                 ajusterSante(numb, PoissonTetra.tolerance);
-                selection = (PoissonTetra) GUIMain.listePoissonsAqua.get(numb);
+                //selection = (PoissonTetra) GUIMain.listePoissonsAqua.get(numb);
                 if (!selection.checkTolerances("tetra") && !selection.isDead) {
-                    killFish(numb);
-                    selection.isDead = true;
+                    selection.sante -= 15;
+                    if (selection.sante <= 0) {
+                        killFish(numb);
+                        selection.isDead = true;
+                    }
                 }
                 break;
             case "neo":
                 ajusterSante(numb, PoissonNeo.tolerance);
-                selection = (PoissonNeo) GUIMain.listePoissonsAqua.get(numb);
+                //selection = (PoissonNeo) GUIMain.listePoissonsAqua.get(numb);
                 if (!selection.checkTolerances("neo") && !selection.isDead) {
-                    killFish(numb);
-                    selection.isDead = true;
+                    selection.sante -= 15;
+                    if (selection.sante <= 0) {
+                        killFish(numb);
+                        selection.isDead = true;
+                    }
                 }
                 break;
             default:
@@ -279,7 +293,7 @@ public class Poisson extends JPanel {
         }
     }
 
-    public boolean checkTolerances(String type) { // TODO: set tolerances pour autres types
+    public boolean checkTolerances(String type) {
 
         switch (type) {
             case "rouge":
@@ -306,9 +320,8 @@ public class Poisson extends JPanel {
         MethodeGUIMain.checkFishType(fishType(numb));
         GUIMain.listePoissonsAqua.get(numb).direction = "rip";
         GUIMain.listePoissonsAqua.get(numb).setXVelocity(0);
-        GUIMain.listePoissonsAqua.get(numb).setYVelocity(1); // TODO: faire arrêter au fond de l'aquarium
+        GUIMain.listePoissonsAqua.get(numb).setYVelocity(1);
         listeACleanUp.add(numb);
-        System.out.println("x " + numb);
     }
 
     public static void cleanUp() {
@@ -323,7 +336,6 @@ public class Poisson extends JPanel {
      */
     public static void setFalse(short numb) {
         GUIMain.listePoissonsAqua.get(numb).direction = "empty";
-        //GUIMain.listePoissonsAqua.get(numb).var = false;
         GUIMain.listePoissonsAqua.set(numb, GUIMain.poisson_default);
         switch (numb) {
             case 0:
@@ -369,7 +381,7 @@ public class Poisson extends JPanel {
      * @param index
      */
     public static void setBarValue(short index) {
-        switch (index) {
+        /* switch (index) {
             case 0:
                 Sante.emp1.setValue(GUIMain.listePoissonsAqua.get(index).sante);
                 break;
@@ -390,7 +402,23 @@ public class Poisson extends JPanel {
                 break;
             default:
                 break;
+        } */
+       
+        //listeVraisPoissons = GUIMain.listePoissonsAqua;
+        for (Poisson vraiPoisson : GUIMain.listePoissonsAqua) {
+            //System.out.println("" + vraiPoisson.getClass().getSimpleName());
+            if (!vraiPoisson.getClass().getSimpleName().equals("Poisson") && !listeVraisPoissons.contains(vraiPoisson)) {
+                listeVraisPoissons.add(vraiPoisson);
+                System.out.println("" + listeVraisPoissons);
+            }
+            if (vraiPoisson.isDead && listeVraisPoissons.contains(vraiPoisson)) {
+                listeVraisPoissons.remove(vraiPoisson);
+            }
         }
+
+        //System.out.println("" + listeVraisPoissons);
+
+
     }
 }
 
