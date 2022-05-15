@@ -45,16 +45,18 @@ public class Eau implements Runnable {
     public boolean menageDupesNit = true;
 
     public String actionEnCours = "Aucune action initiale";
-
-    public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0); // Liste à synchroniser
-    public List<Float> listeAmmoniaque = Collections.synchronizedList(listeAmmoniaqueTemp); // Liste synchronisée
-    public ListIterator<Float> iteratorAmmoniaque; // Itérateur pour additionner les valeurs d'ammoniaque
+   
     public ArrayList<Float> listeAmmoniaqueIteration = new ArrayList<Float>(); //
     public ArrayList<Float> listeNitritesTemp = new ArrayList<Float>(0); // Liste à synchroniser
-    public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
-    public ListIterator<Float> iteratorNitrites; // Itérateur pour additionner les valeurs de nitrites
+    public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0); // Liste à synchroniser
     public ArrayList<Integer> listeAbsorption = new ArrayList<Integer>();
     public ArrayList<CycleAzote> listeCycles = new ArrayList<CycleAzote>();
+
+    public List<Float> listeAmmoniaque = Collections.synchronizedList(listeAmmoniaqueTemp); // Liste synchronisée
+    public List<Float> listeNitrites = Collections.synchronizedList(listeNitritesTemp); // Liste synchronisée
+
+    public ListIterator<Float> iteratorAmmoniaque; // Itérateur pour additionner les valeurs d'ammoniaque
+    public ListIterator<Float> iteratorNitrites; // Itérateur pour additionner les valeurs de nitrites
 
     /**
      * @return float

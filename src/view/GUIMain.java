@@ -602,7 +602,6 @@ public class GUIMain extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 PanelAqua.background = Toolkit.getDefaultToolkit().getImage("res/meme/god.png");
-                System.out.println("meme");
                 JOptionPane.showMessageDialog(null, "Vous avez découvert un easter egg!" + "\n"
                         + "Vous pouvez retourner en arrère en appuyant sur l'inventaire!");
             }
