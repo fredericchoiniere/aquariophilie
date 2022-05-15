@@ -28,7 +28,6 @@ public class PoissonRouge extends Poisson implements Runnable {
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_droite.png");
     Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_gauche.png");
     static Image empty = Toolkit.getDefaultToolkit().getImage("res/poissons/empty.png");
-    // Image rip = Toolkit.getDefaultToolkit().getImage("res/poissons/rip.png");
 
     public static int dechets = 5;
 
@@ -113,7 +112,7 @@ public class PoissonRouge extends Poisson implements Runnable {
             } else if (isDead) {
                 if (y_temp >= 120) {
                     setYVelocity(0);
-                }// allo
+                }
             }
         }
     }

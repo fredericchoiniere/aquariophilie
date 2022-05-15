@@ -223,6 +223,7 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
                 selection = (PoissonBetta) GUIMain.listePoissonsAqua.get(numb);
                 if (!selection.checkTolerances("betta") && !selection.isDead) {
                     killFish(numb);
+                    selection.isDead = true;
                 }
                 break;
             case "tetra":
@@ -230,6 +231,7 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
                 selection = (PoissonTetra) GUIMain.listePoissonsAqua.get(numb);
                 if (!selection.checkTolerances("tetra") && !selection.isDead) {
                     killFish(numb);
+                    selection.isDead = true;
                 }
                 break;
             case "neo":
@@ -237,6 +239,7 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
                 selection = (PoissonNeo) GUIMain.listePoissonsAqua.get(numb);
                 if (!selection.checkTolerances("neo") && !selection.isDead) {
                     killFish(numb);
+                    selection.isDead = true;
                 }
                 break;
             default:
@@ -282,6 +285,15 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
             case "rouge":
                 boolTolerances = PoissonRouge.checkTolerances();
                 break;
+            case "betta":
+                boolTolerances = PoissonBetta.checkTolerances();
+                break;
+            case "tetra":
+                boolTolerances = PoissonTetra.checkTolerances();
+                break;
+            case "neo":
+                boolTolerances = PoissonNeo.checkTolerances();
+                break;
 
             default:
                 break;
@@ -296,6 +308,7 @@ public class Poisson extends JPanel { // TODO: quand meurent, fishstick
         GUIMain.listePoissonsAqua.get(numb).setXVelocity(0);
         GUIMain.listePoissonsAqua.get(numb).setYVelocity(1); // TODO: faire arrêter au fond de l'aquarium
         listeACleanUp.add(numb);
+        System.out.println("x " + numb);
     }
 
     public static void cleanUp() {

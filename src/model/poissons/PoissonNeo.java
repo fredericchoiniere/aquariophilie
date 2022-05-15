@@ -35,8 +35,8 @@ public class PoissonNeo extends Poisson implements Runnable {
     }
 
     public static boolean checkTolerances() { // ammo 2 nit 1 nat 40
-        if (GUIMain.eau.getPH() < 3 || GUIMain.eau.getPH() > 9 || GUIMain.eau.getGH() < 3
-                || GUIMain.eau.getAmmoniaque() > 3 || GUIMain.eau.getNitrites() > 2 || GUIMain.eau.getNitrates() > 50) {
+        if (GUIMain.eau.getPH() < 4 || GUIMain.eau.getPH() > 8 || GUIMain.eau.getGH() < 3
+                || GUIMain.eau.getAmmoniaque() > 1 || GUIMain.eau.getNitrites() > 1 || GUIMain.eau.getNitrates() > 50) {
             return false;
         }
         return true;
