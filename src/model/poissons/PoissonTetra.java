@@ -82,6 +82,10 @@ public class PoissonTetra extends Poisson implements Runnable {
                 }
                 if (y_temp > y_max) {
                     setYVelocity(-vel_y);
+                    if(isDead){
+                        setYVelocity(0);
+                        this.var = false;
+                    }
                 }
                 if (y_temp < y_min) {
                     setYVelocity(1);

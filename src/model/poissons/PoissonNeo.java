@@ -93,6 +93,10 @@ public class PoissonNeo extends Poisson implements Runnable {
                 }
                 if (y_temp > y_max) { // limite du bas
                     setYVelocity(0);
+                    if(isDead){
+                        setYVelocity(0);
+                        this.var = false;
+                    }
                 }
                 if (y_temp < y_min) { // limite du haut
                     setYVelocity(0);

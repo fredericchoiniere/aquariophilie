@@ -40,7 +40,8 @@ public class PoissonBetta extends Poisson implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, PoissonRouge.empty, Poisson.rip), x_temp, y_temp,
+        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, PoissonRouge.empty, Poisson.rip), x_temp,
+                y_temp,
                 this);
     }
 
@@ -84,6 +85,10 @@ public class PoissonBetta extends Poisson implements Runnable {
                 }
                 if (y_temp > y_max) { // 120
                     setYVelocity(-vel_y);
+                    if (isDead) {
+                        setYVelocity(0);
+                        this.var = false;
+                    }
                 }
                 if (y_temp < getHauteur() - 14) {
                     setYVelocity(1);
