@@ -14,11 +14,9 @@ public class CycleAzote {
 
     public Eau eau = GUIMain.eau;
 
-    public String actionEnCours = "Aucune action initiale";
-
     /**
      * @param float
-     *              // TODO: ça fait quoi?
+     * Constructeur de la classe
      */
     public CycleAzote(float jourInit) {
         jourInitial = jourInit;
@@ -78,11 +76,11 @@ public class CycleAzote {
     public void cycler(float jours) {
 
         if (jours >= jourInitial && jours <= (jourInitial + 18)) {
-            actionEnCours = "Cycle ammoniaque";
+            GUIMain.actionEnCours = "Cycle ammoniaque";
             cycleAmmoniaque(eau, jours);
         }
         if (jours >= (jourInitial + 14) && jours <= (jourInitial + 35)) {
-            actionEnCours = "Cycle nitrites";
+            GUIMain.actionEnCours = "Cycle nitrites";
             cycleNitrites(eau, jours);
         }
     }

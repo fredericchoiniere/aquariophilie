@@ -122,8 +122,7 @@ public class MethodeGUIMain {
                     label1.setIcon(icone);
                     GUIMain.listePoissonsAqua.get(index).direction = "empty";
                     GUIMain.listePoissonsAqua.get(index).var = false;
-                    GUIMain.listePoissonsAqua.set(index, GUIMain.poisson_default); // TODO: l'enlever de
-                                                                                   // listeVraisPoissons
+                    GUIMain.listePoissonsAqua.set(index, GUIMain.poisson_default);
                     Poisson.setFalse((short) index);
                 }
             }
@@ -271,7 +270,7 @@ public class MethodeGUIMain {
      * @return index
      *         méthode pour retourner un index selon l'emplacement
      */
-    public static int getEmplaToInt(String emplacement) { // TODO: à revoir
+    public static int getEmplaToInt(String emplacement) { 
         int index = 420;
         switch (emplacement) {
             case "empla1":

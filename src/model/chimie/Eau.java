@@ -1,6 +1,6 @@
 // Itération 1: Frédéric Choinière, Justin Plouffe
 // Itération 2: Frédéric Choinière
-// Itération 3: Jérémie Caron, Justin Plouffe
+// Itération 3: Frédéric Choinière, Justin Plouffe, Jérémie Caron
 
 // Classe qui contrôle les paramètres d'eau
 
@@ -20,25 +20,14 @@ public class Eau implements Runnable {
     public static float gh = 8; // Dureté de l'eau
     public static float kh = 6; // Alcalinité de l'eau
     private float penteNitrites = 0;
-    public float sommeAbsorptionNitrates = 0; // score global des plantes
-    public float sommeContributionPH = 0;
-    public float variationPH = 0;
+    public float sommeAbsorptionNitrates = 0, sommeContributionPH = 0, variationPH = 0;
     public float volumeEau = (float) 37.85;
-    public static float nitrites = 0;
-    public static float nitrates = 0;
-    public static float ammoniaque = 0;
-    public float tempAmmoniaque = 0;
-    public float tempNitrites = 0;
+    public static float nitrites = 0, nitrates = 0, ammoniaque = 0;
+    public float tempAmmoniaque = 0, tempNitrites = 0;
     private float sommeAmmoniaque, sommeNitrites;
-    public float jours = GUIMain.jours;
-    public float jourInitial = 0;
+    public float jours = GUIMain.jours, jourInitial = 0;
     public float hauteur = 35, largeur = 20, longueur = (float) 54.07; // Dimensions de l'aquarium de 10 gallons/37.85L
-    private static float scorePH = 0;
-    private static float scoreGH;
-    private static float scoreKH;
-    private static float scoreAmmo;
-    private static float scoreNitrites;
-    private static float scoreNitrates;
+    private static float scorePH, scoreGH, scoreKH, scoreAmmo, scoreNitrites, scoreNitrates;
     public float scoreEau = (float) 100.0;
 
     public static int hauteurEnPixels = 177; // 192// Hauteur en pixels de l'eau de l'aquarium rempli
@@ -297,7 +286,6 @@ public class Eau implements Runnable {
         if (volumeEau < 25) {
             setGH((float) (gh - 0.315));
         }
-
     }
 
     /**
@@ -315,16 +303,15 @@ public class Eau implements Runnable {
         }
         volumeEau = (float) ((hauteur * largeur * longueur) * 0.001);
     }
-
-    /**
-     * Remets des valeurs de base lors d'un changement d'eau à l'aide de l'outil
-     * pichet
+    
+    /** 
+     * Remets des valeurs de base lors d'un changement d'eau à l'aide de l'outil pichet
      */
     public void changerEau() {
         volumeEau = (float) 37.85;
         hauteur = 35;
         kh = 6;
-        gh = 10;
+        gh = (float) 8.5;
         ph = 7;
         nitrates -= 10;
         sommeDechets -= (sommeDechets * 0.50);
@@ -343,7 +330,11 @@ public class Eau implements Runnable {
      *         Dicte le comportement des nitrates selon une courbe
      */
     public void comportNitrates() {
-        nitrates = ((jours / 7) - 4);
+        if (((jours / 7) - 4) > 0) {
+            nitrates = ((jours / 7) - 4);
+        }
+        else nitrates = 0;
+        
     }
 
     /**
@@ -549,16 +540,16 @@ public class Eau implements Runnable {
                         cycle.cycler(jours);
                     }
 
-                    if (penteNitrites >= nitrites) {
+                    if (penteNitrites > nitrites) {
                         comportNitrates();
-                        actionEnCours = "Cycle nitrates";
+                        GUIMain.actionEnCours = "Cycle nitrates";
                         if (nitrites != 0.0)
                             penteNitrites = nitrites;
                     } else {
                         penteNitrites = nitrites;
                     }
 
-                    GUIMain.actionEnCours = actionEnCours;
+                    //GUIMain.actionEnCours = actionEnCours;
                     Thread.sleep(Temps.DUREE);
 
                 } catch (Exception e) {

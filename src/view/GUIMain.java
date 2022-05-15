@@ -130,7 +130,7 @@ public class GUIMain extends JFrame {
         threadEau = new Thread(eau);
         threadEau.setName("ThreadEau");
         eau.partirCycle(jours);
-        actionEnCours = "test";
+        actionEnCours = "Aucune action en cours";
 
         // creation du main tab
         UIManager.put("TabbedPane.selected", new Color(0, 153, 153));

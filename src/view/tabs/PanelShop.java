@@ -41,7 +41,6 @@ public class PanelShop extends JPanel implements ActionListener {
         poisson_rouge.setBackground(new Color(53, 109, 127));
         poisson_rouge.setBorderPainted(false);
         poisson_rouge.setBounds(35, 209, shop_dimension.width, shop_dimension.height);
-        poisson_rouge.setToolTipText("Prix: " + PoissonRouge.prix + "฿");
         poisson_rouge.addActionListener(this);
         add(poisson_rouge);
 
@@ -51,7 +50,6 @@ public class PanelShop extends JPanel implements ActionListener {
         poisson_betta.setBackground(new Color(53, 109, 127));
         poisson_betta.setBorderPainted(false);
         poisson_betta.setBounds(155, 209, shop_dimension.width, shop_dimension.height);
-        poisson_betta.setToolTipText("Prix: " + PoissonBetta.prix + "฿");
         poisson_betta.addActionListener(this);
         add(poisson_betta);
 
@@ -61,7 +59,6 @@ public class PanelShop extends JPanel implements ActionListener {
         poisson_tetra.setBackground(new Color(53, 109, 127));
         poisson_tetra.setBorderPainted(false);
         poisson_tetra.setBounds(273, 209, shop_dimension.width, shop_dimension.height);
-        poisson_tetra.setToolTipText("Prix: " + PoissonTetra.prix + "฿");
         poisson_tetra.addActionListener(this);
         add(poisson_tetra);
 
@@ -70,7 +67,6 @@ public class PanelShop extends JPanel implements ActionListener {
         poisson_neo.setBackground(new Color(53, 109, 127));
         poisson_neo.setBorderPainted(false);
         poisson_neo.setBounds(390, 209, shop_dimension.width, shop_dimension.height);
-        poisson_neo.setToolTipText("Prix: " + PoissonNeo.prix + "฿");
         poisson_neo.addActionListener(this);
         add(poisson_neo);
 
@@ -80,7 +76,6 @@ public class PanelShop extends JPanel implements ActionListener {
         planteBlue.setBackground(new Color(53, 109, 127));
         planteBlue.setBorderPainted(false);
         planteBlue.setBounds(35, 379, shop_dimension.width, shop_dimension.height);
-        planteBlue.setToolTipText("Prix: " + BlueBlue.prix + "฿");
         planteBlue.addActionListener(this);
         add(planteBlue);
 
@@ -90,7 +85,6 @@ public class PanelShop extends JPanel implements ActionListener {
         planteFern.setBackground(new Color(53, 109, 127));
         planteFern.setBorderPainted(false);
         planteFern.setBounds(155, 379, shop_dimension.width, shop_dimension.height);
-        planteFern.setToolTipText("Prix: " + JavaFern.prix + "฿");
         planteFern.addActionListener(this);
         add(planteFern);
 
@@ -100,7 +94,6 @@ public class PanelShop extends JPanel implements ActionListener {
         planteScarlet.setBackground(new Color(53, 109, 127));
         planteScarlet.setBorderPainted(false);
         planteScarlet.setBounds(273, 379, shop_dimension.width, shop_dimension.height);
-        planteScarlet.setToolTipText("Prix: " + ScarletRot.prix + "฿");
         planteScarlet.addActionListener(this);
         add(planteScarlet);
 
@@ -110,7 +103,6 @@ public class PanelShop extends JPanel implements ActionListener {
         planteErdtree.setBackground(new Color(53, 109, 127));
         planteErdtree.setBorderPainted(false);
         planteErdtree.setBounds(390, 379, shop_dimension.width, shop_dimension.height);
-        planteErdtree.setToolTipText("Prix: " + Erdtree.prix + "฿");
         planteErdtree.addActionListener(this);
         add(planteErdtree);
 
@@ -251,6 +243,8 @@ public class PanelShop extends JPanel implements ActionListener {
         message.setForeground(new Color(51, 0, 0));
         message.setVisible(true);
         add(message);
+
+        Magasin.updateToolTip();
     }
     // actionlistener pour fermer le tutoriel
 
@@ -288,6 +282,7 @@ public class PanelShop extends JPanel implements ActionListener {
             }
             if (type == "decoration") {
                 checkPlant(plante, 0);
+                Plante.updateToolTip(Inventaire.emp1, plante);
                 Magasin.checkPlantePrix(plante);
             }
         } else if (GUIMain.empla2 == "empty") {
@@ -301,6 +296,7 @@ public class PanelShop extends JPanel implements ActionListener {
             }
             if (type == "decoration") {
                 checkPlant(plante, 1);
+                Plante.updateToolTip(Inventaire.emp2, plante);
                 Magasin.checkPlantePrix(plante);
             }
         } else if (GUIMain.empla3 == "empty") {
@@ -314,6 +310,7 @@ public class PanelShop extends JPanel implements ActionListener {
             }
             if (type == "decoration") {
                 checkPlant(plante, 2);
+                Plante.updateToolTip(Inventaire.emp3, plante);
                 Magasin.checkPlantePrix(plante);
             }
         } else if (GUIMain.empla4 == "empty") {
@@ -327,6 +324,7 @@ public class PanelShop extends JPanel implements ActionListener {
             }
             if (type == "decoration") {
                 checkPlant(plante, 3);
+                Plante.updateToolTip(Inventaire.emp4, plante);
                 Magasin.checkPlantePrix(plante);
             }
         } else if (GUIMain.empla5 == "empty") {
@@ -340,6 +338,7 @@ public class PanelShop extends JPanel implements ActionListener {
             }
             if (type == "decoration") {
                 checkPlant(plante, 4);
+                Plante.updateToolTip(Inventaire.emp5, plante);
                 Magasin.checkPlantePrix(plante);
             }
         } else if (GUIMain.empla6 == "empty") {
@@ -353,6 +352,7 @@ public class PanelShop extends JPanel implements ActionListener {
             }
             if (type == "decoration") {
                 checkPlant(plante, 5);
+                Plante.updateToolTip(Inventaire.emp6, plante);
                 Magasin.checkPlantePrix(plante);
             }
         } else {
