@@ -43,7 +43,7 @@ public class GUIMain extends JFrame {
             label_tutoriel1,
             label_information, label_information1, hamis, ciseau_label, label_argent, label_pause2, label_reprendre2,
             meme, label_tuto1,
-            label_tuto2, label_tuto3, label_tuto4, label_tuto5, label_tuto6, skip_tuto1, skip_tuto2, skip_tuto3,
+            label_tuto2, label_tuto3, label_tuto4, label_tuto5, label_tuto6, skip_tuto3,
             radio_on, radio_off, kit_ouvert, kit_fermer, kit_bg, plant;
 
     public static JLabel label_tuto7, label_tuto8, label_jours2, pichet_label, coquillage_label;
@@ -64,6 +64,7 @@ public class GUIMain extends JFrame {
 
     public static Rectangle rectPlant, rectEau, rectAquarium;
 
+    public JButton skip_tuto1, skip_tuto2;
     // creation des objets
     public static Eau eau;
     public static Pipette pipette;
@@ -150,7 +151,7 @@ public class GUIMain extends JFrame {
         // -----------------------------------------------------------------------
         // ajout des labels tuto
 
-        skip_tuto1 = new JLabel();
+        skip_tuto1 = new JButton();
         skip_tuto1.setBounds(930, 660, 60, 34);
         skip_tuto1.setIcon(new ImageIcon("res/tutoriel/skip_tuto.png"));
         skip_tuto1.setVisible(true);
@@ -437,7 +438,7 @@ public class GUIMain extends JFrame {
         PanelShop panelShop = new PanelShop();
 
         // ajout du bouton skip tutoriel
-        skip_tuto2 = new JLabel();
+        skip_tuto2 = new JButton();
         skip_tuto2.setBounds(930, 660, 60, 34);
         skip_tuto2.setIcon(new ImageIcon("res/tutoriel/skip_tuto.png"));
         skip_tuto2.setVisible(true);
@@ -1156,18 +1157,9 @@ public class GUIMain extends JFrame {
             }
         });
 
-        /*// actionlistener pour skip le tutoriel
-        skip_tuto3.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                setEverythingGood();
-            }
-        });*/
-
         //TODO: key listener fonctionnent pas
         //key listener pour skip avec la touche entrer
         skip_tuto1.addKeyListener(new java.awt.event.KeyAdapter() {
-            @Override
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
                     setEverythingGood();
@@ -1177,7 +1169,6 @@ public class GUIMain extends JFrame {
 
         //key listener pour skip avec la touche entrer
         skip_tuto2.addKeyListener(new java.awt.event.KeyAdapter() {
-            @Override
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
                     setEverythingGood();
