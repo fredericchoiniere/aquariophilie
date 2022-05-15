@@ -163,7 +163,7 @@ public class Poisson extends JPanel {
      * @param type
      *              méthode pour afficher les tooltips
      */
-    public static void updateToolTip(JLabel label, String type) { // TODO: terminer tooltips
+    public static void updateToolTip(JLabel label, String type) { // TODO: terminer tooltips si changement de balance
         switch (type) {
             case "rouge":
                 label.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Poisson rouge</strong></span></p>" + 

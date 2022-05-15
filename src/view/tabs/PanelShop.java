@@ -288,6 +288,7 @@ public class PanelShop extends JPanel implements ActionListener {
             }
             if (type == "decoration") {
                 checkPlant(plante, 0);
+                Plante.updateToolTip(Inventaire.emp1, plante);
                 Magasin.checkPlantePrix(plante);
             }
         } else if (GUIMain.empla2 == "empty") {
@@ -301,6 +302,7 @@ public class PanelShop extends JPanel implements ActionListener {
             }
             if (type == "decoration") {
                 checkPlant(plante, 1);
+                Plante.updateToolTip(Inventaire.emp2, plante);
                 Magasin.checkPlantePrix(plante);
             }
         } else if (GUIMain.empla3 == "empty") {
@@ -314,6 +316,7 @@ public class PanelShop extends JPanel implements ActionListener {
             }
             if (type == "decoration") {
                 checkPlant(plante, 2);
+                Plante.updateToolTip(Inventaire.emp3, plante);
                 Magasin.checkPlantePrix(plante);
             }
         } else if (GUIMain.empla4 == "empty") {
@@ -327,6 +330,7 @@ public class PanelShop extends JPanel implements ActionListener {
             }
             if (type == "decoration") {
                 checkPlant(plante, 3);
+                Plante.updateToolTip(Inventaire.emp4, plante);
                 Magasin.checkPlantePrix(plante);
             }
         } else if (GUIMain.empla5 == "empty") {
@@ -340,6 +344,7 @@ public class PanelShop extends JPanel implements ActionListener {
             }
             if (type == "decoration") {
                 checkPlant(plante, 4);
+                Plante.updateToolTip(Inventaire.emp5, plante);
                 Magasin.checkPlantePrix(plante);
             }
         } else if (GUIMain.empla6 == "empty") {
@@ -353,6 +358,7 @@ public class PanelShop extends JPanel implements ActionListener {
             }
             if (type == "decoration") {
                 checkPlant(plante, 5);
+                Plante.updateToolTip(Inventaire.emp6, plante);
                 Magasin.checkPlantePrix(plante);
             }
         } else {
