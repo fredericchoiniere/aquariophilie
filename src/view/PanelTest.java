@@ -71,7 +71,7 @@ public class PanelTest extends JPanel {
         layersPT.setBounds(0, 0, 700, 500);
         add(layersPT);
 
-        setLayout(null);
+        setLayout(null); // du panel test
 
         // Label pour l'image du background du panel test
         lblPT_BG.setIcon(new ImageIcon("res/outils/gradation_solutions/panel_test_bg.png"));
