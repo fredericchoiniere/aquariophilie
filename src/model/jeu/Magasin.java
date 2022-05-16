@@ -142,7 +142,7 @@ public class Magasin {
         /**
          * Méthode qui permet de mettre les tooltips à jour
          */
-        public static void updateToolTip() { // TODO: terminer tooltips
+        public static void updateToolTip() {
                 PanelShop.poisson_rouge.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Poisson rouge</strong></span></p>" +
                 "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">" + PoissonRouge.prix + "</span></span><span style=\"color: #008080;\">฿</span></p>" +
                 "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">5 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>" +

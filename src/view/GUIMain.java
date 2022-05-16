@@ -626,7 +626,7 @@ public class GUIMain extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 PanelAqua.background = Toolkit.getDefaultToolkit().getImage("res/meme/god.png");
                 JOptionPane.showMessageDialog(null, "Vous avez découvert un easter egg!" + "\n"
-                        + "Vous pouvez retourner en arrère en appuyant sur l'inventaire!");
+                        + "Vous pouvez retourner en arrière en appuyant sur l'inventaire!", "Surprise!", JOptionPane.PLAIN_MESSAGE);
             }
         });
 

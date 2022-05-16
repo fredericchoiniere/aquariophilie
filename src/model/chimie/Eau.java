@@ -520,13 +520,6 @@ public class Eau implements Runnable {
                     GUIMain.panelTest.lblNitrites.setText(toString(GUIMain.eau.getNitrites()));
                     GUIMain.panelTest.lblNitrates.setText(toString(GUIMain.eau.getNitrates()));
 
-                    GUIMain.panelTest.lblScorePH.setText(toString(GUIMain.eau.setScorePH()));
-                    GUIMain.panelTest.lblScoreGH.setText(toString(GUIMain.eau.setScoreGH()));
-                    GUIMain.panelTest.lblScoreKH.setText(toString(GUIMain.eau.setScoreKH()));
-                    GUIMain.panelTest.lblScoreAmmo.setText(toString(GUIMain.eau.setScoreAmmo()));
-                    GUIMain.panelTest.lblScoreNitrites.setText(toString(GUIMain.eau.setScoreNitrites()));
-                    GUIMain.panelTest.lblScoreNitrates.setText(toString(GUIMain.eau.setScoreNitrates()));
-
                     for (short i = 0; i < 6; i++)
                         Poisson.setSante(i);
 
@@ -544,7 +537,6 @@ public class Eau implements Runnable {
                         penteNitrites = nitrites;
                     }
 
-                    //GUIMain.actionEnCours = actionEnCours;
                     Thread.sleep(Temps.DUREE);
 
                 } catch (Exception e) {
