@@ -152,7 +152,7 @@ public class GUIIntro extends JPanel {
                     
                     File fileFred = Paths.get(("res/credits/fred.png")).toFile();
                     URI faceFred = fileFred.toURI();
-                    System.out.println(faceFred);
+                    System.out.println("allo");
 
                     File fileJay = Paths.get(("res/credits/jeremie.png")).toFile();
                     URI faceJay = fileJay.toURI();
