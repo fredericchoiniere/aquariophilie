@@ -143,9 +143,10 @@ public class GUIIntro extends JPanel {
             btnCredits = new JButton(new ImageIcon("res/intro/credits.png"));
             btnCredits.addActionListener((ActionListener) new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    JFrame frame = new JFrame("Credits");
+                    JFrame frame = new JFrame("Crédits");
                     frame.setResizable(false);
                     frame.setSize(700, 700);
+                    frame.setIconImage(img.getImage());
                     frame.setVisible(true);
                     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     frame.setLocationRelativeTo(null);
@@ -173,7 +174,7 @@ public class GUIIntro extends JPanel {
                     "<p style=\"text-align: center;\">&nbsp;</p>" +
                     "<p style=\"text-align: center;\"><img style=\"display: block; margin-left: auto; margin-right: auto;\" src='" + faceJay + "'  /></p>" +
                     "<p style=\"text-align: center;\"><strong><span style=\"color: #000000;\">J&eacute;r&eacute;mie Caron</span></strong></p>" +
-                    "<p style=\"text-align: center;\"><span style=\"color: #000000;\">Itinérant qu'on a trouvé devant le cégep, membre intégral de l'équipe</span></p></html>" + 
+                    "<p style=\"text-align: center;\"><span style=\"color: #000000;\">Itin&eacute;rant qu'on a trouv&eacute; devant le c&eacute;gep, membre int&eacute;gral de l'&eacute;quipe</span></p></html>" + 
                     "<p style=\"text-align: center;\">&nbsp;</p></html>");
 
 
