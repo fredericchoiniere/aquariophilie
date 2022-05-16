@@ -166,9 +166,9 @@ public class Poisson extends JPanel {
     /**
      * @param JLabel
      * @param String
-     *               méthode pour afficher les tooltipsdépendement du poisson
+     *               méthode pour afficher les tooltips des poissons dans l'inventaire
      */
-    public static void updateToolTip(JLabel label, String type) { // TODO: terminer tooltips si changement de balance
+    public static void updateToolTip(JLabel label, String type) {
         switch (type) {
             case "rouge":
                 label.setToolTipText(
