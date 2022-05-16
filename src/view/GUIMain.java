@@ -217,6 +217,12 @@ public class GUIMain extends JFrame {
         pipette.changerEtatLabel(lblPipette);
         Dimension size_pipette = lblPipette.getPreferredSize();
         lblPipette.setBounds(830, 120, size_pipette.width, size_pipette.height);
+        lblPipette.setToolTipText("<html><h4 style=\"text-align: center;\">Pipette</h4>" +
+        "<p>Permet d'effectuer un test visuel des paramètres d'eau</p>" +
+        "<p>Pour effectuer un test:</p>" +
+        "<p>- Récolter un échantillon d'eau</p>" +
+        "<p>- Ouvrir le kit de test</p>" +
+        "<p>- Déposer une goutte d'eau dans chaque tube</p></html>");
         lblPipette.setVisible(true);
         panelAqua.add(lblPipette);
 
@@ -226,15 +232,19 @@ public class GUIMain extends JFrame {
         filet.setIcon(filet_label);
         Dimension size_filet = filet_label.getPreferredSize();
         filet_label.setBounds(912, 200, size_filet.width, size_filet.height);
+        filet_label.setToolTipText("<html><h4 style=\"text-align: center;\">Filet</h4>" +
+        "<p>Permet de retirer un poisson de l'aquarium et le vendre pour 50% de son prix</p></html>");
         filet_label.setVisible(true);
         panelAqua.add(filet_label);
 
-        // ajout du label pour le ciseau
+        // ajout du label pour les ciseaux
         ciseau = new Ciseau();
         ciseau_label = new JLabel();
         ciseau.setIcon(ciseau_label);
         Dimension size_ciseau = ciseau_label.getPreferredSize();
         ciseau_label.setBounds(830, 200, size_ciseau.width, size_ciseau.height);
+        ciseau_label.setToolTipText("<html><h4 style=\"text-align: center;\">Ciseaux</h4>" +
+        "<p>Permettent de retirer une plante de l'aquarium et la vendre pour 50% de son prix</p></html>");
         ciseau_label.setVisible(true);
         panelAqua.add(ciseau_label);
 
@@ -244,6 +254,12 @@ public class GUIMain extends JFrame {
         pichet.setIcon(pichet_label);
         Dimension size_pichet = pichet_label.getPreferredSize();
         pichet_label.setBounds(912, 123, size_pichet.width, size_pichet.height);
+        pichet_label.setToolTipText("<html><h4 style=\"text-align: center;\">Pichet</h4>" +
+        "<p>Permet d'effectuer un changement d'eau</p>" +
+        "<p>- Remplit l'aquarium</p>" +
+        "<p>- Réinitialise les paramètres</p>" +
+        "<p>- Nettoie le fond de l'aquarium</p>" +
+        "<p>Cooldown de 20 secondes</p></html>");
         pichet_label.setVisible(true);
         panelAqua.add(pichet_label);
 
@@ -253,6 +269,9 @@ public class GUIMain extends JFrame {
         coquillage.setIcon(coquillage_label);
         Dimension size_coquillage = coquillage_label.getPreferredSize();
         coquillage_label.setBounds(872, 270, size_coquillage.width, size_coquillage.height);
+        coquillage_label.setToolTipText("<html><h4 style=\"text-align: center;\">Coquillage</h4>" +
+        "<p>Permet de rehausser le KH de l'eau</p>" +
+        "<p>Cooldown de 12 secondes</p></html>");
         coquillage_label.setVisible(true);
         panelAqua.add(coquillage_label);
 
@@ -269,6 +288,7 @@ public class GUIMain extends JFrame {
         aquarium_kit_fermer.setIcon(new ImageIcon("res/outils/aquarium_kit/aquarium_kit_closed.png"));
         Dimension size_wallgear_icon2 = aquarium_kit_fermer.getPreferredSize();
         aquarium_kit_fermer.setBounds(146, 62, size_wallgear_icon2.width, size_wallgear_icon2.height);
+        aquarium_kit_fermer.setToolTipText("Kit de test");
         aquarium_kit_fermer.setVisible(true);
         panelAqua.add(aquarium_kit_fermer);
 
@@ -284,7 +304,7 @@ public class GUIMain extends JFrame {
         inventaire_fermer = new JLabel();
         inventaire_fermer.setIcon(new ImageIcon("res/background/inventaire_fermer.png"));
         inventaire_fermer.setBounds(19, 60, size_icone_inv.width, size_icone_inv.height);
-        inventaire_fermer.setToolTipText("Ouvre l'inventaire");
+        inventaire_fermer.setToolTipText("Inventaire");
         inventaire_fermer.setVisible(true);
         panelAqua.add(inventaire_fermer);
 
@@ -301,6 +321,7 @@ public class GUIMain extends JFrame {
         kit_fermer.setIcon(new ImageIcon("res/background/kit_fermer.png"));
         Dimension size_kit_fermer = kit_fermer.getPreferredSize();
         kit_fermer.setBounds(82, 51, size_kit_fermer.width, size_kit_fermer.height);
+        kit_fermer.setToolTipText("Trousse de santé");
         kit_fermer.setVisible(true);
         panelAqua.add(kit_fermer);
 
@@ -397,6 +418,7 @@ public class GUIMain extends JFrame {
         label_information = new JLabel();
         label_information.setBounds(965, 5, 30, 30);
         label_information.setIcon(new ImageIcon("res/tutoriel/info/informations.png"));
+        label_information.setToolTipText("Afficher l'aide à l'utilisateur");
         label_information.setVisible(true);
         panelAqua.add(label_information);
 
@@ -463,6 +485,7 @@ public class GUIMain extends JFrame {
         label_information1 = new JLabel();
         label_information1.setBounds(965, 5, 30, 30);
         label_information1.setIcon(new ImageIcon("res/tutoriel/info/informations.png"));
+        label_information1.setToolTipText("Afficher l'aide à l'utilisateur");
         label_information1.setVisible(true);
         panelShop.add(label_information1);
 
