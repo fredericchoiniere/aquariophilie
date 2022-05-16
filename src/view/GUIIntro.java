@@ -110,7 +110,7 @@ public class GUIIntro extends JPanel {
                     BlueBlue.prix = 0;
                     ScarletRot.prix = 0;
                     Erdtree.prix = 0;
-                    Argent.argent = 0;
+                    Argent.argent = 999999999;
                     Argent.montant = "∞";
                     GUIMain.label_argent_aqua.setText("∞");
                     GUIMain.label_argent_shop.setText("∞");
