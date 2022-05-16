@@ -1817,6 +1817,7 @@ public class GUIMain extends JFrame {
         PanelInfo.lblPH.setVisible(true);
         PanelInfo.lblKH.setVisible(true);
         PanelInfo.lblGH.setVisible(true);
+        PanelShop.message.setVisible(true);
     }
 
     /**
