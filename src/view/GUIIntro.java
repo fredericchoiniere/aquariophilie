@@ -153,16 +153,18 @@ public class GUIIntro extends JPanel {
                     
                     File fileFred = Paths.get(("res/credits/fred.png")).toFile();
                     URI faceFred = fileFred.toURI();
-                    System.out.println(faceFred);
 
                     File fileJay = Paths.get(("res/credits/jeremie.png")).toFile();
                     URI faceJay = fileJay.toURI();
 
+                    File fileJustin = Paths.get(("res/credits/justin.png")).toFile();
+                    URI faceJustin = fileJustin.toURI();
 
-                    editorPane = new JEditorPane(); // TODO: terminer crédits
+
+                    editorPane = new JEditorPane(); // TODO: terminer changer font
                     editorPane.setEditable(false);
                     editorPane.setContentType("text/html");
-                    editorPane.setText("<html><h1 style=\"text-align: center;\"><strong><span style=\"color: #008080;\">Aquariophilie</span></strong></h1>" +
+                    editorPane.setText("<html><h1 style=\"text-align: center;\"><strong><span style=\"color: #008080;\">AQUARIOPHILIE</span></strong></h1>" +
                     "<h3 style=\"text-align: center;\"><span style=\"color: #000000;\">Projet final du programme SIM au Coll&egrave;ge de Rosemont<br /></span></h3>" +
                     "<h4 style=\"text-align: center;\"><span style=\"color: #000000;\">420-204-RE H22</span></h4>" +
                     "<h4 style=\"text-align: center;\"><span style=\"color: #000000;\">Pr&eacute;sent&eacute; &agrave; Mme Wafaa Niar Dinedane</span></h4>" +
@@ -174,7 +176,11 @@ public class GUIIntro extends JPanel {
                     "<p style=\"text-align: center;\">&nbsp;</p>" +
                     "<p style=\"text-align: center;\"><img style=\"display: block; margin-left: auto; margin-right: auto;\" src='" + faceJay + "'  /></p>" +
                     "<p style=\"text-align: center;\"><strong><span style=\"color: #000000;\">J&eacute;r&eacute;mie Caron</span></strong></p>" +
-                    "<p style=\"text-align: center;\"><span style=\"color: #000000;\">Itin&eacute;rant qu'on a trouv&eacute; devant le c&eacute;gep, membre int&eacute;gral de l'&eacute;quipe</span></p></html>" + 
+                    "<p style=\"text-align: center;\"><span style=\"color: #000000;\">Itin&eacute;rant qu'on a trouv&eacute; devant le c&eacute;gep, membre int&eacute;gral de l'&eacute;quipe</span></p>" + 
+                    "<p style=\"text-align: center;\">&nbsp;</p>" +
+                    "<p style=\"text-align: center;\"><img style=\"display: block; margin-left: auto; margin-right: auto;\" src='" + faceJustin + "'  /></p>" +
+                    "<p style=\"text-align: center;\"><strong><span style=\"color: #000000;\">Justin Plouffe</span></strong></p>" +
+                    "<p style=\"text-align: center;\"><span style=\"color: #000000;\">J'ai peur</span></p>" + 
                     "<p style=\"text-align: center;\">&nbsp;</p></html>");
 
 
