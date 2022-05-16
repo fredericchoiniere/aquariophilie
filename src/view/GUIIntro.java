@@ -189,12 +189,6 @@ public class GUIIntro extends JPanel {
                     "</html>");
 
 
-
-
-
-
-
-
                     JScrollPane scrollPane = new JScrollPane(editorPane);
                     
                     frame.add(scrollPane);
@@ -223,6 +217,7 @@ public class GUIIntro extends JPanel {
             frame.setSize(500, 400);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setResizable(false);
+
             frame.setIconImage(img.getImage());
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
