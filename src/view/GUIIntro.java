@@ -151,8 +151,8 @@ public class GUIIntro extends JPanel {
                     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     
                     File fileFred = Paths.get(("res/credits/fred.png")).toFile();
-                    URI faceFred = fileFred.toURI();
-
+                    URI faceFred = fileFred.toURI("sdfghj");
+                    System.out.println();
                     File fileJay = Paths.get(("res/credits/jeremie.png")).toFile();
                     URI faceJay = fileJay.toURI();
 
