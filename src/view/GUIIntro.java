@@ -8,7 +8,10 @@ package view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
+
 import javax.swing.*;
+
 import model.jeu.Argent;
 import model.plantes.*;
 import model.poissons.*;
@@ -17,6 +20,8 @@ import java.awt.event.*;
 public class GUIIntro extends JPanel {
     // attributs de la classe
     private Image image;
+
+    private static JFrame frame;
 
     public static JLabel label, lblNouvellePartie, lblModeEvaluation;
 
@@ -39,7 +44,7 @@ public class GUIIntro extends JPanel {
     }
     public static void guiIntroFrame() {
         try {
-            JFrame frame = new JFrame("Image");
+            frame = new JFrame("Image");
 
             Image image = Toolkit.getDefaultToolkit().getImage(
                     "res/background/intro.gif");
@@ -52,8 +57,6 @@ public class GUIIntro extends JPanel {
             // bouton pour nouvelle partie
             btnNouvellePartie = new JButton(new ImageIcon("res/intro/nouvellePartie.png"));
 
-            // ils sont ici parce que ca marchait pas en les callant à l'extérieur de la
-            // méthode so fuckit (pour fred qui va se plaindre)
             btnNouvellePartie.addActionListener((ActionListener) new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     GUIMain aquarium = new GUIMain();
@@ -141,25 +144,32 @@ public class GUIIntro extends JPanel {
             btnCredits.addActionListener((ActionListener) new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     JFrame frame = new JFrame("Credits");
-                    JTextArea textArea = new JTextArea();
-
-                    textArea.setEditable(false);
-                    textArea.setText("Heyo !\n" + "Canadian checkers are the best.\n" + "We hope you enjoy this game.\n"
-                            + "Thanks for playing!\n" + "Jérémie Caron" + "\n" + "Justin Plouffe" + "/n" + "Version 1.0"
-                            + "\n" + "Version 2.0" + "\n" + "Version 3.0" + "\n" + "Version 4.0" + "\n" + "Version 5.0"
-                            + "\n" + "Version 6.0" + "\n1" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2"
-                            + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2" + "\n2"
-                            + "\n2" + "\n2" + "\n2");
-
-                    JScrollPane scrollPane = new JScrollPane(textArea);
-
-                    frame.add(scrollPane);
-
-                    // rame.add(textArea);
+                    frame.setResizable(false);
+                    frame.setLocationRelativeTo(null);
                     frame.setSize(700, 700);
                     frame.setVisible(true);
                     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    frame.setLocationRelativeTo(null);
+
+                    
+                    URL res = GUIIntro.class.getResource("/fred.png");
+                    System.out.println("url: " + res);
+
+                    JEditorPane editorPane = new JEditorPane();
+                    editorPane.setContentType("text/html");
+                    editorPane.setText("<html><h1 style=\"text-align: center;\"><strong><span style=\"color: #008080;\">Aquariophilie</span></strong></h1>" +
+                    "<h3 style=\"text-align: center;\"><span style=\"color: #000000;\">Projet final du programme SIM au Coll&egrave;ge de Rosemont<br /></span></h3>" +
+                    "<h4 style=\"text-align: center;\"><span style=\"color: #000000;\">420-204-RE H22</span></h4>" +
+                    "<h4 style=\"text-align: center;\"><span style=\"color: #000000;\">Pr&eacute;sent&eacute; &agrave; Mme Wafaa Niar Dinedane</span></h4>" +
+                    "<p style=\"text-align: left;\">&nbsp;</p>" +
+                    "<p style=\"text-align: center;\"><span style=\"color: #000000;\">Membres de l'&eacute;quipe:</span></p>" +
+                    "<p style=\"text-align: left;\"><span style=\"color: #000000;\"><img style=\"display: block; margin-left: auto; margin-right: auto;\" src='" + res + "' alt=\" width=\"236\" height=\"318\" /></span></p>" +
+                    "<p style=\"text-align: center;\"><strong><span style=\"color: #000000;\">Fr&eacute;d&eacute;ric Choini&egrave;re</span></strong></p>" +
+                    "<p style=\"text-align: center;\">&nbsp;</p></html>");
+
+                    JScrollPane scrollPane = new JScrollPane(editorPane);
+                    
+
+                    frame.add(scrollPane);
                 }
             });
             btnCredits.setBounds(255, 240, 105, 50);

@@ -2,7 +2,7 @@
 // Itération 2: Justin Plouffe
 // Itération 3: Justin Plouffe
 
-// Classe du panel pour tester l,eau
+// Classe du panel pour tester l'eau
 
 package view;
 
