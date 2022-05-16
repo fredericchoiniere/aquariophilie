@@ -41,7 +41,7 @@ public class PanelInfo extends JPanel implements Runnable {
         setLayout(null); // layout du panel info
 
         lblAction = new JLabel("Action en cours: ");
-        lblAction.setBounds(152, 98, 200, 20);
+        lblAction.setBounds(147, 98, 250, 20);
         add(lblAction);
 
         progressBar = new JProgressBar();

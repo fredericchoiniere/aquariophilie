@@ -526,7 +526,6 @@ public class Eau implements Runnable {
                     GUIMain.panelTest.lblScoreAmmo.setText(toString(GUIMain.eau.setScoreAmmo()));
                     GUIMain.panelTest.lblScoreNitrites.setText(toString(GUIMain.eau.setScoreNitrites()));
                     GUIMain.panelTest.lblScoreNitrates.setText(toString(GUIMain.eau.setScoreNitrates()));
-                    GUIMain.panelTest.lblScoreEau.setText(toString(GUIMain.eau.getScoreEau()));
 
                     for (short i = 0; i < 6; i++)
                         Poisson.setSante(i);

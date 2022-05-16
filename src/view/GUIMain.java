@@ -1133,6 +1133,9 @@ public class GUIMain extends JFrame {
                 PanelInfo.lblDechets.setVisible(false);
                 PanelInfo.lblAbsDechets.setVisible(false);
                 PanelInfo.progressBar.setVisible(false);
+                PanelInfo.lblPH.setVisible(false);
+                PanelInfo.lblKH.setVisible(false);
+                PanelInfo.lblGH.setVisible(false);
             }
         });
 
@@ -1788,6 +1791,9 @@ public class GUIMain extends JFrame {
         PanelInfo.lblDechets.setVisible(true);
         PanelInfo.lblAbsDechets.setVisible(true);
         PanelInfo.progressBar.setVisible(true);
+        PanelInfo.lblPH.setVisible(true);
+        PanelInfo.lblKH.setVisible(true);
+        PanelInfo.lblGH.setVisible(true);
     }
 
     /**

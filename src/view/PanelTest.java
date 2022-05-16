@@ -19,7 +19,7 @@ public class PanelTest extends JPanel {
 
     // création des labels
     public JLabel lblAmmo, lblNitrites, lblNitrates, lblPH, lblGH, lblKH, lblScorePH, lblScoreGH, lblScoreKH,
-            lblScoreAmmo, lblScoreNitrites, lblScoreNitrates, lblScoreEau, lblOKAmmo, lblOKNitrites, lblOKNitrates,
+            lblScoreAmmo, lblScoreNitrites, lblScoreNitrates, lblOKAmmo, lblOKNitrites, lblOKNitrates,
             lblOKPH, lblOKGH, lblOKKH;
 
     Molecules mol = new Molecules();
@@ -484,13 +484,6 @@ public class PanelTest extends JPanel {
         lblScoreNitrates.setBounds(601, 60, 25, 20);
         layersPT.setLayer(lblScoreNitrates, 2);
         layersPT.add(lblScoreNitrates);
-
-        lblScoreEau = new JLabel();
-        lblScoreEau.setVisible(true);
-        lblScoreEau.setText(GUIMain.eau.toString(GUIMain.eau.getScoreEau()));
-        lblScoreEau.setBounds(0, 0, 25, 20);
-        layersPT.setLayer(lblScoreEau, 2);
-        layersPT.add(lblScoreEau);
 
     }
 }
