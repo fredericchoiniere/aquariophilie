@@ -21,7 +21,7 @@ public class GUIIntro extends JPanel {
     // attributs de la classe
     private Image image;
 
-    private static JFrame frame;
+    static JEditorPane editorPane;
 
     public static JLabel label, lblNouvellePartie, lblModeEvaluation;
 
@@ -44,7 +44,7 @@ public class GUIIntro extends JPanel {
     }
     public static void guiIntroFrame() {
         try {
-            frame = new JFrame("Image");
+            JFrame frame = new JFrame("Image");
 
             Image image = Toolkit.getDefaultToolkit().getImage(
                     "res/background/intro.gif");
@@ -145,19 +145,21 @@ public class GUIIntro extends JPanel {
                 public void actionPerformed(ActionEvent e) {
                     JFrame frame = new JFrame("Credits");
                     frame.setResizable(false);
-                    frame.setLocationRelativeTo(null);
                     frame.setSize(700, 700);
                     frame.setVisible(true);
                     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    frame.setLocationRelativeTo(null);
                     
                     File fileFred = Paths.get(("res/credits/fred.png")).toFile();
-                    URI faceFred = fileFred.toURI("sdfghj");
-                    System.out.println();
+                    URI faceFred = fileFred.toURI();
+                    System.out.println(faceFred);
+
                     File fileJay = Paths.get(("res/credits/jeremie.png")).toFile();
                     URI faceJay = fileJay.toURI();
 
 
-                    JEditorPane editorPane = new JEditorPane();
+                    editorPane = new JEditorPane(); // TODO: terminer crédits
+                    editorPane.setEditable(false);
                     editorPane.setContentType("text/html");
                     editorPane.setText("<html><h1 style=\"text-align: center;\"><strong><span style=\"color: #008080;\">Aquariophilie</span></strong></h1>" +
                     "<h3 style=\"text-align: center;\"><span style=\"color: #000000;\">Projet final du programme SIM au Coll&egrave;ge de Rosemont<br /></span></h3>" +
@@ -174,9 +176,15 @@ public class GUIIntro extends JPanel {
                     "<p style=\"text-align: center;\"><span style=\"color: #000000;\">Itinérant qu'on a trouvé devant le cégep, membre intégral de l'équipe</span></p></html>" + 
                     "<p style=\"text-align: center;\">&nbsp;</p></html>");
 
+
+
+
+
+
+
+
                     JScrollPane scrollPane = new JScrollPane(editorPane);
                     
-
                     frame.add(scrollPane);
                 }
             });
