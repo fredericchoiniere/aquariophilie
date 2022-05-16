@@ -8,10 +8,10 @@ package view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.URL;
-
+import java.io.File;
+import java.net.URI;
+import java.nio.file.Paths;
 import javax.swing.*;
-
 import model.jeu.Argent;
 import model.plantes.*;
 import model.poissons.*;
@@ -149,10 +149,13 @@ public class GUIIntro extends JPanel {
                     frame.setSize(700, 700);
                     frame.setVisible(true);
                     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
                     
-                    URL res = GUIIntro.class.getResource("/fred.png");
-                    System.out.println("url: " + res);
+                    File fileFred = Paths.get(("res/credits/fred.png")).toFile();
+                    URI faceFred = fileFred.toURI();
+
+                    File fileJay = Paths.get(("res/credits/jeremie.png")).toFile();
+                    URI faceJay = fileJay.toURI();
+
 
                     JEditorPane editorPane = new JEditorPane();
                     editorPane.setContentType("text/html");
@@ -162,8 +165,13 @@ public class GUIIntro extends JPanel {
                     "<h4 style=\"text-align: center;\"><span style=\"color: #000000;\">Pr&eacute;sent&eacute; &agrave; Mme Wafaa Niar Dinedane</span></h4>" +
                     "<p style=\"text-align: left;\">&nbsp;</p>" +
                     "<p style=\"text-align: center;\"><span style=\"color: #000000;\">Membres de l'&eacute;quipe:</span></p>" +
-                    "<p style=\"text-align: left;\"><span style=\"color: #000000;\"><img style=\"display: block; margin-left: auto; margin-right: auto;\" src='" + res + "' alt=\" width=\"236\" height=\"318\" /></span></p>" +
+                    "<p style=\"text-align: center;\"><img style=\"display: block; margin-left: auto; margin-right: auto;\" src='" + faceFred + "'  /></p>" +
                     "<p style=\"text-align: center;\"><strong><span style=\"color: #000000;\">Fr&eacute;d&eacute;ric Choini&egrave;re</span></strong></p>" +
+                    "<p style=\"text-align: center;\"><span style=\"color: #000000;\">G&eacute;nie de la programmation et figure de proue du projet</span></p>" +
+                    "<p style=\"text-align: center;\">&nbsp;</p>" +
+                    "<p style=\"text-align: center;\"><img style=\"display: block; margin-left: auto; margin-right: auto;\" src='" + faceJay + "'  /></p>" +
+                    "<p style=\"text-align: center;\"><strong><span style=\"color: #000000;\">J&eacute;r&eacute;mie Caron</span></strong></p>" +
+                    "<p style=\"text-align: center;\"><span style=\"color: #000000;\">Itinérant qu'on a trouvé devant le cégep, membre intégral de l'équipe</span></p></html>" + 
                     "<p style=\"text-align: center;\">&nbsp;</p></html>");
 
                     JScrollPane scrollPane = new JScrollPane(editorPane);
