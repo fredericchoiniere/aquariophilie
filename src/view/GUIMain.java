@@ -375,6 +375,7 @@ public class GUIMain extends JFrame {
         hamis = new JLabel();
         hamis.setIcon(new ImageIcon("res/background/hamis_love.png"));
         hamis.setBounds(125, 215, 25, 25);
+        hamis.setToolTipText("My beloved");
         hamis.setVisible(false);
         panelAqua.add(hamis);
 

@@ -63,8 +63,8 @@ public class GUIIntro extends JPanel {
                     aquarium.setResizable(false);
                     aquarium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     aquarium.pack();
-                    aquarium.setLocationRelativeTo(null);
                     aquarium.setVisible(true);
+                    aquarium.setLocationRelativeTo(null);
                     frame.setVisible(false);
                 }
             });
