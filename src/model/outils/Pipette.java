@@ -37,7 +37,7 @@ public class Pipette extends Outils {
 
     /**
      * @param proposition
-     *                    méthode qui permet de rendre le pipette remplie ou non
+     *                    méthode qui assigne un état de remplissage à la pipette
      */
     public void setEstRemplie(boolean proposition) {
         this.est_remplie = proposition;
@@ -45,7 +45,7 @@ public class Pipette extends Outils {
 
     /**
      * @return int
-     *         méthode qui permet de savoir le nombre de gouttes dans la pipette
+     *         méthode qui permet de connaître le nombre de gouttes dans la pipette
      */
     public int getNbGouttes() {
         return nbGouttes;

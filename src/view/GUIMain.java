@@ -38,10 +38,10 @@ public class GUIMain extends JFrame {
     public static JTabbedPane tabbedPane;
 
     // création des labels
-    JLabel testEau, empty, aquarium_kit_ouvert, aquarium_kit_fermer, eau_label, inventaire_ouvert,
+    JLabel  empty, aquarium_kit_ouvert, aquarium_kit_fermer, inventaire_ouvert,
             inventaire_fermer, inventaire_bg, filet_label, pause_label, reprendre_label, label_tutoriel,
             label_tutoriel1,
-            label_information, label_information1, hamis, ciseau_label, label_argent, label_pause2, label_reprendre2,
+            label_information, label_information1, hamis, ciseau_label, label_pause2, label_reprendre2,
             meme, label_tuto1,
             label_tuto2, label_tuto3, label_tuto4, label_tuto5, label_tuto6, skip_tuto3,
             radio_on, radio_off, kit_ouvert, kit_fermer, kit_bg, plant, skip_tuto1, skip_tuto2;
@@ -53,8 +53,8 @@ public class GUIMain extends JFrame {
     public static JLabel label_jours = new JLabel("");
 
     // création des String
-    public static String nom, empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3, poi4, poi5, poi6,
-            actionEnCours, pla1, pla2, pla3, pla4, pla5, pla6, aqua1, aqua2, aqua3, aqua4, aqua5, aqua6, emplacement,
+    public static String empla1, empla2, empla3, empla4, empla5, empla6, poi1, poi2, poi3, poi4, poi5, poi6,
+            actionEnCours, pla1, pla2, pla3, pla4, pla5, pla6, aqua1, aqua2, aqua3, aqua4, aqua5, aqua6, 
             aquaPla1, aquaPla2, aquaPla3, aquaPla4, aquaPla5, aquaPla6;
 
     // création des rectangles
@@ -77,13 +77,10 @@ public class GUIMain extends JFrame {
     static Pichet pichet;
     static Coquillage coquillage;
     ImageIcon tetra_curseur;
-    ImageIcon rajoutIcon = new ImageIcon();
     ImageIcon iconeAppli = new ImageIcon("res/background/icone_aquariophilie.png");
     Inventaire inventaire;
     Sante sante;
     public static Aquarium aquarium;
-    public static CycleAzote cycleInitial;
-    Dimension dimAqua, dimShop, dimInfo;
     public static PanelAqua panelAqua;
     public static PanelTest panelTest;
 
@@ -96,23 +93,12 @@ public class GUIMain extends JFrame {
     // création des threads
     public static Thread tpoisson_rouge, tpoisson_betta, tpoisson_tetra, tpoisson_neo;
 
-    Thread threadEau, tCycleInitial, tPanelInfo;
-
-    // création des attributs
-    short stade, iteration = 0;
-
-    int vel_x = 2;
-    int vel_y = 2;
-    public int argent = 0;
+    Thread threadEau, tPanelInfo;
 
     public static float jours = (float) 0; // TIMER GLOBAL
 
     public static boolean hasFish1, hasFish2, hasFish3, hasFish4, hasFish5, hasFish6, hasPlant1, hasPlant2, hasPlant3,
             isSelected6;
-    public static boolean coquillageVis = false, coquillageInvis = false, pichetVis = false, pichetInvis = false;
-
-    // création des progressBar
-    public static JProgressBar prog1, prog2, prog3, prog4, prog5, prog6;
 
     public GUIMain() { // création du constructeur GUIMain
 
@@ -147,7 +133,6 @@ public class GUIMain extends JFrame {
         panelAqua = new PanelAqua();
         panelAqua.setLayout(null);
         panelAqua.setVisible(true);
-        dimAqua = panelAqua.getPreferredSize();
 
         // -----------------------------------------------------------------------
         // ajout des labels tuto
@@ -283,7 +268,7 @@ public class GUIMain extends JFrame {
         panelAqua.add(aquarium_kit_ouvert);
         aquarium_kit_ouvert.setVisible(false);
 
-        // ajout de l'icone de notre kit fermer
+        // ajout de l'icone de notre kit fermé
         aquarium_kit_fermer = new JLabel();
         aquarium_kit_fermer.setIcon(new ImageIcon("res/outils/aquarium_kit/aquarium_kit_closed.png"));
         Dimension size_wallgear_icon2 = aquarium_kit_fermer.getPreferredSize();
@@ -300,7 +285,7 @@ public class GUIMain extends JFrame {
         inventaire_ouvert.setVisible(false);
         panelAqua.add(inventaire_ouvert);
 
-        // ajout du label pour icones de l'inventaire fermer
+        // ajout du label pour icones de l'inventaire fermé
         inventaire_fermer = new JLabel();
         inventaire_fermer.setIcon(new ImageIcon("res/background/inventaire_fermer.png"));
         inventaire_fermer.setBounds(19, 60, size_icone_inv.width, size_icone_inv.height);
@@ -316,7 +301,7 @@ public class GUIMain extends JFrame {
         kit_ouvert.setVisible(false);
         panelAqua.add(kit_ouvert);
 
-        // kit de soin fermer
+        // kit de soin fermé
         kit_fermer = new JLabel();
         kit_fermer.setIcon(new ImageIcon("res/background/kit_fermer.png"));
         Dimension size_kit_fermer = kit_fermer.getPreferredSize();
@@ -357,14 +342,14 @@ public class GUIMain extends JFrame {
         sante.setVisible(Sante.state1, Sante.state2, Sante.state3, Sante.state4, Sante.state5, Sante.state6);
         panelAqua.add(kit_bg);
 
-        // ajout de la radio alummer
+        // ajout de la radio allumée
         radio_on.setIcon(new ImageIcon("res/outils/radio_on.png"));
         radio_on.setBounds(240, 400, 70, 70);
         radio_on.setToolTipText("Mettre la radio sur OFF");
         radio_on.setVisible(false);
         panelAqua.add(radio_on);
 
-        // ajout du label pour le radio
+        // ajout du label pour la radio éteinte
         radio_off.setIcon(new ImageIcon("res/outils/radio_off.png"));
         radio_off.setBounds(240, 400, 70, 70);
         radio_off.setToolTipText("Mettre la radio sur ON");
@@ -375,6 +360,7 @@ public class GUIMain extends JFrame {
         hamis = new JLabel();
         hamis.setIcon(new ImageIcon("res/background/hamis_love.png"));
         hamis.setBounds(125, 215, 25, 25);
+        hamis.setToolTipText("My beloved");
         hamis.setVisible(false);
         panelAqua.add(hamis);
 
@@ -595,7 +581,6 @@ public class GUIMain extends JFrame {
                 aquarium_kit_fermer.setVisible(true);
                 panelTest.setVisible(false);
                 empty.setVisible(false);
-                // setOutilsVisible();
                 label_tutoriel.setVisible(false);
                 basicCursor();
                 kit_fermer.setVisible(true);
@@ -662,7 +647,6 @@ public class GUIMain extends JFrame {
         pichet_label.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                MethodeGUIMain.isPichet = true;
                 if (!MethodeGUIMain.cooldownP()) {
                     pichet.changerCurseurPanel(panelAqua);
                     label_tutoriel.setVisible(false);
@@ -1772,7 +1756,7 @@ public class GUIMain extends JFrame {
     }
 
     /**
-     * méthode pour rendre l'application good après tutoriel
+     * méthode pour rendre l'application prête à l'utilisation après tutoriel
      */
     public void setEverythingGood() {
         skip_tuto1.setVisible(false);

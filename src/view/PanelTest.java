@@ -9,19 +9,12 @@ package view;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
-import model.chimie.CycleAzote;
-import model.chimie.Molecules;
 
 public class PanelTest extends JPanel {
-
-    // attributs de la classe
-    CycleAzote cycle;
 
     // création des labels
     public JLabel lblAmmo, lblNitrites, lblNitrates, lblPH, lblGH, lblKH, lblOKAmmo, lblOKNitrites, lblOKNitrates,
             lblOKPH, lblOKGH, lblOKKH;
-
-    Molecules mol = new Molecules();
 
     public PanelTest() {
 

@@ -1,6 +1,6 @@
 // Itération 3: Jérémie Caron
 
-// Classe qui controle la radio
+// Classe qui contrôle la radio
 
 package model;
 

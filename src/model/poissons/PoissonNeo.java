@@ -1,6 +1,6 @@
 //Itération 3: Frédéric Choinière, Jérémie Caron
 
-// Classe qui permet de stocker les attribus et faire nager le poisson
+// Classe qui permet de stocker les attributs et faire nager le poisson
 
 package model.poissons;
 
@@ -36,9 +36,8 @@ public class PoissonNeo extends Poisson implements Runnable {
 
     
     /** 
-     * @param 50
      * @return boolean
-     *        Méthode qu permet de voir si le poisson est correct dans le paramètre
+     *        Évalue si le poisson tolère les paramètres d'eau actuels
      */
     public static boolean checkTolerances() { // ammo 2 nit 1 nat 40
         if (GUIMain.eau.getPH() < 4 || GUIMain.eau.getPH() > 8 || GUIMain.eau.getGH() < 3

@@ -1,7 +1,7 @@
 // Itération 2: Jérémie Caron, Frédéric Choinière
-// Itération 3: Jérémie Caron
+// Itération 3: Jérémie Caron, Frédéric Choinière
 
-// Classe qui permet de stocker les attribus et faire nager le poisson
+// Classe qui permet de stocker les attributs et faire nager le poisson
 
 package model.poissons;
 
@@ -36,8 +36,7 @@ public class PoissonBetta extends Poisson implements Runnable {
 
     /**
      * @return boolean
-     *         Méthode qu permet de voir si le poisson est correct dans le paramètre
-     *         actuel de l'eau
+     *         Évalue si le poisson tolère les paramètres d'eau actuels
      */
     public static boolean checkTolerances() {
         if (GUIMain.eau.getPH() < 3 || GUIMain.eau.getPH() > 9 || GUIMain.eau.getGH() < 3
@@ -105,7 +104,7 @@ public class PoissonBetta extends Poisson implements Runnable {
                 }
                 if (y_temp > y_max) { // 120
                     setYVelocity(-vel_y);
-                    if (isDead) {
+                    if (isDead) {               // si poisson décédé, le fait tomber au fond de l'aquarium
                         setYVelocity(0);
                         this.var = false;
                     }
