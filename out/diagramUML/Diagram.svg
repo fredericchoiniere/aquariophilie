@@ -87,7 +87,11 @@ reverse link PanelShop to PoissonNeo--><path codeLine="535" d="M5216.08,1684.36 
 reverse link PanelShop to JavaFern--><path codeLine="536" d="M5565.25,1693.33 C5686.43,1755.78 5848.76,1847.23 5978,1948 C5996.31,1962.28 6014.53,1979.95 6030.1,1996.39 " fill="none" id="PanelShop-backto-JavaFern" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#FFFFFF" points="5553.65,1687.38,5557.1599,1693.6793,5564.3245,1692.8622,5560.8147,1686.5629,5553.65,1687.38" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="5561.4732" y="1688.1279">1..*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="6016.4344" y="1985.503">1</text><!--MD5=[45ce2d92bc9fc5308ee24ed0e475ed02]
 reverse link PanelShop to BlueBlue--><path codeLine="537" d="M5555.41,1744.75 C5627.22,1805.48 5711.61,1878.85 5785,1948 C5801.21,1963.27 5818.31,1980.51 5833.51,1996.27 " fill="none" id="PanelShop-backto-BlueBlue" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#FFFFFF" points="5545.37,1736.26,5547.3777,1743.186,5554.5431,1743.9965,5552.5354,1737.0706,5545.37,1736.26" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="5533.2652" y="1757.2291">1..*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="5819.6582" y="1985.7394">1</text><!--MD5=[f212b496cbd011db91bbbb9553ecee9e]
 reverse link PanelShop to ScarletRot--><path codeLine="538" d="M5566.25,1663.05 C5731.26,1718.88 5980.78,1816.36 6171,1948 C6190.59,1961.56 6209.45,1979.53 6225.2,1996.44 " fill="none" id="PanelShop-backto-ScarletRot" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#FFFFFF" points="5553.53,1658.77,5557.9433,1664.4728,5564.9049,1662.5924,5560.4916,1656.8896,5553.53,1658.77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="5561.3478" y="1658.2215">1..*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="6211.8297" y="1985.56">1</text><!--MD5=[26fa320d208093b61c740c903e8ee605]
+<<<<<<< HEAD
+reverse link PanelShop to Erdtree--><path codeLine="539" d="M5566.55,1644.2 C5770.22,1690.69 6110.45,1786.19 6364,1948 C6384.38,1961.01 6403.63,1979.16 6419.46,1996.38 " fill="none" id="PanelShop-backto-Erdtree" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#FFFFFF" points="5553.64,1641.28,5558.6089,1646.5059,5565.3439,1643.9292,5560.375,1638.7033,5553.64,1641.28" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="5561.4628" y="1639.939">1..*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="6406.2669" y="1985.4916">1</text><!--MD5=[a74a8df83022bfe949dabddd690fd2f1]
+=======
 reverse link PanelShop to Erdtree--><path codeLine="539" d="M5566.55,1644.2 C5770.22,1690.69 6110.45,1786.19 6364,1948 C6384.38,1961.01 6403.63,1979.16 6419.46,1996.38 " fill="none" id="PanelShop-backto-Erdtree" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#FFFFFF" points="5553.64,1641.28,5558.6089,1646.5059,5565.3439,1643.9292,5560.375,1638.7033,5553.64,1641.28" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="5561.4628" y="1639.939">1..*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="6406.2669" y="1985.4916">1</text><!--MD5=[82b9d154c3c78d936e805f9562a00bf0]
+>>>>>>> 105a6464f214e6fe1917cb1c59f10adba3cb788c
 @startuml Diagram
 scale 1
 
@@ -633,8 +637,13 @@ PanelShop "1..*" o- - "1" Erdtree
 
 PlantUML version 1.2022.0(Tue Jan 11 11:16:42 EST 2022)
 (GPL source distribution)
+<<<<<<< HEAD
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+=======
 Java Runtime: OpenJDK Runtime Environment
 JVM: OpenJDK 64-Bit Server VM
+>>>>>>> 105a6464f214e6fe1917cb1c59f10adba3cb788c
 Default Encoding: Cp1252
 Language: fr
 Country: CA
