@@ -1,10 +1,10 @@
-//Jérémie Caron     itération 2
+// Itération 2: Jérémie Caron
+
 //Classe pour l'outil filet
 
 package model.outils;
 
 import javax.swing.*;
-
 import java.awt.*;
 
 public class Filet extends Outils {
@@ -34,6 +34,7 @@ public class Filet extends Outils {
         panel.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
                 icone_filet.getImage(),
                 new Point(0, 0), "curseur plein"));
-
     }
 }
+
+// Слава Україні!

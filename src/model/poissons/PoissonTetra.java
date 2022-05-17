@@ -1,14 +1,17 @@
-//Jérémie Caron, Frédéric Choinière     itération 2
-// Jérémie Caron    itération 3
+// Itération 2: Jérémie Caron, Frédéric Choinière
+// Itération 3: Jérémie Caron, Frédéric Choinière
+
+// Classe qui permet de stocker les attributs et faire nager le poisson
 
 package model.poissons;
 
 import java.awt.*;
-
 import model.GestionException;
 import model.environnement.Temps;
+import view.GUIMain;
 
 public class PoissonTetra extends Poisson implements Runnable {
+
     // attributs de la classe
     public int x_min = 4;
     public int x_max = 286;
@@ -21,7 +24,7 @@ public class PoissonTetra extends Poisson implements Runnable {
     int vel_y = 1;
     public static int prix = 200;
     public static int dechets = 2;
-    public static int tolerance = 0;
+    public static int tolerance = 1;
 
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_tetra/poisson_droite.png");
@@ -32,13 +35,26 @@ public class PoissonTetra extends Poisson implements Runnable {
     }
 
     /**
+     * @return boolean
+     *        Évalue si le poisson tolère les paramètres d'eau actuels
+     */
+    public static boolean checkTolerances() {
+        if (GUIMain.eau.getPH() < 4 || GUIMain.eau.getPH() > 9 || GUIMain.eau.getGH() < 3
+                || GUIMain.eau.getAmmoniaque() > 2 || GUIMain.eau.getNitrites() > 1 || GUIMain.eau.getNitrates() > 40) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * @param g
      *          méthode pour dessiner le poisson
      */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, PoissonRouge.empty), x_temp, y_temp,
+        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, PoissonRouge.empty, Poisson.rip), x_temp,
+                y_temp,
                 this);
     }
 
@@ -56,6 +72,9 @@ public class PoissonTetra extends Poisson implements Runnable {
         repaint();
     }
 
+    /**
+     * Méthode qui permet de faire tourner le poisson
+     */
     public void setImg() {
         if (side == 1) {
             direction = "droite";
@@ -68,6 +87,9 @@ public class PoissonTetra extends Poisson implements Runnable {
         }
     }
 
+    /**
+     * Méthode qui permet de faire bouger le poisson
+     */
     @Override
     public void run() {
         while (var) {
@@ -82,6 +104,10 @@ public class PoissonTetra extends Poisson implements Runnable {
                 }
                 if (y_temp > y_max) {
                     setYVelocity(-vel_y);
+                    if (isDead) {
+                        setYVelocity(0);
+                        this.var = false;
+                    }
                 }
                 if (y_temp < y_min) {
                     setYVelocity(1);
@@ -99,3 +125,5 @@ public class PoissonTetra extends Poisson implements Runnable {
     }
 
 }
+
+// Слава Україні!

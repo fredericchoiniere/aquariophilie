@@ -6,19 +6,18 @@ Aquariophilie est:
 
 - un simulateur de gestion d'aquarium
 - un projet par Frédéric Choinière, Jérémie Caron et Justin Plouffe
-- codé 100% en Java
-- encore en construction
+- codé 100% en Java (ou presque)
+- terminé :)
 - un projet réalisé dans le cadre du programme SIM au Collège de Rosemont lors de la session H22
 - un projet méritant une excellente note
 
 Aquariophilie n'est pas:
 
 - un mineur de cryptomonnaie
-- terminé
 - aussi impressionnant qu'un cube Rubiks en 3D, mais on fait ce qu'on peut
 
 \
-Version actuelle: remise itération 2
+Version actuelle: remise itération 3
 
 ## Structure
 
@@ -30,8 +29,9 @@ Le projet contient 3 dossiers principaux:
 
 ## Instructions
 
-Pour lancer le programme, il suffit d'exécuter `executer.bat` dans le dossier principal.
-Alternativement, il est possible de lancer le code en compilant `Control.java` situé dans:
+Pour lancer le programme, il suffit d'exécuter `aquariophilie.jar` dans le dossier principal.
+Alternativement, utiliser `executer.bat` également dans le dossier principal.
+En dernier recours, il est possible de lancer le code en compilant `Control.java` situé dans:
 > aquariophilie\src\control\Control.java
 
 \

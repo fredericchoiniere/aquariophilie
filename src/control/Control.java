@@ -1,12 +1,12 @@
-// Jérémie Caron     itération 1
-// Frédéric Choinière   itération 2
-// Jérémie Caron    itération 3
+// Itération 1: Jérémie Caron
+// Itération 2: Frédéric Choinière
+// Itération 3: Jérémie Caron
+
 //Classe contrôleur qui initialise l'affichage du frame d'introduction
 
 package control;
 
 import javax.swing.*;
-
 import model.GestionException;
 import model.Radio;
 import view.*;
@@ -19,15 +19,16 @@ public class Control {
      *             permet d'initialiser le frame Introduction
      */
     public static void main(String[] args) {
-        // attributs du Frame intro
+        
+        // appel du frame intro
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                GUIIntro.guiIntroFrame();    
+                GUIIntro.guiIntroFrame();
             }
         });
 
+        // création de la radio, et mise en pause de celle-ci
         try {
-
             audioPlayer = new Radio();
             audioPlayer.play();
             audioPlayer.pause();
@@ -39,3 +40,5 @@ public class Control {
     }
 
 }
+
+// Слава Україні!

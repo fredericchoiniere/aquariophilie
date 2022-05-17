@@ -1,4 +1,5 @@
-// Frédéric Choinière   itération 3
+// Itération 3: Frédéric Choinière
+
 // Classe pour l'outil coquillage (sert à remonter le niveau de KH)
 
 package model.outils;
@@ -8,6 +9,7 @@ import java.awt.*;
 
 public class Coquillage extends Outils{
     
+    // attributs de la classe
     ImageIcon icone_coquillage;
 
     public Coquillage() {
@@ -32,6 +34,7 @@ public class Coquillage extends Outils{
         panel.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
                 icone_coquillage.getImage(),
                 new Point(0, 0), "curseur plein"));
-
     }
 }
+
+// Слава Україні!

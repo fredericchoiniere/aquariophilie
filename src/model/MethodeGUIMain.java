@@ -1,5 +1,7 @@
-//Jérémie Caron, Frédéric Choinière    itération 2
-// Jérémie Caron    itération 3
+// Itération 2: Jérémie Caron, Frédéric Choinière
+// Itération 3: Jérémie Caron, Frédéric Choinière
+
+// Classe qui gère les méthodes de la classe GUIMain
 
 package model;
 
@@ -7,23 +9,20 @@ import model.jeu.*;
 import model.plantes.*;
 import model.poissons.*;
 import view.GUIMain;
-
+import view.jeu.Inventaire;
 import java.awt.*;
 import javax.swing.*;
 
 public class MethodeGUIMain {
 
     // call des attributs de la classe
-    Aquarium aquarium;
-    Inventaire inventaire;
+
     static Boolean hasPlants = false;
     public static Boolean cooldownC = false;
     public static Boolean cooldownP = false;
-    public static Boolean isCoquillage = false;
-    public static Boolean isPichet = false;
     public static Boolean dansRectC = false, dansRectP = false;
-    public static int clickRecentC = 0, clickRecentP = 0, live;
 
+    public static int clickRecentC = 0, clickRecentP = 0, live;
     static final int CD_COQUILLAGE = 12000;
     static final int CD_PICHET = 20000;
 
@@ -58,7 +57,7 @@ public class MethodeGUIMain {
                 }
             }
         } catch (Exception e) {
-            // GestionException.GestionExceptionPla(pla);
+            GestionException.GestionExceptionPla(pla);
         }
     }
 
@@ -89,7 +88,7 @@ public class MethodeGUIMain {
                 }
             }
         } catch (Exception e) {
-
+            GestionException.GestionExceptionPoi(poi);
         }
     }
 
@@ -112,17 +111,19 @@ public class MethodeGUIMain {
                     && GUIMain.panelAqua.getMousePosition().getY() >= rectangle.getMinY()
                     && GUIMain.panelAqua.getMousePosition().getY() <= rectangle.getMaxY()) {
                 if (hasFish) {
+                    if (!GUIMain.listePoissonsAqua.get(index).isDead) {
+                        checkFishType(aqua);
+                    }
                     setHasFishFalse(hasFishString);
                     label1.setIcon(icone);
                     GUIMain.listePoissonsAqua.get(index).direction = "empty";
                     GUIMain.listePoissonsAqua.get(index).var = false;
                     GUIMain.listePoissonsAqua.set(index, GUIMain.poisson_default);
-                    checkFishType(aqua);
                     Poisson.setFalse((short) index);
                 }
             }
         } catch (Exception e) {
-            // GestionException.GestionExceptionObjet();
+            GestionException.GestionExceptionObjet();
         }
     }
 
@@ -152,7 +153,7 @@ public class MethodeGUIMain {
                 }
             }
         } catch (Exception e) {
-            // GestionException.GestionExceptionObjet();
+            GestionException.GestionExceptionObjet();
         }
     }
 
@@ -213,59 +214,23 @@ public class MethodeGUIMain {
         setAquaName(index, "rouge");
     }
 
+    /**
+     * @param emplacement
+     * @param label1
+     * @param index
+     *                      méthode pour créer une crevette Neocaridina
+     */
     public static void createPoissonNeo(String emplacement, JLabel label1, int index) {
         GUIMain.listePoissonsAqua.set(index, GUIMain.listePoissonsInv.get(getEmplaToInt(emplacement)));
         GUIMain.poisson_neo = (PoissonNeo) GUIMain.listePoissonsAqua.get(index);
         GUIMain.poisson_neo.setBounds(340, 324, 322, 156);
         GUIMain.poisson_neo.index = setIndexPoi(index);
         GUIMain.tpoisson_neo = new Thread(GUIMain.poisson_neo);
-        Argent.poi1 += 1;
-        GUIMain.eau.potentielDechets += PoissonRouge.dechets;
+        Argent.poi4 += 2;
+        GUIMain.eau.potentielDechets += PoissonNeo.dechets;
         GUIMain.tpoisson_neo.start();
         GUIMain.panelAqua.add(GUIMain.poisson_neo);
         setAquaName(index, "neo");
-    }
-
-    /**
-     * méthode pour rendre les emplacements à poisson visible
-     */
-    public void aquaVisibleTrue() {
-        aquarium.aqua1.setVisible(true);
-        aquarium.aqua2.setVisible(true);
-        aquarium.aqua3.setVisible(true);
-        aquarium.aqua4.setVisible(true);
-        aquarium.aqua5.setVisible(true);
-        aquarium.aqua6.setVisible(true);
-    }
-
-    /**
-     * méthode pour rendre les emplacements à poisson invisible
-     */
-    public void aquaVisibleFalse() {
-        aquarium.aqua1.setVisible(false);
-        aquarium.aqua2.setVisible(false);
-        aquarium.aqua3.setVisible(false);
-        aquarium.aqua4.setVisible(false);
-        aquarium.aqua5.setVisible(false);
-        aquarium.aqua6.setVisible(false);
-    }
-
-    /**
-     * méthode pour rendre les emplacements à plante visible
-     */
-    public void empVisibleTrue() {
-        aquarium.emp1.setVisible(true);
-        aquarium.emp2.setVisible(true);
-        aquarium.emp3.setVisible(true);
-    }
-
-    /**
-     * méthode pour rendre les emplacements à plante invisible
-     */
-    public void empVisibleFalse() {
-        aquarium.emp1.setVisible(false);
-        aquarium.emp2.setVisible(false);
-        aquarium.emp3.setVisible(false);
     }
 
     /**
@@ -302,7 +267,7 @@ public class MethodeGUIMain {
      * @return index
      *         méthode pour retourner un index selon l'emplacement
      */
-    public static int getEmplaToInt(String emplacement) { // TODO: à revoir
+    public static int getEmplaToInt(String emplacement) { 
         int index = 420;
         switch (emplacement) {
             case "empla1":
@@ -431,6 +396,7 @@ public class MethodeGUIMain {
      * @param index1
      * @return index
      *         méthode pour retourner un int en index
+     *         sert à rien mais il est trop tard pour l'enlever
      */
     public static int setIndexPoi(int index1) {
         int index = 69;
@@ -464,7 +430,7 @@ public class MethodeGUIMain {
      * @param poi
      * @param label1
      * @param index
-     *                    méthode pour créer le poisson selon le type rentrer
+     *                    méthode pour créer le poisson selon le type entré
      */
     public static void setEmplaToFish(String emplacement, String poi, JLabel label1, int index) {
         switch (poi) {
@@ -489,7 +455,7 @@ public class MethodeGUIMain {
      * @param poi
      * @param indexInv
      * @param indexAqua
-     *                    méthode pour créer la plante selon le type rentrer
+     *                    méthode pour créer la plante selon le type entré
      */
     public static void setEmplaToPlant(String emplacement, String poi, int indexInv, int indexAqua) {
         switch (poi) {
@@ -528,7 +494,7 @@ public class MethodeGUIMain {
 
     /**
      * @param aqua
-     *             méthode pour lorsque l'on enlève le poisson
+     *             méthode qui gère le débaras d'un poisson
      */
     public static void checkFishType(String aqua) {
         switch (aqua) {
@@ -548,7 +514,7 @@ public class MethodeGUIMain {
                 GUIMain.eau.potentielDechets -= PoissonTetra.dechets;
                 break;
             case "neo":
-                Argent.poi3 -= 2;
+                Argent.poi4 -= 2;
                 Argent.argent += PoissonNeo.prix / 2;
                 GUIMain.eau.potentielDechets -= PoissonNeo.dechets;
                 break;
@@ -559,7 +525,7 @@ public class MethodeGUIMain {
 
     /**
      * @param plant
-     *              méthode pour lorsque l'on enlève la plante
+     *              méthode qui gère le débaras d'une plante
      */
     public static void checkPlantType(String plante) {
         switch (plante) {
@@ -647,6 +613,11 @@ public class MethodeGUIMain {
         }
     }
 
+    /**
+     * @param poi
+     * @return ImageIcon
+     *              Méthode qui retourne l'icône des poissons
+     */
     public static ImageIcon getIconFish(String poi) {
         switch (poi) {
             case "rouge":
@@ -665,7 +636,7 @@ public class MethodeGUIMain {
 
     /**
      * @return Boolean
-     *         méthode pour retourner si il y a une plante
+     *         méthode qui vérifie la présence d'une plante
      */
     public static Boolean hasPlants() {
         if (!GUIMain.hasPlant1 && !GUIMain.hasPlant2 && !GUIMain.hasPlant3) {
@@ -684,20 +655,8 @@ public class MethodeGUIMain {
     }
 
     /**
-     * @param y
-     * @param height
-     *               Redéfinit les dimensions du rectangle Eau en fonction des
-     *               paramètres spécifiés
-     *               Rafraîchit l'affichage de l'eau
-     */
-    public static void setEauDimensions(int y, int height) {
-        GUIMain.rectEau.setBounds((int) GUIMain.rectEau.getX(), y, (int) GUIMain.rectEau.getWidth(), height);
-        GUIMain.panelAqua.repaint();
-    }
-
-    /**
      * @return boolean
-     * 
+     *         Retourne true si la position de la souris est dans les coordonnées spécifiées
      */
     public static boolean rectAquarium() {
         if (GUIMain.panelAqua.getMousePosition().getX() >= GUIMain.rectAquarium.getMinX()
@@ -708,9 +667,12 @@ public class MethodeGUIMain {
         } else {
             return false;
         }
-
     }
 
+    /**
+     * @return boolean
+     *          Retourne true si la position de la souris est dans les coordonnées spécifiées
+     */
     public static boolean rectPlant() {
         if (GUIMain.panelAqua.getMousePosition().getX() >= GUIMain.rectPlant.getMinX()
                 && GUIMain.panelAqua.getMousePosition().getX() <= GUIMain.rectPlant.getMaxX()
@@ -722,36 +684,35 @@ public class MethodeGUIMain {
         }
     }
 
+    /**
+     * @return boolean
+     *              Gère le cooldown du coquillage
+     */
     public static boolean cooldownC() {
-
         if (Math.abs(live - clickRecentC) < CD_COQUILLAGE && dansRectC) {
-            /* System.out.println("coquillage sous cooldown, live: " + live + "\nclickrecent: " + clickRecentC);
-            System.out.println("delta temps (ms): " + Math.abs(live - clickRecentC)); */
             cooldownC = true;
         } else {
             cooldownC = false;
             dansRectC = false;
             clickRecentC = live;
-            //System.out.println("coquillage pas sous cooldown");
         }
-
         return cooldownC;
     }
 
+    /**
+     * @return boolean
+     *              Gère le cooldown de pichet
+     */
     public static boolean cooldownP() {
-
         if (Math.abs(live - clickRecentP) < CD_PICHET && dansRectP) {
-            /* System.out.println("pichet sous cooldown, live: " + live + "\nclickrecent: " + clickRecentP);
-            System.out.println("delta temps (ms): " + Math.abs(live - clickRecentP)); */
             cooldownP = true;
         } else {
             cooldownP = false;
             dansRectP = false;
             clickRecentP = live;
-            //System.out.println("pichet pas sous cooldown");
         }
-
         return cooldownP;
     }
-
 }
+
+// Слава Україні!

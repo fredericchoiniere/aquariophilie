@@ -1,12 +1,14 @@
-//Jérémie Caron, Frédéric Choinière     itération 2
-// Jérémie Caron    itération 3
+// Itération 2: Jérémie Caron, Frédéric Choinière
+// Itération 3: Jérémie Caron, Frédéric Choinière
+
+// Classe qui permet de stocker les attributs et faire nager le poisson
 
 package model.poissons;
 
 import java.awt.*;
-
 import model.GestionException;
 import model.environnement.Temps;
+import view.GUIMain;
 
 public class PoissonRouge extends Poisson implements Runnable {
 
@@ -22,16 +24,28 @@ public class PoissonRouge extends Poisson implements Runnable {
     int vel_y = 1;
     public static int prix = 50;
     public static int tolerance = 6;
+    public static int dechets = 5;
 
     Image img;
     Image poisson_droite = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_droite.png");
     Image poisson_gauche = Toolkit.getDefaultToolkit().getImage("res/poissons/poisson_rouge/poisson_gauche.png");
     static Image empty = Toolkit.getDefaultToolkit().getImage("res/poissons/empty.png");
 
-    public static int dechets = 5;
-
     public PoissonRouge() {
         setImg();
+    }
+
+    
+    /** 
+     * @return boolean
+     *        Évalue si le poisson tolère les paramètres d'eau actuels
+     */
+    public static boolean checkTolerances() {
+        if (GUIMain.eau.getPH() < 3 || GUIMain.eau.getPH() > 9 || GUIMain.eau.getGH() < 3
+                || GUIMain.eau.getAmmoniaque() > 3 || GUIMain.eau.getNitrites() > 2 || GUIMain.eau.getNitrates() > 50) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -41,7 +55,8 @@ public class PoissonRouge extends Poisson implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, empty), x_temp, y_temp, this);
+        g2d.drawImage(getImage(direction, img, poisson_droite, poisson_gauche, empty, Poisson.rip), x_temp, y_temp,
+                this);
 
     }
 
@@ -59,6 +74,9 @@ public class PoissonRouge extends Poisson implements Runnable {
         repaint();
     }
 
+    /**
+     * Méthode qui permet de faire tourner le poisson
+     */
     public void setImg() {
         if (side == 1) {
             direction = "droite";
@@ -71,34 +89,44 @@ public class PoissonRouge extends Poisson implements Runnable {
         }
     }
 
+    /**
+     * méthode pour faire bouger le poisson
+     */
     @Override
     public void run() {
         while (var) {
-            if (!Temps.isPaused) {
-                if (x_temp > x_max) {
-                    setXVelocity(-vel_x);
-                    direction = "gauche";
+                if (!Temps.isPaused) {
+                    if (x_temp > x_max) {
+                        setXVelocity(-vel_x);
+                        direction = "gauche";
+                    }
+                    if (x_temp < x_min) {
+                        setXVelocity(1);
+                        direction = "droite";
+                    }
+                    if (y_temp > y_max) {
+                        setYVelocity(-vel_y);
+                        if(isDead){
+                            setYVelocity(0);
+                            this.var = false;
+                        }
+                    }
+                    if (y_temp < getHauteur() - 14) {
+                        setYVelocity(1);
+                    }
+                    deplacer();
+                } else {
+                    try {
+                        Thread.sleep(30);
+                    } catch (Exception e) {
+                        GestionException.GestionExceptionThreadTemps();
+                    }
                 }
-                if (x_temp < x_min) {
-                    setXVelocity(1);
-                    direction = "droite";
-                }
-                if (y_temp > y_max) {
-                    setYVelocity(-vel_y);
-                }
-                if (y_temp < getHauteur() - 14) {
-                    setYVelocity(1);
-                }
-                deplacer();
-            } else {
-                try {
-                    Thread.sleep(30);
-                } catch (Exception e) {
-                    GestionException.GestionExceptionThreadTemps();
-                }
-            }
 
-        }
+            }
+        
     }
 
 }
+
+// Слава Україні!

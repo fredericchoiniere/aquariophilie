@@ -1,18 +1,21 @@
-//Jérémie Caron     itération 1
+// Itération 1: Jérémie Caron
+// Itération 2 : Justin Plouffe
+
 //Classe pour l'outil pipette
 
 package model.outils;
 
 import javax.swing.*;
 import java.awt.*;
-
 import view.GUIMain;
 
 public class Pipette extends Outils {
 
     // attributs de la classe
     ImageIcon curseur_vide, curseur_plein, icone_vide, icone_plein;
+
     public boolean est_remplie = false;
+
     public int nbGouttes = 0;
 
     public Pipette() {
@@ -34,7 +37,7 @@ public class Pipette extends Outils {
 
     /**
      * @param proposition
-     *                    méthode qui permet de rendre le pipette remplie ou non
+     *                    méthode qui assigne un état de remplissage à la pipette
      */
     public void setEstRemplie(boolean proposition) {
         this.est_remplie = proposition;
@@ -42,7 +45,7 @@ public class Pipette extends Outils {
 
     /**
      * @return int
-     *         méthode qui permet de savoir le nombre de gouttes dans la pipette
+     *         méthode qui permet de connaître le nombre de gouttes dans la pipette
      */
     public int getNbGouttes() {
         return nbGouttes;
@@ -100,3 +103,5 @@ public class Pipette extends Outils {
         }
     }
 }
+
+// Слава Україні!
