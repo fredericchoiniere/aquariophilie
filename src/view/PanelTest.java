@@ -150,7 +150,6 @@ public class PanelTest extends JPanel {
         layersPT.add(lblOKNitrites);
         layersPT.add(lblOKNitrates);
 
-        // {}
         // -----------------------------------------------------------------------------------------------------------------------
         // Comportement lorsqu'on clic sur la solution PH
         lblSoluPH.addMouseListener(new MouseAdapter() {
