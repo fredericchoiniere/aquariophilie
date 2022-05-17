@@ -1,5 +1,6 @@
 // Itération 1: Jérémie Caron
 // Itération 2: Frédéric Choinière
+// Itération 3: Frédéric Choinière
 
 //Classe pour l'affichage des infos
 
@@ -18,8 +19,6 @@ public class PanelInfo extends JPanel implements Runnable {
     // appel des attributs de la classe
     public static JLabel lblAction, lblN, lblH, lblO, lblAmmo, lblNit, lblNat, lblPH, lblGH, lblKH, lblScore,
             lblDechets, lblAbsDechets;
-
-    float scoreEau = GUIMain.eau.getScoreEau();
 
     public static JProgressBar progressBar;
 
@@ -153,7 +152,7 @@ public class PanelInfo extends JPanel implements Runnable {
     }
 
     /**
-     * Méthode run de la classe PanelInfo
+     * Méthode run de la classe PanelInfo (met à jour tous les labels)
      */
     @Override
     public void run() {

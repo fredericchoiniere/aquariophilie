@@ -1,5 +1,5 @@
 // Itération 1: Jérémie Caron
-// Itération 3: Jérémie Caron, Justin Plouffe
+// Itération 3: Jérémie Caron, Justin Plouffe, Frédéric Choinière
 
 //Classe pour l'affichage du frame d'introduction
 
@@ -23,13 +23,11 @@ public class GUIIntro extends JPanel {
 
     static JEditorPane editorPane;
 
-    public static JLabel label, lblNouvellePartie, lblModeEvaluation;
-
     public static JButton btnNouvellePartie, btnModeEvaluation, btnQuitter, btnCredits;
 
     static ImageIcon img = new ImageIcon("res/background/icone_aquariophilie.png");
 
-    GUIIntro(Image image) {
+    public GUIIntro(Image image) {
         this.image = image;
     }
 
@@ -42,6 +40,11 @@ public class GUIIntro extends JPanel {
         super.paintComponent(g);
         g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
     }
+
+
+    /**
+     * Fait apparaître le frame d'intro
+     */
     public static void guiIntroFrame() {
         try {
             JFrame frame = new JFrame("Image");
@@ -52,8 +55,6 @@ public class GUIIntro extends JPanel {
             GUIIntro imagePanel = new GUIIntro(image);
             imagePanel.setLayout(null);
             
-            lblNouvellePartie = new JLabel();
-
             // bouton pour nouvelle partie
             btnNouvellePartie = new JButton(new ImageIcon("res/intro/nouvellePartie.png"));
 
@@ -68,15 +69,16 @@ public class GUIIntro extends JPanel {
                     frame.setVisible(false);
                 }
             });
+
             btnNouvellePartie.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
-                    if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                    if (evt.getKeyCode() == KeyEvent.VK_ENTER) { // Permet de démarrer une nouvelle partie en appuyant sur Enter
                         GUIMain aquarium = new GUIMain();
                         aquarium.setResizable(false);
                         aquarium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                         aquarium.pack();
-                        aquarium.setLocationRelativeTo(null);
                         aquarium.setVisible(true);
+                        aquarium.setLocationRelativeTo(null);
                         frame.setVisible(false);
                     }
                 }
@@ -98,11 +100,11 @@ public class GUIIntro extends JPanel {
                     aquarium.setResizable(false);
                     aquarium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     aquarium.pack();
-                    aquarium.setLocationRelativeTo(null);
                     aquarium.setVisible(true);
+                    aquarium.setLocationRelativeTo(null);
                     frame.setVisible(false);
 
-                    // enlevement du systeme de progression
+                    // retrait du système de progression
                     PoissonRouge.prix = 0;
                     PoissonBetta.prix = 0;
                     PoissonTetra.prix = 0;
@@ -155,7 +157,7 @@ public class GUIIntro extends JPanel {
                     frame.setLocationRelativeTo(null);
                     
                     File fileFred = Paths.get(("res/credits/fred.png")).toFile();
-                    URI faceFred = fileFred.toURI();
+                    URI faceFred = fileFred.toURI(); // Transforme le path d'une image en URL
 
                     File fileJay = Paths.get(("res/credits/jeremie.png")).toFile();
                     URI faceJay = fileJay.toURI();
@@ -166,7 +168,7 @@ public class GUIIntro extends JPanel {
 
                     editorPane = new JEditorPane();
                     editorPane.setEditable(false);
-                    editorPane.setContentType("text/html");
+                    editorPane.setContentType("text/html"); // HTML pour afficher et formatter les crédits
                     editorPane.setText("<html><h1 style=\"text-align: center;\"><span style =\"font-family: Arial, sans-serif;\"><strong><span style=\"color: #008080;\">AQUARIOPHILIE</span></span></strong></h1>" +
                     "<h3 style=\"text-align: center;\"><span style =\"font-family: Arial, sans-serif;\"><span style=\"color: #000000;\">Projet final du programme SIM au Coll&egrave;ge de Rosemont<br /></span></span></h3>" +
                     "<h4 style=\"text-align: center;\"><span style =\"font-family: Arial, sans-serif;\"><span style=\"color: #000000;\">420-204-RE H22</span></span></h4>" +
@@ -185,9 +187,13 @@ public class GUIIntro extends JPanel {
                     "<p style=\"text-align: center;\"><strong><span style =\"font-family: Arial, sans-serif;\"><span style=\"color: #000000;\">Justin Plouffe</span></span></strong></p>" +
                     "<p style=\"text-align: center;\"><span style =\"font-family: Arial, sans-serif;\"><span style=\"color: #000000;\">e̵̝̅v̵̝͍̱̟̥̉e̸̟͗͛́̽̐ŗ̴͖̳̠̰͋y̴͉͉̲͈̓͗͑͘ͅ ̴̨͇̼̒͑s̷̯̠̱͐͂̐͋͛̾͜ḕ̴̩͊̇c̷̹̫̳̍̈̐͠o̵̻̯͙̬̍͐̇n̷̙̹͊d̶͓͍̯̱̏̂̕ ̴̰̫̔̇ͅỳ̸͔̬̰̠̹͇̄̍o̸̧̡̗̻̔̿̿͝ṷ̵̽̒'̶͎̽͑͆̌͜r̷͈͒̃͜͜͜͝ē̴͖̻̩ ̵͕̙̅n̵͈̞̗̈́̎̌ͅo̵̦͙̞̗͐̓͊̚͠t̷̙̽̏͛̿̓͊ ̶̞͋̿͊̄͗́ṙ̸̘̰͗u̸̧͚̦̱̠͎̽̋̈́̕͘͝n̵̦̣͚̱̋͆n̵̝̰̯̳̔̓̓͝͠ì̶̭̤̞̠̝̱n̸̢͓͈͑g̴̛͈̲̭̼̘͜ ̵̢̳̹̼͖̚Î̵̛̳̜̮̘̪͔̌͐͐̿'̶̝͛̋͘m̴̡̧̬̳̝̃͘͜ ̷̨̟̫̏̈́̑ò̶̫͂̀́n̷̡̼̒̇̑̅́l̷̜͔̫̠͐̀͂͒y̵̨͈̯̲̞̝̋̃̕ ̸̬͖̈͒̉̑̍̕͜g̴̲̫̹̣̺̜̾e̷̙̬̽͂̃̒͝t̸͚̻̳̪͍̍̈́͌͊̋ẗ̶̥́̎͛î̴͖̋̽n̷̲̻͋͗̄̈͠ͅg̸̮̹̙̖̲̱̃̈́̈́͗̈́ ̶̡̨̬̳̤͆ͅc̷̯͆l̸̬̟̦̆͂̏̈͐o̴̲̙̜̹̖͆̂̔͒ͅs̴̮̙̫̣̤̫̀̏̚ē̸̤̬̣̎̊͜r̷̖͋̉̿̆̓͘͜</span></span></p>" + 
                     "<p style=\"text-align: center;\">&nbsp;</p>" +
-
+                    "<p style=\"text-align: center;\">&nbsp;</p>" +
+                    "<p style=\"text-align: center;\"><strong><span style =\"font-family: Arial, sans-serif;\">Aspect scientifique: stœchiométrie</strong></span></p>" +
+                    "<p style=\"text-align: center;\"><span style =\"font-family: Arial, sans-serif;\">Notre projet applique les règles de stœchiométrie dans les équations chimiques</span></p>" +
+                    "<p style=\"text-align: center;\"><span style =\"font-family: Arial, sans-serif;\"> qui régissent le cycle de l’azote, c’est-à-dire, de la transformation de l’ammoniaque en nitrites</span></p>" + 
+                    "<p style=\"text-align: center;\"><span style =\"font-family: Arial, sans-serif;\">et des nitrites en nitrates par l’action de bactéries nommées Nitrosomonas et Nitrobacter.</span></p>" +
+                    "<p style=\"text-align: center;\">&nbsp;</p>" +
                     "</html>");
-
 
                     JScrollPane scrollPane = new JScrollPane(editorPane);
                     
@@ -210,7 +216,7 @@ public class GUIIntro extends JPanel {
             label_titre.setToolTipText("Ça a failli partir sur une calculatrice de matrices");
             imagePanel.add(label_titre);
 
-            // attributs du frame intro
+            // settings du frame intro
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null);
             frame.add(imagePanel);

@@ -7,10 +7,6 @@ package view.jeu;
 import javax.swing.JLabel;
 
 public class Emplacementaq extends JLabel {
-
-    public short position = 0;
-
-    public float prix = 0;
     
     public boolean plein = false;
 
@@ -21,7 +17,7 @@ public class Emplacementaq extends JLabel {
 
     /**
      * @return Boolean
-     *         rempli l'inventaire
+     *         remplit l'inventaire
      */
     public Boolean estPlein() {
         return plein;

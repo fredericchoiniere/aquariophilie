@@ -1,6 +1,7 @@
 // Iteration 3: Jérémie Caron
 
-// Classe qui créer et gère les progressBar de la Sante
+// Classe qui créé et gère les progressBar de la Santé
+
 package view.jeu;
 
 import java.awt.*;

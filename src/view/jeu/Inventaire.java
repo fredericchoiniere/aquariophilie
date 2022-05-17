@@ -1,6 +1,6 @@
 // Itération 1: Jérémie Caron
 // Itération 2: Jérémie Caron
-// Itération 3: Jérémie Caron
+// Itération 3: Jérémie Caron, Frédéric Choinière
 
 //Classe qui gère l'inventaire et ses emplacements
 

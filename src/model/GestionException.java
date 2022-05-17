@@ -1,6 +1,6 @@
 // Itération 3: Jérémie Caron, Justin Plouffe
 
-// Classe qui permet de faire la gestion des exceptions
+// Classe qui permet de gérer les exceptions
 
 package model;
 
@@ -34,7 +34,7 @@ public class GestionException {
      */
     public static void GestionExceptionObjet() {
         JOptionPane.showMessageDialog(null,
-                "L'objet a été placé hors de l'application. Il est donc revenu dans l'application. Veuiller le déposer dans l'emplacement approprié.",
+                "L'objet a été placé hors de l'application. Il est donc revenu à son emplacement inital. Veuiller le déposer dans l'emplacement approprié.",
                 "Erreur", JOptionPane.ERROR_MESSAGE);
     }
 

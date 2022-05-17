@@ -1,6 +1,6 @@
 // Itération 1: Frédéric Choinière
 // Itération 2: Frédéric Choinière, Jérémie Caron
-// Itération 3: Jérémie Caron
+// Itération 3: Jérémie Caron, Frédéric Choinière
 
 // Classe qui contrôle le temps et le timer global
 
@@ -29,7 +29,7 @@ public class Temps {
     }
 
     /**
-     * Méthode pour partir et arreter les cooldowns
+     * Méthode pour partir et arrêter les cooldowns
      */
     public static void checkCooldown() {
         cooldown = new Timer();
@@ -38,7 +38,7 @@ public class Temps {
             public void run() {
                 if (!isPaused) {
                     tempsActuel = (int) System.currentTimeMillis();
-                    MethodeGUIMain.live = tempsActuel - (tempsReprise - tempsPause);
+                    MethodeGUIMain.live = tempsActuel - (tempsReprise - tempsPause); // Gère les cooldowns pendant que le temps est en pause
                     if (MethodeGUIMain.cooldownC()) {
                         GUIMain.setCooldownVisibleC();
                     } else {

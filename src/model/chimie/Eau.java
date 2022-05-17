@@ -22,7 +22,6 @@ public class Eau implements Runnable {
     private float penteNitrites = 0;
     public float sommeAbsorptionNitrates = 0, sommeContributionPH = 0, variationPH = 0;
     public static float nitrites = 0, nitrates = 0, ammoniaque = 0;
-    public float tempAmmoniaque = 0, tempNitrites = 0;
     private float sommeAmmoniaque, sommeNitrites;
     public float jours = GUIMain.jours, jourInitial = 0;
     public float hauteur = 35, largeur = 20, longueur = (float) 54.07; // Dimensions de l'aquarium de 10 gallons/37.85L
@@ -33,17 +32,11 @@ public class Eau implements Runnable {
     public static int hauteurEnPixels = 177; // 192  Hauteur en pixels de l'eau de l'aquarium rempli
     public static int positionEnPixels = 299;// 305
     public int sommeAbsorptionDechets = 0, potentielDechets = 0, sommeDechets = 0;
-    public static int randomNumber;
 
-    public static Random random = new Random();
+    final short valeur_changement = 1; // Dicte le niveau d'eau qui s'évapore par jour
 
-    final short valeur_changement = 1;
-
-    public boolean dechetsCycleParti = false, cycleParti = true, menageDupesNit = true;
-
-    public String actionEnCours = "Aucune action initiale";
+    public boolean dechetsCycleParti = false;
    
-    public ArrayList<Integer> listeAbsorption = new ArrayList<Integer>();
     public ArrayList<CycleAzote> listeCycles = new ArrayList<CycleAzote>();
 
     public ArrayList<Float> listeAmmoniaqueTemp = new ArrayList<Float>(0); // Liste à synchroniser    
@@ -72,7 +65,7 @@ public class Eau implements Runnable {
 
     /**
      * @param float
-     *              Setter du pH
+     *         Setter du pH
      */
     public void setPH(float nouveauPH) {
         if (nouveauPH <= 0)
@@ -91,7 +84,7 @@ public class Eau implements Runnable {
 
     /**
      * @param float
-     *              Setter pour le gH
+     *         Setter pour le gH
      */
     public void setGH(float nouveauGH) {
         if (nouveauGH <= 0)
@@ -110,7 +103,7 @@ public class Eau implements Runnable {
 
     /**
      * @param float
-     *              Setter pour le kH
+     *         Setter pour le kH
      */
     public void setKH(float nouveauKH) {
         if (nouveauKH <= 0)
@@ -240,7 +233,8 @@ public class Eau implements Runnable {
     }
 
     /**
-     * Pour l'itération 3
+     * Gère la variation de KH
+     * KH diminue avec l'accumulation de déchets, outil coquillage augmente KH
      */
     public void variationKH() { // acceptable de 4 à 8
 
@@ -263,7 +257,8 @@ public class Eau implements Runnable {
     }
 
     /**
-     * Pour l'itération 3
+     * Gère la variation de GH
+     * GH diminue avec le niveau d'eau, les changements d'eau rehaussent le GH
      */
     public void variationGH() { // acceptable de 5 à 15
         // avec volume d'eau
@@ -301,7 +296,7 @@ public class Eau implements Runnable {
     }
     
     /** 
-     * Remets des valeurs de base lors d'un changement d'eau à l'aide de l'outil pichet
+     * Change l'eau de l'aquarium et rétablit les paramètres d'eau à des niveaux acceptables
      */
     public void changerEau() {
         volumeEau = (float) 37.85;
@@ -323,7 +318,7 @@ public class Eau implements Runnable {
 
     /**
      * @return float
-     *         Dicte le comportement des nitrates selon une courbe
+     *         Dicte le comportement des nitrates
      */
     public void comportNitrates() {
         if (((jours / 7) - 4) > 0) {
@@ -345,7 +340,7 @@ public class Eau implements Runnable {
 
     /**
      * @return scorePh
-     *         Retourne la valeur du score pour le PH qui cotribue pour (14/100) du
+     *         Retourne la valeur du score pour le PH qui contribue pour (14/100) du
      *         score de l'eau
      */
     public float setScorePH() {
@@ -368,7 +363,7 @@ public class Eau implements Runnable {
 
     /**
      * @return scoreGH
-     *         Retourne la valeur du score pour le GH qui cotribue pour (14/100) du
+     *         Retourne la valeur du score pour le GH qui contribue pour (14/100) du
      *         score de l'eau
      */
     public float setScoreGH() {
@@ -418,7 +413,7 @@ public class Eau implements Runnable {
 
     /**
      * @return scoreAmmo
-     *         Retourne la valeur du score pour l'ammoniaque qui cotribue pour
+     *         Retourne la valeur du score pour l'ammoniaque qui contribue pour
      *         (18/100) du score de l'eau
      */
     public float setScoreAmmo() {
@@ -435,7 +430,7 @@ public class Eau implements Runnable {
 
     /**
      * @return scoreNitrites
-     *         Retourne la valeur du score pour les nitrites qui cotribue pour
+     *         Retourne la valeur du score pour les nitrites qui contribue pour
      *         (24/100) du score de l'eau
      */
     public float setScoreNitrites() {
@@ -452,7 +447,7 @@ public class Eau implements Runnable {
 
     /**
      * @return scoreNitrates
-     *         Retourne la valeur du score pour les nitrates qui cotribue pour
+     *         Retourne la valeur du score pour les nitrates qui contribue pour
      *         (16/100) du score de l'eau
      */
     public float setScoreNitrates() {
@@ -492,8 +487,7 @@ public class Eau implements Runnable {
     }
 
     /**
-     * Méthode run de la classe Eau qui garde toute les valeurs de l'eau ou autre à
-     * jour
+     * Méthode run de la classe Eau
      */
     @Override
     public void run() {
@@ -520,15 +514,15 @@ public class Eau implements Runnable {
                     GUIMain.panelTest.lblNitrites.setText(toString(GUIMain.eau.getNitrites()));
                     GUIMain.panelTest.lblNitrates.setText(toString(GUIMain.eau.getNitrates()));
 
-                    for (short i = 0; i < 6; i++)
+                    for (short i = 0; i < 6; i++) // Update la santé des poissons
                         Poisson.setSante(i);
 
-                    for (CycleAzote cycle : listeCycles) {
+                    for (CycleAzote cycle : listeCycles) { // Gère les cycles
                         cycle.incrJoursCalcul();
                         cycle.cycler(jours);
                     }
 
-                    if (penteNitrites > nitrites) {
+                    if (penteNitrites > nitrites) { // Gère les nitrates
                         comportNitrates();
                         GUIMain.actionEnCours = "Cycle nitrates";
                         if (nitrites != 0.0)
@@ -537,7 +531,7 @@ public class Eau implements Runnable {
                         penteNitrites = nitrites;
                     }
 
-                    Thread.sleep(Temps.DUREE);
+                    Thread.sleep(Temps.DUREE); // Sleep une journée
 
                 } catch (Exception e) {
                     e.printStackTrace();
