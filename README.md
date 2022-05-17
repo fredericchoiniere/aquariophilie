@@ -26,6 +26,7 @@ Le projet contient 3 dossiers principaux:
 - `src`: contient le code source arrangé selon le modèle MVC
 - `res`: contient les ressources nécessaires au bon affichage du programme
 - `bin`: contient les fichiers compilés
+- `doc`: contient le Javadoc (ouvrir index.html pour le visionner)
 
 ## Instructions
 
