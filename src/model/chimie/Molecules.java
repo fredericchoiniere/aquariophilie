@@ -1,7 +1,7 @@
 // Itération 1: Frédéric Choinière, Justin Plouffe
 // Itération 2: Frédéric Choinière
 
-// Classe qui permet de créer les molécules
+// Classe qui gère les molécules pour le panelInfo
 
 package model.chimie;
 

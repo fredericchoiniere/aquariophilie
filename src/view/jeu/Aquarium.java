@@ -17,10 +17,6 @@ public class Aquarium {
     final Dimension size_icone_inv = new Dimension(80, 80);
     final Dimension size_icone_poi = new Dimension(70, 70);
 
-    public static ImageIcon empty_poi = new ImageIcon("res/poissons/empty.png");
-
-    
-
     public Aquarium(JPanel panel) {
 
         // création de l'emplacement 1
@@ -80,7 +76,7 @@ public class Aquarium {
 
     /**
      * @param etat
-     *             permet de set les label visible ou invisible
+     *             permet de set les labels visibles ou invisibles
      */
     public void setVisible(boolean etat) {
         emp1.setVisible(etat);

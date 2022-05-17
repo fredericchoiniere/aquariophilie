@@ -9,20 +9,12 @@ package view;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
-import model.chimie.CycleAzote;
-import model.chimie.Molecules;
 
 public class PanelTest extends JPanel {
 
-    // attributs de la classe
-    CycleAzote cycle;
-
     // création des labels
-    public JLabel lblAmmo, lblNitrites, lblNitrates, lblPH, lblGH, lblKH, lblScorePH, lblScoreGH, lblScoreKH,
-            lblScoreAmmo, lblScoreNitrites, lblScoreNitrates, lblOKAmmo, lblOKNitrites, lblOKNitrates,
+    public JLabel lblAmmo, lblNitrites, lblNitrates, lblPH, lblGH, lblKH, lblOKAmmo, lblOKNitrites, lblOKNitrates,
             lblOKPH, lblOKGH, lblOKKH;
-
-    Molecules mol = new Molecules();
 
     public PanelTest() {
 
@@ -57,12 +49,6 @@ public class PanelTest extends JPanel {
         lblAmmo = new JLabel("0.00");
         lblNitrites = new JLabel("0.00");
         lblNitrates = new JLabel("0.00");
-        lblScorePH = new JLabel("100");
-        lblScoreGH = new JLabel("100");
-        lblScoreKH = new JLabel("100");
-        lblScoreAmmo = new JLabel("100");
-        lblScoreNitrites = new JLabel("100");
-        lblScoreNitrates = new JLabel("100");
 
         layersPT.setBounds(0, 0, 700, 500);
         add(layersPT);
@@ -448,42 +434,6 @@ public class PanelTest extends JPanel {
         lblNitrates.setBounds(601, 80, 25, 20);
         layersPT.setLayer(lblNitrates, 2);
         layersPT.add(lblNitrates);
-
-        // Label qui affiche la valeur du score du ph
-        lblScorePH.setText(GUIMain.eau.toString((GUIMain.eau.setScorePH())));
-        lblScorePH.setBounds(76, 60, 25, 20);
-        layersPT.setLayer(lblScorePH, 2);
-        layersPT.add(lblScorePH);
-
-        // Label qui affiche la valeur du score du gh
-        lblScoreGH.setText(GUIMain.eau.toString(GUIMain.eau.setScoreGH()));
-        lblScoreGH.setBounds(181, 60, 25, 20);
-        layersPT.setLayer(lblScoreGH, 2);
-        layersPT.add(lblScoreGH);
-
-        // Label qui affiche la valeur du score du kh
-        lblScoreKH.setText(GUIMain.eau.toString(GUIMain.eau.setScoreKH()));
-        lblScoreKH.setBounds(286, 60, 25, 20);
-        layersPT.setLayer(lblScoreKH, 2);
-        layersPT.add(lblScoreKH);
-
-        // Label qui affiche la valeur du score de l'ammoniaque
-        lblScoreAmmo.setText(GUIMain.eau.toString(GUIMain.eau.setScoreAmmo()));
-        lblScoreAmmo.setBounds(391, 60, 25, 20);
-        layersPT.setLayer(lblScoreAmmo, 2);
-        layersPT.add(lblScoreAmmo);
-
-        // Label qui affiche la valeur du score des nitrites
-        lblScoreNitrites.setText(GUIMain.eau.toString(GUIMain.eau.setScoreNitrites()));
-        lblScoreNitrites.setBounds(496, 60, 25, 20);
-        layersPT.setLayer(lblScoreNitrites, 2);
-        layersPT.add(lblScoreNitrites);
-
-        // Label qui affiche la valeur du score des nitrates
-        lblScoreNitrates.setText(GUIMain.eau.toString(GUIMain.eau.setScoreNitrates()));
-        lblScoreNitrates.setBounds(601, 60, 25, 20);
-        layersPT.setLayer(lblScoreNitrates, 2);
-        layersPT.add(lblScoreNitrates);
 
     }
 }

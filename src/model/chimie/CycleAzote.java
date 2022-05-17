@@ -1,5 +1,6 @@
 // Itération 1: Frédéric Choinière, Justin Plouffe
 // Itération 2: Frédéric Choinière
+// Itération 3: Frédéric Choinière
 
 // Classe qui contrôle les cycles de l'azote
 
@@ -9,8 +10,7 @@ import view.GUIMain;
 
 public class CycleAzote {
 
-    public float jours = GUIMain.jours, jourInitial, joursCalcul = 0, compteurJoursCycle = 0, tempAmmoniaque = 0,
-            tempNitrites = 0;
+    public float jourInitial, joursCalcul = 0, tempAmmoniaque = 0, tempNitrites = 0;
 
     public Eau eau = GUIMain.eau;
 
@@ -32,8 +32,7 @@ public class CycleAzote {
     /**
      * @param eau
      * @param jours
-     *              Démarre un cycle d'ammoniaque en fonction du temps, suivant une
-     *              courbe
+     *              Démarre un cycle d'ammoniaque en fonction du temps, suivant une courbe
      */
     public void cycleAmmoniaque(Eau eau, float jours) {
         eau.listeAmmoniaque.remove(tempAmmoniaque);
@@ -52,9 +51,7 @@ public class CycleAzote {
      * @param eau
      * @param float
      *              Méthode run de la classe CycleAzote
-     *              Incrémente les jours et calcule le nouveau taux d'ammoniaque et
-     *              de
-     *              nitrites
+     *              Incrémente les jours et calcule le nouveau taux d'ammoniaque et de nitrites
      */
     public void cycleNitrites(Eau eau, float jours) {
         eau.listeNitrites.remove(tempNitrites);
@@ -72,6 +69,7 @@ public class CycleAzote {
     /**
      * @param jours
      *              Cycle l'aquarium
+     *              Gère les cycles de NH3 et de NO2
      */
     public void cycler(float jours) {
 

@@ -1,7 +1,7 @@
 // Itération 2: Jérémie Caron, Frédéric Choinière
-// Itération 3: Jérémie Caron
+// Itération 3: Jérémie Caron, Frédéric Choinière
 
-// Classe qui gère les méthode de la classe GUIMain
+// Classe qui gère les méthodes de la classe GUIMain
 
 package model;
 
@@ -9,24 +9,17 @@ import model.jeu.*;
 import model.plantes.*;
 import model.poissons.*;
 import view.GUIMain;
-import view.jeu.Aquarium;
 import view.jeu.Inventaire;
-
 import java.awt.*;
 import javax.swing.*;
 
 public class MethodeGUIMain {
 
     // call des attributs de la classe
-    Aquarium aquarium;
-
-    Inventaire inventaire;
 
     static Boolean hasPlants = false;
     public static Boolean cooldownC = false;
     public static Boolean cooldownP = false;
-    public static Boolean isCoquillage = false;
-    public static Boolean isPichet = false;
     public static Boolean dansRectC = false, dansRectP = false;
 
     public static int clickRecentC = 0, clickRecentP = 0, live;
@@ -225,6 +218,7 @@ public class MethodeGUIMain {
      * @param emplacement
      * @param label1
      * @param index
+     *                      méthode pour créer une crevette Neocaridina
      */
     public static void createPoissonNeo(String emplacement, JLabel label1, int index) {
         GUIMain.listePoissonsAqua.set(index, GUIMain.listePoissonsInv.get(getEmplaToInt(emplacement)));
@@ -402,6 +396,7 @@ public class MethodeGUIMain {
      * @param index1
      * @return index
      *         méthode pour retourner un int en index
+     *         sert à rien mais il est trop tard pour l'enlever
      */
     public static int setIndexPoi(int index1) {
         int index = 69;
@@ -435,7 +430,7 @@ public class MethodeGUIMain {
      * @param poi
      * @param label1
      * @param index
-     *                    méthode pour créer le poisson selon le type rentrer
+     *                    méthode pour créer le poisson selon le type entré
      */
     public static void setEmplaToFish(String emplacement, String poi, JLabel label1, int index) {
         switch (poi) {
@@ -460,7 +455,7 @@ public class MethodeGUIMain {
      * @param poi
      * @param indexInv
      * @param indexAqua
-     *                    méthode pour créer la plante selon le type rentrer
+     *                    méthode pour créer la plante selon le type entré
      */
     public static void setEmplaToPlant(String emplacement, String poi, int indexInv, int indexAqua) {
         switch (poi) {
@@ -499,7 +494,7 @@ public class MethodeGUIMain {
 
     /**
      * @param aqua
-     *             méthode pour lorsque l'on enlève le poisson
+     *             méthode qui gère le débaras d'un poisson
      */
     public static void checkFishType(String aqua) {
         switch (aqua) {
@@ -530,7 +525,7 @@ public class MethodeGUIMain {
 
     /**
      * @param plant
-     *              méthode pour lorsque l'on enlève la plante
+     *              méthode qui gère le débaras d'une plante
      */
     public static void checkPlantType(String plante) {
         switch (plante) {
@@ -621,6 +616,7 @@ public class MethodeGUIMain {
     /**
      * @param poi
      * @return ImageIcon
+     *              Méthode qui retourne l'icône des poissons
      */
     public static ImageIcon getIconFish(String poi) {
         switch (poi) {
@@ -640,7 +636,7 @@ public class MethodeGUIMain {
 
     /**
      * @return Boolean
-     *         méthode pour retourner si il y a une plante
+     *         méthode qui vérifie la présence d'une plante
      */
     public static Boolean hasPlants() {
         if (!GUIMain.hasPlant1 && !GUIMain.hasPlant2 && !GUIMain.hasPlant3) {
@@ -660,7 +656,7 @@ public class MethodeGUIMain {
 
     /**
      * @return boolean
-     * 
+     *         Retourne true si la position de la souris est dans les coordonnées spécifiées
      */
     public static boolean rectAquarium() {
         if (GUIMain.panelAqua.getMousePosition().getX() >= GUIMain.rectAquarium.getMinX()
@@ -671,11 +667,11 @@ public class MethodeGUIMain {
         } else {
             return false;
         }
-
     }
 
     /**
      * @return boolean
+     *          Retourne true si la position de la souris est dans les coordonnées spécifiées
      */
     public static boolean rectPlant() {
         if (GUIMain.panelAqua.getMousePosition().getX() >= GUIMain.rectPlant.getMinX()
@@ -690,6 +686,7 @@ public class MethodeGUIMain {
 
     /**
      * @return boolean
+     *              Gère le cooldown du coquillage
      */
     public static boolean cooldownC() {
         if (Math.abs(live - clickRecentC) < CD_COQUILLAGE && dansRectC) {
@@ -704,6 +701,7 @@ public class MethodeGUIMain {
 
     /**
      * @return boolean
+     *              Gère le cooldown de pichet
      */
     public static boolean cooldownP() {
         if (Math.abs(live - clickRecentP) < CD_PICHET && dansRectP) {

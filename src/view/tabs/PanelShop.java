@@ -1,8 +1,8 @@
 // Itération 1: Jérémie Caron, Frédéric Choinière
 // Itération 2: Jérémie Caron, Frédéric Choinière
-// Itération 3: Jérémie Caron
+// Itération 3: Jérémie Caron, Frédéric Choinière
 
-//Classe pour l'affichage du magasin, pour itération 3
+//Classe pour l'affichage du magasin
 
 package view.tabs;
 
@@ -247,7 +247,6 @@ public class PanelShop extends JPanel implements ActionListener {
 
         Magasin.updateToolTip();
     }
-    // actionlistener pour fermer le tutoriel
 
     /**
      * @param Graphics
@@ -569,11 +568,18 @@ public class PanelShop extends JPanel implements ActionListener {
             }
         }
         if (e.getSource() == planteBlue) {
-            if (Magasin.gotMoney("blue")) {
-                checkCase(Inventaire.img_inv_tetra, "decoration", "", "blue");
+            if (GUIMain.isSelected6) {
+                GUIMain.label_tuto7.setVisible(false);
+                GUIMain.tabbedPane.setSelectedIndex(2);
+                GUIMain.label_tuto8.setVisible(true);
+                GUIMain.isSelected6 = false;
             } else {
-                JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
-                        JOptionPane.ERROR_MESSAGE);
+                if (Magasin.gotMoney("blue")) {
+                    checkCase(Inventaire.img_inv_tetra, "decoration", "", "blue"); // img_inv_tetra est une image vide
+                } else {
+                    JOptionPane.showMessageDialog(null, "Carte refusée: fonds insuffisants", "Erreur",
+                            JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
         if (e.getSource() == planteFern) {

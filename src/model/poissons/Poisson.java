@@ -1,7 +1,7 @@
 // Itération 2: Frédéric Choinière, Jérémie Caron
 // Itération 3: Jérémie Caron, Frédéric Choinière
 
-// Classe qui controle les poissons (classe mère des poissons)
+// Classe mère des poissons
 
 package model.poissons;
 
@@ -12,7 +12,6 @@ import model.chimie.Eau;
 import view.GUIMain;
 import view.jeu.Inventaire;
 import view.jeu.Sante;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
@@ -22,23 +21,20 @@ public class Poisson extends JPanel {
     // attributs de la classe
     int vel_x = 1;
     int vel_y = 1;
-    int randomNumber;
+    int hauteur = Eau.hauteurEnPixels;
     public int index;
-    int hauteur = Eau.hauteurEnPixels, compensationPosition = Eau.hauteurEnPixels - (4 + (192 - Eau.hauteurEnPixels));
 
     private short sante = 100;
 
     public boolean var = true, boolTolerances = true, isDead = false;
 
-    public String direction;
-    public String empInv, empAqua, nom;
+    public String direction, empInv, empAqua, nom;
 
     static Poisson selection = new Poisson();
 
     public static Random random = new Random();
 
     static ArrayList<Short> listeACleanUp = new ArrayList<Short>();
-    public static ArrayList<Poisson> listeVraisPoissons = new ArrayList<Poisson>(6);
 
     static Image rip = Toolkit.getDefaultToolkit().getImage("res/poissons/rip.png");
 
@@ -133,9 +129,10 @@ public class Poisson extends JPanel {
 
     /**
      * @return int
+     *         Traduit la hauteur en pixels de l'eau en coordonnées pour les poissons
      */
     public int getHauteur() {
-        hauteur = 196 - Eau.hauteurEnPixels; // Traduit la hauteur en pixels de l'eau en coordonnées pour les poissons
+        hauteur = 196 - Eau.hauteurEnPixels;
         return hauteur;
     }
 
@@ -166,37 +163,40 @@ public class Poisson extends JPanel {
     /**
      * @param JLabel
      * @param String
-     *               méthode pour afficher les tooltipsdépendement du poisson
+     *               méthode pour afficher les tooltips des poissons dans l'inventaire
      */
-    public static void updateToolTip(JLabel label, String type) { // TODO: terminer tooltips si changement de balance
+    public static void updateToolTip(JLabel label, String type) {
         switch (type) {
             case "rouge":
                 label.setToolTipText(
                         "<html><p>Type: <span style=\"color: #008080;\"><strong>Poisson rouge</strong></span></p>" +
                         "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">" + PoissonRouge.prix + "</span></span><span style=\"color: #008080;\">฿</span></p>" +
+                        "<p><span style=\"color: #000000;\">Rapporte <span style=\"color: #008080;\">1฿ <span style=\"color: #000000;\">par jour</span></span></span></p>" +
                         "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">5 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>" +
                         "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #ff9900;\">moyenne</span></span></span></p></html>");
                 break;
             case "betta":
                 label.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Betta</strong></span></p>" +
                         "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">" + PoissonBetta.prix + "</span></span><span style=\"color: #008080;\">฿</span></p>" +
+                        "<p><span style=\"color: #000000;\">Rapporte <span style=\"color: #008080;\">3฿ <span style=\"color: #000000;\">par jour</span></span></span></p>" +
                         "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">4 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>" +
                         "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #008000;\">&eacute;lev&eacute;e</span></span></span></p></html>");
                 break;
             case "tetra":
                 label.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Tetra</strong></span></p>" +
                         "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">" + PoissonTetra.prix + "</span></span><span style=\"color: #008080;\">฿</span></p>" +
+                        "<p><span style=\"color: #000000;\">Rapporte <span style=\"color: #008080;\">2฿ <span style=\"color: #000000;\">par jour</span></span></span></p>" +
                         "<p>G&eacute;n&egrave;re <span style=\"color: #008080;\">2 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>" +
                         "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #993366;\">faible</span></span></span></p></html>");
                 break;
             case "neo":
                 label.setToolTipText("<html><p>Type: <span style=\"color: #008080;\"><strong>Neocaridina</strong></span></p>" +
                         "<p><span style=\"color: #000000;\">Prix: <span style=\"color: #008080;\">" + PoissonNeo.prix + "</span></span><span style=\"color: #008080;\">฿</span></p>" +
+                        "<p><span style=\"color: #000000;\">Rapporte <span style=\"color: #008080;\">2฿ <span style=\"color: #000000;\">par jour</span></span></span></p>" +
                         "<p>Absorbe <span style=\"color: #008080;\">2 <span style=\"color: #000000;\">d&eacute;chets par jour</span></span></p>" +
                         "<p><span style=\"color: #008080;\"><span style=\"color: #000000;\">Tol&eacute;rance: <span style=\"color: #ff0000;\">tr&egrave;s faible</span></span></span></p></html>");
                 break;
             default:
-                label.setToolTipText("");
                 break;
         }
     }
@@ -234,8 +234,8 @@ public class Poisson extends JPanel {
         switch (fishType(numb)) {
             case "rouge":
                 ajusterSante(numb, PoissonRouge.tolerance);
-                if (!selection.checkTolerances("rouge") && !selection.isDead) {
-                    selection.sante -= 15;
+                if (!selection.checkTolerances("rouge") && !selection.isDead) { // Si le poisson ne tolère pas les paramètre d'eau et n'est pas mort, perd graduellement de la vie
+                    selection.sante -= 10;
                     if (selection.sante <= 0) {
                         killFish(numb);
                         selection.isDead = true;
@@ -280,8 +280,7 @@ public class Poisson extends JPanel {
     /**
      * @param numb
      * @param tolerance
-     *                  Méthode qui ajuste la sante du poisson seon le score de
-     *                  l'eau
+     *                  Méthode qui ajuste la sante du poisson selon le score de l'eau
      */
     public static void ajusterSante(short numb, int tolerance) {
         if (GUIMain.eau.scoreEau >= 66 - tolerance) {
@@ -313,7 +312,7 @@ public class Poisson extends JPanel {
 
     /**
      * @return boolean
-     *         Méthode qui regarde si les poisson sont dans leur tolérances
+     *         Méthode qui vérifie si la tolérance des poissons en fonction de leur type
      */
     public boolean checkTolerances(String type) {
 
@@ -339,7 +338,7 @@ public class Poisson extends JPanel {
     /**
      * 
      * @param short
-     *              Méthode pour quand le poisson meurt
+     *              Gère le décès des poissons
      */
     public static void killFish(short numb) {
         MethodeGUIMain.checkFishType(fishType(numb));
@@ -350,7 +349,7 @@ public class Poisson extends JPanel {
     }
 
     /**
-     * Méthode pour clean les poisson mort
+     * Méthode pour nettoyer les poissons morts
      */
     public static void cleanUp() {
         for (short indexMorts : listeACleanUp) {
@@ -361,7 +360,7 @@ public class Poisson extends JPanel {
 
     /**
      * @param short
-     *              Méthode qui permet d'enlever le poisson mort de l'application
+     *              Méthode qui supprime les poissons morts des listes et de l'aquarium
      */
     public static void setFalse(short numb) {
         GUIMain.listePoissonsAqua.get(numb).direction = "empty";
@@ -414,7 +413,7 @@ public class Poisson extends JPanel {
 
     /**
      * @param index
-     *              Méthode qui permet de mettre les bars de vie à jour
+     *              Méthode qui permet de mettre les barres de vie à jour
      */
     public static void setBarValue(short index) {
         if (GUIMain.hasFish1) {
